@@ -11,7 +11,13 @@ const STYLES = {
   },
 };
 
-function Button({ type = "primary", children, ...delegated }) {
+function Button(
+  { type = "primary", children, ...delegated }: {
+    type?: string;
+    children: React.ReactNode;
+    delegated?: unknown;
+  },
+) {
   const style = STYLES[type];
 
   if (!style) {

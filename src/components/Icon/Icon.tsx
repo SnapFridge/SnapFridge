@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Icons from "../assets/icon.svg";
 
-function Icon({ icon, color, size }) {
+function Icon(
+  { icon, color, size }: { icon: string; color: string; size: number },
+) {
   if (icon === "logo") {
     return (
       <Image
@@ -12,9 +14,9 @@ function Icon({ icon, color, size }) {
       />
     );
   }
-  const Icon = Icons[icon];
+  const IconComponent = Icons[icon];
 
-  return <Icon color={color} size={size} />;
+  return <IconComponent color={color} size={size} />;
 }
 
 export default Icon;
