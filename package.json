@@ -1,16 +1,21 @@
 {
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "new-component": "new-component --lang ts"
   },
   "dependencies": {
+    "@pigment-css/react": "^0.0.30",
+    "new-component": "^6.0.0",
     "next": "^15.3.2",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-feather": "^2.0.10"
   },
   "devDependencies": {
+    "@pigment-css/nextjs-plugin": "^0.0.30",
     "@types/node": "22.15.21",
     "@types/react": "19.1.5",
     "typescript": "5.8.3"

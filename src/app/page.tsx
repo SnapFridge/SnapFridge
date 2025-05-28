@@ -1,5 +1,6 @@
 import React from "react";
+import Button from "../components/Button/index.ts";
 
 export default function Page() {
-  return <h1>Hello, Next.js!</h1>;
+  return <Button>Hello!</Button>;
 }
