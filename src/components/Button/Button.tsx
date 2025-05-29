@@ -4,6 +4,7 @@ const STYLES = {
   primary: {
     "--background": "var(--primary-500)",
     "--color": "#000000",
+    "--background-hover": "var(--primary-600)",
   },
   secondary: {
     "--background": "var(--secondary-500)",
@@ -13,7 +14,7 @@ const STYLES = {
 
 function Button(
   { type = "primary", children, ...delegated }: {
-    type: string;
+    type?: string;
     children: React.ReactNode;
     delegated?: unknown;
   },
@@ -34,6 +35,10 @@ const StyledButton = styled("button")({
   border: "none",
   backgroundColor: "var(--background)",
   color: "var(--color)",
+
+  "&:hover": {
+    backgroundColor: "var(--background-hover)",
+  },
 });
 
 export default Button;

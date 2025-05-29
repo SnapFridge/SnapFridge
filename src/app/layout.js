@@ -3,7 +3,6 @@ import "./globalStyles";
 import { Poppins } from "next/font/google";
 import ThemeProvider from "./providers";
 
-
 const poppins = Poppins({
   weight: ["400", "700"],
   subsets: ["latin"],
@@ -20,7 +19,7 @@ export default function RootLayout({ children }) {
       <body>
         {/* theme provider from next-themes, handles the dark/light theming */}
         <ThemeProvider
-          attribute="class"
+          attribute="data-theme"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
