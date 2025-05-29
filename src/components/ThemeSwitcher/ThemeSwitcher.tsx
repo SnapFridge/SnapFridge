@@ -3,8 +3,17 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import Icon from "@components/Icon";
+import { css } from "@pigment-css/react";
 
-export default function ThemeSwitcher() {
+
+// remove default button theme
+const ButtonTheme = css({
+    border: 0,
+    padding: 0,
+    backgroundColor: "transparent",
+});
+
+function ThemeSwitcher() {
     const [ mounted, setMounted ] = useState(false);
     const { systemTheme, theme, setTheme } = useTheme();
 
@@ -16,15 +25,16 @@ export default function ThemeSwitcher() {
     }, []);
 
     if (!mounted) {
-        return <h1>idk why this code broke</h1>
+        return null;
     }
 
-    console.log(currentTheme);
+    // console.log(currentTheme);
     return (
         <div>
             <button
                 onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
                 type="button"
+                className={ButtonTheme}
             >
                 {currentTheme === "dark" ? (
                     <Icon icon="Moon" color="white" size={24}></Icon>
@@ -35,4 +45,8 @@ export default function ThemeSwitcher() {
         </div>
     )
 }
+
+
+
+export default ThemeSwitcher;
 
