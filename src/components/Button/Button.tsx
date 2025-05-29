@@ -2,18 +2,18 @@ import { styled } from "@pigment-css/react";
 
 const STYLES = {
   primary: {
-    "--background": "var(--primary-700)",
-    "--color": "var(--text-700)",
+    "--background": "var(--primary-500)",
+    "--color": "#000000",
   },
   secondary: {
-    "--background": "var(--secondary-700)",
-    "--color": "var(--text-700)",
+    "--background": "var(--secondary-500)",
+    "--color": "var(--text-950)",
   },
 };
 
 function Button(
   { type = "primary", children, ...delegated }: {
-    type?: string;
+    type: string;
     children: React.ReactNode;
     delegated?: unknown;
   },

@@ -1,8 +1,11 @@
 import React from "react";
-import Button from "../components/Button/index.ts";
-
-import ThemeSwitcher from "../components/ThemeSwitcher/index.ts";
+import Button from "../components/Button";
+import Icon from "../components/Icon";
 
 export default function Page() {
-  return <ThemeSwitcher></ThemeSwitcher>;
+  return (
+    <>
+      <Button>Hello!</Button>
+    </>
+  );
 }

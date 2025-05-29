@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Icons from "../assets/icon.svg";
+import * as Icons from "react-feather";
 
 function Icon(
   { icon, color, size }: { icon: string; color: string; size: number },
@@ -7,7 +7,7 @@ function Icon(
   if (icon === "logo") {
     return (
       <Image
-        src="/logo.png"
+        src="/Logo.png"
         alt="Logo"
         width={24}
         height={24}
