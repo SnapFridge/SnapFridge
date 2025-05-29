@@ -1,6 +1,8 @@
 import "@pigment-css/react/styles.css";
 import "./globalStyles";
 import { Poppins } from "next/font/google";
+import ThemeProvider from "./providers";
+
 
 const poppins = Poppins({
   weight: ["400", "700"],
@@ -14,8 +16,18 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={poppins.className}>
-      <body>{children}</body>
+    <html lang="en" className={poppins.className} suppressHydrationWarning>
+      <body>
+        {/* theme provider from next-themes, handles the dark/light theming */}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
