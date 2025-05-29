@@ -29,7 +29,7 @@ export default function ThemeSwitcher() {
                 {currentTheme === "dark" ? (
                     <Icon icon="Moon" color="white" size={24}></Icon>
                 ) : (
-                    <h1>light mode</h1>
+                    <Icon icon="Sun" color="black" size={24}></Icon>
                 )}
             </button>
         </div>
