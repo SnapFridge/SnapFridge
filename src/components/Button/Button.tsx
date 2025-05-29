@@ -13,24 +13,20 @@ const STYLES = {
 };
 
 function Button(
-  { type = "primary", children, ...delegated }: {
-    type?: string;
+  { type, children, ...delegated }: {
+    type: keyof typeof STYLES;
     children: React.ReactNode;
-    delegated?: unknown;
+    delegated?: React.ComponentProps<"button">;
   },
 ) {
-  const style = STYLES[type];
-
-  if (!style) {
-    throw new Error(`Invalid button type: ${type}`);
-  }
+  const style = STYLES[type] ?? {};
 
   return <StyledButton style={style} {...delegated}>{children}</StyledButton>;
 }
 
 const StyledButton = styled("button")({
   fontSize: `${16 / 16}rem`,
-  padding: `${14 / 16}rem ${10 / 16}rem`,
+  padding: `${10 / 16}rem`,
   borderRadius: "8px",
   border: "none",
   backgroundColor: "var(--background)",
