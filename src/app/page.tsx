@@ -1,18 +1,18 @@
-"use client";
-
 import React from "react";
-import Button from "@/components/Button";
-import Icon from "@/components/Icon";
-import dynamic from 'next/dynamic';
-
-const ThemeSwitcher = dynamic(() => import('@components/ThemeSwitcher'), {
-  ssr: false
-});
+import NavBar from "@components/NavBar/NavBar";
 
 export default function Page() {
   return (
     <>
-      <ThemeSwitcher></ThemeSwitcher>
+      <NavBar></NavBar>
+      <div>
+        <h1>hshaediqwiejqwe</h1>
+        <div style={{
+          height: "800px",
+        }}>
+          white space
+        </div>
+      </div>
     </>
   );
 }
