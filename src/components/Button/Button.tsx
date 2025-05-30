@@ -16,7 +16,7 @@ function Button(
   { type, children, ...delegated }: {
     type: keyof typeof STYLES;
     children: React.ReactNode;
-    delegated?: React.ComponentProps<"button">;
+    delegated: React.ComponentProps<"button">;
   },
 ) {
   const style = STYLES[type] ?? {};
