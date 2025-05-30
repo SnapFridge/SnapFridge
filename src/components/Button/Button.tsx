@@ -1,4 +1,10 @@
+import * as React from "react";
 import { styled } from "@pigment-css/react";
+
+interface Props extends React.PropsWithChildren {
+  type: keyof typeof STYLES;
+  delegated: React.ComponentProps<"button">;
+}
 
 const STYLES = {
   primary: {
@@ -12,13 +18,7 @@ const STYLES = {
   },
 };
 
-function Button(
-  { type, children, ...delegated }: {
-    type: keyof typeof STYLES;
-    children: React.ReactNode;
-    delegated: React.ComponentProps<"button">;
-  },
-) {
+function Button({ type, children, ...delegated }: Props) {
   const style = STYLES[type] ?? {};
 
   return <StyledButton style={style} {...delegated}>{children}</StyledButton>;

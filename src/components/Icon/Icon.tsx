@@ -1,8 +1,15 @@
+import * as React from "react";
 import Image from "next/image";
 import * as Icons from "react-feather";
 
+interface Props extends React.PropsWithChildren {
+  icon: string;
+  color: string;
+  size: number;
+}
+
 function Icon(
-  { icon, color, size }: { icon: string; color: string; size: number },
+  { icon, color, size }: Props,
 ) {
   if (icon === "logo") {
     return (

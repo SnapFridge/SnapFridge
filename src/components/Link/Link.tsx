@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { styled } from "@pigment-css/react";
 
-function Link({ href, children }) {
+interface Props extends React.PropsWithChildren {
+  href: string;
+}
+
+function Link({ href, children }: Props) {
   return (
     <StyledLink href={href}>
       {children}
