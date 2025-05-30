@@ -9,8 +9,8 @@ function Icon(
       <Image
         src="/Logo.png"
         alt="Logo"
-        width={24}
-        height={24}
+        width={size}
+        height={size}
       />
     );
   }

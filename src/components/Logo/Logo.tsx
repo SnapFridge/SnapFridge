@@ -1,0 +1,36 @@
+import * as React from "react";
+import { styled } from "@pigment-css/react";
+import Icon from "@components/Icon";
+
+function Logo() {
+  return (
+    <Wrapper>
+      <IconWrapper>
+        <Icon color="var(--text-950)" icon="logo" size={64}></Icon>
+      </IconWrapper>
+      <LogoName>SnapFridge</LogoName>
+    </Wrapper>
+  );
+}
+
+const Wrapper = styled("div")({
+  position: "relative",
+});
+
+const IconWrapper = styled("div")({
+  position: "absolute",
+  top: 0,
+  bottom: 0,
+  margin: "auto",
+  left: 0,
+  width: "64px",
+  height: "64px",
+});
+
+const LogoName = styled("span")({
+  paddingLeft: "64px",
+  fontSize: `${24 / 16}rem`,
+  fontWeight: "bold",
+});
+
+export default Logo;

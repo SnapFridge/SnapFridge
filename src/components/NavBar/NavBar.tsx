@@ -1,78 +1,40 @@
-"use client";
-
 import ThemeSwitcher from "@components/ThemeSwitcher";
 import Icon from "@components/Icon";
-import { css } from "@pigment-css/react";
-
-
+import Link from "@components/Link";
+import Logo from "@components/Logo";
+import { styled } from "@pigment-css/react";
 
 function NavBar() {
     return (
-        <nav className={NavCSS}>
-            <div className={LeftNav}>
-                <div className={NavItem}>
-                    <Icon icon="logo"></Icon>
-                        <span 
-                            style={{
-                                fontSize: `${24 / 16}rem`
-                            }}
-                        >
-                            SnapFridge
-                        </span>
-                </div>
-                <div className={NavItem}>
-                    <a href="/">
-                        <span 
-                            style={{
-                                fontSize: `${18 / 16}rem`
-                            }}
-                        >
-                            Get Started
-                        </span>
-                    </a>
-                    <a href="/about">
-                        <span 
-                            style={{
-                                fontSize: `${18 / 16}rem`
-                            }}
-                        >
-                            About Us
-                        </span>
-                    </a>
-                </div>
-            </div>
+        <Nav>
+            <LeftNav>
+                <Logo />
+                <Link href="/">Get Started</Link>
+                <Link href="/about">About Us</Link>
+            </LeftNav>
             <ThemeSwitcher></ThemeSwitcher>
-        </nav>
+        </Nav>
     )
 }
 
-const LeftNav = css({
+const LeftNav = styled("div")({
     display: "flex",
-    gap: "32px",
+    gap: "45px",
     alignItems: "center",
 });
 
-const NavItem = css({
-    display: "flex",
-    gap: "12px",
-    alignItems: "center",
-    "&> *": {
-        color: "var(--text-950)",
-        textDecoration: "none",
-    },
-});
-
-const NavCSS = css({
+// TODO: Add a prettier frosted glass implementation please :(
+const Nav = styled("nav")({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "0 32px 0 5%",
-    height: "80px",
+    padding: "20px 89px",
+    top: "10px",
+    height: `${80 / 16}rem`,
     zIndex: 2,
     position: "sticky",
     top: 0,
     backdropFilter: "blur(16px)",
-    borderRadius: "16px",
 });
 
 
