@@ -46,7 +46,10 @@ function Page() {
                 <Title>SnapFridge</Title>
             </div>
             <Picture></Picture>
-            <HeaderText>“We built SnapFridge for absolutely no reason other than the Congressional App Challenge, still gotta say it's a cool idea tho.”</HeaderText>
+            <HeaderText>
+                “We built SnapFridge for absolutely no reason other than the 
+                Congressional App Challenge, still gotta say it's a cool idea tho.”
+            </HeaderText>
             <CardContainer>
                 {Object.keys(Descriptions).map((name) => {
                     return (
@@ -66,7 +69,7 @@ const Main = styled("main")({
     flexDirection: "column",
     alignItems: "center",
     fontSize: `${16 / 16}rem`,
-    padding: '0 100px',
+    padding: '0 100px 100px 100px',
     gap: "32px",
     color: "var(--text-950)"
 })
