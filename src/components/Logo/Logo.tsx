@@ -1,19 +1,20 @@
 import * as React from "react";
-import { styled } from "@pigment-css/react";
+import { styled, css } from "@pigment-css/react";
 import Icon from "@components/Icon";
+import Link from "@components/Link";
 
 function Logo() {
   return (
-    <Wrapper>
+    <Link href="/" className={Wrapper} showDecoration={false}>
       <IconWrapper>
         <Icon color="var(--text-950)" icon="logo" size={64}></Icon>
       </IconWrapper>
       <LogoName>SnapFridge</LogoName>
-    </Wrapper>
+    </Link>
   );
 }
 
-const Wrapper = styled("div")({
+const Wrapper = css({
   position: "relative",
 });
 

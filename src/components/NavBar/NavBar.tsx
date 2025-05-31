@@ -1,5 +1,4 @@
 import ThemeSwitcher from "@components/ThemeSwitcher";
-import Icon from "@components/Icon";
 import Link from "@components/Link";
 import Logo from "@components/Logo";
 import { styled } from "@pigment-css/react";
@@ -29,7 +28,6 @@ const Nav = styled("nav")({
     justifyContent: "space-between",
     alignItems: "center",
     padding: "20px 89px",
-    top: "10px",
     height: `${80 / 16}rem`,
     zIndex: 2,
     position: "sticky",
