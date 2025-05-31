@@ -1,9 +1,9 @@
 import * as React from "react";
 import Image from "next/image";
-import * as Icons from "react-feather";
+import * as Icons from "lucide-react";
 
 interface Props extends React.PropsWithChildren {
-  icon: string;
+  icon: "logo" | any;
   color: string;
   size: number;
 }

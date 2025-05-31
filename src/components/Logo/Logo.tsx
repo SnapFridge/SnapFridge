@@ -5,7 +5,7 @@ import Link from "@components/Link";
 
 function Logo() {
   return (
-    <Link href="/" className={Wrapper} showDecoration={false}>
+    <Link href="/" className={Wrapper} hideDecoration>
       <IconWrapper>
         <Icon color="var(--text-950)" icon="logo" size={64}></Icon>
       </IconWrapper>
@@ -16,6 +16,10 @@ function Logo() {
 
 const Wrapper = css({
   position: "relative",
+
+  "&:hover": {
+    textDecoration: "none",
+  }
 });
 
 const IconWrapper = styled("div")({

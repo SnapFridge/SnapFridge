@@ -3,8 +3,6 @@ import NavBar from "@components/NavBar/NavBar";
 
 export default function Page() {
   return (
-    <>
-      <NavBar></NavBar>
       <div>
         <h1>hshaediqwiejqwe</h1>
         <div style={{
@@ -13,6 +11,5 @@ export default function Page() {
           white space
         </div>
       </div>
-    </>
   );
 }

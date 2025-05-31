@@ -3,13 +3,13 @@ import { styled } from "@pigment-css/react";
 
 interface Props extends React.PropsWithChildren {
   href: string;
-  showDecoration?: boolean;
+  hideDecoration?: boolean;
   delegated: React.ComponentProps<"a">
 }
 
-function Link({ href, children, showDecoration = true, ...delegated }: Props) {
+function Link({ href, children, ...delegated }: Props) {
   return (
-    <StyledLink href={href} style={{ "--behavior": showDecoration ? "revert" : "none" }} {...delegated}>
+    <StyledLink href={href} {...delegated}>
       {children}
     </StyledLink>
   )
@@ -21,7 +21,7 @@ const StyledLink = styled("a")({
   fontSize: `${18 / 16}rem`,
 
   "&:hover": {
-    textDecoration: "var(--behavior)",
+    textDecoration: "revert",
   }
 });
 

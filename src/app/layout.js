@@ -2,6 +2,7 @@ import "@pigment-css/react/styles.css";
 import "./globalStyles";
 import { Poppins } from "next/font/google";
 import ThemeProvider from "./providers";
+import NavBar from "@components/NavBar";
 
 const poppins = Poppins({
   weight: ["400", "700"],
@@ -24,6 +25,7 @@ export default function RootLayout({ children }) {
           enableSystem
           disableTransitionOnChange
         >
+          <NavBar></NavBar>
           {children}
         </ThemeProvider>
       </body>

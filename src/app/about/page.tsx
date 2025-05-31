@@ -1,51 +1,50 @@
 import Icon from "@components/Icon";
 import NavBar from "@components/NavBar";
-import { styled } from "@pigment-css/react";
+import { styled, css } from "@pigment-css/react";
 
 type DescriptionsType = Record<string, string>;
 
 const Descriptions: DescriptionsType = {
-    "Rylex Phan": 
+    "Rylex Phan":
         `
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
             mollit anim id est laborum.
         `,
     "Andrew Kim":
         `
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
             mollit anim id est laborum.
         `,
     "Andrew Trinh":
         `
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
-            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+            nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
             mollit anim id est laborum.
         `,
 }
 
 
 function Page() {
-    return (<>
-        <NavBar></NavBar>
+    return (
         <Main>
-            <LogoNameThingIdk>
-                <Icon icon="logo" size={300} />
-                <h1>SnapFridge</h1>
-            </LogoNameThingIdk>
+            <div>
+                <Icon className={Logo} icon="logo" size={300} />
+                <Title>SnapFridge</Title>
+            </div>
             <Picture></Picture>
             <HeaderText>“We built SnapFridge for absolutely no reason other than the Congressional App Challenge, still gotta say it's a cool idea tho.”</HeaderText>
             <CardContainer>
@@ -57,10 +56,9 @@ function Page() {
                         </Card>
                     )
                 })}
-            </CardContainer>    
+            </CardContainer>
         </Main>
-    </>)
-
+    )
 }
 
 const Main = styled("main")({
@@ -70,15 +68,17 @@ const Main = styled("main")({
     fontSize: `${16 / 16}rem`,
     padding: '0 100px',
     gap: "32px",
+    color: "var(--text-950)"
 })
 
-const LogoNameThingIdk = styled("div")({
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    color: "var(--text-800)",
-    fontSize: `${36 / 16}rem`
+const Title = styled("h1")({
+  marginTop: "-90px",
+  fontSize: `${36 / 16}rem`,
+  textAlign: "center",
+});
+
+const Logo = css({
+  margin: "auto",
 });
 
 const Picture = styled("div")({
