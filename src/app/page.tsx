@@ -1,5 +1,9 @@
 import React from "react";
+import Button from "@components/Button";
+import Link from "@components/Link";
 import RecipeCard from "@components/RecipeCard";
+import Image from "next/image";
+import { styled } from "@pigment-css/react";
 
 
 const recipesExample = [
@@ -162,7 +166,30 @@ const recipesExample = [
 
 export default function Page() {
   return (
-      <div>
+      <Main>
+
+        <Header>
+          <h1>SnapFridge</h1>
+          {/* Remember to add that thing where it removes excellent and types a different word */}
+          <h2>Excellent recipes right from your fridge.</h2>
+          <div>
+            <Link href="/about"><Button type="primary">About Us</Button></Link>
+            <Link href="/"><Button type="secondary">Get Started</Button></Link>
+          </div>
+        </Header>
+
+
+        {/* TODO: Somehow make the fridge responsive so it doesn't take up 90% of the screen */}
+        <ImageWrapper>
+          <Image 
+            src="/FridgeL.png"
+            alt="Fridge"
+            width={848}
+            height={1470}
+            sizes="(min-width) 100vw, 600px"
+          />
+        </ImageWrapper>
+
         <ul style={{
           padding: "5%",
           listStyleType: "none",
@@ -174,6 +201,50 @@ export default function Page() {
             return <RecipeCard recipe={recipe} key={recipe.title}/>
           })}
         </ul>
-      </div>
+
+
+      </Main>
   );
 }
+
+const Main = styled('main')({
+
+});
+
+const Header = styled("div")({
+  display: "flex",
+  flexDirection: "column",  
+  justifyContent: "center",
+  gap: "12px",
+  padding: "20px 89px",
+
+  backgroundImage: `linear-gradient(
+    120deg,
+    hsl(230deg 34% 69% / 0.2) 0%,
+    hsl(209deg 27% 49% / 0.2) 20%,
+    hsl(197deg 43% 31% / 0.2) 40%,
+    hsl(190deg 56% 19% / 0.2) 60%,
+    hsl(185deg 50% 12% / 0.2) 80%,
+    hsl(176deg 68% 5% / 0.2) 100%
+  )`,
+  backgroundColor: "#000",
+  
+
+  "&> h1": {
+    fontSize: `${80 / 16}rem`,
+  },
+
+  "&> h2": {  
+    fontSize: `${26 / 16}rem`,
+    fontWeight: "500",
+  },
+
+  "&> div": {
+    display: "flex",
+    gap: "12px",
+  }
+});
+
+const ImageWrapper = styled('div')({
+
+});
