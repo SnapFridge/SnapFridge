@@ -1,5 +1,4 @@
 import Icon from "@components/Icon";
-import NavBar from "@components/NavBar";
 import { styled, css } from "@pigment-css/react";
 
 type DescriptionsType = Record<string, string>;

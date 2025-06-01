@@ -59,7 +59,7 @@ const AddressSection = styled("address")({
 const TopLeftFooterCSS = css({
     display: "flex",
     flexDirection: "column",
-    fontSize: `${16 / 16}rem`,
+    fontSize: `${18 / 16}rem`,
 
     "&> span": {
         fontWeight: "600",

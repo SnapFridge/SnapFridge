@@ -63,7 +63,8 @@ globalCss`
     --accent-900: #111422;
     --accent-950: #080a11;
 
-    --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)
+    --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --warning: #b3261e;
   }
   :root[data-theme="dark"] {
     --text-50: #041615;
@@ -127,6 +128,7 @@ globalCss`
     --accent-950: #eeeff7;
 
     --shadow: 0 10px 15px -3px rgb(100 100 100 / 0.2), 0 4px 6px -4px rgb(100 100 100 / 0.2);
+    --warning: #fda920;
   }
 `;
 
