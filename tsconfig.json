@@ -7,8 +7,19 @@
       "@utils/*": ["./src/utils/*"]
     },
     "allowJs": true,
+    "checkJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "allowUnusedLabels": false,
+    "allowUnreachableCode": false,
+    "exactOptionalPropertyTypes": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitOverride": true,
+    "noImplicitReturns": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
     "noEmit": true,
     "incremental": true,
     "module": "esnext",
@@ -22,7 +33,6 @@
         "name": "next"
       }
     ],
-    "strictNullChecks": true
   },
   "include": ["next-env.d.ts", ".next/types/**/*.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
