@@ -78,9 +78,11 @@ function RecipeCard({ recipe }: RecipeProps) {
                             </p>                        
                         </>
                     }
+
+                    <Link href={`/recipe`} className={ButtonLinkCSS}><Button type="secondary" className={ViewButton}>View</Button></Link>
                 </MainInformation>
             </MainContent>
-            <Link href={`/recipe`} className={ButtonLinkCSS}><Button type="secondary" className={ViewButton}>View</Button></Link>
+            
         </Card>
     )
 }
@@ -96,7 +98,9 @@ const ViewButton = css({
 });
 
 const ButtonLinkCSS = css({
-    alignSelf: "flex-end",
+    position: "absolute",
+    bottom: 0,
+    right: 0,
 });
 
 const ImageCSS = css({
@@ -112,7 +116,7 @@ const WarningCSS = css({
 const Card = styled("li")({
     display: "flex",
     flexDirection: "column",    
-    gap: "24px",
+    gap: "16px",
     border: "1px solid var(--accent-950)",
     borderRadius: '12px',
     padding: "24px",
@@ -126,6 +130,12 @@ const MainContent = styled("div")({
 });
 
 const MainInformation = styled("div")({
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+    position: "relative",
+    overflow: "hidden",
+
     "&> h2": {
         fontSize: `${32 / 16}rem`,
     },
