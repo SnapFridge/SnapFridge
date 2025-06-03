@@ -1,7 +1,6 @@
 import React from "react";
 import { styled, css } from "@pigment-css/react";
 import Button from "@components/Button";
-import Link from "@components/Link";
 import AdjectiveRecipes from "@components/AdjectiveRecipes";
 import RecipeSection from "@components/RecipeSection";
 import Image from "next/image";
@@ -10,16 +9,18 @@ export default function Page() {
   return (
     <>
       <Header>
-        <Title>SnapFridge</Title>
-        <AdjectiveRecipes />
-        <ButtonWrapper>
-          <Button as="a" href="/about" styling="primary">
-            About Us
-          </Button>
-          <Button as="a" href="/" styling="secondary">
-            Get Started
-          </Button>
-        </ButtonWrapper>
+        <div>
+          <Title>SnapFridge</Title>
+          <AdjectiveRecipes />
+          <ButtonWrapper>
+            <Button as="a" href="/about" styling="primary">
+              About Us
+            </Button>
+            <Button as="a" href="/" styling="secondary">
+              Get Started
+            </Button>
+          </ButtonWrapper>
+        </div>
       </Header>
       {/* The content underneath the header */}
       <PageMargin>
@@ -57,10 +58,10 @@ export default function Page() {
           </BottomStatistics>
         </StatisticsSection>
         <CallToActionSection>
-            <h2>Join the Fight Against Food Waste Today</h2>
-            <Button as="a" href="/appidk" styling="primary" className={CoAButtonCSS}>
-              Get Started
-            </Button>
+          <h2>Join the Fight Against Food Waste Today</h2>
+          <Button as="a" href="/appidk" styling="primary" className={CoAButtonCSS}>
+            Get Started
+          </Button>
         </CallToActionSection>
       </PageMargin>
     </>
@@ -71,20 +72,16 @@ const Header = styled("div")({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  gap: "12px",
-  padding: "20px 89px",
-  background:
-  `
-    linear-gradient(
-      120deg,
-      hsl(230deg 34% 69% / 0.2) 0%,
-      hsl(209deg 27% 49% / 0.2) 20%,
-      hsl(197deg 43% 31% / 0.2) 40%,
-      hsl(190deg 56% 19% / 0.2) 60%,
-      hsl(185deg 50% 12% / 0.2) 80%,
-      hsl(176deg 68% 5% / 0.2) 100%
-    )
-  `,
+  height: `calc(${500 / 16}rem + var(--nav-height) + var(--nav-margin))`,
+  background: `
+    radial-gradient(circle at top left, var(--hero-radial-1) 0%, var(--hero-radial-2) 63%, var(--hero-radial-3) 100%),
+    linear-gradient(var(--hero-linear-1) 0%, var(--hero-linear-2) 96%, var(--background-50) 100%)
+    `,
+  backgroundBlendMode: "multiply",
+  marginTop: "calc(-1 * var(--nav-height) - var(--nav-margin))",
+  "&> div": {
+    marginLeft: "7.5%"
+  }
 });
 
 const Title = styled("h1")({
