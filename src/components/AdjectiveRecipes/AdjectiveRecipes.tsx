@@ -4,7 +4,7 @@ import * as React from "react";
 import { styled } from "@pigment-css/react";
 import useTypewriter from "./typewritter.helper";
 
-const ADJECTIVES = ["Delicious", "Excellent", "Wonderful", "Good"];
+const ADJECTIVES = ["Delicious", "Excellent", "Wonderful", "Amazing", "Supercalifragilisticexpialidocious"];
 
 function AdjectiveRecipes() {
   const adjective = useTypewriter(ADJECTIVES);
@@ -23,7 +23,7 @@ const Description = styled("p")({
 });
 
 const Adjective = styled("span")({
-  color: "hsl(198 100% 65%)",
+  color: "hsl(198 100% 65%  )",
   fontWeight: "bold",
 });
 
