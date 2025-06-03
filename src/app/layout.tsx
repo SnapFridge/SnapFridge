@@ -46,8 +46,8 @@ const Background = styled("div")({
   display: "flex",
   flexDirection: "column",
   background: `
-      radial-gradient(circle at top left, #969FCB 0%, #194D5A 63%, #041514 100%),
-      linear-gradient(#535353 0%, #10423f 96%, #000000 100%)
+      radial-gradient(circle at top left, var(--hero-radial-1) 0%, var(--hero-radial-2) 63%, var(--hero-radial-3) 100%),
+      linear-gradient(var(--hero-linear-1) 0%, var(--hero-linear-2) 96%, var(--hero-linear-3) 100%)
     `,
   backgroundBlendMode: "multiply", // or 'overlay', 'screen', etc.
   minHeight: "100%",

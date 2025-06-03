@@ -65,6 +65,13 @@ globalCss`
 
     --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     --warning: #b3261e;
+
+    --hero-radial-1: #969FCB;
+    --hero-radial-2: #3ec1e3;
+    --hero-radial-3: #28cac0;
+    --hero-linear-1: #b8b8b8;
+    --hero-linear-2: #FFFFFF;
+    --hero-linear-3: #FFFFFF;
   }
   :root[data-theme="dark"] {
     --text-50: #041615;
@@ -129,6 +136,13 @@ globalCss`
 
     --shadow: 0 10px 15px -3px rgb(100 100 100 / 0.2), 0 4px 6px -4px rgb(100 100 100 / 0.2);
     --warning: #fda920;
+
+    --hero-radial-1: #969FCB;
+    --hero-radial-2: #194D5A;
+    --hero-radial-3: #041514;
+    --hero-linear-1: #535353;
+    --hero-linear-2: #10423f;
+    --hero-linear-3: #000000;
   }
 `;
 
