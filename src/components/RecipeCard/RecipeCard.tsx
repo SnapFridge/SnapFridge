@@ -50,7 +50,7 @@ function RecipeCard({ recipe }: RecipeProps) {
                                 {
                                     recipe.usedIngredients.map((ingredient, index) => (
                                         <React.Fragment key={ingredient.name}>
-                                            {String(ingredient.name).charAt(0).toUpperCase() + String(ingredient.name).slice(1)}
+                                            {ingredient.name.charAt(0).toUpperCase() + (ingredient.name).slice(1)}
 
                                             {/* prevent comma from appearing for the last ingredient */}
                                             {index < recipe.usedIngredients.length - 1 && ", "}
@@ -60,7 +60,6 @@ function RecipeCard({ recipe }: RecipeProps) {
                             </p>                        
                         </>
                     }
-
                     { recipe.missedIngredientCount !== 0 && 
                         <>
                             <h2 className={WarningCSS}>Missing Ingredients</h2>
@@ -68,7 +67,7 @@ function RecipeCard({ recipe }: RecipeProps) {
                                 {
                                     recipe.missedIngredients.map((ingredient, index) => (
                                         <React.Fragment key={ingredient.name}>
-                                            {String(ingredient.name).charAt(0).toUpperCase() + String(ingredient.name).slice(1)}
+                                            {ingredient.name.charAt(0).toUpperCase() + ingredient.name.slice(1)}
 
                                             {/* prevent comma from appearing for the last ingredient */}
                                             {index < recipe.missedIngredients.length - 1 && ", "}
@@ -78,7 +77,6 @@ function RecipeCard({ recipe }: RecipeProps) {
                             </p>                        
                         </>
                     }
-
                     <Link href={`/recipe`} className={ButtonLinkCSS}><Button styling="secondary" className={ViewButton}>View</Button></Link>
                 </MainInformation>
             </MainContent>   
