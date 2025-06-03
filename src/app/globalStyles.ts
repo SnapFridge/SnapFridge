@@ -151,6 +151,7 @@ globalCss`
   :root {
     --nav-height: ${80 / 16}rem;
     --nav-margin: 20px;
+    --page-margin: 7.5vw
   }
 `;
 

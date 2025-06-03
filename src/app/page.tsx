@@ -79,8 +79,9 @@ const Header = styled("div")({
     `,
   backgroundBlendMode: "multiply",
   marginTop: "calc(-1 * var(--nav-height) - var(--nav-margin))",
+
   "&> div": {
-    marginLeft: "7.5%"
+    paddingLeft: "var(--page-margin)"
   }
 });
 
@@ -115,11 +116,11 @@ const FridgeDescSection = styled("div")({
 });
 
 const Fridge = css({
-  marginRight: 0
+  marginRight: "calc(-1 * var(--page-margin))"
 });
 
 const PageMargin = styled('div')({
-  width: "85%",
+  width: "calc(100vw - 2 * var(--page-margin))",
   alignSelf: "center",
 });
 

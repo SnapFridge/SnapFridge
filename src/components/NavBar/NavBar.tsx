@@ -27,7 +27,7 @@ const Nav = styled("nav")({
   display: "flex",
   justifyContent: "space-between",
   alignItems: "center",
-  padding: "20px 89px",
+  padding: "0 var(--page-margin)",
   marginTop: "var(--nav-margin)",
   height: `var(--nav-height)`,
   zIndex: 2,
