@@ -34,6 +34,7 @@ function Footer() {
 const FooterItem = styled("footer")({
     backgroundColor: "var(--accent-200)",
     padding: "32px 64px",
+    marginTop: "96px"
 });
 
 const TopFooter = styled("div")({

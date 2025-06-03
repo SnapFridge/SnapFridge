@@ -33,7 +33,7 @@ export default function RootLayout({
         >
           <Background>
             <NavBar></NavBar>
-            <Main>{children}</Main>
+            {children}
             <Footer></Footer>
           </Background>
         </ThemeProvider>
@@ -49,8 +49,4 @@ const Background = styled("div")({
   color: "var(--text-950)",
   background: "var(--background-50)",
   isolation: "isolate",
-});
-
-const Main = styled("main")({
-  flex: 1,
 });

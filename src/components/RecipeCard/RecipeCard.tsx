@@ -79,10 +79,9 @@ function RecipeCard({ recipe }: RecipeProps) {
                         </>
                     }
 
-                    <Link href={`/recipe`} className={ButtonLinkCSS}><Button type="secondary" className={ViewButton}>View</Button></Link>
+                    <Link href={`/recipe`} className={ButtonLinkCSS}><Button styling="secondary" className={ViewButton}>View</Button></Link>
                 </MainInformation>
-            </MainContent>
-            
+            </MainContent>   
         </Card>
     )
 }
@@ -111,12 +110,7 @@ const WarningCSS = css({
     color: "var(--warning)",
 });
 
-
-
 const Card = styled("li")({
-    display: "flex",
-    flexDirection: "column",    
-    gap: "16px",
     border: "1px solid var(--accent-950)",
     borderRadius: '12px',
     padding: "24px",
@@ -127,6 +121,7 @@ const MainContent = styled("div")({
     display: "flex",
     gap: "36px",
     marginLeft: "5%",
+    marginTop: "16px",
 });
 
 const MainInformation = styled("div")({

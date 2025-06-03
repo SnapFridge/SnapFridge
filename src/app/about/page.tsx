@@ -64,11 +64,12 @@ function Page() {
 }
 
 const Main = styled("main")({
+    width: "85%",
+    alignSelf: "center",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     fontSize: `${16 / 16}rem`,
-    padding: '0 100px 100px 100px',
     gap: "32px",
     color: "var(--text-950)"
 })

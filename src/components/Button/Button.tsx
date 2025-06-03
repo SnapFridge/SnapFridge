@@ -2,7 +2,6 @@ import * as React from "react";
 import { styled } from "@pigment-css/react";
 
 interface Props extends React.ComponentProps<"button"> {
-  as?: string;
   styling: keyof typeof STYLES;
 }
 

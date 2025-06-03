@@ -1,6 +1,7 @@
 import React from "react";
 import { styled, css } from "@pigment-css/react";
 import Button from "@components/Button";
+import Link from "@components/Link";
 import AdjectiveRecipes from "@components/AdjectiveRecipes";
 import RecipeSection from "@components/RecipeSection";
 import Image from "next/image";
@@ -8,71 +9,82 @@ import Image from "next/image";
 export default function Page() {
   return (
     <>
-      <Hero>
-        <MaxWidthWrapper>
-          <TitleWrapper>
-            <Title>SnapFridge</Title>
-            <AdjectiveRecipes />
-            <ButtonWrapper>
-              <Button
-                as="a"
-                href="/about"
-                style={{ textDecoration: "none" }}
-                styling="secondary"
-              >
-                About Us
-              </Button>
-              <Button
-                as="a"
-                href="/"
-                style={{ textDecoration: "none" }}
-                styling="primary"
-              >
-                Get Started
-              </Button>
-            </ButtonWrapper>
-          </TitleWrapper>
-        </MaxWidthWrapper>
-      </Hero>
-      {/* The content underneath the hero */}
-      <MaxWidthWrapper>
-        <Image
-          className={Fridge}
-          src="/FridgeL.png"
-          alt="Fridge"
-          width={848}
-          height={1470}
-        />
-
-        <RecipeSection />
-      </MaxWidthWrapper>
+      <Header>
+        <Title>SnapFridge</Title>
+        <AdjectiveRecipes />
+        <ButtonWrapper>
+          <Link href="/about">
+            <Button styling="primary">About Us</Button>
+          </Link>
+          <Link href="/">
+            <Button styling="secondary">Get Started</Button>
+          </Link>
+        </ButtonWrapper>
+      </Header>
+      {/* The content underneath the header */}
+      <PageMargin>
+        <FridgeSection>
+          <FridgeDescSection>
+            <div><h2>An app, built just for your fridge</h2></div>
+            <div><h2>that scans your food automatically</h2></div>
+            <div><h2>to help you prepare meal and reduce food waste</h2></div>
+          </FridgeDescSection>
+          <Image
+            className={Fridge}
+            src="/FridgeL.png"
+            alt="Fridge"
+            width={848}
+            height={1470}
+          />
+        </FridgeSection>
+        <RecipeSection className={RecipeSectionCSS}/>
+        <StatisticsSection>
+          <TopStatistics>
+            <h2>Around 30-40% of food gets wasted every year</h2>
+            <small>According to the USDA</small>
+          </TopStatistics>
+          <BottomStatistics>
+            <BottomStatistics2>
+              <h2>That's <strong>60 Million</strong> tons</h2>
+              <h2>Or <strong>120 Billion</strong> pounds</h2>
+            </BottomStatistics2>
+            <Image
+              src='/Landfill.png'
+              alt="A landfill worker in a neon vest clearing through a landfill of fruit waste"
+              height={700}
+              width={700}
+            />
+          </BottomStatistics>
+        </StatisticsSection>
+        <CallToActionSection>
+            <h2>Join the Fight Against Food Waste Today</h2>
+            <Link href="/appidk"><Button styling="primary" className={CoAButtonCSS}>Get Started</Button></Link>
+        </CallToActionSection>
+      </PageMargin>
     </>
   );
 }
 
-const MaxWidthWrapper = styled("div")({
-  height: "100%",
-  padding: "0 96px",
-  position: "relative",
-});
+const Header = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "center",
+  gap: "12px",
+  padding: "20px 89px",
 
-const Hero = styled("div")({
-  height: `calc(${500 / 16}rem + var(--nav-height) + var(--nav-margin))`,
-  position: "relative",
-  background: `
-      radial-gradient(circle at top left, var(--hero-radial-1) 0%, var(--hero-radial-2) 63%, var(--hero-radial-3) 100%),
-      linear-gradient(var(--hero-linear-1) 0%, var(--hero-linear-2) 96%, var(--background-50) 100%)
-    `,
-  backgroundBlendMode: "multiply",
-  marginTop: "calc(-1 * var(--nav-height) - var(--nav-margin))",
-});
-
-const TitleWrapper = styled("div")({
-  height: "fit-content",
-  position: "absolute",
-  top: 0,
-  bottom: 0,
-  margin: "auto",
+  background:
+  `
+    linear-gradient(
+      120deg,
+      hsl(230deg 34% 69% / 0.2) 0%,
+      hsl(209deg 27% 49% / 0.2) 20%,
+      hsl(197deg 43% 31% / 0.2) 40%,
+      hsl(190deg 56% 19% / 0.2) 60%,
+      hsl(185deg 50% 12% / 0.2) 80%,
+      hsl(176deg 68% 5% / 0.2) 100%
+    )
+  `,
+  backgroundColor: "#000",
 });
 
 const Title = styled("h1")({
@@ -84,8 +96,114 @@ const ButtonWrapper = styled("div")({
   gap: "20px",
 });
 
+const FridgeSection = styled("div")({
+  display: "flex"
+});
+
+const FridgeDescSection = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  
+  "&> div": {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    height: "100%",
+  },
+
+  "&> div > h2": {
+    textAlign: "center",
+    fontSize: `${36 / 16}rem`,
+  },
+});
+
 const Fridge = css({
-  position: "absolute",
-  right: 0,
-  top: 0,
+  marginRight: 0
+});
+
+const PageMargin = styled('div')({
+  width: "85%",
+  alignSelf: "center",
+});
+
+const StatisticsSection = styled('div')({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  marginTop: "64px",
+  color: "var(--text-950)",
+
+  "&> h2": {
+    fontSize: `${50 / 16}rem`,
+  },
+});
+
+const TopStatistics = styled('div')({
+  width: "50%",
+  textAlign: "center",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  justifyContent: "center",
+
+  "&> h2": {
+    fontSize: `${50 / 16}rem`,
+  },
+  "&> small": {
+    fontSize: `${16 / 16}rem`,
+    color: ``
+  }
+});
+
+const BottomStatistics = styled('div')({
+  marginTop: "64px",
+  width: "100%",
+  display: "flex",
+
+  "&> img": {
+    borderRadius: "6px",
+  },
+});
+
+const BottomStatistics2 = styled('div')({
+  width: "50%",
+  display: "flex",
+  flexDirection: "column",
+  justifyContent: "space-evenly ",
+
+  "&> h2": {
+    fontSize: `${48 / 16}rem`,
+    fontWeight: "500",
+    textAlign: "center",
+  },
+
+  "&> h2 > strong": {
+    fontSize: `${50 / 16}rem`,
+    display: "block",
+  }
+});
+
+const CallToActionSection = styled('div')({
+  gap: "24px",
+  marginTop: "96px",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+
+  "&> h2": {
+    fontSize: `${50 / 16}rem`,
+  }
+});
+
+const CoAButtonCSS = css({
+  width: "185px",
+  height: "55px",
+  color: "var(--text-100)",
+  fontSize: `${20 / 16}rem`,
+  backgroundColor: "var(--background-600)",
+  borderRadius: "8px",
+});
+
+const RecipeSectionCSS = css({
+  marginTop: "64px",
 });

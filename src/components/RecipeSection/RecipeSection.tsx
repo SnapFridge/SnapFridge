@@ -191,10 +191,10 @@ const recipesExample = [
   },
 ];
 
-function RecipeSection({ headerText = "Recipes Found" }: Props) {
+function RecipeSection({ headerText = "Recipes Found", ...delegated }: Props) {
   return (
-    <RecipeSectionTag>
-      <Header>
+    <>
+      <Header {...delegated}>
         <h1>{headerText}</h1>
         <Icon icon="Sparkles" color="var(--text-800)" size={50}></Icon>
       </Header>
@@ -203,19 +203,13 @@ function RecipeSection({ headerText = "Recipes Found" }: Props) {
           return <RecipeCard recipe={recipe} key={recipe.title} />;
         })}
       </RecipeList>
-    </RecipeSectionTag>
+    </>
   );
 }
 
-const RecipeSectionTag = styled("div")({
-  padding: "24px 98px",
-  display: "flex",
-  flexDirection: "column",
-});
-
 const RecipeList = styled("ul")({
-  padding: "12px 32px",
   listStyleType: "none",
+  padding: 0,
   display: "flex",
   flexDirection: "column",
   gap: "32px",
