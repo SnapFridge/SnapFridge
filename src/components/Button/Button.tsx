@@ -2,6 +2,8 @@ import * as React from "react";
 import { styled } from "@pigment-css/react";
 
 interface Props extends React.ComponentProps<"button"> {
+  as?: string;
+  href?: string;
   styling: keyof typeof STYLES;
 }
 
@@ -33,6 +35,8 @@ function Button({ styling, children, style, ...delegated }: Props) {
 }
 
 const StyledButton = styled("button")({
+  textAlign: "center",
+  textDecoration: "none",
   fontSize: `${16 / 16}rem`,
   padding: `${10 / 16}rem`,
   borderRadius: "8px",

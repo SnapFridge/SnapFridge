@@ -18,7 +18,7 @@ const StyledLink = styled("a")({
   color: "var(--text-950)",
   textDecoration: "none",
   fontSize: `${18 / 16}rem`,
-
+  
   "&:hover": {
     textDecoration: "revert",
   },

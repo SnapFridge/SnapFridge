@@ -13,12 +13,12 @@ export default function Page() {
         <Title>SnapFridge</Title>
         <AdjectiveRecipes />
         <ButtonWrapper>
-          <Link href="/about">
-            <Button styling="primary">About Us</Button>
-          </Link>
-          <Link href="/">
-            <Button styling="secondary">Get Started</Button>
-          </Link>
+          <Button as="a" href="/about" styling="primary">
+            About Us
+          </Button>
+          <Button as="a" href="/" styling="secondary">
+            Get Started
+          </Button>
         </ButtonWrapper>
       </Header>
       {/* The content underneath the header */}
@@ -58,7 +58,9 @@ export default function Page() {
         </StatisticsSection>
         <CallToActionSection>
             <h2>Join the Fight Against Food Waste Today</h2>
-            <Link href="/appidk"><Button styling="primary" className={CoAButtonCSS}>Get Started</Button></Link>
+            <Button as="a" href="/appidk" styling="primary" className={CoAButtonCSS}>
+              Get Started
+            </Button>
         </CallToActionSection>
       </PageMargin>
     </>
