@@ -7,12 +7,12 @@ import Button from "@components/Button";
 import { css } from "@pigment-css/react";
 
 function ThemeSwitcher() {
-  const [isClient, setIsClient] = useState(false)
+  const [isClient, setIsClient] = useState(false);
   const { systemTheme, theme, setTheme } = useTheme();
 
   useEffect(() => {
-    setIsClient(true)
-  }, [])
+    setIsClient(true);
+  }, []);
 
   // if current theme equals system set current theme to just the system theme
   const currentTheme = theme === "system" ? systemTheme : theme;
@@ -34,7 +34,7 @@ const ThemeSwitch = css({
   backgroundColor: "transparent",
 
   "&:hover": {
-    backgroundColor: "var(--background-50)",
+    backgroundColor: "var(--background-100)",
   },
 });
 

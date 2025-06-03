@@ -34,6 +34,7 @@ export default function Page() {
           </TitleWrapper>
         </MaxWidthWrapper>
       </Hero>
+      {/* The content underneath the hero */}
       <MaxWidthWrapper>
         <Image
           className={Fridge}
