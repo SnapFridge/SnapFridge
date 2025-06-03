@@ -8,12 +8,11 @@ interface Props extends React.PropsWithChildren {
   size: number;
 }
 
-function Icon(
-  { icon, color, size }: Props,
-) {
+function Icon({ icon, color, size }: Props) {
   if (icon === "logo") {
     return (
       <Image
+        priority={true}
         src="/Logo.png"
         alt="Logo"
         width={size}

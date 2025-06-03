@@ -146,6 +146,14 @@ globalCss`
   }
 `;
 
+// CSS variables
+globalCss`
+  :root {
+    --nav-height: ${80 / 16}rem;
+    --nav-margin: 20px;
+  }
+`;
+
 // CSS reset
 globalCss`
   html, body {

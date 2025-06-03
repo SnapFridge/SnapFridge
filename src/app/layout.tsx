@@ -45,12 +45,10 @@ export default function RootLayout({
 const Background = styled("div")({
   display: "flex",
   flexDirection: "column",
-  background: `
-      radial-gradient(circle at top left, var(--hero-radial-1) 0%, var(--hero-radial-2) 63%, var(--hero-radial-3) 100%),
-      linear-gradient(var(--hero-linear-1) 0%, var(--hero-linear-2) 96%, var(--hero-linear-3) 100%)
-    `,
-  backgroundBlendMode: "multiply", // or 'overlay', 'screen', etc.
   minHeight: "100%",
+  color: "var(--text-950)",
+  background: "var(--background-50)",
+  isolation: "isolate",
 });
 
 const Main = styled("main")({
