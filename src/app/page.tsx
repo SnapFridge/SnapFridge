@@ -71,7 +71,6 @@ const Header = styled("div")({
   justifyContent: "center",
   gap: "12px",
   padding: "20px 89px",
-
   background:
   `
     linear-gradient(
@@ -84,7 +83,6 @@ const Header = styled("div")({
       hsl(176deg 68% 5% / 0.2) 100%
     )
   `,
-  backgroundColor: "#000",
 });
 
 const Title = styled("h1")({
@@ -200,7 +198,6 @@ const CoAButtonCSS = css({
   height: "55px",
   color: "var(--text-100)",
   fontSize: `${20 / 16}rem`,
-  backgroundColor: "var(--background-600)",
   borderRadius: "8px",
 });
 
