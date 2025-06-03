@@ -134,6 +134,9 @@ globalCss`
 
 // CSS reset
 globalCss`
+  html, body {
+    height: 100%
+  }
   /* 1. Use a more-intuitive box-sizing model */
   *, *::before, *::after {
     box-sizing: border-box;

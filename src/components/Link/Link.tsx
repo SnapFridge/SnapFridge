@@ -1,10 +1,9 @@
-import * as React from 'react';
+import * as React from "react";
 import { styled } from "@pigment-css/react";
 
-interface Props extends React.PropsWithChildren {
+interface Props extends React.ComponentProps<"a"> {
   href: string;
   hideDecoration?: boolean;
-  delegated: React.ComponentProps<"a">
 }
 
 function Link({ href, children, ...delegated }: Props) {
@@ -12,7 +11,7 @@ function Link({ href, children, ...delegated }: Props) {
     <StyledLink href={href} {...delegated}>
       {children}
     </StyledLink>
-  )
+  );
 }
 
 const StyledLink = styled("a")({
@@ -22,7 +21,7 @@ const StyledLink = styled("a")({
 
   "&:hover": {
     textDecoration: "revert",
-  }
+  },
 });
 
 export default Link;

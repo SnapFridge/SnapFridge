@@ -1,9 +1,9 @@
 import * as React from "react";
 import { styled } from "@pigment-css/react";
 
-interface Props extends React.PropsWithChildren {
-  type: keyof typeof STYLES;
-  delegated: React.ComponentProps<"button">;
+interface Props extends React.ComponentProps<"button"> {
+  as?: string;
+  styling: keyof typeof STYLES;
 }
 
 const STYLES = {
@@ -13,15 +13,24 @@ const STYLES = {
     "--background-hover": "var(--primary-600)",
   },
   secondary: {
-    "--background": "var(--secondary-500)",
+    "--background": "var(--secondary-300)",
     "--color": "var(--text-950)",
+    "--background-hover": "var(--secondary-400)",
   },
 };
 
-function Button({ type, children, ...delegated }: Props) {
-  const style = STYLES[type] ?? {};
+function Button({ styling, children, style, ...delegated }: Props) {
+  const buttonStyle = STYLES[styling] ?? {};
+  const actualStyle = {
+    ...buttonStyle,
+    ...style,
+  };
 
-  return <StyledButton style={style} {...delegated}>{children}</StyledButton>;
+  return (
+    <StyledButton style={actualStyle} {...delegated}>
+      {children}
+    </StyledButton>
+  );
 }
 
 const StyledButton = styled("button")({
