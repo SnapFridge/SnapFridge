@@ -84,7 +84,7 @@ export default function Page() {
   );
 }
 
-const Header = styled("div")({
+const Header = styled("header")({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",

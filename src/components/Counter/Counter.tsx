@@ -11,7 +11,6 @@ interface Props {
 }
 
 function Counter({ startingValue = 0, endingValue, duration = 3, delay = 0, ...delegated }: Props) {
-  console.log("counter mounted");
   const count = useMotionValue(startingValue);
   const rounded = useTransform(() => Math.round(count.get()));
 
@@ -20,7 +19,6 @@ function Counter({ startingValue = 0, endingValue, duration = 3, delay = 0, ...d
 
   useEffect(() => {
     let animation: any;
-
 
     if (isInView) {
       const delayTimeout = setTimeout(() => {

@@ -1,1 +1,1 @@
-export const MOBILE_BREAKPOINT = 576
+export const ON_MOBILE = "@media (width <= 576px)"

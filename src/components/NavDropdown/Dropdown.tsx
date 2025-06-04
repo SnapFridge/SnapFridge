@@ -5,7 +5,7 @@ import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
 import { DropdownMenu } from "radix-ui";
 import VisuallyHidden from "@components/VisuallyHidden";
-import { MOBILE_BREAKPOINT } from "@components/Global";
+import { ON_MOBILE } from "@components/Global";
 import Link from "@components/Link";
 import ThemeSwitcher from "@components/ThemeSwitcher";
 
@@ -39,7 +39,7 @@ function Dropdown() {
 const Wrapper = styled("div")({
   display: "none",
 
-  [`@media (max-width: ${MOBILE_BREAKPOINT}px)`]: {
+  [ON_MOBILE]: {
     display: "block",
   },
 });

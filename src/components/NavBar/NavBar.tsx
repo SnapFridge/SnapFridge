@@ -3,7 +3,7 @@ import ThemeSwitcher from "@components/ThemeSwitcher";
 import Link from "@components/Link";
 import Logo from "@components/Logo";
 import Dropdown from "@components/NavDropdown";
-import { MOBILE_BREAKPOINT } from "@components/Global";
+import { ON_MOBILE } from "@components/Global";
 
 function NavBar() {
   return (
@@ -30,7 +30,7 @@ const LeftNav = styled("div")({
 });
 
 const MobileGone = css({
-  [`@media (width <= ${MOBILE_BREAKPOINT}px)`]: {
+  [ON_MOBILE]: {
     display: "none",
   },
 });
