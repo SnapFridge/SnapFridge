@@ -152,15 +152,24 @@ globalCss`
 globalCss`
   :root {
     --nav-height: ${80 / 16}rem;
-    --nav-margin: 20px;
+    --nav-margin: ${20 / 16}rem;
     --page-margin: clamp(30px, 7.5vw, 90px);
   }
 `;
 
+// Responiveness
+globalCss`
+  html, body {
+    font-size: clamp(7px, 2vw, 16px);
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+`
+
 // CSS reset
 globalCss`
   html, body {
-    height: 100%
+    height: 100%;
   }
   /* 1. Use a more-intuitive box-sizing model */
   *, *::before, *::after {
