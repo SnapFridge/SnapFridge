@@ -15,6 +15,7 @@ globalCss`
     --text-900: #082b29;
     --text-950: #041615;
 
+    --background: #FFFFFF;
     --background-50: #eafbfa;
     --background-100: #d4f7f5;
     --background-200: #a9efea;
@@ -86,6 +87,7 @@ globalCss`
     --text-900: #d4f7f5;
     --text-950: #e9fbfa;
 
+    --background: #000000;
     --background-50: #041514;
     --background-100: #082b29;
     --background-200: #105651;
@@ -151,7 +153,7 @@ globalCss`
   :root {
     --nav-height: ${80 / 16}rem;
     --nav-margin: 20px;
-    --page-margin: 7.5vw
+    --page-margin: clamp(30px, 7.5vw, 90px);
   }
 `;
 

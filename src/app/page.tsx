@@ -9,7 +9,7 @@ export default function Page() {
   return (
     <>
       <Header>
-        <div>
+        <PageMargin>
           <Title>SnapFridge</Title>
           <AdjectiveRecipes />
           <ButtonWrapper>
@@ -20,25 +20,28 @@ export default function Page() {
               Get Started
             </Button>
           </ButtonWrapper>
-        </div>
+        </PageMargin>
       </Header>
       {/* The content underneath the header */}
       <PageMargin>
         <FridgeSection>
           <FridgeDescSection>
-            <div><h2>An app, built just for your fridge</h2></div>
-            <div><h2>that scans your food automatically</h2></div>
-            <div><h2>to help you prepare meal and reduce food waste</h2></div>
+            <FridgeSideText>An app, built just for your fridge</FridgeSideText>
+            <FridgeSideText>that scans your food automatically</FridgeSideText>
+            <FridgeSideText>
+              to help you prepare meal and reduce food waste
+            </FridgeSideText>
           </FridgeDescSection>
-          <Image
-            className={Fridge}
+          <FridgeImage
             src="/FridgeL.png"
             alt="Fridge"
             width={848}
             height={1470}
           />
         </FridgeSection>
-        <RecipeSection className={RecipeSectionCSS}/>
+
+        <RecipeSection className={RecipeSectionCSS} />
+
         <StatisticsSection>
           <TopStatistics>
             <h2>Around 30-40% of food gets wasted every year</h2>
@@ -46,20 +49,30 @@ export default function Page() {
           </TopStatistics>
           <BottomStatistics>
             <BottomStatistics2>
-              <h2>That's <strong>60 Million</strong> tons</h2>
-              <h2>Or <strong>120 Billion</strong> pounds</h2>
+              <h2>
+                That's <strong>60 Million</strong> tons
+              </h2>
+              <h2>
+                Or <strong>120 Billion</strong> pounds
+              </h2>
             </BottomStatistics2>
             <Image
-              src='/Landfill.png'
+              src="/Landfill.png"
               alt="A landfill worker in a neon vest clearing through a landfill of fruit waste"
               height={700}
               width={700}
             />
           </BottomStatistics>
         </StatisticsSection>
+
         <CallToActionSection>
           <h2>Join the Fight Against Food Waste Today</h2>
-          <Button as="a" href="/appidk" styling="primary" className={CoAButtonCSS}>
+          <Button
+            as="a"
+            href="/appidk"
+            styling="primary"
+            className={CoAButtonCSS}
+          >
             Get Started
           </Button>
         </CallToActionSection>
@@ -79,10 +92,6 @@ const Header = styled("div")({
     `,
   backgroundBlendMode: "multiply",
   marginTop: "calc(-1 * var(--nav-height) - var(--nav-margin))",
-
-  "&> div": {
-    paddingLeft: "var(--page-margin)"
-  }
 });
 
 const Title = styled("h1")({
@@ -94,37 +103,32 @@ const ButtonWrapper = styled("div")({
   gap: "20px",
 });
 
+const FridgeImage = styled(Image)({
+  marginRight: "var(-1 * var(--page-margin))",
+});
+
 const FridgeSection = styled("div")({
-  display: "flex"
+  display: "flex",
+  justifyContent: "space-between",
 });
 
 const FridgeDescSection = styled("div")({
   display: "flex",
   flexDirection: "column",
-  
-  "&> div": {
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    height: "100%",
-  },
-
-  "&> div > h2": {
-    textAlign: "center",
-    fontSize: `${36 / 16}rem`,
-  },
+  gap: "380px",
 });
 
-const Fridge = css({
-  marginRight: "calc(-1 * var(--page-margin))"
+const FridgeSideText = styled("span")({
+  fontSize: `${36 / 16}rem`,
+  fontWeight: "bold",
 });
 
-const PageMargin = styled('div')({
+const PageMargin = styled("div")({
   width: "calc(100vw - 2 * var(--page-margin))",
-  alignSelf: "center",
+  margin: "auto",
 });
 
-const StatisticsSection = styled('div')({
+const StatisticsSection = styled("div")({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
@@ -136,7 +140,7 @@ const StatisticsSection = styled('div')({
   },
 });
 
-const TopStatistics = styled('div')({
+const TopStatistics = styled("div")({
   width: "50%",
   textAlign: "center",
   display: "flex",
@@ -149,11 +153,11 @@ const TopStatistics = styled('div')({
   },
   "&> small": {
     fontSize: `${16 / 16}rem`,
-    color: ``
-  }
+    color: ``,
+  },
 });
 
-const BottomStatistics = styled('div')({
+const BottomStatistics = styled("div")({
   marginTop: "64px",
   width: "100%",
   display: "flex",
@@ -163,7 +167,7 @@ const BottomStatistics = styled('div')({
   },
 });
 
-const BottomStatistics2 = styled('div')({
+const BottomStatistics2 = styled("div")({
   width: "50%",
   display: "flex",
   flexDirection: "column",
@@ -178,10 +182,10 @@ const BottomStatistics2 = styled('div')({
   "&> h2 > strong": {
     fontSize: `${50 / 16}rem`,
     display: "block",
-  }
+  },
 });
 
-const CallToActionSection = styled('div')({
+const CallToActionSection = styled("div")({
   gap: "24px",
   marginTop: "96px",
   display: "flex",
@@ -190,7 +194,7 @@ const CallToActionSection = styled('div')({
 
   "&> h2": {
     fontSize: `${50 / 16}rem`,
-  }
+  },
 });
 
 const CoAButtonCSS = css({
