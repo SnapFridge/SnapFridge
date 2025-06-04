@@ -1,77 +1,79 @@
 import { styled, css } from "@pigment-css/react";
 import Link from "@components/Link";
 import Icon from "@components/Icon";
-
+import { ON_MOBILE } from '@components/Global';
 
 function Footer() {
-    return (
-        <FooterItem>
-            <TopFooter>
-                <small className={TopLeftFooterCSS}>
-                    <span>&copy; <span dateTime="2025">2025</span> <span itemProp="name">SnapFridge</span></span>
-                    <AddressSection>
-                        <span itemProp="author">Rylex Phan</span><span>, </span>
-                        <span itemProp="author">Andrew Kim</span><span>, </span>
-                        <span itemProp="author">Andrew Trinh</span>
-                    </AddressSection>
-                </small>
-                <div className={TopRightFooterCSS}>
-                    <Link href="mailto:repulseshipp@gmail.com"><Icon icon="Mail" size={28} color="var(--text-950)" /></Link>
-                    <Link href="https://github.com/msqr1/SnapFridge"><Icon icon="Github" size={28} color="var(--text-950)" /></Link>
-                </div>
-            </TopFooter>
-            <LinksContainer>
-                <li><Link href="/privacy-policy">Privacy Policy</Link></li>
-                <li><Link href="/sitemap">Sitemap</Link></li>
-                <li><Link href="/credits">Credits</Link></li>
-                <li><Link href="/">Try SnapFridge</Link></li>
-                <li><Link href="/about">About Us</Link></li>
-            </LinksContainer>
-        </FooterItem>
-    )
+  return (
+  <AFooter>
+    <div>
+      <small className={LeftFooterCSS}>
+        <strong>&copy; 2025 SnapFridge</strong> 
+        <div>Rylex Phan, Andrew Kim, Andrew Trinh</div>
+      </small>
+      <LinksContainer>
+        <li><Link href="/privacy-policy">Privacy Policy</Link></li>
+        <li><Link href="/sitemap">Sitemap</Link></li>
+        <li><Link href="/credits">Credits</Link></li>
+        <li><Link href="/">Try SnapFridge</Link></li>
+        <li><Link href="/about">About Us</Link></li>
+      </LinksContainer>
+    </div>
+    <div className={RightFooterCSS}>
+      <Link href="mailto:repulseshipp@gmail.com"><Icon icon="Mail" color="var(--text-950)" /></Link>
+      <Link href="https://github.com/msqr1/SnapFridge"><Icon icon="Github" color="var(--text-950)" /></Link>
+    </div>
+  </AFooter>
+  )
 }
 
-const FooterItem = styled("footer")({
-    backgroundColor: "var(--accent-200)",
-    padding: "32px var(--page-margin)",
-    marginTop: "96px"
-});
+const AFooter = styled("footer")({
+  backgroundColor: "var(--accent-200)",
+  padding: "32px var(--page-margin)",
+  marginTop: "96px",
+  display: "flex",
 
-const TopFooter = styled("div")({
-    display: "flex",
-    justifyContent: "space-between",
-    marginBottom: "24px",
+  [ON_MOBILE]: {
+    flexDirection: "column",
+  }
 });
 
 const LinksContainer = styled("ul")({
-    fontSize: `${16 / 16}rem`,
-    padding: 0,
-    listStyleType: "none",  
-    display: "grid",
-    gap: "12px",
-    gridTemplateColumns: "repeat(2, 150px)",
-    fontWeight: "600",
-});
+  fontSize: `${16 / 16}rem`,
+  marginTop: "24px",
+  padding: 0,
+  listStyleType: "none",
+  gap: "12px",
+  fontWeight: "600",
 
-const AddressSection = styled("address")({
-    fontStyle: "normal",
-});
+  display: "grid",
+  gridTemplateColumns: "repeat(2, 150px)",
 
-const TopLeftFooterCSS = css({
+  [ON_MOBILE]: {
     display: "flex",
     flexDirection: "column",
-    fontSize: `${18 / 16}rem`,
-
-    "&> span": {
-        fontWeight: "600",
-    }
+  }
 });
 
-const TopRightFooterCSS = css({
-    display: "flex",
-    gap: "12px",
+const LeftFooterCSS = css({
+  width: "100%",
+  display: "flex",
+  flexDirection: "column",
+  fontSize: `${18 / 16}rem`,
 });
 
+const RightFooterCSS = css({
+  width: "100%",
+  height: 0,
+  display: "flex",
+  gap: "12px",
 
- 
+  justifyContent: "end",
+
+  [ON_MOBILE]: {
+    marginTop: "20px",
+    justifyContent: "center",
+  }
+});
+
 export default Footer;

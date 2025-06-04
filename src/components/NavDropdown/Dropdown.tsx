@@ -16,7 +16,7 @@ function Dropdown() {
         <DropdownMenu.Trigger asChild>
           <DropdownBtn>
             <VisuallyHidden>Open Menu</VisuallyHidden>
-            <Icon icon="SquareChevronDown" color="var(--text-950)" size={24} />
+            <Icon icon="SquareChevronDown" color="var(--text-950)" />
           </DropdownBtn>
         </DropdownMenu.Trigger>
 
