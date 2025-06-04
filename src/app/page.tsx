@@ -9,18 +9,16 @@ export default function Page() {
   return (
     <>
       <Header>
-        <div>
-          <Title>SnapFridge</Title>
-          <AdjectiveRecipes />
-          <ButtonWrapper>
-            <Button as="a" href="/about" styling="primary">
-              About Us
-            </Button>
-            <Button as="a" href="/" styling="secondary">
-              Get Started
-            </Button>
-          </ButtonWrapper>
-        </div>
+        <Title>SnapFridge</Title>
+        <AdjectiveRecipes/>
+        <ButtonWrapper>
+          <Button as="a" href="/about" styling="primary">
+            About Us
+          </Button>
+          <Button as="a" href="/" styling="secondary">
+            Get Started
+          </Button>
+        </ButtonWrapper>
       </Header>
       {/* The content underneath the header */}
       <PageMargin>
@@ -79,10 +77,7 @@ const Header = styled("div")({
     `,
   backgroundBlendMode: "multiply",
   marginTop: "calc(-1 * var(--nav-height) - var(--nav-margin))",
-
-  "&> div": {
-    paddingLeft: "var(--page-margin)"
-  }
+  paddingLeft: "var(--page-margin)"
 });
 
 const Title = styled("h1")({

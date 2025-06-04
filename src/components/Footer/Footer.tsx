@@ -33,7 +33,7 @@ function Footer() {
 
 const FooterItem = styled("footer")({
     backgroundColor: "var(--accent-200)",
-    padding: "32px 64px",
+    padding: "32px var(--page-margin)",
     marginTop: "96px"
 });
 
