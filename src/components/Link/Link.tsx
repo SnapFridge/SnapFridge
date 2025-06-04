@@ -1,14 +1,9 @@
 import * as React from "react";
 import { styled } from "@pigment-css/react";
 
-interface Props extends React.ComponentProps<"a"> {
-  href: string;
-  hideDecoration?: boolean;
-}
-
-function Link({ href, children, ...delegated }: Props) {
+function Link({ children, ...delegated }: React.ComponentProps<"a">) {
   return (
-    <StyledLink href={href} {...delegated}>
+    <StyledLink {...delegated}>
       {children}
     </StyledLink>
   );

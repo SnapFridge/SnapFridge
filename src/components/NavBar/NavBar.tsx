@@ -14,6 +14,11 @@ function NavBar() {
         <Link className={MobileGone} href="/about">About Us</Link>
       </LeftNav>
       <ThemeSwitcher className={MobileGone}></ThemeSwitcher>
+      <Dropdown className={MobileAppear}>
+        <Link href="/" className={MobileAppear}>Get Started</Link>
+        <Link href="/about" className={MobileAppear}>About Us</Link>
+        <ThemeSwitcher className={MobileAppear}></ThemeSwitcher>
+      </Dropdown>
     </Nav>
   );
 }
@@ -26,14 +31,15 @@ const LeftNav = styled("div")({
 
 const MobileGone = css({
   [`@media (width <= ${MOBILE_BREAKPOINT}px)`]: {
-    display: "none"
+    display: "none",
   }
 });
 
 const MobileAppear = css({
-  [`@media (width >= ${MOBILE_BREAKPOINT}px)`]: {
-    display: "none"
-  }
+  [`@media (width <= ${MOBILE_BREAKPOINT}px)`]: {
+    display: "block",
+  },
+  display: "none"
 });
 
 // TODO: Add a prettier frosted glass implementation please :(
