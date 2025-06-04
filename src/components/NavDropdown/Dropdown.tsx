@@ -21,14 +21,14 @@ function Dropdown() {
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Portal>
-          <Content>
+          <Content hideWhenDetached>
             <Item asChild>
               <Link href="/">Get Started</Link>
             </Item>
             <Item asChild>
               <Link href="/about">About Us</Link>
             </Item>
-            <ThemeSwitcher MobileInterface={true} />
+            <ThemeSwitcher MobileInterface />
           </Content>
         </DropdownMenu.Portal>
       </DropdownMenu.Root>
@@ -59,7 +59,7 @@ const Content = styled(DropdownMenu.Content)({
   alignItems: "center",
   background: "var(--background)",
   borderRadius: "8px",
-  padding: "8px",
+  padding: "8px 12px 10px 12px",
   gap: "4px",
 });
 
