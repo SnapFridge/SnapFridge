@@ -2,23 +2,23 @@ import { css, styled } from "@pigment-css/react";
 import ThemeSwitcher from "@components/ThemeSwitcher";
 import Link from "@components/Link";
 import Logo from "@components/Logo";
-import Dropdown from '@components/Dropdown';
-import { MOBILE_BREAKPOINT } from '@components/Global';
+import Dropdown from "@components/NavDropdown";
+import { MOBILE_BREAKPOINT } from "@components/Global";
 
 function NavBar() {
   return (
     <Nav>
       <LeftNav>
-        <Logo/>
-        <Link className={MobileGone} href="/">Get Started</Link>
-        <Link className={MobileGone} href="/about">About Us</Link>
+        <Logo />
+        <Link className={MobileGone} href="/">
+          Get Started
+        </Link>
+        <Link className={MobileGone} href="/about">
+          About Us
+        </Link>
       </LeftNav>
       <ThemeSwitcher className={MobileGone}></ThemeSwitcher>
-      <Dropdown className={MobileAppear}>
-        <Link href="/" className={MobileAppear}>Get Started</Link>
-        <Link href="/about" className={MobileAppear}>About Us</Link>
-        <ThemeSwitcher className={MobileAppear}></ThemeSwitcher>
-      </Dropdown>
+      <Dropdown />
     </Nav>
   );
 }
@@ -32,14 +32,7 @@ const LeftNav = styled("div")({
 const MobileGone = css({
   [`@media (width <= ${MOBILE_BREAKPOINT}px)`]: {
     display: "none",
-  }
-});
-
-const MobileAppear = css({
-  [`@media (width <= ${MOBILE_BREAKPOINT}px)`]: {
-    display: "block",
   },
-  display: "none"
 });
 
 // TODO: Add a prettier frosted glass implementation please :(

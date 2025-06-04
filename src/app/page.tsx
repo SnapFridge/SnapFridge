@@ -32,8 +32,9 @@ export default function Page() {
               to help you prepare meal and reduce food waste
             </FridgeSideText>
           </FridgeDescSection>
-          <FridgeImage
+          <Image
             src="/FridgeL.png"
+            className={FridgeImage}
             alt="Fridge"
             width={848}
             height={1470}
@@ -103,8 +104,9 @@ const ButtonWrapper = styled("div")({
   gap: "20px",
 });
 
-const FridgeImage = styled(Image)({
-  marginRight: "var(-1 * var(--page-margin))",
+const FridgeImage = css({
+  position: "relative",
+  left: "var(--page-margin)",
 });
 
 const FridgeSection = styled("div")({
