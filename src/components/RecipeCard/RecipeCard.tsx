@@ -1,8 +1,13 @@
+"use client";
+
 import Button from "@components/Button";
 import Link from "@components/Link";
 import Image from "next/image";
 import { styled, css } from "@pigment-css/react";
 import React from "react";
+import * as motion from "motion/react-client";
+import type { Variants } from "motion/react";
+
 
 
 interface Ingredient {
@@ -31,14 +36,51 @@ interface Recipe {
     usedIngredients: Ingredient[],
 }
 interface RecipeProps {
-    recipe: Recipe
+    recipe: Recipe;
+    RecipeVariants: Variants;
 }
 
+/* 
 
-function RecipeCard({ recipe }: RecipeProps) {
+
+recipe.usedIngredients.map((ingredient, index) => (
+    <React.Fragment key={ingredient.name}>
+        {ingredient.name.charAt(0).toUpperCase() + (ingredient.name).slice(1)}
+
+
+        {index < recipe.usedIngredients.length - 1 && ", "}
+        </React.Fragment>                                
+    ))
+}
+*/
+
+
+function RecipeCard({ recipe, RecipeVariants }: RecipeProps) {
+    let usedIngredientString: any = recipe.usedIngredients.map((ingredient: Ingredient) => {
+        // split ingredient name into an array
+        return ingredient.name.split(' ').map((ingredientWord: string) => {
+            // capitalize every word
+            return ingredientWord.charAt(0).toUpperCase() + ingredientWord.slice(1);
+        }).join(' '); // join the array together with a space before returning it
+    }).join(', '); // then join the array of ingredient names together with a comma
+
+
+    let missedIngredientString: any = recipe.missedIngredients.map((ingredient: Ingredient) => {
+        // split ingredient name into an array
+        return ingredient.name.split(' ').map((ingredientWord: string) => {
+            // capitalize every word
+            return ingredientWord.charAt(0).toUpperCase() + ingredientWord.slice(1);
+        }).join(' '); // join the array together with a space before returning it
+    }).join(', '); // then join the array of ingredient names together with a comma
+
 
     return (
-        <Card>
+        <Card
+            variants={RecipeVariants}
+            initial="offscreen"
+            whileInView="onscreen"
+            whileHover="hover"
+        >
             <h1>{ recipe.title }</h1>
             <MainContent>
                 <Image src={recipe.image} alt={recipe.title} width={312} height={231} className={ImageCSS} />
@@ -46,35 +88,13 @@ function RecipeCard({ recipe }: RecipeProps) {
                     { recipe.usedIngredientCount !== 0 && 
                         <>
                             <h2>Ingredients</h2>
-                            <p>
-                                {
-                                    recipe.usedIngredients.map((ingredient, index) => (
-                                        <React.Fragment key={ingredient.name}>
-                                            {ingredient.name.charAt(0).toUpperCase() + (ingredient.name).slice(1)}
-
-                                            {/* prevent comma from appearing for the last ingredient */}
-                                            {index < recipe.usedIngredients.length - 1 && ", "}
-                                        </React.Fragment>                                
-                                    ))
-                                }
-                            </p>                        
+                            <p>{usedIngredientString}</p>                        
                         </>
                     }
                     { recipe.missedIngredientCount !== 0 && 
                         <>
                             <h2 className={WarningCSS}>Missing Ingredients</h2>
-                            <p className={WarningCSS}>
-                                {
-                                    recipe.missedIngredients.map((ingredient, index) => (
-                                        <React.Fragment key={ingredient.name}>
-                                            {ingredient.name.charAt(0).toUpperCase() + ingredient.name.slice(1)}
-
-                                            {/* prevent comma from appearing for the last ingredient */}
-                                            {index < recipe.missedIngredients.length - 1 && ", "}
-                                        </React.Fragment>                                
-                                    ))
-                                }
-                            </p>                        
+                            <p className={WarningCSS}>{missedIngredientString}</p>                        
                         </>
                     }
                     <Link href={`/recipe`} className={ButtonLinkCSS}><Button styling="secondary" className={ViewButton}>View</Button></Link>
@@ -83,6 +103,29 @@ function RecipeCard({ recipe }: RecipeProps) {
         </Card>
     )
 }
+
+export const RecipeCardVariant = {
+    offscreen: {
+        y: 100,
+        opacity: 0,
+    },
+    onscreen: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            type: "spring",
+            duration: 0.8,
+        }
+    },
+    hover: {
+        scale: 1.02,
+        transition: {
+            type: "spring",
+            duration: 0.5,
+        }
+    }
+  }
+
 
 const ViewButton = css({
     padding: "8px 36px",
@@ -108,7 +151,7 @@ const WarningCSS = css({
     color: "var(--warning)",
 });
 
-const Card = styled("li")({
+const Card = styled(motion.li)({
     border: "1px solid var(--accent-950)",
     borderRadius: '12px',
     padding: "24px",

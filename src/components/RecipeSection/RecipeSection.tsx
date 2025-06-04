@@ -1,6 +1,13 @@
+"use client";
+
 import RecipeCard from "@components/RecipeCard";
 import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
+import * as motion from "motion/react-client";
+
+import { useInView } from "motion/react";
+import { useRef } from "react";
+import { RecipeCardVariant } from "@components/RecipeCard";
 
 interface Ingredient {
   aisle: string;
@@ -192,22 +199,45 @@ const recipesExample = [
 ];
 
 function RecipeSection({ headerText = "Recipes Found", ...delegated }: Props) {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+
   return (
     <>
       <Header {...delegated}>
         <h1>{headerText}</h1>
         <Icon icon="Sparkles" color="var(--text-800)" size={50}></Icon>
       </Header>
-      <RecipeList>
+
+
+      <RecipeList
+        ref={ref}
+        variants={RecipeListVariants}
+        initial="staggerOnExit"
+        animate="staggerOnEntry"
+      >
         {recipesExample.map((recipe) => {
-          return <RecipeCard recipe={recipe} key={recipe.title} />;
+          return <RecipeCard recipe={recipe} key={recipe.title} RecipeVariants={RecipeCardVariant}/>;
         })}
       </RecipeList>
     </>
   );
 }
 
-const RecipeList = styled("ul")({
+
+// make this work somehow
+const RecipeListVariants = {
+  staggerOnEntry: {
+    transition: { staggerChildren: 1 }
+  },  
+  staggerOnExit: {
+    transition: { staggerChildren: 1 }
+  },
+}
+
+
+
+const RecipeList = styled(motion.ul)({
   listStyleType: "none",
   padding: 0,
   display: "flex",
@@ -217,6 +247,7 @@ const RecipeList = styled("ul")({
 
 const Header = styled("div")({
   display: "flex",
+  alignItems: "center",
   fontSize: `${24 / 16}rem`,
 });
 
