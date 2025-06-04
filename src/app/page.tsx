@@ -4,6 +4,8 @@ import Button from "@components/Button";
 import AdjectiveRecipes from "@components/AdjectiveRecipes";
 import RecipeSection from "@components/RecipeSection";
 import Image from "next/image";
+import Counter from "@components/Counter";
+
 
 export default function Page() {
   return (
@@ -51,10 +53,10 @@ export default function Page() {
           <BottomStatistics>
             <BottomStatistics2>
               <h2>
-                That's <strong>60 Million</strong> tons
+                That's <strong><Counter startingValue={0} endingValue={60} duration={3} delay={0.25} /> Million</strong> tons
               </h2>
               <h2>
-                Or <strong>120 Billion</strong> pounds
+                Or <strong><Counter startingValue={0} endingValue={120} duration={3} delay={0.25} /> Billion</strong> pounds
               </h2>
             </BottomStatistics2>
             <Image
