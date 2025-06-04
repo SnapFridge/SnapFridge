@@ -4,7 +4,7 @@ import { styled } from "@pigment-css/react";
 interface Props extends React.ComponentProps<"button"> {
   as?: string;
   href?: string;
-  styling: keyof typeof STYLES;
+  styling?: keyof typeof STYLES;
 }
 
 const STYLES = {
@@ -21,7 +21,7 @@ const STYLES = {
 };
 
 function Button({ styling, children, style, ...delegated }: Props) {
-  const buttonStyle = STYLES[styling] ?? {};
+  const buttonStyle = styling === undefined ? {} : STYLES[styling];
   const actualStyle = {
     ...buttonStyle,
     ...style,

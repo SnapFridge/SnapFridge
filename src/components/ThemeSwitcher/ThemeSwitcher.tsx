@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 import Icon from "@components/Icon";
 import Button from "@components/Button";
-import { css } from "@pigment-css/react";
+import { styled } from "@pigment-css/react";
 
-function ThemeSwitcher() {
+function ThemeSwitcher({ ...delegated }) {
   const [isClient, setIsClient] = useState(false);
   const { systemTheme, theme, setTheme } = useTheme();
 
@@ -21,16 +21,16 @@ function ThemeSwitcher() {
   if (!isClient) return undefined;
 
   return (
-    <Button
+    <ThemeSwitchBtn
       onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
-      className={ThemeSwitch}
+      {...delegated}
     >
       <Icon icon={icon} color="var(--text-950)" size={24} />
-    </Button>
+    </ThemeSwitchBtn>
   );
 }
 
-const ThemeSwitch = css({
+const ThemeSwitchBtn = styled(Button)({
   backgroundColor: "transparent",
 
   "&:hover": {
