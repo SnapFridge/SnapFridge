@@ -4,9 +4,6 @@ import RecipeCard from "@components/RecipeCard";
 import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
 import * as motion from "motion/react-client";
-
-import { useInView } from "motion/react";
-import { useRef } from "react";
 import { RecipeCardVariant } from "@components/RecipeCard";
 
 interface Ingredient {
@@ -199,8 +196,6 @@ const recipesExample = [
 ];
 
 function RecipeSection({ headerText = "Recipes Found", ...delegated }: Props) {
-  const ref = useRef(null);
-  const isInView = useInView(ref);
 
   return (
     <>
@@ -211,7 +206,6 @@ function RecipeSection({ headerText = "Recipes Found", ...delegated }: Props) {
 
 
       <RecipeList
-        ref={ref}
         variants={RecipeListVariants}
         initial="staggerOnExit"
         animate="staggerOnEntry"
@@ -235,8 +229,6 @@ const RecipeListVariants = {
   },
 }
 
-
-
 const RecipeList = styled(motion.ul)({
   listStyleType: "none",
   padding: 0,
@@ -249,6 +241,8 @@ const Header = styled("div")({
   display: "flex",
   alignItems: "center",
   fontSize: `${24 / 16}rem`,
+  gap: "12px",
+  marginBottom: "12px",
 });
 
 export default RecipeSection;
