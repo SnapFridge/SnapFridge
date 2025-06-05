@@ -105,7 +105,7 @@ const CardContainer = styled(motion.ul)({
   gap: "24px",
 
   [ON_MOBILE]: {
-  flexDirection: "column",
+    flexDirection: "column",
   },
 });
 

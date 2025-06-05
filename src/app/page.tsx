@@ -3,7 +3,6 @@ import { styled, css } from "@pigment-css/react";
 import Button from "@components/Button";
 import AdjectiveRecipes from "@components/AdjectiveRecipes";
 import RecipeSection from "@components/RecipeSection";
-import Image from "next/image";
 import Counter from "@components/Counter";
 import { linearClamp, ON_MOBILE } from "@components/Global"
 
@@ -27,19 +26,15 @@ export default function Page() {
       {/* The content underneath the header */}
       <PageMargin>
         <FridgeSection>
-          <FridgeDescSection>
-            <FridgeSideText>An app, built just for your fridge</FridgeSideText>
-            <FridgeSideText>that scans your food automatically</FridgeSideText>
-            <FridgeSideText>
-              to help you prepare meal and reduce food waste
-            </FridgeSideText>
-          </FridgeDescSection>
-          <Image
+          <FridgeSideText>An app, built just for your fridge</FridgeSideText>
+          <FridgeSideText>that scans your food automatically</FridgeSideText>
+          <FridgeSideText>
+            to help you prepare meal and reduce food waste
+          </FridgeSideText>
+          <img
             src="/FridgeL.png"
-            className={FridgeImage}
+            className={FridgeImg  }
             alt="Fridge"
-            width={848}
-            height={1470}
           />
         </FridgeSection>
         <RecipeSection className={RecipeSectionCSS} />
@@ -49,39 +44,35 @@ export default function Page() {
             <small>According to the USDA</small>
           </TopStatistics>
           <BottomStatistics>
-            <BottomStatistics2>
-              <h2>
-                That's{" "}
-                <strong>
-                  <Counter
-                    startingValue={0}
-                    endingValue={60}
-                    duration={3}
-                    delay={0.25}
-                  />{" "}
-                  Million
-                </strong>{" "}
-                tons
-              </h2>
-              <h2>
-                Or{" "}
-                <strong>
-                  <Counter
-                    startingValue={0}
-                    endingValue={120}
-                    duration={3}
-                    delay={0.25}
-                  />{" "}
-                  Billion
-                </strong>{" "}
-                pounds
-              </h2>
-            </BottomStatistics2>
-            <Image
+            <h2>
+              That's{" "}
+              <strong>
+                <Counter
+                  startingValue={0}
+                  endingValue={60}
+                  duration={3}
+                  delay={0.25}
+                />{" "}
+                Million
+              </strong>{" "}
+              tons
+            </h2>
+            <h2>
+              Or{" "}
+              <strong>
+                <Counter
+                  startingValue={0}
+                  endingValue={120}
+                  duration={3}
+                  delay={0.25}
+                />{" "}
+                Billion
+              </strong>{" "}
+              pounds
+            </h2>
+            <img className={LandfillImg}
               src="/Landfill.png"
               alt="A landfill worker in a neon vest clearing through a landfill of fruit waste"
-              height={700}
-              width={700}
             />
           </BottomStatistics>
         </StatisticsSection>
@@ -125,26 +116,28 @@ const ButtonWrapper = styled("div")({
   gap: linearClamp(10, 20),
 });
 
-const FridgeImage = css({
+const FridgeImg   = css({
+  gridRowStart: 1,
+  gridRowEnd: 4,
   position: "relative",
   left: "var(--page-margin)",
+  width: "100%",
+  height: "auto",
+  overflow: "hidden",
 });
 
 const FridgeSection = styled("div")({
-  display: "flex",
-  justifyContent: "space-between",
+  display: "grid",
+  gridTemplateColumns: "2fr 3fr",
+  gridAutoFlow: "column",
+  alignItems: "center",
 });
 
-const FridgeDescSection = styled("div")({
-  marginTop: "180px",
-  display: "flex",
-  flexDirection: "column",
-  gap: "380px",
-});
 
 const FridgeSideText = styled("span")({
-  fontSize: `${36 / 16}rem`,
+  fontSize: linearClamp(20, 36),
   fontWeight: "bold",
+  textAlign: "center",
 });
 
 const PageMargin = styled("div")({
@@ -189,30 +182,35 @@ const TopStatistics = styled("div")({
 const BottomStatistics = styled("div")({
   marginTop: "64px",
   width: "100%",
-  display: "flex",
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr",
+  gridAutoFlow: "column",
+  rowGap: linearClamp(15, 25),
+  alignItems: "center",
 
   "&> img": {
     borderRadius: "6px",
   },
-});
-
-const BottomStatistics2 = styled("div")({
-  width: "50%",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "space-evenly",
 
   "&> h2": {
-    fontSize: linearClamp(32, 48),
+    fontSize: linearClamp(24, 44),
     fontWeight: "500",
     textAlign: "center",
   },
 
   "&> h2 > strong": {
-    fontSize: `${50 / 16}rem`,
+    fontSize: linearClamp(28, 48),
     display: "block",
   },
 });
+
+const LandfillImg = css({
+  gridRowStart: 1,
+  gridRowEnd: 3,
+  width: "100%",
+  height: "auto",
+  overflow: "hidden",
+})
 
 const CallToActionSection = styled("div")({
   gap: "24px",
