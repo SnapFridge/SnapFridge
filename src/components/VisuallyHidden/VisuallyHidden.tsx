@@ -1,3 +1,5 @@
+"use client";
+
 import { styled } from "@pigment-css/react";
 import React, { KeyboardEvent } from "react";
 

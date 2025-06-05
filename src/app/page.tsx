@@ -6,11 +6,10 @@ import RecipeSection from "@components/RecipeSection";
 import Image from "next/image";
 import Counter from "@components/Counter";
 
-
 export default function Page() {
   return (
     <>
-      <Header>
+      <Hero>
         <PageMargin>
           <Title>SnapFridge</Title>
           <AdjectiveRecipes />
@@ -23,7 +22,7 @@ export default function Page() {
             </Button>
           </ButtonWrapper>
         </PageMargin>
-      </Header>
+      </Hero>
       {/* The content underneath the header */}
       <PageMargin>
         <FridgeSection>
@@ -53,10 +52,30 @@ export default function Page() {
           <BottomStatistics>
             <BottomStatistics2>
               <h2>
-                That's <strong><Counter startingValue={0} endingValue={60} duration={3} delay={0.25} /> Million</strong> tons
+                That's{" "}
+                <strong>
+                  <Counter
+                    startingValue={0}
+                    endingValue={60}
+                    duration={3}
+                    delay={0.25}
+                  />{" "}
+                  Million
+                </strong>{" "}
+                tons
               </h2>
               <h2>
-                Or <strong><Counter startingValue={0} endingValue={120} duration={3} delay={0.25} /> Billion</strong> pounds
+                Or{" "}
+                <strong>
+                  <Counter
+                    startingValue={0}
+                    endingValue={120}
+                    duration={3}
+                    delay={0.25}
+                  />{" "}
+                  Billion
+                </strong>{" "}
+                pounds
               </h2>
             </BottomStatistics2>
             <Image
@@ -84,7 +103,7 @@ export default function Page() {
   );
 }
 
-const Header = styled("header")({
+const Hero = styled("div")({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
@@ -117,6 +136,7 @@ const FridgeSection = styled("div")({
 });
 
 const FridgeDescSection = styled("div")({
+  marginTop: "180px",
   display: "flex",
   flexDirection: "column",
   gap: "380px",

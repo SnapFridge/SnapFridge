@@ -1,1 +1,1 @@
-export const ON_MOBILE = "@media (width <= 576px)"
+export const ON_MOBILE = "@media (max-width: 576px)";
