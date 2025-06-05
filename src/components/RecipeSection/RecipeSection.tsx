@@ -5,6 +5,7 @@ import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
 import * as motion from "motion/react-client";
 import { RecipeCardVariant } from "@components/RecipeCard";
+import { linearClamp } from '@components/Global';
 
 interface Ingredient {
   aisle: string;
@@ -200,7 +201,7 @@ function RecipeSection({ headerText = "Recipes Found", ...delegated }: Props) {
   return (
     <>
       <Header {...delegated}>
-        <h2>{headerText}</h2>
+        <HeaderTxt>{headerText}</HeaderTxt>
         <Icon icon="Sparkles" color="var(--text-800)" size={50}></Icon>
       </Header>
 
@@ -244,9 +245,12 @@ const RecipeList = styled(motion.ul)({
 const Header = styled("div")({
   display: "flex",
   alignItems: "center",
-  fontSize: `${24 / 16}rem`,
   gap: "12px",
   marginBottom: "12px",
+});
+
+const HeaderTxt = styled("h2")({
+  fontSize: linearClamp(24, 36),
 });
 
 export default RecipeSection;

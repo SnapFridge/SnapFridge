@@ -163,27 +163,26 @@ const StatisticsSection = styled("div")({
   flexDirection: "column",
   alignItems: "center",
   marginTop: "64px",
-  color: "var(--text-950)",
-
-  "&> h2": {
-    fontSize: `${50 / 16}rem`,
-  },
 });
 
 const TopStatistics = styled("div")({
-  width: "50%",
+  width: "75%",
   textAlign: "center",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
 
-  "&> h2": {
-    fontSize: `${50 / 16}rem`,
+  [ON_MOBILE]: {
+    width: "100%",
   },
+
+  "&> h2": {
+    fontSize: linearClamp(28, 50),
+  },
+
   "&> small": {
     fontSize: `${16 / 16}rem`,
-    color: ``,
   },
 });
 
@@ -201,7 +200,7 @@ const BottomStatistics2 = styled("div")({
   width: "50%",
   display: "flex",
   flexDirection: "column",
-  justifyContent: "space-evenly ",
+  justifyContent: "space-evenly",
 
   "&> h2": {
     fontSize: linearClamp(32, 48),
@@ -223,7 +222,8 @@ const CallToActionSection = styled("div")({
   alignItems: "center",
 
   "&> h2": {
-    fontSize: `${50 / 16}rem`,
+    fontSize: linearClamp(30, 50),
+    textAlign: "center",
   },
 });
 
