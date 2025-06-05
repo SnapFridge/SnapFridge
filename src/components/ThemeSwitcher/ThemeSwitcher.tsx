@@ -37,7 +37,7 @@ function ThemeSwitcher({ MobileInterface = false, ...delegated }: Props) {
       <VisuallyHidden>
         {currentTheme === "dark" ? "Turn On Light Mode" : "Turn On Dark Mode"}
       </VisuallyHidden>
-      <Icon icon={icon} color="var(--text-950)" size={24} />
+      <Icon icon={icon} color="var(--text-950)" />
     </Component>
   );
 }

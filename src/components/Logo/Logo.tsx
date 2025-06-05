@@ -5,7 +5,7 @@ import Link from "@components/Link";
 
 function Logo() {
   return (
-    <Link href="/" className={Wrapper} hideDecoration>
+    <Link href="/" className={Wrapper}>
       <IconWrapper>
         <Icon color="var(--text-950)" icon="logo" size={64}></Icon>
       </IconWrapper>

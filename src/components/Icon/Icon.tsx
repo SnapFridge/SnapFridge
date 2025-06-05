@@ -5,10 +5,10 @@ import * as Icons from "lucide-react";
 interface Props extends React.PropsWithChildren {
   icon: "logo" | any;
   color: string;
-  size: number;
+  size?: number;
 }
 
-function Icon({ icon, color, size }: Props) {
+function Icon({ icon, color, size=24 }: Props) {
   if (icon === "logo") {
     return (
       <Image

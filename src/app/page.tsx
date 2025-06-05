@@ -13,14 +13,12 @@ export default function Page() {
         <PageMargin>
           <Title>SnapFridge</Title>
           <AdjectiveRecipes />
-          <ButtonWrapper>
-            <Button as="a" href="/about" styling="primary">
-              About Us
-            </Button>
-            <Button as="a" href="/" styling="secondary">
-              Get Started
-            </Button>
-          </ButtonWrapper>
+          <Button as="a" href="/about" styling="primary">
+            About Us
+          </Button>
+          <Button as="a" href="/" styling="secondary" style={{marginLeft: "1rem"}}>
+            Get Started
+          </Button>
         </PageMargin>
       </Hero>
       {/* The content underneath the header */}
@@ -118,12 +116,7 @@ const Hero = styled("div")({
 
 const Title = styled("h1")({
   fontSize: `${80 / 16}rem`,
-});
-
-const ButtonWrapper = styled("div")({
-  display: "flex",
-  gap: "20px",
-});
+});   
 
 const FridgeImage = css({
   position: "relative",
@@ -222,10 +215,14 @@ const CallToActionSection = styled("div")({
 });
 
 const CoAButtonCSS = css({
-  width: "185px",
-  height: "55px",
+  width: "12rem",
+  height: "4rem",
   color: "var(--text-100)",
   fontSize: `${20 / 16}rem`,
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: 0,
   borderRadius: "8px",
 });
 
