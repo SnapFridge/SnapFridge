@@ -157,12 +157,12 @@ globalCss`
   }
 `;
 
-// Responiveness (???)
+// Responiveness
 globalCss`
   html, body {
-    font-size: clamp(7px, 2vw, 16px);
-    max-width: 100vw;
-    overflow-x: hidden;
+    font-size: clamp(${12 / 16}rem, 2vw, ${16 / 16}rem);
+    max-width: 100%;
+    overflow-x: clip;
   }
 `;
 
