@@ -1,9 +1,9 @@
 "use client";
 
 import Button from "@components/Button";
-import Link from "@components/Link";
 import Image from "next/image";
 import { styled, css } from "@pigment-css/react";
+import { ON_MOBILE } from "@components/Global";
 import React from "react";
 import * as motion from "motion/react-client";
 import type { Variants } from "motion/react";
@@ -38,19 +38,8 @@ interface RecipeProps {
   RecipeVariants: Variants;
 }
 
-/*
 
 
-recipe.usedIngredients.map((ingredient, index) => (
-    <React.Fragment key={ingredient.name}>
-        {ingredient.name.charAt(0).toUpperCase() + (ingredient.name).slice(1)}
-
-
-        {index < recipe.usedIngredients.length - 1 && ", "}
-        </React.Fragment>
-    ))
-}
-*/
 
 function RecipeCard({ recipe, RecipeVariants }: RecipeProps) {
   let usedIngredientString: any = recipe.usedIngredients
@@ -83,44 +72,42 @@ function RecipeCard({ recipe, RecipeVariants }: RecipeProps) {
     })
     .join(", "); // then join the array of ingredient names together with a comma
 
-  return (
-    <Card
-      variants={RecipeVariants}
-      initial="offscreen"
-      whileInView="onscreen"
-      whileHover="hover"
-    >
-      <h3>{recipe.title}</h3>
-      <MainContent>
-        <Image
-          src={recipe.image}
-          alt={recipe.title}
-          width={312}
-          height={231}
-          className={ImageCSS}
-        />
-        <MainInformation>
-          {recipe.usedIngredientCount !== 0 && (
-            <>
-              <h2>Ingredients</h2>
-              <p>{usedIngredientString}</p>
-            </>
-          )}
-          {recipe.missedIngredientCount !== 0 && (
-            <>
-              <h2 className={WarningCSS}>Missing Ingredients</h2>
-              <p className={WarningCSS}>{missedIngredientString}</p>
-            </>
-          )}
-          <Link href={`/recipe`} className={ButtonLinkCSS}>
-            <Button styling="secondary" className={ViewButton}>
-              View
-            </Button>
-          </Link>
-        </MainInformation>
-      </MainContent>
-    </Card>
-  );
+    return (
+        <Card
+            variants={RecipeVariants}
+            initial="offscreen"
+            whileInView="onscreen"
+            whileHover="hover"
+        >
+            <RecipeTitle>{ recipe.title }</RecipeTitle>
+            <MainContent>
+
+                <Image 
+                    src={recipe.image} 
+                    alt={recipe.title} 
+                    width={312} 
+                    height={231} 
+                    className={ImageCSS} 
+                />
+                
+                <MainInformation>
+                    { recipe.usedIngredientCount !== 0 && 
+                        <>
+                            <h2>Ingredients</h2>
+                            <p>{usedIngredientString}</p>                        
+                        </>
+                    }
+                    { recipe.missedIngredientCount !== 0 && 
+                        <>
+                            <h2 className={WarningCSS}>Missing Ingredients</h2>
+                            <p className={WarningCSS}>{missedIngredientString}</p>                        
+                        </>
+                    }
+                    <Button styling="secondary" className={ViewButton} as="a" href={`/recipe`}>View</Button>
+                </MainInformation>
+            </MainContent>   
+        </Card>
+    )
 }
 
 export const RecipeCardVariant = {
@@ -146,23 +133,27 @@ export const RecipeCardVariant = {
 };
 
 const ViewButton = css({
-  padding: "8px 36px",
-  backgroundColor: "var(--background-50)",
-  boxShadow: "var(--shadow)",
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+    padding: "8px 36px",
+    backgroundColor: "var(--background-50)",
+    boxShadow: "var(--shadow)",
 
-  "&:hover": {
-    backgroundColor: "var(--background-100)",
-  },
+    "&:hover": {
+        backgroundColor: "var(--background-100)",
+    },
+
+    [ON_MOBILE]: {
+        position: "static",
+        marginTop: "12px",
+    }
 });
 
-const ButtonLinkCSS = css({
-  position: "absolute",
-  bottom: 0,
-  right: 0,
-});
 
 const ImageCSS = css({
   borderRadius: "24px",
+    minWidth: 0,
 });
 
 const WarningCSS = css({
@@ -170,17 +161,27 @@ const WarningCSS = css({
 });
 
 const Card = styled(motion.li)({
-  border: "1px solid var(--accent-950)",
-  borderRadius: "12px",
-  padding: "24px",
-  boxShadow: "var(--shadow)",
+    border: "1px solid var(--accent-950)",
+    borderRadius: '12px',
+    padding: "24px",
+    boxShadow: "var(--shadow)",
+
+    [ON_MOBILE]: {
+        padding: "12px",
+    }
 });
 
 const MainContent = styled("div")({
-  display: "flex",
-  gap: "36px",
-  marginLeft: "5%",
-  marginTop: "16px",
+    display: "flex",
+    gap: "36px",
+    marginLeft: "5%",
+    marginTop: "16px",
+
+    [ON_MOBILE]: {
+        marginLeft: 0,
+        flexDirection: "column",
+        alignItems: "center",
+    }
 });
 
 const MainInformation = styled("div")({
@@ -190,14 +191,29 @@ const MainInformation = styled("div")({
   position: "relative",
   overflow: "hidden",
 
-  "&> h2": {
-    fontSize: `${32 / 16}rem`,
-  },
-  "&> p": {
-    fontSize: `${20 / 16}rem`,
-    marginLeft: "18px",
-    marginBottom: "32px",
-  },
+    "&> h2": {
+        fontSize: `${24 / 16}rem`,
+    },
+    "&> p": {
+        fontSize: `${20 / 16}rem`,
+        marginLeft: "18px",
+        marginBottom: "32px",
+    },
+
+    [ON_MOBILE]: {
+        alignItems: "center",
+        justifyContent: "space-evenly",
+
+        "&> p": {
+            margin: 0,
+        },
+    },
+});
+
+const RecipeTitle = styled("h1")({
+    [ON_MOBILE]: {
+        textAlign: "center",
+    }
 });
 
 export default RecipeCard;
