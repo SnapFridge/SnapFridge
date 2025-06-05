@@ -4,7 +4,8 @@ import Button from "@components/Button";
 import AdjectiveRecipes from "@components/AdjectiveRecipes";
 import RecipeSection from "@components/RecipeSection";
 import Counter from "@components/Counter";
-import { linearClamp, ON_MOBILE } from "@components/Global"
+import Image from "next/image";
+import { linearClamp, ON_MOBILE } from "@components/Global";
 
 export default function Page() {
   return (
@@ -31,9 +32,11 @@ export default function Page() {
           <FridgeSideText>
             to help you prepare meal and reduce food waste
           </FridgeSideText>
-          <img
+          <Image
+            width={844}
+            height={1470}
             src="/FridgeL.png"
-            className={FridgeImg  }
+            className={FridgeImg}
             alt="Fridge"
           />
         </FridgeSection>
@@ -70,7 +73,10 @@ export default function Page() {
               </strong>{" "}
               pounds
             </h2>
-            <img className={LandfillImg}
+            <Image
+              width={692}
+              height={689}
+              className={LandfillImg}
               src="/Landfill.png"
               alt="A landfill worker in a neon vest clearing through a landfill of fruit waste"
             />
@@ -104,7 +110,7 @@ const Hero = styled("div")({
     linear-gradient(var(--hero-linear-1) 0%, var(--hero-linear-2) 96%, var(--background-50) 100%)
     `,
   backgroundBlendMode: "multiply",
-  marginTop: "calc(-1 * (var(--nav-height) + var(--nav-margin)))"
+  marginTop: "calc(-1 * (var(--nav-height) + var(--nav-margin)))",
 });
 
 const Title = styled("h1")({
@@ -112,18 +118,17 @@ const Title = styled("h1")({
 });
 
 const ButtonWrapper = styled("div")({
-  display: "flex",  
+  display: "flex",
   gap: linearClamp(10, 20),
 });
 
-const FridgeImg   = css({
+const FridgeImg = css({
   gridRowStart: 1,
   gridRowEnd: 4,
   position: "relative",
   left: "var(--page-margin)",
   width: "100%",
   height: "auto",
-  overflow: "hidden",
 });
 
 const FridgeSection = styled("div")({
@@ -132,7 +137,6 @@ const FridgeSection = styled("div")({
   gridAutoFlow: "column",
   alignItems: "center",
 });
-
 
 const FridgeSideText = styled("span")({
   fontSize: linearClamp(20, 36),
@@ -148,8 +152,8 @@ const PageMargin = styled("div")({
 const MobileCenter = css({
   [ON_MOBILE]: {
     justifyItems: "center",
-  }
-})
+  },
+});
 
 const StatisticsSection = styled("div")({
   display: "flex",
@@ -210,7 +214,7 @@ const LandfillImg = css({
   width: "100%",
   height: "auto",
   overflow: "hidden",
-})
+});
 
 const CallToActionSection = styled("div")({
   gap: "24px",

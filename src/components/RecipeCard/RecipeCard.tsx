@@ -89,13 +89,15 @@ function RecipeCard({ recipe, RecipeVariants }: RecipeProps) {
         <MainInformation>
           {recipe.usedIngredientCount !== 0 && (
             <>
-              <h2>Ingredients</h2>
+              <IngrediantsTitle>Ingredients</IngrediantsTitle>
               <p>{usedIngredientString}</p>
             </>
           )}
           {recipe.missedIngredientCount !== 0 && (
             <>
-              <h2 className={WarningCSS}>Missing Ingredients</h2>
+              <IngrediantsTitle className={WarningCSS}>
+                Missing Ingredients
+              </IngrediantsTitle>
               <p className={WarningCSS}>{missedIngredientString}</p>
             </>
           )}
@@ -156,6 +158,7 @@ const ViewButton = css({
 const ImageCSS = css({
   borderRadius: "24px",
   minWidth: 0,
+  flex: "1 1 300px",
 });
 
 const WarningCSS = css({
@@ -167,35 +170,34 @@ const Card = styled(motion.li)({
   borderRadius: "12px",
   padding: "24px",
   boxShadow: "var(--shadow)",
+  maxWidth: "800px",
 
   [ON_MOBILE]: {
     padding: "12px",
+    maxWidth: "fit-content",
   },
 });
 
 const MainContent = styled("div")({
   display: "flex",
-  gap: "36px",
-  marginLeft: "5%",
-  marginTop: "16px",
+  width: "fit-content",
+  gap: "32px",
 
   [ON_MOBILE]: {
     marginLeft: 0,
     flexDirection: "column",
     alignItems: "center",
+    width: "fit-content",
   },
 });
 
 const MainInformation = styled("div")({
+  flex: "2 999999999 550px",
   display: "flex",
   flexDirection: "column",
-  width: "100%",
+  width: "fit-content",
   position: "relative",
   overflow: "hidden",
-
-  "&> h2": {
-    fontSize: `${24 / 16}rem`,
-  },
   "&> p": {
     fontSize: `${20 / 16}rem`,
     marginLeft: "18px",
@@ -213,9 +215,15 @@ const MainInformation = styled("div")({
 });
 
 const RecipeTitle = styled("h3")({
+  width: "fit-content",
   [ON_MOBILE]: {
     textAlign: "center",
   },
+});
+
+const IngrediantsTitle = styled("h4")({
+  width: "fit-content",
+  fontSize: `${24 / 16}rem`,
 });
 
 export default RecipeCard;
