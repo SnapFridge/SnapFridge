@@ -222,8 +222,8 @@ const CallToActionSection = styled("div")({
 });
 
 const CoAButtonCSS = css({
-  width: "12rem",
-  height: "4rem",
+  width: `${185 / 16}rem`,
+  height: `${55 / 16}rem`,
   color: "var(--text-100)",
   fontSize: `${20 / 16}rem`,
   display: "inline-flex",

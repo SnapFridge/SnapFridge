@@ -200,15 +200,13 @@ const recipesExample = [
 
 function RecipeSection({ headerText = "Recipes Found", ...delegated }: Props) {
   const ref = useRef(null);
-  const isInView = useInView(ref);
 
   return (
     <>
       <Header {...delegated}>
-        <h1>{headerText}</h1>
+        <h2>{headerText}</h2>
         <Icon icon="Sparkles" color="var(--text-800)" size={50}></Icon>
       </Header>
-
 
       <RecipeList
         ref={ref}
@@ -217,25 +215,28 @@ function RecipeSection({ headerText = "Recipes Found", ...delegated }: Props) {
         animate="staggerOnEntry"
       >
         {recipesExample.map((recipe) => {
-          return <RecipeCard recipe={recipe} key={recipe.title} RecipeVariants={RecipeCardVariant}/>;
+          return (
+            <RecipeCard
+              recipe={recipe}
+              key={recipe.title}
+              RecipeVariants={RecipeCardVariant}
+            />
+          );
         })}
       </RecipeList>
     </>
   );
 }
 
-
 // make this work somehow
 const RecipeListVariants = {
   staggerOnEntry: {
-    transition: { staggerChildren: 1 }
-  },  
-  staggerOnExit: {
-    transition: { staggerChildren: 1 }
+    transition: { staggerChildren: 1 },
   },
-}
-
-
+  staggerOnExit: {
+    transition: { staggerChildren: 1 },
+  },
+};
 
 const RecipeList = styled(motion.ul)({
   listStyleType: "none",
