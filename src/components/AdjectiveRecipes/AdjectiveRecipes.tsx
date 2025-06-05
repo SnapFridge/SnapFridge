@@ -4,7 +4,7 @@ import * as React from "react";
 import { styled } from "@pigment-css/react";
 import useTypewriter from "./typewritter.helper";
 
-const ADJECTIVES = ["Delicious", "Excellent", "Wonderful", "Amazing", "Supercalifragilisticexpialidocious"];
+const ADJECTIVES = ["Delicious", "Excellent", "Wonderful", "Amazing", "Incredible"];
 
 function AdjectiveRecipes() {
   const adjective = useTypewriter(ADJECTIVES);

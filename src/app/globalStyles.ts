@@ -1,3 +1,4 @@
+import { linearClamp } from '@components/Global';
 import { globalCss } from "@pigment-css/react";
 
 // Color scheme
@@ -153,14 +154,13 @@ globalCss`
   :root {
     --nav-height: ${80 / 16}rem;
     --nav-margin: ${20 / 16}rem;
-    --page-margin: clamp(30px, 7.5vw, 90px);
+    --page-margin: ${linearClamp(30, 90)};
   }
 `;
 
-// Responiveness
+// Horizontally unscrollable
 globalCss`
   html, body {
-    font-size: clamp(${12 / 16}rem, 2vw, ${16 / 16}rem);
     max-width: 100%;
     overflow-x: clip;
   }

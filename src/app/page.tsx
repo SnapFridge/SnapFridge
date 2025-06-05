@@ -5,12 +5,13 @@ import AdjectiveRecipes from "@components/AdjectiveRecipes";
 import RecipeSection from "@components/RecipeSection";
 import Image from "next/image";
 import Counter from "@components/Counter";
+import { linearClamp, ON_MOBILE } from "@components/Global"
 
 export default function Page() {
   return (
     <>
       <Hero>
-        <PageMargin>
+        <PageMargin className={MobileCenter}>
           <Title>SnapFridge</Title>
           <AdjectiveRecipes />
           <ButtonWrapper>
@@ -41,9 +42,7 @@ export default function Page() {
             height={1470}
           />
         </FridgeSection>
-
         <RecipeSection className={RecipeSectionCSS} />
-
         <StatisticsSection>
           <TopStatistics>
             <h2>Around 30-40% of food gets wasted every year</h2>
@@ -107,22 +106,23 @@ const Hero = styled("div")({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  height: `calc(${500 / 16}rem + var(--nav-height) + var(--nav-margin))`,
-  background: `
-    radial-gradient(circle at top left, var(--hero-radial-1) 0%, var(--hero-radial-2) 63%, var(--hero-radial-3) 100%),
+  "--content-padding": linearClamp(75, 125),
+  paddingTop: `calc(var(--nav-height) + var(--nav-margin) + var(--content-padding))`,
+  paddingBottom: `var(--content-padding)`,
+  background: `radial-gradient(circle at top left, var(--hero-radial-1) 0%, var(--hero-radial-2) 63%, var(--hero-radial-3) 100%),
     linear-gradient(var(--hero-linear-1) 0%, var(--hero-linear-2) 96%, var(--background-50) 100%)
     `,
   backgroundBlendMode: "multiply",
-  marginTop: "calc(-1 * var(--nav-height) - var(--nav-margin))",
+  marginTop: "calc(-1 * (var(--nav-height) + var(--nav-margin)))"
 });
 
 const Title = styled("h1")({
-  fontSize: `${80 / 16}rem`,
+  fontSize: linearClamp(36, 80),
 });
 
 const ButtonWrapper = styled("div")({
-  display: "flex",
-  gap: "20px",
+  display: "flex",  
+  gap: linearClamp(10, 20),
 });
 
 const FridgeImage = css({
@@ -151,6 +151,12 @@ const PageMargin = styled("div")({
   width: "calc(100vw - 2 * var(--page-margin))",
   margin: "auto",
 });
+
+const MobileCenter = css({
+  [ON_MOBILE]: {
+    justifyItems: "center",
+  }
+})
 
 const StatisticsSection = styled("div")({
   display: "flex",
@@ -198,7 +204,7 @@ const BottomStatistics2 = styled("div")({
   justifyContent: "space-evenly ",
 
   "&> h2": {
-    fontSize: `${48 / 16}rem`,
+    fontSize: linearClamp(32, 48),
     fontWeight: "500",
     textAlign: "center",
   },
