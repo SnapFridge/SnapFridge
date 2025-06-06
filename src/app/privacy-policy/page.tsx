@@ -1,6 +1,8 @@
+import { styled } from '@pigment-css/react';
+
 function Page() {
   return (
-    <>
+    <PageMargin>
       <h1>Privacy Policy</h1>
       <p>Last updated: June 05, 2025</p>
       <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
@@ -169,8 +171,11 @@ function Page() {
       <ul>
       <li>By email: repulseshipp@gmail.com</li>
       </ul>
-    </>
+    </PageMargin>
   )
 }
 
+const PageMargin = styled("div")({
+  margin: "0 var(--page-margin)",
+})
 export default Page;
