@@ -26,12 +26,12 @@ export default function Page() {
       </Hero>
       {/* The content underneath the header */}
       <PageMargin>
-        <FridgeSection>
-          <FridgeSideText>An app, built just for your fridge</FridgeSideText>
-          <FridgeSideText>that scans your food automatically</FridgeSideText>
-          <FridgeSideText>
+        <FridgeSection className={MobileFlexCol}>
+          <FridgeSideTxt>An app, built just for your fridge</FridgeSideTxt>
+          <FridgeSideTxt >that scans your food automatically</FridgeSideTxt>
+          <FridgeSideTxt className={MobileOrderLast}>
             to help you prepare meal and reduce food waste
-          </FridgeSideText>
+          </FridgeSideTxt>
           <Image
             width={844}
             height={1470}
@@ -40,13 +40,13 @@ export default function Page() {
             alt="Fridge"
           />
         </FridgeSection>
-        <RecipeSection className={RecipeSectionCSS} />
+        <RecipeSection/>
         <StatisticsSection>
           <TopStatistics>
             <h2>Around 30-40% of food gets wasted every year</h2>
             <small>According to the USDA</small>
           </TopStatistics>
-          <BottomStatistics>
+          <BottomStatistics className={MobileFlexCol}>
             <h2>
               That's{" "}
               <strong>
@@ -60,7 +60,7 @@ export default function Page() {
               </strong>{" "}
               tons
             </h2>
-            <h2>
+            <h2 className={MobileOrderLast}>
               Or{" "}
               <strong>
                 <Counter
@@ -103,7 +103,7 @@ const Hero = styled("div")({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  "--content-padding": linearClamp(75, 125),
+  ["--content-padding" as string]: linearClamp(75, 125),
   paddingTop: `calc(var(--nav-height) + var(--nav-margin) + var(--content-padding))`,
   paddingBottom: `var(--content-padding)`,
   background: `radial-gradient(circle at top left, var(--hero-radial-1) 0%, var(--hero-radial-2) 63%, var(--hero-radial-3) 100%),
@@ -122,23 +122,36 @@ const ButtonWrapper = styled("div")({
   gap: linearClamp(10, 20),
 });
 
+// Image is set to be 60% wide of the page without margin
 const FridgeImg = css({
   gridRowStart: 1,
   gridRowEnd: 4,
   position: "relative",
   left: "var(--page-margin)",
   width: "100%",
+  
+  [ON_MOBILE]: {
+    margin: "25px 0",
+    alignSelf: "end",
+    width: "60%", // Set here
+  },
   height: "auto",
 });
 
 const FridgeSection = styled("div")({
   display: "grid",
-  gridTemplateColumns: "2fr 3fr",
+  width: "100%",
+  gridTemplateColumns: "40% 60%", // And here
   gridAutoFlow: "column",
   alignItems: "center",
+  marginBottom: "35px",
+
+  [ON_MOBILE]: {
+    marginTop: "35px",
+  }
 });
 
-const FridgeSideText = styled("span")({
+const FridgeSideTxt = styled("span")({
   fontSize: linearClamp(20, 36),
   fontWeight: "bold",
   textAlign: "center",
@@ -147,12 +160,6 @@ const FridgeSideText = styled("span")({
 const PageMargin = styled("div")({
   width: "calc(100vw - 2 * var(--page-margin))",
   margin: "auto",
-});
-
-const MobileCenter = css({
-  [ON_MOBILE]: {
-    justifyItems: "center",
-  },
 });
 
 const StatisticsSection = styled("div")({
@@ -184,26 +191,27 @@ const TopStatistics = styled("div")({
 });
 
 const BottomStatistics = styled("div")({
-  marginTop: "64px",
-  width: "100%",
   display: "grid",
-  gridTemplateColumns: "1fr 1fr",
+  width: "100%",
+  gridTemplateColumns: "40% 60%",
   gridAutoFlow: "column",
-  rowGap: linearClamp(15, 25),
+
+  marginTop: "64px",
   alignItems: "center",
+  rowGap: linearClamp(15, 25),
 
   "&> img": {
     borderRadius: "6px",
   },
 
   "&> h2": {
-    fontSize: linearClamp(24, 44),
+    fontSize: linearClamp(29, 48),
     fontWeight: "500",
     textAlign: "center",
   },
 
   "&> h2 > strong": {
-    fontSize: linearClamp(28, 48),
+    fontSize: linearClamp(33, 52),
     display: "block",
   },
 });
@@ -213,7 +221,6 @@ const LandfillImg = css({
   gridRowEnd: 3,
   width: "100%",
   height: "auto",
-  overflow: "hidden",
 });
 
 const CallToActionSection = styled("div")({
@@ -241,6 +248,21 @@ const CoAButtonCSS = css({
   borderRadius: "8px",
 });
 
-const RecipeSectionCSS = css({
-  marginTop: "64px",
+const MobileCenter = css({
+  [ON_MOBILE]: {
+    justifyItems: "center",
+  },
+});
+
+const MobileOrderLast = css({
+  [ON_MOBILE]: {
+    order: 1, 
+  },
+});
+
+const MobileFlexCol = css({
+  [ON_MOBILE]: {
+    display: "flex",
+    flexDirection: "column",
+  },
 });

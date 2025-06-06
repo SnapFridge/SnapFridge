@@ -196,11 +196,10 @@ const recipesExample = [
   },
 ];
 
-function RecipeSection({ headerText = "Recipes Found", ...delegated }: Props) {
-
+function RecipeSection({ headerText = "Recipes Found" }: Props) {
   return (
     <>
-      <Header {...delegated}>
+      <Header>
         <HeaderTxt>{headerText}</HeaderTxt>
         <Icon icon="Sparkles" color="var(--text-800)" size={50}></Icon>
       </Header>

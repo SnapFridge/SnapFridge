@@ -35,7 +35,7 @@ const AFooter = styled("footer")({
 
   [ON_MOBILE]: {
     flexDirection: "column",
-  }
+  },
 });
 
 const LinksContainer = styled("ul")({
@@ -50,8 +50,7 @@ const LinksContainer = styled("ul")({
   gridTemplateColumns: "repeat(2, 150px)",
 
   [ON_MOBILE]: {
-    display: "flex",
-    flexDirection: "column",
+    display: "block",
   }
 });
 
