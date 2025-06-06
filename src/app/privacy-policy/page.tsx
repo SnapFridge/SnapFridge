@@ -1,4 +1,4 @@
-import { styled } from '@pigment-css/react';
+import { PageMargin } from '@components/Global';
 
 function Page() {
   return (
@@ -175,7 +175,4 @@ function Page() {
   )
 }
 
-const PageMargin = styled("div")({
-  margin: "0 var(--page-margin)",
-})
 export default Page;

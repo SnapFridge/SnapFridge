@@ -5,7 +5,7 @@ import AdjectiveRecipes from "@components/AdjectiveRecipes";
 import RecipeSection from "@components/RecipeSection";
 import Counter from "@components/Counter";
 import Image from "next/image";
-import { linearClamp, ON_MOBILE } from "@components/Global";
+import { linearClamp, ON_MOBILE, PageMargin } from "@components/Global";
 
 export default function Page() {
   return (
@@ -155,11 +155,6 @@ const FridgeSideTxt = styled("span")({
   fontSize: linearClamp(20, 36),
   fontWeight: "bold",
   textAlign: "center",
-});
-
-const PageMargin = styled("div")({
-  width: "calc(100vw - 2 * var(--page-margin))",
-  margin: "auto",
 });
 
 const StatisticsSection = styled("div")({

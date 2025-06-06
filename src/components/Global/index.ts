@@ -1,4 +1,10 @@
+import { styled } from '@pigment-css/react';
+
 export const ON_MOBILE = "@media (max-width: 576px)";
+
+export const PageMargin = styled("div")({
+  margin: "0 var(--page-margin)",
+})
 
 // Sizes are from Figma
 export function linearClamp(sizeAtMin: number, sizeAtMax: number, min = 320, max = 1440) {
