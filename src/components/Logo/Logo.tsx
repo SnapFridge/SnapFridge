@@ -3,7 +3,7 @@ import { styled, css } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import Link from "@components/Link";
 
-function Logo() {
+export default function Logo() {
   return (
     <Link href="/" className={Wrapper}>
       <IconWrapper>
@@ -37,5 +37,3 @@ const LogoName = styled("span")({
   fontSize: `${24 / 16}rem`,
   fontWeight: "bold",
 });
-
-export default Logo;

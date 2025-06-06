@@ -8,7 +8,7 @@ interface Props extends React.PropsWithChildren {
   size?: number;
 }
 
-function Icon({ icon, color, size=24 }: Props) {
+export default function Icon({ icon, color, size=24 }: Props) {
   if (icon === "logo") {
     return (
       <Image
@@ -24,5 +24,3 @@ function Icon({ icon, color, size=24 }: Props) {
 
   return <IconComponent color={color} size={size} />;
 }
-
-export default Icon;

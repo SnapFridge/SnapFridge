@@ -7,7 +7,7 @@ import { ON_MOBILE } from "@components/Global";
 import Link from "@components/Link";
 import ThemeSwitcher from "@components/ThemeSwitcher";
 
-function Dropdown() {
+export default function Dropdown() {
   return (
     <Wrapper>
       <DropdownMenu.Root>
@@ -26,7 +26,7 @@ function Dropdown() {
             <Item asChild>
               <Link href="/about">About Us</Link>
             </Item>
-            <ThemeSwitcher MobileInterface />
+            <ThemeSwitcher mobile/>
           </Content>
         </DropdownMenu.Portal>
       </DropdownMenu.Root>
@@ -64,5 +64,3 @@ const Content = styled(DropdownMenu.Content)({
 const Item = styled(DropdownMenu.Item)({
   width: "fit-content",
 });
-
-export default Dropdown;

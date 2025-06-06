@@ -1,7 +1,7 @@
 import * as React from "react";
 import { styled } from "@pigment-css/react";
 
-function Link({ children, ...delegated }: React.ComponentProps<"a">) {
+export default function Link({ children, ...delegated }: React.ComponentProps<"a">) {
   return (
     <StyledLink {...delegated}>
       {children}
@@ -18,5 +18,3 @@ const StyledLink = styled("a")({
     textDecoration: "revert",
   },
 });
-
-export default Link;

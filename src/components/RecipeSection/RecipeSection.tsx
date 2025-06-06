@@ -1,6 +1,6 @@
 "use client";
 
-import RecipeCard from "@components/RecipeCard";
+import { RecipeCard } from "@components/RecipeCard";
 import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
 import * as motion from "motion/react-client";
@@ -196,7 +196,7 @@ const recipesExample = [
   },
 ];
 
-function RecipeSection({ headerText = "Recipes Found" }: Props) {
+export default function RecipeSection({ headerText = "Recipes Found" }: Props) {
   return (
     <>
       <Header>
@@ -251,5 +251,3 @@ const Header = styled("div")({
 const HeaderTxt = styled("h2")({
   fontSize: linearClamp(24, 36),
 });
-
-export default RecipeSection;

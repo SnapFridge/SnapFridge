@@ -10,7 +10,8 @@ interface Props {
   delay?: number;
 }
 
-function Counter({ startingValue = 0, endingValue, duration = 3, delay = 0, ...delegated }: Props) {
+export default function Counter({ startingValue = 0, endingValue, duration = 3,
+  delay = 0, ...delegated }: Props) {
   const count = useMotionValue(startingValue);
   const rounded = useTransform(() => Math.round(count.get()));
 
@@ -45,5 +46,3 @@ function Counter({ startingValue = 0, endingValue, duration = 3, delay = 0, ...d
   // todo: figure out how to get rid of the default behavior of pre
   return <motion.span ref={ref} {...delegated}>{rounded}</motion.span>
 }
-
-export default Counter;

@@ -40,7 +40,7 @@ const Descriptions: DescriptionsType = {
 }
 
 
-function AboutUsCards() {
+export default function AboutUsCards() {
   return (
   <CardContainer>
     {Object.keys(Descriptions).map((name) => {
@@ -122,6 +122,3 @@ const Card = styled(motion.li)({
 
   textAlign: "center",
 });
-
-export default AboutUsCards;
-

@@ -1,6 +1,6 @@
 import Icon from "@components/Icon";
 import { styled, css } from "@pigment-css/react";
-import AboutUsCards from "@components/AboutUsCards";
+import AboutUsCards from "@components/about/AboutUsCards";
 
 function Page() {
   return (

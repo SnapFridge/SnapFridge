@@ -38,7 +38,7 @@ interface RecipeProps {
   RecipeVariants: Variants;
 }
 
-function RecipeCard({ recipe, RecipeVariants }: RecipeProps) {
+export function RecipeCard({ recipe, RecipeVariants }: RecipeProps) {
   let usedIngredientString: any = recipe.usedIngredients
     .map((ingredient: Ingredient) => {
       // split ingredient name into an array
@@ -225,5 +225,3 @@ const IngrediantsTitle = styled("h4")({
   width: "fit-content",
   fontSize: `${24 / 16}rem`,
 });
-
-export default RecipeCard;

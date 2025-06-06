@@ -6,7 +6,7 @@ import useTypewriter from "./typewritter.helper";
 
 const ADJECTIVES = ["Delicious", "Excellent", "Wonderful", "Amazing", "Incredible"];
 
-function AdjectiveRecipes() {
+export default function AdjectiveRecipes() {
   const adjective = useTypewriter(ADJECTIVES);
 
   return (
@@ -26,5 +26,3 @@ const Adjective = styled("span")({
   color: "hsl(198 100% 65%  )",
   fontWeight: "bold",
 });
-
-export default AdjectiveRecipes;

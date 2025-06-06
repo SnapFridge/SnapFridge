@@ -1,9 +1,9 @@
 import React from "react";
 import { styled, css } from "@pigment-css/react";
 import Button from "@components/Button";
-import AdjectiveRecipes from "@components/AdjectiveRecipes";
+import AdjectiveRecipes from "@components/home/AdjectiveRecipe";
 import RecipeSection from "@components/RecipeSection";
-import Counter from "@components/Counter";
+import Counter from "@components/home/Counter";
 import Image from "next/image";
 import { linearClamp, ON_MOBILE, PageMargin } from "@components/Global";
 
@@ -48,29 +48,27 @@ export default function Page() {
           </TopStatistics>
           <BottomStatistics className={MobileFlexCol}>
             <h2>
-              That's{" "}
+              That's
               <strong>
                 <Counter
                   startingValue={0}
                   endingValue={60}
                   duration={3}
                   delay={0.25}
-                />{" "}
-                Million
-              </strong>{" "}
+                /> Million
+              </strong>
               tons
             </h2>
             <h2 className={MobileOrderLast}>
-              Or{" "}
+              Or
               <strong>
                 <Counter
                   startingValue={0}
                   endingValue={120}
                   duration={3}
                   delay={0.25}
-                />{" "}
-                Billion
-              </strong>{" "}
+                /> Billion
+              </strong>
               pounds
             </h2>
             <Image
@@ -203,6 +201,7 @@ const BottomStatistics = styled("div")({
     fontSize: linearClamp(29, 48),
     fontWeight: "500",
     textAlign: "center",
+    whiteSpace: "pre-wrap"
   },
 
   "&> h2 > strong": {

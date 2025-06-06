@@ -35,7 +35,6 @@ const MobileGone = css({
   },
 });
 
-// TODO: Add a prettier frosted glass implementation please :(
 const Nav = styled("nav")({
   display: "flex",
   justifyContent: "space-between",

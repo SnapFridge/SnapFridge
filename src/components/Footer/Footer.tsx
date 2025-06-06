@@ -3,7 +3,7 @@ import Link from "@components/Link";
 import Icon from "@components/Icon";
 import { ON_MOBILE } from '@components/Global';
 
-function Footer() {
+export default function Footer() {
   return (
   <AFooter>
     <div>
@@ -74,5 +74,3 @@ const RightFooterCSS = css({
     justifyContent: "center",
   }
 });
-
-export default Footer;
