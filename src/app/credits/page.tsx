@@ -11,8 +11,8 @@ function Page() {
         <li>
           <p>Food Waste Picture by <Link href="https://reason.com/2022/04/23/californias-new-food-waste-law-is-backfiring/">Sarah Reingewirtz/ZUMA Press/Newscom</Link></p>
           <Image 
-            width={692}
-            height={689}
+            width={1704}
+            height={1704}
             src="/Landfill.avif"
             alt="A landfill worker in a neon vest clearing through a landfill of fruit waste"
             className={ImageCSS}
@@ -22,8 +22,8 @@ function Page() {
           <p>Fridge Picture by <Link href="https://shop.sharpusa.com/sharp-24-in-bottom-freezer-counter-depth-refrigerator-sjb1255gs/">Sharp Electronics Corporation</Link></p>
           <Image 
             src="/Fridge.avif"
-            width={415}
-            height={483}
+            width={2417}
+            height={2814}
             alt="Fridge filled with food inside"
           />
         </li>
@@ -49,9 +49,15 @@ const CreditList = styled('ul')({
   padding: 0,
   listStyleType: "none",
   alignItems: "center",
+
   "&> li": {
     marginTop: "32px",
     justifyItems: "center",
+  },
+
+  "&> li > img": {
+    width: "50%",
+    height: "auto"
   }
 });
 

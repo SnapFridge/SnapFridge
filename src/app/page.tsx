@@ -33,8 +33,8 @@ export default function Page() {
             to help you prepare meal and reduce food waste
           </FridgeSideTxt>
           <Image
-            width={844}
-            height={1470}
+            width={1700}
+            height={2848}
             src="/FridgeL.avif"
             className={FridgeImg}
             alt="Fridge"
