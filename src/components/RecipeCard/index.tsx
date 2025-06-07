@@ -1,5 +1,3 @@
-"use client";
-
 import Button from "@components/Button";
 import Image from "next/image";
 import { styled, css } from "@pigment-css/react";
@@ -77,6 +75,7 @@ export default function RecipeCard({ recipe, recipeVariants }: RecipeProps) {
       initial="offscreen"
       whileInView="onscreen"
       whileHover="hover"
+      viewport={{ amount: 0.3 }}
     >
       <RecipeTitle>{recipe.title}</RecipeTitle>
       <MainContent>

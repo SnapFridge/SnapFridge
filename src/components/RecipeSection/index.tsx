@@ -1,5 +1,3 @@
-"use client";
-
 import RecipeCard from "@components/RecipeCard";
 import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";

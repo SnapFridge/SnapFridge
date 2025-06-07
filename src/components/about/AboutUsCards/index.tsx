@@ -1,8 +1,5 @@
-"use client";
-
 import { styled } from "@pigment-css/react";
-import { motion } from "motion/react";
-import { useRef } from "react";
+import * as motion from "motion/react-client"
 import { ON_MOBILE } from "@components/Global";
 
 type DescriptionsType = Record<string, string>;
@@ -44,29 +41,19 @@ export default function AboutUsCards() {
   return (
   <CardContainer>
     {Object.keys(Descriptions).map((name) => {
-      const constraintsRef = useRef(null);
-
       return (
-        <div
-        ref={constraintsRef}
-        key={name}
-        >
         <Card
+          key={name}
+
           variants={CardAnimations}
           initial="hidden"
           whileInView="visible"
           whileHover="hover"
-          whileTap="click"
-
-          drag
-          dragConstraints={constraintsRef}
-          dragElastic={0.2}
+          viewport={{ once: false, amount: 0.3 }}
         >
           <h1>{name}</h1>
           <p>{Descriptions[name]}</p>
         </Card>      
-        </div>
-
       )
     })}
   </CardContainer>
@@ -91,9 +78,6 @@ const CardAnimations = {
     y: -10,
     scale: 1.01,
   },
-  click: {
-    scale: 0.9,
-  }
 }
 
 
