@@ -4,5 +4,6 @@ export default withPigment({
   // ... Your nextjs config.
   images: {
     remotePatterns: [new URL('https://img.spoonacular.com/recipes/**')],
-  }
+  },
+  distDir: "build"
 });
