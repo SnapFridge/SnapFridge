@@ -9,11 +9,11 @@ import VisuallyHidden from "@components/VisuallyHidden";
 import { DropdownMenu } from "radix-ui";
 
 interface Props extends React.ComponentProps<"button"> {
-  IsMobile?: boolean;
+  mobile?: boolean;
 }
 
 export default function ThemeSwitcher({
-  IsMobile = false,
+  mobile = false,
   ...delegated
 }: Props) {
   const [isClient, setIsClient] = useState(false);
@@ -37,7 +37,7 @@ export default function ThemeSwitcher({
     </>
   );
 
-  if (IsMobile) {
+  if (mobile) {
     return (
       <DropdownMenu.Item
         onSelect={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
@@ -50,7 +50,6 @@ export default function ThemeSwitcher({
   return (
     <ThemeSwitchBtn
       onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
-      {...delegated}
       {...delegated}
     >
       {children}

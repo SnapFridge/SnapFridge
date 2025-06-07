@@ -1,4 +1,3 @@
-import * as React from "react";
 import { styled, css } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import Link from "@components/Link";

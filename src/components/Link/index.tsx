@@ -1,7 +1,7 @@
-import * as React from "react";
+import { type ComponentProps } from "react";
 import { styled } from "@pigment-css/react";
 
-export default function Link({ children, ...delegated }: React.ComponentProps<"a">) {
+export default function Link({ children, ...delegated }: ComponentProps<"a">) {
   return (
     <StyledLink {...delegated}>
       {children}

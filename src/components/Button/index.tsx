@@ -1,7 +1,7 @@
-import * as React from "react";
+import { type ComponentProps } from "react";
 import { styled } from "@pigment-css/react";
 
-interface Props extends React.ComponentProps<"button"> {
+interface Props extends ComponentProps<"button"> {
   as?: string;
   href?: string;
   styling?: keyof typeof STYLES;

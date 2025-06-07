@@ -1,17 +1,17 @@
-import * as React from "react";
+import { useEffect, useState } from "react";
 
 export default function useTypewriter(
   texts: string[],
   delayPerCharacter = 100,
   delayPerState = 3000
 ) {
-  const [currentText, setCurrentText] = React.useState(0);
-  const [displayText, setDisplayText] = React.useState("");
-  const [index, setIndex] = React.useState(0);
-  const [typing, setTyping] = React.useState(false);
-  const [initial, setInitial] = React.useState(true);
+  const [currentText, setCurrentText] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [index, setIndex] = useState(0);
+  const [typing, setTyping] = useState(false);
+  const [initial, setInitial] = useState(true);
 
-  React.useEffect(() => {
+  useEffect(() => {
     const text = texts[currentText];
 
     if (!text) return setCurrentText(0);
