@@ -35,7 +35,7 @@ export default function Page() {
           <Image
             width={844}
             height={1470}
-            src="/FridgeL.png"
+            src="/FridgeL.avif"
             className={FridgeImg}
             alt="Fridge"
           />
@@ -75,7 +75,7 @@ export default function Page() {
               width={692}
               height={689}
               className={LandfillImg}
-              src="/Landfill.png"
+              src="/Landfill.avif"
               alt="A landfill worker in a neon vest clearing through a landfill of fruit waste"
             />
           </BottomStatistics>

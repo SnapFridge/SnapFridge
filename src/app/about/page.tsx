@@ -6,7 +6,7 @@ function Page() {
   return (
     <Main>
       <div>
-        <Icon icon="logo" size={300} className={Logo}/>
+        <Icon icon="Logo" size={300} className={Logo}/>
         <Title>SnapFridge</Title>
       </div>
       <Picture></Picture>
@@ -50,14 +50,6 @@ const Picture = styled("div")({
 const HeaderText = styled("h2")({
   fontSize: `${32 / 16}rem`,
   textAlign: "center",
-});
-
-const CardContainer = styled("ul")({
-  display: "flex",
-  justifyContent: "space-evenly",
-  listStyleType: "none",
-  padding: 0,
-  gap: "24px",
 });
 
 export default Page;
