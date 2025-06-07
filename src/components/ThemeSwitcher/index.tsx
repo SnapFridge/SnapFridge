@@ -6,8 +6,16 @@ import Icon from "@components/Icon";
 import Button from "@components/Button";
 import { styled } from "@pigment-css/react";
 import VisuallyHidden from "@components/VisuallyHidden";
+import { DropdownMenu } from "radix-ui";
 
-export default function ThemeSwitcher({ ...delegated }) {
+interface Props extends React.ComponentProps<"button"> {
+  IsMobile?: boolean;
+}
+
+export default function ThemeSwitcher({
+  IsMobile = false,
+  ...delegated
+}: Props) {
   const [isClient, setIsClient] = useState(false);
   const { systemTheme, theme, setTheme } = useTheme();
 
@@ -20,15 +28,32 @@ export default function ThemeSwitcher({ ...delegated }) {
   const icon = currentTheme === "dark" ? "Moon" : "Sun";
 
   if (!isClient) return undefined;
-  return (
-    <ThemeSwitchBtn
-      onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
-      {...delegated}
-    >
+  const children = (
+    <>
       <VisuallyHidden>
         {currentTheme === "dark" ? "Turn On Light Mode" : "Turn On Dark Mode"}
       </VisuallyHidden>
       <Icon icon={icon} color="var(--text-950)" />
+    </>
+  );
+
+  if (IsMobile) {
+    return (
+      <DropdownMenu.Item
+        onSelect={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
+      >
+        {children}
+      </DropdownMenu.Item>
+    );
+  }
+
+  return (
+    <ThemeSwitchBtn
+      onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
+      {...delegated}
+      {...delegated}
+    >
+      {children}
     </ThemeSwitchBtn>
   );
 }

@@ -26,9 +26,7 @@ export default function Dropdown() {
             <Item asChild>
               <Link href="/about">About Us</Link>
             </Item>
-            <Item>
-              <ThemeSwitcher/>
-            </Item>
+            <ThemeSwitcher IsMobile={true} />
           </Content>
         </DropdownMenu.Portal>
       </DropdownMenu.Root>
