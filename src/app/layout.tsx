@@ -41,7 +41,6 @@ export default function RootLayout({
     </html>
   );
 }
-
 const Background = styled("div")({
   display: "flex",
   flexDirection: "column",

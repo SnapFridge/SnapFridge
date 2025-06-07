@@ -36,11 +36,13 @@ export default function ThemeSwitcher({
       <Icon icon={icon} color="var(--text-950)" />
     </>
   );
-
+  const switchTheme = () => {
+    setTheme(currentTheme === "dark" ? "light" : "dark");
+  };
   if (mobile) {
     return (
       <DropdownMenu.Item
-        onSelect={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
+        onSelect={switchTheme}
       >
         {children}
       </DropdownMenu.Item>
@@ -49,7 +51,7 @@ export default function ThemeSwitcher({
 
   return (
     <ThemeSwitchBtn
-      onClick={() => setTheme(currentTheme === "dark" ? "light" : "dark")}
+      onClick={switchTheme}
       {...delegated}
     >
       {children}

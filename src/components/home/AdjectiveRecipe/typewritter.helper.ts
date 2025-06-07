@@ -14,7 +14,10 @@ export default function useTypewriter(
   useEffect(() => {
     const text = texts[currentText];
 
-    if (!text) return setCurrentText(0);
+    if (!text) {
+      setCurrentText(0);
+      return;
+    }
     setInitial(false);
 
     window.setTimeout(
@@ -25,7 +28,9 @@ export default function useTypewriter(
             setDisplayText(newText);
             setIndex(index + 1);
           } else {
-            window.setTimeout(() => setTyping(false), delayPerState);
+            window.setTimeout(() => { 
+              setTyping(false); 
+            }, delayPerState);
           }
         } else {
           if (index >= 0) {

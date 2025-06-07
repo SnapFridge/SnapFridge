@@ -39,7 +39,7 @@ interface RecipeProps {
 }
 
 export default function RecipeCard({ recipe, recipeVariants }: RecipeProps) {
-  const usedIngredientString: any = recipe.usedIngredients
+  const usedIngredientString = recipe.usedIngredients
     .map((ingredient: Ingredient) => {
       // split ingredient name into an array
       return ingredient.name
@@ -54,7 +54,7 @@ export default function RecipeCard({ recipe, recipeVariants }: RecipeProps) {
     })
     .join(", "); // then join the array of ingredient names together with a comma
 
-  const missedIngredientString: any = recipe.missedIngredients
+  const missedIngredientString = recipe.missedIngredients
     .map((ingredient: Ingredient) => {
       // split ingredient name into an array
       return ingredient.name

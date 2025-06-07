@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
+
 import { linearClamp } from '@components/Global';
 import { globalCss } from "@pigment-css/react";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMotionValue, useTransform, useInView, motion, animate } from "motion/react"; 
+import { useMotionValue, useTransform, useInView, motion, animate, AnimationPlaybackControlsWithThen } from "motion/react"; 
 import { useEffect, useRef } from "react";
 
 interface Props {
@@ -19,8 +19,7 @@ export default function Counter({ startingValue = 0, endingValue, duration = 3,
   const isInView = useInView(ref);
 
   useEffect(() => {
-    let animation: any;
-
+    let animation: AnimationPlaybackControlsWithThen;
     if (isInView) {
       const delayTimeout = setTimeout(() => {
         animation = animate(count, endingValue, { duration: duration });
@@ -28,17 +27,11 @@ export default function Counter({ startingValue = 0, endingValue, duration = 3,
 
       return () => {
         clearTimeout(delayTimeout);
-
-        if (animation) {
-          animation.stop();
-        }
+        animation.stop();
       };
     } 
-    
     return () => {
-      if (animation) {
-        animation.stop();
-      }
+      animation.stop();
     }
   }, [isInView]);
 
