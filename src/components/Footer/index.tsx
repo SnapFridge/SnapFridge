@@ -57,7 +57,7 @@ const LeftFooterCSS = css({
   width: "100%",
   display: "flex",
   flexDirection: "column",
-  fontSize: scaledClamp(16, 22),
+  fontSize: "var(--1rem)",
 });
 
 const RightFooterCSS = css({

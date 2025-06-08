@@ -38,7 +38,7 @@ export default function Button({ styling, children, style, ...delegated }: Props
 const StyledButton = styled("button")({
   textAlign: "center",
   textDecoration: "none",
-  fontSize: scaledClamp(16, 20),
+  fontSize: "var(--1rem)",
   padding: `${10 / 16}rem`,
   borderRadius: "8px",
   border: "none",

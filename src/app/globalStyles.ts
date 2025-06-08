@@ -157,6 +157,7 @@ globalCss`
     --nav-height: ${80 / 16}rem;
     --nav-margin: ${20 / 16}rem;
     --page-margin: ${scaledClamp(30, 120)};
+    --1rem: ${scaledClamp(12, 22)};
   }
 `;
 

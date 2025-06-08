@@ -1,4 +1,4 @@
-import { scaledClamp } from '@components/Global';
+
 import { styled } from '@pigment-css/react';
 import { PropsWithChildren } from 'react';
 
@@ -9,11 +9,11 @@ export default function FoodPointer({ children, ...delegated }: PropsWithChildre
 };
 
 const Pointer = styled("div")({
-  fontSize: scaledClamp(16, 25),
+  fontSize: "var(--1rem)",
   height: "15px",
   position: "absolute",
   borderStyle: "solid",
   borderColor: "var(--text-950)",
-  borderWidth: "3px 3px 0 0",
+  borderWidth: "2px 2px 0 0",
   zIndex: 2,
 });

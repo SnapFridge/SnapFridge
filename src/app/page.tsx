@@ -149,13 +149,13 @@ const Milk = styled(FoodPointer)({
 });
 
 const Egg = styled(FoodPointer)({
-  width: scaledClamp(250, 620, MOBILE_BREAKPOINT),
-  top: scaledClamp(315, 820, MOBILE_BREAKPOINT),
+  width: scaledClamp(250, 830, MOBILE_BREAKPOINT),
+  top: scaledClamp(315, 1130, MOBILE_BREAKPOINT),
 });
 
 const Carrot = styled(FoodPointer)({
-  width: scaledClamp(180,420, MOBILE_BREAKPOINT),
-  top: scaledClamp(390, 980, MOBILE_BREAKPOINT),
+  width: scaledClamp(180, 580, MOBILE_BREAKPOINT),
+  top: scaledClamp(390, 1370, MOBILE_BREAKPOINT),
 });
 
 const FridgeImg = css({
@@ -184,7 +184,7 @@ const FridgeSection = styled("div")({
 });
 
 const FridgeSideTxt = styled("span")({
-  fontSize: scaledClamp(20, 36),
+  fontSize: scaledClamp(20, 40),
   fontWeight: "bold",
   textAlign: "center",
 });
@@ -209,11 +209,11 @@ const TopStatistics = styled("div")({
   },
 
   "&> h2": {
-    fontSize: scaledClamp(28, 50),
+    fontSize: scaledClamp(29, 52),
   },
 
   "&> small": {
-    fontSize: `${16 / 16}rem`,
+    fontSize: "var(--1rem)",
   },
 });
 
@@ -232,14 +232,14 @@ const BottomStatistics = styled("div")({
   },
 
   "&> h2": {
-    fontSize: scaledClamp(29, 48),
+    fontSize: scaledClamp(29, 52),
     fontWeight: "500",
     textAlign: "center",
     whiteSpace: "pre-wrap"
   },
 
   "&> h2 > strong": {
-    fontSize: scaledClamp(33, 52),
+    fontSize: scaledClamp(33, 56),
     display: "block",
   },
 });
@@ -259,7 +259,7 @@ const CallToActionSection = styled("div")({
   alignItems: "center",
 
   "&> h2": {
-    fontSize: scaledClamp(30, 50),
+    fontSize: scaledClamp(29, 52),
     textAlign: "center",
   },
 });
