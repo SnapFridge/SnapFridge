@@ -5,9 +5,11 @@ import AdjectiveRecipes from "@components/home/AdjectiveRecipe";
 import RecipeSection from "@components/RecipeSection";
 import Counter from "@components/home/Counter";
 import Image from "next/image";
-import { linearClamp, ON_MOBILE, PageMargin } from "@components/Global";
+import { linearClamp, MOBILE_BREAKPOINT, ON_MOBILE, PageMargin } from "@components/Global";
+import FoodPointer from '@components/home/FoodPointer';
 
 export default function Page() {
+  linearClamp(100, 500, MOBILE_BREAKPOINT)
   return (
     <>
       <Hero>
@@ -32,13 +34,19 @@ export default function Page() {
           <FridgeSideTxt className={MobileOrderLast}>
             to help you prepare meal and reduce food waste
           </FridgeSideTxt>
-          <Image
-            width={1700}
-            height={2848}
-            src="/FridgeL.avif"
-            className={FridgeImg}
-            alt="Fridge"
-          />
+          <div className={FridgeAndPointers}>
+            <Butter>Butter</Butter>
+            {/*<Milk>Milk</Milk>
+            <Egg>Egg</Egg>
+            <Carrot>Carrot</Carrot>*/}
+            <Image 
+              width={1700}
+              height={2848}
+              src="/FridgeL.avif"
+              alt="Fridge"
+              className={FridgeImg}
+            />
+          </div>
         </FridgeSection>
         <RecipeSection/>
         <StatisticsSection>
@@ -121,25 +129,48 @@ const ButtonWrapper = styled("div")({
 });
 
 // Image is set to be 60% wide of the page without margin
-const FridgeImg = css({
+const FridgeAndPointers = css({
   gridRowStart: 1,
   gridRowEnd: 4,
-  position: "relative",
-  left: "var(--page-margin)",
+  
   width: "100%",
   
   [ON_MOBILE]: {
     margin: "25px 0",
-    alignSelf: "end",
-    width: "60%", // Set here
   },
-  height: "auto",
 });
 
+const Butter = styled(FoodPointer)({
+  width: linearClamp(110, 260, MOBILE_BREAKPOINT),
+  height: 25,
+  top: linearClamp(165, 480, MOBILE_BREAKPOINT),
+});
+const Milk = styled(FoodPointer)({
+
+});
+const Egg = styled(FoodPointer)({
+
+});
+const Carrot = styled(FoodPointer)({
+
+});
+
+const FridgeImg = css({
+  height: "auto",
+  position: "relative",
+  left: "var(--page-margin)",
+  width: "100%",
+
+  [ON_MOBILE]: {
+    justifySelf: "end",
+    width: "66%", // Set here
+  },
+})
 const FridgeSection = styled("div")({
+  position: "relative",
   display: "grid",
   width: "100%",
-  gridTemplateColumns: "40% 60%", // And here
+  gridTemplateColumns: "34% 66%", // And here
   gridAutoFlow: "column",
   alignItems: "center",
   marginBottom: "35px",
