@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 
-import { linearClamp } from '@components/Global';
+import { scaledClamp } from '@components/Global';
 import { globalCss } from "@pigment-css/react";
 
 // Color scheme
@@ -156,7 +156,7 @@ globalCss`
   :root {
     --nav-height: ${80 / 16}rem;
     --nav-margin: ${20 / 16}rem;
-    --page-margin: ${linearClamp(30, 90)};
+    --page-margin: ${scaledClamp(30, 120)};
   }
 `;
 

@@ -1,6 +1,5 @@
 import { styled } from "@pigment-css/react";
 import * as motion from "motion/react-client"
-import { ON_MOBILE } from "@components/Global";
 
 type DescriptionsType = Record<string, string>;
 const Descriptions: DescriptionsType = {
@@ -88,7 +87,7 @@ const CardContainer = styled(motion.ul)({
   padding: 0,
   gap: "24px",
 
-  [ON_MOBILE]: {
+  "@media (max-width: 768px)": {
     flexDirection: "column",
   },
 });
@@ -97,9 +96,7 @@ const Card = styled(motion.li)({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-
   padding: "24px",
-  width: "300px",
   border: "1px solid var(--accent-950)",
   borderRadius: "12px",
   boxShadow: `var(--shadow)`,

@@ -2,7 +2,7 @@ import RecipeCard from "@components/RecipeCard";
 import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
 import * as motion from "motion/react-client";
-import { linearClamp } from '@components/Global';
+import { scaledClamp } from '@components/Global';
 
 interface Props {
   headerText?: string;
@@ -227,5 +227,5 @@ const Header = styled("div")({
 });
 
 const HeaderTxt = styled("h2")({
-  fontSize: linearClamp(24, 36),
+  fontSize: scaledClamp(24, 36),
 });

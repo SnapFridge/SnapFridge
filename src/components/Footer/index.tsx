@@ -1,7 +1,7 @@
 import { styled, css } from "@pigment-css/react";
 import Link from "@components/Link";
 import Icon from "@components/Icon";
-import { ON_MOBILE } from '@components/Global';
+import { ON_MOBILE, scaledClamp } from '@components/Global';
 
 export default function Footer() {
   return (
@@ -39,7 +39,6 @@ const AFooter = styled("footer")({
 });
 
 const LinksContainer = styled("ul")({
-  fontSize: `${16 / 16}rem`,
   marginTop: "24px",
   padding: 0,
   listStyleType: "none",
@@ -47,7 +46,7 @@ const LinksContainer = styled("ul")({
   fontWeight: "600",
 
   display: "grid",
-  gridTemplateColumns: "repeat(2, 150px)",
+  gridTemplateColumns: `repeat(2, ${scaledClamp(150, 190)})`,
 
   [ON_MOBILE]: {
     display: "block",
@@ -58,7 +57,7 @@ const LeftFooterCSS = css({
   width: "100%",
   display: "flex",
   flexDirection: "column",
-  fontSize: `${18 / 16}rem`,
+  fontSize: scaledClamp(16, 22),
 });
 
 const RightFooterCSS = css({

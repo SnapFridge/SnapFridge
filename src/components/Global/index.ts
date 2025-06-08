@@ -1,5 +1,7 @@
 import { styled } from '@pigment-css/react';
 
+export const MIN_SUPPORTED_WIDTH = 320
+export const MAX_SUPPORTED_WIDTH = 1920
 export const MOBILE_BREAKPOINT = 576
 
 export const ON_MOBILE = `@media (max-width: ${MOBILE_BREAKPOINT}px)`;
@@ -9,7 +11,9 @@ export const PageMargin = styled("div")({
 })
 
 // Sizes are from Figma
-export function linearClamp(sizeAtMin: number, sizeAtMax: number, min = 320, max = 1440) {
+export function scaledClamp(sizeAtMin: number, sizeAtMax: number, 
+  min = MIN_SUPPORTED_WIDTH, max = MAX_SUPPORTED_WIDTH) {
+
   // Rem conversion
   sizeAtMax /= 16;
   sizeAtMin /= 16;

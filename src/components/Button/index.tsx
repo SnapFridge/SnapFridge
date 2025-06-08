@@ -1,5 +1,6 @@
 import { type ComponentProps } from "react";
 import { styled } from "@pigment-css/react";
+import { scaledClamp } from '@components/Global';
 
 interface Props extends ComponentProps<"button"> {
   as?: string;
@@ -37,7 +38,7 @@ export default function Button({ styling, children, style, ...delegated }: Props
 const StyledButton = styled("button")({
   textAlign: "center",
   textDecoration: "none",
-  fontSize: `${16 / 16}rem`,
+  fontSize: scaledClamp(16, 20),
   padding: `${10 / 16}rem`,
   borderRadius: "8px",
   border: "none",
