@@ -289,7 +289,7 @@ const CoAButtonCSS = css({
   width: `${185 / 16}rem`,
   height: `${55 / 16}rem`,
   color: "var(--text-100)",
-  fontSize: `${20 / 16}rem`,
+  fontSize: "var(--1-25rem)",
   display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",

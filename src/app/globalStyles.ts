@@ -158,6 +158,7 @@ globalCss`
     --nav-margin: ${20 / 16}rem;
     --page-margin: ${scaleClamped(30, 120)};
     --1rem: ${scaleClamped(12, 22)};
+    --1-25rem: ${scaleClamped(15, 27)};
   }
 `;
 

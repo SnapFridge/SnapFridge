@@ -1,6 +1,6 @@
 import Button from "@components/Button";
 import Image from "next/image";
-import { styled, css } from "@pigment-css/react";
+import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@components/Global";
 import React from "react";
 import * as motion from "motion/react-client";
@@ -38,37 +38,28 @@ interface RecipeProps {
   recipeVariants: Variants;
 }
 
+function ingredientArrToStr(ingredients: Ingredient[]) {
+  let ingredientStr = "";
+  for (const ingredient of ingredients) {
+    let toUpper = true;
+    for (const char of ingredient.name) {
+      if (toUpper) {
+        ingredientStr += char.toUpperCase();
+        toUpper = false;
+      }
+      else {
+        ingredientStr += char;
+        if (char === ' ') {
+          toUpper = true;
+        }
+      }
+    }
+    ingredientStr += ", "
+  }
+  return ingredientStr.slice(0, -2);
+}
+
 export default function RecipeCard({ recipe, recipeVariants }: RecipeProps) {
-  const usedIngredientString = recipe.usedIngredients
-    .map((ingredient: Ingredient) => {
-      // split ingredient name into an array
-      return ingredient.name
-        .split(" ")
-        .map((ingredientWord: string) => {
-          // capitalize every word
-          return (
-            ingredientWord.charAt(0).toUpperCase() + ingredientWord.slice(1)
-          );
-        })
-        .join(" "); // join the array together with a space before returning it
-    })
-    .join(", "); // then join the array of ingredient names together with a comma
-
-  const missedIngredientString = recipe.missedIngredients
-    .map((ingredient: Ingredient) => {
-      // split ingredient name into an array
-      return ingredient.name
-        .split(" ")
-        .map((ingredientWord: string) => {
-          // capitalize every word
-          return (
-            ingredientWord.charAt(0).toUpperCase() + ingredientWord.slice(1)
-          );
-        })
-        .join(" "); // join the array together with a space before returning it
-    })
-    .join(", "); // then join the array of ingredient names together with a comma
-
   return (
     <Card
       variants={recipeVariants}
@@ -78,70 +69,32 @@ export default function RecipeCard({ recipe, recipeVariants }: RecipeProps) {
       viewport={{ amount: 0.3 }}
     >
       <RecipeTitle>{recipe.title}</RecipeTitle>
-      <MainContent>
-        <Image
-          src={recipe.image}
-          alt={recipe.title}
-          width={312}
-          height={231}
-          className={ImageCSS}
-        />
-        <MainInformation>
-          {recipe.usedIngredientCount !== 0 && (
-            <>
-              <IngrediantsTitle>Ingredients</IngrediantsTitle>
-              <p>{usedIngredientString}</p>
-            </>
-          )}
-          {recipe.missedIngredientCount !== 0 && (
-            <>
-              <IngrediantsTitle className={WarningCSS}>
-                Missing Ingredients
-              </IngrediantsTitle>
-              <p className={WarningCSS}>{missedIngredientString}</p>
-            </>
-          )}
-        </MainInformation>
-        <Button
-          styling="secondary"
-          className={ViewButton}
-          as="a"
-          href={`/recipe`}
-        >
-          View
-        </Button>
-      </MainContent>
+      <Image
+        src={recipe.image}
+        alt={recipe.title}
+        width={312}
+        height={231}
+        className={FoodImg}
+      />
+      <Ingredients>
+        {recipe.usedIngredientCount > 0 &&
+          <>
+            <IngredientTitle>Ingredients</IngredientTitle>
+            <p>{ingredientArrToStr(recipe.usedIngredients)}</p>
+          </>
+        }
+      </Ingredients>
+      <MissedIngredients>
+        {recipe.missedIngredientCount > 0 &&
+          <>
+            <IngredientTitle>Missing Ingredients</IngredientTitle>
+            <p>{ingredientArrToStr(recipe.missedIngredients)}</p>
+          </>
+        }
+      </MissedIngredients>
     </Card>
   );
 }
-
-const ViewButton = css({
-  position: "absolute",
-  bottom: 0,
-  right: 0,
-  padding: "8px 36px",
-  backgroundColor: "var(--background-50)",
-  boxShadow: "var(--shadow)",
-
-  "&:hover": {
-    backgroundColor: "var(--background-100)",
-  },
-
-  [ON_MOBILE]: {
-    position: "static",
-    marginTop: "12px",
-  },
-});
-
-const ImageCSS = css({
-  borderRadius: "24px",
-  minWidth: 0,
-  flex: "1 1 300px",
-});
-
-const WarningCSS = css({
-  color: "var(--warning)",
-});
 
 const Card = styled(motion.li)({
   border: "1px solid var(--accent-950)",
@@ -150,56 +103,66 @@ const Card = styled(motion.li)({
   boxShadow: "var(--shadow)",
   maxWidth: "800px",
 
-  [ON_MOBILE]: {
-    padding: "12px",
-    maxWidth: "fit-content",
-  },
-});
-
-const MainContent = styled("div")({
-  position: "relative",
-  display: "flex",
-  width: "fit-content",
-  gap: "32px",
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr",
+  gridTemplateRows: "1fr 2fr 2fr",
+  columnGap: "24px",
+  alignItems: "center",
 
   [ON_MOBILE]: {
-    marginLeft: 0,
-    flexDirection: "column",
-    alignItems: "center",
-    width: "fit-content",
-  },
-});
+    display: "block",
 
-const MainInformation = styled("div")({
-  flex: "2 999999999 550px",
-  display: "flex",
-  flexDirection: "column",
-  width: "fit-content",
-  "&> p": {
-    fontSize: `var(--1rem)`,
-    marginLeft: "18px",
-    marginBottom: "32px",
-  },
-
-  [ON_MOBILE]: {
-    alignItems: "center",
-    justifyContent: "space-evenly",
-
-    "&> p": {
-      margin: 0,
-    },
-  },
+    "&> :not(:first-child)": {
+      marginTop: "16px",
+    }
+  }
 });
 
 const RecipeTitle = styled("h3")({
-  width: "fit-content",
-  fontSize: `${20 / 16}rem`,
+  gridArea: "1 / 1 / 2 / 3",
+  width: "100%",
+  fontSize: "var(--1-25rem)",
+
   [ON_MOBILE]: {
     textAlign: "center",
   },
 });
 
-const IngrediantsTitle = styled("h4")({
+const FoodImg = css({
+  gridArea: "2 / 1 / 4 / 2",
+  borderRadius: "24px",
+  minWidth: 0,
+  flex: "1 1 300px",
+  width: "100%",
+  height: "auto",
+});
+
+const Ingredients = styled("div")({
+  gridArea: "2 / 2 / 3 / 3",
+  width: "100%",
+  color: "var(--text-950)",
+  fontSize: "var(--1rem)",
+
+  [ON_MOBILE]: {
+    textAlign: "center",
+    justifyItems: "center",
+  },
+});
+
+const MissedIngredients = styled("div")({
+  gridArea: "3 / 2 / 4 / 3",
+  width: "100%",
+  color: "var(--warning)",
+  fontSize: "var(--1rem)",
+
+  [ON_MOBILE]: {
+    textAlign: "center",
+    justifyItems: "center",
+  },
+});
+
+
+const IngredientTitle = styled("h4")({
   width: "fit-content",
-  fontSize: `${20 / 16}rem`,
+  fontSize: "var(--1-25rem)",
 });
