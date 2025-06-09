@@ -1,0 +1,25 @@
+name: Deploy
+on: workflow_dispatch
+jobs:
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Checkout
+        uses: actions/checkout@v4
+      - name: Setup NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: "package.json"
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Netlify
+        run: npm install netlify-cli -g
+      - name: Build project
+        run: npm run build
+      - name: Deploy to Netlify
+        run: |
+          netlify deploy \
+            --dir dist \
+            --site ${{ secrets.NETLIFY_PROJECT_ID }} \
+            --auth ${{ secrets.NETLIFY_API_TOKEN }}
+    
