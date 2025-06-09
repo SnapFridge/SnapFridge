@@ -1,4 +1,3 @@
-import Button from "@components/Button";
 import Image from "next/image";
 import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@components/Global";
@@ -38,7 +37,7 @@ interface RecipeProps {
   recipeVariants: Variants;
 }
 
-function ingredientArrToStr(ingredients: Ingredient[]) {
+function ingredients2Str(ingredients: Ingredient[]) {
   let ingredientStr = "";
   for (const ingredient of ingredients) {
     let toUpper = true;
@@ -80,7 +79,7 @@ export default function RecipeCard({ recipe, recipeVariants }: RecipeProps) {
         {recipe.usedIngredientCount > 0 &&
           <>
             <IngredientTitle>Ingredients</IngredientTitle>
-            <p>{ingredientArrToStr(recipe.usedIngredients)}</p>
+            <p>{ingredients2Str(recipe.usedIngredients)}</p>
           </>
         }
       </Ingredients>
@@ -88,7 +87,7 @@ export default function RecipeCard({ recipe, recipeVariants }: RecipeProps) {
         {recipe.missedIngredientCount > 0 &&
           <>
             <IngredientTitle>Missing Ingredients</IngredientTitle>
-            <p>{ingredientArrToStr(recipe.missedIngredients)}</p>
+            <p>{ingredients2Str(recipe.missedIngredients)}</p>
           </>
         }
       </MissedIngredients>
