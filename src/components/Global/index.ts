@@ -11,27 +11,27 @@ export const PageMargin = styled("div")({
 })
 
 // Sizes are from Figma
+
+function round(num: number, places = 4) {
+  const factor = Math.pow(10, places);
+  return Math.round((num + Number.EPSILON) * factor) / factor;
+}
 export function scaleClamped(sizeAtMin: number, sizeAtMax: number, 
-  min = MIN_SUPPORTED_WIDTH, max = MAX_SUPPORTED_WIDTH) {
-
-  // Rem conversion
-  sizeAtMax /= 16;
-  sizeAtMin /= 16;
-
-  function round(num: number, places = 4) {
-    const factor = Math.pow(10, places);
-    return Math.round((num + Number.EPSILON) * factor) / factor;
+  rem: boolean = true, min = MIN_SUPPORTED_WIDTH, max = MAX_SUPPORTED_WIDTH) {
+  if(rem) {
+    sizeAtMax /= 16;
+    sizeAtMin /= 16;
   }
-  
   const slope = (sizeAtMax - sizeAtMin) / (max - min);
   const yIntercept = round(sizeAtMin - slope * min);
-  return `clamp(${round(sizeAtMin)}rem, ${round(slope * 1600)}vw + ${yIntercept}rem, ${round(sizeAtMax)}rem)`;
+  const unit = rem ? "rem" : "px";
+  return `clamp(${round(sizeAtMin)}${unit}, ${round(slope * (rem ? 1600 : 100))}vw + ${yIntercept}${unit}, ${round(sizeAtMax)}${unit})`
 }
 
 export function scaleClampedDesktop(sizeAtMin: number, sizeAtMax: number) {
-  return scaleClamped(sizeAtMin, sizeAtMax, MOBILE_BREAKPOINT);
+  return scaleClamped(sizeAtMin, sizeAtMax, false, MOBILE_BREAKPOINT);
 }
 
 export function scaleClampedMobile(sizeAtMin: number, sizeAtMax: number) {
-  return scaleClamped(sizeAtMin, sizeAtMax, MIN_SUPPORTED_WIDTH, MOBILE_BREAKPOINT);
+  return scaleClamped(sizeAtMin, sizeAtMax, false, MIN_SUPPORTED_WIDTH, MOBILE_BREAKPOINT);
 }
