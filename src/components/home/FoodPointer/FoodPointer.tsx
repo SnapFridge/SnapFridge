@@ -1,4 +1,5 @@
 
+import { ON_MOBILE } from '@components/Global';
 import { styled } from '@pigment-css/react';
 import { PropsWithChildren } from 'react';
 
@@ -14,6 +15,10 @@ const Pointer = styled("div")({
   position: "absolute",
   borderStyle: "solid",
   borderColor: "var(--text-950)",
-  borderWidth: "2px 2px 0 0",
   zIndex: 2,
+  borderWidth: "2px 2px 0 0",
+
+  [ON_MOBILE]: {
+    borderWidth: "1px 1px 0 0",
+  },
 });

@@ -86,7 +86,6 @@ export default function RecipeCard({ recipe, recipeVariants }: RecipeProps) {
           height={231}
           className={ImageCSS}
         />
-
         <MainInformation>
           {recipe.usedIngredientCount !== 0 && (
             <>
@@ -102,15 +101,15 @@ export default function RecipeCard({ recipe, recipeVariants }: RecipeProps) {
               <p className={WarningCSS}>{missedIngredientString}</p>
             </>
           )}
-          <Button
-            styling="secondary"
-            className={ViewButton}
-            as="a"
-            href={`/recipe`}
-          >
-            View
-          </Button>
         </MainInformation>
+        <Button
+          styling="secondary"
+          className={ViewButton}
+          as="a"
+          href={`/recipe`}
+        >
+          View
+        </Button>
       </MainContent>
     </Card>
   );
@@ -158,6 +157,7 @@ const Card = styled(motion.li)({
 });
 
 const MainContent = styled("div")({
+  position: "relative",
   display: "flex",
   width: "fit-content",
   gap: "32px",
@@ -175,10 +175,8 @@ const MainInformation = styled("div")({
   display: "flex",
   flexDirection: "column",
   width: "fit-content",
-  position: "relative",
-  overflow: "hidden",
   "&> p": {
-    fontSize: `${20 / 16}rem`,
+    fontSize: `var(--1rem)`,
     marginLeft: "18px",
     marginBottom: "32px",
   },
@@ -195,6 +193,7 @@ const MainInformation = styled("div")({
 
 const RecipeTitle = styled("h3")({
   width: "fit-content",
+  fontSize: `${20 / 16}rem`,
   [ON_MOBILE]: {
     textAlign: "center",
   },
@@ -202,5 +201,5 @@ const RecipeTitle = styled("h3")({
 
 const IngrediantsTitle = styled("h4")({
   width: "fit-content",
-  fontSize: `${24 / 16}rem`,
+  fontSize: `${20 / 16}rem`,
 });

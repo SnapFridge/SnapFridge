@@ -1,7 +1,7 @@
 import { styled, css } from "@pigment-css/react";
 import Link from "@components/Link";
 import Icon from "@components/Icon";
-import { ON_MOBILE, scaledClamp } from '@components/Global';
+import { ON_MOBILE, scaleClamped } from '@components/Global';
 
 export default function Footer() {
   return (
@@ -46,7 +46,7 @@ const LinksContainer = styled("ul")({
   fontWeight: "600",
 
   display: "grid",
-  gridTemplateColumns: `repeat(2, ${scaledClamp(150, 190)})`,
+  gridTemplateColumns: `repeat(2, ${scaleClamped(150, 190)})`,
 
   [ON_MOBILE]: {
     display: "block",

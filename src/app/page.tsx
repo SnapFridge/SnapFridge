@@ -5,7 +5,8 @@ import AdjectiveRecipes from "@components/home/AdjectiveRecipe";
 import RecipeSection from "@components/RecipeSection";
 import Counter from "@components/home/Counter";
 import Image from "next/image";
-import { scaledClamp, MOBILE_BREAKPOINT, ON_MOBILE, PageMargin } from "@components/Global";
+import { scaleClamped, scaleClampedMobile, scaleClampedDesktop,
+  ON_MOBILE, PageMargin } from "@components/Global";
 import FoodPointer from '@components/home/FoodPointer';
 
 export default function Page() {
@@ -108,7 +109,7 @@ const Hero = styled("div")({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
-  ["--content-padding" as string]: scaledClamp(75, 125),
+  ["--content-padding" as string]: scaleClamped(75, 125),
   paddingTop: `calc(var(--nav-height) + var(--nav-margin) + var(--content-padding))`,
   paddingBottom: `var(--content-padding)`,
   background: `radial-gradient(circle at top left, var(--hero-radial-1) 0%, var(--hero-radial-2) 63%, var(--hero-radial-3) 100%),
@@ -119,19 +120,19 @@ const Hero = styled("div")({
 });
 
 const Title = styled("h1")({
-  fontSize: scaledClamp(36, 85),
+  fontSize: scaleClamped(36, 85),
 });
 
 const ButtonWrapper = styled("div")({
   display: "flex",
-  gap: scaledClamp(10, 20),
+  gap: scaleClamped(10, 20),
 });
 
 // Image is set to be 60% wide of the page without margin
 const FridgeAndPointers = css({
+  position: "relative",
   gridRowStart: 1,
   gridRowEnd: 4,
-  
   width: "100%",
   
   [ON_MOBILE]: {
@@ -140,22 +141,43 @@ const FridgeAndPointers = css({
 });
 
 const Butter = styled(FoodPointer)({
-  width: scaledClamp(110, 340, MOBILE_BREAKPOINT),
-  top: scaledClamp(165, 650, MOBILE_BREAKPOINT),
+  width: scaleClampedDesktop(110, 340),
+  top: scaleClampedDesktop(165, 650),
+
+  [ON_MOBILE]: {
+    top: scaleClampedMobile(88, 175),
+    width: scaleClampedMobile(155, 270),
+  },
 });
+
 const Milk = styled(FoodPointer)({
-  width: scaledClamp(195, 630, MOBILE_BREAKPOINT),
-  top: scaledClamp(270, 890, MOBILE_BREAKPOINT),
+  width: scaleClampedDesktop(195, 630),
+  top: scaleClampedDesktop(270, 890),
+
+  [ON_MOBILE]: {
+    top: scaleClampedMobile(130, 250),
+    width: scaleClampedMobile(198, 358),
+  },
 });
 
 const Egg = styled(FoodPointer)({
-  width: scaledClamp(250, 830, MOBILE_BREAKPOINT),
-  top: scaledClamp(315, 1130, MOBILE_BREAKPOINT),
+  width: scaleClampedDesktop(250, 830),
+  top: scaleClampedDesktop(315, 1130),
+
+  [ON_MOBILE]: {
+    top: scaleClampedMobile(160, 312),
+    width: scaleClampedMobile(228, 415),
+  },
 });
 
 const Carrot = styled(FoodPointer)({
-  width: scaledClamp(180, 580, MOBILE_BREAKPOINT),
-  top: scaledClamp(390, 1370, MOBILE_BREAKPOINT),
+  width: scaleClampedDesktop(180, 580),
+  top: scaleClampedDesktop(390, 1370),
+
+  [ON_MOBILE]: {
+    top: scaleClampedMobile(200, 390),
+    width: scaleClampedMobile(190, 330),
+  },
 });
 
 const FridgeImg = css({
@@ -170,7 +192,6 @@ const FridgeImg = css({
   },
 })
 const FridgeSection = styled("div")({
-  position: "relative",
   display: "grid",
   width: "100%",
   gridTemplateColumns: "34% 66%", // And here
@@ -184,7 +205,7 @@ const FridgeSection = styled("div")({
 });
 
 const FridgeSideTxt = styled("span")({
-  fontSize: scaledClamp(20, 40),
+  fontSize: scaleClamped(20, 40),
   fontWeight: "bold",
   textAlign: "center",
 });
@@ -209,7 +230,7 @@ const TopStatistics = styled("div")({
   },
 
   "&> h2": {
-    fontSize: scaledClamp(29, 52),
+    fontSize: scaleClamped(29, 52),
   },
 
   "&> small": {
@@ -225,21 +246,21 @@ const BottomStatistics = styled("div")({
 
   marginTop: "64px",
   alignItems: "center",
-  rowGap: scaledClamp(15, 25),
+  rowGap: scaleClamped(15, 25),
 
   "&> img": {
     borderRadius: "6px",
   },
 
   "&> h2": {
-    fontSize: scaledClamp(29, 52),
+    fontSize: scaleClamped(29, 52),
     fontWeight: "500",
     textAlign: "center",
     whiteSpace: "pre-wrap"
   },
 
   "&> h2 > strong": {
-    fontSize: scaledClamp(33, 56),
+    fontSize: scaleClamped(33, 56),
     display: "block",
   },
 });
@@ -259,7 +280,7 @@ const CallToActionSection = styled("div")({
   alignItems: "center",
 
   "&> h2": {
-    fontSize: scaledClamp(29, 52),
+    fontSize: scaleClamped(29, 52),
     textAlign: "center",
   },
 });

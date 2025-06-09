@@ -1,7 +1,5 @@
 import { type ComponentProps } from "react";
 import { styled } from "@pigment-css/react";
-import { scaledClamp } from '@components/Global';
-
 interface Props extends ComponentProps<"button"> {
   as?: string;
   href?: string;
