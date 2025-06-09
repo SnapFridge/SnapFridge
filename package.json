@@ -6,6 +6,10 @@
     "lint": "eslint",
     "new-component": "new-component --lang ts"
   },
+  "engines": {
+    "npm": ">=10.9.2",
+    "node": ">=20.12.2"
+  },
   "dependencies": {
     "@pigment-css/react": "^0.0.30",
     "@radix-ui/react-dropdown-menu": "^2.1.15",
