@@ -51,16 +51,12 @@ const DropdownBtn = styled(Button)({
 });
 
 const Content = styled(DropdownMenu.Content)({
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
+  justifyItems: "center",
   background: "var(--background)",
   borderRadius: "8px",
   padding: "8px 12px 10px 12px",
-  gap: "4px",
 });
 
 const Item = styled(DropdownMenu.Item)({
-  width: "fit-content",
+  display: "block",
 });

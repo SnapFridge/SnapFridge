@@ -88,18 +88,19 @@ const CardContainer = styled(motion.ul)({
   gap: "24px",
 
   "@media (max-width: 768px)": {
-    flexDirection: "column",
+    display: "block",
+
+    "&> :not(:first-child)": {
+      marginTop: "24px",
+    },  
   },
 });
 
 const Card = styled(motion.li)({
-  display: "flex",
-  flexDirection: "column",
   alignItems: "center",
   padding: "24px",
   border: "1px solid var(--accent-950)",
   borderRadius: "12px",
   boxShadow: `var(--shadow)`,
-
   textAlign: "center",
 });

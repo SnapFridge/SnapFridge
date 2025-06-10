@@ -106,8 +106,6 @@ export default function Page() {
 }
 
 const Hero = styled("div")({
-  display: "flex",
-  flexDirection: "column",
   justifyContent: "center",
   ["--content-padding" as string]: scaleClamped(75, 125),
   paddingTop: `calc(var(--nav-height) + var(--nav-margin) + var(--content-padding))`,
@@ -211,29 +209,28 @@ const FridgeSideTxt = styled("span")({
 });
 
 const StatisticsSection = styled("div")({
-  display: "flex",
-  flexDirection: "column",
   alignItems: "center",
   marginTop: "64px",
 });
 
 const TopStatistics = styled("div")({
   width: "75%",
-  textAlign: "center",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  justifyContent: "center",
+  justifySelf: "center",
 
   [ON_MOBILE]: {
     width: "100%",
   },
 
   "&> h2": {
+    width: "100%",
+    textAlign: "center",
     fontSize: scaleClamped(29, 52),
   },
 
   "&> small": {
+    display: "block",
+    width: "100%",
+    textAlign: "center",
     fontSize: "var(--1rem)",
   },
 });
@@ -273,11 +270,8 @@ const LandfillImg = css({
 });
 
 const CallToActionSection = styled("div")({
-  gap: "24px",
   marginTop: "96px",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
+  justifyItems: "center",
 
   "&> h2": {
     fontSize: scaleClamped(29, 52),
@@ -286,13 +280,14 @@ const CallToActionSection = styled("div")({
 });
 
 const CoAButtonCSS = css({
+  marginTop: "15px",
   width: `${185 / 16}rem`,
   height: `${55 / 16}rem`,
   color: "var(--text-100)",
-  fontSize: "var(--1-25rem)",
-  display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
+  fontSize: "var(--1rem)",
+  display: "block",
+  alignContent: "center",
+  textAlign: "center",
   padding: 0,
   borderRadius: "8px",
 });

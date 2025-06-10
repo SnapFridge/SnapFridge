@@ -214,9 +214,10 @@ const RecipeCardVariant = {
 const RecipeList = styled(motion.ul)({
   listStyleType: "none",
   padding: 0,
-  display: "flex",
-  flexDirection: "column",
-  gap: "32px",
+  
+  "& > :not(:first-child)": {
+    marginTop: "28px",
+  },
 });
 
 const Header = styled("div")({

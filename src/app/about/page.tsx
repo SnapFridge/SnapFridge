@@ -1,8 +1,9 @@
 import Icon from "@components/Icon";
 import { styled, css } from "@pigment-css/react";
 import AboutUsCards from "@components/about/AboutUsCards";
+import { PageMargin } from '@components/Global';
 
-function Page() {
+export default function Page() {
   return (
     <Main>
       <div>
@@ -19,15 +20,15 @@ function Page() {
   )
 }
 
-const Main = styled("main")({
+const Main = styled(PageMargin)({
   width: "85%",
   alignSelf: "center",
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
+  justifyItems: "center",
   fontSize: `${16 / 16}rem`,
-  gap: "32px",
-  color: "var(--text-950)"
+  color: "var(--text-950)",
+  "&> :not(:first-child)": {
+    marginTop: "32px",
+  }
 })
 
 const Title = styled("h1")({
@@ -51,5 +52,3 @@ const HeaderText = styled("h2")({
   fontSize: `${32 / 16}rem`,
   textAlign: "center",
 });
-
-export default Page;

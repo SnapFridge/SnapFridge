@@ -34,7 +34,7 @@ const AFooter = styled("footer")({
   display: "flex",
 
   [ON_MOBILE]: {
-    flexDirection: "column",
+    display: "block",
   },
 });
 
@@ -55,8 +55,6 @@ const LinksContainer = styled("ul")({
 
 const LeftFooterCSS = css({
   width: "100%",
-  display: "flex",
-  flexDirection: "column",
   fontSize: "var(--1rem)",
 });
 

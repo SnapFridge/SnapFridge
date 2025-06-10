@@ -42,8 +42,6 @@ export default function RootLayout({
   );
 }
 const Background = styled("div")({
-  display: "flex",
-  flexDirection: "column",
   minHeight: "100%",
   color: "var(--text-950)",
   background: "var(--background)",

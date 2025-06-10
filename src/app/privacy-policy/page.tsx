@@ -1,6 +1,6 @@
 import { PageMargin } from '@components/Global';
 
-function Page() {
+export default function Page() {
   return (
     <PageMargin>
       <h1>Privacy Policy</h1>
@@ -174,5 +174,3 @@ function Page() {
     </PageMargin>
   )
 }
-
-export default Page;

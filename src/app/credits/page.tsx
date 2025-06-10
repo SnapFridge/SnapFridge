@@ -3,7 +3,7 @@ import Link from "@components/Link";
 import { styled, css } from "@pigment-css/react";
 import { PageMargin } from '@components/Global';
 
-function Page() {
+export default function Page() {
   return (
     <PageMargin>  
       <h1 className={Title}>Credits</h1>
@@ -64,5 +64,3 @@ const CreditList = styled('ul')({
 const ImageCSS = css({
   borderRadius: "6px",
 });
-
-export default Page;
