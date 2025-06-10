@@ -1,7 +1,7 @@
 
 import { ON_MOBILE } from '@components/Global';
 import { styled } from '@pigment-css/react';
-import { PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 
 export default function FoodPointer({ children, ...delegated }: PropsWithChildren) {
   return (
