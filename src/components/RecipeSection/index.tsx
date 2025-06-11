@@ -1,8 +1,8 @@
 import RecipeCard from "@components/RecipeCard";
-import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
 import * as motion from "motion/react-client";
 import { scaleClamped } from '@components/Global';
+import { Sparkles } from 'lucide-react';
 
 interface Props {
   headerText?: string;
@@ -171,19 +171,17 @@ export default function RecipeSection({ headerText = "Recipes Found" }: Props) {
     <>
       <Header>
         <HeaderTxt>{headerText}</HeaderTxt>
-        <Icon icon="Sparkles" color="var(--text-800)" size={50}></Icon>
+        <Sparkles color="var(--text-800)" size={50}></Sparkles>
       </Header>
 
       <RecipeList>
-        {recipesExample.map((recipe) => {
-          return (
-            <RecipeCard
-              recipe={recipe}
-              key={recipe.title}
-              recipeVariants={RecipeCardVariant}                                
-            />
-          );
-        })}
+        {recipesExample.map(recipe => 
+          <RecipeCard
+            recipe={recipe}
+            key={recipe.id}
+            recipeVariants={RecipeCardVariant}                                
+          />
+        )}
       </RecipeList>
     </>
   );

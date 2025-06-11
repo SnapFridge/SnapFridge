@@ -1,13 +1,20 @@
-import Icon from "@components/Icon";
 import { styled, css } from "@pigment-css/react";
 import AboutUsCards from "@components/about/AboutUsCards";
 import { PageMargin } from '@components/Global';
+import Image from "next/image"
 
 export default function Page() {
   return (
     <Main>
       <div>
-        <Icon icon="Logo" size={300} className={Logo}/>
+        <Image
+          priority
+          src="/Logo.avif"
+          alt="Logo"
+          width={300}
+          height={216}
+          className={Logo}
+        />
         <Title>SnapFridge</Title>
       </div>
       <Picture></Picture>
@@ -24,8 +31,9 @@ const Main = styled(PageMargin)({
   width: "85%",
   alignSelf: "center",
   justifyItems: "center",
-  fontSize: `${16 / 16}rem`,
+  fontSize: "var(--1rem)",
   color: "var(--text-950)",
+
   "&> :not(:first-child)": {
     marginTop: "32px",
   }

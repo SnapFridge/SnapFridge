@@ -1,13 +1,18 @@
 import { styled, css } from "@pigment-css/react";
-import Icon from "@components/Icon";
+import Image from "next/image"
 import Link from "@components/Link";
 
 export default function Logo() {
   return (
     <Link href="/" className={Wrapper}>
-      <IconWrapper>
-        <Icon color="var(--text-950)" icon="Logo" size={64}></Icon>
-      </IconWrapper>
+      <Image
+        priority
+        src="/Logo.avif"
+        alt="Logo"
+        width={50}
+        height={36}
+        className={A}
+      />
       <LogoName>SnapFridge</LogoName>
     </Link>
   );
@@ -21,17 +26,14 @@ const Wrapper = css({
   }
 });
 
-const IconWrapper = styled("div")({
+const A = css({
   position: "absolute",
   top: 0,
-  bottom: 0,
-  margin: "auto",
   left: 0,
-  width: "64px",
-  height: "64px",
 });
 
 const LogoName = styled("span")({
+  color: "var(--text-950)",
   paddingLeft: "64px",
   fontSize: `${24 / 16}rem`,
   fontWeight: "bold",

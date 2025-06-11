@@ -1,11 +1,11 @@
 import Button from "@components/Button";
-import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
 import { DropdownMenu } from "radix-ui";
 import VisuallyHidden from "@components/VisuallyHidden";
 import { ON_MOBILE } from "@components/Global";
 import Link from "@components/Link";
 import ThemeSwitcher from "@components/ThemeSwitcher";
+import { SquareChevronDown } from 'lucide-react';
 
 export default function Dropdown() {
   return (
@@ -14,14 +14,14 @@ export default function Dropdown() {
         <DropdownMenu.Trigger asChild>
           <DropdownBtn>
             <VisuallyHidden>Open Menu</VisuallyHidden>
-            <Icon icon="SquareChevronDown" color="var(--text-950)" />
+            <SquareChevronDown color="var(--text-950)" />
           </DropdownBtn>
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Portal>
           <Content hideWhenDetached>
             <Item asChild>
-              <Link href="/">Get Started</Link>
+              <Link href="/snap">Get Started</Link>
             </Item>
             <Item asChild>
               <Link href="/about">About Us</Link>

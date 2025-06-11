@@ -10,7 +10,7 @@ function NavBar() {
     <Nav>
       <LeftNav>
         <Logo />
-        <Link className={MobileGone} href="/">
+        <Link className={MobileGone} href="/snap">
           Get Started
         </Link>
         <Link className={MobileGone} href="/about">

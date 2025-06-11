@@ -20,7 +20,7 @@ export default function Page() {
             <Button as="a" href="/about" styling="primary">
               About Us
             </Button>
-            <Button as="a" href="/" styling="secondary">
+            <Button as="a" href="/snap" styling="secondary">
               Get Started
             </Button>
           </ButtonWrapper>
@@ -45,6 +45,7 @@ export default function Page() {
               src="/FridgeL.avif"
               alt="Fridge"
               className={FridgeImg}
+              priority
             />
           </div>
         </FridgeSection>
@@ -126,7 +127,6 @@ const ButtonWrapper = styled("div")({
   gap: scaleClamped(10, 20),
 });
 
-// Image is set to be 60% wide of the page without margin
 const FridgeAndPointers = css({
   position: "relative",
   gridRowStart: 1,
@@ -178,6 +178,7 @@ const Carrot = styled(FoodPointer)({
   },
 });
 
+// Image is set to be 66% wide of the page without margin
 const FridgeImg = css({
   height: "auto",
   position: "relative",
@@ -189,7 +190,7 @@ const FridgeImg = css({
     width: "66%", // Set here
   },
 })
-const FridgeSection = styled("div")({
+const FridgeSection = styled("section")({
   display: "grid",
   width: "100%",
   gridTemplateColumns: "34% 66%", // And here
@@ -208,7 +209,7 @@ const FridgeSideTxt = styled("span")({
   textAlign: "center",
 });
 
-const StatisticsSection = styled("div")({
+const StatisticsSection = styled("section")({
   alignItems: "center",
   marginTop: "64px",
 });
@@ -269,7 +270,7 @@ const LandfillImg = css({
   height: "auto",
 });
 
-const CallToActionSection = styled("div")({
+const CallToActionSection = styled("section")({
   marginTop: "96px",
   justifyItems: "center",
 

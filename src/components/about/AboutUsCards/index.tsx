@@ -1,8 +1,7 @@
 import { styled } from "@pigment-css/react";
 import * as motion from "motion/react-client"
 
-type DescriptionsType = Record<string, string>;
-const Descriptions: DescriptionsType = {
+const Descriptions = {
   "Rylex Phan":
     `
       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -39,22 +38,19 @@ const Descriptions: DescriptionsType = {
 export default function AboutUsCards() {
   return (
   <CardContainer>
-    {Object.keys(Descriptions).map((name) => {
-      return (
-        <Card
-          key={name}
-
-          variants={CardAnimations}
-          initial="hidden"
-          whileInView="visible"
-          whileHover="hover"
-          viewport={{ once: false, amount: 0.3 }}
-        >
-          <h1>{name}</h1>
-          <p>{Descriptions[name]}</p>
-        </Card>      
-      )
-    })}
+    {Object.entries(Descriptions).map(([name, description]) => 
+      <Card
+        key={name}
+        variants={CardAnimations}
+        initial="hidden"
+        whileInView="visible"
+        whileHover="hover"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <h1>{name}</h1>
+        <p>{description}</p>
+      </Card>  
+    )}
   </CardContainer>
   )
 }

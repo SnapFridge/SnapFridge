@@ -65,7 +65,7 @@ export default function RecipeCard({ recipe, recipeVariants }: RecipeProps) {
       initial="offscreen"
       whileInView="onscreen"
       whileHover="hover"
-      viewport={{ amount: 0.3 }}
+      viewport={{ once: true, amount: 0.3 }}
     >
       <RecipeTitle>{recipe.title}</RecipeTitle>
       <Image
