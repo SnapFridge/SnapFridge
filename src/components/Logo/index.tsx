@@ -1,18 +1,11 @@
 import { styled, css } from "@pigment-css/react";
-import Image from "next/image"
 import Link from "@components/Link";
+import Icon from '@components/Icon';
 
 export default function Logo() {
   return (
     <Link href="/" className={Wrapper}>
-      <Image
-        priority
-        src="/Logo.avif"
-        alt="Logo"
-        width={50}
-        height={36}
-        className={A}
-      />
+      <Icon icon="Logo" size={53} className={A}/>
       <LogoName>SnapFridge</LogoName>
     </Link>
   );

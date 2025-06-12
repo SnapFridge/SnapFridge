@@ -1,9 +1,9 @@
-import Image from "next/image";
 import * as Icons from 'lucide-react';
+import { type ComponentProps } from 'react';
 
 // All the icons we used
 type Icon = "Logo" | "Github" | "SquareChevronDown" | "Moon" | "Sun" | "Mail" | "Sparkles"
-interface Props {
+interface Props extends ComponentProps<"svg"> {
   icon: Icon;
   color?: string;
   size?: number;
@@ -14,13 +14,24 @@ export default function Icon({ icon, color = "var(--text-950)", size = 24,
   switch(icon) {
     case "Logo":
       return (
-        <Image {...delegated}
-          priority={true}
-          src="/Logo.avif"
-          alt="Logo"
-          width={size}
-          height={size}
-        />
+        <svg 
+          width={size} 
+          height={size / 64 * 46} 
+          viewBox="0 0 64 46" 
+          xmlns="http://www.w3.org/2000/svg"
+          {...delegated}>
+          <rect y="6" width="64" height="40" rx="6" ry="6.3" fill="#154f5d"/>
+          <circle cx="7" cy="13.2" r="2" fill="#fff"/>
+          <circle cx="32" cy="26.5" r="16.5" fill="#fff"/>
+          <circle cx="32" cy="26.5" r="14" fill="#154f5d"/>
+          <path d="M27.4 18h9.2q1.6.2 1.8 1.8v6H25.6v-6q.1-1.6 1.8-1.8m9.2 17h-9.2c-1 0-1.8-.9-1.8-1.8v-6h12.8v6q-.1 1.6-1.8 1.7" fill="#a1c9cb"/>
+          <g fill="#154f5d">
+            <rect x="27.357" y="20.773" width=".97318" height="3.2" rx=".97318" ry=".53333"/>
+            <rect x="27.371" y="28.455" width=".95773" height="4" rx=".5" ry=".49289"/>
+            <path d="m22 0h20c5.54 0 6 6 6 6h-32c0.048 0 0.46-6 6-6z" strokeLinejoin="round" strokeWidth=".73666"/>
+            <path d="m8.3607 3.7h2.341c0.87504 0 1.5795 0.41327 1.5795 0.92662v1.3734h-5.5v-1.3734c0-0.51335 0.70445-0.92662 1.5795-0.92662z" strokeLinejoin="round" strokeWidth=".12076"/>
+          </g>
+        </svg>
       )
     case "Github":
       return (

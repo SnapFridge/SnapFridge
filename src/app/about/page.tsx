@@ -1,22 +1,17 @@
 import { styled, css } from "@pigment-css/react";
 import AboutUsCards from "@components/about/AboutUsCards";
 import { PageMargin } from '@components/Global';
-import Image from "next/image"
+import Icon from "@components/Icon";
 
 export default function Page() {
   return (
     <Main>
-      <div>
-        <Image
-          priority
-          src="/Logo.avif"
-          alt="Logo"
-          width={300}
-          height={216}
-          className={Logo}
-        />
-        <Title>SnapFridge</Title>
-      </div>
+      <Icon
+        icon="Logo"
+        size={300}
+        className={Logo}
+      />
+      <Title>SnapFridge</Title>
       <Picture></Picture>
       <HeaderText>
         “We built SnapFridge for absolutely no reason other than the 
@@ -40,7 +35,6 @@ const Main = styled(PageMargin)({
 })
 
 const Title = styled("h1")({
-  marginTop: "-90px",
   fontSize: `${36 / 16}rem`,
   textAlign: "center",
 });
