@@ -5,7 +5,7 @@ import VisuallyHidden from "@components/VisuallyHidden";
 import { ON_MOBILE } from "@components/Global";
 import Link from "@components/Link";
 import ThemeSwitcher from "@components/ThemeSwitcher";
-import { SquareChevronDown } from 'lucide-react';
+import Icon from "@components/Icon"
 
 export default function Dropdown() {
   return (
@@ -14,7 +14,7 @@ export default function Dropdown() {
         <DropdownMenu.Trigger asChild>
           <DropdownBtn>
             <VisuallyHidden>Open Menu</VisuallyHidden>
-            <SquareChevronDown color="var(--text-950)" />
+            <Icon icon="SquareChevronDown" />
           </DropdownBtn>
         </DropdownMenu.Trigger>
 
