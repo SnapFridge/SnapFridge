@@ -5,7 +5,7 @@ import VisuallyHidden from "@components/VisuallyHidden";
 import { ON_MOBILE } from "@components/Global";
 import Link from "@components/Link";
 import ThemeSwitcher from "@components/ThemeSwitcher";
-import Icon from "@components/Icon"
+import Icon from "@components/Icon";
 
 export default function Dropdown() {
   return (
@@ -51,7 +51,9 @@ const DropdownBtn = styled(Button)({
 });
 
 const Content = styled(DropdownMenu.Content)({
-  justifyItems: "center",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
   background: "var(--background)",
   borderRadius: "8px",
   padding: "8px 12px 10px 12px",

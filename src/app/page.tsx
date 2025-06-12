@@ -5,9 +5,14 @@ import AdjectiveRecipes from "@components/home/AdjectiveRecipe";
 import RecipeSection from "@components/RecipeSection";
 import Counter from "@components/home/Counter";
 import Image from "next/image";
-import { scaleClamped, scaleClampedMobile, scaleClampedDesktop,
-  ON_MOBILE, PageMargin } from "@components/Global";
-import FoodPointer from '@components/home/FoodPointer';
+import {
+  scaleClamped,
+  scaleClampedMobile,
+  scaleClampedDesktop,
+  ON_MOBILE,
+  PageMargin,
+} from "@components/Global";
+import FoodPointer from "@components/home/FoodPointer";
 
 export default function Page() {
   return (
@@ -30,7 +35,7 @@ export default function Page() {
       <PageMargin>
         <FridgeSection className={MobileFlexCol}>
           <FridgeSideTxt>An app, built just for your fridge</FridgeSideTxt>
-          <FridgeSideTxt >that scans your food automatically</FridgeSideTxt>
+          <FridgeSideTxt>that scans your food automatically</FridgeSideTxt>
           <FridgeSideTxt className={MobileOrderLast}>
             to help you prepare meal and reduce food waste
           </FridgeSideTxt>
@@ -39,7 +44,7 @@ export default function Page() {
             <Milk>Milk</Milk>
             <Egg>Egg</Egg>
             <Carrot>Carrot</Carrot>
-            <Image 
+            <Image
               width={1700}
               height={2848}
               src="/FridgeL.avif"
@@ -49,7 +54,7 @@ export default function Page() {
             />
           </div>
         </FridgeSection>
-        <RecipeSection/>
+        <RecipeSection />
         <StatisticsSection>
           <TopStatistics>
             <h2>Around 30-40% of food gets wasted every year</h2>
@@ -64,7 +69,8 @@ export default function Page() {
                   endingValue={60}
                   duration={3}
                   delay={0.25}
-                /> Million
+                />{" "}
+                Million
               </strong>
               tons
             </h2>
@@ -76,7 +82,8 @@ export default function Page() {
                   endingValue={120}
                   duration={3}
                   delay={0.25}
-                /> Billion
+                />{" "}
+                Billion
               </strong>
               pounds
             </h2>
@@ -92,12 +99,7 @@ export default function Page() {
 
         <CallToActionSection>
           <h2>Join the Fight Against Food Waste Today</h2>
-          <Button
-            as="a"
-            href="/"
-            styling="primary"
-            className={CoAButtonCSS}
-          >
+          <Button as="a" href="/" styling="primary" className={CoAButtonCSS}>
             Get Started
           </Button>
         </CallToActionSection>
@@ -132,7 +134,7 @@ const FridgeAndPointers = css({
   gridRowStart: 1,
   gridRowEnd: 4,
   width: "100%",
-  
+
   [ON_MOBILE]: {
     margin: "25px 0",
   },
@@ -189,7 +191,7 @@ const FridgeImg = css({
     justifySelf: "end",
     width: "66%", // Set here
   },
-})
+});
 const FridgeSection = styled("section")({
   display: "grid",
   width: "100%",
@@ -200,7 +202,7 @@ const FridgeSection = styled("section")({
 
   [ON_MOBILE]: {
     marginTop: "35px",
-  }
+  },
 });
 
 const FridgeSideTxt = styled("span")({
@@ -254,7 +256,7 @@ const BottomStatistics = styled("div")({
     fontSize: scaleClamped(29, 52),
     fontWeight: "500",
     textAlign: "center",
-    whiteSpace: "pre-wrap"
+    whiteSpace: "pre-wrap",
   },
 
   "&> h2 > strong": {
@@ -271,8 +273,10 @@ const LandfillImg = css({
 });
 
 const CallToActionSection = styled("section")({
+  display: "flex",
+  flexDirection: "column",
   marginTop: "96px",
-  justifyItems: "center",
+  alignItems: "center",
 
   "&> h2": {
     fontSize: scaleClamped(29, 52),
@@ -301,7 +305,7 @@ const MobileCenter = css({
 
 const MobileOrderLast = css({
   [ON_MOBILE]: {
-    order: 1, 
+    order: 1,
   },
 });
 
