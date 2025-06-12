@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import ThemeProvider from "./providers";
 import NavBar from "@components/NavBar";
 import Footer from "@components/Footer";
+import CookieBanner from "@components/CookieBanner";
 import { styled } from "@pigment-css/react";
 
 const poppins = Poppins({
@@ -35,6 +36,7 @@ export default function RootLayout({
             <NavBar></NavBar>
             {children}
             <Footer></Footer>
+            <CookieBanner></CookieBanner>
           </Background>
         </ThemeProvider>
       </body>
