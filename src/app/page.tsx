@@ -212,13 +212,12 @@ const FridgeSideTxt = styled("span")({
 });
 
 const StatisticsSection = styled("section")({
-  alignItems: "center",
   marginTop: "64px",
 });
 
 const TopStatistics = styled("div")({
   width: "75%",
-  justifySelf: "center",
+  margin: "auto",
 
   [ON_MOBILE]: {
     width: "100%",

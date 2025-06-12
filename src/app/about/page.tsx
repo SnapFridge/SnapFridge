@@ -48,6 +48,7 @@ const Picture = styled("div")({
   width: "700px",
   height: "300px",
   borderRadius: "12px",
+  margin: "auto",
 });
 
 const HeaderText = styled("h2")({
