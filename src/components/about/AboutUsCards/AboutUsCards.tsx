@@ -1,5 +1,5 @@
 import { styled } from "@pigment-css/react";
-import * as motion from "motion/react-client";
+import { motion, type Variants } from 'motion/react';
 
 const Descriptions = {
   "Rylex Phan": `
@@ -51,7 +51,7 @@ function AboutUsCards() {
   );
 }
 
-const CardAnimations = {
+const CardAnimations: Variants = {
   visible: {
     y: 0,
     opacity: 1,

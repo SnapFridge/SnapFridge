@@ -5,10 +5,10 @@ import Icon from "@components/Icon";
 import { useState, type ChangeEvent } from "react";
 import VisuallyHidden from "@components/VisuallyHidden";
 import readFile from "./readFile.helper";
-import ImageComponent from "@components/ImageComponent";
+import FridgeImage from "./FridgeImage";
 
 interface Image {
-  src: string | undefined;
+  src: string;
   key: string;
 }
 
@@ -17,38 +17,36 @@ function FileUpload() {
 
   async function handleFiles(event: ChangeEvent<HTMLInputElement>) {
     const userFiles = event.target.files ?? [];
-    const readerPromises: Promise<string | undefined>[] = [];
+    const readerPromises: Promise<string>[] = [];
 
     for (const file of userFiles) {
-      // Rylex can you readd this, im too lazy
-      if (!file.type.startsWith("image/")) {
-        // TODO show this on a toaster when we make one
-        continue;
+      switch (file.type) {
+        case "image/png":
+        case "image/jpeg":
+        case "image/webp":
+        case "image/heic":
+        case "image/heif":
+          readerPromises.push(readFile(file));
+          break;
+        default:
+          // Toaster time
       }
-      readerPromises.push(readFile(file));
     }
-
     const results = await Promise.allSettled(readerPromises);
-
-    const fufilledResults = results.filter(
-      (result) => result.status === "fulfilled"
-    );
-    const newImages = fufilledResults.map((result) => {
-      return {
-        key: crypto.randomUUID(),
-        src: result.value,
-      };
+    const newImages = results.filter(
+      result => result.status === "fulfilled"
+    ).map(result => {
+      return { src: result.value, key: crypto.randomUUID() }
     });
     const nextImages = [...images, ...newImages];
     setImages(nextImages);
   }
-
   return (
     <Wrapper>
-      <HiddenUpload onChange={handleFiles} type="file" multiple />
+      <HiddenUpload onChange={e => void handleFiles(e)} type="file" multiple />
       {images.length === 0 && <Icon icon="FilePlus" size={36} />}
       {images.map(({ src, key }) => (
-        <ImageComponent key={key} imageKey={key} src={src} setImages={setImages} images={images} />
+        <FridgeImage key={key} imageKey={key} src={src} setImages={setImages} images={images} />
       ))}
       <VisuallyHidden>Add Images</VisuallyHidden>
     </Wrapper>

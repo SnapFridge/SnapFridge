@@ -1,31 +1,31 @@
 "use client";
 
-import { motion, AnimatePresence, useAnimate } from "motion/react";
+import { motion, AnimatePresence, useAnimate, type Variants } from "motion/react";
 import Image from "next/image";
 import Icon from "@components/Icon";
 import React from "react";
 import { useState, useEffect } from "react";
 import { styled } from "@pigment-css/react";
 
-
-interface Image {
-  src: string | undefined;
+interface OurImage {
+  src: string;
   key: string;
 }
+
 interface Props {
-  src: string | undefined,
-  imageKey: string,
-  images: Image[],
-  setImages: any,
+  src: string;
+  imageKey: string;
+  images: OurImage[];
+  setImages: (_: OurImage[]) => void;
 }
 
-export default function ImageComponent({ src, imageKey, images, setImages }: Props) {
+function FridgeImage({ src, imageKey, images, setImages }: Props) {
   const [isActive, setActive] = useState(false);
   const [scope, animate] = useAnimate();
 
   useEffect(() => {
-    if (isActive) {
-      const enterAnimation = async () => {
+    void (async () => {
+     if (isActive) {
         await animate(scope.current, 
           {
             y: -5,
@@ -33,25 +33,16 @@ export default function ImageComponent({ src, imageKey, images, setImages }: Pro
           }
         );
       }
-
-      enterAnimation();
-    }
-
-    if (!isActive) {
-      const exitAnimation = async () => {
+      else {
         await animate(scope.current, 
           {
             y: 0,
             scale: 1,
           }
         );
-      }
-
-      exitAnimation();
-    }
-
+      } 
+    })();
   }, [isActive]);
-
 
   function handleHoverEnter() {
     setActive(true);
@@ -88,7 +79,6 @@ export default function ImageComponent({ src, imageKey, images, setImages }: Pro
           (
               <DeleteContainer
                 onClick={handleDelete}
-
                 variants={DeleteVariants}
                 whileHover="hover"
                 initial="initial"
@@ -101,7 +91,6 @@ export default function ImageComponent({ src, imageKey, images, setImages }: Pro
           : undefined
         }
       </AnimatePresence>
-
       <Image 
         width={150}
         height={150}
@@ -112,7 +101,7 @@ export default function ImageComponent({ src, imageKey, images, setImages }: Pro
   )
 }
 
-const ContainerVariants = {
+const ContainerVariants: Variants = {
   "initial": {
     y: 10,
     opacity: 0,
@@ -134,7 +123,6 @@ const ImageContainer = styled(motion.div)({
   },
 });
 
-
 const DeleteContainer = styled(motion.div)({
   zIndex: 2,
   position: "absolute",
@@ -145,7 +133,7 @@ const DeleteContainer = styled(motion.div)({
   padding: "4px",
 });
 
-const DeleteVariants = {
+const DeleteVariants: Variants = {
   "initial": {
     y: 5,
     opacity: 0,
@@ -164,3 +152,4 @@ const DeleteVariants = {
 
 }
 
+export default FridgeImage;
