@@ -29,25 +29,40 @@ function FileUpload() {
           readerPromises.push(readFile(file));
           break;
         default:
-          // Toaster time
+        // Toaster time
       }
     }
     const results = await Promise.allSettled(readerPromises);
-    const newImages = results.filter(
-      result => result.status === "fulfilled"
-    ).map(result => {
-      return { src: result.value, key: crypto.randomUUID() }
-    });
+    const newImages = results
+      .filter((result) => result.status === "fulfilled")
+      .map((result) => {
+        return { src: result.value, key: crypto.randomUUID() };
+      });
     const nextImages = [...images, ...newImages];
     setImages(nextImages);
   }
+
+  function deleteImage(key: string) {
+    const nextImages = images.filter((img) => img.key !== key);
+    setImages(nextImages);
+  }
+
   return (
     <Wrapper>
-      <HiddenUpload onChange={e => void handleFiles(e)} type="file" multiple 
-        accept=".png,.jpg,.webp,.heic,.heif"/>
+      <HiddenUpload
+        onChange={(e) => void handleFiles(e)}
+        type="file"
+        multiple
+        accept=".png,.jpg,.webp,.heic,.heif"
+      />
       {images.length === 0 && <Icon icon="FilePlus" size={36} />}
       {images.map(({ src, key }) => (
-        <FridgeImage key={key} imageKey={key} src={src} setImages={setImages} images={images} />
+        <FridgeImage
+          key={key}
+          imageKey={key}
+          src={src}
+          deleteImage={deleteImage}
+        />
       ))}
       <VisuallyHidden>Add Images</VisuallyHidden>
     </Wrapper>
