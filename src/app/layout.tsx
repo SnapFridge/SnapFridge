@@ -34,7 +34,7 @@ export default function RootLayout({
         >
           <Background>
             <NavBar></NavBar>
-            {children}
+            <Main>{children}</Main>
             <Footer></Footer>
             <CookieBanner></CookieBanner>
           </Background>
@@ -44,8 +44,14 @@ export default function RootLayout({
   );
 }
 const Background = styled("div")({
+  display: "flex",
+  flexDirection: "column",
   minHeight: "100%",
   color: "var(--text-950)",
   background: "var(--background)",
   isolation: "isolate",
+});
+
+const Main = styled("main")({
+  flex: 1,
 });
