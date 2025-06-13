@@ -1,7 +1,6 @@
 "use client";
 
 import { type ComponentProps, useState, useEffect } from "react";
-import { useTheme } from "next-themes";
 import Button from "@components/Button";
 import { styled } from "@pigment-css/react";
 import VisuallyHidden from "@components/VisuallyHidden";
