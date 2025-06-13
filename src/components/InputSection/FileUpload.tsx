@@ -1,10 +1,21 @@
+"use client";
+
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
+import { useState, type ChangeEvent } from "react";
 
 function FileUpload() {
+  const [files, setFiles] = useState([]);
+
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
+    const files = event.target.files;
+
+    console.log(files);
+  }
+
   return (
     <Wrapper>
-      <HiddenUpload type="file" />
+      <HiddenUpload onChange={handleChange} type="file" />
       <Icon icon="FilePlus" size={36} />
     </Wrapper>
   );
