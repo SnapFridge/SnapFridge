@@ -7,11 +7,19 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { styled } from "@pigment-css/react";
 
+
+interface Image {
+  src: string | undefined;
+  key: string;
+}
 interface Props {
   src: string | undefined,
+  imageKey: string,
+  images: Image[],
+  setImages: any,
 }
 
-export default function ImageComponent({ src }: Props) {
+export default function ImageComponent({ src, imageKey, images, setImages }: Props) {
   const [isActive, setActive] = useState(false);
   const [scope, animate] = useAnimate();
 
@@ -57,7 +65,9 @@ export default function ImageComponent({ src }: Props) {
     setActive(!isActive)
   }
 
-
+  function handleDelete() {
+    setImages(images.filter(image => image.key !== imageKey));
+  }
 
   return (
     <ImageContainer
@@ -77,8 +87,9 @@ export default function ImageComponent({ src }: Props) {
         {isActive ?
           (
               <DeleteContainer
-                variants={DeleteVariants}
+                onClick={handleDelete}
 
+                variants={DeleteVariants}
                 whileHover="hover"
                 initial="initial"
                 animate="enter"
@@ -125,6 +136,7 @@ const ImageContainer = styled(motion.div)({
 
 
 const DeleteContainer = styled(motion.div)({
+  zIndex: 2,
   position: "absolute",
   right: "8px",
   top: "8px",

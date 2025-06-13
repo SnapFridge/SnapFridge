@@ -48,7 +48,7 @@ function FileUpload() {
       <HiddenUpload onChange={handleFiles} type="file" multiple />
       {images.length === 0 && <Icon icon="FilePlus" size={36} />}
       {images.map(({ src, key }) => (
-        <ImageComponent key={key} src={src} />
+        <ImageComponent key={key} imageKey={key} src={src} setImages={setImages} images={images} />
       ))}
       <VisuallyHidden>Add Images</VisuallyHidden>
     </Wrapper>
