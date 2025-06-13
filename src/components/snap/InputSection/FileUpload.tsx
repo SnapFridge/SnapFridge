@@ -4,81 +4,69 @@ import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import { useState, type ChangeEvent } from "react";
 import VisuallyHidden from "@components/VisuallyHidden";
-import readFile from "./readFile.helper";
 import FridgeImage from "./FridgeImage";
-
-interface Image {
-  src: string;
-  key: string;
-}
+import { scaleClamped } from '@components/Global';
 
 function FileUpload() {
-  const [images, setImages] = useState<Image[]>([]);
+  const [imgURLs, setImgURLs] = useState<string[]>([]);
+  function handleFiles(event: ChangeEvent<HTMLInputElement>) {
 
-  async function handleFiles(event: ChangeEvent<HTMLInputElement>) {
-    const userFiles = event.target.files ?? [];
-    const readerPromises: Promise<string>[] = [];
-
+    // Only null when the target is not <input type="file">, but we know it is
+    const userFiles = event.target.files!;
+    if(userFiles.length < 1) {
+      return;
+    }
+    const newImages: string[] = [];
     for (const file of userFiles) {
       switch (file.type) {
         case "image/png":
         case "image/jpeg":
         case "image/webp":
         case "image/heic":
-        case "image/heif":
-          readerPromises.push(readFile(file));
-          break;
+        case "image/heif": { 
+
+          // Used as src and key since it's unique
+          const url = URL.createObjectURL(file);
+          newImages.push(url);
+          break; 
+        }
         default:
-        // Toaster time
+          // Toaster time
       }
     }
-    const results = await Promise.allSettled(readerPromises);
-    const newImages = results
-      .filter((result) => result.status === "fulfilled")
-      .map((result) => {
-        return { src: result.value, key: crypto.randomUUID() };
-      });
-    const nextImages = [...images, ...newImages];
-    setImages(nextImages);
+    // Reset so that you don't have invisible imgURLs
+    event.target.value = "";
+    const nextImages = [...imgURLs, ...newImages];
+    setImgURLs(nextImages);
   }
-
-  function deleteImage(key: string) {
-    const nextImages = images.filter((img) => img.key !== key);
-    setImages(nextImages);
-  }
-
   return (
-    <Wrapper>
-      <HiddenUpload
-        onChange={(e) => void handleFiles(e)}
-        type="file"
-        multiple
-        accept=".png,.jpg,.webp,.heic,.heif"
-      />
-      {images.length === 0 && <Icon icon="FilePlus" size={36} />}
-      {images.map(({ src, key }) => (
-        <FridgeImage
-          key={key}
-          imageKey={key}
-          src={src}
-          deleteImage={deleteImage}
-        />
+    <DashedBorder>
+      <HiddenUpload onChange={handleFiles} type="file" multiple 
+        accept=".png,.jpg,.webp,.heic,.heif"/>
+      {imgURLs.length === 0 && <Icon icon="FilePlus" size={36} />}
+      {imgURLs.map(url => (
+        <FridgeImage key={url} src={url} setImgURLs={setImgURLs} imgURLs={imgURLs} />
       ))}
       <VisuallyHidden>Add Images</VisuallyHidden>
-    </Wrapper>
+    </DashedBorder>
   );
 }
 
-const Wrapper = styled("div")({
+const DashedBorder = styled("div")({
   position: "relative",
+  ["--gap" as string]: scaleClamped(7, 20, true, 320, 673),
+  gap: "var(--gap)",
   display: "flex",
-  justifyContent: "center",
+  flexWrap: "wrap",
+  justifyContent: "space-evenly",
   alignItems: "center",
-  width: "75%",
-  height: "180px",
+  maxWidth: "576px",
+  width: "100%",
+  height: "fit-content",
+  minHeight: "180px",
+  padding: "20px 20px",
   borderRadius: "16px",
-  outline: "var(--accent-300) dashed 4px",
-  outlineOffset: "-4px",
+  border: "var(--accent-300) dashed 4px",
   background: "color-mix(in srgb, var(--background-50) 65%, transparent)",
 });
 
@@ -89,7 +77,7 @@ const HiddenUpload = styled("input")({
   top: 0,
   bottom: 0,
   left: 0,
-  right: 0,
+  right:  0,
   margin: "auto",
   opacity: 0,
   appearance: "none",

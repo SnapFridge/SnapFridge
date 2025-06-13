@@ -13,13 +13,13 @@ export default function VisuallyHidden({
       return;
     }
     const handleKeyDown = (ev: globalThis.KeyboardEvent) => {
-      if (ev.key === "Alt") {
+      if(ev.shiftKey && ev.altKey) {
         setForceShow(true);
       }
     };
 
     const handleKeyUp = (ev: globalThis.KeyboardEvent) => {
-      if (ev.key === "Alt") {
+      if(ev.shiftKey || ev.altKey) {
         setForceShow(false);
       }
     };
