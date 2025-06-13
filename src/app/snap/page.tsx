@@ -1,6 +1,5 @@
-import Button from "@components/Button";
-import { ON_MOBILE, PageMargin } from "@components/Global";
-import { styled } from "@pigment-css/react";
+import InputSection from "@components/InputSection";
+import { PageMargin } from "@components/Global";
 
 export default function Page() {
   return (
@@ -9,8 +8,3 @@ export default function Page() {
     </PageMargin>
   );
 }
-
-const InputSection = styled("div")({
-  display: "flex",
-  flexDirection: "column",
-});

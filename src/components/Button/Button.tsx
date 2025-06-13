@@ -1,10 +1,14 @@
-import { type ComponentProps } from "react";
+import { type ComponentProps, type ElementType } from "react";
 import { styled } from "@pigment-css/react";
-interface Props extends ComponentProps<"button"> {
-  as?: string;
-  href?: string;
+
+// Generic type for polymorphic components
+type PolymorphicComponentProp<C extends ElementType, Props = {}> = {
+  as?: C;
   styling?: keyof typeof STYLES;
-}
+} & Props &
+  Omit<ComponentProps<C>, keyof Props | "as" | "styling">;
+
+type ButtonProps<C extends ElementType> = PolymorphicComponentProp<C>;
 
 const STYLES = {
   primary: {
@@ -19,7 +23,12 @@ const STYLES = {
   },
 };
 
-function Button({ styling, children, style, ...delegated }: Props) {
+function Button<C extends ElementType = "button">({
+  styling,
+  children,
+  style,
+  ...delegated
+}: ButtonProps<C>) {
   const buttonStyle = styling === undefined ? {} : STYLES[styling];
   const actualStyle = {
     ...buttonStyle,

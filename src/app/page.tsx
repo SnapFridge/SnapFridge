@@ -13,6 +13,7 @@ import {
   PageMargin,
 } from "@components/Global";
 import FoodPointer from "@components/home/FoodPointer";
+import Link from "next/link";
 
 export default function Page() {
   return (
@@ -22,10 +23,10 @@ export default function Page() {
           <Title>SnapFridge</Title>
           <AdjectiveRecipes />
           <ButtonWrapper>
-            <Button as="a" href="/about" styling="primary">
+            <Button as={Link} href="/about" styling="primary">
               About Us
             </Button>
-            <Button as="a" href="/snap" styling="secondary">
+            <Button as={Link} href="/snap" styling="secondary">
               Get Started
             </Button>
           </ButtonWrapper>
@@ -99,7 +100,12 @@ export default function Page() {
 
         <CallToActionSection>
           <h2>Join the Fight Against Food Waste Today</h2>
-          <Button as="a" href="/" styling="primary" className={CoAButtonCSS}>
+          <Button
+            as={Link}
+            href="/snap"
+            styling="primary"
+            className={CoAButtonCSS}
+          >
             Get Started
           </Button>
         </CallToActionSection>

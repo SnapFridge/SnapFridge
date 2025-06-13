@@ -2,9 +2,14 @@
 
 import * as React from "react";
 import { styled } from "@pigment-css/react";
+import FileUpload from "./FileUpload";
 
 function InputSection() {
-  return <Wrapper></Wrapper>;
+  return (
+    <Wrapper>
+      <FileUpload />
+    </Wrapper>
+  );
 }
 
 const Wrapper = styled("div")({
