@@ -7,7 +7,7 @@ import Link from "@components/Link";
 import ThemeSwitcher from "@components/ThemeSwitcher";
 import Icon from "@components/Icon";
 
-export default function Dropdown() {
+function Dropdown() {
   return (
     <Wrapper>
       <DropdownMenu.Root>
@@ -62,3 +62,5 @@ const Content = styled(DropdownMenu.Content)({
 const Item = styled(DropdownMenu.Item)({
   display: "block",
 });
+
+export default Dropdown;

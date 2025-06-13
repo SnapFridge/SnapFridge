@@ -19,7 +19,7 @@ const STYLES = {
   },
 };
 
-export default function Button({ styling, children, style, ...delegated }: Props) {
+function Button({ styling, children, style, ...delegated }: Props) {
   const buttonStyle = styling === undefined ? {} : STYLES[styling];
   const actualStyle = {
     ...buttonStyle,
@@ -47,3 +47,5 @@ const StyledButton = styled("button")({
     backgroundColor: "var(--background-hover)",
   },
 });
+
+export default Button;

@@ -1,11 +1,11 @@
 import { styled, css } from "@pigment-css/react";
 import Link from "@components/Link";
-import Icon from '@components/Icon';
+import Icon from "@components/Icon";
 
-export default function Logo() {
+function Logo() {
   return (
     <Link href="/" className={Wrapper}>
-      <Icon icon="Logo" size={53} className={A}/>
+      <Icon icon="Logo" size={53} className={A} />
       <LogoName>SnapFridge</LogoName>
     </Link>
   );
@@ -16,7 +16,7 @@ const Wrapper = css({
 
   "&:hover": {
     textDecoration: "none",
-  }
+  },
 });
 
 const A = css({
@@ -31,3 +31,5 @@ const LogoName = styled("span")({
   fontSize: `${24 / 16}rem`,
   fontWeight: "bold",
 });
+
+export default Logo;

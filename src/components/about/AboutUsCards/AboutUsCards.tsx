@@ -1,9 +1,8 @@
 import { styled } from "@pigment-css/react";
-import * as motion from "motion/react-client"
+import * as motion from "motion/react-client";
 
 const Descriptions = {
-  "Rylex Phan":
-    `
+  "Rylex Phan": `
       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
       sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -12,8 +11,7 @@ const Descriptions = {
       Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
       mollit anim id est laborum.
     `,
-  "Andrew Kim":
-    `
+  "Andrew Kim": `
       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
       sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -22,8 +20,7 @@ const Descriptions = {
       Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
       mollit anim id est laborum.
     `,
-  "Andrew Trinh":
-    `
+  "Andrew Trinh": `
       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
       sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -32,40 +29,39 @@ const Descriptions = {
       Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
       mollit anim id est laborum.
     `,
-}
+};
 
-
-export default function AboutUsCards() {
+function AboutUsCards() {
   return (
-  <CardContainer>
-    {Object.entries(Descriptions).map(([name, description]) => 
-      <Card
-        key={name}
-        variants={CardAnimations}
-        initial="hidden"
-        whileInView="visible"
-        whileHover="hover"
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <h1>{name}</h1>
-        <p>{description}</p>
-      </Card>  
-    )}
-  </CardContainer>
-  )
+    <CardContainer>
+      {Object.entries(Descriptions).map(([name, description]) => (
+        <Card
+          key={name}
+          variants={CardAnimations}
+          initial="hidden"
+          whileInView="visible"
+          whileHover="hover"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <h1>{name}</h1>
+          <p>{description}</p>
+        </Card>
+      ))}
+    </CardContainer>
+  );
 }
 
 const CardAnimations = {
-  visible: {  
+  visible: {
     y: 0,
     opacity: 1,
-  transition: {
-    duration: 0.6,
-    ease: "easeOut",
-    delay: 0.2,
-  }
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+      delay: 0.2,
+    },
   },
-  hidden: { 
+  hidden: {
     y: 100,
     opacity: 0,
   },
@@ -73,8 +69,7 @@ const CardAnimations = {
     y: -10,
     scale: 1.01,
   },
-}
-
+};
 
 const CardContainer = styled(motion.ul)({
   display: "flex",
@@ -88,7 +83,7 @@ const CardContainer = styled(motion.ul)({
 
     "&> :not(:first-child)": {
       marginTop: "24px",
-    },  
+    },
   },
 });
 
@@ -100,3 +95,5 @@ const Card = styled(motion.li)({
   boxShadow: `var(--shadow)`,
   textAlign: "center",
 });
+
+export default AboutUsCards;

@@ -2,11 +2,17 @@
 
 import { styled } from "@pigment-css/react";
 import useTypewriter from "./typewritter.helper";
-import { scaleClamped } from '@components/Global';
+import { scaleClamped } from "@components/Global";
 
-const ADJECTIVES = ["Delicious", "Excellent", "Wonderful", "Amazing", "Incredible"];
+const ADJECTIVES = [
+  "Delicious",
+  "Excellent",
+  "Wonderful",
+  "Amazing",
+  "Incredible",
+];
 
-export default function AdjectiveRecipes() {
+function AdjectiveRecipes() {
   const adjective = useTypewriter(ADJECTIVES);
 
   return (
@@ -26,3 +32,5 @@ const Adjective = styled("span")({
   color: "hsl(198 100% 65%)",
   fontWeight: "bold",
 });
+
+export default AdjectiveRecipes;

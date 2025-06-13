@@ -6,11 +6,11 @@ import { useState, useEffect } from "react";
 import Button from "@components/Button";
 import { ON_MOBILE } from "@components/Global";
 
-export default function CookieBanner() {
+function CookieBanner() {
   const [visible, setVisibility] = useState(true);
 
   useEffect(() => {
-    const hasAcknowledged = localStorage.getItem('acknowledgedCookie');
+    const hasAcknowledged = localStorage.getItem("acknowledgedCookie");
 
     if (hasAcknowledged) {
       setVisibility(false);
@@ -18,47 +18,44 @@ export default function CookieBanner() {
   }, []);
 
   function acknowledgeCookies() {
-    localStorage.setItem('acknowledgedCookie', 'true');
+    localStorage.setItem("acknowledgedCookie", "true");
     setVisibility(false);
   }
-
 
   return (
     <AnimatePresence>
       {visible ? (
-          <CookieBannerContainer
-            variants={ContainerVariants}
-            transition={{ type: "spring" }}
-            initial="starting"
-            animate="enter"
-            exit="exit"
-            whileHover="hover"
-          >
-            <Title>Cookie Acknowledgement</Title>
-            <CookieBannerContent>
-              SnapFridge uses cookies only to remember your login and support secure authentication with Firebase. 
-              No tracking or analytics cookies are used.
-            </CookieBannerContent>
-            <Button
-              onClick={acknowledgeCookies}
-              className={ButtonCSS}
-            >
-              Acknowledge
-            </Button>
-          </CookieBannerContainer>         
-      ) : null }
+        <CookieBannerContainer
+          variants={ContainerVariants}
+          transition={{ type: "spring" }}
+          initial="starting"
+          animate="enter"
+          exit="exit"
+          whileHover="hover"
+        >
+          <Title>Cookie Acknowledgement</Title>
+          <CookieBannerContent>
+            SnapFridge uses cookies only to remember your login and support
+            secure authentication with Firebase. No tracking or analytics
+            cookies are used.
+          </CookieBannerContent>
+          <Button onClick={acknowledgeCookies} className={ButtonCSS}>
+            Acknowledge
+          </Button>
+        </CookieBannerContainer>
+      ) : null}
     </AnimatePresence>
-  )
+  );
 }
 
 const ContainerVariants = {
   starting: {
     opacity: 0,
-    y: 50,    
+    y: 50,
   },
   enter: {
     opacity: 1,
-    y: 0
+    y: 0,
   },
   exit: {
     opacity: 0,
@@ -67,7 +64,7 @@ const ContainerVariants = {
   hover: {
     scale: 1.02,
   },
-}
+};
 
 const CookieBannerContainer = styled(motion.div)({
   zIndex: 3,
@@ -91,21 +88,21 @@ const CookieBannerContainer = styled(motion.div)({
     left: 0,
     width: "100vw",
     padding: "12px",
-  }
+  },
 });
 
-const Title = styled('h1')({
-  fontSize: `${24 / 16}rem`
+const Title = styled("h1")({
+  fontSize: `${24 / 16}rem`,
 });
 
-const CookieBannerContent = styled('p')({
-
-});
+const CookieBannerContent = styled("p")({});
 
 const ButtonCSS = css({
   backgroundColor: "var(--primary-200)",
 
   "&:hover": {
-    backgroundColor: "var(--primary-300)"
+    backgroundColor: "var(--primary-300)",
   },
 });
+
+export default CookieBanner;
