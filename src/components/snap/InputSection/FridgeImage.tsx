@@ -5,42 +5,31 @@ import Image from "next/image";
 import Icon from "@components/Icon";
 import React from "react";
 import { useState, useEffect } from "react";
-import { styled } from "@pigment-css/react";
-
-interface OurImage {
-  src: string;
-  key: string;
-}
+import { css, styled } from "@pigment-css/react";
+import { ON_MOBILE, scaleClamped } from '@components/Global';
 
 interface Props {
   src: string;
-  imageKey: string;
-  images: OurImage[];
-  setImages: (_: OurImage[]) => void;
+  imgURLs: string[];
+  setImgURLs: (_: string[]) => void;
 }
 
-function FridgeImage({ src, imageKey, images, setImages }: Props) {
+function FridgeImage({ src, imgURLs, setImgURLs }: Props) {
   const [isActive, setActive] = useState(false);
   const [scope, animate] = useAnimate();
 
   useEffect(() => {
     void (async () => {
-     if (isActive) {
-        await animate(scope.current, 
-          {
-            y: -5,
-            scale: 1.05,
-          }
-        );
-      }
-      else {
-        await animate(scope.current, 
-          {
-            y: 0,
-            scale: 1,
-          }
-        );
-      } 
+      await animate(scope.current, 
+        isActive ? {
+          y: -5,
+          scale: 1.05,
+        } :
+        {
+          y: 0,
+          scale: 1,
+        }
+      );
     })();
   }, [isActive]);
 
@@ -54,15 +43,22 @@ function FridgeImage({ src, imageKey, images, setImages }: Props) {
 
   function handleClick() {
     setActive(!isActive)
+
   }
 
   function handleDelete() {
-    setImages(images.filter(image => image.key !== imageKey));
+    setImgURLs(imgURLs.filter(url => {
+      if(url == src) {
+        URL.revokeObjectURL(url);
+        return false;
+      }
+      return true;
+    }));
   }
 
   return (
     <ImageContainer
-      // for desktop
+      // desktop
       onMouseEnter={handleHoverEnter}
       onMouseLeave={handleHoverLeave}
 
@@ -77,21 +73,21 @@ function FridgeImage({ src, imageKey, images, setImages }: Props) {
       <AnimatePresence initial={false}>
         {isActive ?
           (
-              <DeleteContainer
-                onClick={handleDelete}
-                variants={DeleteVariants}
-                whileHover="hover"
-                initial="initial"
-                animate="enter"
-                exit="exit"
-              >
-                <Icon icon="Trash2" color="var(--warning)" />
-              </DeleteContainer>            
+            <DeleteContainer
+              onClick={handleDelete}
+              variants={DeleteVariants}
+              whileHover="hover"
+              initial="initial"
+              animate="enter"
+              exit="exit"
+            >
+              <Icon icon="Trash2" color="var(--warning)" />
+            </DeleteContainer>            
           )
           : undefined
         }
       </AnimatePresence>
-      <Image 
+      <Image className={FridgeImg}
         width={150}
         height={150}
         src={src}
@@ -117,7 +113,9 @@ const ImageContainer = styled(motion.div)({
   borderRadius: "8px",
   overflow: "hidden",
   position: "relative",
-
+  ["--photo-per-row" as string]: 3,
+  flex: "0 1 calc(100% / var(--photo-per-row) - var(--gap))",
+  maxWidth: "100% / var(--photo-per-row) - var(--gap))",
   "&:hover": {
     boxShadow: "var(--shadow)",
   },
@@ -151,5 +149,12 @@ const DeleteVariants: Variants = {
   },
 
 }
+
+const FridgeImg = css({
+  width: "auto",
+  height: "auto",
+  aspectRatio: "1 / 1",
+  objectFit: "cover",
+});
 
 export default FridgeImage;
