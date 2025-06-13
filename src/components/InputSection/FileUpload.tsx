@@ -2,47 +2,50 @@
 
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import { useRef, useState, type ChangeEvent } from "react";
+import { useState, type ChangeEvent } from "react";
 import VisuallyHidden from "@components/VisuallyHidden";
 import readFile from "./readFile.helper";
 import ImageComponent from "@components/ImageComponent";
 
 interface Image {
   src: string | undefined;
-  key: number;
+  key: string;
 }
 
 function FileUpload() {
   const [images, setImages] = useState<Image[]>([]);
-  const newId = useRef(0);
 
-function handleFiles(event: ChangeEvent<HTMLInputElement>) {
-
-  // ESLint complains if I don't use an IIAFE
-  void (async () => {
+  async function handleFiles(event: ChangeEvent<HTMLInputElement>) {
     const userFiles = event.target.files ?? [];
-    const newImages: Image[] = []
+    const readerPromises: Promise<string | undefined>[] = [];
+
     for (const file of userFiles) {
-      switch (file.type) {
-        case "image/png":
-        case "image/jpeg":
-        case "image/webp":
-        case "image/heic":
-        case "image/heif":
-          newImages.push({ src: await readFile(file), key: newId.current++ });
-          break;
-        default:
-          // TODO show this on a toaster when we make one
-          // Rylex: JUST USE ALERT BRO IT'S TOTALLY FINEEEEEE
+      // Rylex can you readd this, im too lazy
+      if (!file.type.startsWith("image/")) {
+        // TODO show this on a toaster when we make one
+        continue;
       }
+      readerPromises.push(readFile(file));
     }
-    setImages([...images, ...newImages]);
-  })();
-}
+
+    const results = await Promise.allSettled(readerPromises);
+
+    const fufilledResults = results.filter(
+      (result) => result.status === "fulfilled"
+    );
+    const newImages = fufilledResults.map((result) => {
+      return {
+        key: crypto.randomUUID(),
+        src: result.value,
+      };
+    });
+    const nextImages = [...images, ...newImages];
+    setImages(nextImages);
+  }
 
   return (
     <Wrapper>
-      <HiddenUpload onChange={handleFiles} type="file" multiple/>
+      <HiddenUpload onChange={handleFiles} type="file" multiple />
       {images.length === 0 && <Icon icon="FilePlus" size={36} />}
       {images.map(({ src, key }) => (
         <ImageComponent key={key} src={src} />
