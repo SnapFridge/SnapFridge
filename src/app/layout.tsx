@@ -1,4 +1,5 @@
 import "@pigment-css/react/styles.css";
+import "@radix-ui/themes/styles.css";
 import "./globalStyles";
 import { Poppins } from "next/font/google";
 import ThemeProvider from "./providers";
@@ -6,6 +7,7 @@ import NavBar from "@components/NavBar";
 import Footer from "@components/Footer";
 import CookieBanner from "@components/CookieBanner";
 import { styled } from "@pigment-css/react";
+import { Theme } from "@radix-ui/themes";
 
 const poppins = Poppins({
   weight: ["400", "700"],
@@ -25,20 +27,22 @@ export default function RootLayout({
   return (
     <html lang="en" className={poppins.className} suppressHydrationWarning>
       <body>
-        {/* theme provider from next-themes, handles the dark/light theming */}
-        <ThemeProvider
-          attribute="data-theme"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <Background>
-            <NavBar></NavBar>
-            <Main>{children}</Main>
-            <Footer></Footer>
-            <CookieBanner></CookieBanner>
-          </Background>
-        </ThemeProvider>
+        <Theme>
+          {/* theme provider from next-themes, handles the dark/light theming */}
+          <ThemeProvider
+            attribute="data-theme"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Background>
+              <NavBar></NavBar>
+              <Main>{children}</Main>
+              <Footer></Footer>
+              <CookieBanner></CookieBanner>
+            </Background>
+          </ThemeProvider>          
+        </Theme>
       </body>
     </html>
   );

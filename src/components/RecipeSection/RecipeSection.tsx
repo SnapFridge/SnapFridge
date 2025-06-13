@@ -1,8 +1,16 @@
+"use client";
+
 import RecipeCard from "@components/RecipeCard";
-import { styled } from "@pigment-css/react";
+import { styled, css } from "@pigment-css/react";
 import * as motion from "motion/react-client";
 import { scaleClamped } from "@components/Global";
 import Icon from "@components/Icon";
+import { useState, useEffect } from "react";
+import { Skeleton, Container } from "@radix-ui/themes";
+import { Flex, Text, Button } from "@radix-ui/themes";
+
+
+
 
 interface Props {
   headerText?: string;
@@ -167,6 +175,21 @@ const recipesExample = [
 ];
 
 function RecipeSection({ headerText = "Recipes Found" }: Props) {
+  const [loading, isLoading] = useState(true);
+
+
+  if (loading) {
+    return (
+      <Container>
+        <Text>
+          <Skeleton>Loading....</Skeleton>
+        </Text>
+      </Container>
+    )
+  }
+
+
+
   return (
     <>
       <Header>

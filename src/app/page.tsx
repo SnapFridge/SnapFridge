@@ -38,7 +38,7 @@ export default function Page() {
           <FridgeSideTxt>An app, built just for your fridge</FridgeSideTxt>
           <FridgeSideTxt>that scans your food automatically</FridgeSideTxt>
           <FridgeSideTxt className={MobileOrderLast}>
-            to help you prepare meal and reduce food waste
+            to help you prepare meals and reduce food waste
           </FridgeSideTxt>
           <div className={FridgeAndPointers}>
             <Butter>Butter</Butter>
