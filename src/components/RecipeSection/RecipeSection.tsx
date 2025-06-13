@@ -1,15 +1,15 @@
 "use client";
 
 import RecipeCard from "@components/RecipeCard";
-import { styled } from "@pigment-css/react";
+import { styled, css } from "@pigment-css/react";
 import * as motion from "motion/react-client";
 import { scaleClamped } from "@components/Global";
 import Icon from "@components/Icon";
 import { useState } from "react";
-import { Skeleton, Container } from "@radix-ui/themes";
+import { Skeleton, Box, Heading } from "@radix-ui/themes";
 import { Text } from "@radix-ui/themes";
-
-
+import { ON_MOBILE } from "@components/Global";
+import { type Variants } from "motion/react";
 
 
 interface Props {
@@ -175,16 +175,98 @@ const recipesExample = [
 ];
 
 function RecipeSection({ headerText = "Recipes Found" }: Props) {
-  const [loading, isLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
+  function switchLoading() {
+    setLoading(!loading);
+  }
 
   if (loading) {
     return (
-      <Container>
-        <Text>
-          <Skeleton>Loading....</Skeleton>
-        </Text>
-      </Container>
+      <>
+        <button onClick={switchLoading}>switch loading</button>
+        <Header>
+          <HeaderTxt>{headerText}</HeaderTxt>
+          <Icon icon="Sparkles" size={50}></Icon>
+        </Header>
+
+        <RecipeList>
+          <SkeletonContainer
+            variants={SkeletonCardVariant}
+            initial="offscreen"
+            whileInView="onscreen"
+            whileHover="hover"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <Heading className={SkeletonTitle} >
+              <Skeleton>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</Skeleton>
+            </Heading>
+            
+            <Skeleton className={ImageCSS}>
+              <Box width="312px" height="231px"></Box>
+            </Skeleton>
+
+            <IngredientsContainer>
+              <Heading>
+                <Skeleton>Ingredients</Skeleton>
+              </Heading>
+
+              <Text>
+                <Skeleton>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Skeleton>
+              </Text>
+            </IngredientsContainer>
+
+
+            <MissedIngredientsContainer>
+              <Heading>
+                <Skeleton> Missed Ingredients</Skeleton>
+              </Heading>
+
+              <Text>
+                <Skeleton>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Skeleton>
+              </Text>
+            </MissedIngredientsContainer>
+          </SkeletonContainer>  
+
+          <SkeletonContainer
+            variants={SkeletonCardVariant}
+            initial="offscreen"
+            whileInView="onscreen"
+            whileHover="hover"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <Heading className={SkeletonTitle} >
+              <Skeleton>Lorem ipsum dolor sit amet, consectetur adipiscing elit,</Skeleton>
+            </Heading>
+            
+            <Skeleton className={ImageCSS}>
+              <Box width="312px" height="231px"></Box>
+            </Skeleton>
+
+            <IngredientsContainer>
+              <Heading>
+                <Skeleton>Ingredients</Skeleton>
+              </Heading>
+
+              <Text>
+                <Skeleton>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Skeleton>
+              </Text>
+            </IngredientsContainer>
+
+
+            <MissedIngredientsContainer>
+              <Heading>
+                <Skeleton> Missed Ingredients</Skeleton>
+              </Heading>
+
+              <Text>
+                <Skeleton>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Skeleton>
+              </Text>
+            </MissedIngredientsContainer>
+          </SkeletonContainer>            
+        </RecipeList>
+   
+      </>
     )
   }
 
@@ -192,6 +274,7 @@ function RecipeSection({ headerText = "Recipes Found" }: Props) {
 
   return (
     <>
+      <button onClick={switchLoading}>switch loading</button>
       <Header>
         <HeaderTxt>{headerText}</HeaderTxt>
         <Icon icon="Sparkles" size={50}></Icon>
@@ -228,5 +311,92 @@ const Header = styled("div")({
 const HeaderTxt = styled("h2")({
   fontSize: scaleClamped(24, 36),
 });
+
+
+const SkeletonContainer = styled(motion.li)({
+  padding: "24px",
+  maxWidth: "800px",
+
+  display: "grid",
+  gridTemplateColumns: "1fr 1fr",
+  gridTemplateRows: "1fr 2fr 2fr",
+  columnGap: "24px",
+  alignItems: "center",
+
+  [ON_MOBILE]: {
+    display: "flex",
+    flexDirection: "column",
+
+    "&> :not(:first-child)": {
+      marginTop: "16px",
+    },
+  },
+});
+
+const SkeletonCardVariant: Variants = {
+  offscreen: {
+    y: 100,
+    opacity: 0,
+  },
+  onscreen: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      duration: 0.8,
+    },
+  },
+  hover: {
+    scale: 1.02,
+    transition: {
+      type: "spring",
+      duration: 0.5,
+    },
+  },
+};
+
+
+
+
+const SkeletonTitle = css({
+  gridArea: "1 / 1 / 2 / 3",
+  width: "100%",
+
+  [ON_MOBILE]: {
+    textAlign: "center",
+  },
+});
+
+const ImageCSS = css({
+  gridArea: "2 / 1 / 4 / 2",
+  borderRadius: "24px",
+  minWidth: 0,
+  flex: "1 1 300px",
+  width: "100%",
+  height: "auto",
+});
+
+const IngredientsContainer = styled('div')({
+  gridArea: "2 / 2 / 3 / 3",
+  width: "100%",
+
+  [ON_MOBILE]: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+  },
+});
+
+const MissedIngredientsContainer = styled('div')({
+  gridArea: "3 / 2 / 4 / 3",
+  width: "100%",
+
+  [ON_MOBILE]: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+});
+
 
 export default RecipeSection;
