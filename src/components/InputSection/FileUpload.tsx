@@ -5,6 +5,7 @@ import Icon from "@components/Icon";
 import { useState, type ChangeEvent } from "react";
 import VisuallyHidden from "@components/VisuallyHidden";
 import { readFile } from "./file.helper";
+import ImageComponent from "@components/ImageComponent";
 
 interface Image {
   src: string | undefined;
@@ -37,7 +38,7 @@ function FileUpload() {
       <HiddenUpload onChange={handleFiles} type="file" />
       {images.length === 0 && <Icon icon="FilePlus" size={36} />}
       {images.map(({ src, id }) => (
-        <img key={id} width={150} height={150} src={src} />
+        <ImageComponent key={id} src={src} />
       ))}
       <VisuallyHidden>Add Images</VisuallyHidden>
     </Wrapper>

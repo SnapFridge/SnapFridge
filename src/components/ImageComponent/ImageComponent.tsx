@@ -1,0 +1,154 @@
+"use client";
+
+import { motion, AnimatePresence, useAnimate } from "motion/react";
+import Image from "next/image";
+import Icon from "@components/Icon";
+import React from "react";
+import { useState, useEffect } from "react";
+import { styled } from "@pigment-css/react";
+
+interface Props {
+  src: string | undefined,
+}
+
+export default function ImageComponent({ src }: Props) {
+  const [isActive, setActive] = useState(false);
+  const [scope, animate] = useAnimate();
+
+  useEffect(() => {
+    if (isActive) {
+      const enterAnimation = async () => {
+        await animate(scope.current, 
+          {
+            y: -5,
+            scale: 1.05,
+          }
+        );
+      }
+
+      enterAnimation();
+    }
+
+    if (!isActive) {
+      const exitAnimation = async () => {
+        await animate(scope.current, 
+          {
+            y: 0,
+            scale: 1,
+          }
+        );
+      }
+
+      exitAnimation();
+    }
+
+  }, [isActive]);
+
+
+  function handleHoverEnter() {
+    setActive(true);
+  }
+
+  function handleHoverLeave() {
+    setActive(false);
+  }
+
+  function handleClick() {
+    setActive(!isActive)
+  }
+
+
+
+  return (
+    <ImageContainer
+      // for desktop
+      onMouseEnter={handleHoverEnter}
+      onMouseLeave={handleHoverLeave}
+
+      // mobile
+      onClick={handleClick}
+
+      variants={ContainerVariants}
+      ref={scope}
+      initial="initial"
+      animate="enterAnim"
+    > 
+      <AnimatePresence initial={false}>
+        {isActive ?
+          (
+              <DeleteContainer
+                variants={DeleteVariants}
+
+                whileHover="hover"
+                initial="initial"
+                animate="enter"
+                exit="exit"
+              >
+                <Icon icon="Trash2" color="var(--warning)" />
+              </DeleteContainer>            
+          )
+          : undefined
+        }
+      </AnimatePresence>
+
+      <Image 
+        width={150}
+        height={150}
+        src={src}
+        alt=""
+      />
+    </ImageContainer>
+  )
+}
+
+const ContainerVariants = {
+  "initial": {
+    y: 10,
+    opacity: 0,
+  },
+  "enterAnim": {
+    y: 0,
+    opacity: 1,
+  },
+}
+
+const ImageContainer = styled(motion.div)({
+  zIndex: 1,
+  borderRadius: "8px",
+  overflow: "hidden",
+  position: "relative",
+
+  "&:hover": {
+    boxShadow: "var(--shadow)",
+  },
+});
+
+
+const DeleteContainer = styled(motion.div)({
+  position: "absolute",
+  right: "8px",
+  top: "8px",
+  backgroundColor: "rgba(0, 0, 0, 0.7)",
+  borderRadius: "4px",
+  padding: "4px",
+});
+
+const DeleteVariants = {
+  "initial": {
+    y: 5,
+    opacity: 0,
+  },
+  "enter": {
+    y: 0,
+    opacity: 1,
+  },
+  "exit": {
+    y: -5,
+    opacity: 0,
+  },
+  "hover": {
+    y: -2,
+  },
+
+}
+
