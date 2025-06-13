@@ -43,7 +43,8 @@ function FileUpload() {
   }
   return (
     <Wrapper>
-      <HiddenUpload onChange={e => void handleFiles(e)} type="file" multiple />
+      <HiddenUpload onChange={e => void handleFiles(e)} type="file" multiple 
+        accept=".png,.jpg,.webp,.heic,.heif"/>
       {images.length === 0 && <Icon icon="FilePlus" size={36} />}
       {images.map(({ src, key }) => (
         <FridgeImage key={key} imageKey={key} src={src} setImages={setImages} images={images} />
@@ -58,7 +59,7 @@ const Wrapper = styled("div")({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
-  width: "600px",
+  width: "75%",
   height: "180px",
   borderRadius: "16px",
   outline: "var(--accent-300) dashed 4px",
