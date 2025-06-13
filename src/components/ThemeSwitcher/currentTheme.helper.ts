@@ -1,6 +1,6 @@
 import { useTheme } from "next-themes";
 
-export function useCurrentTheme(): [string | undefined, () => void] {
+function useCurrentTheme(): [string | undefined, () => void] {
   const { systemTheme, theme, setTheme } = useTheme();
   const currentTheme = theme === "system" ? systemTheme : theme;
 
@@ -10,3 +10,5 @@ export function useCurrentTheme(): [string | undefined, () => void] {
 
   return [currentTheme, toggleTheme];
 }
+
+export default useCurrentTheme;

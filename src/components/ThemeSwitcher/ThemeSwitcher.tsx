@@ -6,7 +6,7 @@ import { styled } from "@pigment-css/react";
 import VisuallyHidden from "@components/VisuallyHidden";
 import { DropdownMenu } from "radix-ui";
 import Icon from "@components/Icon";
-import { useCurrentTheme } from "./currentTheme.helper";
+import useCurrentTheme from "./currentTheme.helper";
 
 interface Props extends ComponentProps<"button"> {
   mobile?: boolean;

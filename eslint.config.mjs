@@ -16,10 +16,8 @@ export default tseslint.config(
   // Rules override
   {
     rules: {
-
-      // You wouldn't wanna convert every single string template expression
-      // to string explicitly
-      "@typescript-eslint/restrict-template-expressions": 0
+      // You wouldn't wanna convert every single string template expression to string explicitly
+      "@typescript-eslint/restrict-template-expressions": 0,
     },
   },
 

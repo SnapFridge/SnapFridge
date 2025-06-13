@@ -2,43 +2,50 @@
 
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import { useState, type ChangeEvent } from "react";
+import { useRef, useState, type ChangeEvent } from "react";
 import VisuallyHidden from "@components/VisuallyHidden";
-import { readFile } from "./file.helper";
+import readFile from "./readFile.helper";
 import ImageComponent from "@components/ImageComponent";
 
 interface Image {
   src: string | undefined;
-  id: string;
+  key: number;
 }
 
 function FileUpload() {
   const [images, setImages] = useState<Image[]>([]);
+  const newId = useRef(0);
 
-  async function handleFiles(event: ChangeEvent<HTMLInputElement>) {
+function handleFiles(event: ChangeEvent<HTMLInputElement>) {
+
+  // ESLint complains if I don't use an IIAFE
+  void (async () => {
     const userFiles = event.target.files ?? [];
-    const readerPromises: Promise<string | undefined>[] = [];
-
+    const newImages: Image[] = []
     for (const file of userFiles) {
-      if (!file.type.startsWith("image/")) {
-        // TODO show this on a toaster when we make one
-        continue;
+      switch (file.type) {
+        case "image/png":
+        case "image/jpeg":
+        case "image/webp":
+        case "image/heic":
+        case "image/heif":
+          newImages.push({ src: await readFile(file), key: newId.current++ });
+          break;
+        default:
+          // TODO show this on a toaster when we make one
+          // Rylex: JUST USE ALERT BRO IT'S TOTALLY FINEEEEEE
       }
-      readerPromises.push(readFile(file));
     }
-
-    const result = await Promise.all(readerPromises);
-    const newImages = result.map((src) => ({ src, id: crypto.randomUUID() }));
-    const nextImages = [...images, ...newImages];
-    setImages(nextImages);
-  }
+    setImages([...images, ...newImages]);
+  })();
+}
 
   return (
     <Wrapper>
-      <HiddenUpload onChange={handleFiles} type="file" />
+      <HiddenUpload onChange={handleFiles} type="file" multiple/>
       {images.length === 0 && <Icon icon="FilePlus" size={36} />}
-      {images.map(({ src, id }) => (
-        <ImageComponent key={id} src={src} />
+      {images.map(({ src, key }) => (
+        <ImageComponent key={key} src={src} />
       ))}
       <VisuallyHidden>Add Images</VisuallyHidden>
     </Wrapper>

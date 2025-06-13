@@ -175,39 +175,16 @@ function RecipeSection({ headerText = "Recipes Found" }: Props) {
       </Header>
 
       <RecipeList>
-        {recipesExample.map((recipe) => (
+        {recipesExample.map(recipe => (
           <RecipeCard
             recipe={recipe}
             key={recipe.id}
-            recipeVariants={RecipeCardVariant}
           />
         ))}
       </RecipeList>
     </>
   );
 }
-
-const RecipeCardVariant = {
-  offscreen: {
-    y: 100,
-    opacity: 0,
-  },
-  onscreen: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      duration: 0.8,
-    },
-  },
-  hover: {
-    scale: 1.02,
-    transition: {
-      type: "spring",
-      duration: 0.5,
-    },
-  },
-};
 
 const RecipeList = styled(motion.ul)({
   listStyleType: "none",

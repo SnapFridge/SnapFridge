@@ -3,18 +3,13 @@ import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@components/Global";
 import React from "react";
 import * as motion from "motion/react-client";
-import type { Variants } from "motion/react";
+import { type Variants } from "motion/react";
 import { type Recipe, ingredients2Str } from "./functions.helper";
 
-interface RecipeProps {
-  recipe: Recipe;
-  recipeVariants: Variants;
-}
-
-function RecipeCard({ recipe, recipeVariants }: RecipeProps) {
+function RecipeCard({ recipe }: { recipe: Recipe }) {
   return (
     <Card
-      variants={recipeVariants}
+      variants={CardVariant}
       initial="offscreen"
       whileInView="onscreen"
       whileHover="hover"
@@ -47,6 +42,28 @@ function RecipeCard({ recipe, recipeVariants }: RecipeProps) {
     </Card>
   );
 }
+
+const CardVariant: Variants = {
+  offscreen: {
+    y: 100,
+    opacity: 0,
+  },
+  onscreen: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      duration: 0.8,
+    },
+  },
+  hover: {
+    scale: 1.02,
+    transition: {
+      type: "spring",
+      duration: 0.5,
+    },
+  },
+};
 
 const Card = styled(motion.li)({
   border: "1px solid var(--accent-950)",

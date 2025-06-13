@@ -5,8 +5,8 @@ import { styled } from "@pigment-css/react";
 type PolymorphicComponentProp<C extends ElementType, Props = {}> = {
   as?: C;
   styling?: keyof typeof STYLES;
-} & Props &
-  Omit<ComponentProps<C>, keyof Props | "as" | "styling">;
+} & Props
+  & Omit<ComponentProps<C>, keyof Props | "as" | "styling">;
 
 type ButtonProps<C extends ElementType> = PolymorphicComponentProp<C>;
 
