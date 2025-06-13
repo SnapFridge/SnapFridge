@@ -7,8 +7,6 @@ import Link from "@components/Link";
 import ThemeSwitcher from "@components/ThemeSwitcher";
 import Icon from "@components/Icon";
 
-
-
 function Dropdown() {
   return (
     <Wrapper>

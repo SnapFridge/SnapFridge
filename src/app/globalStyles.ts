@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 
-import { scaleClamped } from '@components/Global';
+import { MAX_SUPPORTED_WIDTH, scaleClamped } from '@components/Global';
 import { globalCss } from "@pigment-css/react";
 
 // Color scheme
@@ -165,7 +165,11 @@ globalCss`
 // Horizontally unscrollable
 globalCss`
   html, body {
-    max-width: 100%;
+    width: 100%;
+    @media (min-width: ${MAX_SUPPORTED_WIDTH}px) {
+      width: ${MAX_SUPPORTED_WIDTH}px;
+      margin: auto; 
+    }
     overflow-x: clip;
   }
 `;

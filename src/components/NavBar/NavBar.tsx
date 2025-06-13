@@ -2,7 +2,7 @@ import { css, styled } from "@pigment-css/react";
 import ThemeSwitcher from "@components/ThemeSwitcher";
 import Link from "@components/Link";
 import Logo from "@components/Logo";
-import Dropdown from "@components/NavDropdown";
+import Dropdown from "./Dropdown";
 import { ON_MOBILE } from "@components/Global";
 
 function NavBar() {
