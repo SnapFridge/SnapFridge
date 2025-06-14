@@ -1,14 +1,11 @@
-import { type ComponentProps, type ElementType } from "react";
+import { type ComponentPropsWithoutRef, type ElementType } from "react";
 import { styled } from "@pigment-css/react";
 
-// Generic type for polymorphic components
-type PolymorphicComponentProp<C extends ElementType, Props = {}> = {
+type ButtonProps<C extends ElementType> = {
   as?: C;
   styling?: keyof typeof STYLES;
-} & Props
-  & Omit<ComponentProps<C>, keyof Props | "as" | "styling">;
-
-type ButtonProps<C extends ElementType> = PolymorphicComponentProp<C>;
+} & Omit<ComponentPropsWithoutRef<C>, "as"> 
+  // The default link has an "as" attribute, overriding that with our "as"
 
 const STYLES = {
   primary: {

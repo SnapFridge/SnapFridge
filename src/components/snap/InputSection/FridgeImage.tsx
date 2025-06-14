@@ -6,7 +6,6 @@ import Icon from "@components/Icon";
 import React from "react";
 import { useState, useEffect } from "react";
 import { css, styled } from "@pigment-css/react";
-import { ON_MOBILE, scaleClamped } from '@components/Global';
 
 interface Props {
   src: string;

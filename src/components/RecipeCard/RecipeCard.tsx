@@ -5,8 +5,10 @@ import React from "react";
 import * as motion from "motion/react-client";
 import { type Variants } from "motion/react";
 import { type Recipe, ingredients2Str } from "./functions.helper";
+import "react-loading-skeleton/dist/skeleton.css";
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
-function RecipeCard({ recipe }: { recipe: Recipe }) {
+function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
   return (
     <Card
       variants={CardVariant}
@@ -15,30 +17,35 @@ function RecipeCard({ recipe }: { recipe: Recipe }) {
       whileHover="hover"
       viewport={{ once: true, amount: 0.3 }}
     >
-      <RecipeTitle>{recipe.title}</RecipeTitle>
-      <Image
-        src={recipe.image}
-        alt={recipe.title}
-        width={312}
-        height={231}
-        className={FoodImg}
-      />
-      <Ingredients>
-        {recipe.usedIngredientCount > 0 && (
-          <>
-            <IngredientTitle>Ingredients</IngredientTitle>
-            <p>{ingredients2Str(recipe.usedIngredients)}</p>
-          </>
-        )}
-      </Ingredients>
-      <MissedIngredients>
-        {recipe.missedIngredientCount > 0 && (
-          <>
-            <IngredientTitle>Missing Ingredients</IngredientTitle>
-            <p>{ingredients2Str(recipe.missedIngredients)}</p>
-          </>
-        )}
-      </MissedIngredients>
+      <SkeletonTheme>
+        <RecipeTitle>{recipe ? recipe.title : <Skeleton/>}</RecipeTitle>
+        {recipe ? 
+        <Image
+          src={recipe.image}
+          alt={recipe.title}
+          width={312}
+          height={231}
+          className={FoodImg}
+        /> :
+        <Skeleton containerClassName={FoodImg} className={FoodImgSkeleton}/>
+        }
+        <div className={Ingredients}>
+          {recipe ? (recipe.usedIngredientCount > 0 && (
+            <>
+              <IngredientTitle>Ingredients</IngredientTitle>
+              <p>{ingredients2Str(recipe.usedIngredients)}</p>
+            </>
+          )): <Skeleton count={2} containerClassName={Ingredients}/>}
+        </div>
+        <div className={MissedIngredients}>
+          {recipe ? (recipe.missedIngredientCount > 0 && (
+            <>
+              <IngredientTitle>Missing Ingredients</IngredientTitle>
+              <p>{ingredients2Str(recipe.missedIngredients)}</p>
+            </>
+          )): <Skeleton count={2} containerClassName={MissedIngredients}/>}
+        </div>
+      </SkeletonTheme>
     </Card>
   );
 }
@@ -103,10 +110,16 @@ const FoodImg = css({
   minWidth: 0,
   flex: "1 1 300px",
   width: "100%",
-  height: "auto",
+  minHeight: "100%",
+  aspectRatio: "312 / 231",
 });
 
-const Ingredients = styled("div")({
+const FoodImgSkeleton = css({
+  width: "100%",
+  height: "100%",
+})
+
+const Ingredients = css({
   gridArea: "2 / 2 / 3 / 3",
   width: "100%",
   color: "var(--text-950)",
@@ -118,7 +131,7 @@ const Ingredients = styled("div")({
   },
 });
 
-const MissedIngredients = styled("div")({
+const MissedIngredients = css({
   gridArea: "3 / 2 / 4 / 3",
   width: "100%",
   color: "var(--warning)",
