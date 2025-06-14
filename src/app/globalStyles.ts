@@ -76,6 +76,9 @@ globalCss`
     --hero-linear-1: #b8b8b8;
     --hero-linear-2: #FFFFFF;
     --hero-linear-3: #FFFFFF;
+
+    --skeleton-base: #ebebeb;
+    --skeleton-highlight: #f5f5f5;
   }
   :root[data-theme="dark"] {
     --text-50: #041615;
@@ -148,6 +151,9 @@ globalCss`
     --hero-linear-1: #535353;
     --hero-linear-2: #10423f;
     --hero-linear-3: #000000;
+
+    --skeleton-base: #333333;
+    --skeleton-highlight: #4d4d4d;
   }
 `;
 

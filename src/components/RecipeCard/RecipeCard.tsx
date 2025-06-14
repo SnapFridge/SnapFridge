@@ -9,7 +9,34 @@ import "react-loading-skeleton/dist/skeleton.css";
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
 function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
-  return (
+  return recipe === undefined ? (
+    <Card
+      variants={CardVariant}
+      initial="offscreen"
+      whileInView="onscreen"
+      whileHover="hover"
+      viewport={{ once: true, amount: 0.3 }}
+      style={{ border: 0 }}
+    >
+      <SkeletonTheme 
+        baseColor="var(--skeleton-base)" 
+        highlightColor="var(--skeleton-highlight)">
+        <Skeleton containerClassName={RecipeTitle}/>
+        <div className={FoodImgSkeleton}>
+          <Skeleton width="100%" height="100%"/>
+        </div>
+        <Ingredients>
+          <Skeleton containerClassName={IngredientTitle} count={0.4}/>
+          <Skeleton containerClassName={IngredientNames} count={1.5}/>
+        </Ingredients>
+        <MissedIngredients>
+          <Skeleton containerClassName={IngredientTitle} count={0.66}/>
+          <Skeleton containerClassName={IngredientNames} count={1.8}/>
+        </MissedIngredients>
+      </SkeletonTheme>
+    </Card>
+  ) :
+  (
     <Card
       variants={CardVariant}
       initial="offscreen"
@@ -17,35 +44,30 @@ function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
       whileHover="hover"
       viewport={{ once: true, amount: 0.3 }}
     >
-      <SkeletonTheme>
-        <RecipeTitle>{recipe ? recipe.title : <Skeleton/>}</RecipeTitle>
-        {recipe ? 
-        <Image
-          src={recipe.image}
-          alt={recipe.title}
-          width={312}
-          height={231}
-          className={FoodImg}
-        /> :
-        <Skeleton containerClassName={FoodImg} className={FoodImgSkeleton}/>
-        }
-        <div className={Ingredients}>
-          {recipe ? (recipe.usedIngredientCount > 0 && (
-            <>
-              <IngredientTitle>Ingredients</IngredientTitle>
-              <p>{ingredients2Str(recipe.usedIngredients)}</p>
-            </>
-          )): <Skeleton count={2} containerClassName={Ingredients}/>}
-        </div>
-        <div className={MissedIngredients}>
-          {recipe ? (recipe.missedIngredientCount > 0 && (
-            <>
-              <IngredientTitle>Missing Ingredients</IngredientTitle>
-              <p>{ingredients2Str(recipe.missedIngredients)}</p>
-            </>
-          )): <Skeleton count={2} containerClassName={MissedIngredients}/>}
-        </div>
-      </SkeletonTheme>
+      <h3 className={RecipeTitle}>{recipe.title}</h3>
+      <Image
+        src={recipe.image}
+        alt={recipe.title}
+        width={312}
+        height={231}
+        className={FoodImg}
+      />
+      <Ingredients>
+        {recipe.usedIngredientCount > 0 && (
+          <>
+            <h4 className={IngredientTitle}>Ingredients</h4>
+            <p>{ingredients2Str(recipe.usedIngredients)}</p>
+          </>
+        )}
+      </Ingredients>
+      <MissedIngredients>
+        {recipe.missedIngredientCount > 0 && (
+          <>
+            <h4 className={IngredientTitle}>Missing Ingredients</h4>
+            <p className={IngredientNames}>{ingredients2Str(recipe.missedIngredients)}</p>
+          </>
+        )}
+      </MissedIngredients>
     </Card>
   );
 }
@@ -94,7 +116,7 @@ const Card = styled(motion.li)({
   },
 });
 
-const RecipeTitle = styled("h3")({
+const RecipeTitle = css({
   gridArea: "1 / 1 / 2 / 3",
   width: "100%",
   fontSize: "var(--1-25rem)",
@@ -110,16 +132,17 @@ const FoodImg = css({
   minWidth: 0,
   flex: "1 1 300px",
   width: "100%",
-  minHeight: "100%",
-  aspectRatio: "312 / 231",
+  height: "auto",
 });
 
 const FoodImgSkeleton = css({
+  display: "block",
+  gridArea: "2 / 1 / 4 / 2",
   width: "100%",
-  height: "100%",
+  aspectRatio: "312 / 231",
 })
 
-const Ingredients = css({
+const Ingredients = styled("div")({
   gridArea: "2 / 2 / 3 / 3",
   width: "100%",
   color: "var(--text-950)",
@@ -131,7 +154,7 @@ const Ingredients = css({
   },
 });
 
-const MissedIngredients = css({
+const MissedIngredients = styled("div")({
   gridArea: "3 / 2 / 4 / 3",
   width: "100%",
   color: "var(--warning)",
@@ -143,9 +166,14 @@ const MissedIngredients = css({
   },
 });
 
-const IngredientTitle = styled("h4")({
+const IngredientTitle = css({
   width: "fit-content",
   fontSize: "var(--1-25rem)",
 });
+
+const IngredientNames = css({
+  width: "fit-content",
+  fontSize: "var(--1rem)",
+})
 
 export default RecipeCard;
