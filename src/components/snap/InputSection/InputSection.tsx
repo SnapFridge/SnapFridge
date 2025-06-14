@@ -3,11 +3,13 @@
 import * as React from "react";
 import { styled } from "@pigment-css/react";
 import FileUpload from "./FileUpload";
+import IngredientUpload from "./IngredientUpload";
 
 function InputSection() {
   return (
     <Wrapper>
       <FileUpload />
+      <IngredientUpload />
     </Wrapper>
   );
 }
