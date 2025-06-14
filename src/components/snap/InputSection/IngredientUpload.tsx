@@ -4,6 +4,7 @@ import { useState } from "react";
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import Ingredient from "./Ingredient";
+import { motion } from "motion/react";
 
 function IngredientUpload() {
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
@@ -39,7 +40,10 @@ function IngredientUpload() {
 
   return (
     <>
-      <IngredientsContainer>
+      <IngredientsContainer
+        layout
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+      >
         {ingredients.map((ingredient: Ingredient, index: number) => (
           // Temporary key as a placeholder. actual key will be the ingredient name
           <Ingredient key={`${ingredient.name}${index}`} ingredientInfo={ingredient}></Ingredient>          
@@ -85,7 +89,7 @@ const IngredientsTitle = styled('h1')({
 });
 
 
-const IngredientsContainer = styled('ul')({
+const IngredientsContainer = styled(motion.ul)({
   marginTop: "36px",
 
   display: "flex",
@@ -99,8 +103,8 @@ const IngredientsContainer = styled('ul')({
   borderRadius: "8px",
   color: "var(--text-950)",
 
-  maxWidth: "800px",
-  minWidth: "420px",
+  maxWidth: "600px",
+  minWidth: "450px",
   width: "fit-content",
   height: "fit-content",
   minHeight: "220px",
