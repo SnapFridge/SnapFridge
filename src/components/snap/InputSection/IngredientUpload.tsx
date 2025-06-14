@@ -3,18 +3,17 @@
 import { useState } from "react";
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
-
-interface Ingredient {
-  name: string,
-  quantity: number,
-  measurement: string,
-}
+import Ingredient from "./Ingredient";
 
 function IngredientUpload() {
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
+  const [input, setInput] = useState<string>('');
 
   function addIngredient() {
-    setIngredients([...ingredients, { name: 'ingredient', quantity: 3, measurement: "tsp" }]);
+    if (input) {
+      setIngredients([...ingredients, { name: input, quantity: 3, measurement: "tsp" }]);
+      setInput('');      
+    }
   }
 
   if (!ingredients.length) {
@@ -25,7 +24,14 @@ function IngredientUpload() {
           <IngredientsTitle>Your ingredients will appear here</IngredientsTitle>
         </NoIngredientsContainer>   
 
-        <button onClick={addIngredient}>Add</button>   
+        <form>
+          <input  
+            value={input}
+            onChange={(e) => setInput(e.target.value)}
+            required
+          />
+          <button onClick={addIngredient}>Add</button>
+        </form> 
       </>
 
     )
@@ -35,14 +41,20 @@ function IngredientUpload() {
     <>
       <IngredientsContainer>
         {ingredients.map((ingredient: Ingredient, index: number) => (
-          <Ingredient key={`${ingredient.name}${index}`}>
-            <p>{ingredient.name}</p>
-            <p>{ingredient.quantity} {ingredient.measurement}</p>
-          </Ingredient>          
+          // Temporary key as a placeholder. actual key will be the ingredient name
+          <Ingredient key={`${ingredient.name}${index}`} ingredientInfo={ingredient}></Ingredient>          
         ))}
       </IngredientsContainer>  
-
-      <button onClick={addIngredient}>Add</button>   
+      
+      <form>
+        <input  
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          required
+        />
+        <button onClick={addIngredient}>Add</button>
+      </form>
+         
     </>
   )
 }
@@ -77,6 +89,8 @@ const IngredientsContainer = styled('ul')({
   marginTop: "36px",
 
   display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
   flexWrap: "wrap",
 
   gap: "12px",
@@ -85,27 +99,14 @@ const IngredientsContainer = styled('ul')({
   borderRadius: "8px",
   color: "var(--text-950)",
 
-  maxWidth: "450px",
-  width: "100%",
+  maxWidth: "800px",
+  minWidth: "420px",
+  width: "fit-content",
   height: "fit-content",
   minHeight: "220px",
 
   listStyleType: "none",
 });
-
-const Ingredient = styled('li')({
-  display: "flex",
-  gap: "8px",
-  backgroundColor: "var(--accent-200)",
-  padding: "8px 12px",
-  borderRadius: "999px",
-  height: "38px",
-
-  width: "fit-content",
-  border: "2px solid var(--accent-400)",
-  boxShadow: "var(--shadow)",
-});
-
 
 
 export default IngredientUpload;
