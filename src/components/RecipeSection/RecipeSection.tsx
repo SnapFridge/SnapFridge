@@ -6,12 +6,6 @@ import * as motion from "motion/react-client";
 import { scaleClamped } from "@components/Global";
 import Icon from "@components/Icon";
 import { useState } from "react";
-import { Skeleton, Container } from "@radix-ui/themes";
-import { Text } from "@radix-ui/themes";
-
-
-
-
 interface Props {
   headerText?: string;
 }
@@ -175,23 +169,15 @@ const recipesExample = [
 ];
 
 function RecipeSection({ headerText = "Recipes Found" }: Props) {
-  const [loading, isLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
-
-  if (loading) {
-    return (
-      <Container>
-        <Text>
-          <Skeleton>Loading....</Skeleton>
-        </Text>
-      </Container>
-    )
+  function switchLoading() {
+    setLoading(!loading);
   }
-
-
 
   return (
     <>
+      <button onClick={switchLoading}>switch loading</button>
       <Header>
         <HeaderTxt>{headerText}</HeaderTxt>
         <Icon icon="Sparkles" size={50}></Icon>
@@ -200,7 +186,7 @@ function RecipeSection({ headerText = "Recipes Found" }: Props) {
       <RecipeList>
         {recipesExample.map(recipe => (
           <RecipeCard
-            recipe={recipe}
+            recipe={loading ? undefined : recipe}
             key={recipe.id}
           />
         ))}
@@ -228,5 +214,6 @@ const Header = styled("div")({
 const HeaderTxt = styled("h2")({
   fontSize: scaleClamped(24, 36),
 });
+
 
 export default RecipeSection;

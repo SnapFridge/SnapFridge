@@ -2,7 +2,7 @@ import { styled } from '@pigment-css/react';
 
 export const MOBILE_BREAKPOINT = 576
 const MIN_SUPPORTED_WIDTH = 320
-const MAX_SUPPORTED_WIDTH = 1920
+export const MAX_SUPPORTED_WIDTH = 1920
 
 export const ON_MOBILE = `@media (max-width: ${MOBILE_BREAKPOINT}px)`;
 
