@@ -56,7 +56,12 @@ function FileUpload() {
         accept=".png,.jpg,.webp,.heic,.heif"
       />
       <VisibleContent>
-        {imgURLs.length === 0 && <Icon icon="FilePlus" size={36} />}
+        {imgURLs.length === 0 && (
+          <>
+            <Icon icon="FilePlus" size={36} />
+            <VisuallyHidden>Add Images</VisuallyHidden>
+          </>
+        )}
         {imgURLs.map((url) => (
           <FridgeImage
             key={url}
@@ -65,7 +70,6 @@ function FileUpload() {
             imgURLs={imgURLs}
           />
         ))}
-        <VisuallyHidden>Add Images</VisuallyHidden>
       </VisibleContent>
     </Wrapper>
   );
@@ -107,7 +111,11 @@ const VisibleContent = styled("div")({
 
   [`${HiddenUpload}:focus + &`]: {
     /* Try to get the default outline color */
-    outline: "2px solid Highlight", // Uses system accent color
+    outline: [
+      "medium auto currentColor",
+      "medium auto invert",
+      "5px auto -webkit-focus-ring-color",
+    ],
     outlineOffset: "4px",
   },
   [`${HiddenUpload}:hover + &`]: {

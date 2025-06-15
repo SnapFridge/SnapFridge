@@ -10,6 +10,7 @@ import {
 import { useState, useEffect } from "react";
 import Icon from "@components/Icon";
 import Button from "@components/Button";
+import VisuallyHidden from "@components/VisuallyHidden";
 
 interface Ingredient {
   name: string;
@@ -54,53 +55,52 @@ function Ingredient({ ingredientInfo, removeIngredient }: Props) {
   }
 
   return (
-    <Wrapper>
+    <Wrapper onMouseEnter={handleHoverEnter} onMouseLeave={handleHoverLeave}>
       {/* Ended up using a HiddenButton instead of a ButtonWrapper
       since a ButtonWrapper would encapsulate another button which is bad HTML */}
       <HiddenButton
-        // desktop
-        onMouseEnter={handleHoverEnter}
-        onMouseLeave={handleHoverLeave}
         // mobile
         onClick={handleClick}
       />
+      <AnimatePresence>
+        {isActive ? (
+          <ActionContainer>
+            <Button
+              className={DeleteContainer}
+              as={motion.button}
+              variants={DeleteVariants}
+              initial="initial"
+              animate="enter"
+              whileHover="hover"
+              exit="exit"
+              onClick={() => {
+                removeIngredient(ingredientInfo.name);
+              }}
+            >
+              <VisuallyHidden>Delete {ingredientInfo.name}</VisuallyHidden>
+              <Icon icon="Trash2" size={24} color="#fda920" />
+            </Button>
+            <Button
+              className={EditContainer}
+              as={motion.button}
+              variants={EditVariants}
+              initial="initial"
+              animate="enter"
+              whileHover="hover"
+              exit="exit"
+            >
+              <VisuallyHidden>Edit {ingredientInfo.name}</VisuallyHidden>
+              <Icon icon="PencilLine" size={24} color="white" />
+            </Button>
+          </ActionContainer>
+        ) : null}
+      </AnimatePresence>
       <IngredientElement
         variants={IngredientVariants}
         initial="initial"
         animate="enter"
         ref={scope}
       >
-        <AnimatePresence>
-          {isActive ? (
-            <ActionContainer>
-              <Button
-                className={DeleteContainer}
-                as={motion.button}
-                variants={DeleteVariants}
-                initial="initial"
-                animate="enter"
-                whileHover="hover"
-                exit="exit"
-                onClick={() => {
-                  removeIngredient(ingredientInfo.name);
-                }}
-              >
-                <Icon icon="Trash2" size={24} color="#fda920" />
-              </Button>
-              <Button
-                className={EditContainer}
-                as={motion.button}
-                variants={EditVariants}
-                initial="initial"
-                animate="enter"
-                whileHover="hover"
-                exit="exit"
-              >
-                <Icon icon="PencilLine" size={24} color="white" />
-              </Button>
-            </ActionContainer>
-          ) : null}
-        </AnimatePresence>
         <IngredientName>{ingredientInfo.name}</IngredientName>
         <p>
           {ingredientInfo.quantity} {ingredientInfo.measurement}
@@ -114,6 +114,7 @@ const Wrapper = styled("li")({
   height: "38px",
   width: "fit-content",
   position: "relative",
+  isolation: "isolate",
 });
 
 const IngredientVariants: Variants = {
@@ -127,6 +128,20 @@ const IngredientVariants: Variants = {
   },
 };
 
+const HiddenButton = styled(Button)({
+  width: "100%",
+  height: "100%",
+  position: "absolute",
+  top: 0,
+  bottom: 0,
+  right: 0,
+  left: 0,
+  margin: "auto",
+  opacity: 0,
+  appearance: "none",
+  zIndex: 2,
+});
+
 const IngredientElement = styled(motion.div)({
   display: "flex",
   gap: "8px",
@@ -138,19 +153,15 @@ const IngredientElement = styled(motion.div)({
   width: "fit-content",
   border: "2px solid var(--accent-400)",
   boxShadow: "var(--shadow)",
-});
 
-const HiddenButton = styled(Button)({
-  width: "100%",
-  height: "100%",
-  position: "absolute",
-  top: 0,
-  bottom: 0,
-  right: 0,
-  left: 0,
-  margin: "auto",
-  opacity: 0,
-  appearence: "none",
+  [`${HiddenButton}:focus + &`]: {
+    outline: [
+      "medium auto currentColor",
+      "medium auto invert",
+      "5px auto -webkit-focus-ring-color",
+    ],
+    outlineOffset: "4px",
+  },
 });
 
 const IngredientName = styled("p")({
@@ -216,7 +227,10 @@ const EditVariants: Variants = {
 const ActionContainer = styled("div")({
   zIndex: 1,
   position: "absolute",
-  top: "-36px",
+  top: "-42px",
+  left: 0,
+  right: 0,
+  margin: "auto",
   width: "64px",
   height: "36px",
 });
