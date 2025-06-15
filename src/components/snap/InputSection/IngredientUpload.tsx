@@ -28,10 +28,12 @@ function IngredientUpload() {
   }
 
   // TODO
-  // Make eslint stop yapping
-  /* eslint-disable */
-  function editIngredient(name: string, newInfo: unknown) {}
-  /* eslint-enable */
+  function editIngredient(name: string, newInfo: unknown) {
+    console.log("this is not done");
+    console.log(name);
+    console.log(newInfo);
+  }
+  editIngredient("bruh", "h");
 
   if (!ingredients.length) {
     return (
