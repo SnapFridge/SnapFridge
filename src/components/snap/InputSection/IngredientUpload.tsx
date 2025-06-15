@@ -74,7 +74,9 @@ function IngredientUpload() {
       <form>
         <input
           value={input}
-          onChange={(e) => setInput(e.target.value)}
+          onChange={(e) => {
+            setInput(e.target.value);
+          }}
           required
         />
         <button onClick={addIngredient}>Add</button>
