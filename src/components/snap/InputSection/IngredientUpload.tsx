@@ -110,6 +110,7 @@ const NoIngredientsContainer = styled("div")({
 const IngredientsTitle = styled("h1")({
   fontSize: `${18 / 16}rem`,
   fontWeight: "400",
+  textAlign: "center",
 });
 
 const IngredientsContainer = styled(motion.ul)({

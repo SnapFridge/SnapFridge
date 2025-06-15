@@ -180,15 +180,12 @@ function RecipeSection({ headerText = "Recipes Found" }: Props) {
       <button onClick={switchLoading}>switch loading</button>
       <Header>
         <HeaderTxt>{headerText}</HeaderTxt>
-        <Icon icon="Sparkles" size={50}></Icon>
+        <Icon aria-hidden icon="Sparkles" size={50}></Icon>
       </Header>
 
       <RecipeList>
-        {recipesExample.map(recipe => (
-          <RecipeCard
-            recipe={loading ? undefined : recipe}
-            key={recipe.id}
-          />
+        {recipesExample.map((recipe) => (
+          <RecipeCard recipe={loading ? undefined : recipe} key={recipe.id} />
         ))}
       </RecipeList>
     </>
@@ -214,6 +211,5 @@ const Header = styled("div")({
 const HeaderTxt = styled("h2")({
   fontSize: scaleClamped(24, 36),
 });
-
 
 export default RecipeSection;
