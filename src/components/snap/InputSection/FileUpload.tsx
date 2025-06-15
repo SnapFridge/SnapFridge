@@ -2,18 +2,27 @@
 
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import { useState, type ChangeEvent } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 import VisuallyHidden from "@components/VisuallyHidden";
 import FridgeImage from "./FridgeImage";
-import { scaleClamped } from '@components/Global';
+import { scaleClamped } from "@components/Global";
 
 function FileUpload() {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
-  function handleFiles(event: ChangeEvent<HTMLInputElement>) {
 
+  // Revoke object urls when this component demounts or URLs change
+  useEffect(() => {
+    return () => {
+      for (const url of imgURLs) {
+        URL.revokeObjectURL(url);
+      }
+    };
+  }, [imgURLs]);
+
+  function handleFiles(event: ChangeEvent<HTMLInputElement>) {
     // Only null when the target is not <input type="file">, but we know it is
     const userFiles = event.target.files!;
-    if(userFiles.length < 1) {
+    if (userFiles.length < 1) {
       return;
     }
     const newImages: string[] = [];
@@ -23,15 +32,14 @@ function FileUpload() {
         case "image/jpeg":
         case "image/webp":
         case "image/heic":
-        case "image/heif": { 
-
+        case "image/heif": {
           // Used as src and key since it's unique
           const url = URL.createObjectURL(file);
           newImages.push(url);
-          break; 
+          break;
         }
         default:
-          // Toaster time
+        // Toaster time
       }
     }
     // Reset so that you don't have invisible imgURLs
@@ -40,34 +48,33 @@ function FileUpload() {
     setImgURLs(nextImages);
   }
   return (
-    <DashedBorder>
-      <HiddenUpload onChange={handleFiles} type="file" multiple 
-        accept=".png,.jpg,.webp,.heic,.heif"/>
-      {imgURLs.length === 0 && <Icon icon="FilePlus" size={36} />}
-      {imgURLs.map(url => (
-        <FridgeImage key={url} src={url} setImgURLs={setImgURLs} imgURLs={imgURLs} />
-      ))}
-      <VisuallyHidden>Add Images</VisuallyHidden>
-    </DashedBorder>
+    <Wrapper>
+      <HiddenUpload
+        onChange={handleFiles}
+        type="file"
+        multiple
+        accept=".png,.jpg,.webp,.heic,.heif"
+      />
+      <VisibleContent>
+        {imgURLs.length === 0 && <Icon icon="FilePlus" size={36} />}
+        {imgURLs.map((url) => (
+          <FridgeImage
+            key={url}
+            src={url}
+            setImgURLs={setImgURLs}
+            imgURLs={imgURLs}
+          />
+        ))}
+        <VisuallyHidden>Add Images</VisuallyHidden>
+      </VisibleContent>
+    </Wrapper>
   );
 }
 
-const DashedBorder = styled("div")({
+const Wrapper = styled("div")({
   position: "relative",
-  ["--gap" as string]: scaleClamped(7, 20, true, 320, 673),
-  gap: "var(--gap)",
-  display: "flex",
-  flexWrap: "wrap",
-  justifyContent: "space-evenly",
-  alignItems: "center",
-  maxWidth: "576px",
   width: "100%",
-  height: "fit-content",
-  minHeight: "180px",
-  padding: "20px 20px",
-  borderRadius: "16px",
-  border: "var(--accent-300) dashed 4px",
-  background: "color-mix(in srgb, var(--background-50) 65%, transparent)",
+  maxWidth: "576px",
 });
 
 const HiddenUpload = styled("input")({
@@ -77,10 +84,35 @@ const HiddenUpload = styled("input")({
   top: 0,
   bottom: 0,
   left: 0,
-  right:  0,
+  right: 0,
   margin: "auto",
   opacity: 0,
   appearance: "none",
+});
+
+const VisibleContent = styled("div")({
+  width: "100%",
+  height: "fit-content",
+  minHeight: "180px",
+  ["--gap" as string]: scaleClamped(7, 20, true, 320, 673),
+  gap: "var(--gap)",
+  display: "flex",
+  flexWrap: "wrap",
+  justifyContent: "space-evenly",
+  alignItems: "center",
+  padding: "20px 20px",
+  borderRadius: "16px",
+  border: "var(--accent-300) dashed 4px",
+  background: "color-mix(in srgb, var(--background-50) 65%, transparent)",
+
+  [`${HiddenUpload}:focus + &`]: {
+    /* Try to get the default outline color */
+    outline: "2px solid Highlight", // Uses system accent color
+    outlineOffset: "4px",
+  },
+  [`${HiddenUpload}:hover + &`]: {
+    background: "color-mix(in srgb, var(--background-100) 50%, transparent)",
+  },
 });
 
 export default FileUpload;

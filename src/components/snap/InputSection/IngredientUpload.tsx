@@ -8,14 +8,30 @@ import { motion } from "motion/react";
 
 function IngredientUpload() {
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
-  const [input, setInput] = useState<string>('');
+  const [input, setInput] = useState<string>("");
 
   function addIngredient() {
-    if (input) {
-      setIngredients([...ingredients, { name: input, quantity: 3, measurement: "tsp" }]);
-      setInput('');      
+    if (input !== "") {
+      setIngredients([
+        ...ingredients,
+        { name: input, quantity: 3, measurement: "tsp" },
+      ]);
+      setInput("");
     }
   }
+
+  function removeIngredient(name: string) {
+    const nextIngredients = ingredients.filter(
+      (ingredient) => ingredient.name !== name
+    );
+    setIngredients(nextIngredients);
+  }
+
+  // TODO
+  // Make eslint stop yapping
+  /* eslint-disable */
+  function editIngredient(name: string, newInfo: unknown) {}
+  /* eslint-enable */
 
   if (!ingredients.length) {
     return (
@@ -23,19 +39,20 @@ function IngredientUpload() {
         <NoIngredientsContainer>
           <Icon icon="Archive" size={36} color="var(--hero-linear-1)" />
           <IngredientsTitle>Your ingredients will appear here</IngredientsTitle>
-        </NoIngredientsContainer>   
+        </NoIngredientsContainer>
 
         <form>
-          <input  
+          <input
             value={input}
-            onChange={(e) => setInput(e.target.value)}
+            onChange={(e) => {
+              setInput(e.target.value);
+            }}
             required
           />
           <button onClick={addIngredient}>Add</button>
-        </form> 
+        </form>
       </>
-
-    )
+    );
   }
 
   return (
@@ -44,26 +61,29 @@ function IngredientUpload() {
         layout
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
-        {ingredients.map((ingredient: Ingredient, index: number) => (
+        {ingredients.map((ingredient: Ingredient) => (
           // Temporary key as a placeholder. actual key will be the ingredient name
-          <Ingredient key={`${ingredient.name}${index}`} ingredientInfo={ingredient}></Ingredient>          
+          <Ingredient
+            key={ingredient.name}
+            ingredientInfo={ingredient}
+            removeIngredient={removeIngredient}
+          ></Ingredient>
         ))}
-      </IngredientsContainer>  
-      
+      </IngredientsContainer>
+
       <form>
-        <input  
+        <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
           required
         />
         <button onClick={addIngredient}>Add</button>
       </form>
-         
     </>
-  )
+  );
 }
 
-const NoIngredientsContainer = styled('div')({
+const NoIngredientsContainer = styled("div")({
   marginTop: "36px",
 
   display: "flex",
@@ -81,13 +101,12 @@ const NoIngredientsContainer = styled('div')({
   width: "100%",
   height: "fit-content",
   minHeight: "220px",
-}); 
-
-const IngredientsTitle = styled('h1')({
-  fontSize: `${18 /16}rem`,
-  fontWeight: "400",
 });
 
+const IngredientsTitle = styled("h1")({
+  fontSize: `${18 / 16}rem`,
+  fontWeight: "400",
+});
 
 const IngredientsContainer = styled(motion.ul)({
   marginTop: "36px",
@@ -111,6 +130,5 @@ const IngredientsContainer = styled(motion.ul)({
 
   listStyleType: "none",
 });
-
 
 export default IngredientUpload;

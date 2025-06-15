@@ -1,33 +1,42 @@
 "use client";
 
-import { styled } from "@pigment-css/react";
-import { motion, type Variants, useAnimate, AnimatePresence } from "motion/react";
+import { css, styled } from "@pigment-css/react";
+import {
+  motion,
+  type Variants,
+  useAnimate,
+  AnimatePresence,
+} from "motion/react";
 import { useState, useEffect } from "react";
 import Icon from "@components/Icon";
+import Button from "@components/Button";
 
 interface Ingredient {
-  name: string,
-  quantity: number,
-  measurement: string,
+  name: string;
+  quantity: number;
+  measurement: string;
 }
 
 interface Props {
-  ingredientInfo: Ingredient,
+  ingredientInfo: Ingredient;
+  removeIngredient: (arg: string) => void;
 }
 
-function Ingredient({ ingredientInfo }: Props) {
+function Ingredient({ ingredientInfo, removeIngredient }: Props) {
   const [isActive, setActive] = useState(false);
   const [scope, animate] = useAnimate();
-  
+
   useEffect(() => {
     void (async () => {
-      await animate(scope.current, 
-        isActive ? {
-          y: -5,
-        } :
-        {
-          y: 0,
-        }
+      await animate(
+        scope.current,
+        isActive
+          ? {
+              y: -5,
+            }
+          : {
+              y: 0,
+            }
       );
     })();
   }, [isActive]);
@@ -41,101 +50,127 @@ function Ingredient({ ingredientInfo }: Props) {
   }
 
   function handleClick() {
-    setActive(!isActive)
+    setActive(!isActive);
   }
 
   return (
-    <IngredientElement
-      variants={IngredientVariants}
-      initial="initial"
-      animate="enter"
-
-      // desktop
-      onMouseEnter={handleHoverEnter}
-      onMouseLeave={handleHoverLeave}
-
-      // mobile
-      onClick={handleClick}
-
-      ref={scope}
-    > 
-      <AnimatePresence>    
-        {
-          isActive ? (
-          <ActionContainer> 
-            <DeleteContainer
-              variants={DeleteVariants}
-              initial="initial"
-              animate="enter"
-              whileHover="hover"
-              exit="exit"
-            >
-              <Icon icon="Trash2" size={24} color="#fda920" />            
-            </DeleteContainer>         
-            <EditContainer
-              variants={EditVariants}
-              initial="initial"
-              animate="enter"
-              whileHover="hover"
-              exit="exit"
-            >
-              <Icon icon="PencilLine" size={24} color="white" />
-            </EditContainer>
-          </ActionContainer>
-        ) :
-          null
-        }
-      </AnimatePresence>
-      <IngredientName>{ingredientInfo.name}</IngredientName>
-      <p>{ingredientInfo.quantity} {ingredientInfo.measurement}</p>
-    </IngredientElement>
-  )
+    <Wrapper>
+      {/* Ended up using a HiddenButton instead of a ButtonWrapper
+      since a ButtonWrapper would encapsulate another button which is bad HTML */}
+      <HiddenButton
+        // desktop
+        onMouseEnter={handleHoverEnter}
+        onMouseLeave={handleHoverLeave}
+        // mobile
+        onClick={handleClick}
+      />
+      <IngredientElement
+        variants={IngredientVariants}
+        initial="initial"
+        animate="enter"
+        ref={scope}
+      >
+        <AnimatePresence>
+          {isActive ? (
+            <ActionContainer>
+              <Button
+                className={DeleteContainer}
+                as={motion.button}
+                variants={DeleteVariants}
+                initial="initial"
+                animate="enter"
+                whileHover="hover"
+                exit="exit"
+                onClick={() => {
+                  removeIngredient(ingredientInfo.name);
+                }}
+              >
+                <Icon icon="Trash2" size={24} color="#fda920" />
+              </Button>
+              <Button
+                className={EditContainer}
+                as={motion.button}
+                variants={EditVariants}
+                initial="initial"
+                animate="enter"
+                whileHover="hover"
+                exit="exit"
+              >
+                <Icon icon="PencilLine" size={24} color="white" />
+              </Button>
+            </ActionContainer>
+          ) : null}
+        </AnimatePresence>
+        <IngredientName>{ingredientInfo.name}</IngredientName>
+        <p>
+          {ingredientInfo.quantity} {ingredientInfo.measurement}
+        </p>
+      </IngredientElement>
+    </Wrapper>
+  );
 }
 
+const Wrapper = styled("li")({
+  height: "38px",
+  width: "fit-content",
+  position: "relative",
+});
+
 const IngredientVariants: Variants = {
-  "initial": {
+  initial: {
     y: 10,
     opacity: 0,
   },
-  "enter": {
+  enter: {
     y: 0,
     opacity: 1,
   },
-}
+};
 
-const IngredientElement = styled(motion.li)({
+const IngredientElement = styled(motion.div)({
   display: "flex",
   gap: "8px",
   backgroundColor: "var(--accent-200)",
   padding: "6px 12px",
   borderRadius: "999px",
-  height: "38px",
+  height: "100%",
 
   width: "fit-content",
   border: "2px solid var(--accent-400)",
   boxShadow: "var(--shadow)",
-
-  position: "relative"
 });
 
-const IngredientName = styled('p')({
-  maxWidth: '150px',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-  whiteSpace: 'nowrap',
+const HiddenButton = styled(Button)({
+  width: "100%",
+  height: "100%",
+  position: "absolute",
+  top: 0,
+  bottom: 0,
+  right: 0,
+  left: 0,
+  margin: "auto",
+  opacity: 0,
+  appearence: "none",
 });
 
+const IngredientName = styled("p")({
+  maxWidth: "150px",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  whiteSpace: "nowrap",
+});
 
-const DeleteContainer = styled(motion.div)({
+const DeleteContainer = css({
   position: "absolute",
   zIndex: 1,
   top: 0,
   backgroundColor: "rgba(0, 0, 0, 0.6)",
   padding: "4px",
   borderRadius: "4px",
+  ["--background-hover" as string]: "var(--background-50)",
 });
 
-const EditContainer = styled(motion.div)({
+const EditContainer = css({
   position: "absolute",
   zIndex: 1,
   top: 0,
@@ -145,40 +180,40 @@ const EditContainer = styled(motion.div)({
 });
 
 const DeleteVariants: Variants = {
-  "initial": {
+  initial: {
     opacity: 0,
   },
-  "enter": {
+  enter: {
     opacity: 1,
   },
-  "hover": {
+  hover: {
     y: -5,
   },
-  "exit": {
+  exit: {
     opacity: 0,
-  }
-}
+  },
+};
 
 const EditVariants: Variants = {
-  "initial": {
+  initial: {
     x: 32,
     opacity: 0,
   },
-  "enter": {
+  enter: {
     y: 0,
     x: 32,
     opacity: 1,
   },
-  "hover": {
+  hover: {
     y: -5,
   },
-  "exit": {
+  exit: {
     opacity: 0,
-  }
-}
+  },
+};
 
 // Used so it's easier to click the buttons
-const ActionContainer = styled('div')({
+const ActionContainer = styled("div")({
   zIndex: 1,
   position: "absolute",
   top: "-36px",
