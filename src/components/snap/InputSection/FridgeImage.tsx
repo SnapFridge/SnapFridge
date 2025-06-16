@@ -14,11 +14,10 @@ import { css, styled } from "@pigment-css/react";
 
 interface Props {
   src: string;
-  imgURLs: string[];
-  setImgURLs: (_: string[]) => void;
+  removeImage: (arg: string) => void;
 }
 
-function FridgeImage({ src, imgURLs, setImgURLs }: Props) {
+function FridgeImage({ src, removeImage }: Props) {
   const [isActive, setActive] = useState(false);
   const [scope, animate] = useAnimate();
 
@@ -51,18 +50,6 @@ function FridgeImage({ src, imgURLs, setImgURLs }: Props) {
     setActive(!isActive);
   }
 
-  function handleDelete() {
-    setImgURLs(
-      imgURLs.filter((url) => {
-        if (url == src) {
-          URL.revokeObjectURL(url);
-          return false;
-        }
-        return true;
-      })
-    );
-  }
-
   return (
     <ImageContainer
       // desktop
@@ -78,7 +65,9 @@ function FridgeImage({ src, imgURLs, setImgURLs }: Props) {
       <AnimatePresence initial={false}>
         {isActive ? (
           <DeleteContainer
-            onClick={handleDelete}
+            onClick={() => {
+              removeImage(src);
+            }}
             variants={DeleteVariants}
             whileHover="hover"
             initial="initial"

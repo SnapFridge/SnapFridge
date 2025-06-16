@@ -1,11 +1,12 @@
 "use client";
 
-import { css, styled } from "@pigment-css/react";
+import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import { useEffect, useState, type ChangeEvent } from "react";
 import VisuallyHidden from "@components/VisuallyHidden";
 import FridgeImage from "./FridgeImage";
 import { scaleClamped } from "@components/Global";
+import Button from "@components/Button";
 
 function FileUpload() {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
@@ -47,38 +48,53 @@ function FileUpload() {
     const nextImages = [...imgURLs, ...newImages];
     setImgURLs(nextImages);
   }
+
+  function removeImage(imgUrl: string) {
+    setImgURLs(
+      imgURLs.filter((url) => {
+        if (url === imgUrl) {
+          URL.revokeObjectURL(url);
+          return false;
+        }
+        return true;
+      })
+    );
+  }
+
   return (
     <Wrapper>
-      <HiddenUpload
-        onChange={handleFiles}
-        type="file"
-        multiple
-        accept=".png,.jpg,.webp,.heic,.heif"
-      />
-      <VisibleContent>
-        {imgURLs.length === 0 && (
-          <>
-            <Icon icon="FilePlus" size={36} />
-            <VisuallyHidden>Add Images</VisuallyHidden>
-          </>
-        )}
-        {imgURLs.map((url) => (
-          <FridgeImage
-            key={url}
-            src={url}
-            setImgURLs={setImgURLs}
-            imgURLs={imgURLs}
-          />
-        ))}
-      </VisibleContent>
+      <FileUploader>
+        <HiddenUpload
+          onChange={handleFiles}
+          type="file"
+          multiple
+          accept=".png,.jpg,.webp,.heic,.heif"
+        />
+        <VisibleContent filled={imgURLs.length > 0}>
+          {imgURLs.length === 0 && (
+            <>
+              <Icon icon="FilePlus" size={36} />
+              <VisuallyHidden>Add Images</VisuallyHidden>
+            </>
+          )}
+          {imgURLs.map((url) => (
+            <FridgeImage key={url} src={url} removeImage={removeImage} />
+          ))}
+        </VisibleContent>
+      </FileUploader>
+      {imgURLs.length > 0 && <ScanButton styling="primary">Scan</ScanButton>}
     </Wrapper>
   );
 }
 
 const Wrapper = styled("div")({
-  position: "relative",
   width: "100%",
   maxWidth: "576px",
+});
+
+const FileUploader = styled("div")({
+  position: "relative",
+  width: "100%",
 });
 
 const HiddenUpload = styled("input")({
@@ -94,7 +110,7 @@ const HiddenUpload = styled("input")({
   appearance: "none",
 });
 
-const VisibleContent = styled("div")({
+const VisibleContent = styled("div")<{ filled: boolean }>({
   width: "100%",
   height: "fit-content",
   minHeight: "180px",
@@ -116,11 +132,30 @@ const VisibleContent = styled("div")({
       "medium auto invert",
       "5px auto -webkit-focus-ring-color",
     ],
-    outlineOffset: "4px",
   },
   [`${HiddenUpload}:hover + &`]: {
     background: "color-mix(in srgb, var(--background-100) 50%, transparent)",
   },
+
+  variants: [
+    {
+      props: { filled: true },
+      style: {
+        borderBottom: "none",
+        borderBottomRightRadius: 0,
+        borderBottomLeftRadius: 0,
+      },
+    },
+  ],
+});
+
+const ScanButton = styled(Button)({
+  width: "100%",
+  height: `${40 / 16}rem`,
+  fontSize: `${20 / 16}rem`,
+  borderTopRightRadius: 0,
+  borderTopLeftRadius: 0,
+  padding: 0,
 });
 
 export default FileUpload;
