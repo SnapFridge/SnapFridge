@@ -19,7 +19,7 @@ function Button<C extends ElementType = "button">({
   );
 }
 
-const StyledButton = styled("button")<{ styling?: string }>({
+const StyledButton = styled("button")<{ styling: string | undefined }>({
   textAlign: "center",
   textDecoration: "none",
   fontSize: `${16 / 16}rem`,
