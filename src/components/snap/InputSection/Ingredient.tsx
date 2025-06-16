@@ -40,7 +40,7 @@ function Ingredient({ ingredientInfo, removeIngredient }: Props) {
             }
       );
     })();
-  }, [isActive]);
+  }, [isActive, animate, scope]);
 
   function handleHoverEnter() {
     setActive(true);

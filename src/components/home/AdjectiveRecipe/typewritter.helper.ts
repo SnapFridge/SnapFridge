@@ -28,8 +28,8 @@ export default function useTypewriter(
             setDisplayText(newText);
             setIndex(index + 1);
           } else {
-            window.setTimeout(() => { 
-              setTyping(false); 
+            window.setTimeout(() => {
+              setTyping(false);
             }, delayPerState);
           }
         } else {
@@ -46,7 +46,15 @@ export default function useTypewriter(
       },
       initial ? 0 : delayPerCharacter
     );
-  }, [index, typing, currentText]);
+  }, [
+    index,
+    typing,
+    currentText,
+    delayPerCharacter,
+    delayPerState,
+    initial,
+    texts,
+  ]);
 
   return displayText;
 }
