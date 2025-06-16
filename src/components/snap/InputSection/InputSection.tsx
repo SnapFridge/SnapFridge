@@ -2,14 +2,14 @@
 
 import * as React from "react";
 import { styled } from "@pigment-css/react";
-import FileUpload from "./FileUpload";
-import IngredientUpload from "./IngredientUpload";
+import FileUpload from "../ImageUpload/ImageUpload";
+import IngredientSection from "@components/snap/IngredientSection";
 
 function InputSection() {
   return (
     <Wrapper>
       <FileUpload />
-      <IngredientUpload />
+      <IngredientSection />
     </Wrapper>
   );
 }

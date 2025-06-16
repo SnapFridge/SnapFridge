@@ -6,7 +6,7 @@ import Icon from "@components/Icon";
 import Ingredient from "./Ingredient";
 import { motion } from "motion/react";
 
-function IngredientUpload() {
+function IngredientSection() {
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   const [input, setInput] = useState<string>("");
 
@@ -27,13 +27,8 @@ function IngredientUpload() {
     setIngredients(nextIngredients);
   }
 
-  // TODO
   function editIngredient(name: string, newInfo: unknown) {
-    console.log("this is not done");
-    console.log(name);
-    console.log(newInfo);
   }
-  editIngredient("bruh", "h");
 
   if (!ingredients.length) {
     return (
@@ -136,4 +131,4 @@ const IngredientsContainer = styled(motion.ul)({
   listStyleType: "none",
 });
 
-export default IngredientUpload;
+export default IngredientSection;

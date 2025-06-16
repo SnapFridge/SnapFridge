@@ -78,7 +78,7 @@ function Ingredient({ ingredientInfo, removeIngredient }: Props) {
               }}
             >
               <VisuallyHidden>Delete {ingredientInfo.name}</VisuallyHidden>
-              <Icon icon="Trash2" size={24} color="#fda920" />
+              <Icon icon="Trash2" color="var(--warning)" />
             </Button>
             <Button
               className={EditContainer}
@@ -90,7 +90,7 @@ function Ingredient({ ingredientInfo, removeIngredient }: Props) {
               exit="exit"
             >
               <VisuallyHidden>Edit {ingredientInfo.name}</VisuallyHidden>
-              <Icon icon="PencilLine" size={24} color="white" />
+              <Icon icon="PencilLine" color="white" />
             </Button>
           </ActionContainer>
         ) : null}

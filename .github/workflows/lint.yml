@@ -15,4 +15,6 @@ jobs:
         run: npm install
       - name: Lint
         run: npm run lint
+      - name: Build (for type checking)
+        run: npm run build
     

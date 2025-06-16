@@ -113,8 +113,8 @@ const HiddenUpload = styled("input")({
 const VisibleContent = styled("div")<{ filled: boolean }>({
   width: "100%",
   height: "fit-content",
-  minHeight: "180px",
-  ["--gap" as string]: scaleClamped(7, 20, true, 320, 673),
+  minHeight: scaleClamped(115, 205, false, 320, 673),
+  ["--gap" as string]: scaleClamped(7, 20, false, 320, 673),
   gap: "var(--gap)",
   display: "flex",
   flexWrap: "wrap",
@@ -141,6 +141,7 @@ const VisibleContent = styled("div")<{ filled: boolean }>({
     {
       props: { filled: true },
       style: {
+        minHeight: 0,
         borderBottom: "none",
         borderBottomRightRadius: 0,
         borderBottomLeftRadius: 0,
