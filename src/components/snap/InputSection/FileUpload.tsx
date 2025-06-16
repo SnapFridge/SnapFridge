@@ -1,6 +1,6 @@
 "use client";
 
-import { styled } from "@pigment-css/react";
+import { css, styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import { useEffect, useState, type ChangeEvent } from "react";
 import VisuallyHidden from "@components/VisuallyHidden";

@@ -11,6 +11,7 @@ import {
   scaleClampedDesktop,
   ON_MOBILE,
   PageMargin,
+  MOBILE_BREAKPOINT,
 } from "@components/Global";
 import FoodPointer from "@components/home/FoodPointer";
 import Link from "next/link";
@@ -52,6 +53,7 @@ export default function Page() {
               alt="Fridge"
               className={FridgeImg}
               priority
+              sizes={`(max-width: ${MOBILE_BREAKPOINT}) 50vw, 1300px`}
             />
           </div>
         </FridgeSection>
