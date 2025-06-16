@@ -121,6 +121,8 @@ const VisibleContent = styled("div")({
   [`${HiddenUpload}:hover + &`]: {
     background: "color-mix(in srgb, var(--background-100) 50%, transparent)",
   },
+
+  variants: [],
 });
 
 export default FileUpload;

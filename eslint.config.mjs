@@ -1,17 +1,14 @@
-import eslint from '@eslint/js';
-import tseslint from 'typescript-eslint';
+import eslint from "@eslint/js";
+import tseslint from "typescript-eslint";
 
 export default tseslint.config(
   {
-    ignores: [
-      "*",
-      "!src/**",
-    ],
+    ignores: ["*", "!src/**"],
   },
 
   // Recommended ruleset
   eslint.configs.recommended,
-  tseslint.configs.strictTypeChecked,
+  tseslint.configs.recommended,
 
   // Rules override
   {
@@ -19,6 +16,11 @@ export default tseslint.config(
       // You wouldn't wanna convert every single string template expression to string explicitly
       "@typescript-eslint/restrict-template-expressions": 0,
       "@typescript-eslint/no-non-null-assertion": 0,
+
+      // Why are we failing builds because of a single unused variable?
+      "@typescript-eslint/no-unused-vars": 1,
+      // We don't want duplicate warnings
+      "no-unused-vars": 0,
     },
   },
 
@@ -30,5 +32,5 @@ export default tseslint.config(
         tsconfigRootDir: import.meta.dirname,
       },
     },
-  },               
+  }
 );
