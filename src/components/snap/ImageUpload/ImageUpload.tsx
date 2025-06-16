@@ -1,12 +1,13 @@
 "use client";
 
-import { styled } from "@pigment-css/react";
+import { styled, css } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import { useEffect, useState, type ChangeEvent } from "react";
 import VisuallyHidden from "@components/VisuallyHidden";
 import FridgeImage from "./FridgeImage";
 import { scaleClamped } from "@components/Global";
 import Button from "@components/Button";
+import { motion, AnimatePresence, type Variants } from "motion/react";
 
 function FileUpload() {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
@@ -62,7 +63,7 @@ function FileUpload() {
   }
 
   return (
-    <Wrapper>
+    <Wrapper layout>
       <FileUploader>
         <HiddenUpload
           onChange={handleFiles}
@@ -82,12 +83,31 @@ function FileUpload() {
           ))}
         </VisibleContent>
       </FileUploader>
-      {imgURLs.length > 0 && <ScanButton styling="primary">Scan</ScanButton>}
+      <AnimatePresence>
+        {imgURLs.length > 0 && 
+          <Button 
+            key="scan-button"
+            layout
+            className={ScanButton}
+            styling="primary"
+            as={motion.button}
+            variants={ScanButtonVariants}
+
+
+            initial="initial"    
+            animate="animate" 
+            exit="exit"
+            >
+              Scan
+            </Button>
+        }            
+      </AnimatePresence>
+
     </Wrapper>
   );
 }
 
-const Wrapper = styled("div")({
+const Wrapper = styled(motion.div)({
   width: "100%",
   maxWidth: "576px",
 });
@@ -150,7 +170,7 @@ const VisibleContent = styled("div")<{ filled: boolean }>({
   ],
 });
 
-const ScanButton = styled(Button)({
+const ScanButton = css({
   width: "100%",
   height: `${40 / 16}rem`,
   fontSize: `${20 / 16}rem`,
@@ -158,5 +178,29 @@ const ScanButton = styled(Button)({
   borderTopLeftRadius: 0,
   padding: 0,
 });
+
+const ScanButtonVariants: Variants = {
+  initial: {
+    opacity: 0,
+    y: -50,
+  },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    }
+  },
+  "exit": {
+    opacity: 0, 
+    y: -40,
+    transition: {
+      duration: 0.3,
+      default: {
+        ease: "easeOut",
+      },
+    }
+  }
+}
 
 export default FileUpload;

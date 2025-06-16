@@ -61,6 +61,8 @@ function FridgeImage({ src, removeImage }: Props) {
       ref={scope}
       initial="initial"
       animate="enterAnim"
+
+      layout
     >
       <AnimatePresence initial={false}>
         {isActive ? (

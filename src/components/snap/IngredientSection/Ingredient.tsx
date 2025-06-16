@@ -55,7 +55,7 @@ function Ingredient({ ingredientInfo, removeIngredient }: Props) {
   }
 
   return (
-    <Wrapper onMouseEnter={handleHoverEnter} onMouseLeave={handleHoverLeave}>
+    <Wrapper onMouseEnter={handleHoverEnter} onMouseLeave={handleHoverLeave} layout>
       {/* Ended up using a HiddenButton instead of a ButtonWrapper
       since a ButtonWrapper would encapsulate another button which is bad HTML */}
       <HiddenButton
@@ -110,7 +110,7 @@ function Ingredient({ ingredientInfo, removeIngredient }: Props) {
   );
 }
 
-const Wrapper = styled("li")({
+const Wrapper = styled(motion.li)({
   height: "38px",
   width: "fit-content",
   position: "relative",
