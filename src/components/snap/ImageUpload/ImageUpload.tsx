@@ -2,16 +2,29 @@
 
 import { styled, css } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import { useEffect, useState, type ChangeEvent } from "react";
+import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import VisuallyHidden from "@components/VisuallyHidden";
 import FridgeImage from "./FridgeImage";
 import { scaleClamped } from "@components/Global";
 import Button from "@components/Button";
 import { motion, AnimatePresence, type Variants } from "motion/react";
-import heic2URL from './HeicDCode';
+import heic2URL from "./HeicDCode";
 
 function FileUpload() {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
+  const worker = useRef<Worker | undefined>(undefined);
+
+  // Initialize a worker
+  useEffect(() => {
+    worker.current = new Worker(
+      new URL("HeicDCode.worker.ts", import.meta.url),
+      { type: "module" }
+    );
+
+    return () => {
+      worker.current?.terminate();
+    };
+  }, []);
 
   // Revoke object urls when this component demounts or URLs change
   useEffect(() => {
@@ -41,10 +54,12 @@ function FileUpload() {
         }
         case "image/heic":
         case "image/heif": {
-          const heicData = new Uint8Array(await file.arrayBuffer());
-          const url = await heic2URL(heicData);
-          newImages.push(url);
-          break;
+          if (worker.current) {
+            const heicData = new Uint8Array(await file.arrayBuffer());
+            const url = await heic2URL(worker.current, heicData);
+            newImages.push(url);
+            break;
+          }
         }
         default:
         // Toaster time
@@ -72,7 +87,7 @@ function FileUpload() {
     <Wrapper layout>
       <FileUploader>
         <HiddenUpload
-          onChange={e => handleFiles(e)}
+          onChange={(e) => handleFiles(e)}
           type="file"
           multiple
           accept=".png,.jpg,.webp,.heic,.heif"
@@ -90,25 +105,22 @@ function FileUpload() {
         </VisibleContent>
       </FileUploader>
       <AnimatePresence>
-        {imgURLs.length > 0 && 
-          <Button 
+        {imgURLs.length > 0 && (
+          <Button
             key="scan-button"
             layout
             className={ScanButton}
             styling="primary"
             as={motion.button}
             variants={ScanButtonVariants}
-
-
-            initial="initial"    
-            animate="animate" 
+            initial="initial"
+            animate="animate"
             exit="exit"
-            >
-              Scan
-            </Button>
-        }            
+          >
+            Scan
+          </Button>
+        )}
       </AnimatePresence>
-
     </Wrapper>
   );
 }
@@ -195,18 +207,18 @@ const ScanButtonVariants: Variants = {
     y: 0,
     transition: {
       duration: 0.5,
-    }
+    },
   },
-  "exit": {
-    opacity: 0, 
+  exit: {
+    opacity: 0,
     y: -40,
     transition: {
       duration: 0.3,
       default: {
         ease: "easeOut",
       },
-    }
-  }
-}
+    },
+  },
+};
 
 export default FileUpload;
