@@ -8,10 +8,7 @@ import FridgeImage from "./FridgeImage";
 import { scaleClamped } from "@components/Global";
 import Button from "@components/Button";
 import { motion, AnimatePresence, type Variants } from "motion/react";
-import initDecoder, { type Module } from "heic-d-code";
-
-let decoder: undefined | Module = undefined;
-
+import heic2URL from './HeicDCode';
 function FileUpload() {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
 
@@ -25,10 +22,6 @@ function FileUpload() {
   }, [imgURLs]);
 
   async function handleFiles(event: ChangeEvent<HTMLInputElement>) {
-    if(decoder === undefined) {
-      decoder = await initDecoder();
-    }
-
     // Only null when the target is not <input type="file">, but we know it is
     const userFiles = event.target.files!;
     if (userFiles.length < 1) {
@@ -48,13 +41,7 @@ function FileUpload() {
         case "image/heic":
         case "image/heif": {
           const heicData = new Uint8Array(await file.arrayBuffer());
-          const { data, width, height } = decoder.decode(heicData);
-          const canvas = new OffscreenCanvas(0, 0);
-          const ctx = canvas.getContext("2d")!;
-          canvas.width = width;
-          canvas.height = height;
-          ctx!.putImageData(new ImageData(data, width, height), 0, 0);
-          const url = URL.createObjectURL(await canvas.convertToBlob());
+          const url = await heic2URL(heicData);
           newImages.push(url);
           break;
         }
