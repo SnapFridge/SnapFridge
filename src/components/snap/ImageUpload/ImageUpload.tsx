@@ -8,7 +8,7 @@ import FridgeImage from "./FridgeImage";
 import { scaleClamped } from "@components/Global";
 import Button from "@components/Button";
 import { motion, AnimatePresence, type Variants } from "motion/react";
-
+import heic2URL from './HeicDCode';
 function FileUpload() {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
 
@@ -21,7 +21,7 @@ function FileUpload() {
     };
   }, [imgURLs]);
 
-  function handleFiles(event: ChangeEvent<HTMLInputElement>) {
+  async function handleFiles(event: ChangeEvent<HTMLInputElement>) {
     // Only null when the target is not <input type="file">, but we know it is
     const userFiles = event.target.files!;
     if (userFiles.length < 1) {
@@ -32,11 +32,16 @@ function FileUpload() {
       switch (file.type) {
         case "image/png":
         case "image/jpeg":
-        case "image/webp":
-        case "image/heic":
-        case "image/heif": {
+        case "image/webp": {
           // Used as src and key since it's unique
           const url = URL.createObjectURL(file);
+          newImages.push(url);
+          break;
+        }
+        case "image/heic":
+        case "image/heif": {
+          const heicData = new Uint8Array(await file.arrayBuffer());
+          const url = await heic2URL(heicData);
           newImages.push(url);
           break;
         }
@@ -66,7 +71,7 @@ function FileUpload() {
     <Wrapper layout>
       <FileUploader>
         <HiddenUpload
-          onChange={handleFiles}
+          onChange={e => handleFiles(e)}
           type="file"
           multiple
           accept=".png,.jpg,.webp,.heic,.heif"
