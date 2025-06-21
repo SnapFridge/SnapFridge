@@ -41,7 +41,8 @@ const PROMPT = `
       * **Other:** 'slices'.
   * **No Ambiguous Terms:** You are forbidden from using vague estimations like 'bunch', 'some', or 'a few'. Every item must have a concrete numerical estimate.
 `
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+
+const ai = new GoogleGenAI({ apiKey: process.env['API_KEY']! });
 
 // Construct an absolute path to the file
 // Keep this to test for the TestFridgeForAI image. 

@@ -1,14 +1,19 @@
 import { withPigment } from "@pigment-css/nextjs-plugin";
 
 export default withPigment({
-  // Neccessary for decoder
-  webpack: (cfg) => {
-    cfg.experiments = {
-      layers: true,
-      topLevelAwait: true
-    };
-    return cfg;
+  experimental: {
+    webpackBuildWorker: true,
+    optimizePackageImports: [
+      "@google/genai",
+      "@radix-ui/react-dropdown-menu",
+      "radix-ui",
+      "react-loading-skeleton",
+      "motion",
+      "next",
+      "next-themes",
+    ],
   },
+
   images: {
     remotePatterns: [new URL('https://img.spoonacular.com/recipes/**')],
   },

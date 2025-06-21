@@ -9,6 +9,7 @@ import { scaleClamped } from "@components/Global";
 import Button from "@components/Button";
 import { motion, AnimatePresence, type Variants } from "motion/react";
 import heic2URL from './HeicDCode';
+
 function FileUpload() {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
 

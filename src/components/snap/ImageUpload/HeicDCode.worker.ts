@@ -1,4 +1,6 @@
 import init from "heic-d-code";
+
+// TODO: Find a way to get rid of TLA warnings
 const decoder = await init();
 const canvas = new OffscreenCanvas(0, 0);
 const ctx = canvas.getContext("2d")!;

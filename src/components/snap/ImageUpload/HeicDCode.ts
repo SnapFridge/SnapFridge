@@ -1,4 +1,7 @@
-const worker = new Worker("HeicDCode.worker.js", { type: "module" });
+
+const worker = new Worker(new URL("HeicDCode.worker.ts", import.meta.url), 
+  { type: "module" });
+
 function heic2URL(heicData: Uint8Array): Promise<string> {
   return new Promise((resolve, reject) => {
     worker.addEventListener("message", e => {
