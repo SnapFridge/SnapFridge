@@ -12,6 +12,7 @@
     "node": ">=20.12.2"
   },
   "dependencies": {
+    "@google/genai": "^1.6.0",
     "@pigment-css/react": "^0.0.30",
     "@radix-ui/react-dropdown-menu": "^2.1.15",
     "heic-d-code": "^0.0.1",
