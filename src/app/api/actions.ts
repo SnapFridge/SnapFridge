@@ -36,29 +36,28 @@ const SYS_INSTRUCTION = `
       * **Solids:** 'g' or 'kg'.
       * **Other:** 'slices'.
   * **No Ambiguous Terms:** You are forbidden from using vague estimations like 'bunch', 'some', or 'a few'. Every item must have a concrete numerical estimate.
-`
+`;
 
-const ai = new GoogleGenAI({ apiKey: process.env['GEMINI_KEY']! });
+const ai = new GoogleGenAI({ apiKey: process.env["GEMINI_KEY"]! });
 
-export default async function AIprocessImages(_files: React.RefObject<File[]>) {
-  const files = _files.current;
+export default async function AIprocessImages(files: File[]) {
   console.log(files);
   const fileDataParts: { fileData: FileData }[] = [];
   const filenames: string[] = [];
 
-  for(let i = 0; i < files.length; i++) {
+  for (let i = 0; i < files.length; i++) {
     filenames.push(crypto.randomUUID());
     const uploadedFile = await ai.files.upload({
       file: files[i]!,
       config: {
         name: filenames[i]!,
-      }
+      },
     });
     fileDataParts.push({
       fileData: {
         fileUri: uploadedFile.uri!,
         mimeType: files[i]!.type,
-      }
+      },
     });
   }
 
@@ -67,7 +66,7 @@ export default async function AIprocessImages(_files: React.RefObject<File[]>) {
     contents: fileDataParts,
     config: {
       systemInstruction: SYS_INSTRUCTION,
-      responseMimeType: 'application/json',
+      responseMimeType: "application/json",
       responseSchema: {
         type: Type.ARRAY,
         items: {
@@ -100,5 +99,5 @@ export default async function AIprocessImages(_files: React.RefObject<File[]>) {
   if (response.text) {
     return response.text;
   }
-  return 'Fetching from Gemini failed.'
+  return "Fetching from Gemini failed.";
 }

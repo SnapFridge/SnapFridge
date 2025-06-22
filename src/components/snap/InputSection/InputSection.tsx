@@ -4,27 +4,51 @@ import * as React from "react";
 import { styled } from "@pigment-css/react";
 import FileUpload from "../ImageUpload/ImageUpload";
 import IngredientSection from "@components/snap/IngredientSection";
-import { useState, useActionState, useEffect, useRef } from "react";
+import { useState, useActionState } from "react";
 import AIprocessImages from "../../../app/api/actions";
 import Ingredient from "../IngredientSection/Ingredient";
 
 function InputSection() {
-  const files = useRef<File[]>([]);
-  const boundAction = AIprocessImages.bind(null, files);
-  const [message, formAction, isPending] = useActionState(boundAction, null);
+  const [files, setFiles] = useState<File[]>([]);
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
+  const boundAction = AIprocessImages.bind(null, files);
 
-  useEffect(() => {
-    if (message) {
-      setIngredients([...ingredients].concat(JSON.parse(message)));
+  // Update the ingredient state
+  async function wrapperFunction() {
+    const result = await boundAction();
+    if (result) {
+      const newIngredients = JSON.parse(result);
+      setIngredients((prev) => [...prev, ...newIngredients]);
     }
-  }, [message, ingredients]);
+  }
+
+  function addFiles(newFiles: FileList) {
+    const nextFiles = [...files, ...Array.from(newFiles)];
+    setFiles(nextFiles);
+  }
+
+  function removeFile(imgIndex: number) {
+    const nextFiles = files.filter((_, index) => index !== imgIndex);
+    setFiles(nextFiles);
+  }
+
+  const [_message, formAction, isPending] = useActionState(
+    wrapperFunction,
+    null
+  );
 
   return (
     <Wrapper>
-      <FileUpload formAction={formAction} files={files} />
-      {isPending ? <p>Fetching from Gemini API...</p> : undefined }
-      <IngredientSection ingredients={ingredients} setIngredients={setIngredients} />
+      <FileUpload
+        formAction={formAction}
+        addFiles={addFiles}
+        removeFile={removeFile}
+      />
+      {isPending ? <p>Fetching from Gemini API...</p> : undefined}
+      <IngredientSection
+        ingredients={ingredients}
+        setIngredients={setIngredients}
+      />
     </Wrapper>
   );
 }

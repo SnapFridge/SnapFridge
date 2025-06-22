@@ -13,7 +13,6 @@ export default function useToast() {
   }
 
   function addSuccess(title: string, description?: string) {
-    console.log("hahah");
     addToast("success", title, description);
   }
 

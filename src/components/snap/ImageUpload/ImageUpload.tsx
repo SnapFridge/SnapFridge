@@ -2,7 +2,7 @@
 
 import { styled, css } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import { useEffect, useRef, useState, type ChangeEvent} from "react";
+import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import VisuallyHidden from "@components/VisuallyHidden";
 import FridgeImage from "./FridgeImage";
 import { scaleClamped } from "@components/Global";
@@ -11,11 +11,12 @@ import { motion, AnimatePresence, type Variants } from "motion/react";
 import heic2URL from "./HeicDCode";
 
 type FileUploadData = {
-  formAction: () => void, 
-  files: React.RefObject<File[]>,
+  formAction: () => void;
+  removeFile: (index: number) => void;
+  addFiles: (files: FileList) => void;
 };
 
-function FileUpload({ formAction, files }: FileUploadData) {
+function FileUpload({ formAction, removeFile, addFiles }: FileUploadData) {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
   const worker = useRef<Worker | undefined>(undefined);
 
@@ -70,7 +71,8 @@ function FileUpload({ formAction, files }: FileUploadData) {
         // Toaster time
       }
     }
-    files.current = [...files.current, ...Array.from(userFiles)];
+
+    addFiles(userFiles);
 
     // Reset so that you don't have invisible imgURLs
     event.target.value = "";
@@ -78,62 +80,55 @@ function FileUpload({ formAction, files }: FileUploadData) {
     setImgURLs(nextImages);
   }
 
-
   function removeImage(imgURL: string) {
-
     // Find the index of the image, then remove the same index from files and imgURLs
-    let i: number = 0;
-    while(imgURLs[i] !== imgURL) {
-      ++i;
-    }
-    
-    files.current.splice(i, 1);
-    setImgURLs(imgURLs.filter((_, idx) => idx !== i));
+    const index = imgURLs.findIndex((url) => imgURL === url);
+
+    removeFile(index);
+    setImgURLs(imgURLs.filter((_, idx) => idx !== index));
   }
 
-
   return (
-      <Wrapper layout action={formAction}>
-        <FileUploader>
-          <HiddenUpload
-            onChange={(e) => handleFiles(e)}
-            type="file"
-            multiple
-            accept=".png,.jpg,.webp,.heic,.heif"
-
-            name="fileInput"
-          />
-          <VisibleContent filled={imgURLs.length > 0}>
-            {imgURLs.length === 0 && (
-              <>
-                <Icon icon="FilePlus" size={36} />
-                <VisuallyHidden>Add Images</VisuallyHidden>
-              </>
-            )}
-            {imgURLs.map((url) => (
-              <FridgeImage key={url} src={url} removeImage={removeImage} />
-            ))}
-          </VisibleContent> 
-        </FileUploader>
-
-        <AnimatePresence>
-          {imgURLs.length > 0 && (
-            <Button
-              key="scan-button"
-              layout
-              className={ScanButton}
-              variant="primary"
-              as={motion.button}
-              variants={ScanButtonVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-            >
-              Scan
-            </Button>
+    <Wrapper layout action={formAction}>
+      <FileUploader>
+        <HiddenUpload
+          onChange={(e) => handleFiles(e)}
+          type="file"
+          multiple
+          accept=".png,.jpg,.webp,.heic,.heif"
+          name="fileInput"
+        />
+        <VisibleContent filled={imgURLs.length > 0}>
+          {imgURLs.length === 0 && (
+            <>
+              <Icon icon="FilePlus" size={36} />
+              <VisuallyHidden>Add Images</VisuallyHidden>
+            </>
           )}
-        </AnimatePresence>        
-      </Wrapper>    
+          {imgURLs.map((url) => (
+            <FridgeImage key={url} src={url} removeImage={removeImage} />
+          ))}
+        </VisibleContent>
+      </FileUploader>
+
+      <AnimatePresence>
+        {imgURLs.length > 0 && (
+          <Button
+            key="scan-button"
+            layout
+            className={ScanButton}
+            variant="primary"
+            as={motion.button}
+            variants={ScanButtonVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+          >
+            Scan
+          </Button>
+        )}
+      </AnimatePresence>
+    </Wrapper>
   );
 }
 
