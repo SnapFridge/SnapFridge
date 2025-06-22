@@ -50,7 +50,7 @@ const ai = new GoogleGenAI({ apiKey: process.env['API_KEY']! });
 const filePath = path.join(process.cwd(), 'public/testImgs', 'TestFridgeForAI.png');
 const base64ImageFile = fs.readFileSync(filePath, { encoding: 'base64' });
 
-async function convertUrlsToBlobs(blobUrls: string[]) {
+async function convertUrlsToBlobs(files: File[]) {
   try {
     // 1. .map() creates an array of promises. It doesn't wait.
     //    Each 'fetch' starts concurrently.
@@ -81,11 +81,11 @@ async function convertUrlsToBlobs(blobUrls: string[]) {
 }
 
 
-export default async function AIprocessImages(prevState, queryData) {
+export default async function AIprocessImages(filesArr: File[]) {
   console.log('Fetching from Gemini started...');
 
-  const fileData = queryData.get('fileInput');
-  console.log(fileData);
+  console.log(filesArr);
+  console.log(filesArr.length);
 
 
   /*
@@ -98,16 +98,43 @@ export default async function AIprocessImages(prevState, queryData) {
   */
 
 
+  const uploadedPromises = filesArr.map(async (file, index) => {
+
+    return ai.files.upload({
+      file: file[0],
+      config: {
+        mimeType: file[0].type,
+        name: `${index}`,
+        displayName: file[0].name,
+      }
+    })
+      
+  });
+
+
+  const uploadedFiles = await Promise.all(uploadedPromises);
+
+  const fileDataParts = uploadedFiles.map(file => ({
+    fileData: {
+        mimeType: file.mimeType,
+        fileUri: file.uri,
+    }
+  }));
+
+
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
     contents: [
+      /*
       {
         inlineData: {
           mimeType: 'image/png',
           data: base64ImageFile,
         },
       },
+      */
       { text: PROMPT },
+      ...fileDataParts,
     ],
     config: {
       responseMimeType: 'application/json',
@@ -131,6 +158,13 @@ export default async function AIprocessImages(prevState, queryData) {
       },
     },
   });
+
+  const listResponse = await ai.files.list({ config: { pageSize: 10 } });
+  for await (const file of listResponse) {
+    console.log(file.name);
+    await ai.files.delete({ name: file.name });
+  }
+
 
   if (response.text) {
     return response.text;

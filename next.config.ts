@@ -12,6 +12,9 @@ export default withPigment({
       "next",
       "next-themes",
     ],
+    serverActions: {
+      bodySizeLimit: '20mb',
+    },
   },
 
   images: {

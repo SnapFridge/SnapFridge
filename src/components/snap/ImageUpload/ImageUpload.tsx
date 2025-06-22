@@ -13,10 +13,11 @@ import AIprocessImages from "../../../app/api/actions";
 
 function FileUpload() {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
+  const [files, setFiles] = useState<File[]>([]);
 
-  //const boundAction = AIprocessImages.bind(null, imgURLs);
-  //const [message, formAction, isPending] = useActionState(boundAction, null);
-  const [message, formAction, isPending] = useActionState(AIprocessImages, null);
+  const boundAction = AIprocessImages.bind(null, files);
+  const [message, formAction, isPending] = useActionState(boundAction, null);
+  //const [message, formAction, isPending] = useActionState(AIprocessImages, null);
 
   const worker = useRef<Worker | undefined>(undefined);
 
@@ -43,6 +44,8 @@ function FileUpload() {
   }, [imgURLs]);
 
   async function handleFiles(event: ChangeEvent<HTMLInputElement>) {
+    console.log('handleFiles');
+
     // Only null when the target is not <input type="file">, but we know it is
     const userFiles = event.target.files!;
     if (userFiles.length < 1) {
@@ -72,11 +75,16 @@ function FileUpload() {
         // Toaster time
       }
     }
+
+    const nextFiles = [...files, Array.from(userFiles)]
+    setFiles(nextFiles);
+
     // Reset so that you don't have invisible imgURLs
     event.target.value = "";
     const nextImages = [...imgURLs, ...newImages];
     setImgURLs(nextImages);
   }
+
 
   function removeImage(imgUrl: string) {
     setImgURLs(
@@ -89,6 +97,7 @@ function FileUpload() {
       })
     );
   }
+
 
   return (
     <>
@@ -134,7 +143,8 @@ function FileUpload() {
           )}
         </AnimatePresence>        
       </Wrapper>    
-      
+
+    
       {isPending ? <p>Fetching from Gemini API...</p> : <p>{message}</p>}
     </>
 
