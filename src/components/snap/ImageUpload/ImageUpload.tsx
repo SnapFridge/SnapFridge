@@ -2,17 +2,24 @@
 
 import { styled, css } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import { useEffect, useRef, useState, type ChangeEvent } from "react";
+import { useEffect, useRef, useState, type ChangeEvent, useActionState } from "react";
 import VisuallyHidden from "@components/VisuallyHidden";
 import FridgeImage from "./FridgeImage";
 import { scaleClamped } from "@components/Global";
 import Button from "@components/Button";
 import { motion, AnimatePresence, type Variants } from "motion/react";
 import heic2URL from "./HeicDCode";
+import AIprocessImages from "../../../app/api/actions";
 
 function FileUpload() {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
+
+  //const boundAction = AIprocessImages.bind(null, imgURLs);
+  //const [message, formAction, isPending] = useActionState(boundAction, null);
+  const [message, formAction, isPending] = useActionState(AIprocessImages, null);
+
   const worker = useRef<Worker | undefined>(undefined);
+
 
   // Initialize a worker
   useEffect(() => {
@@ -84,48 +91,57 @@ function FileUpload() {
   }
 
   return (
-    <Wrapper layout>
-      <FileUploader>
-        <HiddenUpload
-          onChange={(e) => handleFiles(e)}
-          type="file"
-          multiple
-          accept=".png,.jpg,.webp,.heic,.heif"
-        />
-        <VisibleContent filled={imgURLs.length > 0}>
-          {imgURLs.length === 0 && (
-            <>
-              <Icon icon="FilePlus" size={36} />
-              <VisuallyHidden>Add Images</VisuallyHidden>
-            </>
+    <>
+      <Wrapper layout action={formAction}>
+        <FileUploader>
+          <HiddenUpload
+            onChange={(e) => handleFiles(e)}
+            type="file"
+            multiple
+            accept=".png,.jpg,.webp,.heic,.heif"
+
+            name="fileInput"
+          />
+          <VisibleContent filled={imgURLs.length > 0}>
+            {imgURLs.length === 0 && (
+              <>
+                <Icon icon="FilePlus" size={36} />
+                <VisuallyHidden>Add Images</VisuallyHidden>
+              </>
+            )}
+            {imgURLs.map((url) => (
+              <FridgeImage key={url} src={url} removeImage={removeImage} />
+            ))}
+          </VisibleContent> 
+        </FileUploader>
+
+
+        <AnimatePresence>
+          {imgURLs.length > 0 && (
+            <Button
+              key="scan-button"
+              layout
+              className={ScanButton}
+              styling="primary"
+              as={motion.button}
+              variants={ScanButtonVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
+              Scan
+            </Button>
           )}
-          {imgURLs.map((url) => (
-            <FridgeImage key={url} src={url} removeImage={removeImage} />
-          ))}
-        </VisibleContent>
-      </FileUploader>
-      <AnimatePresence>
-        {imgURLs.length > 0 && (
-          <Button
-            key="scan-button"
-            layout
-            className={ScanButton}
-            styling="primary"
-            as={motion.button}
-            variants={ScanButtonVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-          >
-            Scan
-          </Button>
-        )}
-      </AnimatePresence>
-    </Wrapper>
+        </AnimatePresence>        
+      </Wrapper>    
+      
+      {isPending ? <p>Fetching from Gemini API...</p> : <p>{message}</p>}
+    </>
+
   );
 }
 
-const Wrapper = styled(motion.div)({
+const Wrapper = styled(motion.form)({
   width: "100%",
   maxWidth: "576px",
 });

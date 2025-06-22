@@ -5,6 +5,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 // Temporary imports for testing with the fridge image
 import fs from 'fs';
 import path from "path";
+import { blob } from "stream/consumers";
 
 const PROMPT = `
   ## ROLE
@@ -46,12 +47,56 @@ const ai = new GoogleGenAI({ apiKey: process.env['API_KEY']! });
 
 // Construct an absolute path to the file
 // Keep this to test for the TestFridgeForAI image. 
-const filePath = path.join(process.cwd(), 'public', 'TestFridgeForAI.png');
+const filePath = path.join(process.cwd(), 'public/testImgs', 'TestFridgeForAI.png');
 const base64ImageFile = fs.readFileSync(filePath, { encoding: 'base64' });
 
+async function convertUrlsToBlobs(blobUrls: string[]) {
+  try {
+    // 1. .map() creates an array of promises. It doesn't wait.
+    //    Each 'fetch' starts concurrently.
+    const blobPromises = blobUrls.map(async (blobUrl) => {
+      const response = await fetch(blobUrl);
+      if (!response.ok) {
+        throw new Error(`Failed to fetch ${blobUrl}`);
+      }
+      return response.blob();
+    });
 
-export default async function AIprocessImages() {
+    console.log("This is an array of pending Promises:", blobPromises);
+    // You would see [ Promise { <pending> }, Promise { <pending> } ]
+
+    // 2. Promise.all() waits for ALL promises in the array to resolve.
+    //    This is the line that was missing.
+    const actualBlobsArray = await Promise.all(blobPromises);
+
+    console.log("This is the final array of Blob objects:", actualBlobsArray);
+    // You will now see [ Blob { size: ..., type: '...' }, Blob { size: ..., type: '...' } ]
+
+    return actualBlobsArray;
+
+  } catch (error) {
+    console.error("An error occurred while converting blobs:", error);
+    return null;
+  }
+}
+
+
+export default async function AIprocessImages(prevState, queryData) {
   console.log('Fetching from Gemini started...');
+
+  const fileData = queryData.get('fileInput');
+  console.log(fileData);
+
+
+  /*
+  const uploadedFiles = BlobsArray.map((image) => {
+    return ai.files.upload({
+      file: image.blob,
+      config: { mimeType: Blob.type }
+    })
+  })
+  */
+
 
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
