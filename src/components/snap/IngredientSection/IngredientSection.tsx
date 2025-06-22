@@ -6,15 +6,14 @@ import Icon from "@components/Icon";
 import Ingredient from "./Ingredient";
 import { motion } from "motion/react";
 
-function IngredientSection() {
-  const [ingredients, setIngredients] = useState<Ingredient[]>([]);
+function IngredientSection({ ingredients, setIngredients }) {
   const [input, setInput] = useState<string>("");
 
   function addIngredient() {
     if (input !== "") {
       setIngredients([
         ...ingredients,
-        { name: input, quantity: 3, measurement: "tsp" },
+        { itemName: input, value: 3, measurement: "tsp" },
       ]);
       setInput("");
     }
@@ -22,7 +21,7 @@ function IngredientSection() {
 
   function removeIngredient(name: string) {
     const nextIngredients = ingredients.filter(
-      (ingredient) => ingredient.name !== name
+      (ingredient) => ingredient.itemName !== name
     );
     setIngredients(nextIngredients);
   }
@@ -59,9 +58,8 @@ function IngredientSection() {
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
         {ingredients.map((ingredient: Ingredient) => (
-          // Temporary key as a placeholder. actual key will be the ingredient name
           <Ingredient
-            key={ingredient.name}
+            key={ingredient.itemName}
             ingredientInfo={ingredient}
             removeIngredient={removeIngredient}
           ></Ingredient>

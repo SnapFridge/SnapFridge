@@ -2,22 +2,16 @@
 
 import { styled, css } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import { useEffect, useRef, useState, type ChangeEvent, useActionState } from "react";
+import { useEffect, useRef, useState, type ChangeEvent} from "react";
 import VisuallyHidden from "@components/VisuallyHidden";
 import FridgeImage from "./FridgeImage";
 import { scaleClamped } from "@components/Global";
 import Button from "@components/Button";
 import { motion, AnimatePresence, type Variants } from "motion/react";
 import heic2URL from "./HeicDCode";
-import AIprocessImages from "../../../app/api/actions";
 
-function FileUpload() {
+function FileUpload({ setFiles, formAction, files }) {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
-  const [files, setFiles] = useState<File[]>([]);
-
-  const boundAction = AIprocessImages.bind(null, files);
-  const [message, formAction, isPending] = useActionState(boundAction, null);
-
   const worker = useRef<Worker | undefined>(undefined);
 
 
@@ -73,7 +67,7 @@ function FileUpload() {
       }
     }
 
-    const nextFiles = [...files, Array.from(userFiles)]
+    const nextFiles = [...files, Array.from(userFiles)];
     setFiles(nextFiles);
 
     // Reset so that you don't have invisible imgURLs
@@ -97,7 +91,6 @@ function FileUpload() {
 
 
   return (
-    <>
       <Wrapper layout action={formAction}>
         <FileUploader>
           <HiddenUpload
@@ -139,9 +132,6 @@ function FileUpload() {
           )}
         </AnimatePresence>        
       </Wrapper>    
-
-      {isPending ? <p>Fetching from Gemini API...</p> : <p>{message}</p>}
-    </>
   );
 }
 

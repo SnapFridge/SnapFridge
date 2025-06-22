@@ -13,8 +13,8 @@ import Button from "@components/Button";
 import VisuallyHidden from "@components/VisuallyHidden";
 
 interface Ingredient {
-  name: string;
-  quantity: number;
+  itemName: string;
+  value: number;
   measurement: string;
 }
 
@@ -74,10 +74,10 @@ function Ingredient({ ingredientInfo, removeIngredient }: Props) {
               whileHover="hover"
               exit="exit"
               onClick={() => {
-                removeIngredient(ingredientInfo.name);
+                removeIngredient(ingredientInfo.itemName);
               }}
             >
-              <VisuallyHidden>Delete {ingredientInfo.name}</VisuallyHidden>
+              <VisuallyHidden>Delete {ingredientInfo.itemName}</VisuallyHidden>
               <Icon icon="Trash2" color="var(--warning)" />
             </Button>
             <Button
@@ -89,7 +89,7 @@ function Ingredient({ ingredientInfo, removeIngredient }: Props) {
               whileHover="hover"
               exit="exit"
             >
-              <VisuallyHidden>Edit {ingredientInfo.name}</VisuallyHidden>
+              <VisuallyHidden>Edit {ingredientInfo.itemName}</VisuallyHidden>
               <Icon icon="PencilLine" color="white" />
             </Button>
           </ActionContainer>
@@ -101,9 +101,9 @@ function Ingredient({ ingredientInfo, removeIngredient }: Props) {
         animate="enter"
         ref={scope}
       >
-        <IngredientName>{ingredientInfo.name}</IngredientName>
+        <IngredientName>{ingredientInfo.itemName}</IngredientName>
         <p>
-          {ingredientInfo.quantity} {ingredientInfo.measurement}
+          {ingredientInfo.value} {ingredientInfo.measurement}
         </p>
       </IngredientElement>
     </Wrapper>
