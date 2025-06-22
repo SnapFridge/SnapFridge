@@ -24,10 +24,10 @@ export default function Page() {
           <Title>SnapFridge</Title>
           <AdjectiveRecipes />
           <ButtonWrapper>
-            <Button as={Link} href="/about" styling="primary">
+            <Button as={Link} href="/about" variant="primary">
               About Us
             </Button>
-            <Button as={Link} href="/snap" styling="secondary">
+            <Button as={Link} href="/snap" variant="secondary">
               Get Started
             </Button>
           </ButtonWrapper>
@@ -105,7 +105,7 @@ export default function Page() {
           <Button
             as={Link}
             href="/snap"
-            styling="primary"
+            variant="primary"
             className={CoAButtonCSS}
           >
             Get Started

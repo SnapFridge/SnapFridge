@@ -3,23 +3,23 @@ import { styled } from "@pigment-css/react";
 
 type ButtonProps<C extends ElementType> = {
   as?: C;
-  styling?: "primary" | "secondary";
+  variant?: "primary" | "secondary";
 } & Omit<ComponentPropsWithoutRef<C>, "as">;
 // The default link has an "as" attribute, overriding that with our "as"
 
 function Button<C extends ElementType = "button">({
-  styling,
+  variant,
   children,
   ...delegated
 }: ButtonProps<C>) {
   return (
-    <StyledButton styling={styling} {...delegated}>
+    <StyledButton variant={variant} {...delegated}>
       {children}
     </StyledButton>
   );
 }
 
-const StyledButton = styled("button")<{ styling: string | undefined }>({
+const StyledButton = styled("button")<{ variant: string | undefined }>({
   textAlign: "center",
   textDecoration: "none",
   fontSize: `${16 / 16}rem`,
@@ -33,7 +33,7 @@ const StyledButton = styled("button")<{ styling: string | undefined }>({
 
   variants: [
     {
-      props: { styling: "primary" },
+      props: { variant: "primary" },
       style: {
         background: "var(--primary-500)",
         color: "#000000",
@@ -41,7 +41,7 @@ const StyledButton = styled("button")<{ styling: string | undefined }>({
       },
     },
     {
-      props: { styling: "secondary" },
+      props: { variant: "secondary" },
       style: {
         background: "var(--secondary-300)",
         color: "var(--text-950)",

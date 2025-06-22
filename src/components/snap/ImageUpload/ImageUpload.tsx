@@ -122,7 +122,7 @@ function FileUpload({ formAction, files }: FileUploadData) {
               key="scan-button"
               layout
               className={ScanButton}
-              styling="primary"
+              variant="primary"
               as={motion.button}
               variants={ScanButtonVariants}
               initial="initial"
