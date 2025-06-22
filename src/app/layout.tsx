@@ -6,6 +6,8 @@ import NavBar from "@components/NavBar";
 import Footer from "@components/Footer";
 import CookieBanner from "@components/CookieBanner";
 import { styled } from "@pigment-css/react";
+import ToastProvider from "@components/ToastProvider";
+import Toaster from "@components/Toaster";
 
 const poppins = Poppins({
   weight: ["400", "700"],
@@ -32,12 +34,15 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Background>
-            <NavBar></NavBar>
-            <Main>{children}</Main>
-            <Footer></Footer>
-            <CookieBanner></CookieBanner>
-          </Background>
+          <ToastProvider>
+            <Background>
+              <NavBar />
+              <Main>{children}</Main>
+              <Footer />
+              <CookieBanner />
+              <Toaster />
+            </Background>
+          </ToastProvider>
         </ThemeProvider>
       </body>
     </html>

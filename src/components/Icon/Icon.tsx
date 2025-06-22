@@ -13,12 +13,14 @@ interface Props extends ComponentProps<"svg"> {
   icon: Icon;
   color?: string;
   size?: number;
+  ariaHidden?: boolean;
 }
 
 export default function Icon({
   icon,
   color = "var(--text-950)",
   size = 24,
+  ariaHidden = true,
   ...delegated
 }: Props) {
   switch (icon) {
@@ -29,6 +31,7 @@ export default function Icon({
           height={(size / 64) * 46}
           viewBox="0 0 64 46"
           xmlns="http://www.w3.org/2000/svg"
+          aria-hidden={ariaHidden}
           {...delegated}
         >
           <rect y="6" width="64" height="40" rx="6" ry="6.3" fill="#154f5d" />
@@ -76,6 +79,7 @@ export default function Icon({
           height={size}
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
+          aria-hidden={ariaHidden}
           {...delegated}
         >
           <path
@@ -86,5 +90,12 @@ export default function Icon({
       );
   }
   const LucideIcon: Icons.LucideIcon = Icons[icon];
-  return <LucideIcon color={color} size={size} {...delegated} />;
+  return (
+    <LucideIcon
+      color={color}
+      size={size}
+      aria-hidden={ariaHidden}
+      {...delegated}
+    />
+  );
 }

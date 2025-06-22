@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 
-import { MAX_SUPPORTED_WIDTH, scaleClamped } from '@components/Global';
+import { MAX_SUPPORTED_WIDTH, scaleClamped } from "@components/Global";
 import { globalCss } from "@pigment-css/react";
 
 // Color scheme
@@ -69,6 +69,42 @@ globalCss`
 
     --shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     --warning: #b3261e;
+
+    --error-50: #fbeae9;
+    --error-100: #f8d5d3;
+    --error-200: #f0aba8;
+    --error-300: #e9827c;
+    --error-400: #e15851;
+    --error-500: #da2e25;
+    --error-600: #ae251e;
+    --error-700: #831c16;
+    --error-800: #57120f;
+    --error-900: #2c0907;
+    --error-950: #160504;
+
+    --warn-50: #fff5e6;
+    --warn-100: #feebcd;
+    --warn-200: #fed89a;
+    --warn-300: #fdc468;
+    --warn-400: #fdb035;
+    --warn-500: #fc9d03;
+    --warn-600: #ca7d02;
+    --warn-700: #975e02;
+    --warn-800: #653f01;
+    --warn-900: #321f01;
+    --warn-950: #191000;
+
+    --success-50: #ebf9ef;
+    --success-100: #d8f3de;
+    --success-200: #b0e8bd;
+    --success-300: #89dc9c;
+    --success-400: #62d07c;
+    --success-500: #3bc45b;
+    --success-600: #2f9d49;
+    --success-700: #237636;
+    --success-800: #174f24;
+    --success-900: #0c2712;
+    --success-950: #061409;
 
     --hero-radial-1: #969FCB;
     --hero-radial-2: #3ec1e3;
@@ -145,6 +181,42 @@ globalCss`
     --shadow: 0 10px 15px -3px rgb(100 100 100 / 0.2), 0 4px 6px -4px rgb(100 100 100 / 0.2);
     --warning: #fda920;
 
+    --error-50: #160504;
+    --error-100: #2c0907;
+    --error-200: #57120f;
+    --error-300: #831c16;
+    --error-400: #ae251e;
+    --error-500: #da2e25;
+    --error-600: #e15851;
+    --error-700: #e9827c;
+    --error-800: #f0aba8;
+    --error-900: #f8d5d3;
+    --error-950: #fbeae9;
+
+    --warn-50: #191000;
+    --warn-100: #321f01;
+    --warn-200: #653f01;
+    --warn-300: #975e02;
+    --warn-400: #ca7d02;
+    --warn-500: #fc9d03;
+    --warn-600: #fdb035;
+    --warn-700: #fdc468;
+    --warn-800: #fed89a;
+    --warn-900: #feebcd;
+    --warn-950: #fff5e6;
+
+    --success-50: #061409;
+    --success-100: #0c2712;
+    --success-200: #174f24;
+    --success-300: #237636;
+    --success-400: #2f9d49;
+    --success-500: #3bc45b;
+    --success-600: #62d07c;
+    --success-700: #89dc9c;
+    --success-800: #b0e8bd;
+    --success-900: #d8f3de;
+    --success-950: #ebf9ef;
+
     --hero-radial-1: #969FCB;
     --hero-radial-2: #194D5A;
     --hero-radial-3: #041514;
@@ -174,7 +246,7 @@ globalCss`
     width: 100%;
     @media (min-width: ${MAX_SUPPORTED_WIDTH}px) {
       width: ${MAX_SUPPORTED_WIDTH}px;
-      margin: auto; 
+      margin: auto;
     }
     overflow-x: clip;
   }
