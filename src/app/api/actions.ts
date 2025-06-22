@@ -94,6 +94,10 @@ export default async function AIprocessImages(filesArr: File[]) {
           propertyOrdering: ["itemName", "value", "measurement"],
         },
       },
+      thinkingConfig: {
+        thinkingBudget: -1,
+      },
+      temperature: 0.1,
     },
   });
 
