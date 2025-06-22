@@ -45,61 +45,10 @@ const PROMPT = `
 
 const ai = new GoogleGenAI({ apiKey: process.env['API_KEY']! });
 
-// Construct an absolute path to the file
-// Keep this to test for the TestFridgeForAI image. 
-const filePath = path.join(process.cwd(), 'public/testImgs', 'TestFridgeForAI.png');
-const base64ImageFile = fs.readFileSync(filePath, { encoding: 'base64' });
-
-async function convertUrlsToBlobs(files: File[]) {
-  try {
-    // 1. .map() creates an array of promises. It doesn't wait.
-    //    Each 'fetch' starts concurrently.
-    const blobPromises = blobUrls.map(async (blobUrl) => {
-      const response = await fetch(blobUrl);
-      if (!response.ok) {
-        throw new Error(`Failed to fetch ${blobUrl}`);
-      }
-      return response.blob();
-    });
-
-    console.log("This is an array of pending Promises:", blobPromises);
-    // You would see [ Promise { <pending> }, Promise { <pending> } ]
-
-    // 2. Promise.all() waits for ALL promises in the array to resolve.
-    //    This is the line that was missing.
-    const actualBlobsArray = await Promise.all(blobPromises);
-
-    console.log("This is the final array of Blob objects:", actualBlobsArray);
-    // You will now see [ Blob { size: ..., type: '...' }, Blob { size: ..., type: '...' } ]
-
-    return actualBlobsArray;
-
-  } catch (error) {
-    console.error("An error occurred while converting blobs:", error);
-    return null;
-  }
-}
-
-
 export default async function AIprocessImages(filesArr: File[]) {
   console.log('Fetching from Gemini started...');
 
-  console.log(filesArr);
-  console.log(filesArr.length);
-
-
-  /*
-  const uploadedFiles = BlobsArray.map((image) => {
-    return ai.files.upload({
-      file: image.blob,
-      config: { mimeType: Blob.type }
-    })
-  })
-  */
-
-
-  const uploadedPromises = filesArr.map(async (file, index) => {
-
+  const uploadedPromises = filesArr.map(async (file, index: number) => {
     return ai.files.upload({
       file: file[0],
       config: {
@@ -108,9 +57,7 @@ export default async function AIprocessImages(filesArr: File[]) {
         displayName: file[0].name,
       }
     })
-      
   });
-
 
   const uploadedFiles = await Promise.all(uploadedPromises);
 
@@ -118,21 +65,12 @@ export default async function AIprocessImages(filesArr: File[]) {
     fileData: {
         mimeType: file.mimeType,
         fileUri: file.uri,
-    }
+    },
   }));
-
 
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
     contents: [
-      /*
-      {
-        inlineData: {
-          mimeType: 'image/png',
-          data: base64ImageFile,
-        },
-      },
-      */
       { text: PROMPT },
       ...fileDataParts,
     ],
@@ -161,10 +99,8 @@ export default async function AIprocessImages(filesArr: File[]) {
 
   const listResponse = await ai.files.list({ config: { pageSize: 10 } });
   for await (const file of listResponse) {
-    console.log(file.name);
     await ai.files.delete({ name: file.name });
   }
-
 
   if (response.text) {
     return response.text;

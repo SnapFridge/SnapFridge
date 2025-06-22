@@ -17,7 +17,6 @@ function FileUpload() {
 
   const boundAction = AIprocessImages.bind(null, files);
   const [message, formAction, isPending] = useActionState(boundAction, null);
-  //const [message, formAction, isPending] = useActionState(AIprocessImages, null);
 
   const worker = useRef<Worker | undefined>(undefined);
 
@@ -44,8 +43,6 @@ function FileUpload() {
   }, [imgURLs]);
 
   async function handleFiles(event: ChangeEvent<HTMLInputElement>) {
-    console.log('handleFiles');
-
     // Only null when the target is not <input type="file">, but we know it is
     const userFiles = event.target.files!;
     if (userFiles.length < 1) {
@@ -124,7 +121,6 @@ function FileUpload() {
           </VisibleContent> 
         </FileUploader>
 
-
         <AnimatePresence>
           {imgURLs.length > 0 && (
             <Button
@@ -144,10 +140,8 @@ function FileUpload() {
         </AnimatePresence>        
       </Wrapper>    
 
-    
       {isPending ? <p>Fetching from Gemini API...</p> : <p>{message}</p>}
     </>
-
   );
 }
 
