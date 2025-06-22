@@ -1,13 +1,8 @@
 "use server";
 
-import { GoogleGenAI, Type } from "@google/genai";
+import { GoogleGenAI, Type, type FileData } from "@google/genai";
 
-// Temporary imports for testing with the fridge image
-import fs from 'fs';
-import path from "path";
-import { blob } from "stream/consumers";
-
-const PROMPT = `
+const SYS_INSTRUCTION = `
   ## ROLE
   You are a highly precise AI Ingredient Analyst. Your sole purpose is to identify and quantify the raw ingredients available in an image, ignoring all other details.
 
@@ -31,7 +26,7 @@ const PROMPT = `
 
   4.  **NO LOCATIONS:** Do not describe, mention, or allude to the location of any item. Your report must not contain words like 'shelf', 'door', 'top', or 'back'.
 
-  ## MEASUREMENT & ESTIMATION RULES
+  ## UNIT & ESTIMATION RULES
 
   * **For ingredients in containers** (like milk or juice), estimate the remaining volume of the *ingredient*.
   * **For loose items** (like carrots or loose spinach), provide either a specific count or an estimated total weight (in 'g' or 'kg').
@@ -43,38 +38,35 @@ const PROMPT = `
   * **No Ambiguous Terms:** You are forbidden from using vague estimations like 'bunch', 'some', or 'a few'. Every item must have a concrete numerical estimate.
 `
 
-const ai = new GoogleGenAI({ apiKey: process.env['API_KEY']! });
+const ai = new GoogleGenAI({ apiKey: process.env['GEMINI_KEY']! });
 
-export default async function AIprocessImages(filesArr: File[]) {
-  console.log('Fetching from Gemini started...');
+export default async function AIprocessImages(_files: React.RefObject<File[]>) {
+  const files = _files.current;
+  console.log(files);
+  const fileDataParts: { fileData: FileData }[] = [];
+  const filenames: string[] = [];
 
-  const uploadedPromises = filesArr.map(async (file, index: number) => {
-    return ai.files.upload({
-      file: file[0],
+  for(let i = 0; i < files.length; i++) {
+    filenames.push(crypto.randomUUID());
+    const uploadedFile = await ai.files.upload({
+      file: files[i]!,
       config: {
-        mimeType: file[0].type,
-        name: `${index}`,
-        displayName: file[0].name,
+        name: filenames[i]!,
       }
-    })
-  });
-
-  const uploadedFiles = await Promise.all(uploadedPromises);
-
-  const fileDataParts = uploadedFiles.map(file => ({
-    fileData: {
-        mimeType: file.mimeType,
-        fileUri: file.uri,
-    },
-  }));
+    });
+    fileDataParts.push({
+      fileData: {
+        fileUri: uploadedFile.uri!,
+        mimeType: files[i]!.type,
+      }
+    });
+  }
 
   const response = await ai.models.generateContent({
     model: "gemini-2.5-flash",
-    contents: [
-      { text: PROMPT },
-      ...fileDataParts,
-    ],
+    contents: fileDataParts,
     config: {
+      systemInstruction: SYS_INSTRUCTION,
       responseMimeType: 'application/json',
       responseSchema: {
         type: Type.ARRAY,
@@ -87,11 +79,11 @@ export default async function AIprocessImages(filesArr: File[]) {
             value: {
               type: Type.INTEGER,
             },
-            measurement: {
+            unit: {
               type: Type.STRING,
             },
           },
-          propertyOrdering: ["itemName", "value", "measurement"],
+          propertyOrdering: ["itemName", "value", "unit"],
         },
       },
       thinkingConfig: {
@@ -101,9 +93,8 @@ export default async function AIprocessImages(filesArr: File[]) {
     },
   });
 
-  const listResponse = await ai.files.list({ config: { pageSize: 10 } });
-  for await (const file of listResponse) {
-    await ai.files.delete({ name: file.name });
+  for (const filename of filenames) {
+    await ai.files.delete({ name: filename });
   }
 
   if (response.text) {

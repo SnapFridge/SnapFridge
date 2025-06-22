@@ -10,10 +10,14 @@ import Button from "@components/Button";
 import { motion, AnimatePresence, type Variants } from "motion/react";
 import heic2URL from "./HeicDCode";
 
-function FileUpload({ setFiles, formAction, files }) {
+type FileUploadData = {
+  formAction: () => void, 
+  files: React.RefObject<File[]>,
+};
+
+function FileUpload({ formAction, files }: FileUploadData) {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
   const worker = useRef<Worker | undefined>(undefined);
-
 
   // Initialize a worker
   useEffect(() => {
@@ -66,9 +70,7 @@ function FileUpload({ setFiles, formAction, files }) {
         // Toaster time
       }
     }
-
-    const nextFiles = [...files, Array.from(userFiles)];
-    setFiles(nextFiles);
+    files.current = [...files.current, ...Array.from(userFiles)];
 
     // Reset so that you don't have invisible imgURLs
     event.target.value = "";
@@ -77,16 +79,16 @@ function FileUpload({ setFiles, formAction, files }) {
   }
 
 
-  function removeImage(imgUrl: string) {
-    setImgURLs(
-      imgURLs.filter((url) => {
-        if (url === imgUrl) {
-          URL.revokeObjectURL(url);
-          return false;
-        }
-        return true;
-      })
-    );
+  function removeImage(imgURL: string) {
+
+    // Find the index of the image, then remove the same index from files and imgURLs
+    let i: number = 0;
+    while(imgURLs[i] !== imgURL) {
+      ++i;
+    }
+    
+    files.current.splice(i, 1);
+    setImgURLs(imgURLs.filter((_, idx) => idx !== i));
   }
 
 

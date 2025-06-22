@@ -15,7 +15,7 @@ import VisuallyHidden from "@components/VisuallyHidden";
 interface Ingredient {
   itemName: string;
   value: number;
-  measurement: string;
+  unit: string;
 }
 
 interface Props {
@@ -103,7 +103,7 @@ function Ingredient({ ingredientInfo, removeIngredient }: Props) {
       >
         <IngredientName>{ingredientInfo.itemName}</IngredientName>
         <p>
-          {ingredientInfo.value} {ingredientInfo.measurement}
+          {ingredientInfo.value} {ingredientInfo.unit}
         </p>
       </IngredientElement>
     </Wrapper>

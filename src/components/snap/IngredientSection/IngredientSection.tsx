@@ -6,14 +6,19 @@ import Icon from "@components/Icon";
 import Ingredient from "./Ingredient";
 import { motion } from "motion/react";
 
-function IngredientSection({ ingredients, setIngredients }) {
+type IngredientSectionData = {
+  ingredients: Ingredient[],
+  setIngredients: React.Dispatch<React.SetStateAction<Ingredient[]>>,
+};
+
+function IngredientSection({ ingredients, setIngredients }: IngredientSectionData) {
   const [input, setInput] = useState<string>("");
 
   function addIngredient() {
     if (input !== "") {
       setIngredients([
         ...ingredients,
-        { itemName: input, value: 3, measurement: "tsp" },
+        { itemName: input, value: 3, unit: "tsp" },
       ]);
       setInput("");
     }
@@ -21,7 +26,7 @@ function IngredientSection({ ingredients, setIngredients }) {
 
   function removeIngredient(name: string) {
     const nextIngredients = ingredients.filter(
-      (ingredient) => ingredient.itemName !== name
+      (ingredient: Ingredient) => ingredient.itemName !== name
     );
     setIngredients(nextIngredients);
   }
