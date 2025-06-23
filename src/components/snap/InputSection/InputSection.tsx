@@ -1,12 +1,11 @@
 "use client";
 
-import * as React from "react";
 import { styled } from "@pigment-css/react";
 import FileUpload from "../ImageUpload/ImageUpload";
 import IngredientSection from "@components/snap/IngredientSection";
 import { useState, useActionState } from "react";
 import AIprocessImages from "@app/api/actions";
-import Ingredient from "../IngredientSection/Ingredient";
+import { type Ingredient } from "@components/Global";
 import useToast from "@components/ToastProvider/UseToast";
 
 function InputSection() {
@@ -50,7 +49,7 @@ function InputSection() {
         addFiles={addFiles}
         removeFile={removeFile}
       />
-      {isPending ? <p>Fetching from Gemini API...</p> : undefined}
+      <p style={{display: isPending ? "initial" : "none"}}>Fetching from Gemini API...</p>
       <IngredientSection
         ingredients={ingredients}
         setIngredients={setIngredients}

@@ -1,31 +1,6 @@
-export interface Ingredient {
-  aisle: string;
-  amount: number;
-  id: number;
-  image: string;
-  meta: string[];
-  name: string;
-  original: string;
-  originalName: string;
-  unit: string;
-  unitLong: string;
-  unitShort: string;
-}
+import { type Ingredient } from '@components/Global';
 
-export interface Recipe {
-  id: number;
-  image: string;
-  imageType: string;
-  likes: number;
-  missedIngredientCount: number;
-  missedIngredients: Ingredient[];
-  title: string;
-  unusedIngredients: Ingredient[];
-  usedIngredientCount: number;
-  usedIngredients: Ingredient[];
-}
-
-export function ingredients2Str(ingredients: Ingredient[]) {
+function ingredients2Str(ingredients: Ingredient[]) {
   let ingredientStr = "";
   for (const ingredient of ingredients) {
     let toUpper = true;
@@ -44,3 +19,5 @@ export function ingredients2Str(ingredients: Ingredient[]) {
   }
   return ingredientStr.slice(0, -2);
 }
+
+export default ingredients2Str;

@@ -3,7 +3,8 @@
 import { useState } from "react";
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import Ingredient from "./Ingredient";
+import { type Ingredient } from '@components/Global';
+import IngredientBox from "./Ingredient";
 import { motion } from "motion/react";
 
 type IngredientSectionData = {
@@ -18,7 +19,7 @@ function IngredientSection({ ingredients, setIngredients }: IngredientSectionDat
     if (input !== "") {
       setIngredients([
         ...ingredients,
-        { itemName: input, value: 3, unit: "tsp" },
+        { name: input, amount: 3, unit: "tsp" },
       ]);
       setInput("");
     }
@@ -26,7 +27,7 @@ function IngredientSection({ ingredients, setIngredients }: IngredientSectionDat
 
   function removeIngredient(name: string) {
     const nextIngredients = ingredients.filter(
-      (ingredient: Ingredient) => ingredient.itemName !== name
+      (ingredient: Ingredient) => ingredient.name !== name
     );
     setIngredients(nextIngredients);
   }
@@ -63,11 +64,11 @@ function IngredientSection({ ingredients, setIngredients }: IngredientSectionDat
         transition={{ duration: 0.3, ease: "easeInOut" }}
       >
         {ingredients.map((ingredient: Ingredient) => (
-          <Ingredient
-            key={ingredient.itemName}
+          <IngredientBox
+            key={ingredient.name}
             ingredientInfo={ingredient}
             removeIngredient={removeIngredient}
-          ></Ingredient>
+          ></IngredientBox>
         ))}
       </IngredientsContainer>
 

@@ -9,7 +9,7 @@ import {
 } from "motion/react";
 import { useEffect, useRef } from "react";
 
-interface Props {
+type Props = {
   startingValue: number;
   endingValue: number;
   duration?: number;

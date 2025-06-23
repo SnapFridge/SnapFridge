@@ -12,7 +12,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { css, styled } from "@pigment-css/react";
 
-interface Props {
+type Props = {
   src: string;
   removeImage: (arg: string) => void;
 }

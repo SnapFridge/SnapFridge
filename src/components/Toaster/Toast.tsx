@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Toast } from "radix-ui";
 import { styled } from "@pigment-css/react";
-import Icon from "@components/Icon";
+import Icon, { type IconType } from "@components/Icon";
 import VisuallyHidden from "@components/VisuallyHidden";
 import Button from "@components/Button";
 
@@ -17,7 +17,7 @@ interface Props extends React.PropsWithChildren {
 function AppToast({ id, variant, title, removeToast, children }: Props) {
   const [open, setOpen] = useState(true);
 
-  let iconName: string;
+  let iconName: IconType;
   switch (variant) {
     case "success":
       iconName = "Check";

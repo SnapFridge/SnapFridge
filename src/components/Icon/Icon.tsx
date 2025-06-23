@@ -7,10 +7,10 @@ type LucideIconName = {
     : never;
 }[keyof typeof Icons];
 
-type Icon = LucideIconName | "Github" | "Logo";
+export type IconType = LucideIconName | "Github" | "Logo";
 
 interface Props extends ComponentProps<"svg"> {
-  icon: Icon;
+  icon: IconType;
   color?: string;
   size?: number;
   ariaHidden?: boolean;

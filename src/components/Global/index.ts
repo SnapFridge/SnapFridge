@@ -35,3 +35,32 @@ export function scaleClampedDesktop(sizeAtMin: number, sizeAtMax: number) {
 export function scaleClampedMobile(sizeAtMin: number, sizeAtMax: number) {
   return scaleClamped(sizeAtMin, sizeAtMax, false, MIN_SUPPORTED_WIDTH, MOBILE_BREAKPOINT);
 }
+
+export type Ingredient = {
+  name: string;
+  amount: number;
+  unit: string;
+
+// Unused
+  aisle?: string;
+  id?: number;
+  image?: string;
+  meta?: string[];
+  original?: string;
+  originalName?: string;
+  unitLong?: string;
+  unitShort?: string;
+}
+
+export type Recipe = {
+  id: number;
+  image: string;
+  imageType: string;
+  likes: number;
+  missedIngredientCount: number;
+  missedIngredients: Ingredient[];
+  title: string;
+  unusedIngredients: Ingredient[];
+  usedIngredientCount: number;
+  usedIngredients: Ingredient[];
+}

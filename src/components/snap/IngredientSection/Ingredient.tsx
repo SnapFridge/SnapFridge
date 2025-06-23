@@ -8,22 +8,17 @@ import {
   AnimatePresence,
 } from "motion/react";
 import { useState, useEffect } from "react";
+import { type Ingredient } from '@components/Global';
 import Icon from "@components/Icon";
 import Button from "@components/Button";
 import VisuallyHidden from "@components/VisuallyHidden";
 
-interface Ingredient {
-  itemName: string;
-  value: number;
-  unit: string;
-}
-
-interface Props {
+type Props = {
   ingredientInfo: Ingredient;
   removeIngredient: (arg: string) => void;
 }
 
-function Ingredient({ ingredientInfo, removeIngredient }: Props) {
+function IngredientBox({ ingredientInfo, removeIngredient }: Props) {
   const [isActive, setActive] = useState(false);
   const [scope, animate] = useAnimate();
 
@@ -74,10 +69,10 @@ function Ingredient({ ingredientInfo, removeIngredient }: Props) {
               whileHover="hover"
               exit="exit"
               onClick={() => {
-                removeIngredient(ingredientInfo.itemName);
+                removeIngredient(ingredientInfo.name);
               }}
             >
-              <VisuallyHidden>Delete {ingredientInfo.itemName}</VisuallyHidden>
+              <VisuallyHidden>Delete {ingredientInfo.name}</VisuallyHidden>
               <Icon icon="Trash2" color="var(--warn-500)" />
             </Button>
             <Button
@@ -89,7 +84,7 @@ function Ingredient({ ingredientInfo, removeIngredient }: Props) {
               whileHover="hover"
               exit="exit"
             >
-              <VisuallyHidden>Edit {ingredientInfo.itemName}</VisuallyHidden>
+              <VisuallyHidden>Edit {ingredientInfo.name}</VisuallyHidden>
               <Icon icon="PencilLine" color="white" />
             </Button>
           </ActionContainer>
@@ -101,9 +96,9 @@ function Ingredient({ ingredientInfo, removeIngredient }: Props) {
         animate="enter"
         ref={scope}
       >
-        <IngredientName>{ingredientInfo.itemName}</IngredientName>
+        <IngredientName>{ingredientInfo.name}</IngredientName>
         <p>
-          {ingredientInfo.value} {ingredientInfo.unit}
+          {ingredientInfo.amount} {ingredientInfo.unit}
         </p>
       </IngredientElement>
     </Wrapper>
@@ -235,4 +230,4 @@ const ActionContainer = styled("div")({
   height: "36px",
 });
 
-export default Ingredient;
+export default IngredientBox;

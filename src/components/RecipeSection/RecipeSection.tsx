@@ -6,7 +6,7 @@ import * as motion from "motion/react-client";
 import { scaleClamped } from "@components/Global";
 import Icon from "@components/Icon";
 import { useState } from "react";
-interface Props {
+type Props = {
   headerText?: string;
 }
 
