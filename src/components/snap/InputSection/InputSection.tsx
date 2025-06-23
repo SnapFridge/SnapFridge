@@ -5,20 +5,26 @@ import { styled } from "@pigment-css/react";
 import FileUpload from "../ImageUpload/ImageUpload";
 import IngredientSection from "@components/snap/IngredientSection";
 import { useState, useActionState } from "react";
-import AIprocessImages from "../../../app/api/actions";
+import AIprocessImages from "@app/api/actions";
 import Ingredient from "../IngredientSection/Ingredient";
+import useToast from "@components/ToastProvider/UseToast";
 
 function InputSection() {
   const [files, setFiles] = useState<File[]>([]);
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   const boundAction = AIprocessImages.bind(null, files);
+  const { addError } = useToast();
 
-  // Update the ingredient state
+  // Update the ingredient state when calling the action
   async function wrapperFunction() {
-    const result = await boundAction();
-    if (result) {
-      const newIngredients = JSON.parse(result);
-      setIngredients((prev) => [...prev, ...newIngredients]);
+    try {
+      const result = await boundAction();
+      if (result) {
+        const newIngredients = JSON.parse(result);
+        setIngredients((prev) => [...prev, ...newIngredients]);
+      }
+    } catch {
+      addError("Scan error", "Gemini likely timed out.");
     }
   }
 

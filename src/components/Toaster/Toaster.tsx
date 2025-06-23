@@ -6,13 +6,16 @@ import { Toast } from "radix-ui";
 import { styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@components/Global";
 import { ToastContext } from "@components/ToastProvider";
+import { motion } from "motion/react";
 
 function Toaster() {
   const { toasts, removeToast } = useContext(ToastContext)!;
 
+  const visibleToasts = toasts.slice(0, 5);
+
   return (
     <ToastContainer>
-      {toasts.map(({ id, title, description, variant }) => (
+      {visibleToasts.map(({ id, title, description, variant }) => (
         <AppToast
           key={id}
           id={id}
@@ -23,15 +26,14 @@ function Toaster() {
           {description}
         </AppToast>
       ))}
-      <Toast.Viewport />
+      <Toast.Viewport asChild>
+        <Viewport layout="position" />
+      </Toast.Viewport>
     </ToastContainer>
   );
 }
 
 const ToastContainer = styled("div")({
-  display: "flex",
-  flexDirection: "column-reverse",
-  gap: "8px",
   position: "fixed",
   right: 0,
   bottom: 0,
@@ -47,6 +49,12 @@ const ToastContainer = styled("div")({
     margin: "auto",
     maxHeight: "50vh",
   },
+});
+
+const Viewport = styled(motion.ol)({
+  display: "flex",
+  flexDirection: "column-reverse",
+  gap: "8px",
 });
 
 export default Toaster;

@@ -5,6 +5,7 @@ import { Toast } from "radix-ui";
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import VisuallyHidden from "@components/VisuallyHidden";
+import Button from "@components/Button";
 
 interface Props extends React.PropsWithChildren {
   id: string;
@@ -26,15 +27,18 @@ function AppToast({ id, variant, title, removeToast, children }: Props) {
         }
       }}
     >
-      <Toast.Title>{title}</Toast.Title>
-      <Toast.Description>{children}</Toast.Description>
+      <Title>{title}</Title>
+      <Description>{children}</Description>
       <Toast.Close
         onClick={() => {
           setOpen(false);
         }}
+        asChild
       >
-        <VisuallyHidden>Close</VisuallyHidden>
-        <Icon icon="X" color="var(--warning)" />
+        <Close>
+          <VisuallyHidden>Close</VisuallyHidden>
+          <Icon icon="X" color="var(--warning)" />
+        </Close>
       </Toast.Close>
     </BaseToast>
   );
@@ -43,7 +47,13 @@ function AppToast({ id, variant, title, removeToast, children }: Props) {
 const BaseToast = styled(Toast.Root)<{
   variant: "success" | "warn" | "error" | "info";
 }>({
-  width: "400px",
+  display: "grid",
+  gridTemplateAreas: '"title close" "description close"',
+  gridTemplateColumns: "auto max-content",
+  columnGap: "15px",
+  alignItems: "center",
+
+  width: "100%",
   minHeight: "80px",
   height: "fit-content",
   maxHeight: "200px",
@@ -70,7 +80,30 @@ const BaseToast = styled(Toast.Root)<{
         background: "var(--error-50)",
       },
     },
+    {
+      props: { variant: "info" },
+      style: {
+        background: "var(--background-100)",
+      },
+    },
   ],
+});
+
+const Title = styled(Toast.Title)({
+  gridArea: "title",
+  marginBottom: "6px",
+  color: "var(--text-950)",
+  fontSize: `${20 / 16}rem`,
+});
+
+const Description = styled(Toast.Description)({
+  fontSize: `${16 / 16}rem`,
+  color: "var(--text-900)",
+});
+
+const Close = styled(Button)({
+  gridArea: "close",
+  background: "transparent",
 });
 
 export default AppToast;
