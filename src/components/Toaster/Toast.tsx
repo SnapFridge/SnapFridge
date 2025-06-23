@@ -17,6 +17,24 @@ interface Props extends React.PropsWithChildren {
 function AppToast({ id, variant, title, removeToast, children }: Props) {
   const [open, setOpen] = useState(true);
 
+  let iconName: string;
+  switch (variant) {
+    case "success":
+      iconName = "Check";
+      break;
+    case "warn":
+      iconName = "CircleAlert";
+      break;
+    case "error":
+      iconName = "CircleX";
+      break;
+    case "info":
+      iconName = "Info";
+      break;
+    default:
+      iconName = "Info";
+  }
+
   return (
     <BaseToast
       variant={variant}
@@ -27,19 +45,22 @@ function AppToast({ id, variant, title, removeToast, children }: Props) {
         }
       }}
     >
-      <Title>{title}</Title>
-      <Description>{children}</Description>
-      <Toast.Close
-        onClick={() => {
-          setOpen(false);
-        }}
-        asChild
-      >
-        <Close>
-          <VisuallyHidden>Close</VisuallyHidden>
-          <Icon icon="X" color="var(--warn-500)" />
-        </Close>
-      </Toast.Close>
+      <Icon icon={iconName} />
+      <MainContent>
+        <Title>{title}</Title>
+        <Description>{children}</Description>
+        <Toast.Close
+          onClick={() => {
+            setOpen(false);
+          }}
+          asChild
+        >
+          <Close>
+            <VisuallyHidden>Close</VisuallyHidden>
+            <Icon icon="X" color="var(--warn-500)" />
+          </Close>
+        </Toast.Close>
+      </MainContent>
     </BaseToast>
   );
 }
@@ -49,7 +70,7 @@ const BaseToast = styled(Toast.Root)<{
 }>({
   display: "grid",
   gridTemplateAreas: '"title close" "description close"',
-  gridTemplateColumns: "auto max-content",
+  gridTemplateColumns: "max-content auto",
   columnGap: "15px",
   alignItems: "center",
 
@@ -60,6 +81,7 @@ const BaseToast = styled(Toast.Root)<{
   overflowY: "auto",
   borderRadius: "16px",
   padding: "12px 16px",
+  boxShadow: "var(--shadow)",
 
   variants: [
     {
@@ -87,6 +109,14 @@ const BaseToast = styled(Toast.Root)<{
       },
     },
   ],
+});
+
+const MainContent = styled('div')({
+  display: "grid",
+  gridTemplateAreas: '"title close" "description close"',
+  gridTemplateColumns: "auto max-content",
+  columnGap: "15px",
+  alignItems: "center",
 });
 
 const Title = styled(Toast.Title)({
