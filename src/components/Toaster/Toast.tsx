@@ -37,7 +37,7 @@ function AppToast({ id, variant, title, removeToast, children }: Props) {
       >
         <Close>
           <VisuallyHidden>Close</VisuallyHidden>
-          <Icon icon="X" color="var(--warning)" />
+          <Icon icon="X" color="var(--warn-500)" />
         </Close>
       </Toast.Close>
     </BaseToast>

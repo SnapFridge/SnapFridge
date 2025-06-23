@@ -81,7 +81,7 @@ const RightFooterCSS = css({
   display: "flex",
   gap: "12px",
 
-  justifyContent: "end",
+  justifyContent: "flex-end",
 
   [ON_MOBILE]: {
     marginTop: "20px",

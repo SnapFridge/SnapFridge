@@ -76,7 +76,7 @@ function FridgeImage({ src, removeImage }: Props) {
             animate="enter"
             exit="exit"
           >
-            <Icon icon="Trash2" color="var(--warning)" />
+            <Icon icon="Trash2" color="var(--warn-500)" />
           </DeleteContainer>
         ) : undefined}
       </AnimatePresence>

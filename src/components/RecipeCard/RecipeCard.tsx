@@ -157,7 +157,7 @@ const Ingredients = styled("div")({
 const MissedIngredients = styled("div")({
   gridArea: "3 / 2 / 4 / 3",
   width: "100%",
-  color: "var(--warning)",
+  color: "var(--warn-500)",
   fontSize: "var(--1rem)",
 
   [ON_MOBILE]: {

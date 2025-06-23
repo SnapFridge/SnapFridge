@@ -28,8 +28,8 @@ function InputSection() {
     }
   }
 
-  function addFiles(newFiles: FileList) {
-    const nextFiles = [...files, ...Array.from(newFiles)];
+  function addFiles(newFiles: File[]) {
+    const nextFiles = [...files, ...newFiles];
     setFiles(nextFiles);
   }
 

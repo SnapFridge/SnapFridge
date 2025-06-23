@@ -78,7 +78,7 @@ function Ingredient({ ingredientInfo, removeIngredient }: Props) {
               }}
             >
               <VisuallyHidden>Delete {ingredientInfo.itemName}</VisuallyHidden>
-              <Icon icon="Trash2" color="var(--warning)" />
+              <Icon icon="Trash2" color="var(--warn-500)" />
             </Button>
             <Button
               className={EditContainer}

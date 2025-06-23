@@ -13,11 +13,10 @@
         "./src/app/*"
       ]
     },
-    "target": "ES2017",
+    "target": "es2017",
     "module": "esnext",
     "verbatimModuleSyntax": true,
     "checkJs": true,
-    "skipLibCheck": true,
     "strict": true,
     "allowUnusedLabels": false,
     "allowUnreachableCode": false,
@@ -31,7 +30,7 @@
     "noEmit": true,
     "incremental": true,
     "esModuleInterop": true,
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -40,12 +39,12 @@
         "name": "next"
       }
     ],
-    "allowJs": true
+    "allowJs": true,
+    "skipLibCheck": true
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
+    "src/*.ts",
+    "src/*.tsx",
     "next-env.d.ts",
     "build/types/**/*.ts"
   ],

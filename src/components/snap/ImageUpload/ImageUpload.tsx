@@ -13,11 +13,12 @@ import heic2URL from "./HeicDCode";
 type FileUploadData = {
   formAction: () => void;
   removeFile: (index: number) => void;
-  addFiles: (files: FileList) => void;
+  addFiles: (files: File[]) => void;
 };
 
 function FileUpload({ formAction, removeFile, addFiles }: FileUploadData) {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
+  const [invalidFilesWarning, setInvalidFilesWarning] = useState(false);
   const worker = useRef<Worker | undefined>(undefined);
 
   // Initialize a worker
@@ -43,12 +44,13 @@ function FileUpload({ formAction, removeFile, addFiles }: FileUploadData) {
 
   async function handleFiles(event: ChangeEvent<HTMLInputElement>) {
     // Only null when the target is not <input type="file">, but we know it is
-    const userFiles = event.target.files!;
-    if (userFiles.length < 1) {
+    const usrFiles = event.target.files!;
+    if (usrFiles.length < 1) {
       return;
     }
     const newImages: string[] = [];
-    for (const file of userFiles) {
+    const validUsrFiles: File[] = [];
+    for (const file of usrFiles) {
       switch (file.type) {
         case "image/png":
         case "image/jpeg":
@@ -68,11 +70,18 @@ function FileUpload({ formAction, removeFile, addFiles }: FileUploadData) {
           }
         }
         default:
-        // Toaster time
+          continue;
       }
+      validUsrFiles.push(file);
+    }
+    if(validUsrFiles.length < usrFiles.length) {
+      setInvalidFilesWarning(true);
+      setTimeout(() => {
+        setInvalidFilesWarning(false);
+      }, 3000);
     }
 
-    addFiles(userFiles);
+    addFiles(validUsrFiles);
 
     // Reset so that you don't have invisible imgURLs
     event.target.value = "";
@@ -89,46 +98,57 @@ function FileUpload({ formAction, removeFile, addFiles }: FileUploadData) {
   }
 
   return (
-    <Wrapper layout action={formAction}>
-      <FileUploader>
-        <HiddenUpload
-          onChange={(e) => handleFiles(e)}
-          type="file"
-          multiple
-          accept=".png,.jpg,.webp,.heic,.heif"
-          name="fileInput"
-        />
-        <VisibleContent filled={imgURLs.length > 0}>
-          {imgURLs.length === 0 && (
-            <>
-              <Icon icon="FilePlus" size={36} />
-              <VisuallyHidden>Add Images</VisuallyHidden>
-            </>
-          )}
-          {imgURLs.map((url) => (
-            <FridgeImage key={url} src={url} removeImage={removeImage} />
-          ))}
-        </VisibleContent>
-      </FileUploader>
+    <>
+      <Wrapper layout action={formAction}>
+        <FileUploader>
+          <HiddenUpload
+            onChange={(e) => handleFiles(e)}
+            type="file"
+            multiple
+            accept=".png,.jpg,.webp,.heic,.heif"
+            name="fileInput"
+          />
+          <VisibleContent filled={imgURLs.length > 0}>
+            {imgURLs.length === 0 && (
+              <>
+                <Icon icon="FilePlus" size={36} />
+                <SupportedFormats>
+                  Supported formats: png, jpg, webp, heic, heif
+                </SupportedFormats>
+                <VisuallyHidden>Add Images</VisuallyHidden>
+              </>
+            )}
+            {imgURLs.map((url) => (
+              <FridgeImage key={url} src={url} removeImage={removeImage} />
+            ))}
+          </VisibleContent>
+        </FileUploader>
 
-      <AnimatePresence>
-        {imgURLs.length > 0 && (
-          <Button
-            key="scan-button"
-            layout
-            className={ScanButton}
-            variant="primary"
-            as={motion.button}
-            variants={ScanButtonVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-          >
-            Scan
-          </Button>
-        )}
-      </AnimatePresence>
-    </Wrapper>
+        <AnimatePresence>
+          {imgURLs.length > 0 && (
+            <Button
+              key="scan-button"
+              layout
+              className={ScanButton}
+              variant="primary"
+              as={motion.button}
+              variants={ScanButtonVariants}
+              initial="initial"
+              animate="animate"
+              exit="exit"
+            >
+              Scan
+            </Button>
+          )}
+        </AnimatePresence>
+      </Wrapper>
+      {
+        invalidFilesWarning ?
+        <InvalidFilesWarning>
+          Invalid files were uploaded, they've been ignored.
+        </InvalidFilesWarning> : undefined
+      }
+    </>
   );
 }
 
@@ -162,8 +182,9 @@ const VisibleContent = styled("div")<{ filled: boolean }>({
   ["--gap" as string]: scaleClamped(7, 20, false, 320, 673),
   gap: "var(--gap)",
   display: "flex",
+  flexDirection: "column",
   flexWrap: "wrap",
-  justifyContent: "space-evenly",
+  justifyContent: "center",
   alignItems: "center",
   padding: "20px 20px",
   borderRadius: "16px",
@@ -186,6 +207,8 @@ const VisibleContent = styled("div")<{ filled: boolean }>({
     {
       props: { filled: true },
       style: {
+        flexDirection: "row",
+        justifyContent: "space-evenly",
         minHeight: 0,
         borderBottom: "none",
         borderBottomRightRadius: 0,
@@ -193,6 +216,12 @@ const VisibleContent = styled("div")<{ filled: boolean }>({
       },
     },
   ],
+});
+
+const SupportedFormats = styled("div")({
+  textAlign: "center",
+  color: "var(--text-950)",
+  opacity: 0.55,
 });
 
 const ScanButton = css({
@@ -228,4 +257,8 @@ const ScanButtonVariants: Variants = {
   },
 };
 
+const InvalidFilesWarning = styled("p")({
+  textAlign: "center",
+  color: "var(--warn-500)",
+})
 export default FileUpload;

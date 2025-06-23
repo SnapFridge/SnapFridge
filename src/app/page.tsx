@@ -196,7 +196,7 @@ const FridgeImg = css({
   width: "100%",
 
   [ON_MOBILE]: {
-    justifySelf: "end",
+    justifySelf: "flex-end",
     width: "66%", // Set here
   },
 });

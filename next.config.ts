@@ -17,6 +17,14 @@ export default withPigment({
     },
   },
 
+  webpack: (config) => {
+    config.experiments = {
+      layers: true,
+      topLevelAwait: true,
+    }
+    return config;
+  },
+
   images: {
     remotePatterns: [new URL('https://img.spoonacular.com/recipes/**')],
   },
