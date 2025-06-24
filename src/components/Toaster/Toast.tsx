@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Toast } from "radix-ui";
 import { styled } from "@pigment-css/react";
 import Icon, { type IconType } from "@components/Icon";
-import VisuallyHidden from "@components/VisuallyHidden";
 import Button from "@components/Button";
 
 interface Props extends React.PropsWithChildren {
@@ -56,8 +55,7 @@ function AppToast({ id, variant, title, removeToast, children }: Props) {
           asChild
         >
           <Close>
-            <VisuallyHidden>Close</VisuallyHidden>
-            <Icon icon="X" color="var(--warn-500)" />
+            <Icon icon="X" color="var(--warn-500)" description="Close"/>
           </Close>
         </Toast.Close>
       </MainContent>

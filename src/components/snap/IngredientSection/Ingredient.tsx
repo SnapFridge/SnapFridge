@@ -11,7 +11,6 @@ import { useState, useEffect } from "react";
 import { type Ingredient } from '@components/Global';
 import Icon from "@components/Icon";
 import Button from "@components/Button";
-import VisuallyHidden from "@components/VisuallyHidden";
 
 type Props = {
   ingredientInfo: Ingredient;
@@ -72,8 +71,8 @@ function IngredientBox({ ingredientInfo, removeIngredient }: Props) {
                 removeIngredient(ingredientInfo.name);
               }}
             >
-              <VisuallyHidden>Delete {ingredientInfo.name}</VisuallyHidden>
-              <Icon icon="Trash2" color="var(--warn-500)" />
+              <Icon icon="Trash2" color="var(--warn-500)" 
+                description={`Delete ${ingredientInfo.name}`}/>
             </Button>
             <Button
               className={EditContainer}
@@ -84,8 +83,8 @@ function IngredientBox({ ingredientInfo, removeIngredient }: Props) {
               whileHover="hover"
               exit="exit"
             >
-              <VisuallyHidden>Edit {ingredientInfo.name}</VisuallyHidden>
-              <Icon icon="PencilLine" color="white" />
+              <Icon icon="PencilLine" color="white" 
+                description={`Edit ${ingredientInfo.name}`}/>
             </Button>
           </ActionContainer>
         ) : null}

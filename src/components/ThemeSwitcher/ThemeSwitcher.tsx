@@ -3,7 +3,6 @@
 import { type ComponentProps, useState, useEffect } from "react";
 import Button from "@components/Button";
 import { styled } from "@pigment-css/react";
-import VisuallyHidden from "@components/VisuallyHidden";
 import { DropdownMenu } from "radix-ui";
 import Icon from "@components/Icon";
 import useCurrentTheme from "./currentTheme.helper";
@@ -23,10 +22,8 @@ function ThemeSwitcher({ mobile = false, ...delegated }: Props) {
   if (!isClient) return undefined;
   const children = (
     <>
-      <VisuallyHidden>
-        {currentTheme === "dark" ? "Turn On Light Mode" : "Turn On Dark Mode"}
-      </VisuallyHidden>
-      <Icon icon={currentTheme === "dark" ? "Moon" : "Sun"} />
+      <Icon icon={currentTheme === "dark" ? "Moon" : "Sun"} 
+        description={`Turn off ${currentTheme} mode`}/>
     </>
   );
   if (mobile) {

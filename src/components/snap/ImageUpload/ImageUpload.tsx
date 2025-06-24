@@ -3,7 +3,6 @@
 import { styled, css } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import { useEffect, useRef, useState, type ChangeEvent } from "react";
-import VisuallyHidden from "@components/VisuallyHidden";
 import FridgeImage from "./FridgeImage";
 import { scaleClamped } from "@components/Global";
 import Button from "@components/Button";
@@ -19,7 +18,7 @@ type FileUploadData = {
 function FileUpload({ formAction, removeFile, addFiles }: FileUploadData) {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
   const [invalidFilesWarning, setInvalidFilesWarning] = useState(false);
-  const worker = useRef<Worker | undefined>(undefined);
+  const worker = useRef<Worker>(undefined as unknown as Worker);
 
   // Initialize a worker
   useEffect(() => {
@@ -111,11 +110,10 @@ function FileUpload({ formAction, removeFile, addFiles }: FileUploadData) {
           <VisibleContent filled={imgURLs.length > 0}>
             {imgURLs.length === 0 && (
               <>
-                <Icon icon="FilePlus" size={36} />
+                <Icon icon="FilePlus" size={36} description="Upload images"/>
                 <SupportedFormats>
                   Supported formats: png, jpg, webp, heic, heif
                 </SupportedFormats>
-                <VisuallyHidden>Add Images</VisuallyHidden>
               </>
             )}
             {imgURLs.map((url) => (

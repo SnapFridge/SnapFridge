@@ -1,7 +1,6 @@
 import Button from "@components/Button";
 import { styled } from "@pigment-css/react";
 import { DropdownMenu } from "radix-ui";
-import VisuallyHidden from "@components/VisuallyHidden";
 import { ON_MOBILE } from "@components/Global";
 import Link from "@components/Link";
 import ThemeSwitcher from "@components/ThemeSwitcher";
@@ -13,8 +12,7 @@ function Dropdown() {
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
           <DropdownBtn>
-            <VisuallyHidden>Open Menu</VisuallyHidden>
-            <Icon icon="SquareChevronDown" />
+            <Icon icon="SquareChevronDown" description="Open Menu"/>
           </DropdownBtn>
         </DropdownMenu.Trigger>
 

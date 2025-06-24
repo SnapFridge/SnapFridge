@@ -2,7 +2,6 @@ import { styled, css } from "@pigment-css/react";
 import Link from "@components/Link";
 import { ON_MOBILE, scaleClamped } from "@components/Global";
 import Icon from "@components/Icon";
-import VisuallyHidden from "@components/VisuallyHidden";
 
 function Footer() {
   return (
@@ -32,12 +31,10 @@ function Footer() {
       </div>
       <div className={RightFooterCSS}>
         <Link href="mailto:repulseshipp@gmail.com">
-          <VisuallyHidden>Email us</VisuallyHidden>
-          <Icon icon="Mail" />
+          <Icon icon="Mail" description="Email us"/>
         </Link>
         <Link href="https://github.com/msqr1/SnapFridge">
-          <VisuallyHidden>Our GitHub</VisuallyHidden>
-          <Icon icon="Github" />
+          <Icon icon="Github" description="Our Github"/>
         </Link>
       </div>
     </AFooter>
