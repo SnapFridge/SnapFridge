@@ -27,9 +27,6 @@ function AppToast({ id, variant, title, removeToast, children }: Props) {
     case "error":
       iconName = "CircleX";
       break;
-    case "info":
-      iconName = "Info";
-      break;
     default:
       iconName = "Info";
   }
@@ -55,7 +52,7 @@ function AppToast({ id, variant, title, removeToast, children }: Props) {
           asChild
         >
           <Close>
-            <Icon icon="X" color="var(--warn-500)" description="Close"/>
+            <Icon icon="X" color="var(--warn-500)" description="Close" />
           </Close>
         </Toast.Close>
       </MainContent>
@@ -66,11 +63,9 @@ function AppToast({ id, variant, title, removeToast, children }: Props) {
 const BaseToast = styled(Toast.Root)<{
   variant: "success" | "warn" | "error" | "info";
 }>({
-  display: "grid",
-  gridTemplateAreas: '"title close" "description close"',
-  gridTemplateColumns: "max-content auto",
-  columnGap: "15px",
+  display: "flex",
   alignItems: "center",
+  gap: "16px",
 
   width: "100%",
   minHeight: "80px",
@@ -109,7 +104,8 @@ const BaseToast = styled(Toast.Root)<{
   ],
 });
 
-const MainContent = styled('div')({
+const MainContent = styled("div")({
+  flex: 1,
   display: "grid",
   gridTemplateAreas: '"title close" "description close"',
   gridTemplateColumns: "auto max-content",
