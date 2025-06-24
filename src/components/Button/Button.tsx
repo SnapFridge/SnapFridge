@@ -50,5 +50,4 @@ const StyledButton = styled("button")<{ variant: string | undefined }>({
     },
   ],
 });
-
 export default Button;
