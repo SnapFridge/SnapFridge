@@ -16,9 +16,6 @@ function Footer() {
             <Link href="/privacy-policy">Privacy Policy</Link>
           </li>
           <li>
-            <Link href="/sitemap">Sitemap</Link>
-          </li>
-          <li>
             <Link href="/credits">Credits</Link>
           </li>
           <li>
