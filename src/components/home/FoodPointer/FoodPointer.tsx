@@ -1,13 +1,10 @@
-
-import { ON_MOBILE } from '@components/Global';
-import { styled } from '@pigment-css/react';
-import { type PropsWithChildren } from 'react';
+import { ON_MOBILE } from "@components/Global";
+import { styled } from "@pigment-css/react";
+import { type PropsWithChildren } from "react";
 
 export default function FoodPointer({ children, ...delegated }: PropsWithChildren) {
-  return (
-    <Pointer {...delegated}>{children}</Pointer>
-  )
-};
+  return <Pointer {...delegated}>{children}</Pointer>;
+}
 
 const Pointer = styled("div")({
   fontSize: "var(--1rem)",
@@ -19,6 +16,6 @@ const Pointer = styled("div")({
   borderWidth: "2px 2px 0 0",
 
   [ON_MOBILE]: {
-    borderWidth: "1px 1px 0 0",
-  },
+    borderWidth: "1px 1px 0 0"
+  }
 });

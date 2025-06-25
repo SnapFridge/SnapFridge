@@ -12,8 +12,8 @@ const SYS_INSTRUCTION = `
   ## CORE DIRECTIVES (NON-NEGOTIABLE)
 
   1.  **INGREDIENTS ONLY. NO CONTAINERS. EVER.** This is the most important rule. Your output must only name the food or drink ingredient itself.
-      * **DO:** Identify 'Milk', 'Orange Juice', 'Olives', 'Mustard'.
-      * **DO NOT:** Output 'Milk Carton', 'Jar of Olives', or 'Yellow Sauce Bottle'.
+      * **DO:** Identify "Milk", "Orange Juice", "Olives", "Mustard".
+      * **DO NOT:** Output "Milk Carton", "Jar of Olives", or "Yellow Sauce Bottle".
       * You are forbidden from using the name, color, or type of a container in your output.
 
   2.  **AGGREGATE ALL INSTANCES:** Group all occurrences of the same core ingredient into a single item.
@@ -22,20 +22,20 @@ const SYS_INSTRUCTION = `
 
   3.  **OMIT IF UNCERTAIN:** If you are not highly confident about the specific ingredient inside a container or package, you MUST omit the item entirely from your report.
       * It is better to have a shorter, accurate list than a longer list with guesses.
-      * Forbidden guesses include: 'Unknown Beverage', 'White Carton Drink', 'Possible Leftovers'.
+      * Forbidden guesses include: "Unknown Beverage", "White Carton Drink", "Possible Leftovers".
 
-  4.  **NO LOCATIONS:** Do not describe, mention, or allude to the location of any item. Your report must not contain words like 'shelf', 'door', 'top', or 'back'.
+  4.  **NO LOCATIONS:** Do not describe, mention, or allude to the location of any item. Your report must not contain words like "shelf", "door", "top", or "back".
 
   ## UNIT & ESTIMATION RULES
 
   * **For ingredients in containers** (like milk or juice), estimate the remaining volume of the *ingredient*.
-  * **For loose items** (like carrots or loose spinach), provide either a specific count or an estimated total weight (in 'g' or 'kg').
+  * **For loose items** (like carrots or loose spinach), provide either a specific count or an estimated total weight (in "g" or "kg").
   * **Use standard units only:**
-      * **Countable Items:** 'count' (e.g., for apples, eggs, cans of soda).
-      * **Liquids:** 'ml' or 'l'.
-      * **Solids:** 'g' or 'kg'.
-      * **Other:** 'slices'.
-  * **No Ambiguous Terms:** You are forbidden from using vague estimations like 'bunch', 'some', or 'a few'. Every item must have a concrete numerical estimate.
+      * **Countable Items:** "count" (e.g., for apples, eggs, cans of soda).
+      * **Liquids:** "ml" or "l".
+      * **Solids:** "g" or "kg".
+      * **Other:** "slices".
+  * **No Ambiguous Terms:** You are forbidden from using vague estimations like "bunch", "some", or "a few". Every item must have a concrete numerical estimate.
 `;
 
 const ai = new GoogleGenAI({ apiKey: process.env["GEMINI_KEY"]! });
@@ -49,14 +49,14 @@ export default async function AIprocessImages(files: File[]) {
     const uploadedFile = await ai.files.upload({
       file: files[i]!,
       config: {
-        name: filenames[i]!,
-      },
+        name: filenames[i]!
+      }
     });
     fileDataParts.push({
       fileData: {
         fileUri: uploadedFile.uri!,
-        mimeType: files[i]!.type,
-      },
+        mimeType: files[i]!.type
+      }
     });
   }
 
@@ -72,23 +72,23 @@ export default async function AIprocessImages(files: File[]) {
           type: Type.OBJECT,
           properties: {
             itemName: {
-              type: Type.STRING,
+              type: Type.STRING
             },
             value: {
-              type: Type.INTEGER,
+              type: Type.INTEGER
             },
             unit: {
-              type: Type.STRING,
-            },
+              type: Type.STRING
+            }
           },
-          propertyOrdering: ["itemName", "value", "unit"],
-        },
+          propertyOrdering: ["itemName", "value", "unit"]
+        }
       },
       thinkingConfig: {
-        thinkingBudget: -1,
+        thinkingBudget: -1
       },
-      temperature: 0.1,
-    },
+      temperature: 0.1
+    }
   });
 
   for (const filename of filenames) {

@@ -37,8 +37,8 @@ function ToastProvider({ children }: React.PropsWithChildren) {
         variant,
         title,
         description,
-        id: crypto.randomUUID(),
-      },
+        id: crypto.randomUUID()
+      }
     ];
     setToasts(nextToasts);
   }
@@ -50,9 +50,7 @@ function ToastProvider({ children }: React.PropsWithChildren) {
 
   return (
     <Toast.Provider>
-      <ToastContext value={{ toasts, addToast, removeToast }}>
-        {children}
-      </ToastContext>
+      <ToastContext value={{ toasts, addToast, removeToast }}>{children}</ToastContext>
     </Toast.Provider>
   );
 }

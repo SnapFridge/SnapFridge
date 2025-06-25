@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  useMotionValue,
-  useTransform,
-  useInView,
-  animate,
-  motion,
-} from "motion/react";
+import { useMotionValue, useTransform, useInView, animate, motion } from "motion/react";
 import { useEffect, useRef } from "react";
 
 type Props = {
@@ -14,7 +8,7 @@ type Props = {
   endingValue: number;
   duration?: number;
   delay?: number;
-}
+};
 
 function Counter({
   startingValue = 0,

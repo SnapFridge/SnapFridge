@@ -14,7 +14,7 @@ import reducer from "./inputReducer.helper";
 function InputSection() {
   const [state, dispatch] = useImmerReducer(reducer, {
     ingredients: [],
-    files: [],
+    files: []
   });
   const { ingredients, files } = state;
 
@@ -33,19 +33,12 @@ function InputSection() {
     }
   }
 
-  const [_message, formAction, isPending] = useActionState(
-    wrapperFunction,
-    null
-  );
+  const [_message, formAction, isPending] = useActionState(wrapperFunction, null);
 
   return (
     <Wrapper>
       <FileUpload formAction={formAction} dispatch={dispatch} />
-      <BarLoader
-        color="var(--text-950)"
-        cssOverride={Fetching}
-        loading={isPending}
-      />
+      <BarLoader color="var(--text-950)" cssOverride={Fetching} loading={isPending} />
       <IngredientSection ingredients={ingredients} dispatch={dispatch} />
     </Wrapper>
   );
@@ -53,14 +46,14 @@ function InputSection() {
 
 const Fetching: CSSProperties = {
   width: "100%",
-  maxWidth: "576px",
+  maxWidth: "576px"
 };
 
 const Wrapper = styled("div")({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  width: "100%",
+  width: "100%"
 });
 
 export default InputSection;

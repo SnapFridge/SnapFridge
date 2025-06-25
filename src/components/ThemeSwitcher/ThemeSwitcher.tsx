@@ -22,14 +22,14 @@ function ThemeSwitcher({ mobile = false, ...delegated }: Props) {
   if (!isClient) return undefined;
   const children = (
     <>
-      <Icon icon={currentTheme === "dark" ? "Moon" : "Sun"} 
-        description={`Turn off ${currentTheme} mode`}/>
+      <Icon
+        icon={currentTheme === "dark" ? "Moon" : "Sun"}
+        description={`Turn off ${currentTheme} mode`}
+      />
     </>
   );
   if (mobile) {
-    return (
-      <DropdownMenu.Item onSelect={toggleTheme}>{children}</DropdownMenu.Item>
-    );
+    return <DropdownMenu.Item onSelect={toggleTheme}>{children}</DropdownMenu.Item>;
   }
 
   return (

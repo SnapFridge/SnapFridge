@@ -3,9 +3,7 @@ import * as Icons from "lucide-react";
 import React, { type ComponentProps } from "react";
 
 type LucideIconName = {
-  [K in keyof typeof Icons]: (typeof Icons)[K] extends Icons.LucideIcon
-    ? K
-    : never;
+  [K in keyof typeof Icons]: (typeof Icons)[K] extends Icons.LucideIcon ? K : never;
 }[keyof typeof Icons];
 
 export type IconType = LucideIconName | "Github" | "Logo";
@@ -44,7 +42,15 @@ export default function Icon({
             <path d="M22 0h20c5.5 0 6 6 6 6H16s.5-6 6-6M8.4 3.7h2.3q1.5 0 1.6 1V6H6.8V4.6q.1-.8 1.6-.9" />
             <circle fill="#fff" cx="7" cy="13.2" r="2" />
             <circle stroke="#fff" strokeWidth="2.25" cx="32" cy="27" r="14.5" />
-            <rect width="13" height="17.8" x="25.5" y="18.1" rx="2" ry="2" fill="#a1c9cb" />
+            <rect
+              width="13"
+              height="17.8"
+              x="25.5"
+              y="18.1"
+              rx="2"
+              ry="2"
+              fill="#a1c9cb"
+            />
             <path d="M25.5 26.4h13v1.2h-13z" />
             <rect width="1" height="3.2" x="27.5" y="21.4" rx=".5" ry=".5" />
             <rect width="1" height="4" x="27.5" y="29" rx=".5" ry=".5" />
@@ -72,12 +78,7 @@ export default function Icon({
     default:
       const LucideIcon: Icons.LucideIcon = Icons[icon];
       IconSVG = (
-        <LucideIcon
-          color={color}
-          size={size}
-          aria-hidden={ariaHidden}
-          {...delegated}
-        />
+        <LucideIcon color={color} size={size} aria-hidden={ariaHidden} {...delegated} />
       );
       break;
   }

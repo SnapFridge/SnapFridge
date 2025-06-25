@@ -46,15 +46,7 @@ export default function useTypewriter(
       },
       initial ? 0 : delayPerCharacter
     );
-  }, [
-    index,
-    typing,
-    currentText,
-    delayPerCharacter,
-    delayPerState,
-    initial,
-    texts,
-  ]);
+  }, [index, typing, currentText, delayPerCharacter, delayPerState, initial, texts]);
 
   return displayText;
 }

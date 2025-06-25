@@ -10,23 +10,23 @@ export default withPigment({
       "react-loading-skeleton",
       "motion",
       "next",
-      "next-themes",
+      "next-themes"
     ],
     serverActions: {
-      bodySizeLimit: '20mb',
-    },
+      bodySizeLimit: "20mb"
+    }
   },
 
   webpack: (config) => {
     config.experiments = {
       layers: true,
-      topLevelAwait: true,
-    }
+      topLevelAwait: true
+    };
     return config;
   },
 
   images: {
-    remotePatterns: [new URL('https://img.spoonacular.com/recipes/**')],
+    remotePatterns: [new URL("https://img.spoonacular.com/recipes/**")]
   },
   distDir: "build"
 });

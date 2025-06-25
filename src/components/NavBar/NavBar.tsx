@@ -26,13 +26,13 @@ function NavBar() {
 const LeftNav = styled("div")({
   display: "flex",
   gap: "45px",
-  alignItems: "center",
+  alignItems: "center"
 });
 
 const MobileGone = css({
   [ON_MOBILE]: {
-    display: "none",
-  },
+    display: "none"
+  }
 });
 
 const Nav = styled("nav")({
@@ -45,7 +45,7 @@ const Nav = styled("nav")({
   zIndex: 3,
   position: "sticky",
   top: 0,
-  backdropFilter: "blur(16px)",
+  backdropFilter: "blur(16px)"
 });
 
 export default NavBar;

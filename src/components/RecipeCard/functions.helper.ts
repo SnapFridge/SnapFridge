@@ -1,4 +1,4 @@
-import { type Ingredient } from '@components/Global';
+import { type Ingredient } from "@components/Global";
 
 function ingredients2Str(ingredients: Ingredient[]) {
   let ingredientStr = "";

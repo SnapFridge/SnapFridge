@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "@pigment-css/react";
-import { motion, type Variants } from 'motion/react';
+import { motion, type Variants } from "motion/react";
 
 const Descriptions = {
   "Rylex Phan": `
@@ -30,7 +30,7 @@ const Descriptions = {
       reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
       Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
       mollit anim id est laborum.
-    `,
+    `
 };
 
 function AboutUsCards() {
@@ -60,17 +60,17 @@ const CardAnimations: Variants = {
     transition: {
       duration: 0.6,
       ease: "easeOut",
-      delay: 0.2,
-    },
+      delay: 0.2
+    }
   },
   hidden: {
     y: 100,
-    opacity: 0,
+    opacity: 0
   },
   hover: {
     y: -10,
-    scale: 1.01,
-  },
+    scale: 1.01
+  }
 };
 
 const CardContainer = styled(motion.ul)({
@@ -84,9 +84,9 @@ const CardContainer = styled(motion.ul)({
     display: "block",
 
     "&> :not(:first-child)": {
-      marginTop: "24px",
-    },
-  },
+      marginTop: "24px"
+    }
+  }
 });
 
 const Card = styled(motion.li)({
@@ -95,7 +95,7 @@ const Card = styled(motion.li)({
   border: "1px solid var(--accent-950)",
   borderRadius: "12px",
   boxShadow: `var(--shadow)`,
-  textAlign: "center",
+  textAlign: "center"
 });
 
 export default AboutUsCards;

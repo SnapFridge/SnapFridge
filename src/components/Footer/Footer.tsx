@@ -28,10 +28,10 @@ function Footer() {
       </div>
       <div className={RightFooterCSS}>
         <Link href="mailto:repulseshipp@gmail.com">
-          <Icon icon="Mail" description="Email us"/>
+          <Icon icon="Mail" description="Email us" />
         </Link>
         <Link href="https://github.com/msqr1/SnapFridge">
-          <Icon icon="Github" description="Our Github"/>
+          <Icon icon="Github" description="Our Github" />
         </Link>
       </div>
     </AFooter>
@@ -45,8 +45,8 @@ const AFooter = styled("footer")({
   display: "flex",
 
   [ON_MOBILE]: {
-    display: "block",
-  },
+    display: "block"
+  }
 });
 
 const LinksContainer = styled("ul")({
@@ -60,13 +60,13 @@ const LinksContainer = styled("ul")({
   gridTemplateColumns: `repeat(2, ${scaleClamped(150, 190)})`,
 
   [ON_MOBILE]: {
-    display: "block",
-  },
+    display: "block"
+  }
 });
 
 const LeftFooterCSS = css({
   width: "100%",
-  fontSize: "var(--1rem)",
+  fontSize: "var(--1rem)"
 });
 
 const RightFooterCSS = css({
@@ -79,8 +79,8 @@ const RightFooterCSS = css({
 
   [ON_MOBILE]: {
     marginTop: "20px",
-    justifyContent: "center",
-  },
+    justifyContent: "center"
+  }
 });
 
 export default Footer;

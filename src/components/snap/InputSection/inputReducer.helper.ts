@@ -22,31 +22,31 @@ function reducer(draft: State, action: Action) {
   switch (action.type) {
     case "add-ingredient": {
       draft.ingredients.push(action.ingredient);
-      return;
+      break;
     }
     case "add-ingredients": {
       const newIngredients = JSON.parse(action.ingredients);
       draft.ingredients.push(...newIngredients);
-      return;
+      break;
     }
     case "remove-ingredient": {
       const nextIngredients = draft.ingredients.filter(
         (ingredient) => ingredient.name !== action.name
       );
       draft.ingredients = nextIngredients;
-      return;
+      break;
     }
     case "edit-ingredient": {
       console.log("this isn't complete yet!");
-      return;
+      break;
     }
     case "add-files": {
       draft.files.push(...action.files);
-      return;
+      break;
     }
     case "remove-file": {
       draft.files.splice(action.index, 1);
-      return;
+      break;
     }
   }
 }

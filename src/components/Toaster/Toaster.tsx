@@ -47,14 +47,14 @@ const ToastContainer = styled("div")({
     paddingLeft: "16px",
     left: 0,
     margin: "auto",
-    maxHeight: "50vh",
-  },
+    maxHeight: "50vh"
+  }
 });
 
 const Viewport = styled(motion.ol)({
   display: "flex",
   flexDirection: "column-reverse",
-  gap: "8px",
+  gap: "8px"
 });
 
 export default Toaster;

@@ -1,1 +1,1 @@
-export { default } from './FoodPointer';
+export { default } from "./FoodPointer";

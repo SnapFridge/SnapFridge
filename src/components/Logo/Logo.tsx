@@ -15,21 +15,21 @@ const Wrapper = css({
   position: "relative",
 
   "&:hover": {
-    textDecoration: "none",
-  },
+    textDecoration: "none"
+  }
 });
 
 const A = css({
   position: "absolute",
   top: 0,
-  left: 0,
+  left: 0
 });
 
 const LogoName = styled("span")({
   color: "var(--text-950)",
   paddingLeft: "64px",
   fontSize: `${24 / 16}rem`,
-  fontWeight: "bold",
+  fontWeight: "bold"
 });
 
 export default Logo;

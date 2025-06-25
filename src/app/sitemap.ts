@@ -1,27 +1,27 @@
-import { type MetadataRoute } from "next"
- 
+import { type MetadataRoute } from "next";
+
 function sitemap(): MetadataRoute.Sitemap {
   const map: MetadataRoute.Sitemap = [
     {
       url: "",
-      priority: 1,
+      priority: 1
     },
     {
       url: "snap",
-      priority: 1,
+      priority: 1
     },
     {
       url: "about",
-      priority: 0.75,
+      priority: 0.75
     },
     {
       url: "privacy-policy",
-      priority: 0.5,
+      priority: 0.5
     },
     {
       url: "credits",
-      priority: 0.5,
-    },
+      priority: 0.5
+    }
   ];
   const now = new Date();
   for (const site of map) {
