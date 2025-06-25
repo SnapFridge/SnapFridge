@@ -8,14 +8,14 @@ import { scaleClamped } from "@components/Global";
 import Button from "@components/Button";
 import { motion, AnimatePresence, type Variants } from "motion/react";
 import heic2URL from "./HeicDCode";
+import type { InputDispatch } from "../InputSection/inputReducer.helper";
 
 type FileUploadData = {
   formAction: () => void;
-  removeFile: (index: number) => void;
-  addFiles: (files: File[]) => void;
+  dispatch: InputDispatch;
 };
 
-function FileUpload({ formAction, removeFile, addFiles }: FileUploadData) {
+function FileUpload({ formAction, dispatch }: FileUploadData) {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
   const [invalidFilesWarning, setInvalidFilesWarning] = useState(false);
   const worker = useRef<Worker>(undefined as unknown as Worker);
@@ -73,14 +73,14 @@ function FileUpload({ formAction, removeFile, addFiles }: FileUploadData) {
       }
       validUsrFiles.push(file);
     }
-    if(validUsrFiles.length < usrFiles.length) {
+    if (validUsrFiles.length < usrFiles.length) {
       setInvalidFilesWarning(true);
       setTimeout(() => {
         setInvalidFilesWarning(false);
       }, 3000);
     }
 
-    addFiles(validUsrFiles);
+    dispatch({ type: "add-files", files: validUsrFiles });
 
     // Reset so that you don't have invisible imgURLs
     event.target.value = "";
@@ -92,7 +92,7 @@ function FileUpload({ formAction, removeFile, addFiles }: FileUploadData) {
     // Find the index of the image, then remove the same index from files and imgURLs
     const index = imgURLs.findIndex((url) => imgURL === url);
 
-    removeFile(index);
+    dispatch({ type: "remove-file", index });
     setImgURLs(imgURLs.filter((_, idx) => idx !== index));
   }
 
@@ -110,7 +110,7 @@ function FileUpload({ formAction, removeFile, addFiles }: FileUploadData) {
           <VisibleContent filled={imgURLs.length > 0}>
             {imgURLs.length === 0 && (
               <>
-                <Icon icon="FilePlus" size={36} description="Upload images"/>
+                <Icon icon="FilePlus" size={36} description="Upload images" />
                 <SupportedFormats>
                   Supported formats: png, jpg, webp, heic, heif
                 </SupportedFormats>
@@ -140,12 +140,11 @@ function FileUpload({ formAction, removeFile, addFiles }: FileUploadData) {
           )}
         </AnimatePresence>
       </Wrapper>
-      {
-        invalidFilesWarning ?
+      {invalidFilesWarning ? (
         <InvalidFilesWarning>
           Invalid files were uploaded, they've been ignored.
-        </InvalidFilesWarning> : undefined
-      }
+        </InvalidFilesWarning>
+      ) : undefined}
     </>
   );
 }
@@ -258,5 +257,5 @@ const ScanButtonVariants: Variants = {
 const InvalidFilesWarning = styled("p")({
   textAlign: "center",
   color: "var(--warn-500)",
-})
+});
 export default FileUpload;

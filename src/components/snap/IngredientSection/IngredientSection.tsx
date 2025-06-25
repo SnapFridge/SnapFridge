@@ -4,17 +4,14 @@ import { type Ingredient } from "@components/Global";
 import IngredientBox from "./Ingredient";
 import { motion } from "motion/react";
 import Button from "@components/Button";
-import { Bot } from "lucide-react";
+import { type InputDispatch } from "../InputSection/inputReducer.helper";
 
 type IngredientSectionData = {
   ingredients: Ingredient[];
-  setIngredients: React.Dispatch<React.SetStateAction<Ingredient[]>>;
+  dispatch: InputDispatch;
 };
 
-function IngredientSection({
-  ingredients,
-  setIngredients,
-}: IngredientSectionData) {
+function IngredientSection({ ingredients, dispatch }: IngredientSectionData) {
   return (
     <>
       {ingredients.length < 1 ? (

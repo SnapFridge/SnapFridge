@@ -5,14 +5,19 @@ import { styled } from "@pigment-css/react";
 import FileUpload from "../ImageUpload/ImageUpload";
 import IngredientSection from "@components/snap/IngredientSection";
 import { BarLoader } from "react-spinners";
-import { useState, useActionState } from "react";
+import { = useActionState } from "react";
 import AIprocessImages from "@app/api/actions";
-import { type Ingredient } from "@components/Global";
 import useToast from "@components/ToastProvider/UseToast";
+import { useImmerReducer } from 'use-immer';
+import reducer from './inputReducer.helper';
 
 function InputSection() {
-  const [files, setFiles] = useState<File[]>([]);
-  const [ingredients, setIngredients] = useState<Ingredient[]>([]);
+  const [state, dispatch] = useImmerReducer(reducer, {
+    ingredients: [],
+    files: []
+  });
+  const { ingredients, files } = state;
+
   const boundAction = AIprocessImages.bind(null, files);
   const { addError } = useToast();
 
@@ -21,43 +26,32 @@ function InputSection() {
     try {
       const result = await boundAction();
       if (result) {
-        const newIngredients = JSON.parse(result);
-        setIngredients((prev) => [...prev, ...newIngredients]);
+        dispatch({ type: "add-ingredients", ingredients: result });
       }
     } catch {
       addError("Scan error", "Gemini likely timed out.");
     }
   }
 
-  function addFiles(newFiles: File[]) {
-    const nextFiles = [...files, ...newFiles];
-    setFiles(nextFiles);
-  }
-
-  function removeFile(imgIndex: number) {
-    const nextFiles = files.filter((_, index) => index !== imgIndex);
-    setFiles(nextFiles);
-  }
-
   const [_message, formAction, isPending] = useActionState(
     wrapperFunction,
     null
   );
+
   return (
     <Wrapper>
       <FileUpload
         formAction={formAction}
-        addFiles={addFiles}
-        removeFile={removeFile}
+        dispatch={dispatch}
       />
       <BarLoader
-        color="var(--text-950)" 
-        cssOverride={Fetching} 
+        color="var(--text-950)"
+        cssOverride={Fetching}
         loading={isPending}
       />
       <IngredientSection
         ingredients={ingredients}
-        setIngredients={setIngredients}
+        dispatch={dispatch}
       />
     </Wrapper>
   );
