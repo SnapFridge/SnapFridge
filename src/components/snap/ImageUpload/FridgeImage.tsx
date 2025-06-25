@@ -103,7 +103,6 @@ const ImageContainer = styled(motion.div)({
   position: "relative",
   ["--photo-per-row" as string]: 3,
   flex: "0 1 calc(100% / var(--photo-per-row) - var(--gap))",
-  maxWidth: "100% / var(--photo-per-row) - var(--gap))",
   "&:hover": {
     boxShadow: "var(--shadow)",
   },

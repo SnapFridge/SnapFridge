@@ -1,13 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import { type Ingredient } from '@components/Global';
 import IngredientBox from "./Ingredient";
 import { motion } from "motion/react";
 import Button from '@components/Button';
-import { Bot } from 'lucide-react';
 
 type IngredientSectionData = {
   ingredients: Ingredient[],
@@ -15,6 +14,16 @@ type IngredientSectionData = {
 };
 
 function IngredientSection({ ingredients, setIngredients }: IngredientSectionData) {
+  const [input, setInput] = useState<string>("");
+  function addIngredient() {
+    if (input !== "") {
+      setIngredients([
+        ...ingredients,
+        { name: input, amount: 3, unit: "tsp" },
+      ]);
+      setInput("");
+    }
+  }
   return (
     <>
     {
@@ -36,7 +45,17 @@ function IngredientSection({ ingredients, setIngredients }: IngredientSectionDat
         ))}
       </IngredientsContainer>
     }
-    <NewIngredientBtn variant="secondary">New Ingredient...</NewIngredientBtn>
+     <form>
+      <input
+        value={input}
+        onChange={(e) => {
+          setInput(e.target.value);
+        }}
+        required
+      />
+      <NewIngredientBtn variant="secondary" onClick={addIngredient}>New Ingredient...</NewIngredientBtn>
+    </form>
+    
     </>
   );
 }
