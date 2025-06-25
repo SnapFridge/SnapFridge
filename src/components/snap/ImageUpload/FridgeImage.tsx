@@ -15,7 +15,7 @@ import { css, styled } from "@pigment-css/react";
 type Props = {
   src: string;
   removeImage: (arg: string) => void;
-}
+};
 
 function FridgeImage({ src, removeImage }: Props) {
   const [isActive, setActive] = useState(false);
@@ -61,7 +61,6 @@ function FridgeImage({ src, removeImage }: Props) {
       ref={scope}
       initial="initial"
       animate="enterAnim"
-
       layout
     >
       <AnimatePresence initial={false}>
@@ -101,9 +100,9 @@ const ImageContainer = styled(motion.div)({
   borderRadius: "8px",
   overflow: "hidden",
   position: "relative",
-  ["--photo-per-row" as string]: 3,
-  flex: "0 1 calc(100% / var(--photo-per-row) - var(--gap))",
-  maxWidth: "100% / var(--photo-per-row) - var(--gap))",
+  flex: 1,
+  minWidth: "125px",
+  maxWidth: "300px",
   "&:hover": {
     boxShadow: "var(--shadow)",
   },

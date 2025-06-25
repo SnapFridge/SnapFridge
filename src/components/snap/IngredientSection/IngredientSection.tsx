@@ -1,47 +1,46 @@
-"use client";
-
-import { useState } from "react";
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import { type Ingredient } from '@components/Global';
+import { type Ingredient } from "@components/Global";
 import IngredientBox from "./Ingredient";
 import { motion } from "motion/react";
-import Button from '@components/Button';
-import { Bot } from 'lucide-react';
+import Button from "@components/Button";
+import { Bot } from "lucide-react";
 
 type IngredientSectionData = {
-  ingredients: Ingredient[],
-  setIngredients: React.Dispatch<React.SetStateAction<Ingredient[]>>,
+  ingredients: Ingredient[];
+  setIngredients: React.Dispatch<React.SetStateAction<Ingredient[]>>;
 };
 
-function IngredientSection({ ingredients, setIngredients }: IngredientSectionData) {
+function IngredientSection({
+  ingredients,
+  setIngredients,
+}: IngredientSectionData) {
   return (
     <>
-    {
-      ingredients.length < 1 ? 
-      <NoIngredientsContainer>
-        <Icon icon="Archive" size={36} color="var(--hero-linear-1)" />
-        <IngredientsTitle>Your ingredients will appear here</IngredientsTitle>
-      </NoIngredientsContainer>
-      :
-      <IngredientsContainer
-        layout
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-      >
-        {ingredients.map((ingredient: Ingredient) => (
-          <IngredientBox
-            key={ingredient.name}
-            ingredient={ingredient}
-          ></IngredientBox>
-        ))}
-      </IngredientsContainer>
-    }
-    <NewIngredientBtn variant="secondary">New Ingredient...</NewIngredientBtn>
+      {ingredients.length < 1 ? (
+        <NoIngredientsContainer>
+          <Icon icon="Archive" size={36} color="var(--hero-linear-1)" />
+          <IngredientsTitle>Your ingredients will appear here</IngredientsTitle>
+        </NoIngredientsContainer>
+      ) : (
+        <IngredientsContainer
+          layout
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+        >
+          {ingredients.map((ingredient: Ingredient) => (
+            <IngredientBox
+              key={ingredient.name}
+              ingredient={ingredient}
+            ></IngredientBox>
+          ))}
+        </IngredientsContainer>
+      )}
+      <NewIngredientBtn variant="secondary">New Ingredient...</NewIngredientBtn>
     </>
   );
 }
 
-const BothIngredientContainer = {
+const NoIngredientsContainer = styled(motion.ul)({
   margin: "36px 0 12px 0",
   display: "flex",
   alignItems: "center",
@@ -51,10 +50,6 @@ const BothIngredientContainer = {
   borderRadius: "8px",
   minHeight: "220px",
   height: "fit-content",
-};
-
-const NoIngredientsContainer = styled("div")({
-  ...BothIngredientContainer,
 
   flexDirection: "column",
   border: "1px solid var(--hero-linear-1)",
@@ -69,9 +64,8 @@ const IngredientsTitle = styled("h1")({
   textAlign: "center",
 });
 
-const IngredientsContainer = styled(motion.ul)({
-  ...BothIngredientContainer,
-
+const IngredientsContainer = styled(NoIngredientsContainer)({
+  flexDirection: "column",
   flexWrap: "wrap",
   border: "1px solid var(--accent-400)",
   color: "var(--text-950)",
@@ -81,8 +75,6 @@ const IngredientsContainer = styled(motion.ul)({
   listStyleType: "none",
 });
 
-const NewIngredientBtn = styled(Button)({
-
-});
+const NewIngredientBtn = styled(Button)({});
 
 export default IngredientSection;
