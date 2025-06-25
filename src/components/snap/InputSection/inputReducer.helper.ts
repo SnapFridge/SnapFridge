@@ -6,6 +6,7 @@ export interface State {
 }
 
 export type Action =
+  | { type: "add-ingredient"; ingredient: Ingredient }
   | {
       type: "add-ingredients";
       ingredients: string;
@@ -19,6 +20,10 @@ export type InputDispatch = React.Dispatch<Action>;
 
 function reducer(draft: State, action: Action) {
   switch (action.type) {
+    case "add-ingredient": {
+      draft.ingredients.push(action.ingredient);
+      return;
+    }
     case "add-ingredients": {
       const newIngredients = JSON.parse(action.ingredients);
       draft.ingredients.push(...newIngredients);

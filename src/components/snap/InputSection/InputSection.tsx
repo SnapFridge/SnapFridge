@@ -1,20 +1,20 @@
 "use client";
 
-import { type CSSProperties } from 'react';
+import { type CSSProperties } from "react";
 import { styled } from "@pigment-css/react";
 import FileUpload from "../ImageUpload/ImageUpload";
 import IngredientSection from "@components/snap/IngredientSection";
 import { BarLoader } from "react-spinners";
-import { = useActionState } from "react";
+import { useActionState } from "react";
 import AIprocessImages from "@app/api/actions";
 import useToast from "@components/ToastProvider/UseToast";
-import { useImmerReducer } from 'use-immer';
-import reducer from './inputReducer.helper';
+import { useImmerReducer } from "use-immer";
+import reducer from "./inputReducer.helper";
 
 function InputSection() {
   const [state, dispatch] = useImmerReducer(reducer, {
     ingredients: [],
-    files: []
+    files: [],
   });
   const { ingredients, files } = state;
 
@@ -40,19 +40,13 @@ function InputSection() {
 
   return (
     <Wrapper>
-      <FileUpload
-        formAction={formAction}
-        dispatch={dispatch}
-      />
+      <FileUpload formAction={formAction} dispatch={dispatch} />
       <BarLoader
         color="var(--text-950)"
         cssOverride={Fetching}
         loading={isPending}
       />
-      <IngredientSection
-        ingredients={ingredients}
-        dispatch={dispatch}
-      />
+      <IngredientSection ingredients={ingredients} dispatch={dispatch} />
     </Wrapper>
   );
 }
