@@ -5,14 +5,14 @@ import Icon from "@components/Icon";
 import { type Ingredient } from "@components/Global";
 import IngredientBox from "./Ingredient";
 import { motion } from "motion/react";
-import type { InputDispatch } from "../InputSection/inputReducer.helper";
+import { useDispatch, useIngredients } from "../InputSection/InputManager";
+import Button from "@components/Button";
+import { useRef } from "react";
 
-type Props = {
-  ingredients: Ingredient[];
-  dispatch: InputDispatch;
-};
-
-function IngredientSection({ ingredients, dispatch }: Props) {
+function IngredientSection() {
+  const ingredients = useIngredients();
+  const input = useRef<HTMLInputElement>(null as unknown as HTMLInputElement);
+  const dispatch = useDispatch();
   return (
     <>
       {ingredients.length < 1 ? (
@@ -23,15 +23,27 @@ function IngredientSection({ ingredients, dispatch }: Props) {
       ) : (
         <IngredientsContainer layout transition={{ duration: 0.3, ease: "easeInOut" }}>
           {ingredients.map((ingredient: Ingredient) => (
-            <IngredientBox
-              key={ingredient.name}
-              ingredient={ingredient}
-              dispatch={dispatch}
-            ></IngredientBox>
+            <IngredientBox key={ingredient.name} ingredient={ingredient}></IngredientBox>
           ))}
         </IngredientsContainer>
       )}
-      <AddIngredient dispatch={dispatch} />
+      <input ref={input}></input>
+      <NewIngredientBtn
+        variant="secondary"
+        onClick={() => {
+          dispatch({
+            type: "addIngredient",
+            ingredient: {
+              name: input.current.value,
+              amount: 3,
+              unit: "tsp"
+            }
+          });
+          input.current.value = "";
+        }}
+      >
+        New Ingredient...
+      </NewIngredientBtn>
     </>
   );
 }
@@ -71,4 +83,5 @@ const IngredientsContainer = styled(NoIngredientsContainer)({
   listStyleType: "none"
 });
 
+const NewIngredientBtn = styled(Button)({});
 export default IngredientSection;

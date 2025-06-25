@@ -8,16 +8,16 @@ import { BarLoader } from "react-spinners";
 import { useActionState } from "react";
 import AIprocessImages from "@app/api/actions";
 import useToast from "@components/ToastProvider/UseToast";
+import reducer, { DispatchCtx, IngredientsCtx } from "./InputManager";
 import { useImmerReducer } from "use-immer";
-import reducer from "./inputReducer.helper";
 
 function InputSection() {
   const [state, dispatch] = useImmerReducer(reducer, {
     ingredients: [],
     files: []
   });
-  const { ingredients, files } = state;
 
+  const { ingredients, files } = state;
   const boundAction = AIprocessImages.bind(null, files);
   const { addError } = useToast();
 
@@ -26,7 +26,7 @@ function InputSection() {
     try {
       const result = await boundAction();
       if (result) {
-        dispatch({ type: "add-ingredients", ingredients: result });
+        dispatch({ type: "addIngredients", ingredients: result });
       }
     } catch {
       addError("Scan error", "Gemini likely timed out.");
@@ -37,9 +37,13 @@ function InputSection() {
 
   return (
     <Wrapper>
-      <FileUpload formAction={formAction} dispatch={dispatch} />
-      <BarLoader color="var(--text-950)" cssOverride={Fetching} loading={isPending} />
-      <IngredientSection ingredients={ingredients} dispatch={dispatch} />
+      <DispatchCtx value={dispatch}>
+        <FileUpload formAction={formAction} />
+        <BarLoader color="var(--text-950)" cssOverride={Fetching} loading={isPending} />
+        <IngredientsCtx value={ingredients}>
+          <IngredientSection />
+        </IngredientsCtx>
+      </DispatchCtx>
     </Wrapper>
   );
 }

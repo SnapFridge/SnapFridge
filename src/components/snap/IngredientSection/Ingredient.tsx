@@ -6,13 +6,14 @@ import { useState, useEffect } from "react";
 import { type Ingredient } from "@components/Global";
 import Icon from "@components/Icon";
 import Button from "@components/Button";
+import { useDispatch } from "../InputSection/InputManager";
 
 type Props = {
-  ingredientInfo: Ingredient;
-  dispatch: (arg: string) => void;
+  ingredient: Ingredient;
 };
 
-function IngredientBox({ ingredient, dispatch }: Props) {
+function IngredientBox({ ingredient }: Props) {
+  const dispatch = useDispatch();
   const [isActive, setActive] = useState(false);
   const [scope, animate] = useAnimate();
 
@@ -62,7 +63,9 @@ function IngredientBox({ ingredient, dispatch }: Props) {
               animate="enter"
               whileHover="hover"
               exit="exit"
-              onClick={() => {}}
+              onClick={() => {
+                dispatch({ type: "removeIngredient", name: ingredient.name });
+              }}
             >
               <Icon
                 icon="Trash2"

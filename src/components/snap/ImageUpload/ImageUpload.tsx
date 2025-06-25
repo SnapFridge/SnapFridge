@@ -8,17 +8,17 @@ import { scaleClamped } from "@components/Global";
 import Button from "@components/Button";
 import { motion, AnimatePresence, type Variants } from "motion/react";
 import heic2URL from "./HeicDCode";
-import type { InputDispatch } from "../InputSection/inputReducer.helper";
+import { useDispatch } from "../InputSection/InputManager";
 
 type FileUploadData = {
   formAction: () => void;
-  dispatch: InputDispatch;
 };
 
-function FileUpload({ formAction, dispatch }: FileUploadData) {
+function FileUpload({ formAction }: FileUploadData) {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
   const [invalidFilesWarning, setInvalidFilesWarning] = useState(false);
   const worker = useRef<Worker>(undefined as unknown as Worker);
+  const dispatch = useDispatch();
 
   // Initialize a worker
   useEffect(() => {
@@ -79,7 +79,7 @@ function FileUpload({ formAction, dispatch }: FileUploadData) {
       }, 3000);
     }
 
-    dispatch({ type: "add-files", files: validUsrFiles });
+    dispatch({ type: "addFiles", files: validUsrFiles });
 
     // Reset so that you don"t have invisible imgURLs
     event.target.value = "";
@@ -91,7 +91,7 @@ function FileUpload({ formAction, dispatch }: FileUploadData) {
     // Find the index of the image, then remove the same index from files and imgURLs
     const index = imgURLs.findIndex((url) => imgURL === url);
 
-    dispatch({ type: "remove-file", index });
+    dispatch({ type: "removeFile", index });
     setImgURLs(imgURLs.filter((_, idx) => idx !== index));
   }
 

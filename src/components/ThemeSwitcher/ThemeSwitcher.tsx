@@ -2,7 +2,6 @@
 
 import { type ComponentProps, useState, useEffect } from "react";
 import Button from "@components/Button";
-import { styled } from "@pigment-css/react";
 import { DropdownMenu } from "radix-ui";
 import Icon from "@components/Icon";
 import useCurrentTheme from "./currentTheme.helper";

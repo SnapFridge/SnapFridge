@@ -1,6 +1,6 @@
 import { type ComponentProps } from "react";
 
-interface Props extends ComponentProps<"input"> {}
-function Input({}) {
+function Input({}: ComponentProps<"input">) {
   return <input></input>;
 }
+export default Input;

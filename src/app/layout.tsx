@@ -1,7 +1,7 @@
 import "@pigment-css/react/styles.css";
 import "./globalStyles";
 import { Poppins } from "next/font/google";
-import ThemeProvider from "./providers";
+import { ThemeProvider } from "./providers";
 import NavBar from "@components/NavBar";
 import Footer from "@components/Footer";
 import CookieBanner from "@components/CookieBanner";
