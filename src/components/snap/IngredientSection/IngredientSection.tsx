@@ -6,6 +6,8 @@ import Icon from "@components/Icon";
 import { type Ingredient } from '@components/Global';
 import IngredientBox from "./Ingredient";
 import { motion } from "motion/react";
+import Button from '@components/Button';
+import { Bot } from 'lucide-react';
 
 type IngredientSectionData = {
   ingredients: Ingredient[],
@@ -13,52 +15,15 @@ type IngredientSectionData = {
 };
 
 function IngredientSection({ ingredients, setIngredients }: IngredientSectionData) {
-  const [input, setInput] = useState<string>("");
-
-  function addIngredient() {
-    if (input !== "") {
-      setIngredients([
-        ...ingredients,
-        { name: input, amount: 3, unit: "tsp" },
-      ]);
-      setInput("");
-    }
-  }
-
-  function removeIngredient(name: string) {
-    const nextIngredients = ingredients.filter(
-      (ingredient: Ingredient) => ingredient.name !== name
-    );
-    setIngredients(nextIngredients);
-  }
-
-  //function editIngredient(name: string, newInfo: unknown) {
-  //}
-
-  if (!ingredients.length) {
-    return (
-      <>
-        <NoIngredientsContainer>
-          <Icon icon="Archive" size={36} color="var(--hero-linear-1)" />
-          <IngredientsTitle>Your ingredients will appear here</IngredientsTitle>
-        </NoIngredientsContainer>
-
-        <form>
-          <input
-            value={input}
-            onChange={(e) => {
-              setInput(e.target.value);
-            }}
-            required
-          />
-          <button onClick={addIngredient}>Add</button>
-        </form>
-      </>
-    );
-  }
-
   return (
     <>
+    {
+      ingredients.length < 1 ? 
+      <NoIngredientsContainer>
+        <Icon icon="Archive" size={36} color="var(--hero-linear-1)" />
+        <IngredientsTitle>Your ingredients will appear here</IngredientsTitle>
+      </NoIngredientsContainer>
+      :
       <IngredientsContainer
         layout
         transition={{ duration: 0.3, ease: "easeInOut" }}
@@ -66,44 +31,36 @@ function IngredientSection({ ingredients, setIngredients }: IngredientSectionDat
         {ingredients.map((ingredient: Ingredient) => (
           <IngredientBox
             key={ingredient.name}
-            ingredientInfo={ingredient}
-            removeIngredient={removeIngredient}
+            ingredient={ingredient}
           ></IngredientBox>
         ))}
       </IngredientsContainer>
-
-      <form>
-        <input
-          value={input}
-          onChange={(e) => {
-            setInput(e.target.value);
-          }}
-          required
-        />
-        <button onClick={addIngredient}>Add</button>
-      </form>
+    }
+    <NewIngredientBtn variant="secondary">New Ingredient...</NewIngredientBtn>
     </>
   );
 }
 
-const NoIngredientsContainer = styled("div")({
-  marginTop: "36px",
-
+const BothIngredientContainer = {
+  margin: "36px 0 12px 0",
   display: "flex",
-  flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-
   gap: "12px",
   padding: "24px",
-  border: "1px solid var(--hero-linear-1)",
   borderRadius: "8px",
-  color: "var(--hero-linear-1)",
+  minHeight: "220px",
+  height: "fit-content",
+};
 
+const NoIngredientsContainer = styled("div")({
+  ...BothIngredientContainer,
+
+  flexDirection: "column",
+  border: "1px solid var(--hero-linear-1)",
+  color: "var(--hero-linear-1)",
   maxWidth: "450px",
   width: "100%",
-  height: "fit-content",
-  minHeight: "220px",
 });
 
 const IngredientsTitle = styled("h1")({
@@ -113,26 +70,19 @@ const IngredientsTitle = styled("h1")({
 });
 
 const IngredientsContainer = styled(motion.ul)({
-  marginTop: "36px",
+  ...BothIngredientContainer,
 
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
   flexWrap: "wrap",
-
-  gap: "12px",
-  padding: "24px",
   border: "1px solid var(--accent-400)",
-  borderRadius: "8px",
   color: "var(--text-950)",
-
   maxWidth: "600px",
   minWidth: "450px",
   width: "fit-content",
-  height: "fit-content",
-  minHeight: "220px",
-
   listStyleType: "none",
+});
+
+const NewIngredientBtn = styled(Button)({
+
 });
 
 export default IngredientSection;

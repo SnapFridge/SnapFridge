@@ -41,7 +41,6 @@ const SYS_INSTRUCTION = `
 const ai = new GoogleGenAI({ apiKey: process.env["GEMINI_KEY"]! });
 
 export default async function AIprocessImages(files: File[]) {
-  console.log(files);
   const fileDataParts: { fileData: FileData }[] = [];
   const filenames: string[] = [];
 

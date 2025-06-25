@@ -11,9 +11,9 @@ function Dropdown() {
     <Wrapper>
       <DropdownMenu.Root>
         <DropdownMenu.Trigger asChild>
-          <DropdownBtn>
+          <Button variant="icon">
             <Icon icon="SquareChevronDown" description="Open Menu"/>
-          </DropdownBtn>
+          </Button>
         </DropdownMenu.Trigger>
 
         <DropdownMenu.Portal>
@@ -37,14 +37,6 @@ const Wrapper = styled("div")({
 
   [ON_MOBILE]: {
     display: "block",
-  },
-});
-
-const DropdownBtn = styled(Button)({
-  backgroundColor: "transparent",
-
-  "&:hover": {
-    backgroundColor: "var(--background-100)",
   },
 });
 

@@ -3,7 +3,7 @@ import { styled } from "@pigment-css/react";
 
 type ButtonProps<C extends ElementType> = {
   as?: C;
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "icon";
 } & Omit<ComponentPropsWithoutRef<C>, "as">;
 // The default link has an "as" attribute, overriding that with our "as"
 
@@ -46,6 +46,13 @@ const StyledButton = styled("button")<{ variant: string | undefined }>({
         background: "var(--secondary-300)",
         color: "var(--text-950)",
         ["--background-hover" as string]: "var(--secondary-400)",
+      },
+    },
+    {
+      props: { variant: "icon" },
+      style: {
+        backgroundColor: "transparent",
+        ["--background-hover" as string]: "var(--background-100)",
       },
     },
   ],

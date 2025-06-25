@@ -1,8 +1,10 @@
 "use client";
 
+import { type CSSProperties } from 'react';
 import { styled } from "@pigment-css/react";
 import FileUpload from "../ImageUpload/ImageUpload";
 import IngredientSection from "@components/snap/IngredientSection";
+import { BarLoader } from "react-spinners";
 import { useState, useActionState } from "react";
 import AIprocessImages from "@app/api/actions";
 import { type Ingredient } from "@components/Global";
@@ -41,7 +43,6 @@ function InputSection() {
     wrapperFunction,
     null
   );
-
   return (
     <Wrapper>
       <FileUpload
@@ -49,7 +50,11 @@ function InputSection() {
         addFiles={addFiles}
         removeFile={removeFile}
       />
-      <p style={{display: isPending ? "initial" : "none"}}>Fetching from Gemini API...</p>
+      <BarLoader
+        color="var(--text-950)" 
+        cssOverride={Fetching} 
+        loading={isPending}
+      />
       <IngredientSection
         ingredients={ingredients}
         setIngredients={setIngredients}
@@ -57,6 +62,11 @@ function InputSection() {
     </Wrapper>
   );
 }
+
+const Fetching: CSSProperties = {
+  width: "100%",
+  maxWidth: "576px",
+};
 
 const Wrapper = styled("div")({
   display: "flex",

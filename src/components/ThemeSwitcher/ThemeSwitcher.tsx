@@ -33,18 +33,10 @@ function ThemeSwitcher({ mobile = false, ...delegated }: Props) {
   }
 
   return (
-    <ThemeSwitchBtn onClick={toggleTheme} {...delegated}>
+    <Button variant="icon" onClick={toggleTheme} {...delegated}>
       {children}
-    </ThemeSwitchBtn>
+    </Button>
   );
 }
-
-const ThemeSwitchBtn = styled(Button)({
-  backgroundColor: "transparent",
-
-  "&:hover": {
-    backgroundColor: "var(--background-100)",
-  },
-});
 
 export default ThemeSwitcher;
