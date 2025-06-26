@@ -28,14 +28,21 @@ const SYS_INSTRUCTION = `
 
   ## UNIT & ESTIMATION RULES
 
-  * **For ingredients in containers** (like milk or juice), estimate the remaining volume of the *ingredient*.
-  * **For loose items** (like carrots or loose spinach), provide either a specific count or an estimated total weight (in "g" or "kg").
-  * **Use standard units only:**
-      * **Countable Items:** "count" (e.g., for apples, eggs, cans of soda).
-      * **Liquids:** "mL" or "L".
-      * **Solids:** "g" or "kg".
-      * **Other:** "slices".
-  * **No Ambiguous Terms:** You are forbidden from using vague estimations like "bunch", "some", or "a few". Every item must have a concrete numerical estimate.
+    * **Mandatory Units:** You MUST use a unit from the provided measurements.txt file for every ingredient. No other units are permitted.
+
+    * **Unit Selection Guidance:**
+      * For **LIQUIDS** (e.g., milk, juice, sauces), select the most appropriate unit from the LIQUIDS list (e.g., L, mL, fl oz, tbsp).
+      * For **SOLIDS** (e.g., cheese, meat, butter), select the most appropriate unit from the SOLIDS list (e.g., g, lb, slice, block).
+      * For **COUNTABLE ITEMS** that are typically enumerated (e.g., eggs, fruit, vegetables), use 'count' or 'unit'.
+      * Units from the **ETC** list should be used when they appropriately describe the ingredient itself (e.g., "clove" of garlic, "leaf" of spinach, "stick" of butter).
+    
+    * **Ingredient-Focused, Not Container-Focused:** Your choice of unit must describe the food or drink, never its packaging. For example, if you see a can of soup, the ingredient is "Soup" and the unit should be an estimate of its volume (e.g., "400 mL"), not "1 can".
+
+    * **Concrete Estimates Only:** Every item must have a concrete numerical estimate (e.g., "250 mL", "3 count", "5 slices").
+
+    * **Forbidden Ambiguity:** You are forbidden from using vague estimations. While the provided lists contain descriptive terms (like 'piece' or 'dollop'), you must only use them when they are clear and specific. If a descriptive unit is ambiguous, default to a standard measurement of weight (g), volume (mL), or a specific enumeration (count).
+
+    * **Estimating Remaining Quantity:** For ingredients inside packages or containers, your estimate must be for the remaining amount of the ingredient, not the total capacity of the container.
 `;
 
 const ai = new GoogleGenAI({ apiKey: process.env["GEMINI_KEY"]! });
