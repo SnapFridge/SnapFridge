@@ -8,16 +8,12 @@ import { BarLoader } from "react-spinners";
 import { useActionState } from "react";
 import AIprocessImages from "@app/api/actions";
 import useToast from "@components/ToastProvider/UseToast";
-import reducer, { DispatchCtx, IngredientsCtx } from "./InputManager";
-import { useImmerReducer } from "use-immer";
+import { useInputState } from "../InputProvider";
 
 function InputSection() {
-  const [state, dispatch] = useImmerReducer(reducer, {
-    ingredients: [],
-    files: []
-  });
+  const { state, dispatch } = useInputState();
+  const { files } = state;
 
-  const { ingredients, files } = state;
   const boundAction = AIprocessImages.bind(null, files);
   const { addError } = useToast();
 
@@ -37,13 +33,9 @@ function InputSection() {
 
   return (
     <Wrapper>
-      <DispatchCtx value={dispatch}>
-        <FileUpload formAction={formAction} />
-        <BarLoader color="var(--text-950)" cssOverride={Fetching} loading={isPending} />
-        <IngredientsCtx value={ingredients}>
-          <IngredientSection />
-        </IngredientsCtx>
-      </DispatchCtx>
+      <FileUpload formAction={formAction} />
+      <BarLoader color="var(--text-950)" cssOverride={Fetching} loading={isPending} />
+      <IngredientSection />
     </Wrapper>
   );
 }

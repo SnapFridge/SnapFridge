@@ -1,5 +1,6 @@
+import { createContext, useContext, useMemo, type Dispatch } from "react";
+import { useImmerReducer } from "use-immer";
 import { type Ingredient } from "@components/Global";
-import { createContext, useContext, type Context, type Dispatch } from "react";
 
 export interface State {
   ingredients: Ingredient[];
@@ -47,22 +48,31 @@ function reducer(draft: State, action: Action) {
   }
 }
 
-export default reducer;
+export type InputContext = {
+  dispatch: Dispatch<Action>;
+  state: State;
+};
 
-// For writing
-export const DispatchCtx: Context<Dispatch<Action>> = createContext(
-  undefined as unknown as Dispatch<Action>
-);
+export const InputContext = createContext<InputContext | undefined>(undefined);
 
-// For reading
-export const IngredientsCtx: Context<Ingredient[]> = createContext(
-  undefined as unknown as Ingredient[]
-);
+function InputProvider({ children }: React.PropsWithChildren) {
+  const [state, dispatch] = useImmerReducer(reducer, {
+    ingredients: [],
+    files: []
+  });
 
-export function useDispatch() {
-  return useContext(DispatchCtx);
+  const value = useMemo(() => {
+    return {
+      dispatch,
+      state
+    };
+  }, [state, dispatch]);
+
+  return <InputContext value={value}>{children}</InputContext>;
 }
 
-export function useIngredients() {
-  return useContext(IngredientsCtx);
+export function useInputState() {
+  return useContext(InputContext)!;
 }
+
+export default InputProvider;

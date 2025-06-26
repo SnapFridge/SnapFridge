@@ -6,14 +6,15 @@ import { useState, useEffect } from "react";
 import { type Ingredient } from "@components/Global";
 import Icon from "@components/Icon";
 import Button from "@components/Button";
-import { useDispatch } from "../InputSection/InputManager";
+import { useInputState } from "../InputProvider";
 
 type Props = {
   ingredient: Ingredient;
 };
 
 function IngredientBox({ ingredient }: Props) {
-  const dispatch = useDispatch();
+  const { dispatch } = useInputState();
+
   const [isActive, setActive] = useState(false);
   const [scope, animate] = useAnimate();
 

@@ -5,15 +5,16 @@ import Icon from "@components/Icon";
 import { type Ingredient } from "@components/Global";
 import IngredientBox from "./Ingredient";
 import { motion } from "motion/react";
-import { useDispatch, useIngredients } from "../InputSection/InputManager";
+import { useInputState } from "../InputProvider";
 import Button from "@components/Button";
 import { useState } from "react";
 
 function IngredientSection() {
-  const ingredients = useIngredients();
+  const { state, dispatch } = useInputState();
+  const { ingredients } = state;
+
   const [ingredient, setIngredient] = useState("");
 
-  const dispatch = useDispatch();
   return (
     <>
       {ingredients.length < 1 ? (

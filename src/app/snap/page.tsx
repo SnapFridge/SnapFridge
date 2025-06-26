@@ -3,6 +3,7 @@
 import InputSection from "@components/snap/InputSection";
 import { PageMargin } from "@components/Global";
 import RecipeSection from "@components/RecipeSection";
+import InputProvider from "@components/snap/InputProvider";
 import useToast from "@components/ToastProvider/UseToast";
 
 export default function Page() {
@@ -10,10 +11,11 @@ export default function Page() {
 
   return (
     <PageMargin>
-      <InputSection></InputSection>
-      <RecipeSection />
-      <RecipeSection headerText="Previous Snaps" />
-
+      <InputProvider>
+        <InputSection />
+        <RecipeSection />
+        <RecipeSection headerText="Previous Snaps" />
+      </InputProvider>
       <button
         onClick={() => {
           addSuccess("Hello, World!", "Wowie this works?");

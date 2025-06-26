@@ -8,7 +8,7 @@ import { scaleClamped } from "@components/Global";
 import Button from "@components/Button";
 import { motion, AnimatePresence, type Variants } from "motion/react";
 import heic2URL from "./HeicDCode";
-import { useDispatch } from "../InputSection/InputManager";
+import { useInputState } from "../InputProvider";
 
 type FileUploadData = {
   formAction: () => void;
@@ -18,7 +18,8 @@ function FileUpload({ formAction }: FileUploadData) {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
   const [invalidFilesWarning, setInvalidFilesWarning] = useState(false);
   const worker = useRef<Worker>(undefined as unknown as Worker);
-  const dispatch = useDispatch();
+
+  const { dispatch } = useInputState();
 
   // Initialize a worker
   useEffect(() => {
