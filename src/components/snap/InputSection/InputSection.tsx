@@ -13,16 +13,17 @@ import { useInputState } from "../InputProvider";
 function InputSection() {
   const { state, dispatch } = useInputState();
   const { files } = state;
-
-  const boundAction = AIprocessImages.bind(null, files);
   const { addError } = useToast();
 
   // Update the ingredient state when calling the action
   async function wrapperFunction() {
     try {
-      const result = await boundAction();
+      const result = await AIprocessImages(files);
       if (result) {
-        dispatch({ type: "addIngredients", ingredients: result });
+        dispatch({
+          type: "addIngredientsFromJSON",
+          json: result,
+        });
       }
     } catch {
       addError("Scan error", "Gemini likely timed out.");
@@ -49,7 +50,7 @@ const Wrapper = styled("div")({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  width: "100%"
+  width: "100%",
 });
 
 export default InputSection;

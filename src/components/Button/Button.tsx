@@ -28,7 +28,7 @@ const StyledButton = styled("button")<{ variant: string | undefined }>({
   border: "none",
 
   "&:hover": {
-    backgroundColor: "var(--background-hover)"
+    backgroundColor: "var(--background-hover)",
   },
 
   variants: [
@@ -37,24 +37,24 @@ const StyledButton = styled("button")<{ variant: string | undefined }>({
       style: {
         background: "var(--primary-500)",
         color: "#000000",
-        ["--background-hover" as string]: "var(--primary-600)"
-      }
+        ["--background-hover" as string]: "var(--primary-600)",
+      },
     },
     {
       props: { variant: "secondary" },
       style: {
         background: "var(--secondary-300)",
         color: "var(--text-950)",
-        ["--background-hover" as string]: "var(--secondary-400)"
-      }
+        ["--background-hover" as string]: "var(--secondary-400)",
+      },
     },
     {
       props: { variant: "icon" },
       style: {
         backgroundColor: "transparent",
-        ["--background-hover" as string]: "var(--background-100)"
-      }
-    }
-  ]
+        ["--background-hover" as string]: "var(--background-100)",
+      },
+    },
+  ],
 });
 export default Button;

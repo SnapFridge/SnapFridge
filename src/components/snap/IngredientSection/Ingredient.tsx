@@ -24,10 +24,10 @@ function IngredientBox({ ingredient }: Props) {
         scope.current,
         isActive
           ? {
-              y: -5
+              y: -5,
             }
           : {
-              y: 0
+              y: 0,
             }
       );
     })();
@@ -111,18 +111,18 @@ const Wrapper = styled(motion.li)({
   height: "38px",
   width: "fit-content",
   position: "relative",
-  isolation: "isolate"
+  isolation: "isolate",
 });
 
 const IngredientVariants: Variants = {
   initial: {
     y: 10,
-    opacity: 0
+    opacity: 0,
   },
   enter: {
     y: 0,
-    opacity: 1
-  }
+    opacity: 1,
+  },
 };
 
 const HiddenButton = styled(Button)({
@@ -136,7 +136,7 @@ const HiddenButton = styled(Button)({
   margin: "auto",
   opacity: 0,
   appearance: "none",
-  zIndex: 2
+  zIndex: 2,
 });
 
 const IngredientElement = styled(motion.div)({
@@ -155,17 +155,17 @@ const IngredientElement = styled(motion.div)({
     outline: [
       "medium auto currentColor",
       "medium auto invert",
-      "5px auto -webkit-focus-ring-color"
+      "5px auto -webkit-focus-ring-color",
     ],
-    outlineOffset: "4px"
-  }
+    outlineOffset: "4px",
+  },
 });
 
 const IngredientName = styled("p")({
   maxWidth: "150px",
   overflow: "hidden",
   textOverflow: "ellipsis",
-  whiteSpace: "nowrap"
+  whiteSpace: "nowrap",
 });
 
 const DeleteContainer = css({
@@ -175,7 +175,7 @@ const DeleteContainer = css({
   backgroundColor: "rgba(0, 0, 0, 0.6)",
   padding: "4px",
   borderRadius: "4px",
-  ["--background-hover" as string]: "var(--background-50)"
+  ["--background-hover" as string]: "var(--background-50)",
 });
 
 const EditContainer = css({
@@ -184,40 +184,40 @@ const EditContainer = css({
   top: 0,
   backgroundColor: "rgba(0, 0, 0, 0.6)",
   padding: "4px",
-  borderRadius: "4px"
+  borderRadius: "4px",
 });
 
 const DeleteVariants: Variants = {
   initial: {
-    opacity: 0
+    opacity: 0,
   },
   enter: {
-    opacity: 1
+    opacity: 1,
   },
   hover: {
-    y: -5
+    y: -5,
   },
   exit: {
-    opacity: 0
-  }
+    opacity: 0,
+  },
 };
 
 const EditVariants: Variants = {
   initial: {
     x: 32,
-    opacity: 0
+    opacity: 0,
   },
   enter: {
     y: 0,
     x: 32,
-    opacity: 1
+    opacity: 1,
   },
   hover: {
-    y: -5
+    y: -5,
   },
   exit: {
-    opacity: 0
-  }
+    opacity: 0,
+  },
 };
 
 // Used so it"s easier to click the buttons
@@ -229,7 +229,7 @@ const ActionContainer = styled("div")({
   right: 0,
   margin: "auto",
   width: "64px",
-  height: "36px"
+  height: "36px",
 });
 
 export default IngredientBox;

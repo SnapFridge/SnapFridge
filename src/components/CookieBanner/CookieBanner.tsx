@@ -50,19 +50,19 @@ function CookieBanner() {
 const ContainerVariants = {
   starting: {
     opacity: 0,
-    y: 50
+    y: 50,
   },
   enter: {
     opacity: 1,
-    y: 0
+    y: 0,
   },
   exit: {
     opacity: 0,
-    scale: 0
+    scale: 0,
   },
   hover: {
-    scale: 1.02
-  }
+    scale: 1.02,
+  },
 };
 
 const CookieBannerContainer = styled(motion.div)({
@@ -78,7 +78,7 @@ const CookieBannerContainer = styled(motion.div)({
   textAlign: "center",
 
   "&> *": {
-    marginTop: "12px"
+    marginTop: "12px",
   },
 
   [ON_MOBILE]: {
@@ -86,12 +86,12 @@ const CookieBannerContainer = styled(motion.div)({
     right: 0,
     left: 0,
     width: "100vw",
-    padding: "12px"
-  }
+    padding: "12px",
+  },
 });
 
 const Title = styled("h1")({
-  fontSize: `${24 / 16}rem`
+  fontSize: `${24 / 16}rem`,
 });
 
 const CookieBannerContent = styled("p")({});
@@ -100,8 +100,8 @@ const ButtonCSS = css({
   backgroundColor: "var(--primary-200)",
 
   "&:hover": {
-    backgroundColor: "var(--primary-300)"
-  }
+    backgroundColor: "var(--primary-300)",
+  },
 });
 
 export default CookieBanner;

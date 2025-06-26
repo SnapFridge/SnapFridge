@@ -1,36 +1,52 @@
-import { createContext, useContext, useMemo, type Dispatch } from "react";
+import {
+  createContext,
+  useContext,
+  useMemo,
+  type Dispatch,
+  type PropsWithChildren,
+} from "react";
+import { enableMapSet } from "immer";
 import { useImmerReducer } from "use-immer";
 import { type Ingredient } from "@components/Global";
 
+enableMapSet();
 export interface State {
-  ingredients: Ingredient[];
+  ingredients: Map<string, Ingredient>;
   files: File[];
 }
 
 export type Action =
   | { type: "addIngredient"; ingredient: Ingredient }
-  | { type: "addIngredients"; ingredients: string }
+  | { type: "addIngredientsFromJSON"; json: string }
   | { type: "removeIngredient"; name: string }
   | { type: "editIngredient"; name: string; newIngredient: Ingredient }
   | { type: "addFiles"; files: File[] }
   | { type: "removeFile"; index: number };
 
 function reducer(draft: State, action: Action) {
+  function addIngredient(ingredient: Ingredient) {
+    const key = ingredient.name;
+    if (draft.ingredients.has(key)) {
+      draft.ingredients.get(key)!.amount += ingredient.amount;
+    } else {
+      draft.ingredients.set(key, ingredient);
+    }
+  }
+
   switch (action.type) {
     case "addIngredient": {
-      draft.ingredients.push(action.ingredient);
+      addIngredient(action.ingredient);
       break;
     }
-    case "addIngredients": {
-      const newIngredients = JSON.parse(action.ingredients);
-      draft.ingredients.push(...newIngredients);
+    case "addIngredientsFromJSON": {
+      const ingredients: Ingredient[] = JSON.parse(action.json);
+      for (const ingredient of ingredients) {
+        addIngredient(ingredient);
+      }
       break;
     }
     case "removeIngredient": {
-      const nextIngredients = draft.ingredients.filter(
-        (ingredient) => ingredient.name !== action.name
-      );
-      draft.ingredients = nextIngredients;
+      draft.ingredients.delete(action.name);
       break;
     }
     case "editIngredient": {
@@ -55,20 +71,17 @@ export type InputContext = {
 
 export const InputContext = createContext<InputContext | undefined>(undefined);
 
-function InputProvider({ children }: React.PropsWithChildren) {
-  const [state, dispatch] = useImmerReducer(reducer, {
-    ingredients: [],
-    files: []
+function InputProvider({ children }: PropsWithChildren) {
+  const [unmemoizedState, dispatch] = useImmerReducer(reducer, {
+    ingredients: new Map<string, Ingredient>(),
+    files: [],
   });
 
-  const value = useMemo(() => {
-    return {
-      dispatch,
-      state
-    };
-  }, [state, dispatch]);
+  const state = useMemo(() => {
+    return unmemoizedState;
+  }, [unmemoizedState]);
 
-  return <InputContext value={value}>{children}</InputContext>;
+  return <InputContext value={{ state, dispatch }}>{children}</InputContext>;
 }
 
 export function useInputState() {

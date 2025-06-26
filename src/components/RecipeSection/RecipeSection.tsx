@@ -29,7 +29,7 @@ const recipesExample = [
         originalName: "baking powder",
         unit: "tsp",
         unitLong: "teaspoon",
-        unitShort: "tsp"
+        unitShort: "tsp",
       },
       {
         aisle: "Spices and Seasonings",
@@ -42,7 +42,7 @@ const recipesExample = [
         originalName: "cinnamon",
         unit: "tsp",
         unitLong: "teaspoon",
-        unitShort: "tsp"
+        unitShort: "tsp",
       },
       {
         aisle: "Milk, Eggs, Other Dairy",
@@ -55,8 +55,8 @@ const recipesExample = [
         originalName: "egg",
         unit: "",
         unitLong: "",
-        unitShort: ""
-      }
+        unitShort: "",
+      },
     ],
     title: "Apple Or Peach Strudel",
     unusedIngredients: [],
@@ -73,9 +73,9 @@ const recipesExample = [
         originalName: "baking apples",
         unit: "large",
         unitLong: "larges",
-        unitShort: "large"
-      }
-    ]
+        unitShort: "large",
+      },
+    ],
   },
   {
     id: 632660,
@@ -96,7 +96,7 @@ const recipesExample = [
         originalName: "cold unsalted butter cold unsalted butter<",
         unit: "sticks",
         unitLong: "sticks",
-        unitShort: "sticks"
+        unitShort: "sticks",
       },
       {
         aisle: "Produce",
@@ -105,7 +105,7 @@ const recipesExample = [
         image: "https://img.spoonacular.com/ingredients_100x100/red-delicious-apples.png",
         meta: [
           "red",
-          " such as golden delicious, peeled, cored and cut into 1/4-inch-thick slices "
+          " such as golden delicious, peeled, cored and cut into 1/4-inch-thick slices ",
         ],
         name: "red apples",
         original:
@@ -114,7 +114,7 @@ const recipesExample = [
           "s red apples, such as Golden Delicious, peeled, cored and cut into 1/4-inch-thick slices",
         unit: "large",
         unitLong: "larges",
-        unitShort: "large"
+        unitShort: "large",
       },
       {
         aisle: "Spices and Seasonings",
@@ -127,7 +127,7 @@ const recipesExample = [
         originalName: "cinnamon",
         unit: "teaspoons",
         unitLong: "teaspoons",
-        unitShort: "tsp"
+        unitShort: "tsp",
       },
       {
         aisle: "Nut butters, Jams, and Honey",
@@ -140,8 +140,8 @@ const recipesExample = [
         originalName: "apricot preserves, melted and strained",
         unit: "tablespoons",
         unitLong: "tablespoons",
-        unitShort: "Tbsp"
-      }
+        unitShort: "Tbsp",
+      },
     ],
     title: "Apricot Glazed Apple Tart",
     unusedIngredients: [
@@ -156,12 +156,12 @@ const recipesExample = [
         originalName: "apples",
         unit: "serving",
         unitLong: "serving",
-        unitShort: "serving"
-      }
+        unitShort: "serving",
+      },
     ],
     usedIngredientCount: 0,
-    usedIngredients: []
-  }
+    usedIngredients: [],
+  },
 ];
 
 function RecipeSection({ headerText = "Recipes Found" }: Props) {
@@ -193,19 +193,19 @@ const RecipeList = styled(motion.ul)({
   padding: 0,
 
   "& > :not(:first-child)": {
-    marginTop: "28px"
-  }
+    marginTop: "28px",
+  },
 });
 
 const Header = styled("div")({
   display: "flex",
   alignItems: "center",
   gap: "12px",
-  marginBottom: "12px"
+  marginBottom: "12px",
 });
 
 const HeaderTxt = styled("h2")({
-  fontSize: scaleClamped(24, 36)
+  fontSize: scaleClamped(24, 36),
 });
 
 export default RecipeSection;

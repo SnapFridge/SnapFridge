@@ -49,14 +49,14 @@ export default async function AIprocessImages(files: File[]) {
     const uploadedFile = await ai.files.upload({
       file: files[i]!,
       config: {
-        name: filenames[i]!
-      }
+        name: filenames[i]!,
+      },
     });
     fileDataParts.push({
       fileData: {
         fileUri: uploadedFile.uri!,
-        mimeType: files[i]!.type
-      }
+        mimeType: files[i]!.type,
+      },
     });
   }
 
@@ -82,13 +82,13 @@ export default async function AIprocessImages(files: File[]) {
             },
           },
           propertyOrdering: ["name", "amount", "unit"],
-        }
+        },
       },
       thinkingConfig: {
         thinkingBudget: -1,
       },
       temperature: 0,
-    }
+    },
   });
 
   for (const filename of filenames) {

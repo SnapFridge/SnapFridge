@@ -11,12 +11,12 @@ import Toaster from "@components/Toaster";
 
 const poppins = Poppins({
   weight: ["400", "700"],
-  subsets: ["latin"]
+  subsets: ["latin"],
 });
 
 export const metadata = {
   title: "SnapFridge",
-  description: "Delicious recipes right from your fridge"
+  description: "Delicious recipes right from your fridge",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -24,12 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={poppins.className} suppressHydrationWarning>
       <body>
         {/* theme provider from next-themes, handles the dark/light theming */}
-        <ThemeProvider
-          attribute="data-theme"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider>
           <ToastProvider>
             <Background>
               <NavBar />
@@ -50,9 +45,9 @@ const Background = styled("div")({
   minHeight: "100%",
   color: "var(--text-950)",
   background: "var(--background)",
-  isolation: "isolate"
+  isolation: "isolate",
 });
 
 const Main = styled("main")({
-  flex: 1
+  flex: 1,
 });

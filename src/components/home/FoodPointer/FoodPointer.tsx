@@ -16,6 +16,6 @@ const Pointer = styled("div")({
   borderWidth: "2px 2px 0 0",
 
   [ON_MOBILE]: {
-    borderWidth: "1px 1px 0 0"
-  }
+    borderWidth: "1px 1px 0 0",
+  },
 });

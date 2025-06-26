@@ -23,11 +23,11 @@ function FridgeImage({ src, removeImage }: Props) {
         isActive
           ? {
               y: -5,
-              scale: 1.05
+              scale: 1.05,
             }
           : {
               y: 0,
-              scale: 1
+              scale: 1,
             }
       );
     })();
@@ -82,12 +82,12 @@ function FridgeImage({ src, removeImage }: Props) {
 const ContainerVariants: Variants = {
   initial: {
     y: 10,
-    opacity: 0
+    opacity: 0,
   },
   enterAnim: {
     y: 0,
-    opacity: 1
-  }
+    opacity: 1,
+  },
 };
 
 const ImageContainer = styled(motion.div)({
@@ -99,8 +99,8 @@ const ImageContainer = styled(motion.div)({
   minWidth: "125px",
   maxWidth: "300px",
   "&:hover": {
-    boxShadow: "var(--shadow)"
-  }
+    boxShadow: "var(--shadow)",
+  },
 });
 
 const DeleteContainer = styled(motion.div)({
@@ -110,32 +110,32 @@ const DeleteContainer = styled(motion.div)({
   top: "8px",
   backgroundColor: "rgba(0, 0, 0, 0.7)",
   borderRadius: "4px",
-  padding: "4px"
+  padding: "4px",
 });
 
 const DeleteVariants: Variants = {
   initial: {
     y: 5,
-    opacity: 0
+    opacity: 0,
   },
   enter: {
     y: 0,
-    opacity: 1
+    opacity: 1,
   },
   exit: {
     y: -5,
-    opacity: 0
+    opacity: 0,
   },
   hover: {
-    y: -2
-  }
+    y: -2,
+  },
 };
 
 const FridgeImg = css({
   width: "auto",
   height: "auto",
   aspectRatio: "1 / 1",
-  objectFit: "cover"
+  objectFit: "cover",
 });
 
 export default FridgeImage;

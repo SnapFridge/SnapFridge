@@ -30,11 +30,11 @@ function AppDialog({ title, show, children }: Props) {
 const XButton = styled(Button)({
   position: "absolute",
   right: "10px",
-  top: "10px"
+  top: "10px",
 });
 
 const Title = styled(Dialog.Title)({
-  fontSize: "var(--1-25rem)"
+  fontSize: "var(--1-25rem)",
 });
 
 export default AppDialog;

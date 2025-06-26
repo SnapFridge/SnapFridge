@@ -12,8 +12,8 @@ const StyledLink = styled(NextLink)({
   fontSize: "var(--1rem)",
 
   "&:hover": {
-    textDecoration: "revert"
-  }
+    textDecoration: "revert",
+  },
 });
 
 export default Link;

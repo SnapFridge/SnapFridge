@@ -24,7 +24,7 @@ function FileUpload({ formAction }: FileUploadData) {
   // Initialize a worker
   useEffect(() => {
     worker.current = new Worker(new URL("HeicDCode.worker.ts", import.meta.url), {
-      type: "module"
+      type: "module",
     });
 
     return () => {
@@ -151,12 +151,12 @@ function FileUpload({ formAction }: FileUploadData) {
 
 const Wrapper = styled(motion.form)({
   width: "100%",
-  maxWidth: "576px"
+  maxWidth: "576px",
 });
 
 const FileUploader = styled("div")({
   position: "relative",
-  width: "100%"
+  width: "100%",
 });
 
 const HiddenUpload = styled("input")({
@@ -169,7 +169,7 @@ const HiddenUpload = styled("input")({
   right: 0,
   margin: "auto",
   opacity: 0,
-  appearance: "none"
+  appearance: "none",
 });
 
 const VisibleContent = styled("div")<{ filled: boolean }>({
@@ -193,11 +193,11 @@ const VisibleContent = styled("div")<{ filled: boolean }>({
     outline: [
       "medium auto currentColor",
       "medium auto invert",
-      "5px auto -webkit-focus-ring-color"
-    ]
+      "5px auto -webkit-focus-ring-color",
+    ],
   },
   [`${HiddenUpload}:hover + &`]: {
-    background: "color-mix(in srgb, var(--background-100) 50%, transparent)"
+    background: "color-mix(in srgb, var(--background-100) 50%, transparent)",
   },
 
   variants: [
@@ -209,16 +209,16 @@ const VisibleContent = styled("div")<{ filled: boolean }>({
         minHeight: 0,
         borderBottom: "none",
         borderBottomRightRadius: 0,
-        borderBottomLeftRadius: 0
-      }
-    }
-  ]
+        borderBottomLeftRadius: 0,
+      },
+    },
+  ],
 });
 
 const SupportedFormats = styled("div")({
   textAlign: "center",
   color: "var(--text-950)",
-  opacity: 0.55
+  opacity: 0.55,
 });
 
 const ScanButton = css({
@@ -227,20 +227,20 @@ const ScanButton = css({
   fontSize: `${20 / 16}rem`,
   borderTopRightRadius: 0,
   borderTopLeftRadius: 0,
-  padding: 0
+  padding: 0,
 });
 
 const ScanButtonVariants: Variants = {
   initial: {
     opacity: 0,
-    y: -50
+    y: -50,
   },
   animate: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5
-    }
+      duration: 0.5,
+    },
   },
   exit: {
     opacity: 0,
@@ -248,14 +248,14 @@ const ScanButtonVariants: Variants = {
     transition: {
       duration: 0.3,
       default: {
-        ease: "easeOut"
-      }
-    }
-  }
+        ease: "easeOut",
+      },
+    },
+  },
 };
 
 const InvalidFilesWarning = styled("p")({
   textAlign: "center",
-  color: "var(--warn-500)"
+  color: "var(--warn-500)",
 });
 export default FileUpload;
