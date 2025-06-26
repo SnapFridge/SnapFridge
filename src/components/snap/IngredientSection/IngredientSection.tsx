@@ -7,11 +7,12 @@ import IngredientBox from "./Ingredient";
 import { motion } from "motion/react";
 import { useDispatch, useIngredients } from "../InputSection/InputManager";
 import Button from "@components/Button";
-import { useRef } from "react";
+import { useState } from "react";
 
 function IngredientSection() {
   const ingredients = useIngredients();
-  const input = useRef<HTMLInputElement>(null as unknown as HTMLInputElement);
+  const [ingredient, setIngredient] = useState("");
+
   const dispatch = useDispatch();
   return (
     <>
@@ -27,23 +28,28 @@ function IngredientSection() {
           ))}
         </IngredientsContainer>
       )}
-      <input ref={input}></input>
-      <NewIngredientBtn
+      {/* These are temporary inputs for testing */}
+      <input
+        value={ingredient}
+        onChange={(event) => {
+          setIngredient(event.target.value);
+        }}
+      ></input>
+      <Button
         variant="secondary"
         onClick={() => {
           dispatch({
             type: "addIngredient",
             ingredient: {
-              name: input.current.value,
+              name: ingredient,
               amount: 3,
               unit: "tsp"
             }
           });
-          input.current.value = "";
         }}
       >
         New Ingredient...
-      </NewIngredientBtn>
+      </Button>
     </>
   );
 }
@@ -83,5 +89,4 @@ const IngredientsContainer = styled(NoIngredientsContainer)({
   listStyleType: "none"
 });
 
-const NewIngredientBtn = styled(Button)({});
 export default IngredientSection;
