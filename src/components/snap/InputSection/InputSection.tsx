@@ -30,7 +30,7 @@ function InputSection() {
     }
   }
 
-  const [_message, formAction, isPending] = useActionState(wrapperFunction, null);
+  const [, formAction, isPending] = useActionState(wrapperFunction, null);
 
   return (
     <Wrapper>
@@ -43,7 +43,7 @@ function InputSection() {
 
 const Fetching: CSSProperties = {
   width: "100%",
-  maxWidth: "576px"
+  maxWidth: "576px",
 };
 
 const Wrapper = styled("div")({

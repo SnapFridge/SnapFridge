@@ -14,7 +14,7 @@ function IngredientSection() {
 
   const [ingredient, setIngredient] = useState("");
   function ingredients2Tags() {
-    let tags = [];
+    const tags = [];
     for (const [k, v] of ingredients) {
       tags.push(<IngredientBox key={k} ingredient={v} />);
     }
