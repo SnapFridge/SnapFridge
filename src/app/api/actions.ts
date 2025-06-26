@@ -32,7 +32,7 @@ const SYS_INSTRUCTION = `
   * **For loose items** (like carrots or loose spinach), provide either a specific count or an estimated total weight (in "g" or "kg").
   * **Use standard units only:**
       * **Countable Items:** "count" (e.g., for apples, eggs, cans of soda).
-      * **Liquids:** "ml" or "l".
+      * **Liquids:** "mL" or "L".
       * **Solids:** "g" or "kg".
       * **Other:** "slices".
   * **No Ambiguous Terms:** You are forbidden from using vague estimations like "bunch", "some", or "a few". Every item must have a concrete numerical estimate.
@@ -71,23 +71,23 @@ export default async function AIprocessImages(files: File[]) {
         items: {
           type: Type.OBJECT,
           properties: {
-            itemName: {
-              type: Type.STRING
+            name: {
+              type: Type.STRING,
             },
-            value: {
-              type: Type.INTEGER
+            amount: {
+              type: Type.INTEGER,
             },
             unit: {
-              type: Type.STRING
-            }
+              type: Type.STRING,
+            },
           },
-          propertyOrdering: ["itemName", "value", "unit"]
+          propertyOrdering: ["name", "amount", "unit"],
         }
       },
       thinkingConfig: {
-        thinkingBudget: -1
+        thinkingBudget: -1,
       },
-      temperature: 0.1
+      temperature: 0,
     }
   });
 
