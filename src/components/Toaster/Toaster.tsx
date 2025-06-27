@@ -1,6 +1,7 @@
 "use client";
 
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import AppToast from "./Toast";
 import { Toast } from "radix-ui";
 import { styled } from "@pigment-css/react";
@@ -9,11 +10,18 @@ import { ToastContext } from "@components/ToastProvider";
 import { motion } from "motion/react";
 
 function Toaster() {
+  const [isClient, setIsClient] = useState(false);
   const { toasts, removeToast } = useContext(ToastContext)!;
 
   const visibleToasts = toasts.slice(0, 5);
 
-  return (
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) return;
+
+  return createPortal(
     <ToastContainer>
       {visibleToasts.map(({ id, title, description, variant }) => (
         <AppToast
@@ -29,7 +37,8 @@ function Toaster() {
       <Toast.Viewport asChild>
         <Viewport layout="position" />
       </Toast.Viewport>
-    </ToastContainer>
+    </ToastContainer>,
+    document.body
   );
 }
 
