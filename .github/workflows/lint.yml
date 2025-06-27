@@ -13,7 +13,6 @@ jobs:
           cache: "npm"
       - name: Install dependencies
         run: npm install
-      - name: Check code formatting
       - name: Lint
         run: npm run lint
       - name: Build (for type checking)

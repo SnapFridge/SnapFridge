@@ -37,8 +37,8 @@ function ToastProvider({ children }: React.PropsWithChildren) {
         variant,
         title,
         description,
-        id: crypto.randomUUID()
-      }
+        id: crypto.randomUUID(),
+      },
     ];
     setToasts(nextToasts);
   }

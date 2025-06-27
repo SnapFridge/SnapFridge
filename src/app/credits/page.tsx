@@ -62,7 +62,7 @@ export default function Page() {
 }
 
 const Title = css({
-  alignSelf: "center"
+  alignSelf: "center",
 });
 
 const CreditList = styled("ul")({
@@ -72,15 +72,15 @@ const CreditList = styled("ul")({
 
   "&> li": {
     marginTop: "32px",
-    justifyItems: "center"
+    justifyItems: "center",
   },
 
   "&> li > img": {
     width: "50%",
-    height: "auto"
-  }
+    height: "auto",
+  },
 });
 
 const ImageCSS = css({
-  borderRadius: "6px"
+  borderRadius: "6px",
 });

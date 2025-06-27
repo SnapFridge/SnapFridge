@@ -36,8 +36,8 @@ const Wrapper = styled("div")({
   display: "none",
 
   [ON_MOBILE]: {
-    display: "block"
-  }
+    display: "block",
+  },
 });
 
 const Content = styled(DropdownMenu.Content)({
@@ -46,11 +46,11 @@ const Content = styled(DropdownMenu.Content)({
   alignItems: "center",
   background: "var(--background)",
   borderRadius: "8px",
-  padding: "8px 12px 10px 12px"
+  padding: "8px 12px 10px 12px",
 });
 
 const Item = styled(DropdownMenu.Item)({
-  display: "block"
+  display: "block",
 });
 
 export default Dropdown;

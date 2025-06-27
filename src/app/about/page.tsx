@@ -26,17 +26,17 @@ const Main = styled(PageMargin)({
   color: "var(--text-950)",
 
   "&> :not(:first-child)": {
-    marginTop: "32px"
-  }
+    marginTop: "32px",
+  },
 });
 
 const Title = styled("h1")({
   fontSize: `${36 / 16}rem`,
-  textAlign: "center"
+  textAlign: "center",
 });
 
 const Logo = css({
-  margin: "auto"
+  margin: "auto",
 });
 
 const Picture = styled("div")({
@@ -44,10 +44,10 @@ const Picture = styled("div")({
   width: "700px",
   height: "300px",
   borderRadius: "12px",
-  margin: "auto"
+  margin: "auto",
 });
 
 const HeaderText = styled("h2")({
   fontSize: `${32 / 16}rem`,
-  textAlign: "center"
+  textAlign: "center",
 });

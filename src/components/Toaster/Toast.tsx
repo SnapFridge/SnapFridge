@@ -80,28 +80,28 @@ const BaseToast = styled(Toast.Root)<{
     {
       props: { variant: "success" },
       style: {
-        background: "var(--success-50)"
-      }
+        background: "var(--success-50)",
+      },
     },
     {
       props: { variant: "warn" },
       style: {
-        background: "var(--warn-50)"
-      }
+        background: "var(--warn-50)",
+      },
     },
     {
       props: { variant: "error" },
       style: {
-        background: "var(--error-50)"
-      }
+        background: "var(--error-50)",
+      },
     },
     {
       props: { variant: "info" },
       style: {
-        background: "var(--background-100)"
-      }
-    }
-  ]
+        background: "var(--background-100)",
+      },
+    },
+  ],
 });
 
 const MainContent = styled("div")({
@@ -110,24 +110,24 @@ const MainContent = styled("div")({
   gridTemplateAreas: "title close description close",
   gridTemplateColumns: "auto max-content",
   columnGap: "15px",
-  alignItems: "center"
+  alignItems: "center",
 });
 
 const Title = styled(Toast.Title)({
   gridArea: "title",
   marginBottom: "6px",
   color: "var(--text-950)",
-  fontSize: `${20 / 16}rem`
+  fontSize: `${20 / 16}rem`,
 });
 
 const Description = styled(Toast.Description)({
   fontSize: `${16 / 16}rem`,
-  color: "var(--text-900)"
+  color: "var(--text-900)",
 });
 
 const Close = styled(Button)({
   gridArea: "close",
-  background: "transparent"
+  background: "transparent",
 });
 
 export default AppToast;

@@ -7,7 +7,7 @@ export const MAX_SUPPORTED_WIDTH = 1920;
 export const ON_MOBILE = `@media (max-width: ${MOBILE_BREAKPOINT}px)`;
 
 export const PageMargin = styled("div")({
-  margin: "0 var(--page-margin)"
+  margin: "0 var(--page-margin)",
 });
 
 // Sizes are from Figma

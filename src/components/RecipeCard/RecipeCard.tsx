@@ -75,23 +75,23 @@ function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
 const CardVariant: Variants = {
   offscreen: {
     y: 100,
-    opacity: 0
+    opacity: 0,
   },
   onscreen: {
     y: 0,
     opacity: 1,
     transition: {
       type: "spring",
-      duration: 0.8
-    }
+      duration: 0.8,
+    },
   },
   hover: {
     scale: 1.02,
     transition: {
       type: "spring",
-      duration: 0.5
-    }
-  }
+      duration: 0.5,
+    },
+  },
 };
 
 const Card = styled(motion.li)({
@@ -111,9 +111,9 @@ const Card = styled(motion.li)({
     display: "block",
 
     "&> :not(:first-child)": {
-      marginTop: "16px"
-    }
-  }
+      marginTop: "16px",
+    },
+  },
 });
 
 const RecipeTitle = css({
@@ -122,8 +122,8 @@ const RecipeTitle = css({
   fontSize: "var(--1-25rem)",
 
   [ON_MOBILE]: {
-    textAlign: "center"
-  }
+    textAlign: "center",
+  },
 });
 
 const FoodImg = css({
@@ -132,14 +132,14 @@ const FoodImg = css({
   minWidth: 0,
   flex: "1 1 300px",
   width: "100%",
-  height: "auto"
+  height: "auto",
 });
 
 const FoodImgSkeleton = css({
   display: "block",
   gridArea: "2 / 1 / 4 / 2",
   width: "100%",
-  aspectRatio: "312 / 231"
+  aspectRatio: "312 / 231",
 });
 
 const Ingredients = styled("div")({
@@ -150,8 +150,8 @@ const Ingredients = styled("div")({
 
   [ON_MOBILE]: {
     textAlign: "center",
-    justifyItems: "center"
-  }
+    justifyItems: "center",
+  },
 });
 
 const MissedIngredients = styled("div")({
@@ -162,18 +162,18 @@ const MissedIngredients = styled("div")({
 
   [ON_MOBILE]: {
     textAlign: "center",
-    justifyItems: "center"
-  }
+    justifyItems: "center",
+  },
 });
 
 const IngredientTitle = css({
   width: "fit-content",
-  fontSize: "var(--1-25rem)"
+  fontSize: "var(--1-25rem)",
 });
 
 const IngredientNames = css({
   width: "fit-content",
-  fontSize: "var(--1rem)"
+  fontSize: "var(--1rem)",
 });
 
 export default RecipeCard;

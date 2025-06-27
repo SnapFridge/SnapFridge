@@ -56,6 +56,6 @@ const Hidden = styled("span")({
     overflow: "visible",
     clip: "auto",
     clipPath: "none",
-    whiteSpace: "normal"
-  }
+    whiteSpace: "normal",
+  },
 });

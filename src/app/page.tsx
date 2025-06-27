@@ -11,7 +11,7 @@ import {
   scaleClampedDesktop,
   ON_MOBILE,
   PageMargin,
-  MOBILE_BREAKPOINT
+  MOBILE_BREAKPOINT,
 } from "@components/Global";
 import FoodPointer from "@components/home/FoodPointer";
 import Link from "next/link";
@@ -110,16 +110,16 @@ const Hero = styled("div")({
     linear-gradient(var(--hero-linear-1) 0%, var(--hero-linear-2) 96%, var(--background-50) 100%)
     `,
   backgroundBlendMode: "multiply",
-  marginTop: "calc(-1 * (var(--nav-height) + var(--nav-margin)))"
+  marginTop: "calc(-1 * (var(--nav-height) + var(--nav-margin)))",
 });
 
 const Title = styled("h1")({
-  fontSize: scaleClamped(36, 85)
+  fontSize: scaleClamped(36, 85),
 });
 
 const ButtonWrapper = styled("div")({
   display: "flex",
-  gap: scaleClamped(10, 20)
+  gap: scaleClamped(10, 20),
 });
 
 const FridgeAndPointers = css({
@@ -129,8 +129,8 @@ const FridgeAndPointers = css({
   width: "100%",
 
   [ON_MOBILE]: {
-    margin: "25px 0"
-  }
+    margin: "25px 0",
+  },
 });
 
 const Butter = styled(FoodPointer)({
@@ -139,8 +139,8 @@ const Butter = styled(FoodPointer)({
 
   [ON_MOBILE]: {
     top: scaleClampedMobile(88, 175),
-    width: scaleClampedMobile(155, 270)
-  }
+    width: scaleClampedMobile(155, 270),
+  },
 });
 
 const Milk = styled(FoodPointer)({
@@ -149,8 +149,8 @@ const Milk = styled(FoodPointer)({
 
   [ON_MOBILE]: {
     top: scaleClampedMobile(130, 250),
-    width: scaleClampedMobile(198, 358)
-  }
+    width: scaleClampedMobile(198, 358),
+  },
 });
 
 const Egg = styled(FoodPointer)({
@@ -159,8 +159,8 @@ const Egg = styled(FoodPointer)({
 
   [ON_MOBILE]: {
     top: scaleClampedMobile(160, 312),
-    width: scaleClampedMobile(228, 415)
-  }
+    width: scaleClampedMobile(228, 415),
+  },
 });
 
 const Carrot = styled(FoodPointer)({
@@ -169,8 +169,8 @@ const Carrot = styled(FoodPointer)({
 
   [ON_MOBILE]: {
     top: scaleClampedMobile(200, 390),
-    width: scaleClampedMobile(190, 330)
-  }
+    width: scaleClampedMobile(190, 330),
+  },
 });
 
 // Image is set to be 66% wide of the page without margin
@@ -182,8 +182,8 @@ const FridgeImg = css({
 
   [ON_MOBILE]: {
     justifySelf: "flex-end",
-    width: "66%" // Set here
-  }
+    width: "66%", // Set here
+  },
 });
 const FridgeSection = styled("section")({
   display: "grid",
@@ -194,18 +194,18 @@ const FridgeSection = styled("section")({
   marginBottom: "35px",
 
   [ON_MOBILE]: {
-    marginTop: "35px"
-  }
+    marginTop: "35px",
+  },
 });
 
 const FridgeSideTxt = styled("span")({
   fontSize: scaleClamped(20, 40),
   fontWeight: "bold",
-  textAlign: "center"
+  textAlign: "center",
 });
 
 const StatisticsSection = styled("section")({
-  marginTop: "64px"
+  marginTop: "64px",
 });
 
 const TopStatistics = styled("div")({
@@ -213,21 +213,21 @@ const TopStatistics = styled("div")({
   margin: "auto",
 
   [ON_MOBILE]: {
-    width: "100%"
+    width: "100%",
   },
 
   "&> h2": {
     width: "100%",
     textAlign: "center",
-    fontSize: scaleClamped(29, 52)
+    fontSize: scaleClamped(29, 52),
   },
 
   "&> small": {
     display: "block",
     width: "100%",
     textAlign: "center",
-    fontSize: "var(--1rem)"
-  }
+    fontSize: "var(--1rem)",
+  },
 });
 
 const BottomStatistics = styled("div")({
@@ -241,27 +241,27 @@ const BottomStatistics = styled("div")({
   rowGap: scaleClamped(15, 25),
 
   "&> img": {
-    borderRadius: "6px"
+    borderRadius: "6px",
   },
 
   "&> h2": {
     fontSize: scaleClamped(29, 52),
     fontWeight: "500",
     textAlign: "center",
-    whiteSpace: "pre-wrap"
+    whiteSpace: "pre-wrap",
   },
 
   "&> h2 > strong": {
     fontSize: scaleClamped(33, 56),
-    display: "block"
-  }
+    display: "block",
+  },
 });
 
 const LandfillImg = css({
   gridRowStart: 1,
   gridRowEnd: 3,
   width: "100%",
-  height: "auto"
+  height: "auto",
 });
 
 const CallToActionSection = styled("section")({
@@ -272,8 +272,8 @@ const CallToActionSection = styled("section")({
 
   "&> h2": {
     fontSize: scaleClamped(29, 52),
-    textAlign: "center"
-  }
+    textAlign: "center",
+  },
 });
 
 const CoAButtonCSS = css({
@@ -286,24 +286,24 @@ const CoAButtonCSS = css({
   alignContent: "center",
   textAlign: "center",
   padding: 0,
-  borderRadius: "8px"
+  borderRadius: "8px",
 });
 
 const MobileCenter = css({
   [ON_MOBILE]: {
-    justifyItems: "center"
-  }
+    justifyItems: "center",
+  },
 });
 
 const MobileOrderLast = css({
   [ON_MOBILE]: {
-    order: 1
-  }
+    order: 1,
+  },
 });
 
 const MobileFlexCol = css({
   [ON_MOBILE]: {
     display: "flex",
-    flexDirection: "column"
-  }
+    flexDirection: "column",
+  },
 });

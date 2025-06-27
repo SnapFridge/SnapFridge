@@ -2,7 +2,6 @@
 
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import { type Ingredient } from "@components/Global";
 import IngredientBox from "./Ingredient";
 import { motion } from "motion/react";
 import { useInputState } from "../InputProvider";
@@ -14,19 +13,23 @@ function IngredientSection() {
   const { ingredients } = state;
 
   const [ingredient, setIngredient] = useState("");
-
+  function ingredients2Tags() {
+    const tags = [];
+    for (const [k, v] of ingredients) {
+      tags.push(<IngredientBox key={k} ingredient={v} />);
+    }
+    return tags;
+  }
   return (
     <>
-      {ingredients.length < 1 ? (
+      {ingredients.size < 1 ? (
         <NoIngredientsContainer>
           <Icon icon="Archive" size={36} color="var(--hero-linear-1)" />
           <IngredientsTitle>Your ingredients will appear here</IngredientsTitle>
         </NoIngredientsContainer>
       ) : (
         <IngredientsContainer layout transition={{ duration: 0.3, ease: "easeInOut" }}>
-          {ingredients.map((ingredient: Ingredient) => (
-            <IngredientBox key={ingredient.name} ingredient={ingredient}></IngredientBox>
-          ))}
+          {ingredients2Tags()}
         </IngredientsContainer>
       )}
       {/* These are temporary inputs for testing */}
@@ -44,8 +47,8 @@ function IngredientSection() {
             ingredient: {
               name: ingredient,
               amount: 3,
-              unit: "tsp"
-            }
+              unit: "tsp",
+            },
           });
         }}
       >
@@ -70,13 +73,13 @@ const NoIngredientsContainer = styled(motion.ul)({
   border: "1px solid var(--hero-linear-1)",
   color: "var(--hero-linear-1)",
   maxWidth: "450px",
-  width: "100%"
+  width: "100%",
 });
 
 const IngredientsTitle = styled("h1")({
   fontSize: `${18 / 16}rem`,
   fontWeight: "400",
-  textAlign: "center"
+  textAlign: "center",
 });
 
 const IngredientsContainer = styled(NoIngredientsContainer)({
@@ -87,7 +90,7 @@ const IngredientsContainer = styled(NoIngredientsContainer)({
   maxWidth: "600px",
   minWidth: "450px",
   width: "fit-content",
-  listStyleType: "none"
+  listStyleType: "none",
 });
 
 export default IngredientSection;
