@@ -7,12 +7,14 @@ import { motion } from "motion/react";
 import { useInputState } from "../InputProvider";
 import Button from "@components/Button";
 import { useState } from "react";
+import AppDialog from "@components/Dialog";
 
 function IngredientSection() {
   const { state, dispatch } = useInputState();
   const { ingredients } = state;
 
   const [ingredient, setIngredient] = useState("");
+
   function ingredients2Tags() {
     const tags = [];
     for (const [k, v] of ingredients) {
@@ -33,6 +35,13 @@ function IngredientSection() {
         </IngredientsContainer>
       )}
       {/* These are temporary inputs for testing */}
+      <AppDialog
+        title="Hello, World!"
+        description="Don't trust atoms because they make up everything!"
+        trigger={<Button variant="secondary">Open Dialog</Button>}
+      >
+        <p>This is just a thing lol</p>
+      </AppDialog>
       <input
         value={ingredient}
         onChange={(event) => {
