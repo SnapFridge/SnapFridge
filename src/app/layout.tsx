@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <Background>
               <NavBar />
               <Main>{children}</Main>
-              <Footer />
+              <Footer />,
               <CookieBanner />
               <Toaster />
             </Background>

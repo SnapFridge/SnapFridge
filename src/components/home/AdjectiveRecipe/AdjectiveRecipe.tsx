@@ -2,7 +2,7 @@
 
 import { styled } from "@pigment-css/react";
 import useTypewriter from "./typewritter.helper";
-import { scaleClamped } from "@components/Global";
+import { ON_MOBILE, scaleClamped } from "@components/Global";
 
 const ADJECTIVES = ["Delicious", "Excellent", "Wonderful", "Amazing", "Incredible"];
 
@@ -20,6 +20,10 @@ const Description = styled("p")({
   fontSize: scaleClamped(18, 22),
   marginTop: "8px",
   marginBottom: "16px",
+
+  [ON_MOBILE]: {
+    textAlign: "center",
+  },
 });
 
 const Adjective = styled("span")({

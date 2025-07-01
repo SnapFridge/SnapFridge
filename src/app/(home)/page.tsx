@@ -13,7 +13,7 @@ export default function Page() {
   return (
     <>
       <Hero>
-        <PageMargin className={MobileCenter}>
+        <PageMargin>
           <Title>SnapFridge</Title>
           <AdjectiveRecipes />
           <ButtonWrapper>
@@ -107,11 +107,19 @@ const Hero = styled("div")({
 
 const Title = styled("h1")({
   fontSize: scaleClamped(36, 85),
+
+  [ON_MOBILE]: {
+    textAlign: "center",
+  },
 });
 
 const ButtonWrapper = styled("div")({
   display: "flex",
   gap: scaleClamped(10, 20),
+
+  [ON_MOBILE]: {
+    justifyContent: "center",
+  },
 });
 
 const Butter = styled(FoodPointer)({
@@ -256,12 +264,6 @@ const CoAButtonCSS = css({
   textAlign: "center",
   padding: 0,
   borderRadius: "8px",
-});
-
-const MobileCenter = css({
-  [ON_MOBILE]: {
-    justifyItems: "center",
-  },
 });
 
 const MobileOrderLast = css({

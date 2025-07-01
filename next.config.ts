@@ -31,6 +31,7 @@ export default withPigment({
 
   webpack: (config) => {
     config.experiments = {
+      ...config.experiments,
       layers: true,
       topLevelAwait: true,
     };

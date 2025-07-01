@@ -1,6 +1,6 @@
 import { type MetadataRoute } from "next";
 
-function sitemap(): MetadataRoute.Sitemap {
+function sitemap() {
   const map: MetadataRoute.Sitemap = [
     {
       url: "",
