@@ -1,52 +1,43 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function useTypewriter(
   texts: string[],
-  delayPerCharacter = 100,
-  delayPerState = 3000
+  delayPerChar = 100,
+  deleteDelay = 3000
 ) {
-  const [currentText, setCurrentText] = useState(0);
-  const [displayText, setDisplayText] = useState("");
-  const [index, setIndex] = useState(0);
-  const [typing, setTyping] = useState(false);
-  const [initial, setInitial] = useState(true);
+  const index = useRef({
+    text: 0,
+    texts: 0,
+  }).current;
+  const [displayTxt, setDisplayTxt] = useState("");
+  const [typing, setTyping] = useState(true);
 
-  useEffect(() => {
-    const text = texts[currentText];
-
-    if (!text) {
-      setCurrentText(0);
-      return;
-    }
-    setInitial(false);
-
-    window.setTimeout(
-      () => {
-        if (typing) {
-          if (index - 1 < text.length) {
-            const newText = text.slice(0, index);
-            setDisplayText(newText);
-            setIndex(index + 1);
-          } else {
-            window.setTimeout(() => {
-              setTyping(false);
-            }, delayPerState);
-          }
+  function changeChar() {
+    const text = texts[index.texts]!;
+    setTimeout(() => {
+      if (typing) {
+        if (index.text < text.length) {
+          const newTxt = text.slice(0, ++index.text);
+          setDisplayTxt(newTxt);
         } else {
-          if (index >= 0) {
-            const newText = text.slice(0, index);
-            setDisplayText(newText);
-            setIndex(index - 1);
-          } else {
-            setIndex(0);
-            setTyping(true);
-            setCurrentText(currentText + 1);
-          }
+          setTimeout(() => {
+            setTyping(false);
+          }, deleteDelay);
         }
-      },
-      initial ? 0 : delayPerCharacter
-    );
-  }, [index, typing, currentText, delayPerCharacter, delayPerState, initial, texts]);
+      } else {
+        if (index.text > 0) {
+          const newTxt = text.slice(0, --index.text);
+          setDisplayTxt(newTxt);
+        } else {
+          setTyping(true);
+          index.texts = (index.texts + 1) % texts.length;
+        }
+      }
+    }, delayPerChar);
+  }
+  useEffect(() => {
+    changeChar();
+  }, [displayTxt, typing]);
 
-  return displayText;
+  return displayTxt;
 }

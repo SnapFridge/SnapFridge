@@ -104,7 +104,7 @@ const BaseToast = styled(Toast.Root)<{
     {
       props: { variant: "info" },
       style: {
-        background: "var(--background-100)",
+        background: "var(--bg-100)",
       },
     },
   ],
@@ -122,13 +122,13 @@ const MainContent = styled("div")({
 const Title = styled(Toast.Title)({
   gridArea: "title",
   marginBottom: "6px",
-  color: "var(--text-950)",
+  color: "var(--txt-950)",
   fontSize: `${20 / 16}rem`,
 });
 
 const Description = styled(Toast.Description)({
   fontSize: `${16 / 16}rem`,
-  color: "var(--text-900)",
+  color: "var(--txt-900)",
 });
 
 const Close = styled(Button)({

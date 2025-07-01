@@ -44,8 +44,8 @@ const Background = styled("div")({
   display: "flex",
   flexDirection: "column",
   minHeight: "100%",
-  color: "var(--text-950)",
-  background: "var(--background)",
+  color: "var(--txt-950)",
+  background: "var(--bg)",
   isolation: "isolate",
 });
 

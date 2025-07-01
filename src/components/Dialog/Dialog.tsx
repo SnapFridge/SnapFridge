@@ -44,7 +44,7 @@ const Content = styled(Dialog.Content)({
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  background: "var(--background)",
+  background: "var(--bg)",
   borderRadius: "16px",
   padding: "16px",
   width: "90vw",
@@ -60,12 +60,12 @@ const XButton = styled(Button)({
 
 const Title = styled(Dialog.Title)({
   fontSize: "var(--1-25rem)",
-  color: "var(--text-950)",
+  color: "var(--txt-950)",
 });
 
 const Description = styled(Dialog.Description)({
   fontSize: `${12 / 16}rem`,
-  color: "var(--text-800)",
+  color: "var(--txt-800)",
 });
 
 export default AppDialog;

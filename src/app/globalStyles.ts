@@ -6,30 +6,30 @@ import { globalCss } from "@pigment-css/react";
 // Color scheme
 globalCss`
   :root[data-theme="light"] {
-    --text-50: #e9fbfa;
-    --text-100: #d4f7f5;
-    --text-200: #a9efec;
-    --text-300: #7ee7e2;
-    --text-400: #53dfd8;
-    --text-500: #28d7cf;
-    --text-600: #20aca5;
-    --text-700: #18817c;
-    --text-800: #105653;
-    --text-900: #082b29;
-    --text-950: #041615;
+    --txt-50: #e9fbfa;
+    --txt-100: #d4f7f5;
+    --txt-200: #a9efec;
+    --txt-300: #7ee7e2;
+    --txt-400: #53dfd8;
+    --txt-500: #28d7cf;
+    --txt-600: #20aca5;
+    --txt-700: #18817c;
+    --txt-800: #105653;
+    --txt-900: #082b29;
+    --txt-950: #041615;
 
-    --background: #FFFFFF;
-    --background-50: #eafbfa;
-    --background-100: #d4f7f5;
-    --background-200: #a9efea;
-    --background-300: #7ee7e0;
-    --background-400: #54ded5;
-    --background-500: #29d6cb;
-    --background-600: #21aba2;
-    --background-700: #18817a;
-    --background-800: #105651;
-    --background-900: #082b29;
-    --background-950: #041514;
+    --bg: #FFFFFF;
+    --bg-50: #eafbfa;
+    --bg-100: #d4f7f5;
+    --bg-200: #a9efea;
+    --bg-300: #7ee7e0;
+    --bg-400: #54ded5;
+    --bg-500: #29d6cb;
+    --bg-600: #21aba2;
+    --bg-700: #18817a;
+    --bg-800: #105651;
+    --bg-900: #082b29;
+    --bg-950: #041514;
 
     --primary-50: #eff6f5;
     --primary-100: #deedec;
@@ -116,30 +116,30 @@ globalCss`
     --skeleton-highlight: #f5f5f5;
   }
   :root[data-theme="dark"] {
-    --text-50: #041615;
-    --text-100: #082b29;
-    --text-200: #105653;
-    --text-300: #18817c;
-    --text-400: #20aca5;
-    --text-500: #28d7cf;
-    --text-600: #53dfd8;
-    --text-700: #7ee7e2;
-    --text-800: #a9efec;
-    --text-900: #d4f7f5;
-    --text-950: #e9fbfa;
+    --txt-50: #041615;
+    --txt-100: #082b29;
+    --txt-200: #105653;
+    --txt-300: #18817c;
+    --txt-400: #20aca5;
+    --txt-500: #28d7cf;
+    --txt-600: #53dfd8;
+    --txt-700: #7ee7e2;
+    --txt-800: #a9efec;
+    --txt-900: #d4f7f5;
+    --txt-950: #e9fbfa;
 
-    --background: #000000;
-    --background-50: #041514;
-    --background-100: #082b29;
-    --background-200: #105651;
-    --background-300: #18817a;
-    --background-400: #21aba2;
-    --background-500: #29d6cb;
-    --background-600: #54ded5;
-    --background-700: #7ee7e0;
-    --background-800: #a9efea;
-    --background-900: #d4f7f5;
-    --background-950: #eafbfa;
+    --bg: #000000;
+    --bg-50: #041514;
+    --bg-100: #082b29;
+    --bg-200: #105651;
+    --bg-300: #18817a;
+    --bg-400: #21aba2;
+    --bg-500: #29d6cb;
+    --bg-600: #54ded5;
+    --bg-700: #7ee7e0;
+    --bg-800: #a9efea;
+    --bg-900: #d4f7f5;
+    --bg-950: #eafbfa;
 
     --primary-50: #091010;
     --primary-100: #122120;

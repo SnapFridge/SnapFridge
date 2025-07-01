@@ -95,7 +95,7 @@ const IngredientsContainer = styled(NoIngredientsContainer)({
   flexDirection: "row",
   flexWrap: "wrap",
   border: "1px solid var(--accent-400)",
-  color: "var(--text-950)",
+  color: "var(--txt-950)",
   maxWidth: "600px",
   minWidth: "450px",
   width: "fit-content",

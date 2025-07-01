@@ -7,7 +7,7 @@ import { scaleClamped } from "@components/Global";
 import Icon from "@components/Icon";
 import { useState } from "react";
 type Props = {
-  headerText?: string;
+  headerTxt?: string;
 };
 
 const recipesExample = [
@@ -164,7 +164,7 @@ const recipesExample = [
   },
 ];
 
-function RecipeSection({ headerText = "Recipes Found" }: Props) {
+function RecipeSection({ headerTxt = "Recipes Found" }: Props) {
   const [loading, setLoading] = useState(true);
 
   function switchLoading() {
@@ -175,7 +175,7 @@ function RecipeSection({ headerText = "Recipes Found" }: Props) {
     <>
       <button onClick={switchLoading}>switch loading</button>
       <Header>
-        <HeaderTxt>{headerText}</HeaderTxt>
+        <HeaderTxt>{headerTxt}</HeaderTxt>
         <Icon aria-hidden icon="Sparkles" size={50}></Icon>
       </Header>
 

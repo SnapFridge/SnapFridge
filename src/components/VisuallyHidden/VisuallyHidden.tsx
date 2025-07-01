@@ -23,12 +23,12 @@ export default function VisuallyHidden({
         }
       };
 
-      window.addEventListener("keydown", handleKeyDown);
-      window.addEventListener("keyup", handleKeyUp);
+      addEventListener("keydown", handleKeyDown);
+      addEventListener("keyup", handleKeyUp);
 
       return () => {
-        window.removeEventListener("keydown", handleKeyDown);
-        window.removeEventListener("keyup", handleKeyUp);
+        removeEventListener("keydown", handleKeyDown);
+        removeEventListener("keyup", handleKeyUp);
       };
     }, []);
 

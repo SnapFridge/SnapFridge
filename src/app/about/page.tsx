@@ -9,10 +9,10 @@ export default function Page() {
       <Icon icon="Logo" size={300} className={Logo} />
       <Title>SnapFridge</Title>
       <Picture></Picture>
-      <HeaderText>
+      <HeaderTxt>
         “We built SnapFridge for absolutely no reason other than the Congressional App
         Challenge, still gotta say it's a cool idea tho.”
-      </HeaderText>
+      </HeaderTxt>
       <AboutUsCards></AboutUsCards>
     </Main>
   );
@@ -23,7 +23,7 @@ const Main = styled(PageMargin)({
   alignSelf: "center",
   justifyItems: "center",
   fontSize: "var(--1rem)",
-  color: "var(--text-950)",
+  color: "var(--txt-950)",
 
   "&> :not(:first-child)": {
     marginTop: "32px",
@@ -40,14 +40,14 @@ const Logo = css({
 });
 
 const Picture = styled("div")({
-  backgroundColor: "var(--text-500)",
+  backgroundColor: "var(--txt-500)",
   width: "700px",
   height: "300px",
   borderRadius: "12px",
   margin: "auto",
 });
 
-const HeaderText = styled("h2")({
+const HeaderTxt = styled("h2")({
   fontSize: `${32 / 16}rem`,
   textAlign: "center",
 });

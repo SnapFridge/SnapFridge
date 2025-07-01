@@ -44,7 +44,7 @@ const Content = styled(DropdownMenu.Content)({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-  background: "var(--background)",
+  background: "var(--bg)",
   borderRadius: "8px",
   padding: "8px 12px 10px 12px",
 });

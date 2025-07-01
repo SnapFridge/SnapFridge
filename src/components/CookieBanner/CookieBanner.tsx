@@ -10,15 +10,13 @@ function CookieBanner() {
   const [visible, setVisibility] = useState(true);
 
   useEffect(() => {
-    const hasAcknowledged = localStorage.getItem("acknowledgedCookie");
-
-    if (hasAcknowledged) {
+    if (localStorage.getItem("acknowledgedCookie") !== null) {
       setVisibility(false);
     }
   }, []);
 
   function acknowledgeCookies() {
-    localStorage.setItem("acknowledgedCookie", "true");
+    localStorage.setItem("acknowledgedCookie", "");
     setVisibility(false);
   }
 
@@ -34,11 +32,11 @@ function CookieBanner() {
           whileHover="hover"
         >
           <Title>Cookie Acknowledgement</Title>
-          <CookieBannerContent>
+          <p>
             SnapFridge uses cookies only to remember your login and support secure
             authentication with Firebase. No tracking or analytics cookies are used.
-          </CookieBannerContent>
-          <Button onClick={acknowledgeCookies} className={ButtonCSS}>
+          </p>
+          <Button onClick={acknowledgeCookies} variant="secondary">
             Acknowledge
           </Button>
         </CookieBannerContainer>
@@ -92,16 +90,6 @@ const CookieBannerContainer = styled(motion.div)({
 
 const Title = styled("h1")({
   fontSize: `${24 / 16}rem`,
-});
-
-const CookieBannerContent = styled("p")({});
-
-const ButtonCSS = css({
-  backgroundColor: "var(--primary-200)",
-
-  "&:hover": {
-    backgroundColor: "var(--primary-300)",
-  },
 });
 
 export default CookieBanner;

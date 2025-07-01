@@ -14,7 +14,7 @@ export default function Page() {
       <InputProvider>
         <InputSection />
         <RecipeSection />
-        <RecipeSection headerText="Previous Snaps" />
+        <RecipeSection headerTxt="Previous Snaps" />
       </InputProvider>
       <button
         onClick={() => {

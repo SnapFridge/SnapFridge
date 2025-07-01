@@ -27,9 +27,9 @@ function Counter({
     if (isInView) {
       setTimeout(() => {
         animate(count, endingValue, { duration: duration });
-      }, delay * 1000);
+      }, delay);
     }
-  }, [isInView, count, delay, duration, endingValue]);
+  }, [isInView]);
 
   // apparently using <pre> is better but I don't know how to get rid of the default font family
   // todo: figure out how to get rid of the default behavior of pre
