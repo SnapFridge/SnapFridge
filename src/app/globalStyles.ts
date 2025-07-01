@@ -237,7 +237,7 @@ globalCss`
     --1-25rem: ${scaleClamped(15, 27)};
 
     @media (pointer: coarse) {
-      --click-target-minimum: ${44 / 16}rem;
+      --click-target-minimum: 44px;
     }
   }
 `;
