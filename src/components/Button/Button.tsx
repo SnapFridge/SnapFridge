@@ -20,9 +20,11 @@ function Button<C extends ElementType = "button">({
 }
 
 const StyledButton = styled("button")<{ variant: string | undefined }>({
-  textAlign: "center",
+  display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
   textDecoration: "none",
-  fontSize: "--var(-1rem)",
+  fontSize: "var(--1rem)",
   padding: `${10 / 16}rem`,
   borderRadius: "8px",
   border: "none",
@@ -72,4 +74,5 @@ const StyledButton = styled("button")<{ variant: string | undefined }>({
     },
   ],
 });
+
 export default Button;

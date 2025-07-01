@@ -257,12 +257,6 @@ const CoAButtonCSS = css({
   marginTop: "15px",
   width: `${185 / 16}rem`,
   height: `${55 / 16}rem`,
-  color: "var(--text-100)",
-  fontSize: "var(--1rem)",
-  display: "block",
-  alignContent: "center",
-  textAlign: "center",
-  padding: 0,
   borderRadius: "8px",
 });
 
