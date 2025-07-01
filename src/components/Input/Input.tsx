@@ -1,16 +1,19 @@
 import { styled } from "@pigment-css/react";
-import { type ComponentProps } from "react";
+import { useId, type ComponentProps } from "react";
 
 interface Props extends ComponentProps<"input"> {
   name: string;
   suggestions?: string[];
 }
 
-function Input({ name, type }: Props) {
+function Input({ name, type, ...delegated }: Props) {
+  const id = useId();
+  const realId = `${name}-${id}`;
+
   return (
     <>
-      <Label htmlFor={name}>{name}</Label>
-      <InputElem id={name} type={type}></InputElem>
+      <Label htmlFor={realId}>{name}</Label>
+      <InputElem id={realId} type={type} {...delegated}></InputElem>
     </>
   );
 }
