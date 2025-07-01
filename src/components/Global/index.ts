@@ -33,20 +33,6 @@ export function scaleClamped(
   return `clamp(${round(sizeAtMin)}${unit}, ${round(slope * (rem ? 1600 : 100))}vw + ${yIntercept}${unit}, ${round(sizeAtMax)}${unit})`;
 }
 
-export function scaleClampedDesktop(sizeAtMin: number, sizeAtMax: number) {
-  return scaleClamped(sizeAtMin, sizeAtMax, false, MOBILE_BREAKPOINT);
-}
-
-export function scaleClampedMobile(sizeAtMin: number, sizeAtMax: number) {
-  return scaleClamped(
-    sizeAtMin,
-    sizeAtMax,
-    false,
-    MIN_SUPPORTED_WIDTH,
-    MOBILE_BREAKPOINT
-  );
-}
-
 export type Ingredient = {
   name: string;
   amount: number;

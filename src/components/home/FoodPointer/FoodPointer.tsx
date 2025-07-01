@@ -3,17 +3,30 @@ import { styled } from "@pigment-css/react";
 import { type PropsWithChildren } from "react";
 
 export default function FoodPointer({ children, ...delegated }: PropsWithChildren) {
-  return <Pointer {...delegated}>{children}</Pointer>;
+  return (
+    <Pointer {...delegated}>
+      <FitContent>
+        <Text>{children}</Text>
+      </FitContent>
+    </Pointer>
+  );
 }
+const FitContent = styled("div")({
+  width: "fit-content",
+});
+
+const Text = styled("div")({
+  marginLeft: "-50%",
+});
 
 const Pointer = styled("div")({
   fontSize: "var(--1rem)",
-  height: "15px",
   position: "absolute",
   borderStyle: "solid",
   borderColor: "var(--text-950)",
   zIndex: 2,
   borderWidth: "2px 2px 0 0",
+  height: "1.5%",
 
   [ON_MOBILE]: {
     borderWidth: "1px 1px 0 0",

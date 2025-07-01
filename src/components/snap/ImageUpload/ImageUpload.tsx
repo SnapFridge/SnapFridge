@@ -9,6 +9,7 @@ import Button from "@components/Button";
 import { motion, AnimatePresence, type Variants } from "motion/react";
 import heic2URL from "./HeicDCode";
 import { useInputState } from "../InputProvider";
+import useToast from "@components/ToastProvider/UseToast";
 
 type FileUploadData = {
   formAction: () => void;
@@ -16,8 +17,8 @@ type FileUploadData = {
 
 function FileUpload({ formAction }: FileUploadData) {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
-  const [invalidFilesWarning, setInvalidFilesWarning] = useState(false);
   const worker = useRef<Worker>(undefined as unknown as Worker);
+  const { addWarn } = useToast();
 
   const { dispatch } = useInputState();
 
@@ -74,10 +75,10 @@ function FileUpload({ formAction }: FileUploadData) {
       validUsrFiles.push(file);
     }
     if (validUsrFiles.length < usrFiles.length) {
-      setInvalidFilesWarning(true);
-      setTimeout(() => {
-        setInvalidFilesWarning(false);
-      }, 3000);
+      addWarn(
+        "File Upload Error",
+        "Files with unsupported format were uploaded, they've been ignored."
+      );
     }
 
     dispatch({ type: "addFiles", files: validUsrFiles });
@@ -140,11 +141,6 @@ function FileUpload({ formAction }: FileUploadData) {
           )}
         </AnimatePresence>
       </Wrapper>
-      {invalidFilesWarning ? (
-        <InvalidFilesWarning>
-          Invalid files were uploaded, they"ve been ignored.
-        </InvalidFilesWarning>
-      ) : undefined}
     </>
   );
 }
@@ -254,8 +250,4 @@ const ScanButtonVariants: Variants = {
   },
 };
 
-const InvalidFilesWarning = styled("p")({
-  textAlign: "center",
-  color: "var(--warn-500)",
-});
 export default FileUpload;

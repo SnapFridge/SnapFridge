@@ -5,14 +5,7 @@ import AdjectiveRecipes from "@components/home/AdjectiveRecipe";
 import RecipeSection from "@components/RecipeSection";
 import Counter from "@components/home/Counter";
 import Image from "next/image";
-import {
-  scaleClamped,
-  scaleClampedMobile,
-  scaleClampedDesktop,
-  ON_MOBILE,
-  PageMargin,
-  MOBILE_BREAKPOINT,
-} from "@components/Global";
+import { scaleClamped, ON_MOBILE, PageMargin } from "@components/Global";
 import FoodPointer from "@components/home/FoodPointer";
 import Link from "next/link";
 
@@ -41,21 +34,20 @@ export default function Page() {
           <FridgeSideTxt className={MobileOrderLast}>
             to help you prepare meals and reduce food waste
           </FridgeSideTxt>
-          <div className={FridgeAndPointers}>
+          <FridgeAndPointers>
             <Butter>Butter</Butter>
             <Milk>Milk</Milk>
             <Egg>Egg</Egg>
             <Carrot>Carrot</Carrot>
             <Image
-              width={1700}
-              height={2848}
+              width={1600}
+              height={2689}
               src="/FridgeL.avif"
               alt="Fridge"
               className={FridgeImg}
               priority
-              sizes={`(max-width: ${MOBILE_BREAKPOINT}) 50vw, 1300px`}
             />
-          </div>
+          </FridgeAndPointers>
         </FridgeSection>
         <RecipeSection />
         <StatisticsSection>
@@ -122,73 +114,50 @@ const ButtonWrapper = styled("div")({
   gap: scaleClamped(10, 20),
 });
 
-const FridgeAndPointers = css({
+const Butter = styled(FoodPointer)({
+  width: "calc(17% + var(--page-margin))",
+  top: "31%",
+});
+
+const Milk = styled(FoodPointer)({
+  width: "calc(43% + var(--page-margin))",
+  top: "48%",
+});
+
+const Egg = styled(FoodPointer)({
+  width: "calc(61.5% + var(--page-margin))",
+  top: "57%",
+});
+
+const Carrot = styled(FoodPointer)({
+  width: "calc(39% + var(--page-margin))",
+  top: "72%",
+});
+
+const FridgeImg = css({
+  height: "100%",
+  position: "relative",
+  left: "var(--page-margin)",
+  width: "100%",
+});
+
+const FridgeAndPointers = styled("div")({
   position: "relative",
   gridRowStart: 1,
   gridRowEnd: 4,
   width: "100%",
 
   [ON_MOBILE]: {
+    width: "75%", // Set here
+    alignSelf: "flex-end",
     margin: "25px 0",
   },
 });
 
-const Butter = styled(FoodPointer)({
-  width: scaleClampedDesktop(110, 340),
-  top: scaleClampedDesktop(165, 650),
-
-  [ON_MOBILE]: {
-    top: scaleClampedMobile(88, 175),
-    width: scaleClampedMobile(155, 270),
-  },
-});
-
-const Milk = styled(FoodPointer)({
-  width: scaleClampedDesktop(195, 630),
-  top: scaleClampedDesktop(270, 890),
-
-  [ON_MOBILE]: {
-    top: scaleClampedMobile(130, 250),
-    width: scaleClampedMobile(198, 358),
-  },
-});
-
-const Egg = styled(FoodPointer)({
-  width: scaleClampedDesktop(250, 830),
-  top: scaleClampedDesktop(315, 1130),
-
-  [ON_MOBILE]: {
-    top: scaleClampedMobile(160, 312),
-    width: scaleClampedMobile(228, 415),
-  },
-});
-
-const Carrot = styled(FoodPointer)({
-  width: scaleClampedDesktop(180, 580),
-  top: scaleClampedDesktop(390, 1370),
-
-  [ON_MOBILE]: {
-    top: scaleClampedMobile(200, 390),
-    width: scaleClampedMobile(190, 330),
-  },
-});
-
-// Image is set to be 66% wide of the page without margin
-const FridgeImg = css({
-  height: "auto",
-  position: "relative",
-  left: "var(--page-margin)",
-  width: "100%",
-
-  [ON_MOBILE]: {
-    justifySelf: "flex-end",
-    width: "66%", // Set here
-  },
-});
 const FridgeSection = styled("section")({
   display: "grid",
   width: "100%",
-  gridTemplateColumns: "34% 66%", // And here
+  gridTemplateColumns: "40% 60%", // And here
   gridAutoFlow: "column",
   alignItems: "center",
   marginBottom: "35px",
