@@ -35,9 +35,7 @@ export default function useTypewriter(
       }
     }, delayPerChar);
   }
-  useEffect(() => {
-    changeChar();
-  }, [displayTxt, typing]);
+  useEffect(changeChar, [displayTxt, typing, delayPerChar, deleteDelay, index, texts]);
 
   return displayTxt;
 }

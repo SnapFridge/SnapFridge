@@ -22,7 +22,7 @@ function ThemeSwitcher({ mobile = false, ...delegated }: Props) {
   const children = (
     <>
       <Icon
-        icon={currentTheme === "dark" ? "Moon" : "Sun"}
+        icon={currentTheme === "dark" ? "Sun" : "Moon"}
         description={`Turn off ${currentTheme} mode`}
       />
     </>

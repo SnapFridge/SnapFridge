@@ -7,34 +7,35 @@ export default function VisuallyHidden({
   children,
   ...delegated
 }: ComponentProps<"span">) {
-  if (process.env.NODE_ENV === "development") {
-    const [forceShow, setForceShow] = useState(false);
+  const [forceShow, setForceShow] = useState(false);
 
-    useEffect(() => {
-      const handleKeyDown = (ev: globalThis.KeyboardEvent) => {
-        if (ev.shiftKey && ev.altKey) {
-          setForceShow(true);
-        }
-      };
-
-      const handleKeyUp = (ev: globalThis.KeyboardEvent) => {
-        if (ev.shiftKey || ev.altKey) {
-          setForceShow(false);
-        }
-      };
-
-      addEventListener("keydown", handleKeyDown);
-      addEventListener("keyup", handleKeyUp);
-
-      return () => {
-        removeEventListener("keydown", handleKeyDown);
-        removeEventListener("keyup", handleKeyUp);
-      };
-    }, []);
-
-    if (forceShow) {
-      return children;
+  useEffect(() => {
+    if (process.env.NODE_ENV === "production") {
+      return;
     }
+    const handleKeyDown = (ev: globalThis.KeyboardEvent) => {
+      if (ev.shiftKey && ev.altKey) {
+        setForceShow(true);
+      }
+    };
+
+    const handleKeyUp = (ev: globalThis.KeyboardEvent) => {
+      if (ev.shiftKey || ev.altKey) {
+        setForceShow(false);
+      }
+    };
+
+    addEventListener("keydown", handleKeyDown);
+    addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      removeEventListener("keydown", handleKeyDown);
+      removeEventListener("keyup", handleKeyUp);
+    };
+  }, []);
+
+  if (forceShow) {
+    return children;
   }
   return <Hidden {...delegated}>{children}</Hidden>;
 }

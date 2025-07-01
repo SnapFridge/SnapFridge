@@ -4,20 +4,20 @@ import { useMotionValue, useTransform, useInView, animate, motion } from "motion
 import { useEffect, useRef } from "react";
 
 type Props = {
-  startingValue: number;
-  endingValue: number;
+  startValue?: number;
+  endValue: number;
   duration?: number;
   delay?: number;
 };
 
 function Counter({
-  startingValue = 0,
-  endingValue,
+  startValue = 0,
+  endValue,
   duration = 3,
-  delay = 0,
+  delay = 250,
   ...delegated
 }: Props) {
-  const count = useMotionValue(startingValue);
+  const count = useMotionValue(startValue);
   const rounded = useTransform(() => Math.round(count.get()));
 
   const ref = useRef(null); // needed for useInView
@@ -26,10 +26,10 @@ function Counter({
   useEffect(() => {
     if (isInView) {
       setTimeout(() => {
-        animate(count, endingValue, { duration: duration });
+        animate(count, endValue, { duration: duration });
       }, delay);
     }
-  }, [isInView]);
+  }, [isInView, count, delay, duration, endValue]);
 
   // apparently using <pre> is better but I don't know how to get rid of the default font family
   // todo: figure out how to get rid of the default behavior of pre

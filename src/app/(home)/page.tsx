@@ -59,16 +59,14 @@ export default function Page() {
             <h2>
               That's
               <strong>
-                <Counter startingValue={0} endingValue={60} duration={3} delay={0.25} />{" "}
-                Million
+                <Counter endValue={60} /> Million
               </strong>
               tons
             </h2>
             <h2 className={MobileOrderLast}>
               Or
               <strong>
-                <Counter startingValue={0} endingValue={120} duration={3} delay={0.25} />{" "}
-                Billion
+                <Counter endValue={120} /> Billion
               </strong>
               pounds
             </h2>

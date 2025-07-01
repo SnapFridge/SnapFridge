@@ -1,6 +1,6 @@
 "use client";
 
-import { styled, css } from "@pigment-css/react";
+import { styled } from "@pigment-css/react";
 import { motion, AnimatePresence } from "motion/react";
 import { useState, useEffect } from "react";
 import Button from "@components/Button";
