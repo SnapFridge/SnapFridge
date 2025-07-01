@@ -111,7 +111,7 @@ function FileUpload({ formAction }: FileUploadData) {
           <VisibleContent filled={imgURLs.length > 0}>
             {imgURLs.length === 0 && (
               <>
-                <Icon icon="FilePlus" size={36} description="Upload images" />
+                <Icon icon="ImageUp" size={36} description="Upload images" />
                 <SupportedFormats>
                   Supported formats: png, jpg, webp, heic, heif
                 </SupportedFormats>

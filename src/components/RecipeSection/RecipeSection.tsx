@@ -2,7 +2,7 @@
 
 import RecipeCard from "@components/RecipeCard";
 import { styled } from "@pigment-css/react";
-import * as motion from "motion/react-client";
+import { ul } from "motion/react-client";
 import { scaleClamped } from "@components/Global";
 import Icon from "@components/Icon";
 import { useState } from "react";
@@ -188,7 +188,7 @@ function RecipeSection({ headerText = "Recipes Found" }: Props) {
   );
 }
 
-const RecipeList = styled(motion.ul)({
+const RecipeList = styled(ul)({
   listStyleType: "none",
   padding: 0,
 

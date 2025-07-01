@@ -8,6 +8,7 @@ import CookieBanner from "@components/CookieBanner";
 import { styled } from "@pigment-css/react";
 import ToastProvider from "@components/ToastProvider";
 import Toaster from "@components/Toaster";
+import { type PropsWithChildren } from "react";
 
 const poppins = Poppins({
   weight: ["400", "700"],
@@ -19,7 +20,7 @@ export const metadata = {
   description: "Delicious recipes right from your fridge",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" className={poppins.className} suppressHydrationWarning>
       <body>

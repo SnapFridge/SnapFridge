@@ -2,7 +2,7 @@ import Image from "next/image";
 import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE, type Recipe } from "@components/Global";
 import React from "react";
-import * as motion from "motion/react-client";
+import { li } from "motion/react-client";
 import { type Variants } from "motion/react";
 import ingredients2Str from "./functions.helper";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -94,7 +94,7 @@ const CardVariant: Variants = {
   },
 };
 
-const Card = styled(motion.li)({
+const Card = styled(li)({
   border: "1px solid var(--accent-950)",
   borderRadius: "12px",
   padding: "24px",

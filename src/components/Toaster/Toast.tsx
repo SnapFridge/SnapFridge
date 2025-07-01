@@ -1,19 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type PropsWithChildren, type ReactNode } from "react";
 import { Toast } from "radix-ui";
 import { styled } from "@pigment-css/react";
 import Icon, { type IconType } from "@components/Icon";
 import Button from "@components/Button";
 
-interface Props extends React.PropsWithChildren {
+type Props = {
   id: string;
   variant: "success" | "warn" | "error" | "info";
-  title: React.ReactNode;
+  title: ReactNode;
   removeToast: (id: string) => void;
-}
+};
 
-function AppToast({ id, variant, title, removeToast, children }: Props) {
+function AppToast({
+  id,
+  variant,
+  title,
+  removeToast,
+  children,
+}: PropsWithChildren<Props>) {
   const [open, setOpen] = useState(true);
 
   let iconName: IconType;

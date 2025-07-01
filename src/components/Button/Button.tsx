@@ -22,7 +22,7 @@ function Button<C extends ElementType = "button">({
 const StyledButton = styled("button")<{ variant: string | undefined }>({
   textAlign: "center",
   textDecoration: "none",
-  fontSize: `${16 / 16}rem`,
+  fontSize: "--var(-1rem)",
   padding: `${10 / 16}rem`,
   borderRadius: "8px",
   border: "none",

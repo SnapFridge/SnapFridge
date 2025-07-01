@@ -1,9 +1,9 @@
 "use client";
 
-import * as React from "react";
+import { createContext, useState, type PropsWithChildren } from "react";
 import { Toast } from "radix-ui";
 
-export const ToastContext = React.createContext<
+export const ToastContext = createContext<
   | {
       toasts: Toast[];
       addToast: (
@@ -23,8 +23,8 @@ interface Toast {
   id: string;
 }
 
-function ToastProvider({ children }: React.PropsWithChildren) {
-  const [toasts, setToasts] = React.useState<Toast[]>([]);
+function ToastProvider({ children }: PropsWithChildren) {
+  const [toasts, setToasts] = useState<Toast[]>([]);
 
   function addToast(
     variant: "success" | "error" | "warn" | "info",

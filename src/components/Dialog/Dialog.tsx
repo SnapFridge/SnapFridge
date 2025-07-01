@@ -2,14 +2,15 @@ import { Dialog } from "radix-ui";
 import Icon from "@components/Icon";
 import Button from "@components/Button";
 import { styled } from "@pigment-css/react";
+import { type PropsWithChildren, type ReactNode } from "react";
 
-interface Props extends React.PropsWithChildren {
+type Props = {
   title: string;
   description?: string;
-  trigger: React.ReactNode;
-}
+  trigger: ReactNode;
+};
 
-function AppDialog({ title, description, trigger, children }: Props) {
+function AppDialog({ title, description, trigger, children }: PropsWithChildren<Props>) {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>

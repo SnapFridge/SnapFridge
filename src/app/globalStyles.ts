@@ -233,8 +233,8 @@ globalCss`
     --nav-height: ${80 / 16}rem;
     --nav-margin: ${20 / 16}rem;
     --page-margin: ${scaleClamped(30, 120)};
-    --1rem: ${scaleClamped(12, 22)};
-    --1-25rem: ${scaleClamped(15, 27)};
+    --1rem: ${scaleClamped(14, 22)};
+    --1-25rem: ${scaleClamped(17, 27)};
 
     @media (pointer: coarse) {
       --click-target-minimum: 44px;

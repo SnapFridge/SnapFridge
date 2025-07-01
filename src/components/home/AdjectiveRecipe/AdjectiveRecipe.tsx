@@ -2,7 +2,7 @@
 
 import { styled } from "@pigment-css/react";
 import useTypewriter from "./typewritter.helper";
-import { ON_MOBILE, scaleClamped } from "@components/Global";
+import { ON_MOBILE } from "@components/Global";
 
 const ADJECTIVES = ["Delicious", "Excellent", "Wonderful", "Amazing", "Incredible"];
 
@@ -17,7 +17,7 @@ function AdjectiveRecipes() {
 }
 
 const Description = styled("p")({
-  fontSize: scaleClamped(18, 22),
+  fontSize: "var(--1rem)",
   marginTop: "8px",
   marginBottom: "16px",
 

@@ -1,42 +1,41 @@
 "use client";
+
 import { styled } from "@pigment-css/react";
-import React from "react";
+import { type ComponentProps, useState, useEffect } from "react";
 
 export default function VisuallyHidden({
   children,
   ...delegated
-}: React.ComponentProps<"span">) {
-  const [forceShow, setForceShow] = React.useState(false);
+}: ComponentProps<"span">) {
+  if (process.env.NODE_ENV === "development") {
+    const [forceShow, setForceShow] = useState(false);
 
-  React.useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
-      return;
+    useEffect(() => {
+      const handleKeyDown = (ev: globalThis.KeyboardEvent) => {
+        if (ev.shiftKey && ev.altKey) {
+          setForceShow(true);
+        }
+      };
+
+      const handleKeyUp = (ev: globalThis.KeyboardEvent) => {
+        if (ev.shiftKey || ev.altKey) {
+          setForceShow(false);
+        }
+      };
+
+      window.addEventListener("keydown", handleKeyDown);
+      window.addEventListener("keyup", handleKeyUp);
+
+      return () => {
+        window.removeEventListener("keydown", handleKeyDown);
+        window.removeEventListener("keyup", handleKeyUp);
+      };
+    }, []);
+
+    if (forceShow) {
+      return children;
     }
-    const handleKeyDown = (ev: globalThis.KeyboardEvent) => {
-      if (ev.shiftKey && ev.altKey) {
-        setForceShow(true);
-      }
-    };
-
-    const handleKeyUp = (ev: globalThis.KeyboardEvent) => {
-      if (ev.shiftKey || ev.altKey) {
-        setForceShow(false);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("keyup", handleKeyUp);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("keyup", handleKeyUp);
-    };
-  }, []);
-
-  if (forceShow) {
-    return children;
   }
-
   return <Hidden {...delegated}>{children}</Hidden>;
 }
 

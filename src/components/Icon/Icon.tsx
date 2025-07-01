@@ -1,6 +1,6 @@
 import VisuallyHidden from "@components/VisuallyHidden";
 import * as Icons from "lucide-react";
-import React, { type ComponentProps } from "react";
+import { type ComponentProps, type ReactNode } from "react";
 
 type LucideIconName = {
   [K in keyof typeof Icons]: (typeof Icons)[K] extends Icons.LucideIcon ? K : never;
@@ -25,7 +25,7 @@ export default function Icon({
   ...delegated
 }: Props) {
   // TODO: Figure out the type
-  let IconSVG: React.ReactNode;
+  let IconSVG: ReactNode;
   switch (icon) {
     case "Logo":
       IconSVG = (
