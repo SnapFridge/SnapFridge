@@ -235,6 +235,10 @@ globalCss`
     --page-margin: ${scaleClamped(30, 120)};
     --1rem: ${scaleClamped(12, 22)};
     --1-25rem: ${scaleClamped(15, 27)};
+
+    @media (pointer: coarse) {
+      --click-target-minimum: ${44 / 16}rem;
+    }
   }
 `;
 

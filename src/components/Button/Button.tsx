@@ -26,9 +26,24 @@ const StyledButton = styled("button")<{ variant: string | undefined }>({
   padding: `${10 / 16}rem`,
   borderRadius: "8px",
   border: "none",
+  // Hidden dependency relied upon by the trickery we use later
+  position: "relative",
 
   "&:hover": {
     backgroundColor: "var(--background-hover)",
+  },
+
+  // Apple recommends a minimum 44x44 tapping size
+  // Do a little trickery (Thank you Kevin)
+  "&:after": {
+    ["--insent-by" as string]:
+      "min(0px, calc((100% - var(--click-target-minimum, 100%)) / 2))",
+    content: "",
+    position: "absolute",
+    top: "var(--inset-by)",
+    left: "var(--inset-by)",
+    right: "var(--inset-by)",
+    bottom: "var(--inset-by)",
   },
 
   variants: [
