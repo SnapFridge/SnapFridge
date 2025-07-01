@@ -28,7 +28,7 @@ const SYS_INSTRUCTION = `
 
   ## UNIT & ESTIMATION RULES
 
-    * **Mandatory Units:** You MUST use a unit from the provided measurements.txt file for every ingredient. No other units are permitted.
+    * **Mandatory Units:** You MUST use a unit from the provided Units.txt file for every ingredient. No other units are permitted.
 
     * **Unit Selection Guidance:**
       * For **LIQUIDS** (e.g., milk, juice, sauces), select the most appropriate unit from the LIQUIDS list (e.g., L, mL, fl oz, tbsp).
@@ -105,5 +105,5 @@ export default async function AIprocessImages(files: File[]) {
   if (response.text) {
     return response.text;
   }
-  return "Fetching from Gemini failed.";
+  return "Error: Fetching from Gemini failed.";
 }
