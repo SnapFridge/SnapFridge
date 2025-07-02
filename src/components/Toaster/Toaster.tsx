@@ -35,7 +35,7 @@ function Toaster() {
         </AppToast>
       ))}
       <Toast.Viewport asChild>
-        <Viewport layout="position" />
+        <Viewport />
       </Toast.Viewport>
     </ToastContainer>,
     document.body
@@ -62,7 +62,7 @@ const ToastContainer = styled("div")({
 
 const Viewport = styled(motion.ol)({
   display: "flex",
-  flexDirection: "column-reverse",
+  flexDirection: "column",
   gap: "8px",
 });
 

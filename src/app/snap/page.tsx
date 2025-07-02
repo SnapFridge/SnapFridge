@@ -18,7 +18,7 @@ export default function Page() {
       </InputProvider>
       <button
         onClick={() => {
-          addSuccess("Hello, World!", "Wowie this works?");
+          addSuccess("Hello, World!", "Wowie this works?" + Math.random());
         }}
       >
         Test adding a toast
