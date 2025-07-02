@@ -72,14 +72,13 @@ const BaseToast = styled(Toast.Root)<{
   display: "flex",
   alignItems: "center",
   gap: "16px",
-
   width: "100%",
   minHeight: "80px",
   height: "fit-content",
   maxHeight: "200px",
   overflowY: "auto",
   borderRadius: "16px",
-  padding: "12px 16px",
+  padding: "16px",
   boxShadow: "var(--shadow)",
 
   variants: [
@@ -113,20 +112,24 @@ const BaseToast = styled(Toast.Root)<{
 const MainContent = styled("div")({
   flex: 1,
   display: "grid",
-  gridTemplateAreas: "title close description close",
-  gridTemplateColumns: "auto max-content",
-  columnGap: "15px",
-  alignItems: "center",
+  gridTemplateAreas: `
+    "title close"
+    "description close"
+  `,
+  gridTemplateColumns: "1fr auto",
+  columnGap: "16px",
+  rowGap: "4px",
 });
 
 const Title = styled(Toast.Title)({
   gridArea: "title",
-  marginBottom: "6px",
   color: "var(--text-950)",
-  fontSize: `${20 / 16}rem`,
+  fontWeight: "bold",
+  fontSize: `${18 / 16}rem`,
 });
 
 const Description = styled(Toast.Description)({
+  gridArea: "description",
   fontSize: `${16 / 16}rem`,
   color: "var(--text-900)",
 });
@@ -134,6 +137,7 @@ const Description = styled(Toast.Description)({
 const Close = styled(Button)({
   gridArea: "close",
   background: "transparent",
+  alignSelf: "start",
 });
 
 export default AppToast;

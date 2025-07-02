@@ -16,11 +16,11 @@ function AppDialog({ title, description, trigger, children }: PropsWithChildren<
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
       <Dialog.Portal>
         <Overlay />
-        <Content>
+        <Content onCloseAutoFocus={(e) => e.preventDefault()}>
           <Title>{title}</Title>
           <Description>{description}</Description>
           {children}
-          <Dialog.Close asChild>
+          <Dialog.Close asChild autoFocus>
             <XButton variant="icon">
               <Icon icon="X" description="Close dialog" />
             </XButton>
@@ -34,7 +34,7 @@ function AppDialog({ title, description, trigger, children }: PropsWithChildren<
 const Overlay = styled(Dialog.Overlay)({
   // Rare exception where we don't want the color to change
   background: "#000000",
-  opacity: "30%",
+  opacity: "70%",
   position: "fixed",
   inset: 0,
 });
@@ -44,11 +44,12 @@ const Content = styled(Dialog.Content)({
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  background: "var(--background)",
+  background: "var(--dialog-background)",
   borderRadius: "16px",
-  padding: "16px",
+  padding: "12px",
   width: "90vw",
   maxWidth: "600px",
+  border: "1px solid var(--accent-400)",
 });
 
 const XButton = styled(Button)({
