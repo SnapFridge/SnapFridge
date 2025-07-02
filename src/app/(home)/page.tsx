@@ -61,12 +61,12 @@ export default function Page() {
               <strong>
                 <Counter endValue={60} /> Million
               </strong>
-              tons
+              metric tons
             </h2>
             <h2 className={MobileOrderLast}>
               Or
               <strong>
-                <Counter endValue={120} /> Billion
+                <Counter endValue={133} /> Billion
               </strong>
               pounds
             </h2>

@@ -8,6 +8,7 @@ import { useInputState } from "../InputProvider";
 import Button from "@components/Button";
 import { useState } from "react";
 import AppDialog from "@components/Dialog";
+import Input from "@components/Input";
 
 function IngredientSection() {
   const { state, dispatch } = useInputState();
@@ -42,12 +43,13 @@ function IngredientSection() {
       >
         <p>This is just a thing lol</p>
       </AppDialog>
-      <input
+      <Input
         value={ingredient}
+        name="Enter Ingredient Name:"
         onChange={(event) => {
           setIngredient(event.target.value);
         }}
-      ></input>
+      ></Input>
       <Button
         variant="secondary"
         onClick={() => {

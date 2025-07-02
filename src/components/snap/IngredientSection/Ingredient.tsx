@@ -1,7 +1,8 @@
 "use client";
 
 import { css, styled } from "@pigment-css/react";
-import { motion, type Variants, useAnimate, AnimatePresence } from "motion/react";
+import { type Variants, useAnimate, AnimatePresence } from "motion/react";
+import { button, li, div } from "motion/react-client";
 import { useState, useEffect } from "react";
 import { type Ingredient } from "@components/Global";
 import Icon from "@components/Icon";
@@ -58,7 +59,7 @@ function IngredientBox({ ingredient }: Props) {
           <ActionContainer>
             <Button
               className={DeleteContainer}
-              as={motion.button}
+              as={button}
               variants={DeleteVariants}
               initial="initial"
               animate="enter"
@@ -76,7 +77,7 @@ function IngredientBox({ ingredient }: Props) {
             </Button>
             <Button
               className={EditContainer}
-              as={motion.button}
+              as={button}
               variants={EditVariants}
               initial="initial"
               animate="enter"
@@ -107,7 +108,7 @@ function IngredientBox({ ingredient }: Props) {
   );
 }
 
-const Wrapper = styled(motion.li)({
+const Wrapper = styled(li)({
   height: "38px",
   width: "fit-content",
   position: "relative",
@@ -139,7 +140,7 @@ const HiddenButton = styled(Button)({
   zIndex: 2,
 });
 
-const IngredientElement = styled(motion.div)({
+const IngredientElement = styled(div)({
   display: "flex",
   gap: "8px",
   backgroundColor: "var(--accent-200)",

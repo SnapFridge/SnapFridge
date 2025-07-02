@@ -1,14 +1,14 @@
-import React from "react";
+import { Component, type PropsWithChildren, type ReactNode } from "react";
 
-interface Props extends React.PropsWithChildren {
-  fallback?: React.ReactNode;
+interface Props extends PropsWithChildren {
+  fallback?: ReactNode;
 }
 
 type State = {
   hasError: boolean;
 };
 
-class ErrorBoundary extends React.Component<Props, State> {
+class ErrorBoundary extends Component<Props, State> {
   // Equivalent to:
   // const [hasError, setHasError] = useState(false);
   constructor(props: Props) {

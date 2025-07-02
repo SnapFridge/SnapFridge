@@ -6,7 +6,8 @@ import { useEffect, useRef, useState, type ChangeEvent } from "react";
 import FridgeImage from "./FridgeImage";
 import { scaleClamped } from "@components/Global";
 import Button from "@components/Button";
-import { motion, AnimatePresence, type Variants } from "motion/react";
+import { AnimatePresence, type Variants } from "motion/react";
+import { button, form } from "motion/react-client";
 import heic2URL from "./HeicDCode";
 import { useInputState } from "../InputProvider";
 import useToast from "@components/ToastProvider/UseToast";
@@ -130,7 +131,7 @@ function FileUpload({ formAction }: FileUploadData) {
               layout
               className={ScanButton}
               variant="primary"
-              as={motion.button}
+              as={button}
               variants={ScanButtonVariants}
               initial="initial"
               animate="animate"
@@ -145,7 +146,7 @@ function FileUpload({ formAction }: FileUploadData) {
   );
 }
 
-const Wrapper = styled(motion.form)({
+const Wrapper = styled(form)({
   width: "100%",
   maxWidth: "576px",
 });
