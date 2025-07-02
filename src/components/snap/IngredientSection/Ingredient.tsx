@@ -175,7 +175,7 @@ const DeleteContainer = css({
   backgroundColor: "rgba(0, 0, 0, 0.6)",
   padding: "4px",
   borderRadius: "4px",
-  ["--bg-hover" as string]: "var(--bg-50)",
+  ["--background-hover" as string]: "var(--background-50)",
 });
 
 const EditContainer = css({

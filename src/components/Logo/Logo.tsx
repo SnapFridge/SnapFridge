@@ -26,7 +26,7 @@ const A = css({
 });
 
 const LogoName = styled("span")({
-  color: "var(--txt-950)",
+  color: "var(--text-950)",
   paddingLeft: "64px",
   fontSize: `${24 / 16}rem`,
   fontWeight: "bold",

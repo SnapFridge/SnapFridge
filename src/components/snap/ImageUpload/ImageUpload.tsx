@@ -182,7 +182,7 @@ const VisibleContent = styled("div")<{ filled: boolean }>({
   padding: "20px 20px",
   borderRadius: "16px",
   border: "var(--accent-300) dashed 4px",
-  background: "color-mix(in srgb, var(--bg-50) 65%, transparent)",
+  background: "color-mix(in srgb, var(--background-50) 65%, transparent)",
 
   [`${HiddenUpload}:focus + &`]: {
     /* Try to get the default outline color */
@@ -193,7 +193,7 @@ const VisibleContent = styled("div")<{ filled: boolean }>({
     ],
   },
   [`${HiddenUpload}:hover + &`]: {
-    background: "color-mix(in srgb, var(--bg-100) 50%, transparent)",
+    background: "color-mix(in srgb, var(--background-100) 50%, transparent)",
   },
 
   variants: [
@@ -213,7 +213,7 @@ const VisibleContent = styled("div")<{ filled: boolean }>({
 
 const SupportedFormats = styled("div")({
   textAlign: "center",
-  color: "var(--txt-950)",
+  color: "var(--text-950)",
   opacity: 0.55,
 });
 

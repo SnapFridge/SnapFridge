@@ -97,7 +97,7 @@ const Hero = styled("div")({
   paddingTop: `calc(var(--nav-height) + var(--nav-margin) + var(--content-padding))`,
   paddingBottom: `var(--content-padding)`,
   background: `radial-gradient(circle at top left, var(--hero-radial-1) 0%, var(--hero-radial-2) 63%, var(--hero-radial-3) 100%),
-    linear-gradient(var(--hero-linear-1) 0%, var(--hero-linear-2) 96%, var(--bg-50) 100%)
+    linear-gradient(var(--hero-linear-1) 0%, var(--hero-linear-2) 96%, var(--background-50) 100%)
     `,
   backgroundBlendMode: "multiply",
   marginTop: "calc(-1 * (var(--nav-height) + var(--nav-margin)))",

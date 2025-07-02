@@ -18,7 +18,7 @@ interface Props extends ComponentProps<"svg"> {
 
 export default function Icon({
   icon,
-  color = "var(--txt-950)",
+  color = "var(--text-950)",
   size = 24,
   ariaHidden = true,
   description,

@@ -145,7 +145,7 @@ const FoodImgSkeleton = css({
 const Ingredients = styled("div")({
   gridArea: "2 / 2 / 3 / 3",
   width: "100%",
-  color: "var(--txt-950)",
+  color: "var(--text-950)",
   fontSize: "var(--1rem)",
 
   [ON_MOBILE]: {

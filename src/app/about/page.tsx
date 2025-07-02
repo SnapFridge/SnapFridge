@@ -23,7 +23,7 @@ const Main = styled(PageMargin)({
   alignSelf: "center",
   justifyItems: "center",
   fontSize: "var(--1rem)",
-  color: "var(--txt-950)",
+  color: "var(--text-950)",
 
   "&> :not(:first-child)": {
     marginTop: "32px",
@@ -40,7 +40,7 @@ const Logo = css({
 });
 
 const Picture = styled("div")({
-  backgroundColor: "var(--txt-500)",
+  backgroundColor: "var(--text-500)",
   width: "700px",
   height: "300px",
   borderRadius: "12px",

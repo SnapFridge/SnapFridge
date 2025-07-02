@@ -32,7 +32,7 @@ const StyledButton = styled("button")<{ variant: string | undefined }>({
   position: "relative",
 
   "&:hover": {
-    backgroundColor: "var(--bg-hover)",
+    backgroundColor: "var(--background-hover)",
   },
 
   // Apple recommends a minimum 44x44 tapping size
@@ -54,22 +54,22 @@ const StyledButton = styled("button")<{ variant: string | undefined }>({
       style: {
         background: "var(--primary-500)",
         color: "#000000",
-        ["--bg-hover" as string]: "var(--primary-600)",
+        ["--background-hover" as string]: "var(--primary-600)",
       },
     },
     {
       props: { variant: "secondary" },
       style: {
         background: "var(--secondary-300)",
-        color: "var(--txt-950)",
-        ["--bg-hover" as string]: "var(--secondary-400)",
+        color: "var(--text-950)",
+        ["--background-hover" as string]: "var(--secondary-400)",
       },
     },
     {
       props: { variant: "icon" },
       style: {
         backgroundColor: "transparent",
-        ["--bg-hover" as string]: "var(--bg-100)",
+        ["--background-hover" as string]: "var(--background-100)",
       },
     },
   ],

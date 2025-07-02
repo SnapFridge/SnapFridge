@@ -35,7 +35,7 @@ function InputSection() {
   return (
     <Wrapper>
       <FileUpload formAction={formAction} />
-      <BarLoader color="var(--txt-950)" cssOverride={Fetching} loading={isPending} />
+      <BarLoader color="var(--text-950)" cssOverride={Fetching} loading={isPending} />
       <IngredientSection />
     </Wrapper>
   );
