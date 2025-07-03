@@ -27,7 +27,7 @@ export type Action =
 
 function reducer(draft: State, action: Action) {
   function addIngredient(ingredient: Ingredient) {
-    const key = ingredient.name;
+    const key = `${ingredient.name}-${ingredient.unit}`;
     if (draft.ingredients.has(key)) {
       draft.ingredients.get(key)!.amount += ingredient.amount;
     } else {
