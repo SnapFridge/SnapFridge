@@ -30,7 +30,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
             <Background>
               <NavBar />
               <Main>{children}</Main>
-              <Footer />,
+              <Footer />
               <CookieBanner />
               <Toaster />
             </Background>

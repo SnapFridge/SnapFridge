@@ -252,7 +252,6 @@ globalCss`
       width: ${MAX_SUPPORTED_WIDTH}px;
       margin: auto;
     }
-    overflow-x: hidden;
   }
 `;
 

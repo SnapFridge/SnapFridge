@@ -69,7 +69,7 @@ const LeftFooterCSS = css({
 
 const RightFooterCSS = css({
   width: "100%",
-  height: 0,
+  height: "fit-content",
   display: "flex",
   gap: "12px",
 
