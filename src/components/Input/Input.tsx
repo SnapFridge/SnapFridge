@@ -1,25 +1,47 @@
 import { styled } from "@pigment-css/react";
-import {
-  useId,
-  type ChangeEvent,
-  type ChangeEventHandler,
-  type ComponentProps,
-} from "react";
-import Autosuggest from "react-autosuggest";
+import { useId, type ComponentProps } from "react";
 
-interface Props extends ComponentProps<"input"> {
+type Input2ValueMap = {
+  checkbox: boolean;
+  radio: boolean;
+
+  // Everything else is just a string
+  [key: string]: string | boolean;
+};
+
+type Props<T extends keyof Input2ValueMap> = {
   label: string;
-  value: string;
-  onChange: ChangeEventHandler<HTMLInputElement>;
-}
+  onChange: (newValue: Input2ValueMap[T]) => void;
+  type: T;
+} & Omit<ComponentProps<"input">, "onChange" | "type">;
 
-function Input({ label, value, onChange, ...delegated }: Props) {
+export function Input<T extends keyof Input2ValueMap>({
+  label,
+  value,
+  onChange,
+  type,
+  ...delegated
+}: Props<T>) {
   const id = useId();
   return (
     <>
       <div>
         <Label htmlFor={id}>{label}</Label>
-        <InputElem id={id} value={value} onChange={onChange} {...delegated}></InputElem>
+        <InputElem
+          id={id}
+          value={value}
+          onChange={(e) => {
+            switch (type) {
+              case "checkbox":
+              case "radio":
+                onChange(e.target.checked);
+                break;
+              default:
+                onChange(e.target.value);
+            }
+          }}
+          {...delegated}
+        />
       </div>
     </>
   );
@@ -31,5 +53,6 @@ const Label = styled("label")({
   textAlign: "left",
 });
 
-const InputElem = styled("input")({});
-export { Input };
+export const InputElem = styled("input")({
+  paddingLeft: "8px",
+});

@@ -8,13 +8,14 @@ import { useInputState } from "../InputProvider";
 import Button from "@components/Button";
 import { useState, useEffect } from "react";
 import AppDialog from "@components/Dialog";
-import { SuggestedInput } from "@components/Input";
+import { Input, SuggestedInput } from "@components/Input";
 
 function IngredientSection() {
   const { state, dispatch } = useInputState();
   const { ingredients } = state;
 
   const [ingredient, setIngredient] = useState("");
+  const [amount, setAmount] = useState(0);
   const [unit, setUnit] = useState("");
   const [allIngredients, setAllIngredients] = useState<string[]>([]);
   const [allUnits, setAllUnits] = useState<string[]>([]);
@@ -59,37 +60,49 @@ function IngredientSection() {
       >
         <p>This is just a thing lol</p>
       </AppDialog>
-      <SuggestedInput
-        value={ingredient}
-        label="Enter Ingredient Name:"
-        suggestions={allIngredients}
-        onChange={(newVal: string) => {
-          setIngredient(newVal);
-        }}
-      />
-      <SuggestedInput
-        value={unit}
-        label="Enter Unit (leave blank for unitless):"
-        suggestions={allUnits}
-        onChange={(newVal: string) => {
-          setUnit(newVal);
-        }}
-      />
-      <Button
-        variant="secondary"
-        onClick={() => {
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
           dispatch({
             type: "addIngredient",
             ingredient: {
               name: ingredient,
-              amount: 3,
+              amount: amount,
               unit: unit || "count",
             },
           });
         }}
       >
-        New Ingredient...
-      </Button>
+        <SuggestedInput
+          value={ingredient}
+          label="Enter Ingredient Name:"
+          suggestions={allIngredients}
+          onChange={(newVal: string) => {
+            setIngredient(newVal);
+          }}
+          required
+        />
+        <Input
+          label="Enter Amount:"
+          type="number"
+          value={isNaN(amount) || amount < 1 ? "" : amount.toString()}
+          onChange={(newVal) => {
+            setAmount(Number(newVal));
+          }}
+          required
+        />
+        <SuggestedInput
+          value={unit}
+          label="Enter Unit (leave blank for unitless):"
+          suggestions={allUnits}
+          onChange={(newVal: string) => {
+            setUnit(newVal);
+          }}
+        />
+        <Button type="submit" variant="secondary">
+          New Ingredient...
+        </Button>
+      </form>
     </>
   );
 }
