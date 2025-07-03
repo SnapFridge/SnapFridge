@@ -44,8 +44,9 @@ function ToastProvider({ children }: PropsWithChildren) {
   }
 
   function removeToast(id: string) {
-    const nextToasts = toasts.filter((toast) => toast.id !== id);
-    setToasts(nextToasts);
+    setToasts((toasts) => {
+      return toasts.filter((toast) => toast.id !== id);
+    });
   }
 
   return (
