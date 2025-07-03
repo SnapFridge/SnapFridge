@@ -88,7 +88,6 @@ export default async function AIprocessImages(files: File[]) {
               type: Type.STRING,
             },
           },
-          propertyOrdering: ["name", "amount", "unit"],
           required: ["name", "amount", "unit"],
         },
       },

@@ -20,8 +20,8 @@ export interface State {
 export type Action =
   | { type: "addIngredient"; ingredient: Ingredient }
   | { type: "addIngredientsFromJSON"; json: string }
-  | { type: "removeIngredient"; name: string }
-  | { type: "editIngredient"; name: string; newIngredient: Ingredient }
+  | { type: "removeIngredient"; ingredient: Ingredient }
+  | { type: "editIngredient"; old: Ingredient; new: Ingredient }
   | { type: "addFiles"; files: File[] }
   | { type: "removeFile"; index: number };
 
@@ -48,7 +48,7 @@ function reducer(draft: State, action: Action) {
       break;
     }
     case "removeIngredient": {
-      draft.ingredients.delete(action.name);
+      draft.ingredients.delete(`${action.ingredient.name}-${action.ingredient.unit}`);
       break;
     }
     case "editIngredient": {

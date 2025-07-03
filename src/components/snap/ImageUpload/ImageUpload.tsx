@@ -2,12 +2,12 @@
 
 import { styled, css } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import { useEffect, useRef, useState, type ChangeEvent } from "react";
+import { useEffect, useId, useRef, useState, type ChangeEvent } from "react";
 import FridgeImage from "./FridgeImage";
 import { scaleClamped } from "@components/Global";
 import Button from "@components/Button";
 import { AnimatePresence, type Variants } from "motion/react";
-import { button, form } from "motion/react-client";
+import { button, form, ul } from "motion/react-client";
 import heic2URL from "./HeicDCode";
 import { useInputState } from "../InputProvider";
 import useToast from "@components/ToastProvider/UseToast";
@@ -20,8 +20,8 @@ function FileUpload({ formAction }: FileUploadData) {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
   const worker = useRef<Worker>(undefined as unknown as Worker);
   const { addWarn } = useToast();
-
   const { dispatch } = useInputState();
+  const id = useId();
 
   // Initialize a worker
   useEffect(() => {
@@ -102,26 +102,30 @@ function FileUpload({ formAction }: FileUploadData) {
     <>
       <Wrapper layout action={formAction}>
         <FileUploader>
+          <label htmlFor={id} />
           <HiddenUpload
+            title="Upload image(s)"
+            id={id}
             onChange={(e) => handleFiles(e)}
             type="file"
             multiple
             accept=".png,.jpg,.webp,.heic,.heif"
             name="fileInput"
           />
-          <VisibleContent filled={imgURLs.length > 0}>
-            {imgURLs.length === 0 && (
-              <>
-                <Icon icon="ImageUp" size={36} description="Upload images" />
-                <SupportedFormats>
-                  Supported formats: png, jpg, webp, heic, heif
-                </SupportedFormats>
-              </>
-            )}
-            {imgURLs.map((url) => (
-              <FridgeImage key={url} src={url} removeImage={removeImage} />
-            ))}
-          </VisibleContent>
+          {imgURLs.length < 1 ? (
+            <NoImageContainer>
+              <Icon icon="ImageUp" size={36} />
+              <SupportedFormats>
+                Supported formats: png, jpg, webp, heic, heif
+              </SupportedFormats>
+            </NoImageContainer>
+          ) : (
+            <ImageContainer>
+              {imgURLs.map((url) => (
+                <FridgeImage key={url} src={url} removeImage={removeImage} />
+              ))}
+            </ImageContainer>
+          )}
         </FileUploader>
 
         <AnimatePresence>
@@ -160,29 +164,15 @@ const HiddenUpload = styled("input")({
   position: "absolute",
   width: "100%",
   height: "100%",
-  top: 0,
-  bottom: 0,
-  left: 0,
-  right: 0,
-  margin: "auto",
   opacity: 0,
-  appearance: "none",
 });
 
-const VisibleContent = styled("div")<{ filled: boolean }>({
+// It's different type, I don't think there is any other way
+const BothContainers = {
   width: "100%",
-  height: "fit-content",
-  minHeight: scaleClamped(115, 205, false, 320, 673),
-  ["--gap" as string]: scaleClamped(7, 20, false, 320, 673),
-  gap: "var(--gap)",
   display: "flex",
-  flexDirection: "column",
-  flexWrap: "wrap",
-  justifyContent: "center",
-  alignItems: "center",
-  padding: "20px 20px",
-  borderRadius: "16px",
   border: "var(--accent-300) dashed 4px",
+  borderRadius: "16px",
   background: "color-mix(in srgb, var(--background-50) 65%, transparent)",
 
   [`${HiddenUpload}:focus + &`]: {
@@ -196,20 +186,27 @@ const VisibleContent = styled("div")<{ filled: boolean }>({
   [`${HiddenUpload}:hover + &`]: {
     background: "color-mix(in srgb, var(--background-100) 50%, transparent)",
   },
+};
 
-  variants: [
-    {
-      props: { filled: true },
-      style: {
-        flexDirection: "row",
-        justifyContent: "space-evenly",
-        minHeight: 0,
-        borderBottom: "none",
-        borderBottomRightRadius: 0,
-        borderBottomLeftRadius: 0,
-      },
-    },
-  ],
+const NoImageContainer = styled("div")({
+  ...BothContainers,
+  minHeight: "220px",
+  gap: "12px",
+  flexDirection: "column",
+  justifyContent: "center",
+  alignItems: "center",
+});
+
+const ImageContainer = styled(ul)({
+  ...BothContainers,
+  height: "fit-content",
+  gap: scaleClamped(7, 20, false, 320, 673),
+  flexWrap: "wrap",
+  justifyContent: "space-evenly",
+  padding: "20px 20px",
+  borderBottom: "none",
+  borderBottomRightRadius: 0,
+  borderBottomLeftRadius: 0,
 });
 
 const SupportedFormats = styled("div")({
@@ -222,6 +219,7 @@ const ScanButton = css({
   width: "100%",
   height: `${40 / 16}rem`,
   fontSize: `${20 / 16}rem`,
+  borderRadius: "16px",
   borderTopRightRadius: 0,
   borderTopLeftRadius: 0,
   padding: 0,

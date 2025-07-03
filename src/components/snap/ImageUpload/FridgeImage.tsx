@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence, useAnimate, type Variants } from "motion/react";
+import { AnimatePresence, useAnimate, type Variants } from "motion/react";
+import { li, div } from "motion/react-client";
 import Image from "next/image";
 import Icon from "@components/Icon";
 import React from "react";
@@ -59,7 +60,7 @@ function FridgeImage({ src, removeImage }: Props) {
       layout
     >
       <AnimatePresence initial={false}>
-        {isActive ? (
+        {isActive && (
           <DeleteContainer
             onClick={() => {
               removeImage(src);
@@ -72,7 +73,7 @@ function FridgeImage({ src, removeImage }: Props) {
           >
             <Icon icon="Trash2" color="var(--warn-500)" />
           </DeleteContainer>
-        ) : undefined}
+        )}
       </AnimatePresence>
       <Image className={FridgeImg} width={150} height={150} src={src} alt="" />
     </ImageContainer>
@@ -90,7 +91,7 @@ const ContainerVariants: Variants = {
   },
 };
 
-const ImageContainer = styled(motion.div)({
+const ImageContainer = styled(li)({
   borderRadius: "8px",
   overflow: "hidden",
   position: "relative",
@@ -102,7 +103,7 @@ const ImageContainer = styled(motion.div)({
   },
 });
 
-const DeleteContainer = styled(motion.div)({
+const DeleteContainer = styled(div)({
   position: "absolute",
   right: "8px",
   top: "8px",

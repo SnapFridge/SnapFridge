@@ -2,6 +2,7 @@ import { withPigment } from "@pigment-css/nextjs-plugin";
 
 export default withPigment({
   experimental: {
+    reactCompiler: true,
     webpackBuildWorker: true,
     webpackMemoryOptimizations: true,
 
@@ -10,6 +11,7 @@ export default withPigment({
       "@radix-ui/react-dialog",
       "@radix-ui/react-dropdown-menu",
       "@radix-ui/react-toast",
+      "downshift",
       "heic-d-code",
       "immer",
       "lucide-react",
@@ -18,7 +20,6 @@ export default withPigment({
       "next-themes",
       "radix-ui",
       "react",
-      "react-autosuggest",
       "react-dom",
       "react-loading-skeleton",
       "react-spinners",

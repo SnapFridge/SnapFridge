@@ -66,7 +66,7 @@ function IngredientBox({ ingredient }: Props) {
               whileHover="hover"
               exit="exit"
               onClick={() => {
-                dispatch({ type: "removeIngredient", name: ingredient.name });
+                dispatch({ type: "removeIngredient", ingredient });
               }}
             >
               <Icon
