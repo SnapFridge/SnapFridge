@@ -6,15 +6,31 @@ import IngredientBox from "./Ingredient";
 import { motion } from "motion/react";
 import { useInputState } from "../InputProvider";
 import Button from "@components/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AppDialog from "@components/Dialog";
-import Input from "@components/Input";
+import { SuggestedInput } from "@components/Input";
 
 function IngredientSection() {
   const { state, dispatch } = useInputState();
   const { ingredients } = state;
 
   const [ingredient, setIngredient] = useState("");
+  const [unit, setUnit] = useState("");
+  const [allIngredients, setAllIngredients] = useState<string[]>([]);
+  const [allUnits, setAllUnits] = useState<string[]>([]);
+
+  // Only fetch ingredients for now, units will come later
+  async function fetchData() {
+    const opts: RequestInit = {
+      cache: "force-cache",
+    };
+    const allIngredientsStr = await (await fetch("/Ingredients.txt", opts)).text();
+    setAllIngredients(allIngredientsStr.split("\n"));
+    const allUnits = await (await fetch("/Units.txt", opts)).text();
+    setAllUnits(allUnits.split("\n"));
+  }
+
+  useEffect(() => void fetchData(), []);
 
   function ingredients2Tags() {
     const tags = [];
@@ -43,13 +59,22 @@ function IngredientSection() {
       >
         <p>This is just a thing lol</p>
       </AppDialog>
-      <Input
+      <SuggestedInput
         value={ingredient}
-        name="Enter Ingredient Name:"
-        onChange={(event) => {
-          setIngredient(event.target.value);
+        label="Enter Ingredient Name:"
+        suggestions={allIngredients}
+        onChange={(newVal: string) => {
+          setIngredient(newVal);
         }}
-      ></Input>
+      />
+      <SuggestedInput
+        value={unit}
+        label="Enter Unit (leave blank for unitless):"
+        suggestions={allUnits}
+        onChange={(newVal: string) => {
+          setUnit(newVal);
+        }}
+      />
       <Button
         variant="secondary"
         onClick={() => {
@@ -58,7 +83,7 @@ function IngredientSection() {
             ingredient: {
               name: ingredient,
               amount: 3,
-              unit: "tsp",
+              unit: unit || "count",
             },
           });
         }}

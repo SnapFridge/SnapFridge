@@ -307,10 +307,15 @@ globalCss`
     text-wrap: balance;
   }
 
-  /*
-    10. Create a root stacking context
-  */
+  /* 10. Create a root stacking context */
   #root, #__next {
     isolation: isolate;
+  }
+  
+  /* 11. Unstyled list */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 `;

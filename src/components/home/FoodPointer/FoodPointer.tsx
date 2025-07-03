@@ -24,7 +24,7 @@ const Pointer = styled("div")({
   position: "absolute",
   borderStyle: "solid",
   borderColor: "var(--text-950)",
-  zIndex: 2,
+  zIndex: 1,
   borderWidth: "2px 2px 0 0",
   height: "1.5%",
 

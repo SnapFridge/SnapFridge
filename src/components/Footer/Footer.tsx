@@ -51,8 +51,6 @@ const AFooter = styled("footer")({
 
 const LinksContainer = styled("ul")({
   marginTop: "24px",
-  padding: 0,
-  listStyleType: "none",
   gap: "12px",
   fontWeight: "600",
 

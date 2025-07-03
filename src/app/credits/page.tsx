@@ -66,8 +66,6 @@ const Title = css({
 });
 
 const CreditList = styled("ul")({
-  padding: 0,
-  listStyleType: "none",
   alignItems: "center",
 
   "&> li": {

@@ -1,1 +1,2 @@
-export { default } from "./Input";
+export { Input } from "./Input";
+export { SuggestedInput } from "./SuggestedInput";

@@ -64,7 +64,7 @@ const ContainerVariants = {
 };
 
 const CookieBannerContainer = styled(motion.div)({
-  zIndex: 3,
+  zIndex: 1,
   width: "400px",
   height: "auto",
   position: "fixed",

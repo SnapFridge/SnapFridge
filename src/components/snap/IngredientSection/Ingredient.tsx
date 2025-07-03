@@ -136,8 +136,6 @@ const HiddenButton = styled(Button)({
   left: 0,
   margin: "auto",
   opacity: 0,
-  appearance: "none",
-  zIndex: 2,
 });
 
 const IngredientElement = styled(div)({
@@ -171,7 +169,6 @@ const IngredientName = styled("p")({
 
 const DeleteContainer = css({
   position: "absolute",
-  zIndex: 1,
   top: 0,
   backgroundColor: "rgba(0, 0, 0, 0.6)",
   padding: "4px",
@@ -181,7 +178,6 @@ const DeleteContainer = css({
 
 const EditContainer = css({
   position: "absolute",
-  zIndex: 1,
   top: 0,
   backgroundColor: "rgba(0, 0, 0, 0.6)",
   padding: "4px",

@@ -91,7 +91,6 @@ const ContainerVariants: Variants = {
 };
 
 const ImageContainer = styled(motion.div)({
-  zIndex: 1,
   borderRadius: "8px",
   overflow: "hidden",
   position: "relative",
@@ -104,7 +103,6 @@ const ImageContainer = styled(motion.div)({
 });
 
 const DeleteContainer = styled(motion.div)({
-  zIndex: 2,
   position: "absolute",
   right: "8px",
   top: "8px",

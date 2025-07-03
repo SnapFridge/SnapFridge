@@ -42,7 +42,7 @@ const Nav = styled("nav")({
   padding: "0 var(--page-margin)",
   marginTop: "var(--nav-margin)",
   height: `var(--nav-height)`,
-  zIndex: 3,
+  zIndex: 2,
   position: "sticky",
   top: 0,
   backdropFilter: "blur(16px)",

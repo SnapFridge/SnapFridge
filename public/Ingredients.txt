@@ -40,7 +40,6 @@ baby carrots
 baby corn
 baby spinach leaves
 baby-back ribs
-baby-back ribs
 bacon
 bacon fat
 baguette
@@ -61,7 +60,6 @@ beef broth
 beef chuck roast
 beef stock
 beef tenderloin
-beer
 beer
 beets
 bell pepper
@@ -306,6 +304,7 @@ dry roasted peanuts
 duck fat
 dutch process cocoa powder
 edamame
+egg
 egg substitute
 egg vermicelli
 egg whites
@@ -371,7 +370,6 @@ garbanzo bean flour
 garlic
 garlic paste
 garlic powder
-garlic powder
 garlic salt
 gelatin
 gf chocolate cake mix
@@ -415,7 +413,6 @@ ground ancho chili
 ground beef
 ground chicken
 ground chipotle chile pepper
-ground cinnamon
 ground cinnamon
 ground cloves
 ground coriander seeds
@@ -514,7 +511,6 @@ live lobster
 long-grain rice
 low fat buttermilk
 low fat milk
-low fat milk
 low fat plain yogurt
 low fat ricotta cheese
 low fat sour cream
@@ -544,7 +540,6 @@ mascarpone
 mat beans
 matcha tea
 mayonnaise
-meat
 meat
 meatballs
 medjool dates
@@ -804,7 +799,6 @@ sharp cheddar cheese
 sheeps milk cheese
 shells
 sherry
-sherry
 sherry vinegar
 shiitake mushroom caps
 short grain rice
@@ -817,7 +811,6 @@ shredded cheddar cheese
 shredded cheese
 shredded chicken
 shredded coconut
-shredded mexican cheese blend
 shredded mexican cheese blend
 shredded mozzarella
 silken tofu

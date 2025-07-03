@@ -1,11 +1,9 @@
-SOLIDS:
 g
 oz
 lb
 bar
 block
 chop
-clove
 cube
 pat
 piece
@@ -18,8 +16,6 @@ steak
 strip
 wafer
 wedge
-
-LIQUIDS:
 cup
 dollop
 drop
@@ -37,8 +33,6 @@ spoonful
 spray
 tbsp
 tsp
-
-ETC:
 bag
 ball
 biscuit
@@ -59,7 +53,6 @@ dash
 disc
 dozen
 ear
-egg
 envelope
 fillet
 handful
@@ -92,7 +85,3 @@ tray
 tub
 tube
 wrapper
-
-COUNTABLE ITEMS:
-count
-unit
