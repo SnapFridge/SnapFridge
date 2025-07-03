@@ -252,7 +252,7 @@ globalCss`
       width: ${MAX_SUPPORTED_WIDTH}px;
       margin: auto;
     }
-    overflow-x: clip;
+    overflow-x: hidden;
   }
 `;
 
@@ -313,7 +313,7 @@ globalCss`
   #root, #__next {
     isolation: isolate;
   }
-  
+
   /* 11. Unstyled list */
   ul {
     list-style: none;
