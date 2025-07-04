@@ -75,7 +75,13 @@ function FridgeImage({ src, removeImage }: Props) {
           </DeleteContainer>
         )}
       </AnimatePresence>
-      <Image className={FridgeImg} width={150} height={150} src={src} alt="" />
+      <Image
+        className={FridgeImg}
+        width={150}
+        height={150}
+        src={src}
+        alt="User uploaded image"
+      />
     </ImageContainer>
   );
 }
@@ -131,8 +137,7 @@ const DeleteVariants: Variants = {
 };
 
 const FridgeImg = css({
-  width: "auto",
-  height: "auto",
+  width: "100%",
   aspectRatio: "1 / 1",
   objectFit: "cover",
 });

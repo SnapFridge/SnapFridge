@@ -11,6 +11,7 @@ import { button, form, ul } from "motion/react-client";
 import heic2URL from "./HeicDCode";
 import { useInputState } from "../InputProvider";
 import useToast from "@components/ToastProvider/UseToast";
+import VisuallyHidden from "@components/VisuallyHidden";
 
 type FileUploadData = {
   formAction: () => void;
@@ -102,7 +103,9 @@ function FileUpload({ formAction }: FileUploadData) {
     <>
       <Wrapper layout action={formAction}>
         <FileUploader>
-          <label htmlFor={id} />
+          <label htmlFor={id}>
+            <VisuallyHidden>Upload image(s)</VisuallyHidden>
+          </label>
           <HiddenUpload
             title="Upload image(s)"
             id={id}
@@ -120,7 +123,7 @@ function FileUpload({ formAction }: FileUploadData) {
               </SupportedFormats>
             </NoImageContainer>
           ) : (
-            <ImageContainer>
+            <ImageContainer as="ul">
               {imgURLs.map((url) => (
                 <FridgeImage key={url} src={url} removeImage={removeImage} />
               ))}
@@ -167,8 +170,7 @@ const HiddenUpload = styled("input")({
   opacity: 0,
 });
 
-// It's different type, I don't think there is any other way
-const BothContainers = {
+const BaseContainer = styled("div")({
   width: "100%",
   display: "flex",
   border: "var(--accent-300) dashed 4px",
@@ -186,10 +188,9 @@ const BothContainers = {
   [`${HiddenUpload}:hover + &`]: {
     background: "color-mix(in srgb, var(--background-100) 50%, transparent)",
   },
-};
+});
 
-const NoImageContainer = styled("div")({
-  ...BothContainers,
+const NoImageContainer = styled(BaseContainer)({
   minHeight: "220px",
   gap: "12px",
   flexDirection: "column",
@@ -197,8 +198,7 @@ const NoImageContainer = styled("div")({
   alignItems: "center",
 });
 
-const ImageContainer = styled(ul)({
-  ...BothContainers,
+const ImageContainer = styled(BaseContainer)({
   height: "fit-content",
   gap: scaleClamped(7, 20, false, 320, 673),
   flexWrap: "wrap",
