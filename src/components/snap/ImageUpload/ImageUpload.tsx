@@ -16,11 +16,11 @@ import { scaleClamped } from "@components/Global";
 import { BarLoader } from "react-spinners";
 import Button from "@components/Button";
 import { AnimatePresence, type Variants } from "motion/react";
-import { button, form, ul } from "motion/react-client";
+import { button, form } from "motion/react-client";
 import heic2URL from "./HeicDCode";
 import { useInputState } from "../InputProvider";
 import useToast from "@components/ToastProvider/UseToast";
-import getJSONLexer from "./JSONLexer";
+import getJSONTransformer from "./JSONTransformer";
 import VisuallyHidden from "@components/VisuallyHidden";
 
 function FileUpload() {
@@ -120,7 +120,7 @@ function FileUpload() {
     });
     const stream = res
       .body!.pipeThrough(new TextDecoderStream())
-      .pipeThrough(getJSONLexer());
+      .pipeThrough(getJSONTransformer());
     const reader = stream.getReader();
     while (true) {
       const { done, value } = await reader.read();

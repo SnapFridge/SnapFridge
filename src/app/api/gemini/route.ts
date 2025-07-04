@@ -5,7 +5,68 @@ import {
   type GenerateContentResponse,
 } from "@google/genai";
 
-const SYS_INSTRUCTION = `
+const ai = new GoogleGenAI({ apiKey: process.env["GEMINI_KEY"]! });
+
+async function ensureContext(contents: { fileData: FileData }[]) {
+  const names = ["Units.txt", "Ingredients.txt"];
+  for (const name of names) {
+    let file = await ai.files.get({ name });
+    if (!file) {
+      file = await ai.files.upload({
+        file: "/" + name,
+        config: {
+          mimeType: "text/plain",
+          name,
+        },
+      });
+    }
+    contents.push({
+      fileData: {
+        fileUri: file.uri!,
+        mimeType: file.mimeType!,
+      },
+    });
+  }
+}
+
+// JSON minifier: Remove all whitespace + array syntax so we don't have to worry about it later + save on some networking
+function generator2Stream(gen: AsyncGenerator<GenerateContentResponse>) {
+  const enum State {
+    Out,
+    InStr,
+  }
+  let state: State = State.Out;
+  return new ReadableStream({
+    async pull(controller) {
+      const { value, done } = await gen.next();
+      if (done) {
+        controller.close();
+        return;
+      }
+      let processed = "";
+      for (const c of value.text!) {
+        switch (c) {
+          // Ignore whitespace, except when we're in a string
+          case " ":
+          case "\n":
+            if (state == State.InStr) {
+              break;
+            }
+          // Ignore arrays, it should only appear at the start and end
+          case "[":
+          case "]":
+            continue;
+          case '"':
+            state = state == State.InStr ? State.Out : State.InStr;
+        }
+        processed += c;
+      }
+      controller.enqueue(processed);
+    },
+  });
+}
+
+const systemInstruction = `
   ## ROLE
   You are a highly precise AI Ingredient Analyst. Your sole purpose is to identify and quantify the raw ingredients available in an image, ignoring all other details.
 
@@ -48,91 +109,55 @@ const SYS_INSTRUCTION = `
     * **Estimating Remaining Quantity:** For ingredients inside packages or containers, your estimate must be for the remaining amount of the ingredient, not the total capacity of the container.
 `;
 
-const ai = new GoogleGenAI({ apiKey: process.env["GEMINI_KEY"]! });
-
-// JSON minifier: Remove all whitespace + array syntax so we don't have to worry about it later + save on some networking
-
-function generator2Stream(gen: AsyncGenerator<GenerateContentResponse>) {
-  const enum State {
-    Out,
-    InStr,
-  }
-  let state: State = State.Out;
-  return new ReadableStream({
-    async pull(controller) {
-      const { value, done } = await gen.next();
-      if (done) {
-        controller.close();
-        return;
-      }
-      let processed = "";
-      for (const c of value.text!) {
-        switch (c) {
-          // Ignore whitespace, except when we're in a string
-          case " ":
-          case "\n":
-            if (state == State.InStr) {
-              break;
-            }
-          // Ignore arrays, it should only appear at the start and end
-          case "[":
-          case "]":
-            continue;
-          case '"':
-            state = state == State.InStr ? State.Out : State.InStr;
-        }
-        processed += c;
-      }
-      controller.enqueue(processed);
+const responseSchema = {
+  type: Type.ARRAY,
+  items: {
+    type: Type.OBJECT,
+    properties: {
+      name: {
+        type: Type.STRING,
+      },
+      amount: {
+        type: Type.INTEGER,
+      },
+      unit: {
+        type: Type.STRING,
+      },
     },
-  });
-}
+    required: ["name", "amount", "unit"],
+  },
+};
 
 export async function POST(req: Request) {
   const files = (await req.formData()).getAll("files") as File[];
-  const fileDataParts: { fileData: FileData }[] = [];
+  const contents: { fileData: FileData }[] = [];
   const filenames: string[] = [];
 
   for (let i = 0; i < files.length; i++) {
     filenames.push(crypto.randomUUID());
+    const file = files[i]!;
     const uploadedFile = await ai.files.upload({
-      file: files[i]!,
+      file,
       config: {
         name: filenames[i]!,
       },
     });
-    fileDataParts.push({
+    contents.push({
       fileData: {
         fileUri: uploadedFile.uri!,
-        mimeType: files[i]!.type,
+        mimeType: file.type,
       },
     });
   }
 
+  ensureContext(contents);
   const res = await ai.models.generateContentStream({
     model: "gemini-2.5-flash",
-    contents: fileDataParts,
+    contents,
     config: {
-      systemInstruction: SYS_INSTRUCTION,
+      systemInstruction,
       responseMimeType: "application/json",
-      responseSchema: {
-        type: Type.ARRAY,
-        items: {
-          type: Type.OBJECT,
-          properties: {
-            name: {
-              type: Type.STRING,
-            },
-            amount: {
-              type: Type.INTEGER,
-            },
-            unit: {
-              type: Type.STRING,
-            },
-          },
-          required: ["name", "amount", "unit"],
-        },
-      },
+      responseSchema,
       thinkingConfig: {
         thinkingBudget: -1,
       },

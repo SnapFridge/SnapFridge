@@ -2,7 +2,8 @@
 // - No object nesting
 // - Strings only occur inside the ingredient object
 // - Whitespace only occurs inside strings
-export default () => {
+
+function getJSONTransformer() {
   const enum State {
     Out,
     InObject,
@@ -43,4 +44,5 @@ export default () => {
       controller.enqueue(processed);
     },
   });
-};
+}
+export default getJSONTransformer;
