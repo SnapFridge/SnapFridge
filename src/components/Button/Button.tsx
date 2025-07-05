@@ -20,7 +20,6 @@ function Button<C extends ElementType = "button">({
 }
 
 const StyledButton = styled("button")<{ variant: string | undefined }>({
-  display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
   textDecoration: "none",
@@ -68,7 +67,7 @@ const StyledButton = styled("button")<{ variant: string | undefined }>({
     {
       props: { variant: "icon" },
       style: {
-        backgroundColor: "transparent",
+        background: "transparent",
         ["--background-hover" as string]: "var(--background-100)",
       },
     },

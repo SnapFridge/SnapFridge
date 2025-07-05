@@ -2,23 +2,33 @@ import { css, styled } from "@pigment-css/react";
 import ThemeSwitcher from "@components/ThemeSwitcher";
 import Link from "@components/Link";
 import Logo from "@components/Logo";
-import Dropdown from "./Dropdown";
 import { ON_MOBILE } from "@components/Global";
+import HamburgerMenu from "./HamburgerMenu";
+
+const Links = [
+  {
+    href: "/snap",
+    title: "Get Started",
+  },
+  {
+    href: "/about",
+    title: "About Us",
+  },
+];
 
 function NavBar() {
   return (
     <Nav>
       <LeftNav>
         <Logo />
-        <Link className={MobileGone} href="/snap">
-          Get Started
-        </Link>
-        <Link className={MobileGone} href="/about">
-          About Us
-        </Link>
+        {Links.map(({ href, title }) => (
+          <Link key={href} className={MobileGone} href={href}>
+            {title}
+          </Link>
+        ))}
       </LeftNav>
-      <ThemeSwitcher className={MobileGone}></ThemeSwitcher>
-      <Dropdown />
+      <ThemeSwitcher className={MobileGone} />
+      <HamburgerMenu links={Links} />
     </Nav>
   );
 }
@@ -30,6 +40,8 @@ const LeftNav = styled("div")({
 });
 
 const MobileGone = css({
+  display: "block",
+
   [ON_MOBILE]: {
     display: "none",
   },
