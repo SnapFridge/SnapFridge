@@ -7,7 +7,7 @@ import { Toast } from "radix-ui";
 import { styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@components/Global";
 import { ToastContext } from "@components/ToastProvider";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 function Toaster() {
   const [isClient, setIsClient] = useState(false);
@@ -23,17 +23,20 @@ function Toaster() {
 
   return createPortal(
     <ToastContainer>
-      {visibleToasts.map(({ id, title, description, variant }) => (
-        <AppToast
-          key={id}
-          id={id}
-          title={title}
-          variant={variant}
-          removeToast={removeToast}
-        >
-          {description}
-        </AppToast>
-      ))}
+      <AnimatePresence mode="popLayout">
+        {visibleToasts.map(({ id, title, description, variant }) => (
+          <AppToast
+            key={id}
+            id={id}
+            title={title}
+            variant={variant}
+            removeToast={removeToast}
+          >
+            {description}
+          </AppToast>
+        ))}
+      </AnimatePresence>
+
       <Toast.Viewport asChild>
         <Viewport />
       </Toast.Viewport>

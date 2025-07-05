@@ -5,6 +5,7 @@ import { Toast } from "radix-ui";
 import { styled } from "@pigment-css/react";
 import Icon, { type IconType } from "@components/Icon";
 import Button from "@components/Button";
+import { motion, type Variants } from "motion/react";
 
 type Props = {
   id: string;
@@ -39,33 +40,45 @@ function AppToast({
 
   return (
     <BaseToast
-      variant={variant}
       open={open}
       onOpenChange={(open) => {
         if (!open) {
           removeToast(id);
         }
       }}
+      asChild
+      forceMount
     >
-      <Icon icon={iconName} />
-      <MainContent>
-        <Title>{title}</Title>
-        <Description>{children}</Description>
-        <Toast.Close
-          onClick={() => {
-            setOpen(false);
-          }}
-          asChild
-        >
-          <Close>
-            <Icon icon="X" color="var(--warn-500)" description="Close" />
-          </Close>
-        </Toast.Close>
-      </MainContent>
+      <ContentContainer
+        layout
+        variant={variant}
+        variants={ToastVariants}
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        transition={{ type: "spring", damping: 20, stiffness: 150 }}
+      >
+        <Icon icon={iconName} />
+        <MainContent>
+          <Title>{title}</Title>
+          <Description>{children}</Description>
+          <Toast.Close
+            onClick={() => {
+              setOpen(false);
+            }}
+            asChild
+          >
+            <Close>
+              <Icon icon="X" color="var(--warn-500)" description="Close" />
+            </Close>
+          </Toast.Close>
+        </MainContent>
+      </ContentContainer>
     </BaseToast>
   );
 }
-
+const BaseToast = styled(Toast.Root)({});
+/*
 const BaseToast = styled(Toast.Root)<{
   variant: "success" | "warn" | "error" | "info";
 }>({
@@ -80,6 +93,66 @@ const BaseToast = styled(Toast.Root)<{
   borderRadius: "16px",
   padding: "16px",
   boxShadow: "var(--shadow)",
+
+  variants: [
+    {
+      props: { variant: "success" },
+      style: {
+        background: "var(--success-50)",
+      },
+    },
+    {
+      props: { variant: "warn" },
+      style: {
+        background: "var(--warn-50)",
+      },
+    },
+    {
+      props: { variant: "error" },
+      style: {
+        background: "var(--error-50)",
+      },
+    },
+    {
+      props: { variant: "info" },
+      style: {
+        background: "var(--background-100)",
+      },
+    },
+  ],
+});
+*/
+
+const ToastVariants: Variants = {
+  initial: {
+    x: "100%",
+    opacity: 0,
+  },
+  enter: {
+    x: 0,
+    opacity: 1,
+  },
+  exit: {
+    x: "100%",
+    opacity: 0,
+  },
+};
+
+const ContentContainer = styled(motion.li)<{
+  variant: "success" | "warn" | "error" | "info";
+}>({
+  display: "flex",
+  alignItems: "center",
+  gap: "16px",
+  width: "100%",
+  minHeight: "80px",
+  height: "fit-content",
+  maxHeight: "200px",
+  overflowY: "auto",
+  borderRadius: "16px",
+  padding: "16px",
+  boxShadow: "var(--shadow)",
+  listStyle: "none",
 
   variants: [
     {
