@@ -3,14 +3,13 @@
 import RecipeCard from "@components/RecipeCard";
 import { styled } from "@pigment-css/react";
 import { ul } from "motion/react-client";
-import { scaleClamped } from "@components/Global";
+import { scaleClamped, type Recipe } from "@components/Global";
 import Icon from "@components/Icon";
 import { useState } from "react";
-import { type Recipe } from "@components/Global";
 
 type Props = {
   headerTxt?: string;
-  recipes: Recipe[];
+  recipes?: Recipe[];
 };
 
 const recipesExample = [

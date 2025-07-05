@@ -4,11 +4,11 @@ import { styled } from "@pigment-css/react";
 import FileUpload from "../ImageUpload/ImageUpload";
 import IngredientSection from "@components/snap/IngredientSection";
 
-function InputSection({ setRecipes }) {
+function InputSection() {
   return (
     <Wrapper>
       <FileUpload />
-      <IngredientSection setRecipes={setRecipes} />
+      <IngredientSection />
     </Wrapper>
   );
 }

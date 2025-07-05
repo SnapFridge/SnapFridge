@@ -10,7 +10,7 @@ import AppDialog from "@components/Dialog";
 import { Input, SuggestedInput } from "@components/Input";
 import { ul } from "motion/react-client";
 
-function IngredientSection({ setRecipes }) {
+function IngredientSection() {
   const { state, dispatch } = useInputState();
   const { ingredients } = state;
 
@@ -60,7 +60,11 @@ function IngredientSection({ setRecipes }) {
       body: ingredientsList.join(","),
     });
     const returnedRecipes = await res.json();
-    setRecipes(returnedRecipes);
+
+    dispatch({
+      type: "addRecipes",
+      recipes: returnedRecipes,
+    });
   }
 
   return (

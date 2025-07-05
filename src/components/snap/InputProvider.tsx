@@ -6,17 +6,17 @@ import {
   useMemo,
   type Dispatch,
   type PropsWithChildren,
-  useState,
 } from "react";
 import { enableMapSet } from "immer";
 import { useImmerReducer } from "use-immer";
-import { type Ingredient } from "@components/Global";
+import { type Ingredient, type Recipe } from "@components/Global";
 import InputSection from "./InputSection";
 import RecipeSection from "@components/RecipeSection";
 enableMapSet();
 export interface State {
   ingredients: Map<string, Ingredient>;
   files: File[];
+  recipes: Recipe[];
 }
 
 export type Action =
@@ -25,7 +25,8 @@ export type Action =
   | { type: "removeIngredient"; ingredient: Ingredient }
   | { type: "editIngredient"; old: Ingredient; new: Ingredient }
   | { type: "addFiles"; files: File[] }
-  | { type: "removeFile"; index: number };
+  | { type: "removeFile"; index: number }
+  | { type: "addRecipes"; recipes: Recipe[] };
 
 function reducer(draft: State, action: Action) {
   function addIngredient(ingredient: Ingredient) {
@@ -65,6 +66,10 @@ function reducer(draft: State, action: Action) {
       draft.files.splice(action.index, 1);
       break;
     }
+    case "addRecipes": {
+      draft.recipes.push(...action.recipes);
+      break;
+    }
   }
 }
 
@@ -79,19 +84,17 @@ function InputProvider({ children }: PropsWithChildren) {
   const [unmemoizedState, dispatch] = useImmerReducer(reducer, {
     ingredients: new Map<string, Ingredient>(),
     files: [],
+    recipes: [],
   });
 
   const state = useMemo(() => {
     return unmemoizedState;
   }, [unmemoizedState]);
 
-  const [recipes, setRecipes] = useState([]);
-
   return (
     <InputContext value={{ state, dispatch }}>
-      {/* TODO: remove prop drilling and find a better way to manage recipe state */}
-      <InputSection setRecipes={setRecipes} />
-      <RecipeSection recipes={recipes} />
+      <InputSection />
+      <RecipeSection recipes={state.recipes} />
       <RecipeSection headerTxt="Previous Snaps" />
     </InputContext>
   );
