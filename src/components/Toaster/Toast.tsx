@@ -68,8 +68,8 @@ function AppToast({
             }}
             asChild
           >
-            <Close>
-              <Icon icon="X" color="var(--warn-500)" description="Close" />
+            <Close variant="icon">
+              <Icon icon="X" color="var(--text-950)" description="Close" />
             </Close>
           </Toast.Close>
         </MainContent>
@@ -208,8 +208,8 @@ const Description = styled(Toast.Description)({
 });
 
 const Close = styled(Button)({
+  borderRadius: "50%",
   gridArea: "close",
-  background: "transparent",
   alignSelf: "start",
 });
 

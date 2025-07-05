@@ -9,15 +9,19 @@ import { styled } from "@pigment-css/react";
 import ToastProvider from "@components/ToastProvider";
 import Toaster from "@components/Toaster";
 import { type PropsWithChildren } from "react";
+import { type Metadata } from "next";
 
 const poppins = Poppins({
   weight: ["400", "700"],
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "SnapFridge",
   description: "Delicious recipes right from your fridge",
+  other: {
+    "google-site-verification": "eYERfWRX6kjvyvIaqgESxRtku7LR-9xDCg0Xge3aaQU",
+  },
 };
 
 export default function RootLayout({ children }: PropsWithChildren) {
