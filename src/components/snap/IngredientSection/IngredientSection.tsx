@@ -19,6 +19,7 @@ function IngredientSection() {
   const [unit, setUnit] = useState("");
   const [allIngredients, setAllIngredients] = useState<string[]>([]);
   const [allUnits, setAllUnits] = useState<string[]>([]);
+  const [recipes, setRecipes] = useState([]);
 
   // Only fetch ingredients for now, units will come later
   async function fetchData() {
@@ -44,6 +45,15 @@ function IngredientSection() {
     }
     return tags;
   }
+
+  async function getRecipes() {
+    const res = await fetch("/api/spoonacular", {
+      method: "GET",
+    });
+    const returnedRecipes = await res.json();
+    setRecipes(returnedRecipes);
+  }
+
   return (
     <>
       {ingredients.size < 1 ? (
@@ -107,6 +117,10 @@ function IngredientSection() {
           New Ingredient...
         </Button>
       </form>
+      <Button variant="secondary" onClick={getRecipes}>
+        Get recipe from spoonacular
+      </Button>
+      {recipes.length > 0 ? <p>{JSON.stringify(recipes)}</p> : <p>no recipes</p>}
     </>
   );
 }
