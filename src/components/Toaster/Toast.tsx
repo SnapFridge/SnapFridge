@@ -68,7 +68,7 @@ function AppToast({
             }}
             asChild
           >
-            <Close variant="icon" disableMobileFriendly>
+            <Close variant="icon">
               <Icon icon="X" color="var(--text-950)" description="Close" />
             </Close>
           </Toast.Close>
@@ -189,7 +189,7 @@ const MainContent = styled("div")({
     "title close"
     "description close"
   `,
-  gridTemplateColumns: "1fr auto",
+  gridTemplateColumns: "minmax(0, 1fr) auto",
   columnGap: "16px",
   rowGap: "4px",
 });
