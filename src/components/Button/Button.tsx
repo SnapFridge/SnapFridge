@@ -4,16 +4,24 @@ import { styled } from "@pigment-css/react";
 type ButtonProps<C extends ElementType> = {
   as?: C;
   variant?: "primary" | "secondary" | "icon";
+  disableMobileFriendly?: boolean;
 } & Omit<ComponentPropsWithoutRef<C>, "as">;
 // The default link has an "as" attribute, overriding that with our "as"
 
 function Button<C extends ElementType = "button">({
+  disableMobileFriendly,
   variant,
   children,
   ...delegated
 }: ButtonProps<C>) {
+  const style = disableMobileFriendly
+    ? {
+        ["--click-target-minimum" as string]: "100%",
+      }
+    : undefined;
+
   return (
-    <StyledButton variant={variant} {...delegated}>
+    <StyledButton style={style} variant={variant} {...delegated}>
       {children}
     </StyledButton>
   );

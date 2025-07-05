@@ -68,7 +68,7 @@ function AppToast({
             }}
             asChild
           >
-            <Close variant="icon">
+            <Close variant="icon" disableMobileFriendly>
               <Icon icon="X" color="var(--text-950)" description="Close" />
             </Close>
           </Toast.Close>

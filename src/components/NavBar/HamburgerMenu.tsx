@@ -1,4 +1,3 @@
-"use client";
 import Button from "@components/Button";
 import { ON_MOBILE } from "@components/Global";
 import Icon from "@components/Icon";
@@ -21,7 +20,7 @@ function HamburgerMenu({ links }: Props) {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Overlay className={SHOW_MOBILE} />
-        <Wrapper>
+        <Wrapper className={SHOW_MOBILE}>
           <Title>Menu</Title>
           <Content>
             {links.map(({ href, title }) => (
@@ -62,10 +61,7 @@ const Wrapper = styled(Dialog.Content)({
   right: 0,
   top: 0,
   bottom: 0,
-  paddingLeft: "24px",
-  paddingRight: "24px",
-  paddingTop: "20px",
-  paddingBottom: "20px",
+  padding: "20px 24px",
   width: "250px",
   background: "var(--dialog-background)",
 });
@@ -79,7 +75,7 @@ const Content = styled("div")({
   display: "flex",
   gap: "26px",
 
-  borderLeft: "2px solid var(--text-800)",
+  borderLeft: "2px solid var(--text-500)",
   paddingLeft: "16px",
   flexDirection: "column",
   marginBottom: "auto",
