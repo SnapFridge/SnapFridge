@@ -1,30 +1,39 @@
+"use client";
 import Button from "@components/Button";
 import { ON_MOBILE } from "@components/Global";
 import Icon from "@components/Icon";
 import Link from "@components/Link";
 import ThemeSwitcher from "@components/ThemeSwitcher";
-import { css, styled } from "@pigment-css/react";
+import { styled } from "@pigment-css/react";
 import { Dialog } from "radix-ui";
+import { useRef } from "react";
 
 interface Props extends React.PropsWithChildren {
   links: { href: string; title: string }[];
 }
 
 function HamburgerMenu({ links }: Props) {
+  const contentRef = useRef<HTMLDivElement>(null);
+
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <Button className={SHOW_MOBILE} variant="icon">
+        <TriggerButton variant="icon">
           <Icon icon="Menu" description="Open menu" />
-        </Button>
+        </TriggerButton>
       </Dialog.Trigger>
       <Dialog.Portal>
-        <Overlay className={SHOW_MOBILE} />
-        <Wrapper className={SHOW_MOBILE}>
+        <Overlay />
+        <Wrapper
+          onOpenAutoFocus={(e) => {
+            e.preventDefault();
+            contentRef.current?.querySelector("a")?.focus();
+          }}
+        >
           <Title>Menu</Title>
-          <Content>
-            {links.map(({ href, title }) => (
-              <Dialog.Close key={href} asChild>
+          <Content ref={contentRef}>
+            {links.map(({ href, title }, index) => (
+              <Dialog.Close key={href} autoFocus={index === 0} asChild>
                 <MenuLink href={href}>
                   <span>{title}</span>
                   <Icon icon="ChevronRight" />
@@ -44,16 +53,29 @@ function HamburgerMenu({ links }: Props) {
   );
 }
 
+const TriggerButton = styled(Button)({
+  display: "none",
+
+  [ON_MOBILE]: {
+    display: "block",
+  },
+});
+
 const Overlay = styled(Dialog.Overlay)({
+  display: "none",
   // Rare exception where we don't want the color to change
   background: "#000000",
   opacity: "70%",
   position: "fixed",
   inset: 0,
+
+  [ON_MOBILE]: {
+    display: "block",
+  },
 });
 
 const Wrapper = styled(Dialog.Content)({
-  display: "flex",
+  display: "none",
   gap: "12px",
 
   flexDirection: "column",
@@ -64,6 +86,10 @@ const Wrapper = styled(Dialog.Content)({
   padding: "20px 24px",
   width: "250px",
   background: "var(--dialog-background)",
+
+  [ON_MOBILE]: {
+    display: "flex",
+  },
 });
 
 const Title = styled(Dialog.Title)({
@@ -72,10 +98,10 @@ const Title = styled(Dialog.Title)({
 });
 
 const Content = styled("div")({
-  display: "flex",
+  display: "flex !important",
   gap: "26px",
 
-  borderLeft: "2px solid var(--text-500)",
+  borderLeft: "2px solid var(--text-800)",
   paddingLeft: "16px",
   flexDirection: "column",
   marginBottom: "auto",
@@ -101,14 +127,6 @@ const ThemeSwitch = styled(ThemeSwitcher)({
 const CloseButton = styled(Button)({
   display: "flex",
   justifyContent: "center",
-});
-
-const SHOW_MOBILE = css({
-  display: "none",
-
-  [ON_MOBILE]: {
-    display: "revert",
-  },
 });
 
 export default HamburgerMenu;
