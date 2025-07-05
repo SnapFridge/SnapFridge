@@ -11,11 +11,7 @@ export default function Page() {
 
   return (
     <PageMargin>
-      <InputProvider>
-        <InputSection />
-        <RecipeSection />
-        <RecipeSection headerTxt="Previous Snaps" />
-      </InputProvider>
+      <InputProvider></InputProvider>
       <button
         onClick={() => {
           addSuccess("Hello, World!", "Wowie this works?" + Math.random());

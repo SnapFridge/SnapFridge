@@ -6,8 +6,11 @@ import { ul } from "motion/react-client";
 import { scaleClamped } from "@components/Global";
 import Icon from "@components/Icon";
 import { useState } from "react";
+import { type Recipe } from "@components/Global";
+
 type Props = {
   headerTxt?: string;
+  recipes: Recipe[];
 };
 
 const recipesExample = [
@@ -164,7 +167,7 @@ const recipesExample = [
   },
 ];
 
-function RecipeSection({ headerTxt = "Recipes Found" }: Props) {
+function RecipeSection({ headerTxt = "Recipes Found", recipes = recipesExample }: Props) {
   const [loading, setLoading] = useState(true);
 
   function switchLoading() {
@@ -180,7 +183,7 @@ function RecipeSection({ headerTxt = "Recipes Found" }: Props) {
       </Header>
 
       <RecipeList>
-        {recipesExample.map((recipe) => (
+        {recipes.map((recipe) => (
           <RecipeCard recipe={loading ? undefined : recipe} key={recipe.id} />
         ))}
       </RecipeList>

@@ -10,7 +10,7 @@ import AppDialog from "@components/Dialog";
 import { Input, SuggestedInput } from "@components/Input";
 import { ul } from "motion/react-client";
 
-function IngredientSection() {
+function IngredientSection({ setRecipes }) {
   const { state, dispatch } = useInputState();
   const { ingredients } = state;
 
@@ -19,7 +19,6 @@ function IngredientSection() {
   const [unit, setUnit] = useState("");
   const [allIngredients, setAllIngredients] = useState<string[]>([]);
   const [allUnits, setAllUnits] = useState<string[]>([]);
-  const [recipes, setRecipes] = useState([]);
 
   // Only fetch ingredients for now, units will come later
   async function fetchData() {
@@ -47,8 +46,18 @@ function IngredientSection() {
   }
 
   async function getRecipes() {
+    // Convert the map of ingredients to a string of ingredients separated by commas
+    const ingredientsList = [];
+    for (const item of ingredients) {
+      ingredientsList.push(item[1].name);
+    }
+
     const res = await fetch("/api/spoonacular", {
-      method: "GET",
+      method: "POST",
+      headers: {
+        "Content-Type": "text/plain",
+      },
+      body: ingredientsList.join(","),
     });
     const returnedRecipes = await res.json();
     setRecipes(returnedRecipes);
@@ -120,7 +129,6 @@ function IngredientSection() {
       <Button variant="secondary" onClick={getRecipes}>
         Get recipe from spoonacular
       </Button>
-      {recipes.length > 0 ? <p>{JSON.stringify(recipes)}</p> : <p>no recipes</p>}
     </>
   );
 }

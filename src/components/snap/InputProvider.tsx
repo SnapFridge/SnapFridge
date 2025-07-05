@@ -6,11 +6,13 @@ import {
   useMemo,
   type Dispatch,
   type PropsWithChildren,
+  useState,
 } from "react";
 import { enableMapSet } from "immer";
 import { useImmerReducer } from "use-immer";
 import { type Ingredient } from "@components/Global";
-
+import InputSection from "./InputSection";
+import RecipeSection from "@components/RecipeSection";
 enableMapSet();
 export interface State {
   ingredients: Map<string, Ingredient>;
@@ -83,7 +85,16 @@ function InputProvider({ children }: PropsWithChildren) {
     return unmemoizedState;
   }, [unmemoizedState]);
 
-  return <InputContext value={{ state, dispatch }}>{children}</InputContext>;
+  const [recipes, setRecipes] = useState([]);
+
+  return (
+    <InputContext value={{ state, dispatch }}>
+      {/* TODO: remove prop drilling and find a better way to manage recipe state */}
+      <InputSection setRecipes={setRecipes} />
+      <RecipeSection recipes={recipes} />
+      <RecipeSection headerTxt="Previous Snaps" />
+    </InputContext>
+  );
 }
 
 export function useInputState() {
