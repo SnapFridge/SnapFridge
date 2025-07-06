@@ -19,6 +19,8 @@ function IngredientSection() {
   const [unit, setUnit] = useState("");
   const [allIngredients, setAllIngredients] = useState<string[]>([]);
   const [allUnits, setAllUnits] = useState<string[]>([]);
+  const [includePantry, setIncludePantry] = useState(true);
+  const [ranking, setRanking] = useState(2);
 
   // Only fetch ingredients for now, units will come later
   async function fetchData() {
@@ -65,6 +67,14 @@ function IngredientSection() {
       type: "addRecipes",
       recipes: returnedRecipes,
     });
+  }
+
+  function handleCheckboxChange(event) {
+    setIncludePantry(event.target.checked);
+  }
+
+  function handleSpoonacularForm(event) {
+    let todo = 1;
   }
 
   return (
@@ -130,9 +140,33 @@ function IngredientSection() {
           New Ingredient...
         </Button>
       </form>
-      <Button variant="secondary" onClick={getRecipes}>
-        Get recipe from spoonacular
-      </Button>
+      <form>
+        <Input
+          type="checkbox"
+          label="Include Typical Pantry Items (water, salt, flour, etc)"
+          onChange={handleCheckboxChange}
+          checked={includePantry}
+        />
+        <Input
+          type="radio"
+          label="Maximize used ingredients"
+          name="ranking"
+          value={1}
+          checked={ranking === 1}
+          onChange={() => setRanking(1)}
+        />
+        <Input
+          type="radio"
+          label="Minimize missing ingredients"
+          name="ranking"
+          value={2}
+          checked={ranking === 2}
+          onChange={() => setRanking(2)}
+        />
+        <Button variant="secondary" type="submit">
+          Get recipe from spoonacular
+        </Button>
+      </form>
     </>
   );
 }
