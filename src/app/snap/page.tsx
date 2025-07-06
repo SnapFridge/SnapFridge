@@ -2,7 +2,7 @@
 
 import InputSection from "@components/snap/InputSection";
 import { PageMargin } from "@components/Global";
-import InputProvider from "@components/snap/InputProvider";
+import { InputProvider } from "@components/snap/InputProvider";
 import useToast from "@components/ToastProvider/UseToast";
 import RecipeHolder from "@components/snap/RecipeHolder";
 

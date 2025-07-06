@@ -7,7 +7,7 @@ interface Props extends Omit<ComponentProps<"input">, "onChange"> {
   label: string;
   value: string;
   suggestions: string[];
-  onChange(newVal: string): void;
+  onChange: (newVal: string) => void;
 }
 
 function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: Props) {

@@ -2,6 +2,8 @@ import { withPigment } from "@pigment-css/nextjs-plugin";
 
 export default withPigment({
   experimental: {
+    typedRoutes: true,
+    useLightningcss: true,
     reactCompiler: true,
     webpackBuildWorker: true,
     webpackMemoryOptimizations: true,
@@ -9,7 +11,6 @@ export default withPigment({
     optimizePackageImports: [
       "@google/genai",
       "@radix-ui/react-dialog",
-      "@radix-ui/react-dropdown-menu",
       "@radix-ui/react-toast",
       "downshift",
       "heic-d-code",
@@ -25,12 +26,9 @@ export default withPigment({
       "react-spinners",
       "use-immer",
     ],
-    serverActions: {
-      bodySizeLimit: "20mb",
-    },
   },
 
-  webpack: (config) => {
+  webpack(config) {
     config.experiments = {
       ...config.experiments,
       layers: true,

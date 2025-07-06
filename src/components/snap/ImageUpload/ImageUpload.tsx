@@ -12,7 +12,7 @@ import {
   type FormEvent,
 } from "react";
 import FridgeImage from "./FridgeImage";
-import { scaleClamped } from "@components/Global";
+import { scaleClamped, type Ingredient } from "@components/Global";
 import { BarLoader } from "react-spinners";
 import Button from "@components/Button";
 import { AnimatePresence, type Variants } from "motion/react";
@@ -120,17 +120,17 @@ function FileUpload() {
     });
     const stream = res
       .body!.pipeThrough(new TextDecoderStream())
-      .pipeThrough(getJSONTransformer());
+      .pipeThrough<string>(getJSONTransformer());
     const reader = stream.getReader();
     while (true) {
-      const { done, value } = await reader.read();
+      const { value, done } = await reader.read();
       if (done) {
         break;
       }
       console.log(value);
       dispatch({
-        type: "addIngredientsFromJSON",
-        json: value!,
+        type: "addIngredients",
+        ingredients: JSON.parse(value) as Ingredient[],
       });
     }
     setPending(false);
@@ -138,7 +138,7 @@ function FileUpload() {
 
   return (
     <>
-      <Wrapper layout onSubmit={fetchGemini}>
+      <Wrapper layout onSubmit={(e) => void fetchGemini(e)}>
         <FileUploader>
           <label htmlFor={id}>
             <VisuallyHidden>Upload image(s)</VisuallyHidden>
@@ -146,7 +146,7 @@ function FileUpload() {
           <HiddenUpload
             title="Upload image(s)"
             id={id}
-            onChange={(e) => handleFiles(e)}
+            onChange={(e) => void handleFiles(e)}
             type="file"
             multiple
             accept=".png,.jpg,.webp,.heic,.heif"

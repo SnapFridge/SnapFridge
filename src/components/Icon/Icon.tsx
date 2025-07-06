@@ -75,12 +75,12 @@ export default function Icon({
         </svg>
       );
       break;
-    default:
+    default: {
       const LucideIcon: Icons.LucideIcon = Icons[icon];
       IconSVG = (
         <LucideIcon color={color} size={size} aria-hidden={ariaHidden} {...delegated} />
       );
-      break;
+    }
   }
   return (
     <>

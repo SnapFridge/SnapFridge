@@ -30,7 +30,12 @@ async function ensureContext(contents: { fileData: FileData }[]) {
 }
 
 // JSON minifier: Remove all whitespace + array syntax so we don't have to worry about it later + save on some networking
-function generator2Stream(gen: AsyncGenerator<GenerateContentResponse>) {
+type Generator = AsyncGenerator<
+  GenerateContentResponse,
+  undefined,
+  { value: GenerateContentResponse; done: boolean }
+>;
+function generator2Stream(gen: Generator) {
   const enum State {
     Out,
     InStr,
@@ -150,8 +155,9 @@ export async function POST(req: Request) {
     });
   }
 
-  ensureContext(contents);
-  const res = await ai.models.generateContentStream({
+  await ensureContext(contents);
+  /* eslint-disable  @typescript-eslint/no-unsafe-assignment */
+  const res: Generator = await ai.models.generateContentStream({
     model: "gemini-2.5-flash",
     contents,
     config: {

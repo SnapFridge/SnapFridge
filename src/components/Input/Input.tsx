@@ -1,15 +1,14 @@
 import { styled } from "@pigment-css/react";
-import { useId, type ComponentProps } from "react";
+import { useId, type ComponentProps, type HTMLInputTypeAttribute } from "react";
 
 type Input2ValueMap = {
   checkbox: boolean;
   radio: boolean;
-
-  // Everything else is just a string
-  [key: string]: string | boolean;
+} & {
+  [K in Exclude<HTMLInputTypeAttribute, "checkbox" | "radio">]: string;
 };
 
-type Props<T extends keyof Input2ValueMap> = {
+type Props<T extends keyof Input2ValueMap = "text"> = {
   label: string;
   onChange: (newValue: Input2ValueMap[T]) => void;
   type: T;
@@ -24,26 +23,25 @@ function Input<T extends keyof Input2ValueMap>({
 }: Props<T>) {
   const id = useId();
   return (
-    <>
-      <div>
-        <Label htmlFor={id}>{label}</Label>
-        <InputElement
-          id={id}
-          value={value}
-          onChange={(e) => {
-            switch (type) {
-              case "checkbox":
-              case "radio":
-                onChange(e.target.checked);
-                break;
-              default:
-                onChange(e.target.value);
-            }
-          }}
-          {...delegated}
-        />
-      </div>
-    </>
+    <div>
+      <Label htmlFor={id}>{label}</Label>
+      <InputElement
+        id={id}
+        value={value}
+        onChange={(e) => {
+          switch (type) {
+            case "checkbox":
+            case "radio":
+              onChange(e.target.checked);
+              break;
+            default:
+              onChange(e.target.value);
+          }
+        }}
+        type={type}
+        {...delegated}
+      />
+    </div>
   );
 }
 

@@ -17,13 +17,30 @@ function IngredientSection() {
   const [includePantry, setIncludePantry] = useState(true);
   const [ranking, setRanking] = useState(2);
 
-  function handleCheckboxChange(newValue: boolean) {
-    setIncludePantry(newValue);
+  // Only fetch ingredients for now, units will come later
+  async function fetchData() {
+    const opts: RequestInit = {
+      cache: "force-cache",
+    };
+    const urls = ["/Ingredients.txt", "/Units.txt"];
+    const promises = urls.map((url) =>
+      fetch(url, opts)
+        .then((r) => r.text())
+        .then((text) => text.split("\n"))
+    );
+    const [allIngredients, allUnits] = await Promise.all(promises);
+    setAllIngredients(allIngredients!);
+    setAllUnits(allUnits!);
   }
+  useEffect(() => void fetchData(), []);
 
-  /* function handleSpoonacularForm(event) {
-    let todo = 1;
-    } */
+  function ingredients2Tags() {
+    const tags = [];
+    for (const [k, v] of ingredients) {
+      tags.push(<IngredientBox key={k} ingredient={v} />);
+    }
+    return tags;
+  }
 
   return (
     <>
@@ -49,7 +66,7 @@ function IngredientSection() {
         <Input
           type="checkbox"
           label="Include Typical Pantry Items (water, salt, flour, etc)"
-          onChange={handleCheckboxChange}
+          onChange={(newVal: boolean) => setIncludePantry(newVal)}
           checked={includePantry}
         />
         <Input

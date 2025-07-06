@@ -2,15 +2,10 @@
 
 import { type ComponentProps, useState, useEffect } from "react";
 import Button from "@components/Button";
-import { DropdownMenu } from "radix-ui";
 import Icon from "@components/Icon";
 import useCurrentTheme from "./currentTheme.helper";
 
-interface Props extends ComponentProps<"button"> {
-  mobile?: boolean;
-}
-
-function ThemeSwitcher({ mobile = false, ...delegated }: Props) {
+function ThemeSwitcher({ ...delegated }: ComponentProps<"button">) {
   const [isClient, setIsClient] = useState(false);
   const [currentTheme, toggleTheme] = useCurrentTheme();
 
@@ -19,21 +14,13 @@ function ThemeSwitcher({ mobile = false, ...delegated }: Props) {
   }, []);
 
   if (!isClient) return undefined;
-  const children = (
-    <>
+
+  return (
+    <Button variant="icon" onClick={toggleTheme} {...delegated}>
       <Icon
         icon={currentTheme === "dark" ? "Sun" : "Moon"}
         description={`Turn off ${currentTheme} mode`}
       />
-    </>
-  );
-  if (mobile) {
-    return <DropdownMenu.Item onSelect={toggleTheme}>{children}</DropdownMenu.Item>;
-  }
-
-  return (
-    <Button variant="icon" onClick={toggleTheme} {...delegated}>
-      {children}
     </Button>
   );
 }

@@ -7,7 +7,7 @@ function heic2URL(worker: Worker, heicData: Uint8Array): Promise<string> {
       "message",
       (e) => {
         worker.removeEventListener("error", onErr);
-        resolve(e.data);
+        resolve(e.data as string);
       },
       { once: true }
     );

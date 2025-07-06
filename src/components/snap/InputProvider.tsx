@@ -21,7 +21,7 @@ export interface State {
 
 export type Action =
   | { type: "addIngredient"; ingredient: Ingredient }
-  | { type: "addIngredientsFromJSON"; json: string }
+  | { type: "addIngredients"; ingredients: Ingredient[] }
   | { type: "removeIngredient"; ingredient: Ingredient }
   | { type: "editIngredient"; old: Ingredient; new: Ingredient }
   | { type: "addFiles"; files: File[] }
@@ -43,9 +43,8 @@ function reducer(draft: State, action: Action) {
       addIngredient(action.ingredient);
       break;
     }
-    case "addIngredientsFromJSON": {
-      const ingredients: Ingredient[] = JSON.parse(action.json);
-      for (const ingredient of ingredients) {
+    case "addIngredients": {
+      for (const ingredient of action.ingredients) {
         addIngredient(ingredient);
       }
       break;
@@ -73,14 +72,14 @@ function reducer(draft: State, action: Action) {
   }
 }
 
-export type InputContext = {
+type InputContext = {
   dispatch: Dispatch<Action>;
   state: State;
 };
 
-export const InputContext = createContext<InputContext | undefined>(undefined);
+const InputContext = createContext<InputContext | undefined>(undefined);
 
-function InputProvider({ children }: PropsWithChildren) {
+export function InputProvider({ children }: PropsWithChildren) {
   const [state, dispatch] = useImmerReducer(reducer, {
     ingredients: new Map<string, Ingredient>(),
     files: [],
@@ -97,5 +96,3 @@ function InputProvider({ children }: PropsWithChildren) {
 export function useInputState() {
   return useContext(InputContext)!;
 }
-
-export default InputProvider;
