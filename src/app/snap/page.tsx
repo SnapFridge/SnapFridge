@@ -2,16 +2,19 @@
 
 import InputSection from "@components/snap/InputSection";
 import { PageMargin } from "@components/Global";
-import RecipeSection from "@components/RecipeSection";
 import InputProvider from "@components/snap/InputProvider";
 import useToast from "@components/ToastProvider/UseToast";
+import RecipeHolder from "@components/snap/RecipeHolder";
 
 export default function Page() {
   const { addSuccess } = useToast();
 
   return (
     <PageMargin>
-      <InputProvider></InputProvider>
+      <InputProvider>
+        <InputSection />
+        <RecipeHolder />
+      </InputProvider>
       <button
         onClick={() => {
           addSuccess("Hello, World!", "Wowie this works?" + Math.random());

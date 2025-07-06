@@ -10,9 +10,9 @@ import {
 import { enableMapSet } from "immer";
 import { useImmerReducer } from "use-immer";
 import { type Ingredient, type Recipe } from "@components/Global";
-import InputSection from "./InputSection";
-import RecipeSection from "@components/RecipeSection";
+
 enableMapSet();
+
 export interface State {
   ingredients: Map<string, Ingredient>;
   files: File[];
@@ -91,13 +91,7 @@ function InputProvider({ children }: PropsWithChildren) {
     return unmemoizedState;
   }, [unmemoizedState]);
 
-  return (
-    <InputContext value={{ state, dispatch }}>
-      <InputSection />
-      <RecipeSection recipes={state.recipes} />
-      <RecipeSection headerTxt="Previous Snaps" />
-    </InputContext>
-  );
+  return <InputContext value={{ state, dispatch }}>{children}</InputContext>;
 }
 
 export function useInputState() {
