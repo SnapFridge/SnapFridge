@@ -81,15 +81,11 @@ export type InputContext = {
 export const InputContext = createContext<InputContext | undefined>(undefined);
 
 function InputProvider({ children }: PropsWithChildren) {
-  const [unmemoizedState, dispatch] = useImmerReducer(reducer, {
+  const [state, dispatch] = useImmerReducer(reducer, {
     ingredients: new Map<string, Ingredient>(),
     files: [],
     recipes: [],
   });
-
-  const state = useMemo(() => {
-    return unmemoizedState;
-  }, [unmemoizedState]);
 
   return <InputContext value={{ state, dispatch }}>{children}</InputContext>;
 }
