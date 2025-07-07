@@ -86,7 +86,7 @@ function RecipeSection({ headerTxt = "Recipes Found", recipes = recipesExample }
       </Header>
       <RecipeList>
         {recipes.map((recipe) => (
-          <RecipeCard recipe={loading ? undefined : recipe} key={recipe.id} />
+          <RecipeCard recipe={loading ? undefined : recipe} key={recipe.title} />
         ))}
       </RecipeList>
     </>

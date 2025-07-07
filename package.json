@@ -30,6 +30,7 @@
     "react-dom": "^19.1.0",
     "react-loading-skeleton": "^3.5.0",
     "react-spinners": "^0.17.0",
+    "swr": "^2.3.4",
     "use-immer": "^0.11.0"
   },
   "devDependencies": {
