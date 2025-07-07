@@ -4,6 +4,7 @@ import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
 import { Suspense } from "react";
 import IngredientForm from "./IngredientForm";
+import RecipeDialogSkeleton from "./RecipeDialogSkeleton";
 
 function RecipeDialog() {
   return (
@@ -15,8 +16,7 @@ function RecipeDialog() {
         </AddTrigger>
       }
     >
-      {/* TODO: Implement an actual form skeleton */}
-      <Suspense fallback={<p>Loading form..</p>}>
+      <Suspense fallback={<RecipeDialogSkeleton />}>
         <IngredientForm />
       </Suspense>
     </AppDialog>
