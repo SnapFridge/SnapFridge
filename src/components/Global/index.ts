@@ -45,19 +45,22 @@ export type Ingredient = {
   meta?: string[];
   original?: string;
   originalName?: string;
+  extendedName?: string;
   unitLong?: string;
   unitShort?: string;
 };
 
 export type Recipe = {
-  id: number;
-  image: string;
-  imageType: string;
-  likes: number;
   missedIngredientCount: number;
   missedIngredients: Ingredient[];
   title: string;
-  unusedIngredients: Ingredient[];
   usedIngredientCount: number;
   usedIngredients: Ingredient[];
+
+  // Unused
+  unusedIngredients?: Ingredient[];
+  id?: number;
+  image: string;
+  imageType: string;
+  likes?: number;
 };

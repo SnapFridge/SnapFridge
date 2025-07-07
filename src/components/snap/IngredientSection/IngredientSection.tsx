@@ -5,17 +5,26 @@ import Icon from "@components/Icon";
 import IngredientBox from "./Ingredient";
 import { useInputState } from "../InputProvider";
 import Button from "@components/Button";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import RecipeDialog from "../RecipeDialog";
 import Input from "@components/Input";
 import { ul } from "motion/react-client";
+import getRecipesJSON from "./actions";
 
 function IngredientSection() {
   const { state } = useInputState();
   const { ingredients } = state;
 
-  const [includePantry, setIncludePantry] = useState(true);
+  const [allIngredients, setAllIngredients] = useState<string[]>([]);
+  const [allUnits, setAllUnits] = useState<string[]>([]);
+
+  const [ingredient, setIngredient] = useState("");
+  const [unit, setUnit] = useState("");
+  const [amount, setAmount] = useState(0);
+
+  const [ignorePantry, setIgnorePantry] = useState(true);
   const [ranking, setRanking] = useState(2);
+  const [pending, setPending] = useState(false);
 
   // Only fetch ingredients for now, units will come later
   async function fetchData() {
@@ -42,6 +51,23 @@ function IngredientSection() {
     return tags;
   }
 
+  async function fetchSpoonacular(e: FormEvent) {
+    setPending(true);
+    e.preventDefault();
+    let ingredientsStr = "";
+    for (const [, ingredient] of ingredients) {
+      ingredientsStr += ingredient.name;
+      ingredientsStr += ",";
+    }
+    const query = new URLSearchParams({
+      ingredients: ingredientsStr,
+      ranking: `${ranking}`,
+      ignorePantry: `${ignorePantry}`,
+    }).toString();
+    await getRecipesJSON(query);
+    setPending(false);
+  }
+
   return (
     <>
       {ingredients.size < 1 ? (
@@ -62,12 +88,63 @@ function IngredientSection() {
           ))}
         </IngredientContainer>
       )}
-      <form>
+      {/* These are temporary inputs for testing */}
+      <AppDialog
+        title="Hello, World!"
+        description="Don't trust atoms because they make up everything!"
+        trigger={<Button variant="secondary">Open Dialog</Button>}
+      >
+        <p>This is just a thing lol</p>
+      </AppDialog>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          dispatch({
+            type: "addIngredient",
+            ingredient: {
+              name: ingredient,
+              amount: amount,
+              unit: unit || "count",
+            },
+          });
+        }}
+      >
+        <SuggestedInput
+          value={ingredient}
+          label="Enter Ingredient Name:"
+          suggestions={allIngredients}
+          onChange={(newVal: string) => {
+            setIngredient(newVal);
+          }}
+          required
+        />
+        <Input
+          label="Enter Amount:"
+          type="number"
+          value={isNaN(amount) || amount < 1 ? "" : amount.toString()}
+          onChange={(newVal) => {
+            setAmount(Number(newVal));
+          }}
+          required
+        />
+        <SuggestedInput
+          value={unit}
+          label="Enter Unit (leave blank for unitless):"
+          suggestions={allUnits}
+          onChange={(newVal: string) => {
+            setUnit(newVal);
+          }}
+        />
+        <Button type="submit" variant="secondary">
+          New Ingredient...
+        </Button>
+      </form>
+      <form onSubmit={(e) => fetchSpoonacular(e)}>
         <Input
           type="checkbox"
-          label="Include Typical Pantry Items (water, salt, flour, etc)"
-          onChange={(newVal: boolean) => setIncludePantry(newVal)}
-          checked={includePantry}
+          label="Ignore typical pantry Items (water, salt, flour, etc)"
+          onChange={(newVal: boolean) => setIgnorePantry(newVal)}
+          checked={ignorePantry}
         />
         <Input
           type="radio"

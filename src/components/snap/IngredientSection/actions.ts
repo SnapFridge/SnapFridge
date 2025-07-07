@@ -1,8 +1,5 @@
 "use server";
-
-import { type Recipe } from "@components/Global";
-
-async function fetchRecipes(query: string): Promise<Recipe[]> {
+async function getRecipesJSON(query: string): Promise<string> {
   const res = await fetch(
     "https://api.spoonacular.com/recipes/findByIngredients?" + query,
     {
@@ -11,5 +8,6 @@ async function fetchRecipes(query: string): Promise<Recipe[]> {
       },
     }
   );
-  return (await res.json()) as Recipe[];
+  return res.text();
 }
+export default getRecipesJSON;
