@@ -81,7 +81,11 @@ function InputProvider({ children }: PropsWithChildren) {
     recipes: [],
   });
 
-  return <InputContext value={{ state, dispatch }}>{children}</InputContext>;
+  const value = useMemo(() => {
+    return { state, dispatch };
+  }, [state, dispatch]);
+
+  return <InputContext value={value}>{children}</InputContext>;
 }
 
 export function useInputState() {

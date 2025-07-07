@@ -31,7 +31,7 @@ function AppDialog({ title, description, trigger, children }: PropsWithChildren<
               />
             </Overlay>
             <ContentContainer>
-              <Content onCloseAutoFocus={(e) => e.preventDefault()} asChild>
+              <Content asChild>
                 <motion.div
                   variants={ContentVariants}
                   initial="initial"
