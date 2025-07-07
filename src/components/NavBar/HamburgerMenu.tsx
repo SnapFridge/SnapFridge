@@ -8,9 +8,9 @@ import { styled } from "@pigment-css/react";
 import { Dialog } from "radix-ui";
 import { useRef } from "react";
 
-interface Props extends React.PropsWithChildren {
-  links: { href: string; title: string }[];
-}
+type Props = {
+  links: { href: "/about" | "/snap"; title: string }[];
+};
 
 function HamburgerMenu({ links }: Props) {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -112,7 +112,7 @@ const MenuLink = styled(Link)({
   alignItems: "center",
   gap: "4px",
 
-  fontSize: `var(--1rem)`,
+  fontSize: `${18 / 16}rem`,
   paddingTop: "auto",
   paddingBottom: "auto",
   minHeight: `${44 / 16}rem`,

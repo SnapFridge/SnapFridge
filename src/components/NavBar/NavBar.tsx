@@ -5,7 +5,7 @@ import Logo from "@components/Logo";
 import { ON_MOBILE } from "@components/Global";
 import HamburgerMenu from "./HamburgerMenu";
 
-const Links = [
+const Links: { href: "/snap" | "/about"; title: string }[] = [
   {
     href: "/snap",
     title: "Get Started",

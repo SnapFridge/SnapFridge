@@ -36,11 +36,7 @@ type Generator = AsyncGenerator<
   { value: GenerateContentResponse; done: boolean }
 >;
 function generator2Stream(gen: Generator) {
-  const enum State {
-    Out,
-    InStr,
-  }
-  let state: State = State.Out;
+  let inStr = false;
   return new ReadableStream({
     async pull(controller) {
       const { value, done } = await gen.next();
@@ -54,7 +50,7 @@ function generator2Stream(gen: Generator) {
           // Ignore whitespace, except when we're in a string
           case " ":
           case "\n":
-            if (state == State.InStr) {
+            if (inStr) {
               break;
             }
           // Ignore arrays, it should only appear at the start and end
@@ -62,7 +58,7 @@ function generator2Stream(gen: Generator) {
           case "]":
             continue;
           case '"':
-            state = state == State.InStr ? State.Out : State.InStr;
+            inStr = !inStr;
         }
         processed += c;
       }

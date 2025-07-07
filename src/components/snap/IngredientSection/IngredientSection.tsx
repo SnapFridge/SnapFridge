@@ -10,9 +10,10 @@ import RecipeDialog from "../RecipeDialog";
 import Input from "@components/Input";
 import { ul } from "motion/react-client";
 import getRecipesJSON from "./actions";
+import type { Recipe } from "@components/Global";
 
 function IngredientSection() {
-  const { state } = useInputState();
+  const { state, dispatch } = useInputState();
   const { ingredients } = state;
 
   const [ignorePantry, setIgnorePantry] = useState(true);
@@ -32,7 +33,10 @@ function IngredientSection() {
       ranking: `${ranking}`,
       ignorePantry: `${ignorePantry}`,
     }).toString();
-    await getRecipesJSON(query);
+    dispatch({
+      type: "addRecipes",
+      recipes: JSON.parse(await getRecipesJSON(query)) as Recipe[],
+    });
     setPending(false);
   }
 

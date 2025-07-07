@@ -1,6 +1,7 @@
 import { styled } from "@pigment-css/react";
 import {
   useId,
+  type ChangeEvent,
   type ComponentProps,
   type HTMLInputTypeAttribute,
   type ReactNode,
@@ -27,33 +28,30 @@ function Input<T extends keyof Input2ValueMap>({
   ...delegated
 }: Props<T>) {
   const id = useId();
+  function onChangeAdapter(e: ChangeEvent<HTMLInputElement>) {
+    const t = e.target;
+    switch (type) {
+      case "checkbox":
+      case "radio":
+        void onChange(t.checked as Input2ValueMap[T]);
+        break;
+      case "file": {
+        const files = t.files!;
+        if (files.length > 0) {
+          void onChange(files as Input2ValueMap[T]);
+          t.value = "";
+        }
+        break;
+      }
+      default:
+        void onChange(t.value as Input2ValueMap[T]);
+    }
+  }
   return (
-    <div>
+    <>
       <Label htmlFor={id}>{label}</Label>
-      <InputElement
-        id={id}
-        onChange={(e) => {
-          switch (type) {
-            case "checkbox":
-            case "radio":
-              void onChange(e.target.checked);
-              break;
-            case "file": {
-              const files = e.target.files!;
-              if (files.length > 0) {
-                void onChange(files);
-                e.target.value = "";
-              }
-              break;
-            }
-            default:
-              void onChange(e.target.value);
-          }
-        }}
-        type={type}
-        {...delegated}
-      />
-    </div>
+      <InputElement id={id} onChange={onChangeAdapter} type={type} {...delegated} />
+    </>
   );
 }
 
