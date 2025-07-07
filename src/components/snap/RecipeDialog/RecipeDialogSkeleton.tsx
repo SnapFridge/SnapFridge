@@ -10,41 +10,68 @@ function RecipeDialogSkeleton() {
         highlightColor="var(--skeleton-highlight)"
       >
         <Container>
-          <Label>
-            <Skeleton width={200} />
-          </Label>
-          <Skeleton width={310} height={30} />
+          <IngredientName>
+            <Skeleton />
+          </IngredientName>
+          <Input>
+            <Skeleton height={30} />
+          </Input>
         </Container>
+
         <Container>
-          <Label>
-            <Skeleton width={120} />
-          </Label>
-          <Skeleton width={310} height={30} />
+          <Amount>
+            <Skeleton />
+          </Amount>
+          <Input>
+            <Skeleton height={30} />
+          </Input>
         </Container>
+
         <Container>
-          <Label>
-            <Skeleton width={280} />
-          </Label>
-          <Skeleton width={310} height={30} />
+          <Unit>
+            <Skeleton />
+          </Unit>
+          <Input>
+            <Skeleton height={30} />
+          </Input>
         </Container>
+
         <Button>
-          <Skeleton width={150} height={44} borderRadius={8} />
+          <Skeleton height={44} />
         </Button>
       </SkeletonTheme>
     </div>
   );
 }
 
-const Label = styled("label")({
+const Container = styled("div")({
+  marginBottom: "6px",
   fontSize: `${16 / 16}rem`,
 });
 
-const Container = styled("div")({
-  marginBottom: "6px",
+// Label Names
+const IngredientName = styled("label")({
+  display: "inline-block",
+  width: "min(100%, 200px)",
+});
+
+const Amount = styled("label")({
+  display: "inline-block",
+  width: "min(100%, 120px)",
+});
+
+const Unit = styled("label")({
+  display: "inline-block",
+  width: "min(100%, 280px)",
+});
+
+const Input = styled("div")({
+  width: "min(100%, 310px)",
 });
 
 const Button = styled("div")({
   lineHeight: 1,
+  width: "min(100%, 150px)",
 });
 
 export default RecipeDialogSkeleton;
