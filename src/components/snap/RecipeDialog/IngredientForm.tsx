@@ -2,8 +2,8 @@
 import { useInputState } from "../InputProvider";
 import { useState } from "react";
 import useSWR from "swr";
-import { SuggestedInput } from "@components/Input";
-import { Input } from "@components/Input";
+import SuggestedInput from "@components/SuggestedInput";
+import Input from "@components/Input";
 import Button from "@components/Button";
 
 const textFetcher = (url: string) =>

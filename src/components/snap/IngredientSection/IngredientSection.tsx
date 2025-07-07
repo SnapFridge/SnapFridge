@@ -7,7 +7,7 @@ import { useInputState } from "../InputProvider";
 import Button from "@components/Button";
 import { useState } from "react";
 import RecipeDialog from "../RecipeDialog";
-import { Input } from "@components/Input";
+import Input from "@components/Input";
 import { ul } from "motion/react-client";
 
 function IngredientSection() {

@@ -15,7 +15,7 @@ type Props<T extends keyof Input2ValueMap> = {
   type: T;
 } & Omit<ComponentProps<"input">, "onChange" | "type">;
 
-export function Input<T extends keyof Input2ValueMap>({
+function Input<T extends keyof Input2ValueMap>({
   label,
   value,
   onChange,
@@ -53,6 +53,8 @@ const Label = styled("label")({
   textAlign: "left",
 });
 
-export const InputElem = styled("input")({
+const InputElem = styled("input")({
   paddingLeft: "8px",
 });
+
+export default Input;
