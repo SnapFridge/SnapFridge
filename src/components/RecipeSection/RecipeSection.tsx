@@ -4,7 +4,7 @@ import { styled } from "@pigment-css/react";
 import { ul } from "motion/react-client";
 import { scaleClamped, type Recipe } from "@components/Global";
 import Icon from "@components/Icon";
-import { useState } from "react";
+
 type Props = {
   headerTxt?: string;
   recipes?: Recipe[];
@@ -73,20 +73,15 @@ const recipesExample: Recipe[] = [
   },
 ];
 function RecipeSection({ headerTxt = "Recipes Found", recipes = recipesExample }: Props) {
-  const [loading, setLoading] = useState(true);
-  function switchLoading() {
-    setLoading(!loading);
-  }
   return (
     <>
-      <button onClick={switchLoading}>switch loading</button>
       <Header>
         <HeaderTxt>{headerTxt}</HeaderTxt>
         <Icon aria-hidden icon="Sparkles" size={50}></Icon>
       </Header>
       <RecipeList>
         {recipes.map((recipe) => (
-          <RecipeCard recipe={loading ? undefined : recipe} key={recipe.title} />
+          <RecipeCard recipe={recipe} key={recipe.title} />
         ))}
       </RecipeList>
     </>

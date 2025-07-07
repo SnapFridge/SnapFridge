@@ -56,11 +56,11 @@ export type Recipe = {
   title: string;
   usedIngredientCount: number;
   usedIngredients: Ingredient[];
+  image: string;
 
   // Unused
   unusedIngredients?: Ingredient[];
   id?: number;
-  image: string;
-  imageType: string;
+  imageType?: string;
   likes?: number;
 };

@@ -18,6 +18,7 @@
   "rules": {
     "react/no-unescaped-entities": "off",
     "@typescript-eslint/no-unused-vars": "warn",
-    "@typescript-eslint/prefer-promise-reject-errors": "off"
+    "@typescript-eslint/prefer-promise-reject-errors": "off",
+    "@typescript-eslint/restrict-template-expressions": "off"
   }
 }

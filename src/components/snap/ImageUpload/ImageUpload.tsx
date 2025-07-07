@@ -2,15 +2,7 @@
 
 import { styled, css } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import {
-  useEffect,
-  useId,
-  useRef,
-  useState,
-  type ChangeEvent,
-  type CSSProperties,
-  type FormEvent,
-} from "react";
+import { useEffect, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import FridgeImage from "./FridgeImage";
 import { scaleClamped, type Ingredient } from "@components/Global";
 import { BarLoader } from "react-spinners";
@@ -22,6 +14,7 @@ import { useInputState } from "../InputProvider";
 import useToast from "@components/ToastProvider/UseToast";
 import getJSONTransformer from "./JSONTransformer";
 import VisuallyHidden from "@components/VisuallyHidden";
+import Input from "@components/Input";
 
 function FileUpload() {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
@@ -30,7 +23,6 @@ function FileUpload() {
   const worker = useRef<Worker>(undefined as unknown as Worker);
   const { addWarn } = useToast();
   const [pending, setPending] = useState(false);
-  const id = useId();
 
   // Initialize a worker
   useEffect(() => {
@@ -52,15 +44,10 @@ function FileUpload() {
     };
   }, [imgURLs]);
 
-  async function handleFiles(event: ChangeEvent<HTMLInputElement>) {
-    // Only null when the target is not <input type="file">, but we know it is
-    const usrFiles = event.target.files!;
-    if (usrFiles.length < 1) {
-      return;
-    }
+  async function handleFiles(files: FileList) {
     const newImages: string[] = [];
-    const validUsrFiles: File[] = [];
-    for (const file of usrFiles) {
+    const validFiles: File[] = [];
+    for (const file of files) {
       switch (file.type) {
         case "image/png":
         case "image/jpeg":
@@ -82,19 +69,16 @@ function FileUpload() {
         default:
           continue;
       }
-      validUsrFiles.push(file);
+      validFiles.push(file);
     }
-    if (validUsrFiles.length < usrFiles.length) {
+    if (validFiles.length < files.length) {
       addWarn(
         "File Upload Error",
         "Files with unsupported format were uploaded, they've been ignored."
       );
     }
 
-    dispatch({ type: "addFiles", files: validUsrFiles });
-
-    // Reset so that you don"t have invisible imgURLs
-    event.target.value = "";
+    dispatch({ type: "addFiles", files: validFiles });
     const nextImages = [...imgURLs, ...newImages];
     setImgURLs(nextImages);
   }
@@ -140,13 +124,11 @@ function FileUpload() {
     <>
       <Wrapper layout onSubmit={(e) => void fetchGemini(e)}>
         <FileUploader>
-          <label htmlFor={id}>
-            <VisuallyHidden>Upload image(s)</VisuallyHidden>
-          </label>
+          {/*TODO: Fix hover behavior*/}
           <HiddenUpload
+            label={<VisuallyHidden>Upload image(s)</VisuallyHidden>}
             title="Upload image(s)"
-            id={id}
-            onChange={(e) => void handleFiles(e)}
+            onChange={handleFiles}
             type="file"
             multiple
             accept=".png,.jpg,.webp,.heic,.heif"
@@ -205,7 +187,7 @@ const FileUploader = styled("div")({
   width: "100%",
 });
 
-const HiddenUpload = styled("input")({
+const HiddenUpload = styled(Input)({
   position: "absolute",
   width: "100%",
   height: "100%",

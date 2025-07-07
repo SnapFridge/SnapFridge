@@ -1,7 +1,8 @@
 "use client";
 
 import { styled } from "@pigment-css/react";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence } from "motion/react";
+import { div } from "motion/react-client";
 import { useState, useEffect } from "react";
 import Button from "@components/Button";
 import { ON_MOBILE } from "@components/Global";
@@ -63,7 +64,7 @@ const ContainerVariants = {
   },
 };
 
-const CookieBannerContainer = styled(motion.div)({
+const CookieBannerContainer = styled(div)({
   zIndex: 1,
   width: "400px",
   height: "auto",

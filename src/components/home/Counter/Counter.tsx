@@ -1,6 +1,7 @@
 "use client";
 
-import { useMotionValue, useTransform, useInView, animate, motion } from "motion/react";
+import { useMotionValue, useTransform, useInView, animate } from "motion/react";
+import { span as MotionSpan } from "motion/react-client";
 import { useEffect, useRef } from "react";
 
 type Props = {
@@ -34,9 +35,9 @@ function Counter({
   // apparently using <pre> is better but I don't know how to get rid of the default font family
   // todo: figure out how to get rid of the default behavior of pre
   return (
-    <motion.span ref={ref} {...delegated}>
+    <MotionSpan ref={ref} {...delegated}>
       {rounded}
-    </motion.span>
+    </MotionSpan>
   );
 }
 

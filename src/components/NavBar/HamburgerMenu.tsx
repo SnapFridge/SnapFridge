@@ -112,7 +112,7 @@ const MenuLink = styled(Link)({
   alignItems: "center",
   gap: "4px",
 
-  fontSize: `${18 / 16}rem`,
+  fontSize: `var(--1rem)`,
   paddingTop: "auto",
   paddingBottom: "auto",
   minHeight: `${44 / 16}rem`,

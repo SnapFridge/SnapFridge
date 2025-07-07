@@ -1,7 +1,8 @@
 "use client";
 
 import { styled } from "@pigment-css/react";
-import { motion, type Variants } from "motion/react";
+import { type Variants } from "motion/react";
+import { ul, li } from "motion/react-client";
 
 const Descriptions = {
   "Rylex Phan": `
@@ -73,7 +74,7 @@ const CardAnimations: Variants = {
   },
 };
 
-const CardContainer = styled(motion.ul)({
+const CardContainer = styled(ul)({
   display: "flex",
   justifyContent: "space-evenly",
   listStyleType: "none",
@@ -89,7 +90,7 @@ const CardContainer = styled(motion.ul)({
   },
 });
 
-const Card = styled(motion.li)({
+const Card = styled(li)({
   alignItems: "center",
   padding: "24px",
   border: "1px solid var(--accent-950)",

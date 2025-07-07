@@ -7,7 +7,8 @@ import { Toast } from "radix-ui";
 import { styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@components/Global";
 import { ToastContext } from "@components/ToastProvider";
-import { motion, AnimatePresence } from "motion/react";
+import { AnimatePresence } from "motion/react";
+import { ol } from "motion/react-client";
 
 function Toaster() {
   const [isClient, setIsClient] = useState(false);
@@ -63,7 +64,7 @@ const ToastContainer = styled("div")({
   },
 });
 
-const Viewport = styled(motion.ol)({
+const Viewport = styled(ol)({
   display: "flex",
   flexDirection: "column",
   gap: "8px",

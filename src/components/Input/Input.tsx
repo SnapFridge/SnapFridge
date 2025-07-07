@@ -1,22 +1,27 @@
 import { styled } from "@pigment-css/react";
-import { useId, type ComponentProps, type HTMLInputTypeAttribute } from "react";
+import {
+  useId,
+  type ComponentProps,
+  type HTMLInputTypeAttribute,
+  type ReactNode,
+} from "react";
 
 type Input2ValueMap = {
   checkbox: boolean;
   radio: boolean;
+  file: FileList;
 } & {
-  [K in Exclude<HTMLInputTypeAttribute, "checkbox" | "radio">]: string;
+  [K in Exclude<HTMLInputTypeAttribute, "checkbox" | "radio" | "file">]: string;
 };
 
 type Props<T extends keyof Input2ValueMap = "text"> = {
-  label: string;
-  onChange: (newValue: Input2ValueMap[T]) => void;
+  label: ReactNode;
+  onChange: (newValue: Input2ValueMap[T]) => void | Promise<void>;
   type: T;
 } & Omit<ComponentProps<"input">, "onChange" | "type">;
 
 function Input<T extends keyof Input2ValueMap>({
   label,
-  value,
   onChange,
   type,
   ...delegated
@@ -27,15 +32,22 @@ function Input<T extends keyof Input2ValueMap>({
       <Label htmlFor={id}>{label}</Label>
       <InputElement
         id={id}
-        value={value}
         onChange={(e) => {
           switch (type) {
             case "checkbox":
             case "radio":
-              onChange(e.target.checked);
+              void onChange(e.target.checked);
               break;
+            case "file": {
+              const files = e.target.files!;
+              if (files.length > 0) {
+                void onChange(files);
+                e.target.value = "";
+              }
+              break;
+            }
             default:
-              onChange(e.target.value);
+              void onChange(e.target.value);
           }
         }}
         type={type}

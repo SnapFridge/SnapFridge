@@ -60,7 +60,7 @@ function IngredientSection() {
         <Input
           type="checkbox"
           label="Ignore typical pantry Items (water, salt, flour, etc)"
-          onChange={(newVal: boolean) => setIgnorePantry(newVal)}
+          onChange={setIgnorePantry}
           checked={ignorePantry}
           disabled={pending}
         />

@@ -22,9 +22,9 @@ function NavBar() {
       <LeftNav>
         <Logo />
         {Links.map(({ href, title }) => (
-          <Link key={href} className={MobileGone} href={href}>
+          <NavLink key={href} className={MobileGone} href={href}>
             {title}
-          </Link>
+          </NavLink>
         ))}
       </LeftNav>
       <ThemeSwitcher className={MobileGone} />
@@ -39,6 +39,9 @@ const LeftNav = styled("div")({
   alignItems: "center",
 });
 
+const NavLink = styled(Link)({
+  fontSize: "var(--1rem)",
+});
 const MobileGone = css({
   display: "block",
 
