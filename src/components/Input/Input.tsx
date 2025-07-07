@@ -27,7 +27,7 @@ function Input<T extends keyof Input2ValueMap>({
     <>
       <div>
         <Label htmlFor={id}>{label}</Label>
-        <InputElem
+        <InputElement
           id={id}
           value={value}
           onChange={(e) => {
@@ -47,13 +47,15 @@ function Input<T extends keyof Input2ValueMap>({
   );
 }
 
-const Label = styled("label")({
+export const Label = styled("label")({
+  fontSize: `${16 / 16}rem`,
   display: "block",
   width: "100%",
   textAlign: "left",
+  color: "var(--gray-500)",
 });
 
-const InputElem = styled("input")({
+export const InputElement = styled("input")({
   paddingLeft: "8px",
 });
 

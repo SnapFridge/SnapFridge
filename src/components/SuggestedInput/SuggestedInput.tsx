@@ -1,6 +1,7 @@
 import { styled } from "@pigment-css/react";
 import { useState, type ComponentProps } from "react";
 import { useCombobox } from "downshift";
+import { Label, InputElement } from "@components/Input";
 
 interface Props extends Omit<ComponentProps<"input">, "onChange"> {
   label: string;
@@ -67,19 +68,9 @@ function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: P
   );
 }
 
-const InputElement = styled("input")({
-  paddingLeft: "8px",
-});
-
 const Wrapper = styled("div")({
   width: "fit-content",
   position: "relative",
-});
-
-const Label = styled("label")({
-  display: "block",
-  width: "100%",
-  textAlign: "left",
 });
 
 const Menu = styled("ul")({
