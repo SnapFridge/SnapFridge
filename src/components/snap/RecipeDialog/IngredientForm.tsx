@@ -18,10 +18,10 @@ function IngredientForm() {
   const [amount, setAmount] = useState(0);
   const [unit, setUnit] = useState("");
 
-  const { data: allIngredients } = useSWR("/Ingredients.txt", textFetcher, {
+  const { data: allIngredients } = useSWR("/ingredients.txt", textFetcher, {
     suspense: true,
   });
-  const { data: allUnits } = useSWR("/Units.txt", textFetcher, { suspense: true });
+  const { data: allUnits } = useSWR("/units.txt", textFetcher, { suspense: true });
 
   return (
     <form

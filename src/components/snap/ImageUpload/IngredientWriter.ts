@@ -12,7 +12,7 @@ function getIngredientWriter(dispatch: Dispatch<Action>) {
   let objPart = "";
   let objStart = 0;
   let objEnd = 0;
-  return new WritableStream({
+  return new WritableStream<string>({
     write(chunk) {
       let processed = objPart;
       for (const c of chunk) {

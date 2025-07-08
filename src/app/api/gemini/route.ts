@@ -156,7 +156,7 @@ export async function POST(req: Request) {
     });
   }
 
-  // eslint-disable @typescript-eslint/no-unsafe-assignment
+  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
   const res: Generator = await ai.models.generateContentStream({
     model: "gemini-2.5-flash",
     contents,
