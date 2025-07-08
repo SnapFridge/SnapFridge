@@ -29,12 +29,12 @@ export type Action =
   | { type: "addRecipes"; recipes: Recipe[] };
 
 function reducer(draft: State, action: Action) {
-  function addIngredient(ingredient: Ingredient) {
-    const key = `${ingredient.name}-${ingredient.unit}`;
+  function addIngredient({ name, amount, unit }: Ingredient) {
+    const key = `${name}-${unit}`;
     if (draft.ingredients.has(key)) {
-      draft.ingredients.get(key)!.amount += ingredient.amount;
+      draft.ingredients.get(key)!.amount += amount;
     } else {
-      draft.ingredients.set(key, ingredient);
+      draft.ingredients.set(key, { name, amount, unit });
     }
   }
 
@@ -50,7 +50,8 @@ function reducer(draft: State, action: Action) {
       break;
     }
     case "removeIngredient": {
-      draft.ingredients.delete(`${action.ingredient.name}-${action.ingredient.unit}`);
+      const { name, unit } = action.ingredient;
+      draft.ingredients.delete(`${name}-${unit}`);
       break;
     }
     case "editIngredient": {

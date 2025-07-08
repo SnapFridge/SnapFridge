@@ -10,7 +10,7 @@ import RecipeDialog from "../RecipeDialog";
 import Input from "@components/Input";
 import { ul } from "motion/react-client";
 import getRecipesJSON from "./actions";
-import type { Recipe } from "@components/Global";
+import { type Recipe } from "@components/Global";
 
 function IngredientSection() {
   const { state, dispatch } = useInputState();
@@ -101,7 +101,6 @@ const IngredientTitle = styled("h1")({
   textAlign: "center",
 });
 
-// It's different type, I don't think there is any other way
 const BothContainer = styled("div")({
   position: "relative",
   margin: "36px 0 12px 0",
@@ -112,24 +111,24 @@ const BothContainer = styled("div")({
   padding: "24px",
   borderRadius: "8px",
   minHeight: "220px",
+  maxWidth: "500px",
   height: "fit-content",
+  width: "100%",
 });
 
 const NoIngredientContainer = styled(BothContainer)({
   flexDirection: "column",
   border: "1px solid var(--text-950)",
-  opacity: 0.55,
-  maxWidth: "450px",
-  width: "100%",
+  opacity: 0.7,
 });
 
 const IngredientContainer = styled(BothContainer)({
   flexDirection: "row",
   flexWrap: "wrap",
   border: "1px solid var(--accent-400)",
-  maxWidth: "600px",
-  minWidth: "450px",
-  width: "fit-content",
+  opacity: 1,
+  maxHeight: "50vh",
+  overflow: "auto",
 });
 
 export default IngredientSection;

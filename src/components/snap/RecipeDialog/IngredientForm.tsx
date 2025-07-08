@@ -5,6 +5,7 @@ import useSWR from "swr";
 import SuggestedInput from "@components/SuggestedInput";
 import Input from "@components/Input";
 import Button from "@components/Button";
+import { css } from "@pigment-css/react";
 
 const textFetcher = (url: string) =>
   fetch(url)
@@ -45,6 +46,7 @@ function IngredientForm() {
           setIngredient(newVal);
         }}
         required
+        className={LimitedWidth}
       />
       <Input
         label="Enter Amount:"
@@ -54,6 +56,7 @@ function IngredientForm() {
           setAmount(Number(newVal));
         }}
         required
+        className={LimitedWidth}
       />
       <SuggestedInput
         value={unit}
@@ -62,6 +65,7 @@ function IngredientForm() {
         onChange={(newVal: string) => {
           setUnit(newVal);
         }}
+        className={LimitedWidth}
       />
       <Button type="submit" variant="secondary">
         New Ingredient...
@@ -69,5 +73,10 @@ function IngredientForm() {
     </form>
   );
 }
+
+const LimitedWidth = css({
+  maxWidth: "100%",
+  marginBottom: "10px",
+});
 
 export default IngredientForm;

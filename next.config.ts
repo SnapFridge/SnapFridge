@@ -27,6 +27,12 @@ export default withPigment({
       "use-immer",
     ],
   },
+  poweredByHeader: false,
+
+  // TODO: Add CSP
+  async headers() {
+    return [];
+  },
 
   webpack(config) {
     config.experiments = {

@@ -38,6 +38,7 @@ type Generator = AsyncGenerator<
   undefined,
   { value: GenerateContentResponse; done: boolean }
 >;
+
 function generator2Stream(gen: Generator) {
   let inStr = false;
   return new ReadableStream({
