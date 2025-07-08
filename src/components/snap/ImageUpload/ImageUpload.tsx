@@ -12,9 +12,9 @@ import { button, form } from "motion/react-client";
 import heic2URL from "./HeicDCode";
 import { useInputState } from "../InputProvider";
 import useToast from "@components/ToastProvider/UseToast";
-import getJSONTransformer from "./JSONTransformer";
 import VisuallyHidden from "@components/VisuallyHidden";
 import Input from "@components/Input";
+import getIngredientWriter from "./IngredientWriter";
 
 function FileUpload() {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
@@ -102,21 +102,9 @@ function FileUpload() {
       method: "POST",
       body: body,
     });
-    const stream = res
+    await res
       .body!.pipeThrough(new TextDecoderStream())
-      .pipeThrough<string>(getJSONTransformer());
-    const reader = stream.getReader();
-    while (true) {
-      const { value, done } = await reader.read();
-      if (done) {
-        break;
-      }
-      console.log(value);
-      dispatch({
-        type: "addIngredients",
-        ingredients: JSON.parse(value) as Ingredient[],
-      });
-    }
+      .pipeTo(getIngredientWriter(dispatch));
     setPending(false);
   }
 

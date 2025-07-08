@@ -4,16 +4,19 @@ import {
   type FileData,
   type GenerateContentResponse,
 } from "@google/genai";
+import { randomBytes } from "node:crypto";
 
 const ai = new GoogleGenAI({ apiKey: process.env["GEMINI_KEY"]! });
 
 async function ensureContext(contents: { fileData: FileData }[]) {
-  const names = ["Units.txt", "Ingredients.txt"];
+  const names = ["units", "ingredients"];
   for (const name of names) {
-    let file = await ai.files.get({ name });
-    if (!file) {
+    let file;
+    try {
+      file = await ai.files.get({ name });
+    } catch {
       file = await ai.files.upload({
-        file: "/" + name,
+        file: `public/${name}.txt`,
         config: {
           mimeType: "text/plain",
           name,
@@ -47,12 +50,12 @@ function generator2Stream(gen: Generator) {
       let processed = "";
       for (const c of value.text!) {
         switch (c) {
-          // Ignore whitespace, except when we're in a string
+          // Ignore space, except when we're in a string
           case " ":
-          case "\n":
             if (inStr) {
               break;
             }
+          case "\n":
           // Ignore arrays, it should only appear at the start and end
           case "[":
           case "]":
@@ -132,10 +135,12 @@ const responseSchema = {
 export async function POST(req: Request) {
   const files = (await req.formData()).getAll("files") as File[];
   const contents: { fileData: FileData }[] = [];
+  await ensureContext(contents);
   const filenames: string[] = [];
 
   for (let i = 0; i < files.length; i++) {
-    filenames.push(crypto.randomUUID());
+    // 6-char random name
+    filenames.push(randomBytes(3).toString("hex"));
     const file = files[i]!;
     const uploadedFile = await ai.files.upload({
       file,
@@ -151,8 +156,7 @@ export async function POST(req: Request) {
     });
   }
 
-  await ensureContext(contents);
-  /* eslint-disable  @typescript-eslint/no-unsafe-assignment */
+  // eslint-disable @typescript-eslint/no-unsafe-assignment
   const res: Generator = await ai.models.generateContentStream({
     model: "gemini-2.5-flash",
     contents,
