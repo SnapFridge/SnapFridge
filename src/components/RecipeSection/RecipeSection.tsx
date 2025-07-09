@@ -66,236 +66,6 @@ const recipesExample: Recipe[] = [
       },
     ],
   },
-  {
-    title: "Lemon Cupcakes",
-    image: "https://img.spoonacular.com/recipes/649593-312x231.jpg",
-    usedIngredientCount: 3,
-    missedIngredientCount: 1,
-    missedIngredients: [
-      {
-        amount: 2.5,
-        unit: "teaspoons",
-        name: "lemon zest",
-      },
-    ],
-    usedIngredients: [
-      {
-        amount: 2,
-        unit: "",
-        name: "eggs",
-      },
-      {
-        amount: 0.75,
-        unit: "cup",
-        name: "milk",
-      },
-      {
-        amount: 10,
-        unit: "tablespoons",
-        name: "butter",
-      },
-    ],
-  },
-  {
-    title: "Lemon Delicious Pudding",
-    image: "https://img.spoonacular.com/recipes/649609-312x231.jpg",
-    usedIngredientCount: 3,
-    missedIngredientCount: 1,
-    missedIngredients: [
-      {
-        amount: 2,
-        unit: "",
-        name: "lemons",
-      },
-    ],
-    usedIngredients: [
-      {
-        amount: 60,
-        unit: "grams",
-        name: "butter",
-      },
-      {
-        amount: 3,
-        unit: "",
-        name: "eggs",
-      },
-      {
-        amount: 1.5,
-        unit: "cups",
-        name: "milk",
-      },
-    ],
-  },
-  {
-    title: "Classic scones",
-    image: "https://img.spoonacular.com/recipes/639637-312x231.jpg",
-    usedIngredientCount: 2,
-    missedIngredientCount: 1,
-    missedIngredients: [
-      {
-        amount: 4,
-        unit: "servings",
-        name: "strawberry jam and cream",
-      },
-    ],
-    usedIngredients: [
-      {
-        amount: 0.75,
-        unit: "cup",
-        name: "milk",
-      },
-      {
-        amount: 50,
-        unit: "g",
-        name: "butter",
-      },
-    ],
-  },
-  {
-    title: "Nutella Buttercream Cupcakes with Hidden Cadbury Egg",
-    image: "https://img.spoonacular.com/recipes/991625-312x231.jpg",
-    usedIngredientCount: 2,
-    missedIngredientCount: 1,
-    missedIngredients: [
-      {
-        amount: 1,
-        unit: "tsp",
-        name: "vanilla",
-      },
-    ],
-    usedIngredients: [
-      {
-        amount: 4,
-        unit: "",
-        name: "eggs",
-      },
-      {
-        amount: 1,
-        unit: "cup",
-        name: "milk",
-      },
-    ],
-  },
-  {
-    title: "Bread Omlette",
-    image: "https://img.spoonacular.com/recipes/635964-312x231.jpg",
-    usedIngredientCount: 2,
-    missedIngredientCount: 1,
-    missedIngredients: [
-      {
-        amount: 1,
-        unit: "cup",
-        name: "bread crumbs",
-      },
-    ],
-    usedIngredients: [
-      {
-        amount: 4,
-        unit: "",
-        name: "eggs",
-      },
-      {
-        amount: 1,
-        unit: "cup",
-        name: "milk",
-      },
-    ],
-  },
-  {
-    title: "Baked Custard",
-    image: "https://img.spoonacular.com/recipes/633574-312x231.jpg",
-    usedIngredientCount: 2,
-    missedIngredientCount: 1,
-    missedIngredients: [
-      {
-        amount: 0.5,
-        unit: "teaspoon",
-        name: "vanilla",
-      },
-    ],
-    usedIngredients: [
-      {
-        amount: 4,
-        unit: "",
-        name: "eggs",
-      },
-      {
-        amount: 2,
-        unit: "cups",
-        name: "milk",
-      },
-    ],
-  },
-  {
-    title: "Blueberry Loaf With Blueberry Syrup",
-    image: "https://img.spoonacular.com/recipes/635492-312x231.jpg",
-    usedIngredientCount: 3,
-    missedIngredientCount: 2,
-    missedIngredients: [
-      {
-        amount: 3,
-        unit: "cups",
-        name: "blueberries",
-      },
-      {
-        amount: 1,
-        unit: "teaspoon",
-        name: "lemon zest",
-      },
-    ],
-    usedIngredients: [
-      {
-        amount: 0.5,
-        unit: "tablespoon",
-        name: "butter",
-      },
-      {
-        amount: 2,
-        unit: "large",
-        name: "eggs",
-      },
-      {
-        amount: 0.75,
-        unit: "cup",
-        name: "milk",
-      },
-    ],
-  },
-  {
-    title: "Organic Pumpkin Whoopie Pies",
-    image: "https://img.spoonacular.com/recipes/654055-312x231.jpg",
-    usedIngredientCount: 3,
-    missedIngredientCount: 2,
-    missedIngredients: [
-      {
-        amount: 1,
-        unit: "cup",
-        name: "pumpkin puree",
-      },
-      {
-        amount: 1,
-        unit: "package",
-        name: "spiced cake mix",
-      },
-    ],
-    usedIngredients: [
-      {
-        amount: 1,
-        unit: "cup",
-        name: "butter",
-      },
-      {
-        amount: 2,
-        unit: "large",
-        name: "eggs",
-      },
-      {
-        amount: 0.5,
-        unit: "cup",
-        name: "milk",
-      },
-    ],
-  },
 ];
 
 type Props = {
@@ -305,6 +75,26 @@ type Props = {
 };
 
 function RecipeSection({ headerTxt = "Recipes Found", recipes = recipesExample }: Props) {
+  if (recipes.length === 0) {
+    return (
+      <>
+        <Header>
+          <HeaderTxt>{headerTxt}</HeaderTxt>
+          <Icon aria-hidden icon="Sparkles" size={50}></Icon>
+        </Header>
+        <EmptySectionContainer>
+          <EmptySectionContent>
+            <Icon icon="ChefHat" size={50} color="var(--gray-400)" />
+            <p>
+              Looks like your recipes is empty! Start by adding some ingredients or
+              uploading an image, and then you can get your first recipe.
+            </p>
+          </EmptySectionContent>
+        </EmptySectionContainer>
+      </>
+    );
+  }
+
   return (
     <>
       <Header>
@@ -319,6 +109,7 @@ function RecipeSection({ headerTxt = "Recipes Found", recipes = recipesExample }
     </>
   );
 }
+
 const RecipeList = styled(ul)({
   listStyleType: "none",
   padding: 0,
@@ -336,6 +127,21 @@ const Header = styled("div")({
 
 const HeaderTxt = styled("h2")({
   fontSize: scaleClamped(24, 36),
+});
+
+const EmptySectionContent = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  textAlign: "center",
+  maxWidth: "600px",
+  color: "var(--gray-400)",
+});
+
+const EmptySectionContainer = styled("div")({
+  display: "flex",
+  justifyContent: "center",
+  marginBottom: "36px",
 });
 
 export default RecipeSection;
