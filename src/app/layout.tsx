@@ -49,10 +49,8 @@ const applyTheme = () => {
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" className={poppins.className} suppressHydrationWarning>
-      <head>
-        <script>{`(${applyTheme.toString()})()`}</script>
-      </head>
       <body>
+        <script>{`(${applyTheme.toString()})()`}</script>
         <ToastProvider>
           <Background>
             <NavBar />

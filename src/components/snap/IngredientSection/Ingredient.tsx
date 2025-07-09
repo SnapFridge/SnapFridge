@@ -1,12 +1,11 @@
 "use client";
 
-import { css, styled } from "@pigment-css/react";
+import { styled } from "@pigment-css/react";
 import { type Variants, useAnimate, AnimatePresence } from "motion/react";
 import { button, li, div } from "motion/react-client";
 import { useState, useEffect } from "react";
 import { type Ingredient } from "@components/Global";
 import Icon from "@components/Icon";
-import Button from "@components/Button";
 import { useInputState } from "../InputProvider";
 
 type Props = {
@@ -55,16 +54,16 @@ function IngredientBox({ ingredient }: Props) {
         onClick={handleClick}
       />
       <AnimatePresence>
-        {isActive ? (
-          <ActionContainer>
-            <Button
-              className={DeleteContainer}
-              as={button}
+        {isActive && (
+          <ActionContainer
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            variants={ContainerVariants}
+          >
+            <ActionBtn
               variants={DeleteVariants}
-              initial="initial"
-              animate="enter"
               whileHover="hover"
-              exit="exit"
               onClick={() => {
                 dispatch({ type: "removeIngredient", ingredient });
               }}
@@ -74,24 +73,16 @@ function IngredientBox({ ingredient }: Props) {
                 color="var(--warn-500)"
                 description={`Delete ${ingredient.name}`}
               />
-            </Button>
-            <Button
-              className={EditContainer}
-              as={button}
-              variants={EditVariants}
-              initial="initial"
-              animate="enter"
-              whileHover="hover"
-              exit="exit"
-            >
+            </ActionBtn>
+            <ActionBtn variants={DeleteVariants} whileHover="hover">
               <Icon
                 icon="PencilLine"
-                color="white"
+                color="var(--gray-950)"
                 description={`Edit ${ingredient.name}`}
               />
-            </Button>
+            </ActionBtn>
           </ActionContainer>
-        ) : null}
+        )}
       </AnimatePresence>
       <IngredientElement
         variants={IngredientVariants}
@@ -126,15 +117,10 @@ const IngredientVariants: Variants = {
   },
 };
 
-const HiddenButton = styled(Button)({
+const HiddenButton = styled("button")({
   width: "100%",
   height: "100%",
   position: "absolute",
-  top: 0,
-  bottom: 0,
-  right: 0,
-  left: 0,
-  margin: "auto",
   opacity: 0,
 });
 
@@ -167,66 +153,42 @@ const IngredientName = styled("p")({
   whiteSpace: "nowrap",
 });
 
-const DeleteContainer = css({
-  position: "absolute",
-  top: 0,
-  backgroundColor: "rgba(0, 0, 0, 0.6)",
+const ActionBtn = styled(button)({
+  background: "transparent",
   padding: "4px",
-  borderRadius: "4px",
-  ["--background-hover" as string]: "var(--background-50)",
+  border: 0,
 });
 
-const EditContainer = css({
-  position: "absolute",
-  top: 0,
-  backgroundColor: "rgba(0, 0, 0, 0.6)",
-  padding: "4px",
-  borderRadius: "4px",
-});
-
+const ContainerVariants: Variants = {
+  initial: {
+    opacity: 0,
+  },
+  exit: {
+    opacity: 0,
+  },
+  enter: {
+    opacity: 1,
+  },
+};
 const DeleteVariants: Variants = {
-  initial: {
-    opacity: 0,
-  },
-  enter: {
-    opacity: 1,
-  },
   hover: {
     y: -5,
   },
-  exit: {
-    opacity: 0,
-  },
 };
 
-const EditVariants: Variants = {
-  initial: {
-    x: 32,
-    opacity: 0,
-  },
-  enter: {
-    y: 0,
-    x: 32,
-    opacity: 1,
-  },
-  hover: {
-    y: -5,
-  },
-  exit: {
-    opacity: 0,
-  },
-};
-
-// Used so it"s easier to click the buttons
-const ActionContainer = styled("div")({
+// Used so it's easier to click the buttons
+const ActionContainer = styled(div)({
   zIndex: 1,
   position: "absolute",
   top: "-42px",
+  margin: "auto",
   left: 0,
   right: 0,
-  margin: "auto",
-  width: "64px",
-  height: "36px",
+  width: "fit-content",
+  height: "fit-content",
+  background: "var(--gray-200)",
+  borderRadius: "4px",
+  boxShadow: "var(--shadow)",
 });
 
 export default IngredientBox;

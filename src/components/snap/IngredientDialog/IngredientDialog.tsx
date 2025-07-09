@@ -4,9 +4,9 @@ import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
 import { Suspense } from "react";
 import IngredientForm from "./IngredientForm";
-import RecipeDialogSkeleton from "./RecipeDialogSkeleton";
+import IngredientDialogSkeleton from "./IngredientDialogSkeleton";
 
-function RecipeDialog() {
+function IngredientDialog() {
   return (
     <AppDialog
       title="Add Ingredient"
@@ -16,7 +16,7 @@ function RecipeDialog() {
         </AddTrigger>
       }
     >
-      <Suspense fallback={<RecipeDialogSkeleton />}>
+      <Suspense fallback={<IngredientDialogSkeleton />}>
         <IngredientForm />
       </Suspense>
     </AppDialog>
@@ -29,4 +29,4 @@ const AddTrigger = styled(Button)({
   right: 0,
 });
 
-export default RecipeDialog;
+export default IngredientDialog;

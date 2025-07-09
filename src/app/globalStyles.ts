@@ -42,6 +42,7 @@ globalCss`
   /* 2. Remove default margin */
   * {
     margin: 0;
+    padding: 0;
   }
 
   /* 3. Enable keyword animations */
@@ -82,15 +83,15 @@ globalCss`
     text-wrap: balance;
   }
 
-  /* 10. Create a root stacking context */
-  #root, #__next {
-    isolation: isolate;
-  }
-
   /* 11. Unstyled list */
   ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
+  }
+
+  /* Unstyled input */
+  input {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
   }
 `;

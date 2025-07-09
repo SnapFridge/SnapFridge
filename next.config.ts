@@ -281,11 +281,12 @@ const theme = extendTheme({
   getSelector: (theme) => `:root${theme === "dark" ? ".dark" : ""}`,
 });
 
+const devEnv = process.env.NODE_ENV === "development";
 const CSP = `
   default-src 'self';
   img-src 'self' https://img.spoonacular.com blob:;
-  script-src 'self' 'unsafe-inline' 'unsafe-eval';
-  style-src 'self' 'unsafe-inline' 'unsafe-eval';
+  script-src 'self' 'unsafe-inline' ${devEnv ? "'unsafe-eval'" : ""};
+  style-src 'self' 'unsafe-inline' ${devEnv ? "'unsafe-eval'" : ""};
   object-src 'none';
   frame-src 'none';
   frame-ancestors 'none';

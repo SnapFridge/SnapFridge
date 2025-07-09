@@ -6,6 +6,7 @@ import SuggestedInput from "@components/SuggestedInput";
 import Input from "@components/Input";
 import Button from "@components/Button";
 import { css } from "@pigment-css/react";
+import { Close } from "@radix-ui/react-dialog";
 
 const textFetcher = (url: string) =>
   fetch(url)
@@ -71,7 +72,7 @@ function IngredientForm() {
         }}
         className={LimitedWidth}
       />
-      <Button type="submit" variant="secondary">
+      <Button as={Close} type="submit" variant="secondary">
         New Ingredient...
       </Button>
     </form>

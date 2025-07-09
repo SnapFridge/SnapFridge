@@ -6,7 +6,7 @@ import IngredientBox from "./Ingredient";
 import { useInputState } from "../InputProvider";
 import Button from "@components/Button";
 import { useState, type FormEvent } from "react";
-import RecipeDialog from "../RecipeDialog";
+import IngredientDialog from "../IngredientDialog";
 import Input from "@components/Input";
 import { ul } from "motion/react-client";
 import getRecipesJSON from "./actions";
@@ -41,9 +41,11 @@ function IngredientSection() {
       ranking: `${ranking}`,
       ignorePantry: `${ignorePantry}`,
     }).toString();
+    const json = await getRecipesJSON(query);
+    console.log(json);
     dispatch({
       type: "addRecipes",
-      recipes: JSON.parse(await getRecipesJSON(query)) as Recipe[],
+      recipes: JSON.parse(json) as Recipe[],
     });
 
     setPending(false);
@@ -57,7 +59,7 @@ function IngredientSection() {
     <>
       {ingredients.size < 1 ? (
         <NoIngredientContainer>
-          <RecipeDialog />
+          <IngredientDialog />
           <Icon icon="Archive" size={36} color="var(--text-950)" />
           <IngredientTitle>Your ingredients will appear here</IngredientTitle>
         </NoIngredientContainer>
@@ -67,7 +69,7 @@ function IngredientSection() {
           layout
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >
-          <RecipeDialog />
+          <IngredientDialog />
           {Array.from(ingredients).map(([k, v]) => (
             <IngredientBox key={k} ingredient={v} />
           ))}

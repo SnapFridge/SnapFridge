@@ -87,7 +87,7 @@ function hasValueBox(type: HTMLInputTypeAttribute): boolean {
 }
 
 export const InputElement = styled("input")({
-  border: "1px solid var(--accent-500)",
+  border: "2px solid var(--accent-500)",
   variants: [
     {
       props: ({ type }) => hasValueBox(type!),
@@ -102,19 +102,11 @@ export const InputElement = styled("input")({
     {
       props: ({ type }) => type === "checkbox" || type === "radio",
       style: {
-        WebkitAppearance: "none",
-        appearance: "none",
         background: "var(--accent-100)",
         width: `${18 / 16}rem`,
         height: `${18 / 16}rem`,
-      },
-    },
-    {
-      props: { type: "checkbox" },
-      style: {
         "&:checked": {
           backgroundColor: "var(--accent-300)",
-          backgroundImage: `url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0yMCA2IDkgMTdsLTUtNSIvPjwvc3ZnPg==")`,
         },
       },
     },
@@ -122,9 +114,6 @@ export const InputElement = styled("input")({
       props: { type: "radio" },
       style: {
         borderRadius: "50%",
-        "&:checked": {
-          backgroundImage: "ci",
-        },
       },
     },
   ],

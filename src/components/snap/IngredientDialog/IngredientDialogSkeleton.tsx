@@ -14,7 +14,7 @@ function RecipeDialogSkeleton() {
             <Skeleton />
           </IngredientName>
           <Input>
-            <Skeleton height={30} />
+            <Skeleton height={`${38 / 16}rem`} />
           </Input>
         </Container>
 
@@ -23,7 +23,7 @@ function RecipeDialogSkeleton() {
             <Skeleton />
           </Amount>
           <Input>
-            <Skeleton height={30} />
+            <Skeleton height={`${38 / 16}rem`} />
           </Input>
         </Container>
 
@@ -32,7 +32,7 @@ function RecipeDialogSkeleton() {
             <Skeleton />
           </Unit>
           <Input>
-            <Skeleton height={30} />
+            <Skeleton height={`${38 / 16}rem`} />
           </Input>
         </Container>
 

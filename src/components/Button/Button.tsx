@@ -1,9 +1,10 @@
 import { type ComponentPropsWithoutRef, type ElementType } from "react";
 import { styled } from "@pigment-css/react";
 
+type Variant = "primary" | "secondary" | "icon";
 type ButtonProps<C extends ElementType> = {
   as?: C;
-  variant?: "primary" | "secondary" | "icon";
+  variant?: Variant;
 } & Omit<ComponentPropsWithoutRef<C>, "as">;
 // The default link has an "as" attribute, overriding that with our "as"
 
@@ -19,7 +20,8 @@ function Button<C extends ElementType = "button">({
   );
 }
 
-const StyledButton = styled("button")<{ variant: string | undefined }>({
+const StyledButton = styled("button")<{ variant: Variant | undefined }>({
+  display: "flex",
   alignItems: "center",
   justifyContent: "center",
   textDecoration: "none",
