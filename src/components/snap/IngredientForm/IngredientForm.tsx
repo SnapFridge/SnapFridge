@@ -6,7 +6,6 @@ import Input from "@components/Input";
 import Button from "@components/Button";
 import { useInputState } from "../InputProvider";
 import { css } from "@pigment-css/react";
-import { Close } from "@radix-ui/react-dialog";
 
 interface Props extends React.PropsWithChildren {
   defaultIngredient?: string;
@@ -37,15 +36,9 @@ function IngredientForm({
 }: AddProps | EditProps) {
   const { dispatch } = useInputState();
 
-<<<<<<<< HEAD:src/components/snap/IngredientDialog/IngredientForm.tsx
-  const [name, setName] = useState("");
-  const [amount, setAmount] = useState(1);
-  const [unit, setUnit] = useState("");
-========
   const [ingredient, setIngredient] = useState(defaultIngredient ?? "");
-  const [amount, setAmount] = useState(defaultAmount ?? 0);
+  const [amount, setAmount] = useState(defaultAmount ?? 1);
   const [unit, setUnit] = useState(defaultUnit ?? "");
->>>>>>>> 0cedff9 (Edit Dialog):src/components/snap/IngredientForm/IngredientForm.tsx
 
   const { data: allIngredients } = useSWR("/Ingredients.txt", textFetcher, {
     suspense: true,
@@ -56,16 +49,6 @@ function IngredientForm({
     <form
       onSubmit={(e) => {
         e.preventDefault();
-<<<<<<<< HEAD:src/components/snap/IngredientDialog/IngredientForm.tsx
-        dispatch({
-          type: "addIngredient",
-          ingredient: {
-            name,
-            amount,
-            unit: unit || "count",
-          },
-        });
-========
         if (variant === "addIngredient") {
           dispatch({
             type: "addIngredient",
@@ -92,15 +75,14 @@ function IngredientForm({
           });
           onSubmitSuccess();
         }
->>>>>>>> 0cedff9 (Edit Dialog):src/components/snap/IngredientForm/IngredientForm.tsx
       }}
     >
       <SuggestedInput
-        value={name}
+        value={ingredient}
         label="Enter Ingredient Name:"
         suggestions={allIngredients}
         onChange={(newVal: string) => {
-          setName(newVal);
+          setIngredient(newVal);
         }}
         required
         className={LimitedWidth}
@@ -130,13 +112,8 @@ function IngredientForm({
         disabled={variant === "editIngredient"}
         className={LimitedWidth}
       />
-<<<<<<<< HEAD:src/components/snap/IngredientDialog/IngredientForm.tsx
-      <Button as={Close} type="submit" variant="secondary">
-        New Ingredient...
-========
       <Button type="submit" variant="secondary">
         {variant === "addIngredient" ? "New Ingredient" : "Edit Ingredient"}
->>>>>>>> 0cedff9 (Edit Dialog):src/components/snap/IngredientForm/IngredientForm.tsx
       </Button>
     </form>
   );

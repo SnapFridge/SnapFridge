@@ -39,6 +39,10 @@ function reducer(draft: State, action: Action) {
       draft.ingredients.set(key, { name, amount, unit });
     }
   }
+  function removeIngredient({ name, unit }: Ingredient) {
+    const key = `${name}-${unit}`;
+    draft.ingredients.delete(key);
+  }
 
   switch (action.type) {
     case "addIngredient": {
@@ -52,12 +56,12 @@ function reducer(draft: State, action: Action) {
       break;
     }
     case "removeIngredient": {
-      const { name, unit } = action.ingredient;
-      draft.ingredients.delete(`${name}-${unit}`);
+      removeIngredient(action.ingredient);
       break;
     }
     case "editIngredient": {
-      console.log("this isn't complete yet!");
+      removeIngredient(action.old);
+      addIngredient(action.new);
       break;
     }
     case "addFiles": {

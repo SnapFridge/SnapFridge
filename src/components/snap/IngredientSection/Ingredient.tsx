@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { type Ingredient } from "@components/Global";
 import Icon from "@components/Icon";
 import { useInputState } from "../InputProvider";
+import EditDialog from "../EditDialog";
 
 type Props = {
   ingredient: Ingredient;
@@ -14,6 +15,8 @@ type Props = {
 
 function IngredientBox({ ingredient }: Props) {
   const { dispatch } = useInputState();
+
+  const [isDialogOpen, setDialogOpen] = useState(false);
 
   const [isActive, setActive] = useState(false);
   const [scope, animate] = useAnimate();
@@ -61,7 +64,7 @@ function IngredientBox({ ingredient }: Props) {
             exit="exit"
             variants={ContainerVariants}
           >
-            <ActionBtn
+            <ActionButton
               variants={DeleteVariants}
               whileHover="hover"
               onClick={() => {
@@ -73,17 +76,28 @@ function IngredientBox({ ingredient }: Props) {
                 color="var(--warn-500)"
                 description={`Delete ${ingredient.name}`}
               />
-            </ActionBtn>
-            <ActionBtn variants={DeleteVariants} whileHover="hover">
+            </ActionButton>
+            <ActionButton
+              variants={DeleteVariants}
+              whileHover="hover"
+              onClick={() => {
+                setDialogOpen(true);
+              }}
+            >
               <Icon
                 icon="PencilLine"
                 color="var(--gray-950)"
                 description={`Edit ${ingredient.name}`}
               />
-            </ActionBtn>
+            </ActionButton>
           </ActionContainer>
         )}
       </AnimatePresence>
+      <EditDialog
+        ingredient={ingredient}
+        open={isDialogOpen}
+        onOpenChange={setDialogOpen}
+      />
       <IngredientElement
         variants={IngredientVariants}
         initial="initial"
@@ -153,7 +167,7 @@ const IngredientName = styled("p")({
   whiteSpace: "nowrap",
 });
 
-const ActionBtn = styled(button)({
+const ActionButton = styled(button)({
   background: "transparent",
   padding: "4px",
   border: 0,
