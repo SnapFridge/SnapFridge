@@ -23,9 +23,11 @@ function RecipeHolder() {
     <>
       <div>
         <RecipeSection recipes={state.recipes.slice(0, visibleRecipes)} />
-        <Button variant="primary" onClick={handleViewMore}>
-          View More
-        </Button>
+        {state.recipes.length > 0 && (
+          <Button variant="primary" onClick={handleViewMore}>
+            View More
+          </Button>
+        )}
       </div>
 
       <RecipeSection headerTxt="Previous Snaps" />
