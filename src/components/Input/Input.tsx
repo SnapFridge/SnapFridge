@@ -15,7 +15,7 @@ type Input2ValueMap = {
   [K in Exclude<HTMLInputTypeAttribute, "checkbox" | "radio" | "file">]: string;
 };
 
-type Props<T extends keyof Input2ValueMap = "text"> = {
+type Props<T extends keyof Input2ValueMap> = {
   label: ReactNode;
   onChange: (newValue: Input2ValueMap[T]) => void | Promise<void>;
   type: T;
@@ -24,7 +24,7 @@ type Props<T extends keyof Input2ValueMap = "text"> = {
 function Input<T extends keyof Input2ValueMap>({
   label,
   onChange,
-  type,
+  type = "text" as T,
   ...delegated
 }: Props<T>) {
   const id = useId();
@@ -63,13 +63,71 @@ export const Label = styled("label")({
   color: "var(--gray-500)",
 });
 
+function hasValueBox(type: HTMLInputTypeAttribute): boolean {
+  for (const t of [
+    "text",
+    "password",
+    "number",
+    "email",
+    // "search",
+    // "tel",
+    // "url",
+    //  "date",
+    //  "datetime-local",
+    //  "month",
+    //  "time",
+    //  "week",
+    //  "color",
+  ]) {
+    if (t === type) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export const InputElement = styled("input")({
-  background: "var(--accent-100)",
-  border: "1px solid var(--accent-400)",
-  borderRadius: "8px",
-  height: `${38 / 16}rem`,
-  color: "var(--text-950)",
-  padding: "5px 8px",
+  border: "1px solid var(--accent-500)",
+  variants: [
+    {
+      props: ({ type }) => hasValueBox(type!),
+      style: {
+        background: "var(--accent-100)",
+        borderRadius: "8px",
+        height: `${38 / 16}rem`,
+        color: "var(--text-950)",
+        padding: "5px 8px",
+      },
+    },
+    {
+      props: ({ type }) => type === "checkbox" || type === "radio",
+      style: {
+        WebkitAppearance: "none",
+        appearance: "none",
+        background: "var(--accent-100)",
+        width: `${18 / 16}rem`,
+        height: `${18 / 16}rem`,
+      },
+    },
+    {
+      props: { type: "checkbox" },
+      style: {
+        "&:checked": {
+          backgroundColor: "var(--accent-300)",
+          backgroundImage: `url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiPjxwYXRoIGQ9Ik0yMCA2IDkgMTdsLTUtNSIvPjwvc3ZnPg==")`,
+        },
+      },
+    },
+    {
+      props: { type: "radio" },
+      style: {
+        borderRadius: "50%",
+        "&:checked": {
+          backgroundImage: "ci",
+        },
+      },
+    },
+  ],
 });
 
 export default Input;

@@ -180,7 +180,6 @@ const HiddenUpload = styled(Input)({
   width: "100%",
   height: "100%",
   opacity: 0,
-  zIndex: -1,
 });
 
 const BaseContainer = styled("div")({
@@ -193,7 +192,7 @@ const BaseContainer = styled("div")({
   [`${HiddenUpload}:focus + &`]: {
     border: "2px solid white",
   },
-  "&:hover": {
+  [`${HiddenUpload}:hover + &`]: {
     background: "color-mix(in srgb, var(--background-100) 50%, transparent)",
   },
 });

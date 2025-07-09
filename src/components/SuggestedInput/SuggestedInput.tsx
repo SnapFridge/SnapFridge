@@ -35,7 +35,10 @@ function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: P
   return (
     <Wrapper {...delegated}>
       <Label {...getLabelProps()}>{label}</Label>
-      <InputElement {...getInputProps({ value })} style={{ maxWidth: "100%" }} />
+      <InputElement
+        {...getInputProps({ value, type: "text" })}
+        style={{ maxWidth: "100%" }}
+      />
       <Menu
         {...getMenuProps({
           style: {
