@@ -86,15 +86,26 @@ function RecipeSection({
           <HeaderTxt>{headerTxt}</HeaderTxt>
           <Icon aria-hidden icon="Sparkles" size={50}></Icon>
         </Header>
-        <EmptySectionContainer>
-          <EmptySectionContent>
-            <Icon icon="ChefHat" size={50} color="var(--gray-400)" />
-            <p>
-              Looks like your recipes is empty! Start by adding some ingredients or
-              uploading an image, and then you can get your first recipe.
-            </p>
-          </EmptySectionContent>
-        </EmptySectionContainer>
+
+        {pending ? (
+          <>
+            <RecipeCard recipe={undefined} />
+            <RecipeCard recipe={undefined} />
+            <RecipeCard recipe={undefined} />
+          </>
+        ) : (
+          <>
+            <EmptySectionContainer>
+              <EmptySectionContent>
+                <Icon icon="ChefHat" size={50} color="var(--gray-400)" />
+                <p>
+                  Looks like your recipes is empty! Start by adding some ingredients or
+                  uploading an image, and then you can get your first recipe.
+                </p>
+              </EmptySectionContent>
+            </EmptySectionContainer>
+          </>
+        )}
       </>
     );
   }
