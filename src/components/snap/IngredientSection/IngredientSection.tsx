@@ -21,12 +21,16 @@ function IngredientSection() {
   const [pending, setPending] = useState(false);
 
   async function fetchSpoonacular(e: FormEvent) {
+    e.preventDefault();
+    if (ingredients.size === 0) {
+      return;
+    }
     setPending(true);
     dispatch({
       type: "switchPendingSpoonacular",
       pending: true,
     });
-    e.preventDefault();
+
     let ingredientsStr = "";
     for (const [, ingredient] of ingredients) {
       ingredientsStr += ingredient.name;
@@ -41,6 +45,7 @@ function IngredientSection() {
       type: "addRecipes",
       recipes: JSON.parse(await getRecipesJSON(query)) as Recipe[],
     });
+
     setPending(false);
     dispatch({
       type: "switchPendingSpoonacular",
