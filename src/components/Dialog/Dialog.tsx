@@ -4,53 +4,67 @@ import { Dialog } from "radix-ui";
 import Icon from "@components/Icon";
 import Button from "@components/Button";
 import { styled } from "@pigment-css/react";
-import { useState, type PropsWithChildren, type ReactNode } from "react";
+import { useState } from "react";
 import { type Variants, AnimatePresence } from "motion/react";
 import { div as MotionDiv } from "motion/react-client";
 
-type Props = {
-  title: string;
-  description?: string;
-  trigger: ReactNode;
-};
+interface Props extends React.ComponentProps<typeof Dialog.Root> {
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  trigger: React.ReactNode;
+}
 
-function AppDialog({ title, description, trigger, children }: PropsWithChildren<Props>) {
-  const [isOpen, setOpen] = useState(false);
+function AppDialog({
+  title,
+  description,
+  trigger,
+  children,
+  open,
+  defaultOpen,
+  onOpenChange,
+  ...delegated
+}: Props) {
+  const [isOpen, setOpen] = useState(defaultOpen ?? false);
 
+  const realOpen = open ?? isOpen;
+  const realOnOpenChange = onOpenChange ?? setOpen;
   return (
-    <Dialog.Root open={isOpen} onOpenChange={setOpen}>
+    <Dialog.Root open={realOpen} onOpenChange={realOnOpenChange} {...delegated}>
       <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>
       <AnimatePresence>
-        {isOpen && (
-          <Dialog.Portal forceMount>
-            <Overlay>
-              <Background
-                variants={BackgroundVariants}
-                initial="initial"
-                animate="enter"
-                exit="exit"
-              />
-            </Overlay>
-            <ContentContainer>
-              <Content asChild>
-                <MotionDiv
-                  variants={ContentVariants}
+        {realOpen && (
+          <>
+            <Dialog.Portal forceMount>
+              (
+              <Overlay>
+                <Background
+                  variants={BackgroundVariants}
                   initial="initial"
                   animate="enter"
                   exit="exit"
-                >
-                  <Title>{title}</Title>
-                  <Description>{description}</Description>
-                  {children}
-                  <Dialog.Close asChild autoFocus>
-                    <XButton variant="icon">
-                      <Icon icon="X" description="Close dialog" />
-                    </XButton>
-                  </Dialog.Close>
-                </MotionDiv>
-              </Content>
-            </ContentContainer>
-          </Dialog.Portal>
+                />
+              </Overlay>
+              <ContentContainer>
+                <Content asChild>
+                  <MotionDiv
+                    variants={ContentVariants}
+                    initial="initial"
+                    animate="enter"
+                    exit="exit"
+                  >
+                    <Title>{title}</Title>
+                    <Description>{description}</Description>
+                    {children}
+                    <Dialog.Close asChild autoFocus>
+                      <XButton variant="icon">
+                        <Icon icon="X" description="Close dialog" />
+                      </XButton>
+                    </Dialog.Close>
+                  </MotionDiv>
+                </Content>
+              </ContentContainer>
+            </Dialog.Portal>
+          </>
         )}
       </AnimatePresence>
     </Dialog.Root>

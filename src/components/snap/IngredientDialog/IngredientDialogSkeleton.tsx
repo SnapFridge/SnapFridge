@@ -2,7 +2,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { styled } from "@pigment-css/react";
 
-function RecipeDialogSkeleton() {
+function FormSkeleton() {
   return (
     <div>
       <SkeletonTheme
@@ -74,4 +74,4 @@ const Button = styled("div")({
   width: "min(100%, 150px)",
 });
 
-export default RecipeDialogSkeleton;
+export default FormSkeleton;
