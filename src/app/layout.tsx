@@ -1,7 +1,6 @@
 import "@pigment-css/react/styles.css";
 import "./globalStyles";
 import { Poppins } from "next/font/google";
-import { ThemeProvider } from "./providers";
 import NavBar from "@components/NavBar";
 import Footer from "@components/Footer";
 import CookieBanner from "@components/CookieBanner";
@@ -14,6 +13,7 @@ import { type Metadata } from "next";
 const poppins = Poppins({
   weight: ["400", "700"],
   subsets: ["latin"],
+  display: "fallback",
 });
 
 export const metadata: Metadata = {
@@ -24,22 +24,44 @@ export const metadata: Metadata = {
   },
 };
 
+// Not a function to save on code size
+const applyTheme = () => {
+  addEventListener(
+    "DOMContentLoaded",
+    () => {
+      const theme =
+        localStorage.getItem("theme") ||
+        (matchMedia("(prefers-color-scheme: dark)") ? "dark" : "light");
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+      }
+    },
+    { once: true }
+  );
+  addEventListener("beforeunload", () => {
+    localStorage.setItem(
+      "theme",
+      `${document.documentElement.classList.contains("dark") ? "dark" : "light"}`
+    );
+  });
+};
+
 export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html lang="en" className={poppins.className} suppressHydrationWarning>
+      <head>
+        <script>{`(${applyTheme.toString()})()`}</script>
+      </head>
       <body>
-        {/* theme provider from next-themes, handles the dark/light theming */}
-        <ThemeProvider>
-          <ToastProvider>
-            <Background>
-              <NavBar />
-              <Main>{children}</Main>
-              <Footer />
-              <CookieBanner />
-              <Toaster />
-            </Background>
-          </ToastProvider>
-        </ThemeProvider>
+        <ToastProvider>
+          <Background>
+            <NavBar />
+            <Main>{children}</Main>
+            <Footer />
+            <CookieBanner />
+            <Toaster />
+          </Background>
+        </ToastProvider>
       </body>
     </html>
   );
@@ -49,7 +71,7 @@ const Background = styled("div")({
   flexDirection: "column",
   minHeight: "100%",
   color: "var(--text-950)",
-  background: "var(--background)",
+  background: "var(--background-0)",
   isolation: "isolate",
 });
 

@@ -1,27 +1,29 @@
 "use client";
 
-import { type ComponentProps, useState, useEffect } from "react";
+import { type ComponentProps, useEffect, useState } from "react";
 import Button from "@components/Button";
 import Icon from "@components/Icon";
-import useCurrentTheme from "./currentTheme.helper";
 
 function ThemeSwitcher({ ...delegated }: ComponentProps<"button">) {
-  const [isClient, setIsClient] = useState(false);
-  const [currentTheme, toggleTheme] = useCurrentTheme();
+  const [dark, setDark] = useState<boolean>();
+  function toggleTheme() {
+    setDark(!dark);
+    document.documentElement.classList.toggle("dark");
+  }
 
   useEffect(() => {
-    setIsClient(true);
+    setDark(document.documentElement.classList.contains("dark"));
   }, []);
 
-  if (!isClient) return undefined;
-
   return (
-    <Button variant="icon" onClick={toggleTheme} {...delegated}>
-      <Icon
-        icon={currentTheme === "dark" ? "Sun" : "Moon"}
-        description={`Turn off ${currentTheme} mode`}
-      />
-    </Button>
+    dark !== undefined && (
+      <Button variant="icon" onClick={toggleTheme} {...delegated}>
+        <Icon
+          icon={dark ? "Sun" : "Moon"}
+          description={`Turn on ${dark ? "light" : "dark"} mode`}
+        />
+      </Button>
+    )
   );
 }
 

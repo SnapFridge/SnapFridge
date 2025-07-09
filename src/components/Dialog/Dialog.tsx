@@ -110,7 +110,7 @@ const Background = styled(MotionDiv)({
 
 const Content = styled(Dialog.Content)({
   position: "relative",
-  background: "var(--dialog-background)",
+  background: "var(--background-0)",
   borderRadius: "16px",
   padding: "12px",
   width: "90vw",

@@ -85,7 +85,7 @@ const Wrapper = styled(Dialog.Content)({
   bottom: 0,
   padding: "20px 24px",
   width: "250px",
-  background: "var(--dialog-background)",
+  background: "var(--background-0)",
 
   [ON_MOBILE]: {
     display: "flex",

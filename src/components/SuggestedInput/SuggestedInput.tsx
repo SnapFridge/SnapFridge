@@ -52,10 +52,11 @@ function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: P
                 item,
                 style: {
                   ...itemStyle,
+                  color: "var(--text-950)",
                   backgroundColor:
                     highlightedIndex === index
                       ? "var(--background-100)"
-                      : "var(--background)",
+                      : "var(--background-0)",
                   fontWeight: selectedItem === item ? "bold" : "normal",
                 },
               })}
