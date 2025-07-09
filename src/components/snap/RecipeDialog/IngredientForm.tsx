@@ -15,8 +15,8 @@ const textFetcher = (url: string) =>
 function IngredientForm() {
   const { dispatch } = useInputState();
 
-  const [ingredient, setIngredient] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [name, setName] = useState("");
+  const [amount, setAmount] = useState(1);
   const [unit, setUnit] = useState("");
 
   const { data: allIngredients } = useSWR("/ingredients.txt", textFetcher, {
@@ -31,19 +31,19 @@ function IngredientForm() {
         dispatch({
           type: "addIngredient",
           ingredient: {
-            name: ingredient,
-            amount: amount,
+            name,
+            amount,
             unit: unit || "count",
           },
         });
       }}
     >
       <SuggestedInput
-        value={ingredient}
+        value={name}
         label="Enter Ingredient Name:"
         suggestions={allIngredients}
         onChange={(newVal: string) => {
-          setIngredient(newVal);
+          setName(newVal);
         }}
         required
         className={LimitedWidth}
@@ -51,9 +51,13 @@ function IngredientForm() {
       <Input
         label="Enter Amount:"
         type="number"
-        value={isNaN(amount) || amount < 1 ? "" : amount.toString()}
+        value={`${amount}`}
         onChange={(newVal) => {
-          setAmount(Number(newVal));
+          const num = Number(newVal);
+          if (Number.isNaN(num) || num < 1 || !Number.isInteger(num)) {
+            return;
+          }
+          setAmount(num);
         }}
         required
         className={LimitedWidth}

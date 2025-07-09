@@ -66,8 +66,10 @@ export const Label = styled("label")({
 export const InputElement = styled("input")({
   background: "var(--accent-100)",
   border: "1px solid var(--accent-400)",
+  borderRadius: "8px",
+  height: `${38 / 16}rem`,
   color: "var(--text-950)",
-  paddingLeft: "8px",
+  padding: "5px 8px",
 });
 
 export default Input;

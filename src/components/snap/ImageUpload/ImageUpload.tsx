@@ -180,24 +180,20 @@ const HiddenUpload = styled(Input)({
   width: "100%",
   height: "100%",
   opacity: 0,
+  zIndex: -1,
 });
 
 const BaseContainer = styled("div")({
   width: "100%",
   display: "flex",
-  border: "var(--accent-300) dashed 4px",
+  border: "4px dashed var(--accent-300)",
   borderRadius: "16px",
   background: "color-mix(in srgb, var(--background-50) 65%, transparent)",
 
   [`${HiddenUpload}:focus + &`]: {
-    /* Try to get the default outline color */
-    outline: [
-      "medium auto currentColor",
-      "medium auto invert",
-      "5px auto -webkit-focus-ring-color",
-    ],
+    border: "2px solid white",
   },
-  [`${HiddenUpload}:hover + &`]: {
+  "&:hover": {
     background: "color-mix(in srgb, var(--background-100) 50%, transparent)",
   },
 });
