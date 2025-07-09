@@ -22,6 +22,10 @@ function IngredientSection() {
 
   async function fetchSpoonacular(e: FormEvent) {
     setPending(true);
+    dispatch({
+      type: "switchPendingSpoonacular",
+      pending: true,
+    });
     e.preventDefault();
     let ingredientsStr = "";
     for (const [, ingredient] of ingredients) {
@@ -38,6 +42,10 @@ function IngredientSection() {
       recipes: JSON.parse(await getRecipesJSON(query)) as Recipe[],
     });
     setPending(false);
+    dispatch({
+      type: "switchPendingSpoonacular",
+      pending: false,
+    });
   }
 
   return (

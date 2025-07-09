@@ -17,6 +17,7 @@ export interface State {
   ingredients: Map<string, Ingredient>;
   files: File[];
   recipes: Recipe[];
+  pendingSpoonacular: boolean;
 }
 
 export type Action =
@@ -26,7 +27,8 @@ export type Action =
   | { type: "editIngredient"; old: Ingredient; new: Ingredient }
   | { type: "addFiles"; files: File[] }
   | { type: "removeFile"; index: number }
-  | { type: "addRecipes"; recipes: Recipe[] };
+  | { type: "addRecipes"; recipes: Recipe[] }
+  | { type: "switchPendingSpoonacular"; pending: boolean };
 
 function reducer(draft: State, action: Action) {
   function addIngredient({ name, amount, unit }: Ingredient) {
@@ -70,6 +72,10 @@ function reducer(draft: State, action: Action) {
       draft.recipes.push(...action.recipes);
       break;
     }
+    case "switchPendingSpoonacular": {
+      draft.pendingSpoonacular = action.pending;
+      break;
+    }
   }
 }
 
@@ -85,6 +91,7 @@ export function InputProvider({ children }: PropsWithChildren) {
     ingredients: new Map<string, Ingredient>(),
     files: [],
     recipes: [],
+    pendingSpoonacular: false,
   });
 
   const value = useMemo(() => {

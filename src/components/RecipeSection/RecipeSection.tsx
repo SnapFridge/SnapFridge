@@ -4,6 +4,7 @@ import { styled } from "@pigment-css/react";
 import { ul } from "motion/react-client";
 import { scaleClamped, type Recipe } from "@components/Global";
 import Icon from "@components/Icon";
+import { useInputState } from "@components/snap/InputProvider";
 
 type Props = {
   headerTxt?: string;
@@ -73,6 +74,8 @@ const recipesExample: Recipe[] = [
   },
 ];
 function RecipeSection({ headerTxt = "Recipes Found", recipes = recipesExample }: Props) {
+  const { state } = useInputState();
+
   return (
     <>
       <Header>
@@ -83,6 +86,13 @@ function RecipeSection({ headerTxt = "Recipes Found", recipes = recipesExample }
         {recipes.map((recipe) => (
           <RecipeCard recipe={recipe} key={recipe.title} />
         ))}
+        {state.pendingSpoonacular && (
+          <>
+            <RecipeCard recipe={undefined} />
+            <RecipeCard recipe={undefined} />
+            <RecipeCard recipe={undefined} />
+          </>
+        )}
       </RecipeList>
     </>
   );
