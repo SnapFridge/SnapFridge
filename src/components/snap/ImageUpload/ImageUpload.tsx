@@ -7,7 +7,7 @@ import FridgeImage from "./FridgeImage";
 import { scaleClamped } from "@components/Global";
 import { BarLoader } from "react-spinners";
 import Button from "@components/Button";
-import { AnimatePresence, type Variants } from "motion/react";
+import { AnimatePresence, type Variants, motion } from "motion/react";
 import { button, form } from "motion/react-client";
 import heic2URL from "./HeicDCode";
 import { useInputState } from "../InputProvider";
@@ -110,6 +110,20 @@ function FileUpload() {
 
   return (
     <>
+      <AnimatePresence>
+        {imgURLs.length < 1 ? (
+          <EmptyTitle
+            layout
+            variants={EmptyTitleVariants}
+            initial="initial"
+            animate="enter"
+            exit="exit"
+          >
+            Upload images below to get started!
+          </EmptyTitle>
+        ) : null}
+      </AnimatePresence>
+
       <Wrapper layout onSubmit={(e) => void fetchGemini(e)}>
         <FileUploader>
           {/*TODO: Fix hover behavior*/}
@@ -163,6 +177,25 @@ function FileUpload() {
 const Fetching: CSSProperties = {
   width: "100%",
   maxWidth: "576px",
+};
+
+const EmptyTitle = styled(motion.h1)({
+  marginBottom: "24px",
+});
+
+const EmptyTitleVariants: Variants = {
+  initial: {
+    y: 10,
+    opacity: 0,
+  },
+  enter: {
+    y: 0,
+    opacity: 1,
+  },
+  exit: {
+    y: -10,
+    opacity: 0,
+  },
 };
 
 const Wrapper = styled(form)({
