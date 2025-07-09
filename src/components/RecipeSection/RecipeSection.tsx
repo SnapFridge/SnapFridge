@@ -74,7 +74,11 @@ type Props = {
   pending?: boolean;
 };
 
-function RecipeSection({ headerTxt = "Recipes Found", recipes = recipesExample }: Props) {
+function RecipeSection({
+  headerTxt = "Recipes Found",
+  recipes = recipesExample,
+  pending = false,
+}: Props) {
   if (recipes.length === 0) {
     return (
       <>
@@ -105,6 +109,13 @@ function RecipeSection({ headerTxt = "Recipes Found", recipes = recipesExample }
         {recipes.map((recipe) => (
           <RecipeCard recipe={recipe} key={recipe.title} />
         ))}
+        {pending && (
+          <>
+            <RecipeCard recipe={undefined} />
+            <RecipeCard recipe={undefined} />
+            <RecipeCard recipe={undefined} />
+          </>
+        )}
       </RecipeList>
     </>
   );
