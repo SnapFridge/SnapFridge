@@ -22,7 +22,10 @@ function RecipeHolder() {
   return (
     <>
       <div>
-        <RecipeSection recipes={state.recipes.slice(0, visibleRecipes)} />
+        <RecipeSection
+          recipes={state.recipes.slice(0, visibleRecipes)}
+          pending={state.pendingSpoonacular}
+        />
         {state.recipes.length > 0 && (
           <Button variant="primary" onClick={handleViewMore}>
             View More
