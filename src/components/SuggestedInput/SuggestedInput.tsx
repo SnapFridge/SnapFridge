@@ -13,7 +13,7 @@ interface Props extends Omit<ComponentProps<"input">, "onChange"> {
 function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: Props) {
   function filterSuggestions(q: string) {
     const query = q.trim().toLowerCase();
-    return suggestions.filter((s) => s.includes(query));
+    return suggestions.filter((s) => s.startsWith(query));
   }
 
   const [items, setItems] = useState(suggestions);
@@ -36,7 +36,7 @@ function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: P
     <Wrapper>
       <Label {...getLabelProps()}>{label}</Label>
       <InputElement
-        {...getInputProps({ value })}
+        {...getInputProps({ value, type: "text" })}
         style={{ maxWidth: "100%" }}
         {...delegated}
       />
@@ -59,7 +59,7 @@ function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: P
                   backgroundColor:
                     highlightedIndex === index
                       ? "var(--background-100)"
-                      : "var(--background)",
+                      : "var(--background-0)",
                   fontWeight: selectedItem === item ? "bold" : "normal",
                 },
               })}
@@ -89,6 +89,7 @@ const Menu = styled("ul")({
 });
 
 const itemStyle = {
+  color: "var(--text-950)",
   paddingLeft: "8px",
 };
 

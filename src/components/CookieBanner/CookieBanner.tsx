@@ -65,12 +65,14 @@ const ContainerVariants = {
 };
 
 const CookieBannerContainer = styled(motion.div)({
+  display: "flex",
+  flexDirection: "column",
   zIndex: 1,
   width: "400px",
   height: "auto",
   position: "fixed",
-  bottom: 24,
-  right: 24,
+  bottom: "24px",
+  right: "24px",
   backgroundColor: "var(--accent-100)",
   borderRadius: "12px",
   padding: "24px",
@@ -81,10 +83,11 @@ const CookieBannerContainer = styled(motion.div)({
   },
 
   [ON_MOBILE]: {
-    bottom: 0,
+    bottom: "12px",
     right: 0,
     left: 0,
-    width: "100vw",
+    margin: "auto",
+    width: "calc(100% - var(--page-margin))",
     padding: "12px",
   },
 });

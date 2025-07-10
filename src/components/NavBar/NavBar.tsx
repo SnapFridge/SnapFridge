@@ -5,7 +5,11 @@ import Logo from "@components/Logo";
 import { ON_MOBILE } from "@components/Global";
 import HamburgerMenu from "./HamburgerMenu";
 
-const Links: { href: "/snap" | "/about"; title: string }[] = [
+const Links: { href: "/" | "/snap" | "/about"; title: string }[] = [
+  {
+    href: "/",
+    title: "Home",
+  },
   {
     href: "/snap",
     title: "Get Started",

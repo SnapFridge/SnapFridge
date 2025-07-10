@@ -66,7 +66,7 @@ function IngredientBox({ ingredient }: Props) {
           >
             <ActionButton
               as={motion.button}
-              variants={DeleteVariants}
+              variants={ActionVariants}
               whileHover="hover"
               onClick={() => {
                 dispatch({ type: "removeIngredient", ingredient });
@@ -79,7 +79,8 @@ function IngredientBox({ ingredient }: Props) {
               />
             </ActionButton>
             <ActionButton
-              variants={DeleteVariants}
+              as={motion.button}
+              variants={ActionVariants}
               whileHover="hover"
               onClick={() => {
                 setDialogOpen(true);
@@ -168,6 +169,7 @@ const ActionButton = styled(Button)({
   background: "transparent",
   padding: "4px",
   border: 0,
+  display: "inline-block",
 });
 
 const ContainerVariants: Variants = {
@@ -181,7 +183,7 @@ const ContainerVariants: Variants = {
     opacity: 1,
   },
 };
-const DeleteVariants: Variants = {
+const ActionVariants: Variants = {
   hover: {
     y: -5,
   },

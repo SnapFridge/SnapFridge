@@ -12,6 +12,7 @@ interface Props extends React.ComponentProps<typeof Dialog.Root> {
   title: React.ReactNode;
   description?: React.ReactNode;
   trigger: React.ReactNode;
+  onOpenChange: (open: boolean) => void;
 }
 
 function AppDialog({
@@ -35,7 +36,6 @@ function AppDialog({
         {realOpen && (
           <>
             <Dialog.Portal forceMount>
-              (
               <Overlay>
                 <Background
                   variants={BackgroundVariants}

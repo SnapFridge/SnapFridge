@@ -9,7 +9,7 @@ import { Dialog } from "radix-ui";
 import { useRef } from "react";
 
 type Props = {
-  links: { href: "/about" | "/snap"; title: string }[];
+  links: { href: "/" | "/snap" | "/about"; title: string }[];
 };
 
 function HamburgerMenu({ links }: Props) {

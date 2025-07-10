@@ -9,7 +9,7 @@ function RecipeHolder() {
   const [visibleRecipes, setVisibleRecipes] = useState(3);
 
   function handleViewMore() {
-    let newVisible = visibleRecipes + 3;
+    const newVisible = visibleRecipes + 3;
 
     if (newVisible > state.recipes.length) {
       // TODO: Figure out how to fetch more recipes from spoonacular

@@ -72,12 +72,14 @@ interface Props {
   headerTxt?: string;
   recipes?: Recipe[];
   pending?: boolean;
+  countPerPage?: number;
 }
 
 function RecipeSection({
   headerTxt = "Recipes Found",
   recipes = recipesExample,
   pending = false,
+  countPerPage = 3,
 }: Props) {
   if (recipes.length === 0) {
     return (
