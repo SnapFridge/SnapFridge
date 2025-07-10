@@ -222,7 +222,7 @@ const BaseContainer = styled("div")({
 
   [`${HiddenUpload}:focus + &`]: {
     /* Try to get the default outline color */
-    outline: ["5px auto -webkit-focus-ring-color", "2px solid #0d6efd"],
+    outline: ["5px auto -webkit-focus-ring-color", "medium auto currentColor"],
   },
   [`${HiddenUpload}:hover + &`]: {
     background: "color-mix(in srgb, var(--background-100) 50%, transparent)",

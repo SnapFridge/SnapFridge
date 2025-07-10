@@ -152,7 +152,7 @@ const IngredientElement = styled(motion.div)({
   boxShadow: "var(--shadow)",
 
   [`${HiddenButton}:focus + &`]: {
-    outline: ["5px auto -webkit-focus-ring-color", "2px solid #0d6efd"],
+    outline: ["5px auto -webkit-focus-ring-color", "medium auto currentColor"],
     outlineOffset: "4px",
   },
 });
