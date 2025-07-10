@@ -8,7 +8,7 @@ import Button from "@components/Button";
 import { useState, type FormEvent } from "react";
 import IngredientDialog from "../IngredientDialog";
 import Input from "@components/Input";
-import { ul } from "motion/react-client";
+import { motion } from "motion/react";
 import getRecipesJSON from "./actions";
 import { type Recipe } from "@components/Global";
 
@@ -65,7 +65,7 @@ function IngredientSection() {
         </NoIngredientContainer>
       ) : (
         <IngredientContainer
-          as={ul}
+          as={motion.ul}
           layout
           transition={{ duration: 0.3, ease: "easeInOut" }}
         >

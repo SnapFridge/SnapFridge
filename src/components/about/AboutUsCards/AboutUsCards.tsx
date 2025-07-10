@@ -2,7 +2,7 @@
 
 import { styled } from "@pigment-css/react";
 import { type Variants } from "motion/react";
-import { ul, li } from "motion/react-client";
+import { motion } from "motion/react";
 
 const Descriptions = {
   "Rylex Phan": `
@@ -74,7 +74,7 @@ const CardAnimations: Variants = {
   },
 };
 
-const CardContainer = styled(ul)({
+const CardContainer = styled(motion.ul)({
   display: "flex",
   justifyContent: "space-evenly",
   listStyleType: "none",
@@ -90,7 +90,7 @@ const CardContainer = styled(ul)({
   },
 });
 
-const Card = styled(li)({
+const Card = styled(motion.li)({
   alignItems: "center",
   padding: "24px",
   border: "1px solid var(--accent-950)",

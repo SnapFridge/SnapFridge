@@ -1,6 +1,6 @@
 "use client";
 
-import { styled, css } from "@pigment-css/react";
+import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import { useEffect, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import FridgeImage from "./FridgeImage";
@@ -8,7 +8,6 @@ import { scaleClamped } from "@components/Global";
 import { BarLoader } from "react-spinners";
 import Button from "@components/Button";
 import { AnimatePresence, type Variants, motion } from "motion/react";
-import { button, form } from "motion/react-client";
 import heic2URL from "./HeicDCode";
 import { useInputState } from "../InputProvider";
 import useToast from "@components/ToastProvider/UseToast";
@@ -154,19 +153,18 @@ function FileUpload() {
 
         <AnimatePresence>
           {imgURLs.length > 0 && (
-            <Button
+            <ScanButton
               key="scan-button"
               layout
-              className={ScanButton}
               variant="primary"
-              as={button}
+              as={motion.button}
               variants={ScanButtonVariants}
               initial="initial"
               animate="animate"
               exit="exit"
             >
               Scan
-            </Button>
+            </ScanButton>
           )}
         </AnimatePresence>
       </Wrapper>
@@ -198,7 +196,7 @@ const EmptyTitleVariants: Variants = {
   },
 };
 
-const Wrapper = styled(form)({
+const Wrapper = styled(motion.form)({
   width: "100%",
   maxWidth: "576px",
 });
@@ -223,7 +221,8 @@ const BaseContainer = styled("div")({
   background: "color-mix(in srgb, var(--background-50) 65%, transparent)",
 
   [`${HiddenUpload}:focus + &`]: {
-    border: "2px solid white",
+    /* Try to get the default outline color */
+    outline: ["5px auto -webkit-focus-ring-color", "2px solid #0d6efd"],
   },
   [`${HiddenUpload}:hover + &`]: {
     background: "color-mix(in srgb, var(--background-100) 50%, transparent)",
@@ -255,7 +254,7 @@ const SupportedFormats = styled("div")({
   opacity: 0.55,
 });
 
-const ScanButton = css({
+const ScanButton = styled(Button)({
   width: "100%",
   height: `${40 / 16}rem`,
   fontSize: `${20 / 16}rem`,

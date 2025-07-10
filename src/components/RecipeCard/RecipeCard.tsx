@@ -2,7 +2,7 @@ import Image from "next/image";
 import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE, type Recipe } from "@components/Global";
 import React from "react";
-import { li } from "motion/react-client";
+import * as motion from "motion/react-client";
 import { type Variants } from "motion/react";
 import ingredients2Str from "./functions.helper";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -23,9 +23,9 @@ function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
         highlightColor="var(--skeleton-highlight)"
       >
         <Skeleton containerClassName={RecipeTitle} />
-        <div className={FoodImgSkeleton}>
+        <FoodImgSkeleton>
           <Skeleton width="100%" height="100%" />
-        </div>
+        </FoodImgSkeleton>
         <Ingredients>
           <Skeleton containerClassName={IngredientTitle} count={0.4} />
           <Skeleton containerClassName={IngredientNames} count={1.5} />
@@ -94,7 +94,7 @@ const CardVariant: Variants = {
   },
 };
 
-const Card = styled(li)({
+const Card = styled(motion.li)({
   border: "1px solid var(--accent-950)",
   borderRadius: "12px",
   padding: "24px",
@@ -135,7 +135,7 @@ const FoodImg = css({
   height: "auto",
 });
 
-const FoodImgSkeleton = css({
+const FoodImgSkeleton = styled("div")({
   display: "block",
   gridArea: "2 / 1 / 4 / 2",
   width: "100%",

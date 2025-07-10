@@ -6,7 +6,7 @@ import Button from "@components/Button";
 import { styled } from "@pigment-css/react";
 import { useState } from "react";
 import { type Variants, AnimatePresence } from "motion/react";
-import { div as MotionDiv } from "motion/react-client";
+import { motion } from "motion/react";
 
 interface Props extends React.ComponentProps<typeof Dialog.Root> {
   title: React.ReactNode;
@@ -46,7 +46,7 @@ function AppDialog({
               </Overlay>
               <ContentContainer>
                 <Content asChild>
-                  <MotionDiv
+                  <motion.div
                     variants={ContentVariants}
                     initial="initial"
                     animate="enter"
@@ -60,7 +60,7 @@ function AppDialog({
                         <Icon icon="X" description="Close dialog" />
                       </XButton>
                     </Dialog.Close>
-                  </MotionDiv>
+                  </motion.div>
                 </Content>
               </ContentContainer>
             </Dialog.Portal>
@@ -116,7 +116,7 @@ const Overlay = styled(Dialog.Overlay)({
   inset: 0,
 });
 
-const Background = styled(MotionDiv)({
+const Background = styled(motion.div)({
   width: "100%",
   height: "100%",
   background: "#000000",

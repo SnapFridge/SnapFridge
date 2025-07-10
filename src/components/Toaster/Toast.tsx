@@ -5,8 +5,7 @@ import { Toast } from "radix-ui";
 import { styled } from "@pigment-css/react";
 import Icon, { type IconType } from "@components/Icon";
 import Button from "@components/Button";
-import { type Variants } from "motion/react";
-import { li } from "motion/react-client";
+import { type Variants, motion } from "motion/react";
 
 type Props = {
   id: string;
@@ -139,7 +138,7 @@ const ToastVariants: Variants = {
   },
 };
 
-const ContentContainer = styled(li)<{
+const ContentContainer = styled(motion.li)<{
   variant: "success" | "warn" | "error" | "info";
 }>({
   display: "flex",

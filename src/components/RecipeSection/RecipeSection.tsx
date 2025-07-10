@@ -1,7 +1,7 @@
 "use client";
 import RecipeCard from "@components/RecipeCard";
 import { styled } from "@pigment-css/react";
-import { ul } from "motion/react-client";
+import { motion } from "motion/react";
 import { scaleClamped, type Recipe } from "@components/Global";
 import Icon from "@components/Icon";
 
@@ -68,11 +68,11 @@ const recipesExample: Recipe[] = [
   },
 ];
 
-type Props = {
+interface Props {
   headerTxt?: string;
   recipes?: Recipe[];
   pending?: boolean;
-};
+}
 
 function RecipeSection({
   headerTxt = "Recipes Found",
@@ -132,7 +132,7 @@ function RecipeSection({
   );
 }
 
-const RecipeList = styled(ul)({
+const RecipeList = styled(motion.ul)({
   listStyleType: "none",
   padding: 0,
   "& > :not(:first-child)": {

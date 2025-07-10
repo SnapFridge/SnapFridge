@@ -1,13 +1,13 @@
 "use client";
 
 import { styled } from "@pigment-css/react";
-import { type Variants, useAnimate, AnimatePresence } from "motion/react";
-import { button, li, div } from "motion/react-client";
+import { type Variants, useAnimate, AnimatePresence, motion } from "motion/react";
 import { useState, useEffect } from "react";
 import { type Ingredient } from "@components/Global";
 import Icon from "@components/Icon";
 import { useInputState } from "../InputProvider";
 import EditDialog from "../EditDialog";
+import Button from "@components/Button";
 
 type Props = {
   ingredient: Ingredient;
@@ -65,6 +65,7 @@ function IngredientBox({ ingredient }: Props) {
             variants={ContainerVariants}
           >
             <ActionButton
+              as={motion.button}
               variants={DeleteVariants}
               whileHover="hover"
               onClick={() => {
@@ -113,7 +114,7 @@ function IngredientBox({ ingredient }: Props) {
   );
 }
 
-const Wrapper = styled(li)({
+const Wrapper = styled(motion.li)({
   height: "38px",
   width: "fit-content",
   position: "relative",
@@ -131,14 +132,14 @@ const IngredientVariants: Variants = {
   },
 };
 
-const HiddenButton = styled("button")({
+const HiddenButton = styled(Button)({
   width: "100%",
   height: "100%",
   position: "absolute",
   opacity: 0,
 });
 
-const IngredientElement = styled(div)({
+const IngredientElement = styled(motion.div)({
   display: "flex",
   gap: "8px",
   backgroundColor: "var(--accent-200)",
@@ -151,11 +152,7 @@ const IngredientElement = styled(div)({
   boxShadow: "var(--shadow)",
 
   [`${HiddenButton}:focus + &`]: {
-    outline: [
-      "medium auto currentColor",
-      "medium auto invert",
-      "5px auto -webkit-focus-ring-color",
-    ],
+    outline: ["5px auto -webkit-focus-ring-color", "2px solid #0d6efd"],
     outlineOffset: "4px",
   },
 });
@@ -167,7 +164,7 @@ const IngredientName = styled("p")({
   whiteSpace: "nowrap",
 });
 
-const ActionButton = styled(button)({
+const ActionButton = styled(Button)({
   background: "transparent",
   padding: "4px",
   border: 0,
@@ -191,7 +188,7 @@ const DeleteVariants: Variants = {
 };
 
 // Used so it's easier to click the buttons
-const ActionContainer = styled(div)({
+const ActionContainer = styled(motion.div)({
   zIndex: 1,
   position: "absolute",
   top: "-42px",

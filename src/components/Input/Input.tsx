@@ -106,7 +106,7 @@ export const InputElement = styled("input")({
         width: `${18 / 16}rem`,
         height: `${18 / 16}rem`,
         "&:checked": {
-          backgroundColor: "var(--accent-300)",
+          backgroundColor: "var(--accent-500)",
         },
       },
     },

@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, useAnimate, type Variants } from "motion/react";
-import { li, div } from "motion/react-client";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Icon from "@components/Icon";
 import React from "react";
@@ -97,7 +97,7 @@ const ContainerVariants: Variants = {
   },
 };
 
-const ImageContainer = styled(li)({
+const ImageContainer = styled(motion.li)({
   borderRadius: "8px",
   overflow: "hidden",
   position: "relative",
@@ -109,7 +109,7 @@ const ImageContainer = styled(li)({
   },
 });
 
-const DeleteContainer = styled(div)({
+const DeleteContainer = styled(motion.div)({
   position: "absolute",
   right: "8px",
   top: "8px",
