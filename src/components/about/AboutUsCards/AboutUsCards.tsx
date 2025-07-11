@@ -82,11 +82,7 @@ const CardContainer = styled(motion.ul)({
   gap: "24px",
 
   "@media (max-width: 768px)": {
-    display: "block",
-
-    "&> :not(:first-child)": {
-      marginTop: "24px",
-    },
+    flexDirection: "column",
   },
 });
 

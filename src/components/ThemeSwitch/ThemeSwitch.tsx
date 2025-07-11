@@ -1,10 +1,10 @@
 "use client";
 
-import { type ComponentProps, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "@components/Button";
 import Icon from "@components/Icon";
 
-function ThemeSwitcher({ ...delegated }: ComponentProps<"button">) {
+function ThemeSwitch({ ...delegated }) {
   const [dark, setDark] = useState<boolean>();
   function toggleTheme() {
     setDark(!dark);
@@ -27,4 +27,4 @@ function ThemeSwitcher({ ...delegated }: ComponentProps<"button">) {
   );
 }
 
-export default ThemeSwitcher;
+export default ThemeSwitch;

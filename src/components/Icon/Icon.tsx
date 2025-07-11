@@ -85,9 +85,7 @@ export default function Icon({
   return (
     <>
       {IconSVG}
-      {description === undefined ? undefined : (
-        <VisuallyHidden>{description}</VisuallyHidden>
-      )}
+      {description && <VisuallyHidden>{description}</VisuallyHidden>}
     </>
   );
 }

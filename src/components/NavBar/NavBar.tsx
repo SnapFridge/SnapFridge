@@ -1,15 +1,11 @@
 import { css, styled } from "@pigment-css/react";
-import ThemeSwitcher from "@components/ThemeSwitcher";
+import ThemeSwitch from "@components/ThemeSwitch";
 import Link from "@components/Link";
 import Logo from "@components/Logo";
-import { ON_MOBILE } from "@components/Global";
+import { ON_MOBILE, scaleClamped } from "@components/Global";
 import HamburgerMenu from "./HamburgerMenu";
 
-const Links: { href: "/" | "/snap" | "/about"; title: string }[] = [
-  {
-    href: "/",
-    title: "Home",
-  },
+const Links: { href: "/snap" | "/about"; title: string }[] = [
   {
     href: "/snap",
     title: "Get Started",
@@ -31,7 +27,7 @@ function NavBar() {
           </NavLink>
         ))}
       </LeftNav>
-      <ThemeSwitcher className={MobileGone} />
+      <ThemeSwitch className={MobileGone} />
       <HamburgerMenu links={Links} />
     </Nav>
   );
@@ -39,13 +35,14 @@ function NavBar() {
 
 const LeftNav = styled("div")({
   display: "flex",
-  gap: "45px",
+  gap: scaleClamped(30, 45),
   alignItems: "center",
 });
 
 const NavLink = styled(Link)({
   fontSize: "var(--1rem)",
 });
+
 const MobileGone = css({
   display: "block",
 

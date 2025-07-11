@@ -1,9 +1,10 @@
 "use client";
-import RecipeCard from "@components/RecipeCard";
+import RecipeCard from "./RecipeCard";
 import { styled } from "@pigment-css/react";
-import { motion } from "motion/react";
 import { scaleClamped, type Recipe } from "@components/Global";
 import Icon from "@components/Icon";
+import Pagination from "react-paginate";
+import VisuallyHidden from "@components/VisuallyHidden";
 
 const recipesExample: Recipe[] = [
   {
@@ -70,75 +71,69 @@ const recipesExample: Recipe[] = [
 
 interface Props {
   headerTxt?: string;
-  recipes?: Recipe[];
-  pending?: boolean;
+
+  // Undefined is pending
+  recipes?: undefined | Recipe[];
   countPerPage?: number;
 }
 
 function RecipeSection({
   headerTxt = "Recipes Found",
   recipes = recipesExample,
-  pending = false,
   countPerPage = 3,
 }: Props) {
-  if (recipes.length === 0) {
-    return (
-      <>
-        <Header>
-          <HeaderTxt>{headerTxt}</HeaderTxt>
-          <Icon aria-hidden icon="Sparkles" size={50}></Icon>
-        </Header>
-
-        {pending ? (
-          <>
-            <RecipeCard recipe={undefined} />
-            <RecipeCard recipe={undefined} />
-            <RecipeCard recipe={undefined} />
-          </>
-        ) : (
-          <>
-            <EmptySectionContainer>
-              <EmptySectionContent>
-                <Icon icon="ChefHat" size={50} color="var(--gray-400)" />
-                <p>
-                  Looks like your recipes is empty! Start by adding some ingredients or
-                  uploading an image, and then you can get your first recipe.
-                </p>
-              </EmptySectionContent>
-            </EmptySectionContainer>
-          </>
-        )}
-      </>
-    );
-  }
-
   return (
     <>
       <Header>
         <HeaderTxt>{headerTxt}</HeaderTxt>
         <Icon aria-hidden icon="Sparkles" size={50}></Icon>
       </Header>
-      <RecipeList>
-        {recipes.map((recipe) => (
-          <RecipeCard recipe={recipe} key={recipe.title} />
-        ))}
-        {pending && (
-          <>
-            <RecipeCard recipe={undefined} />
-            <RecipeCard recipe={undefined} />
-            <RecipeCard recipe={undefined} />
-          </>
-        )}
-      </RecipeList>
+      {recipes === undefined ? (
+        <RecipeList>
+          {Array(countPerPage).fill(<RecipeCard recipe={undefined} />)}
+        </RecipeList>
+      ) : recipes.length < 0 ? (
+        <EmptySectionContainer>
+          <EmptySectionContent>
+            <Icon icon="ChefHat" size={50} color="var(--gray-400)" />
+            <p>
+              Looks like your recipes is empty! Start by adding some ingredients or
+              uploading an image!
+            </p>
+          </EmptySectionContent>
+        </EmptySectionContainer>
+      ) : (
+        <>
+          <RecipeList>
+            {recipes.map((recipe: Recipe) => (
+              <RecipeCard recipe={recipe} key={recipe.title} />
+            ))}
+          </RecipeList>
+          <Pagination
+            pageCount={Math.ceil(recipes.length / countPerPage)}
+            breakLabel="..."
+            nextLabel={
+              <>
+                <VisuallyHidden>Next</VisuallyHidden>
+                {">"}
+              </>
+            }
+            previousLabel={
+              <>
+                {"<"}
+                <VisuallyHidden>Previous</VisuallyHidden>
+              </>
+            }
+          />
+        </>
+      )}
     </>
   );
 }
 
-const RecipeList = styled(motion.ul)({
-  listStyleType: "none",
-  padding: 0,
-  "& > :not(:first-child)": {
-    marginTop: "28px",
+const RecipeList = styled("ul")({
+  "& > li": {
+    margin: "0 0 28px 0",
   },
 });
 
@@ -146,7 +141,7 @@ const Header = styled("div")({
   display: "flex",
   alignItems: "center",
   gap: "12px",
-  marginBottom: "12px",
+  margin: "0 0 12px",
 });
 
 const HeaderTxt = styled("h2")({
@@ -165,7 +160,7 @@ const EmptySectionContent = styled("div")({
 const EmptySectionContainer = styled("div")({
   display: "flex",
   justifyContent: "center",
-  marginBottom: "36px",
+  margin: "0 0 36px",
 });
 
 export default RecipeSection;

@@ -121,7 +121,7 @@ function IngredientForm({
 
 const LimitedWidth = css({
   maxWidth: "100%",
-  marginBottom: "10px",
+  margin: "0 0 10px",
 });
 
 export default IngredientForm;

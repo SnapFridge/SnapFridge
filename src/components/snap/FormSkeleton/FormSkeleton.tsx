@@ -45,7 +45,7 @@ function FormSkeleton() {
 }
 
 const Container = styled("div")({
-  marginBottom: "6px",
+  margin: "0 0 6px",
   fontSize: `${16 / 16}rem`,
 });
 

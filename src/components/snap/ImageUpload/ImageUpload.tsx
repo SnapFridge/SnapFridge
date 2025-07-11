@@ -178,7 +178,7 @@ const Fetching: CSSProperties = {
 };
 
 const EmptyTitle = styled(motion.h1)({
-  marginBottom: "24px",
+  margin: "0 0 24px",
 });
 
 const EmptyTitleVariants: Variants = {
@@ -242,7 +242,7 @@ const ImageContainer = styled(BaseContainer)({
   gap: scaleClamped(7, 20, false, 320, 673),
   flexWrap: "wrap",
   justifyContent: "space-evenly",
-  padding: "20px 20px",
+  padding: "20px",
   borderBottom: "none",
   borderBottomRightRadius: 0,
   borderBottomLeftRadius: 0,

@@ -3,7 +3,7 @@ import Button from "@components/Button";
 import { ON_MOBILE } from "@components/Global";
 import Icon from "@components/Icon";
 import Link from "@components/Link";
-import ThemeSwitcher from "@components/ThemeSwitcher";
+import ThemeSwitch from "@components/ThemeSwitch";
 import { styled } from "@pigment-css/react";
 import { Dialog } from "radix-ui";
 import { useRef } from "react";
@@ -41,7 +41,7 @@ function HamburgerMenu({ links }: Props) {
               </Dialog.Close>
             ))}
           </Content>
-          <ThemeSwitch />
+          <CenteredThemeSwitch />
           <Dialog.Close asChild>
             <CloseButton variant="icon">
               <Icon color="var(--error-500)" icon="X" description="Close menu" />
@@ -94,7 +94,7 @@ const Wrapper = styled(Dialog.Content)({
 
 const Title = styled(Dialog.Title)({
   color: "var(--text-950)",
-  marginBottom: "14px",
+  margin: "0 0 14px",
 });
 
 const Content = styled("div")({
@@ -104,7 +104,7 @@ const Content = styled("div")({
   borderLeft: "2px solid var(--text-800)",
   paddingLeft: "16px",
   flexDirection: "column",
-  marginBottom: "auto",
+  margin: "0 0 auto",
 });
 
 const MenuLink = styled(Link)({
@@ -113,13 +113,12 @@ const MenuLink = styled(Link)({
   gap: "4px",
 
   fontSize: `${18 / 16}rem`,
-  paddingTop: "auto",
-  paddingBottom: "auto",
+  padding: "auto 0",
   minHeight: `${44 / 16}rem`,
   lineHeight: `${44 / 16}rem`,
 });
 
-const ThemeSwitch = styled(ThemeSwitcher)({
+const CenteredThemeSwitch = styled(ThemeSwitch)({
   display: "flex",
   justifyContent: "center",
 });

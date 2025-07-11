@@ -94,13 +94,12 @@ export default function Page() {
 const Hero = styled("div")({
   justifyContent: "center",
   ["--content-padding" as string]: scaleClamped(75, 125),
-  paddingTop: `calc(var(--nav-height) + var(--nav-margin) + var(--content-padding))`,
-  paddingBottom: `var(--content-padding)`,
+  padding: `calc(var(--nav-height) + var(--nav-margin) + var(--content-padding)) 0 var(--content-padding)`,
   background: `radial-gradient(circle at top left, var(--hero-radial-1) 0%, var(--hero-radial-2) 63%, var(--hero-radial-3) 100%),
     linear-gradient(var(--hero-linear-1) 0%, var(--hero-linear-2) 96%, var(--background-50) 100%)
     `,
   backgroundBlendMode: "multiply",
-  marginTop: "calc(-1 * (var(--nav-height) + var(--nav-margin)))",
+  margin: "calc(-1 * (var(--nav-height) + var(--nav-margin))) 0 0",
 });
 
 const Title = styled("h1")({

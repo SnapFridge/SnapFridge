@@ -1,10 +1,12 @@
 import { styled, css } from "@pigment-css/react";
 import Link from "@components/Link";
 import Icon from "@components/Icon";
+import VisuallyHidden from "@components/VisuallyHidden";
 
 function Logo() {
   return (
     <Link href="/" className={Wrapper}>
+      <VisuallyHidden>Home</VisuallyHidden>
       <Icon icon="Logo" size={53} className={A} />
       <LogoName>SnapFridge</LogoName>
     </Link>

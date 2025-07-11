@@ -30,7 +30,6 @@ function CookieBanner() {
           initial="starting"
           animate="enter"
           exit="exit"
-          whileHover="hover"
         >
           <Title>Cookie Acknowledgement</Title>
           <p>
@@ -58,9 +57,6 @@ const ContainerVariants = {
   exit: {
     opacity: 0,
     scale: 0,
-  },
-  hover: {
-    scale: 1.02,
   },
 };
 
