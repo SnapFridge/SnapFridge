@@ -11,7 +11,7 @@ type Props = {
 // Pages are 0-indexed everywhere, but rendered as 1-indexed
 function Pagination({ page, pageCount, onChange }: Props) {
   function getPageBtns() {
-    let btns = [];
+    const btns = [];
     for (let i = 0; i < pageCount; i++) {
       btns.push(
         <PageBtn

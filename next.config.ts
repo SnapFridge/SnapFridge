@@ -319,7 +319,6 @@ export default withPigment(
         "react",
         "react-dom",
         "react-loading-skeleton",
-        "react-paginate",
         "react-spinners",
         "swr",
         "use-immer",

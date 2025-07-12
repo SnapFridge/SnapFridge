@@ -103,10 +103,19 @@ export const InputElement = styled("input")({
       props: ({ type }) => type === "checkbox" || type === "radio",
       style: {
         background: "var(--accent-100)",
-        width: `${18 / 16}rem`,
-        height: `${18 / 16}rem`,
+        width: `${20 / 16}rem`,
+        height: `${20 / 16}rem`,
+        "&:disabled": {
+          opacity: 0.75,
+        },
+      },
+    },
+    {
+      props: { type: "checkbox" },
+      style: {
         "&:checked": {
-          backgroundColor: "var(--accent-500)",
+          background: "var(--accent-500)",
+          boxShadow: `0 0 0 3px var(--accent-100) inset`,
         },
       },
     },
@@ -114,6 +123,9 @@ export const InputElement = styled("input")({
       props: { type: "radio" },
       style: {
         borderRadius: "50%",
+        "&:checked": {
+          background: `radial-gradient(circle at center, var(--accent-500) 42%, var(--accent-100) 42%)`,
+        },
       },
     },
   ],

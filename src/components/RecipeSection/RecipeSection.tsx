@@ -9,17 +9,19 @@ import { useInputState } from "@components/snap/InputProvider";
 
 interface Props {
   headerTxt?: string;
-  recipes?: "pending" | Recipe[];
+  recipes_?: "pending" | Recipe[];
   countPerPage?: number;
 }
 
 function RecipeSection({
   headerTxt = "Recipes Found",
   countPerPage = 2,
-  recipes = useInputState().state.recipes,
+  recipes_,
 }: Props) {
+  const { state } = useInputState();
+  const recipes = recipes_ || state.recipes;
   function getPendingCards() {
-    let cards = [];
+    const cards = [];
     for (let i = 0; i < countPerPage; i++) {
       // Yes index key is fine here
       cards.push(<RecipeCard key={i} recipe={undefined} />);
@@ -29,7 +31,7 @@ function RecipeSection({
   const [page, setPage] = useState(0);
 
   function getPageCards() {
-    let cards = [];
+    const cards = [];
     const start = page * countPerPage;
     const end = Math.min(start + countPerPage, recipes.length);
     for (let i = start; i < end; i++) {

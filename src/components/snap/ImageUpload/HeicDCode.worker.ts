@@ -4,6 +4,7 @@ import init from "heic-d-code";
 const decoder = await init();
 const canvas = new OffscreenCanvas(0, 0);
 const ctx = canvas.getContext("2d")!;
+postMessage("");
 onmessage = async (e) => {
   const { data, width, height } = decoder.decode(e.data as Uint8Array);
   canvas.width = width;

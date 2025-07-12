@@ -2,6 +2,7 @@ import React from "react";
 import { styled, css } from "@pigment-css/react";
 import Button from "@components/Button";
 import AdjectiveRecipes from "@components/home/AdjectiveRecipe";
+import { InputProvider } from "@components/snap/InputProvider";
 import RecipeSection from "@components/RecipeSection";
 import Counter from "@components/home/Counter";
 import Image from "next/image";
@@ -55,7 +56,9 @@ export default function Page() {
             />
           </FridgeAndPointers>
         </FridgeSection>
-        <RecipeSection recipes={recipesExample} />
+        <InputProvider>
+          <RecipeSection recipes_={recipesExample} />
+        </InputProvider>
         <StatisticsSection>
           <TopStatistics>
             <h2>Around 30-40% of food gets wasted every year</h2>

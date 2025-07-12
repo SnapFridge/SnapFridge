@@ -19,16 +19,25 @@ function FileUpload() {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
   const { state, dispatch } = useInputState();
   const { files } = state;
-  const worker = useRef<Worker>(undefined as unknown as Worker);
+  const worker = useRef<Worker>(null);
   const { addWarn } = useToast();
   const [pending, setPending] = useState(false);
 
-  // Initialize a worker
-  useEffect(() => {
-    worker.current = new Worker(new URL("HeicDCode.worker.ts", import.meta.url), {
-      type: "module",
-    });
+  async function getWorker() {
+    if (!worker.current) {
+      worker.current = new Worker(new URL("HeicDCode.worker.ts", import.meta.url), {
+        type: "module",
+      });
+      await new Promise<void>((resolve) => {
+        worker.current!.addEventListener("message", () => resolve(), {
+          once: true,
+        });
+      });
+    }
+    return worker.current;
+  }
 
+  useEffect(() => {
     return () => {
       worker.current?.terminate();
     };
@@ -58,12 +67,10 @@ function FileUpload() {
         }
         case "image/heic":
         case "image/heif": {
-          if (worker.current) {
-            const heicData = new Uint8Array(await file.arrayBuffer());
-            const url = await heic2URL(worker.current, heicData);
-            newImages.push(url);
-            break;
-          }
+          const heicData = new Uint8Array(await file.arrayBuffer());
+          const url = await heic2URL(await getWorker(), heicData);
+          newImages.push(url);
+          break;
         }
         default:
           continue;
@@ -125,7 +132,6 @@ function FileUpload() {
 
       <Wrapper layout onSubmit={(e) => void fetchGemini(e)}>
         <FileUploader>
-          {/*TODO: Fix hover behavior*/}
           <HiddenUpload
             label={<VisuallyHidden>Upload image(s)</VisuallyHidden>}
             title="Upload image(s)"
