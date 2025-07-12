@@ -49,7 +49,7 @@ function IngredientSection() {
       {ingredients.size < 1 ? (
         <NoIngredientContainer>
           <IngredientDialog />
-          <Icon icon="Archive" size={36} color="var(--text-950)" />
+          <Icon icon="Archive" size={36} color="var(--gray-500)" />
           <IngredientTitle>Your ingredients will appear here</IngredientTitle>
         </NoIngredientContainer>
       ) : (
@@ -90,15 +90,17 @@ function IngredientSection() {
           onChange={() => setRanking(2)}
           disabled={recipes === "pending"}
         />
-        <Button variant="secondary" type="submit">
-          Get recipe from spoonacular
-        </Button>
+        <div>
+          <Button variant="secondary" type="submit">
+            Get recipe from spoonacular
+          </Button>
+        </div>
       </form>
     </>
   );
 }
 const IngredientTitle = styled("h1")({
-  color: "var(--text-950)",
+  color: "var(--gray-500)",
 
   fontSize: `${18 / 16}rem`,
   fontWeight: "400",
@@ -112,7 +114,6 @@ const BothContainer = styled("div")({
   alignItems: "center",
   justifyContent: "center",
   gap: "12px",
-  padding: "24px",
   borderRadius: "8px",
   minHeight: "220px",
   maxWidth: "500px",
@@ -122,8 +123,7 @@ const BothContainer = styled("div")({
 
 const NoIngredientContainer = styled(BothContainer)({
   flexDirection: "column",
-  border: "1px solid var(--text-950)",
-  opacity: 0.7,
+  border: "1px solid var(--gray-500)",
 });
 
 const IngredientContainer = styled(BothContainer)({

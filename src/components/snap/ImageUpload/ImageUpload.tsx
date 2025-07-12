@@ -256,8 +256,9 @@ const ImageContainer = styled(BaseContainer)({
 
 const SupportedFormats = styled("div")({
   textAlign: "center",
-  color: "var(--text-950)",
-  opacity: 0.55,
+  width: "100%",
+  padding: "0 24px",
+  color: "var(--gray-500)",
 });
 
 const ScanButton = styled(Button)({

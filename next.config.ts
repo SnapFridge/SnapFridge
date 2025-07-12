@@ -293,11 +293,13 @@ const CSP = `
   media-src 'none';
   manifest-src 'none';
   upgrade-insecure-requests;
+  sandbox allow-forms allow-scripts allow-same-origin;
  `.replace(/\s{2,}/g, " ");
 
 export default withPigment(
   {
     experimental: {
+      inlineCss: true,
       typedRoutes: true,
       useLightningcss: true,
       reactCompiler: true,

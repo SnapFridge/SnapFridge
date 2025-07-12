@@ -60,7 +60,7 @@ export const Label = styled("label")({
   display: "block",
   width: "100%",
   textAlign: "left",
-  color: "var(--gray-500)",
+  color: "var(--gray-700)",
 });
 
 function hasValueBox(type: HTMLInputTypeAttribute): boolean {
@@ -108,14 +108,9 @@ export const InputElement = styled("input")({
         "&:disabled": {
           opacity: 0.75,
         },
-      },
-    },
-    {
-      props: { type: "checkbox" },
-      style: {
         "&:checked": {
           background: "var(--accent-500)",
-          boxShadow: `0 0 0 3px var(--accent-100) inset`,
+          boxShadow: "0 0 0 3px var(--accent-100) inset",
         },
       },
     },
@@ -123,9 +118,6 @@ export const InputElement = styled("input")({
       props: { type: "radio" },
       style: {
         borderRadius: "50%",
-        "&:checked": {
-          background: `radial-gradient(circle at center, var(--accent-500) 42%, var(--accent-100) 42%)`,
-        },
       },
     },
   ],
