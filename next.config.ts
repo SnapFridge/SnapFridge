@@ -292,8 +292,8 @@ const CSP = `
   frame-ancestors 'none';
   media-src 'none';
   manifest-src 'none';
-  upgrade-insecure-requests;
   sandbox allow-forms allow-scripts allow-same-origin;
+  upgrade-insecure-requests;
  `.replace(/\s{2,}/g, " ");
 
 export default withPigment(

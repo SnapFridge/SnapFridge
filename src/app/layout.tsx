@@ -1,5 +1,5 @@
 import "@pigment-css/react/styles.css";
-import "./globalStyles";
+import "./GlobalStyles";
 import { Poppins } from "next/font/google";
 import NavBar from "@components/NavBar";
 import Footer from "@components/Footer";
