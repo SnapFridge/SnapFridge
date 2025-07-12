@@ -21,7 +21,7 @@ function Button<C extends ElementType = "button">({
 }
 
 const StyledButton = styled("button")<{ variant: Variant | undefined }>({
-  display: "flex",
+  display: "inline-flex",
   alignItems: "center",
   justifyContent: "center",
   textDecoration: "none",
@@ -29,18 +29,25 @@ const StyledButton = styled("button")<{ variant: Variant | undefined }>({
   padding: `${10 / 16}rem`,
   borderRadius: "8px",
   border: "none",
+  color: "var(--text-950)",
   // Hidden dependency relied upon by the trickery we use later
   position: "relative",
 
   "&:hover": {
-    backgroundColor: "var(--background-hover)",
+    "&:not(:disabled)": {
+      backgroundColor: "var(--background-hover)",
+    },
+  },
+
+  "&:disabled": {
+    opacity: 0.8,
   },
 
   // Apple recommends a minimum 44x44 tapping size
   // Do a little trickery (Thank you Kevin)
   "&:after": {
     ["--insent-by" as string]:
-      "min(0px, calc((100% - var(--click-target-minimum, 100%)) / 2))",
+      "min(0, calc((100% - var(--click-target-minimum, 100%)) / 2))",
     content: "",
     position: "absolute",
     top: "var(--inset-by)",

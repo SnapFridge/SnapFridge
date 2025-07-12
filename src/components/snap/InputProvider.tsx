@@ -16,8 +16,7 @@ enableMapSet();
 export interface State {
   ingredients: Map<string, Ingredient>;
   files: File[];
-  recipes: Recipe[];
-  pendingSpoonacular: boolean;
+  recipes: "pending" | Recipe[];
 }
 
 export type Action =
@@ -28,7 +27,7 @@ export type Action =
   | { type: "addFiles"; files: File[] }
   | { type: "removeFile"; index: number }
   | { type: "addRecipes"; recipes: Recipe[] }
-  | { type: "switchPendingSpoonacular"; pending: boolean };
+  | { type: "setPendingSpoonacular" };
 
 function reducer(draft: State, action: Action) {
   function addIngredient({ name, amount, unit }: Ingredient) {
@@ -73,11 +72,14 @@ function reducer(draft: State, action: Action) {
       break;
     }
     case "addRecipes": {
+      if (draft.recipes === "pending") {
+        draft.recipes = [];
+      }
       draft.recipes.push(...action.recipes);
       break;
     }
-    case "switchPendingSpoonacular": {
-      draft.pendingSpoonacular = action.pending;
+    case "setPendingSpoonacular": {
+      draft.recipes = "pending";
       break;
     }
   }

@@ -3,96 +3,50 @@ import RecipeCard from "./RecipeCard";
 import { styled } from "@pigment-css/react";
 import { scaleClamped, type Recipe } from "@components/Global";
 import Icon from "@components/Icon";
-import Pagination from "react-paginate";
-import VisuallyHidden from "@components/VisuallyHidden";
-
-const recipesExample: Recipe[] = [
-  {
-    title: "Simple Whole Wheat Crepes",
-    image: "https://img.spoonacular.com/recipes/716407-312x231.jpg",
-    usedIngredientCount: 3,
-    missedIngredientCount: 1,
-    missedIngredients: [
-      {
-        amount: 1,
-        unit: "Tablespoon",
-        name: "maple syrup",
-      },
-    ],
-    usedIngredients: [
-      {
-        amount: 3,
-        unit: "Tablespoons",
-        name: "butter",
-      },
-      {
-        amount: 3,
-        unit: "",
-        name: "eggs",
-      },
-      {
-        amount: 1,
-        unit: "cup",
-        name: "milk",
-      },
-    ],
-  },
-  {
-    title: "Dutch Baby",
-    image: "https://img.spoonacular.com/recipes/641759-312x231.jpg",
-    usedIngredientCount: 3,
-    missedIngredientCount: 1,
-    missedIngredients: [
-      {
-        amount: 2,
-        unit: "",
-        name: "lemons",
-      },
-    ],
-    usedIngredients: [
-      {
-        amount: 3,
-        unit: "",
-        name: "eggs",
-      },
-      {
-        amount: 1,
-        unit: "cup",
-        name: "milk",
-      },
-      {
-        amount: 2,
-        unit: "tablespoons",
-        name: "butter",
-      },
-    ],
-  },
-];
+import Pagination from "./Pagination";
+import { useState } from "react";
+import { useInputState } from "@components/snap/InputProvider";
 
 interface Props {
   headerTxt?: string;
-
-  // Undefined is pending
-  recipes?: undefined | Recipe[];
+  recipes?: "pending" | Recipe[];
   countPerPage?: number;
 }
 
 function RecipeSection({
   headerTxt = "Recipes Found",
-  recipes = recipesExample,
-  countPerPage = 3,
+  countPerPage = 2,
+  recipes = useInputState().state.recipes,
 }: Props) {
+  function getPendingCards() {
+    let cards = [];
+    for (let i = 0; i < countPerPage; i++) {
+      // Yes index key is fine here
+      cards.push(<RecipeCard key={i} recipe={undefined} />);
+    }
+    return cards;
+  }
+  const [page, setPage] = useState(0);
+
+  function getPageCards() {
+    let cards = [];
+    const start = page * countPerPage;
+    const end = Math.min(start + countPerPage, recipes.length);
+    for (let i = start; i < end; i++) {
+      const r = recipes[i] as Recipe;
+      cards.push(<RecipeCard key={r.title} recipe={r} />);
+    }
+    return cards;
+  }
   return (
     <>
       <Header>
         <HeaderTxt>{headerTxt}</HeaderTxt>
         <Icon aria-hidden icon="Sparkles" size={50}></Icon>
       </Header>
-      {recipes === undefined ? (
-        <RecipeList>
-          {Array(countPerPage).fill(<RecipeCard recipe={undefined} />)}
-        </RecipeList>
-      ) : recipes.length < 0 ? (
+      {recipes === "pending" ? (
+        <RecipeList>{getPendingCards()}</RecipeList>
+      ) : recipes.length < 1 ? (
         <EmptySectionContainer>
           <EmptySectionContent>
             <Icon icon="ChefHat" size={50} color="var(--gray-400)" />
@@ -104,27 +58,12 @@ function RecipeSection({
         </EmptySectionContainer>
       ) : (
         <>
-          <RecipeList>
-            {recipes.map((recipe: Recipe) => (
-              <RecipeCard recipe={recipe} key={recipe.title} />
-            ))}
-          </RecipeList>
           <Pagination
             pageCount={Math.ceil(recipes.length / countPerPage)}
-            breakLabel="..."
-            nextLabel={
-              <>
-                <VisuallyHidden>Next</VisuallyHidden>
-                {">"}
-              </>
-            }
-            previousLabel={
-              <>
-                {"<"}
-                <VisuallyHidden>Previous</VisuallyHidden>
-              </>
-            }
+            page={page}
+            onChange={(newPage) => setPage(newPage)}
           />
+          <RecipeList>{getPageCards()}</RecipeList>
         </>
       )}
     </>

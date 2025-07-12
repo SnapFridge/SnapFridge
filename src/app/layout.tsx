@@ -26,18 +26,14 @@ export const metadata: Metadata = {
 
 // Not a function to save on code size
 const applyTheme = () => {
-  addEventListener(
-    "DOMContentLoaded",
-    () => {
-      const theme =
-        localStorage.getItem("theme") ||
-        (matchMedia("(prefers-color-scheme: dark)") ? "dark" : "light");
-      if (theme === "dark") {
-        document.documentElement.classList.add("dark");
-      }
-    },
-    { once: true }
-  );
+  addEventListener("DOMContentLoaded", () => {
+    const theme =
+      localStorage.getItem("theme") ||
+      (matchMedia("(prefers-color-scheme: dark)") ? "dark" : "light");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    }
+  });
   addEventListener("beforeunload", () => {
     localStorage.setItem(
       "theme",

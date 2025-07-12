@@ -14,21 +14,18 @@ import { type Recipe } from "@components/Global";
 
 function IngredientSection() {
   const { state, dispatch } = useInputState();
-  const { ingredients } = state;
+  const { ingredients, recipes } = state;
 
   const [ignorePantry, setIgnorePantry] = useState(true);
   const [ranking, setRanking] = useState(2);
-  const [pending, setPending] = useState(false);
 
   async function fetchSpoonacular(e: FormEvent) {
     e.preventDefault();
     if (ingredients.size === 0) {
       return;
     }
-    setPending(true);
     dispatch({
-      type: "switchPendingSpoonacular",
-      pending: true,
+      type: "setPendingSpoonacular",
     });
 
     let ingredientsStr = "";
@@ -41,17 +38,9 @@ function IngredientSection() {
       ranking: `${ranking}`,
       ignorePantry: `${ignorePantry}`,
     }).toString();
-    const json = await getRecipesJSON(query);
-    console.log(json);
     dispatch({
       type: "addRecipes",
-      recipes: JSON.parse(json) as Recipe[],
-    });
-
-    setPending(false);
-    dispatch({
-      type: "switchPendingSpoonacular",
-      pending: false,
+      recipes: JSON.parse(await getRecipesJSON(query)) as Recipe[],
     });
   }
 
@@ -81,7 +70,7 @@ function IngredientSection() {
           label="Ignore typical pantry Items (water, salt, flour, etc)"
           onChange={setIgnorePantry}
           checked={ignorePantry}
-          disabled={pending}
+          disabled={recipes === "pending"}
         />
         <Input
           type="radio"
@@ -90,7 +79,7 @@ function IngredientSection() {
           value={1}
           checked={ranking === 1}
           onChange={() => setRanking(1)}
-          disabled={pending}
+          disabled={recipes === "pending"}
         />
         <Input
           type="radio"
@@ -99,7 +88,7 @@ function IngredientSection() {
           value={2}
           checked={ranking === 2}
           onChange={() => setRanking(2)}
-          disabled={pending}
+          disabled={recipes === "pending"}
         />
         <Button variant="secondary" type="submit">
           Get recipe from spoonacular

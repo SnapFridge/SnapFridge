@@ -10,7 +10,7 @@ export default function Page() {
     <PageMargin>
       <InputProvider>
         <InputSection />
-        <RecipeSection recipes={undefined} />
+        <RecipeSection />
       </InputProvider>
     </PageMargin>
   );

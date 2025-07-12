@@ -44,10 +44,8 @@ const NavLink = styled(Link)({
 });
 
 const MobileGone = css({
-  display: "block",
-
   [ON_MOBILE]: {
-    display: "none",
+    display: "none !important",
   },
 });
 

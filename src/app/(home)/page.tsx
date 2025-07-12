@@ -5,7 +5,13 @@ import AdjectiveRecipes from "@components/home/AdjectiveRecipe";
 import RecipeSection from "@components/RecipeSection";
 import Counter from "@components/home/Counter";
 import Image from "next/image";
-import { scaleClamped, ON_MOBILE, PageMargin } from "@components/Global";
+import {
+  scaleClamped,
+  ON_MOBILE,
+  PageMargin,
+  recipesExample,
+  MOBILE_BREAKPOINT,
+} from "@components/Global";
 import FoodPointer from "@components/home/FoodPointer";
 import Link from "next/link";
 
@@ -26,7 +32,6 @@ export default function Page() {
           </ButtonWrapper>
         </PageMargin>
       </Hero>
-      {/* The content underneath the header */}
       <PageMargin>
         <FridgeSection className={MobileFlexCol}>
           <FridgeSideTxt>An app, built just for your fridge</FridgeSideTxt>
@@ -46,10 +51,11 @@ export default function Page() {
               alt="Fridge"
               className={FridgeImg}
               priority
+              sizes={`50vw, (max-width: ${MOBILE_BREAKPOINT}px) 60vw`}
             />
           </FridgeAndPointers>
         </FridgeSection>
-        <RecipeSection />
+        <RecipeSection recipes={recipesExample} />
         <StatisticsSection>
           <TopStatistics>
             <h2>Around 30-40% of food gets wasted every year</h2>
@@ -71,11 +77,13 @@ export default function Page() {
               pounds
             </h2>
             <Image
-              width={692}
-              height={689}
+              width={1704}
+              height={1704}
               className={LandfillImg}
-              src="/Landfill.avif"
-              alt="A landfill worker in a neon vest clearing through a landfill of fruit waste"
+              src="/Landfill.png"
+              alt="Landfill worker clearing through a landfill of fruit waste"
+              quality={45}
+              sizes={`40vw, (max-width: ${MOBILE_BREAKPOINT}px) 80vw`}
             />
           </BottomStatistics>
         </StatisticsSection>
