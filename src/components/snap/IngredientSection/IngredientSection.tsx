@@ -107,6 +107,7 @@ const IngredientTitle = styled("h1")({
   fontSize: `${18 / 16}rem`,
   fontWeight: "400",
   textAlign: "center",
+  padding: "0 24px",
 });
 
 const BothContainer = styled("div")({

@@ -1,4 +1,4 @@
-import { ON_MOBILE } from "@components/Global";
+import { ON_MOBILE, scaleClamped } from "@components/Global";
 import { styled } from "@pigment-css/react";
 import { type PropsWithChildren } from "react";
 
@@ -16,14 +16,19 @@ const FitContent = styled("div")({
 });
 
 const Txt = styled("span")({
+  fontSize: scaleClamped(12, 20),
   marginLeft: "-50%",
   textAlign: "center",
   background: "var(--background-0)",
+  borderRadius: "2px",
   padding: "0 2px 1px",
+
+  [ON_MOBILE]: {
+    marginLeft: "-75%",
+  },
 });
 
 const Pointer = styled("div")({
-  fontSize: "var(--1rem)",
   position: "absolute",
   borderStyle: "solid",
   borderColor: "var(--text-950)",

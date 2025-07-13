@@ -1,140 +1,88 @@
 "use client";
 
-import { AnimatePresence, useAnimate, type Variants } from "motion/react";
-import { motion } from "motion/react";
 import Image from "next/image";
 import Icon from "@components/Icon";
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useRef } from "react";
 import { css, styled } from "@pigment-css/react";
 
 type Props = {
   src: string;
-  removeImage: (arg: string) => void;
+  deleteImage: (arg: string) => void;
 };
 
-function FridgeImage({ src, removeImage }: Props) {
-  const [isActive, setActive] = useState(false);
-  const [scope, animate] = useAnimate();
-
-  useEffect(() => {
-    void (async () => {
-      await animate(
-        scope.current,
-        isActive
-          ? {
-              y: -5,
-              scale: 1.05,
-            }
-          : {
-              y: 0,
-              scale: 1,
-            }
-      );
-    })();
-  }, [isActive, animate, scope]);
+function FridgeImage({ src, deleteImage }: Props) {
+  const img = useRef<HTMLButtonElement>(null);
 
   function handleHoverEnter() {
-    setActive(true);
+    img.current!.classList.add("active");
   }
 
   function handleHoverLeave() {
-    setActive(false);
+    img.current!.classList.remove("active");
   }
 
   function handleClick() {
-    setActive(!isActive);
+    img.current!.classList.toggle("active");
   }
 
   return (
-    <ImageContainer
-      // desktop
-      onMouseEnter={handleHoverEnter}
-      onMouseLeave={handleHoverLeave}
-      // mobile
-      onClick={handleClick}
-      variants={ContainerVariants}
-      ref={scope}
-      initial="initial"
-      animate="enterAnim"
-      layout
-    >
-      <AnimatePresence initial={false}>
-        {isActive && (
-          <DeleteContainer
-            onClick={() => {
-              removeImage(src);
-            }}
-            variants={DeleteVariants}
-            whileHover="hover"
-            initial="initial"
-            animate="enter"
-            exit="exit"
-          >
-            <Icon icon="Trash2" color="var(--warn-500)" />
-          </DeleteContainer>
-        )}
-      </AnimatePresence>
-      <Image
-        className={FridgeImg}
-        width={150}
-        height={150}
-        src={src}
-        alt="User uploaded image"
-      />
-    </ImageContainer>
+    <Wrapper onMouseEnter={handleHoverEnter} onMouseLeave={handleHoverLeave}>
+      <ImageBtn onClick={handleClick} ref={img}>
+        <Image
+          className={FridgeImg}
+          width={150}
+          height={150}
+          src={src}
+          alt="User uploaded image"
+        />
+      </ImageBtn>
+      <DeleteBtn
+        onClick={() => {
+          deleteImage(src);
+        }}
+      >
+        <Icon icon="Trash2" color="var(--warn-500)" />
+      </DeleteBtn>
+    </Wrapper>
   );
 }
+const Wrapper = styled("li")({
+  position: "relative",
+});
 
-const ContainerVariants: Variants = {
-  initial: {
-    y: 10,
-    opacity: 0,
-  },
-  enterAnim: {
-    y: 0,
-    opacity: 1,
-  },
-};
-
-const ImageContainer = styled(motion.li)({
+const ImageBtn = styled("button")({
   borderRadius: "8px",
   overflow: "hidden",
   position: "relative",
   flex: 1,
   minWidth: "125px",
   maxWidth: "300px",
-  "&:hover": {
+
+  transition: "all .25s",
+  "&.active": {
     boxShadow: "var(--shadow)",
+    transform: "scale(1.05)",
   },
 });
 
-const DeleteContainer = styled(motion.div)({
+const DeleteBtn = styled("button")({
   position: "absolute",
   right: "8px",
   top: "8px",
   backgroundColor: "rgba(0, 0, 0, 0.7)",
   borderRadius: "4px",
   padding: "4px",
-});
+  opacity: 0,
 
-const DeleteVariants: Variants = {
-  initial: {
-    y: 5,
-    opacity: 0,
+  transition: "all .25s",
+  "&:hover": {
+    transform: "translateY(-2px)",
   },
-  enter: {
-    y: 0,
+
+  [`${ImageBtn}.active + &`]: {
     opacity: 1,
   },
-  exit: {
-    y: -5,
-    opacity: 0,
-  },
-  hover: {
-    y: -2,
-  },
-};
+});
 
 const FridgeImg = css({
   width: "100%",

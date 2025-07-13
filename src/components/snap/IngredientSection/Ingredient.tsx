@@ -50,12 +50,6 @@ function IngredientBox({ ingredient }: Props) {
 
   return (
     <Wrapper onMouseEnter={handleHoverEnter} onMouseLeave={handleHoverLeave} layout>
-      {/* Ended up using a HiddenButton instead of a ButtonWrapper
-      since a ButtonWrapper would encapsulate another button which is bad HTML */}
-      <HiddenButton
-        // mobile
-        onClick={handleClick}
-      />
       <AnimatePresence>
         {isActive && (
           <ActionContainer
@@ -105,6 +99,7 @@ function IngredientBox({ ingredient }: Props) {
         initial="initial"
         animate="enter"
         ref={scope}
+        onClick={handleClick}
       >
         <IngredientName>{ingredient.name}</IngredientName>
         <p>
@@ -133,29 +128,17 @@ const IngredientVariants: Variants = {
   },
 };
 
-const HiddenButton = styled(Button)({
-  width: "100%",
-  height: "100%",
-  position: "absolute",
-  opacity: 0,
-});
-
-const IngredientElement = styled(motion.div)({
+const IngredientElement = styled(motion.button)({
   display: "flex",
   gap: "8px",
   backgroundColor: "var(--accent-200)",
   padding: "6px 12px",
-  borderRadius: "999px",
+  borderRadius: "100px",
   height: "100%",
-
+  color: "var(--text-950)",
   width: "fit-content",
   border: "2px solid var(--accent-400)",
   boxShadow: "var(--shadow)",
-
-  [`${HiddenButton}:focus + &`]: {
-    outline: ["5px auto -webkit-focus-ring-color", "medium auto currentColor"],
-    outlineOffset: "4px",
-  },
 });
 
 const IngredientName = styled("p")({

@@ -89,7 +89,7 @@ function FileUpload() {
     setImgURLs(nextImages);
   }
 
-  function removeImage(imgURL: string) {
+  function deleteImage(imgURL: string) {
     // Find the index of the image, then remove the same index from files and imgURLs
     const index = imgURLs.findIndex((url) => imgURL === url);
 
@@ -151,7 +151,7 @@ function FileUpload() {
           ) : (
             <ImageContainer as="ul">
               {imgURLs.map((url) => (
-                <FridgeImage key={url} src={url} removeImage={removeImage} />
+                <FridgeImage key={url} src={url} deleteImage={deleteImage} />
               ))}
             </ImageContainer>
           )}

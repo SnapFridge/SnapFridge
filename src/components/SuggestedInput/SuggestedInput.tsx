@@ -33,13 +33,9 @@ function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: P
     items,
   });
   return (
-    <Wrapper>
+    <Wrapper style={{ maxWidth: "100%" }}>
       <Label {...getLabelProps()}>{label}</Label>
-      <InputElement
-        {...getInputProps({ value, type: "text" })}
-        style={{ maxWidth: "100%" }}
-        {...delegated}
-      />
+      <InputElement {...getInputProps({ value, type: "text" })} {...delegated} />
       <Menu
         {...getMenuProps({
           style: {

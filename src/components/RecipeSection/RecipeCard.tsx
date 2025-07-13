@@ -2,22 +2,13 @@ import Image from "next/image";
 import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE, type Recipe } from "@components/Global";
 import React from "react";
-import * as motion from "motion/react-client";
-import { type Variants } from "motion/react";
 import ingredients2Str from "./functions.helper";
 import "react-loading-skeleton/dist/skeleton.css";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
   return recipe === undefined ? (
-    <Card
-      variants={CardVariant}
-      initial="offscreen"
-      whileInView="onscreen"
-      whileHover="hover"
-      viewport={{ once: true, amount: 0.3 }}
-      style={{ border: 0 }}
-    >
+    <Card style={{ border: 0 }}>
       <SkeletonTheme
         baseColor="var(--skeleton-base)"
         highlightColor="var(--skeleton-highlight)"
@@ -37,13 +28,7 @@ function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
       </SkeletonTheme>
     </Card>
   ) : (
-    <Card
-      variants={CardVariant}
-      initial="offscreen"
-      whileInView="onscreen"
-      whileHover="hover"
-      viewport={{ once: true, amount: 0.3 }}
-    >
+    <Card>
       <h3 className={RecipeTitle}>{recipe.title}</h3>
       <Image
         src={recipe.image}
@@ -64,7 +49,7 @@ function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
         {recipe.missedIngredientCount > 0 && (
           <>
             <h4 className={IngredientTitle}>Missing Ingredients</h4>
-            <p className={IngredientNames}>{ingredients2Str(recipe.missedIngredients)}</p>
+            <p>{ingredients2Str(recipe.missedIngredients)}</p>
           </>
         )}
       </MissedIngredients>
@@ -72,29 +57,7 @@ function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
   );
 }
 
-const CardVariant: Variants = {
-  offscreen: {
-    y: 100,
-    opacity: 0,
-  },
-  onscreen: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      duration: 0.8,
-    },
-  },
-  hover: {
-    scale: 1.02,
-    transition: {
-      type: "spring",
-      duration: 0.5,
-    },
-  },
-};
-
-const Card = styled(motion.li)({
+const Card = styled("li")({
   border: "1px solid var(--accent-950)",
   borderRadius: "12px",
   padding: "24px",
@@ -107,11 +70,20 @@ const Card = styled(motion.li)({
   columnGap: "24px",
   alignItems: "center",
 
+  transition: "transform .25s",
+  "&:hover": {
+    transform: "scale(1.02)",
+  },
+
   [ON_MOBILE]: {
     display: "block",
 
     "&> :not(:first-child)": {
       marginTop: "16px",
+    },
+
+    "&> *": {
+      textAlign: "center",
     },
   },
 });
@@ -120,10 +92,6 @@ const RecipeTitle = css({
   gridArea: "1 / 1 / 2 / 3",
   width: "100%",
   fontSize: "var(--1-25rem)",
-
-  [ON_MOBILE]: {
-    textAlign: "center",
-  },
 });
 
 const FoodImg = css({
@@ -146,33 +114,20 @@ const Ingredients = styled("div")({
   gridArea: "2 / 2 / 3 / 3",
   width: "100%",
   color: "var(--text-950)",
-  fontSize: "var(--1rem)",
-
-  [ON_MOBILE]: {
-    textAlign: "center",
-    justifyItems: "center",
-  },
 });
 
 const MissedIngredients = styled("div")({
   gridArea: "3 / 2 / 4 / 3",
   width: "100%",
   color: "var(--warn-500)",
-  fontSize: "var(--1rem)",
-
-  [ON_MOBILE]: {
-    textAlign: "center",
-    justifyItems: "center",
-  },
 });
 
 const IngredientTitle = css({
-  width: "fit-content",
+  width: "100%",
   fontSize: "var(--1-25rem)",
 });
 
 const IngredientNames = css({
-  width: "fit-content",
   fontSize: "var(--1rem)",
 });
 

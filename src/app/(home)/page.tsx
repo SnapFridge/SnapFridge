@@ -9,6 +9,7 @@ import Image from "next/image";
 import {
   scaleClamped,
   ON_MOBILE,
+  ON_DESKTOP,
   PageMargin,
   MOBILE_BREAKPOINT,
 } from "@components/Global";
@@ -35,7 +36,7 @@ export default function Page() {
       </Hero>
       <PageMargin>
         <FridgeSection className={MobileFlexCol}>
-          <FridgeSideTxt>Your fridge's smart companion</FridgeSideTxt>
+          <FridgeSideTxt>Your fridge's perfect companion</FridgeSideTxt>
           <FridgeSideTxt>Automatically scans your food</FridgeSideTxt>
           <FridgeSideTxt className={MobileOrderLast}>
             Inspire meals and reduce waste
@@ -138,7 +139,7 @@ const Butter = styled(FoodPointer)({
 });
 
 const Milk = styled(FoodPointer)({
-  width: "calc(43% + var(--page-margin))",
+  width: "calc(41% + var(--page-margin))",
   top: "46%",
 });
 
@@ -153,13 +154,13 @@ const Carrot = styled(FoodPointer)({
 });
 
 const StrawberryJam = styled(FoodPointer)({
-  width: "calc(29.5% + var(--page-margin))",
+  width: "calc(28% + var(--page-margin))",
   height: "5%",
   top: "24%",
 });
 
 const Ketchup = styled(FoodPointer)({
-  width: "calc(96% + var(--page-margin))",
+  width: "calc(92% + var(--page-margin))",
   top: "52%",
 });
 
@@ -200,10 +201,8 @@ const FridgeSideTxt = styled("span")({
   fontSize: scaleClamped(20, 40),
   fontWeight: "bold",
   textAlign: "center",
-  padding: "0 25px 0 0",
-
-  [ON_MOBILE]: {
-    padding: 0,
+  [ON_DESKTOP]: {
+    padding: "0 25px 0 0",
   },
 });
 
