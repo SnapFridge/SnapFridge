@@ -8,12 +8,12 @@ export default function Page() {
     <Main>
       <Icon icon="Logo" size={300} className={Logo} />
       <Title>SnapFridge</Title>
-      <Picture></Picture>
+      <Picture />
       <HeaderTxt>
         “We built SnapFridge for absolutely no reason other than the Congressional App
         Challenge, still gotta say it's a cool idea tho.”
       </HeaderTxt>
-      <AboutUsCards></AboutUsCards>
+      <AboutUsCards />
     </Main>
   );
 }
@@ -41,7 +41,7 @@ const Logo = css({
 
 const Picture = styled("div")({
   backgroundColor: "var(--text-500)",
-  width: "700px",
+  width: "100%",
   height: "300px",
   borderRadius: "12px",
   margin: "auto",

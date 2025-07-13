@@ -15,8 +15,11 @@ const FitContent = styled("div")({
   width: "fit-content",
 });
 
-const Txt = styled("div")({
+const Txt = styled("span")({
   marginLeft: "-50%",
+  textAlign: "center",
+  background: "var(--background-0)",
+  padding: "0 2px 1px",
 });
 
 const Pointer = styled("div")({
@@ -27,6 +30,7 @@ const Pointer = styled("div")({
   zIndex: 1,
   borderWidth: "2px 2px 0 0",
   height: "1.5%",
+  left: "10px",
 
   [ON_MOBILE]: {
     borderWidth: "1px 1px 0 0",

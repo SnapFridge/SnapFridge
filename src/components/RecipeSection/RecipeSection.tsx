@@ -36,7 +36,7 @@ function RecipeSection({
     const end = Math.min(start + countPerPage, recipes.length);
     for (let i = start; i < end; i++) {
       const r = recipes[i] as Recipe;
-      cards.push(<RecipeCard key={r.title} recipe={r} />);
+      cards.push(<RecipeCard key={r.id} recipe={r} />);
     }
     return cards;
   }

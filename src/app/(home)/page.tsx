@@ -10,11 +10,11 @@ import {
   scaleClamped,
   ON_MOBILE,
   PageMargin,
-  recipesExample,
   MOBILE_BREAKPOINT,
 } from "@components/Global";
 import FoodPointer from "@components/home/FoodPointer";
 import Link from "next/link";
+import recipesExample from "@components/home/RecipesExample";
 
 export default function Page() {
   return (
@@ -35,16 +35,18 @@ export default function Page() {
       </Hero>
       <PageMargin>
         <FridgeSection className={MobileFlexCol}>
-          <FridgeSideTxt>An app, built just for your fridge</FridgeSideTxt>
-          <FridgeSideTxt>that scans your food automatically</FridgeSideTxt>
+          <FridgeSideTxt>Your fridge's smart companion</FridgeSideTxt>
+          <FridgeSideTxt>Automatically scans your food</FridgeSideTxt>
           <FridgeSideTxt className={MobileOrderLast}>
-            to help you prepare meals and reduce food waste
+            Inspire meals and reduce waste
           </FridgeSideTxt>
           <FridgeAndPointers>
             <Butter>Butter</Butter>
             <Milk>Milk</Milk>
             <Egg>Egg</Egg>
             <Carrot>Carrot</Carrot>
+            <Ketchup>Ketchup</Ketchup>
+            <StrawberryJam>Strawberry Jam</StrawberryJam>
             <Image
               width={1600}
               height={2689}
@@ -131,23 +133,34 @@ const ButtonWrapper = styled("div")({
 });
 
 const Butter = styled(FoodPointer)({
-  width: "calc(17% + var(--page-margin))",
-  top: "31%",
+  width: "calc(17.5% + var(--page-margin))",
+  top: "32%",
 });
 
 const Milk = styled(FoodPointer)({
   width: "calc(43% + var(--page-margin))",
-  top: "48%",
+  top: "46%",
 });
 
 const Egg = styled(FoodPointer)({
-  width: "calc(61.5% + var(--page-margin))",
-  top: "57%",
+  width: "calc(57% + var(--page-margin))",
+  top: "59%",
 });
 
 const Carrot = styled(FoodPointer)({
   width: "calc(39% + var(--page-margin))",
   top: "72%",
+});
+
+const StrawberryJam = styled(FoodPointer)({
+  width: "calc(29.5% + var(--page-margin))",
+  height: "5%",
+  top: "24%",
+});
+
+const Ketchup = styled(FoodPointer)({
+  width: "calc(96% + var(--page-margin))",
+  top: "52%",
 });
 
 const FridgeImg = css({
@@ -187,6 +200,11 @@ const FridgeSideTxt = styled("span")({
   fontSize: scaleClamped(20, 40),
   fontWeight: "bold",
   textAlign: "center",
+  padding: "0 25px 0 0",
+
+  [ON_MOBILE]: {
+    padding: 0,
+  },
 });
 
 const StatisticsSection = styled("section")({
