@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "@pigment-css/react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { type Ingredient } from "@components/Global";
 import Icon from "@components/Icon";
 import { useInputState } from "../InputProvider";
@@ -15,6 +15,8 @@ type Props = {
 function IngredientBox({ ingredient }: Props) {
   const { dispatch } = useInputState();
   const [isDialogOpen, setDialogOpen] = useState(false);
+  const deleteBtn = useRef<HTMLButtonElement>(null);
+  const editBtn = useRef<HTMLButtonElement>(null);
   return (
     <Wrapper>
       <EditDialog
@@ -22,7 +24,12 @@ function IngredientBox({ ingredient }: Props) {
         open={isDialogOpen}
         onOpenChange={setDialogOpen}
       />
-      <IngredientBtn>
+      <IngredientBtn
+        onClick={() => {
+          deleteBtn.current!.focus();
+          editBtn.current!.tabIndex = 0;
+        }}
+      >
         <IngredientName>{ingredient.name}</IngredientName>
         <p>
           {ingredient.amount} {ingredient.unit}
@@ -30,7 +37,8 @@ function IngredientBox({ ingredient }: Props) {
       </IngredientBtn>
       <ActionContainer>
         <ActionButton
-          whileHover="hover"
+          ref={deleteBtn}
+          tabIndex={-1}
           onClick={() => {
             dispatch({ type: "removeIngredient", ingredient });
           }}
@@ -42,8 +50,13 @@ function IngredientBox({ ingredient }: Props) {
           />
         </ActionButton>
         <ActionButton
+          ref={editBtn}
+          tabIndex={-1}
           onClick={() => {
             setDialogOpen(true);
+          }}
+          onBlur={() => {
+            editBtn.current!.tabIndex = -1;
           }}
         >
           <Icon

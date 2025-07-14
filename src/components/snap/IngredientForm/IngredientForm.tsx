@@ -78,6 +78,7 @@ function IngredientForm({
       }}
     >
       <SuggestedInput
+        autoFocus
         value={ingredient}
         label="Enter Ingredient Name:"
         suggestions={allIngredients}

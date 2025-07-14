@@ -4,6 +4,7 @@ import Image from "next/image";
 import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
 import Button from "@components/Button";
+import { useRef } from "react";
 
 type Props = {
   src: string;
@@ -11,16 +12,15 @@ type Props = {
 };
 
 function FridgeImage({ src, deleteImage }: Props) {
+  const deleteBtn = useRef<HTMLButtonElement>(null);
   return (
     <Wrapper>
-      <FridgeImg
-        tabIndex={0}
-        width={150}
-        height={150}
-        src={src}
-        alt="User uploaded image"
-      />
+      <ImageBtn onClick={() => deleteBtn.current!.focus()} type="button">
+        <Image width={150} height={150} src={src} alt="User uploaded image" />
+      </ImageBtn>
       <DeleteBtn
+        ref={deleteBtn}
+        tabIndex={-1}
         onClick={() => {
           deleteImage(src);
         }}
@@ -34,7 +34,7 @@ const Wrapper = styled("li")({
   position: "relative",
 });
 
-const FridgeImg = styled(Image)({
+const ImageBtn = styled("button")({
   border: 0,
   padding: 0,
   borderRadius: "8px",
@@ -66,7 +66,7 @@ const DeleteBtn = styled(Button)({
     transform: "translateY(-4px)",
   },
 
-  [`${Wrapper}:hover > &, ${FridgeImg}:focus + &, &:focus`]: {
+  [`${Wrapper}:hover > &, ${ImageBtn}:focus + &, &:focus`]: {
     transition: "all .25s, visibility 0s",
     opacity: 1,
     visibility: "unset",
