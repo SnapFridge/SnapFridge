@@ -2,9 +2,8 @@
 
 import Image from "next/image";
 import Icon from "@components/Icon";
-import { css, styled } from "@pigment-css/react";
+import { styled } from "@pigment-css/react";
 import Button from "@components/Button";
-import { type SyntheticEvent } from "react";
 
 type Props = {
   src: string;
@@ -12,21 +11,15 @@ type Props = {
 };
 
 function FridgeImage({ src, deleteImage }: Props) {
-  function focus(e: SyntheticEvent<HTMLButtonElement>) {
-    e.currentTarget.focus();
-  }
-
   return (
     <Wrapper>
-      <ImageBtn onClick={focus} type="button">
-        <Image
-          className={FridgeImg}
-          width={150}
-          height={150}
-          src={src}
-          alt="User uploaded image"
-        />
-      </ImageBtn>
+      <FridgeImg
+        tabIndex={0}
+        width={150}
+        height={150}
+        src={src}
+        alt="User uploaded image"
+      />
       <DeleteBtn
         onClick={() => {
           deleteImage(src);
@@ -41,7 +34,7 @@ const Wrapper = styled("li")({
   position: "relative",
 });
 
-const ImageBtn = styled("button")({
+const FridgeImg = styled(Image)({
   border: 0,
   padding: 0,
   borderRadius: "8px",
@@ -73,17 +66,11 @@ const DeleteBtn = styled(Button)({
     transform: "translateY(-4px)",
   },
 
-  [`${Wrapper}:hover > &, ${ImageBtn}:focus + &`]: {
+  [`${Wrapper}:hover > &, ${FridgeImg}:focus + &, &:focus`]: {
     transition: "all .25s, visibility 0s",
     opacity: 1,
     visibility: "unset",
   },
-});
-
-const FridgeImg = css({
-  width: "100%",
-  aspectRatio: "1 / 1",
-  objectFit: "cover",
 });
 
 export default FridgeImage;

@@ -287,11 +287,11 @@ const CSP = `
   img-src 'self' https://img.spoonacular.com blob:;
   script-src 'self' 'unsafe-inline' ${devEnv ? "'unsafe-eval'" : ""};
   style-src 'self' 'unsafe-inline' ${devEnv ? "'unsafe-eval'" : ""};
+  manifest-src 'self';
   object-src 'none';
   frame-src 'none';
   frame-ancestors 'none';
   media-src 'none';
-  manifest-src 'none';
   sandbox allow-forms allow-scripts allow-same-origin;
   upgrade-insecure-requests;
  `.replace(/\s{2,}/g, " ");

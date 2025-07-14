@@ -1,7 +1,7 @@
 "use client";
 
 import { styled } from "@pigment-css/react";
-import { useState, type SyntheticEvent } from "react";
+import { useState } from "react";
 import { type Ingredient } from "@components/Global";
 import Icon from "@components/Icon";
 import { useInputState } from "../InputProvider";
@@ -15,9 +15,6 @@ type Props = {
 function IngredientBox({ ingredient }: Props) {
   const { dispatch } = useInputState();
   const [isDialogOpen, setDialogOpen] = useState(false);
-  function focus(e: SyntheticEvent<HTMLButtonElement>) {
-    e.currentTarget.focus();
-  }
   return (
     <Wrapper>
       <EditDialog
@@ -25,7 +22,7 @@ function IngredientBox({ ingredient }: Props) {
         open={isDialogOpen}
         onOpenChange={setDialogOpen}
       />
-      <IngredientBtn onClick={focus}>
+      <IngredientBtn>
         <IngredientName>{ingredient.name}</IngredientName>
         <p>
           {ingredient.amount} {ingredient.unit}
@@ -79,7 +76,7 @@ const IngredientBtn = styled("button")({
   border: "2px solid var(--accent-400)",
   boxShadow: "var(--shadow)",
 
-  transition: "all .22s",
+  transition: "transform .22s",
   [`${Wrapper}:hover > &, &:focus`]: {
     transform: "translateY(-6px)",
   },
@@ -97,7 +94,7 @@ const ActionButton = styled(Button)({
   padding: "4px",
   border: 0,
 
-  transition: "all .25s",
+  transition: "transform .25s",
   "&:hover, &:focus": {
     transform: "translateY(-5px)",
   },
@@ -118,10 +115,10 @@ const ActionContainer = styled("div")({
   boxShadow: "var(--shadow)",
   opacity: 0,
   visibility: "hidden",
-  transition: "all .22s, visibility 0s .22s",
+  transition: "opacity .22s, visibility 0s .22s",
 
-  [`${Wrapper}:hover > &, ${IngredientBtn}:focus + &`]: {
-    transition: "all .22s, visibility 0s",
+  [`${Wrapper}:hover > &, ${IngredientBtn}:focus + &, &:focus-within`]: {
+    transition: "opacity .22s, visibility 0s",
     opacity: 1,
     visibility: "unset",
   },
