@@ -41,6 +41,7 @@ globalCss`
 
   /* 2. Remove default margin */
   * {
+    border: 0;
     margin: 0;
     padding: 0;
   }

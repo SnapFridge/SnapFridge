@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import Icon from "@components/Icon";
-import React, { useRef } from "react";
 import { css, styled } from "@pigment-css/react";
+import Button from "@components/Button";
+import { type SyntheticEvent } from "react";
 
 type Props = {
   src: string;
@@ -11,23 +12,13 @@ type Props = {
 };
 
 function FridgeImage({ src, deleteImage }: Props) {
-  const img = useRef<HTMLButtonElement>(null);
-
-  function handleHoverEnter() {
-    img.current!.classList.add("active");
-  }
-
-  function handleHoverLeave() {
-    img.current!.classList.remove("active");
-  }
-
-  function handleClick() {
-    img.current!.classList.toggle("active");
+  function focus(e: SyntheticEvent<HTMLButtonElement>) {
+    e.currentTarget.focus();
   }
 
   return (
-    <Wrapper onMouseEnter={handleHoverEnter} onMouseLeave={handleHoverLeave}>
-      <ImageBtn onClick={handleClick} ref={img}>
+    <Wrapper>
+      <ImageBtn onClick={focus} type="button">
         <Image
           className={FridgeImg}
           width={150}
@@ -51,6 +42,8 @@ const Wrapper = styled("li")({
 });
 
 const ImageBtn = styled("button")({
+  border: 0,
+  padding: 0,
   borderRadius: "8px",
   overflow: "hidden",
   position: "relative",
@@ -59,28 +52,31 @@ const ImageBtn = styled("button")({
   maxWidth: "300px",
 
   transition: "all .25s",
-  "&.active": {
+  [`${Wrapper}:hover > &, &:focus`]: {
     boxShadow: "var(--shadow)",
     transform: "scale(1.05)",
   },
 });
 
-const DeleteBtn = styled("button")({
+const DeleteBtn = styled(Button)({
   position: "absolute",
   right: "8px",
   top: "8px",
-  backgroundColor: "rgba(0, 0, 0, 0.7)",
+  backgroundColor: "#000000b3",
   borderRadius: "4px",
   padding: "4px",
   opacity: 0,
+  visibility: "hidden",
+  transition: "all .25s, visibility 0s .25s",
 
-  transition: "all .25s",
-  "&:hover": {
-    transform: "translateY(-2px)",
+  "&:hover, &:focus": {
+    transform: "translateY(-4px)",
   },
 
-  [`${ImageBtn}.active + &`]: {
+  [`${Wrapper}:hover > &, ${ImageBtn}:focus + &`]: {
+    transition: "all .25s, visibility 0s",
     opacity: 1,
+    visibility: "unset",
   },
 });
 

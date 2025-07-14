@@ -117,7 +117,7 @@ function FileUpload() {
   return (
     <>
       <AnimatePresence>
-        {imgURLs.length < 1 ? (
+        {imgURLs.length < 1 && (
           <EmptyTitle
             layout
             variants={EmptyTitleVariants}
@@ -127,7 +127,7 @@ function FileUpload() {
           >
             Upload images below to get started!
           </EmptyTitle>
-        ) : null}
+        )}
       </AnimatePresence>
 
       <Wrapper layout onSubmit={(e) => void fetchGemini(e)}>
@@ -160,6 +160,7 @@ function FileUpload() {
         <AnimatePresence>
           {imgURLs.length > 0 && (
             <ScanButton
+              type="submit"
               key="scan-button"
               layout
               variant="primary"
