@@ -1,29 +1,40 @@
-"use client";
-import useSWR from "swr";
-import { use } from "react";
+async function getRecipe(recipeId: string) {
+  const recipeInfoRes = await fetch(
+    `https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=true`,
+    {
+      headers: {
+        "x-api-key": process.env["SPOONACULAR_KEY"]!,
+      },
+    }
+  );
+  const recipeInfo = await recipeInfoRes.json();
 
-type Props = {
-  params: Promise<{
-    id: string;
-  }>;
-};
+  const analyzedInstructionsRes = await fetch(
+    `https://api.spoonacular.com/recipes/${recipeId}/analyzedInstructions`,
+    {
+      headers: {
+        "x-api-key": process.env["SPOONACULAR_KEY"]!,
+      },
+    }
+  );
+  const analyzedInstructions = await analyzedInstructionsRes.json();
 
-async function recipeFetcher(url: string) {
-  const res = await fetch(url);
-  return res.json();
+  console.log(recipeInfo);
+  console.log(analyzedInstructions);
+
+  return {
+    recipeInfo: recipeInfo,
+    analyzedInstructions: analyzedInstructions,
+  };
 }
 
-export default function Page({ params }: Props) {
-  const { id } = use(params);
-  const { data, error, isLoading } = useSWR(`/api/recipe/${id}`, recipeFetcher);
+export default async function Page({ params }: { params: { id: string } }) {
+  const { id } = await params;
+  const data = await getRecipe(id);
 
-  if (error) {
-    return <h1>error</h1>;
-  }
-
-  if (isLoading) {
-    return <h1>loading</h1>;
-  }
-
-  return <div>{data.hi}</div>;
+  return (
+    <div>
+      <p>Loaded!</p>
+    </div>
+  );
 }

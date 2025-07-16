@@ -3,27 +3,37 @@
 import { useEffect, useState } from "react";
 import Button from "@components/Button";
 import Icon from "@components/Icon";
+import Cookie from "js-cookie";
 
 function ThemeSwitch({ ...delegated }) {
-  const [dark, setDark] = useState<boolean>();
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
   function toggleTheme() {
-    setDark(!dark);
-    document.documentElement.classList.toggle("dark");
+    const nextTheme = theme === "light" ? "dark" : "light";
+    setTheme(nextTheme);
+
+    Cookie.set("color-theme", nextTheme, {
+      expires: 1000,
+    });
+
+    if (nextTheme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
   }
 
   useEffect(() => {
-    setDark(document.documentElement.classList.contains("dark"));
+    setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
   }, []);
 
   return (
-    dark !== undefined && (
-      <Button variant="icon" onClick={toggleTheme} {...delegated}>
-        <Icon
-          icon={dark ? "Sun" : "Moon"}
-          description={`Turn on ${dark ? "light" : "dark"} mode`}
-        />
-      </Button>
-    )
+    <Button variant="icon" onClick={toggleTheme} {...delegated}>
+      <Icon
+        icon={theme === "light" ? "Sun" : "Moon"}
+        description={`Turn on ${theme === "dark" ? "light" : "dark"} mode`}
+      />
+    </Button>
   );
 }
 
