@@ -23,9 +23,11 @@ export default function Page() {
           <Image
             width={1704}
             height={1704}
-            src="/Landfill.avif"
-            alt="A landfill worker in a neon vest clearing through a landfill of fruit waste"
             className={ImageCSS}
+            src="/Landfill.png"
+            alt="Landfill worker clearing through a landfill of fruit waste"
+            quality={45}
+            sizes={`50vw`}
           />
         </li>
         <li>
@@ -40,18 +42,8 @@ export default function Page() {
             width={2417}
             height={2814}
             alt="Fridge filled with food inside"
+            sizes={`50vw`}
           />
-        </li>
-        <li>
-          <p>
-            Icons by <Link href="https://lucide.dev/">Lucide React</Link>
-          </p>
-        </li>
-        <li>
-          <p>
-            Food/Recipe API by{" "}
-            <Link href="https://spoonacular.com/food-api">Spoonacular</Link>
-          </p>
         </li>
         <li>
           <p>

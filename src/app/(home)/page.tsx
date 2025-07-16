@@ -69,10 +69,10 @@ export default function Page() {
             />
           </FridgeAndPointers>
         </FridgeSection>
-        <InputProvider>
-          <RecipeSection recipes_={recipesExample} />
-        </InputProvider>
         <BelowTheFold>
+          <InputProvider>
+            <RecipeSection recipes_={recipesExample} />
+          </InputProvider>
           <StatisticsSection>
             <TopStatistics>
               <h2>Around 30-40% of food gets wasted every year</h2>

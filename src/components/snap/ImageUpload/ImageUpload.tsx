@@ -109,17 +109,9 @@ function FileUpload() {
   return (
     <>
       <AnimatePresence>
-        {imgURLs.length < 1 && (
-          <EmptyTitle
-            layout
-            variants={EmptyTitleVariants}
-            initial="initial"
-            animate="enter"
-            exit="exit"
-          >
-            Upload images below to get started!
-          </EmptyTitle>
-        )}
+        <EmptyTitle className={imgURLs.length > 0 ? "notEmpty" : undefined}>
+          Upload images below to get started!
+        </EmptyTitle>
       </AnimatePresence>
 
       <Wrapper layout onSubmit={(e) => void fetchGemini(e)}>
@@ -176,27 +168,19 @@ const Fetching: CSSProperties = {
   maxWidth: "576px",
 };
 
-const EmptyTitle = styled(motion.h1)({
+const EmptyTitle = styled("h1")({
   textAlign: "center",
   width: "100%",
   margin: "0 0 24px",
   fontSize: scaleClamped(22, 30),
-});
 
-const EmptyTitleVariants: Variants = {
-  initial: {
-    y: 10,
+  transition: "opacity .25s, visibility 0s",
+  "&.notEmpty": {
+    transition: "opacity .25s, visibility 0s .25s",
     opacity: 0,
+    visibility: "hidden",
   },
-  enter: {
-    y: 0,
-    opacity: 1,
-  },
-  exit: {
-    y: -10,
-    opacity: 0,
-  },
-};
+});
 
 const Wrapper = styled(motion.form)({
   width: "100%",

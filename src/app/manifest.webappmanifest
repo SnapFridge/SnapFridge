@@ -1,6 +1,5 @@
 {
   "name": "SnapFridge",
-  "short_name": "SnapFridge",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

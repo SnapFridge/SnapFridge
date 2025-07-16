@@ -99,11 +99,7 @@ export default function Page() {
         <li>
           <p>
             <strong>Website</strong> refers to SnapFridge, accessible from{" "}
-            <a
-              href="https://example.com"
-              rel="external nofollow noopener"
-              target="_blank"
-            >
+            <a href="/" rel="external nofollow noopener" target="_blank">
               https://snapfridge.netlify.app/
             </a>
           </p>

@@ -10,7 +10,7 @@ globalCss`
     color: var(--text-950);
 
     --nav-height: ${80 / 16}rem;
-    --nav-margin: ${30 / 16}rem;
+    --nav-margin: ${20 / 16}rem;
     --page-margin: ${scaleClamped(25, 120)};
     --1rem: ${scaleClamped(14, 22)};
     --1-25rem: ${scaleClamped(17, 27)};
@@ -23,8 +23,9 @@ globalCss`
 
 // Horizontally unscrollable + background + textColor
 globalCss`
-  html, body {
+  :root, body {
     width: 100%;
+    minHeight: 100%;
     @media (min-width: ${MAX_SUPPORTED_WIDTH}px) {
       width: ${MAX_SUPPORTED_WIDTH}px;
       margin: auto;
@@ -34,9 +35,6 @@ globalCss`
 
 // CSS reset
 globalCss`
-  html, body {
-    height: 100%;
-  }
   /* 1. Use a more-intuitive box-sizing model */
   *, *::before, *::after {
     box-sizing: border-box;
@@ -79,12 +77,13 @@ globalCss`
     overflow-wrap: break-word;
   }
 
-  /* 9. Improve line wrapping */
+  h1, h2, h3, h4, h5, h6, p {
+    text-wrap: balance;
+  }
+
+  /* 9. Improve line wrapping, though sometimes not supported so it fallbacks to the one above */
   p {
     text-wrap: pretty;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    text-wrap: balance;
   }
 
   /* 11. Unstyled list */

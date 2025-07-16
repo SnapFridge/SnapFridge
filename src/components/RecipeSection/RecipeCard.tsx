@@ -61,6 +61,7 @@ const Card = styled("li")({
   border: "1px solid var(--accent-950)",
   borderRadius: "12px",
   padding: "24px",
+  margin: "0 1% 28px",
   boxShadow: "var(--shadow)",
   maxWidth: "800px",
 
@@ -73,6 +74,10 @@ const Card = styled("li")({
   transition: "transform .25s",
   "&:hover": {
     transform: "scale(1.02)",
+  },
+
+  "&:last-child": {
+    marginBottom: "max(28px, 1%)",
   },
 
   [ON_MOBILE]: {

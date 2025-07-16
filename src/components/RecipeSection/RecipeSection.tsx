@@ -47,7 +47,7 @@ function RecipeSection({
         <Icon aria-hidden icon="Sparkles" size={50}></Icon>
       </Header>
       {recipes === "pending" ? (
-        <RecipeList>{getPendingCards()}</RecipeList>
+        <ul>{getPendingCards()}</ul>
       ) : recipes.length < 1 ? (
         <EmptySectionContainer>
           <EmptySectionContent>
@@ -65,18 +65,12 @@ function RecipeSection({
             page={page}
             onChange={(newPage) => setPage(newPage)}
           />
-          <RecipeList>{getPageCards()}</RecipeList>
+          <ul>{getPageCards()}</ul>
         </>
       )}
     </>
   );
 }
-
-const RecipeList = styled("ul")({
-  "& > li": {
-    margin: "0 0 28px 0",
-  },
-});
 
 const Header = styled("div")({
   display: "flex",
