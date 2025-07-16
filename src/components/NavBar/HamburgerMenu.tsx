@@ -27,7 +27,7 @@ function HamburgerMenu({ links }: Props) {
         <Wrapper
           onOpenAutoFocus={(e) => {
             e.preventDefault();
-            contentRef.current?.querySelector("a")?.focus();
+            contentRef.current!.querySelector("a")!.focus();
           }}
         >
           <Title>Menu</Title>
@@ -93,7 +93,6 @@ const Wrapper = styled(Dialog.Content)({
 });
 
 const Title = styled(Dialog.Title)({
-  color: "var(--text-950)",
   margin: "0 0 14px",
 });
 

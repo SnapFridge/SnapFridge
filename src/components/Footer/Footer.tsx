@@ -43,7 +43,7 @@ const AFooter = styled("footer")({
   padding: "32px var(--page-margin)",
   marginTop: "96px",
   display: "flex",
-
+  contentVisibility: "auto",
   [ON_MOBILE]: {
     display: "block",
   },

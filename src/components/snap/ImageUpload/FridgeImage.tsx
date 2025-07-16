@@ -16,15 +16,15 @@ function FridgeImage({ src, deleteImage }: Props) {
   return (
     <Wrapper>
       <ImageBtn onClick={() => deleteBtn.current!.focus()} type="button">
-        <Image width={150} height={150} src={src} alt="User uploaded image" />
+        <Image
+          width={150}
+          height={150}
+          src={src}
+          onLoad={() => URL.revokeObjectURL(src)}
+          alt="User uploaded image"
+        />
       </ImageBtn>
-      <DeleteBtn
-        ref={deleteBtn}
-        tabIndex={-1}
-        onClick={() => {
-          deleteImage(src);
-        }}
-      >
+      <DeleteBtn ref={deleteBtn} tabIndex={-1} onClick={() => deleteImage(src)}>
         <Icon icon="Trash2" color="var(--warn-500)" />
       </DeleteBtn>
     </Wrapper>
@@ -35,8 +35,6 @@ const Wrapper = styled("li")({
 });
 
 const ImageBtn = styled("button")({
-  border: 0,
-  padding: 0,
   borderRadius: "8px",
   overflow: "hidden",
   position: "relative",

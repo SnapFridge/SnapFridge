@@ -20,7 +20,7 @@ function FileUpload() {
   const { state, dispatch } = useInputState();
   const { files } = state;
   const worker = useRef<Worker>(null);
-  const { addWarn } = useToast();
+  const { addWarn, addError } = useToast();
   const [pending, setPending] = useState(false);
 
   async function getWorker() {
@@ -42,15 +42,6 @@ function FileUpload() {
       worker.current?.terminate();
     };
   }, []);
-
-  // Revoke object urls when this component demounts or URLs change
-  useEffect(() => {
-    return () => {
-      for (const url of imgURLs) {
-        URL.revokeObjectURL(url);
-      }
-    };
-  }, [imgURLs]);
 
   async function handleFiles(files: FileList) {
     const newImages: string[] = [];
@@ -90,9 +81,7 @@ function FileUpload() {
   }
 
   function deleteImage(imgURL: string) {
-    // Find the index of the image, then remove the same index from files and imgURLs
     const index = imgURLs.findIndex((url) => imgURL === url);
-
     dispatch({ type: "removeFile", index });
     setImgURLs(imgURLs.filter((_, idx) => idx !== index));
   }
@@ -108,12 +97,15 @@ function FileUpload() {
       method: "POST",
       body: body,
     });
-    await res
-      .body!.pipeThrough(new TextDecoderStream())
-      .pipeTo(getIngredientWriter(dispatch));
+    if (res.ok) {
+      await res
+        .body!.pipeThrough(new TextDecoderStream())
+        .pipeTo(getIngredientWriter(dispatch));
+    } else {
+      addError("Gemini fetching error", `${res.status} ${res.statusText}`);
+    }
     setPending(false);
   }
-
   return (
     <>
       <AnimatePresence>
@@ -185,7 +177,10 @@ const Fetching: CSSProperties = {
 };
 
 const EmptyTitle = styled(motion.h1)({
+  textAlign: "center",
+  width: "100%",
   margin: "0 0 24px",
+  fontSize: scaleClamped(22, 30),
 });
 
 const EmptyTitleVariants: Variants = {
@@ -259,7 +254,7 @@ const SupportedFormats = styled("div")({
   textAlign: "center",
   width: "100%",
   padding: "0 24px",
-  color: "var(--gray-500)",
+  color: "var(--gray-600)",
 });
 
 const ScanButton = styled(Button)({
@@ -269,7 +264,6 @@ const ScanButton = styled(Button)({
   borderRadius: "16px",
   borderTopRightRadius: 0,
   borderTopLeftRadius: 0,
-  padding: 0,
 });
 
 const ScanButtonVariants: Variants = {

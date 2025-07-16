@@ -48,7 +48,6 @@ const Hidden = styled("span")({
   clip: "rect(0 0 0 0)",
   clipPath: "inset(50%)",
   whiteSpace: "nowrap",
-  color: "var(--text-950)",
 
   "&:focus, &:active": {
     position: "static",

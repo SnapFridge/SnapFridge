@@ -69,7 +69,6 @@ const StyledButton = styled("button")<{ variant: Variant | undefined }>({
       props: { variant: "secondary" },
       style: {
         background: "var(--secondary-300)",
-        color: "var(--text-950)",
         ["--background-hover" as string]: "var(--secondary-400)",
       },
     },

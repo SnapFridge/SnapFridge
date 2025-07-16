@@ -6,9 +6,12 @@ import { globalCss } from "@pigment-css/react";
 // CSS variables
 globalCss`
   :root {
+    background: var(--background-0);
+    color: var(--text-950);
+
     --nav-height: ${80 / 16}rem;
-    --nav-margin: ${20 / 16}rem;
-    --page-margin: ${scaleClamped(30, 120)};
+    --nav-margin: ${30 / 16}rem;
+    --page-margin: ${scaleClamped(25, 120)};
     --1rem: ${scaleClamped(14, 22)};
     --1-25rem: ${scaleClamped(17, 27)};
 
@@ -18,7 +21,7 @@ globalCss`
   }
 `;
 
-// Horizontally unscrollable
+// Horizontally unscrollable + background + textColor
 globalCss`
   html, body {
     width: 100%;
@@ -39,7 +42,7 @@ globalCss`
     box-sizing: border-box;
   }
 
-  /* 2. Remove default margin */
+  /* 2. Remove default margin, padding, and borders */
   * {
     border: 0;
     margin: 0;

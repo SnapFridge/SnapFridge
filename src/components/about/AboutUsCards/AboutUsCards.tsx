@@ -1,8 +1,4 @@
-"use client";
-
 import { styled } from "@pigment-css/react";
-import { type Variants } from "motion/react";
-import { motion } from "motion/react";
 
 const Descriptions = {
   "Rylex Phan": `
@@ -38,14 +34,7 @@ function AboutUsCards() {
   return (
     <CardContainer>
       {Object.entries(Descriptions).map(([name, description]) => (
-        <Card
-          key={name}
-          variants={CardAnimations}
-          initial="hidden"
-          whileInView="visible"
-          whileHover="hover"
-          viewport={{ once: true, amount: 0.3 }}
-        >
+        <Card key={name}>
           <h1>{name}</h1>
           <p>{description}</p>
         </Card>
@@ -54,39 +43,19 @@ function AboutUsCards() {
   );
 }
 
-const CardAnimations: Variants = {
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: "easeOut",
-      delay: 0.2,
-    },
-  },
-  hidden: {
-    y: 100,
-    opacity: 0,
-  },
-  hover: {
-    y: -10,
-    scale: 1.01,
-  },
-};
-
-const CardContainer = styled(motion.ul)({
+const CardContainer = styled("ul")({
   display: "flex",
   justifyContent: "space-evenly",
   listStyleType: "none",
-  padding: 0,
   gap: "24px",
+  contentVisibility: "auto",
 
   "@media (max-width: 768px)": {
     flexDirection: "column",
   },
 });
 
-const Card = styled(motion.li)({
+const Card = styled("li")({
   alignItems: "center",
   padding: "24px",
   border: "1px solid var(--accent-950)",

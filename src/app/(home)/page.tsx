@@ -16,6 +16,16 @@ import {
 import FoodPointer from "@components/home/FoodPointer";
 import Link from "next/link";
 import recipesExample from "@components/home/RecipesExample";
+import { type Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "SnapFridge - Reduce Food Waste & Plan Meals from Fridge Photos",
+  description:
+    "SnapFridge helps you prepare meals and reduce food waste and prepare meals just from some photos of your fridge. Join the fight against food waste today!",
+  other: {
+    "google-site-verification": "eYERfWRX6kjvyvIaqgESxRtku7LR-9xDCg0Xge3aaQU",
+  },
+};
 
 export default function Page() {
   return (
@@ -62,44 +72,46 @@ export default function Page() {
         <InputProvider>
           <RecipeSection recipes_={recipesExample} />
         </InputProvider>
-        <StatisticsSection>
-          <TopStatistics>
-            <h2>Around 30-40% of food gets wasted every year</h2>
-            <small>According to the USDA</small>
-          </TopStatistics>
-          <BottomStatistics className={MobileFlexCol}>
-            <h2>
-              That's
-              <strong>
-                <Counter endValue={60} /> Million
-              </strong>
-              metric tons
-            </h2>
-            <h2 className={MobileOrderLast}>
-              Or
-              <strong>
-                <Counter endValue={133} /> Billion
-              </strong>
-              pounds
-            </h2>
-            <Image
-              width={1704}
-              height={1704}
-              className={LandfillImg}
-              src="/Landfill.png"
-              alt="Landfill worker clearing through a landfill of fruit waste"
-              quality={45}
-              sizes={`40vw, (max-width: ${MOBILE_BREAKPOINT}px) 80vw`}
-            />
-          </BottomStatistics>
-        </StatisticsSection>
+        <BelowTheFold>
+          <StatisticsSection>
+            <TopStatistics>
+              <h2>Around 30-40% of food gets wasted every year</h2>
+              <small>According to the USDA</small>
+            </TopStatistics>
+            <BottomStatistics className={MobileFlexCol}>
+              <h2>
+                That's
+                <strong>
+                  <Counter endValue={60} /> Million
+                </strong>
+                metric tons
+              </h2>
+              <h2 className={MobileOrderLast}>
+                Or
+                <strong>
+                  <Counter endValue={133} /> Billion
+                </strong>
+                pounds
+              </h2>
+              <Image
+                width={1704}
+                height={1704}
+                className={LandfillImg}
+                src="/Landfill.png"
+                alt="Landfill worker clearing through a landfill of fruit waste"
+                quality={45}
+                sizes={`40vw, (max-width: ${MOBILE_BREAKPOINT}px) 80vw`}
+              />
+            </BottomStatistics>
+          </StatisticsSection>
 
-        <CallToActionSection>
-          <h2>Join the Fight Against Food Waste Today</h2>
-          <Button as={Link} href="/snap" variant="primary" className={CoAButtonCSS}>
-            Get Started
-          </Button>
-        </CallToActionSection>
+          <CallToActionSection>
+            <h2>Join the Fight Against Food Waste Today</h2>
+            <Button as={Link} href="/snap" variant="primary" className={CoAButtonCSS}>
+              Get Started
+            </Button>
+          </CallToActionSection>
+        </BelowTheFold>
       </PageMargin>
     </>
   );
@@ -124,6 +136,9 @@ const Title = styled("h1")({
   },
 });
 
+const BelowTheFold = styled("div")({
+  contentVisibility: "auto",
+});
 const ButtonWrapper = styled("div")({
   display: "flex",
   gap: scaleClamped(10, 20),

@@ -1,4 +1,9 @@
 import { PageMargin } from "@components/Global";
+import { type Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy - SnapFridge",
+};
 
 export default function Page() {
   return (

@@ -39,9 +39,9 @@ function AppToast({
   }
 
   return (
-    <BaseToast
+    <Toast.Root
       open={open}
-      onOpenChange={(open) => {
+      onOpenChange={(open: boolean) => {
         if (!open) {
           removeToast(id);
         }
@@ -74,54 +74,9 @@ function AppToast({
           </Toast.Close>
         </MainContent>
       </ContentContainer>
-    </BaseToast>
+    </Toast.Root>
   );
 }
-const BaseToast = styled(Toast.Root)({});
-/*
-const BaseToast = styled(Toast.Root)<{
-  variant: "success" | "warn" | "error" | "info";
-}>({
-  display: "flex",
-  alignItems: "center",
-  gap: "16px",
-  width: "100%",
-  minHeight: "80px",
-  height: "fit-content",
-  maxHeight: "200px",
-  overflowY: "auto",
-  borderRadius: "16px",
-  padding: "16px",
-  boxShadow: "var(--shadow)",
-
-  variants: [
-    {
-      props: { variant: "success" },
-      style: {
-        background: "var(--success-50)",
-      },
-    },
-    {
-      props: { variant: "warn" },
-      style: {
-        background: "var(--warn-50)",
-      },
-    },
-    {
-      props: { variant: "error" },
-      style: {
-        background: "var(--error-50)",
-      },
-    },
-    {
-      props: { variant: "info" },
-      style: {
-        background: "var(--background-100)",
-      },
-    },
-  ],
-});
-*/
 
 const ToastVariants: Variants = {
   initial: {
@@ -196,7 +151,6 @@ const MainContent = styled("div")({
 
 const Title = styled(Toast.Title)({
   gridArea: "title",
-  color: "var(--text-950)",
   fontWeight: "bold",
   fontSize: `${18 / 16}rem`,
 });

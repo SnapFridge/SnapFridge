@@ -37,32 +37,35 @@ function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: P
       <Label {...getLabelProps()}>{label}</Label>
       <InputElement {...getInputProps({ value, type: "text" })} {...delegated} />
       <Menu
-        {...getMenuProps({
-          style: {
-            borderWidth: isOpen ? "0 1px 1px 1px" : 0,
-          },
-        })}
+        {...getMenuProps()}
+        style={
+          isOpen && items.length > 0
+            ? {
+                visibility: "visible",
+              }
+            : undefined
+        }
       >
-        {isOpen &&
-          items.length > 0 &&
-          items.map((item, index) => (
-            <li
-              key={item}
-              {...getItemProps({
-                item,
-                style: {
-                  ...itemStyle,
-                  backgroundColor:
-                    highlightedIndex === index
-                      ? "var(--background-100)"
-                      : "var(--background-0)",
-                  fontWeight: selectedItem === item ? "bold" : "normal",
-                },
-              })}
-            >
-              {item}
-            </li>
-          ))}
+        {items.map((item, index) => (
+          <li
+            key={item}
+            {...getItemProps({
+              item,
+              style: {
+                color: "var(--text-950)",
+                padding: "6px 8px",
+                contentVisibility: "auto",
+                backgroundColor:
+                  highlightedIndex === index
+                    ? "var(--background-100)"
+                    : "var(--background-0)",
+                fontWeight: selectedItem === item ? "bold" : "normal",
+              },
+            })}
+          >
+            {item}
+          </li>
+        ))}
       </Menu>
     </Wrapper>
   );
@@ -77,16 +80,12 @@ const Menu = styled("ul")({
   width: "100%",
   zIndex: 1,
   position: "absolute",
-  borderColor: "var(--background-900)",
-  borderStyle: "solid",
+  border: "1px solid var(--background-900)",
+  borderTop: 0,
+  visibility: "hidden",
   overflow: "auto",
   height: "fit-content",
   maxHeight: "35vh",
 });
-
-const itemStyle = {
-  color: "var(--text-950)",
-  paddingLeft: "8px",
-};
 
 export default SuggestedInput;

@@ -285,7 +285,7 @@ const devEnv = process.env.NODE_ENV === "development";
 const CSP = `
   default-src 'self';
   img-src 'self' https://img.spoonacular.com blob:;
-  script-src 'self' 'unsafe-inline' ${devEnv ? "'unsafe-eval'" : ""};
+  script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' ${devEnv ? "'unsafe-eval'" : ""};
   style-src 'self' 'unsafe-inline' ${devEnv ? "'unsafe-eval'" : ""};
   manifest-src 'self';
   object-src 'none';
@@ -353,11 +353,7 @@ export default withPigment(
     },
 
     webpack(config) {
-      config.experiments = {
-        ...config.experiments,
-        layers: true,
-        topLevelAwait: true,
-      };
+      config.experiments.topLevelAwait = config.experiments.layers = true;
       return config;
     },
 
