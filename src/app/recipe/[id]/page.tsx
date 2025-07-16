@@ -1,16 +1,18 @@
-async function getRecipe(recipeId: string) {
+import DetailedRecipe from "@components/DetailedRecipe";
+
+async function getRecipe(id: string) {
   const recipeInfoRes = await fetch(
-    `https://api.spoonacular.com/recipes/${recipeId}/information?includeNutrition=true`,
+    `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true`,
     {
       headers: {
         "x-api-key": process.env["SPOONACULAR_KEY"]!,
       },
     }
   );
-  const recipeInfo = await recipeInfoRes.json();
+  const recipeInfo = (await recipeInfoRes.json()) as Recipe;
 
   const analyzedInstructionsRes = await fetch(
-    `https://api.spoonacular.com/recipes/${recipeId}/analyzedInstructions`,
+    `https://api.spoonacular.com/recipes/${id}/analyzedInstructions`,
     {
       headers: {
         "x-api-key": process.env["SPOONACULAR_KEY"]!,
@@ -19,12 +21,9 @@ async function getRecipe(recipeId: string) {
   );
   const analyzedInstructions = await analyzedInstructionsRes.json();
 
-  console.log(recipeInfo);
-  console.log(analyzedInstructions);
-
   return {
-    recipeInfo: recipeInfo,
-    analyzedInstructions: analyzedInstructions,
+    recipeInfo,
+    analyzedInstructions,
   };
 }
 
@@ -34,7 +33,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <div>
-      <p>Loaded!</p>
+      <DetailedRecipe></DetailedRecipe>
     </div>
   );
 }

@@ -28,7 +28,7 @@ function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
       </SkeletonTheme>
     </Card>
   ) : (
-    <Card>
+    <Card as="a" href={`/recipe/${recipe.id}`}>
       <h3 className={RecipeTitle}>{recipe.title}</h3>
       <Image
         src={recipe.image}
@@ -58,13 +58,13 @@ function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
 }
 
 const Card = styled("li")({
+  all: "inherit",
   border: "1px solid var(--accent-950)",
   borderRadius: "12px",
   padding: "24px",
   margin: "0 1% 28px",
   boxShadow: "var(--shadow)",
   maxWidth: "800px",
-
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
   gridTemplateRows: "1fr 2fr 2fr",
@@ -83,11 +83,11 @@ const Card = styled("li")({
   [ON_MOBILE]: {
     display: "block",
 
-    "&> :not(:first-child)": {
+    "& > :not(:first-child)": {
       marginTop: "16px",
     },
 
-    "&> *": {
+    "& > *": {
       textAlign: "center",
     },
   },

@@ -1,49 +1,38 @@
 import { styled } from "@pigment-css/react";
+import { type Ingredient } from "@components/Global";
 
-type Equipment = {
-  id: number;
-  image: string;
+export type DetailedRecipe = {
+  id: string;
   name: string;
-  temperature: {
-    number: number;
-    unit: string;
-  };
-};
-
-type Ingredient = {
-  id: number;
-  image: string;
-  name: string;
-};
-
-type Step = {
-  equipment: Equipment[];
+  cooking: number;
+  prep: number;
+  srcName: string;
+  srcURL: string;
+  likes: number;
   ingredients: Ingredient[];
-  length?: {
-    number: number;
+  instructions: {
+    name: string;
+    steps: string[];
+  }[];
+  nutrients: {
+    name: string;
+    amount: number;
     unit: string;
-  };
-  number: number;
-  step: string;
-};
-
-type Recipe = {
-  name: string;
-  steps: Step[];
+    percentOfDailyNeeds: number;
+  }[];
 };
 
 function RecipeItem({ recipe }: { recipe: Recipe }) {
-  console.log(recipe);
-  console.log(recipe.name);
-  console.log(recipe.steps);
-
   return (
     <Step>
       <RecipeTitle>{recipe.name}</RecipeTitle>
       <StepsList>
-        {recipe.steps.map((step, index: number) => {
-          return <Step key={index}>{step.step}</Step>;
-        })}
+        {recipe.instructions.map((instruction) => (
+          <>
+            <h2>{instruction.name}</h2>
+            <ul></ul>
+          </>
+        ))}
       </StepsList>
     </Step>
   );
@@ -61,7 +50,7 @@ export default function RecipeSteps({
   return (
     <RecipesList>
       {analyzedInstructions.map((recipe) => {
-        return <RecipeItem recipe={recipe} />;
+        return <RecipeItem key={recipe.id} recipe={recipe} />;
       })}
     </RecipesList>
   );
