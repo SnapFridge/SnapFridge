@@ -30,4 +30,5 @@ function sitemap() {
   }
   return map;
 }
+
 export default sitemap;
