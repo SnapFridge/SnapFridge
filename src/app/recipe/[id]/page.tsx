@@ -1,5 +1,7 @@
 import DetailedRecipe from "@components/DetailedRecipe";
 import AppTooltip from "@components/Tooltip";
+import RecipeInfo from "@components/RecipeInfo";
+import { type SpoonacularRecipe } from "@components/RecipeInfo/RecipeInfo";
 
 async function getRecipe(id: string) {
   const recipeInfoRes = await fetch(
@@ -10,7 +12,7 @@ async function getRecipe(id: string) {
       },
     }
   );
-  const recipeInfo = (await recipeInfoRes.json()) as Recipe;
+  const recipeInfo = (await recipeInfoRes.json()) as SpoonacularRecipe;
 
   const analyzedInstructionsRes = await fetch(
     `https://api.spoonacular.com/recipes/${id}/analyzedInstructions`,
@@ -30,16 +32,19 @@ async function getRecipe(id: string) {
 
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = await params;
-  // const data = await getRecipe(id);
+  const data = await getRecipe(id);
 
   return (
     <div>
-      <h1>hihihhih</h1>
-      <AppTooltip type="vegan"></AppTooltip>
-      <AppTooltip type="vegetarian"></AppTooltip>
-      <AppTooltip type="sustainable"></AppTooltip>
-      <AppTooltip type="healthy"></AppTooltip>
-      <AppTooltip type="popular"></AppTooltip>
+      <RecipeInfo recipeInfo={data.recipeInfo} />
+      <div>
+        <p>testing: </p>
+        <AppTooltip type="vegan"></AppTooltip>
+        <AppTooltip type="vegetarian"></AppTooltip>
+        <AppTooltip type="sustainable"></AppTooltip>
+        <AppTooltip type="healthy"></AppTooltip>
+        <AppTooltip type="popular"></AppTooltip>
+      </div>
     </div>
   );
 }
