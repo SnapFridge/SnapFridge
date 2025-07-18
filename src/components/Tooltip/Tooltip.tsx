@@ -1,12 +1,18 @@
+"use client";
+
 import { Tooltip } from "radix-ui";
 import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
+import { motion, type Variants, AnimatePresence } from "motion/react";
+import { useState } from "react";
 
 type Props = {
   type: "vegan" | "vegetarian" | "sustainable" | "healthy" | "popular";
 };
 
 export default function AppTooltip({ type }: Props) {
+  const [isOpen, setOpen] = useState(false);
+
   let iconName: any;
   let color: string;
 
@@ -35,22 +41,51 @@ export default function AppTooltip({ type }: Props) {
 
   return (
     <Tooltip.Provider>
-      <Tooltip.Root>
+      <Tooltip.Root open={isOpen} onOpenChange={setOpen}>
         <Tooltip.Trigger asChild>
           <Button>
             <Icon icon={iconName} color={color} size={36} />
           </Button>
         </Tooltip.Trigger>
-        <Tooltip.Portal>
-          <ContentContainer sideOffset={5}>
-            This recipe is {type}!
-            <Arrow />
-          </ContentContainer>
-        </Tooltip.Portal>
+        <AnimatePresence>
+          {isOpen && (
+            <Tooltip.Portal forceMount>
+              <Tooltip.Content sideOffset={5} asChild>
+                <ContentContainer
+                  variants={Variants}
+                  initial="initial"
+                  animate="enter"
+                  exit="exit"
+                >
+                  This recipe is {type}!
+                  <Arrow />
+                </ContentContainer>
+              </Tooltip.Content>
+            </Tooltip.Portal>
+          )}
+        </AnimatePresence>
       </Tooltip.Root>
     </Tooltip.Provider>
   );
 }
+
+const Variants: Variants = {
+  initial: {
+    y: 10,
+    opacity: 0,
+  },
+  enter: {
+    y: 0,
+    opacity: 1,
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.6,
+      type: "spring",
+    },
+  },
+};
 
 const Button = styled("button")({
   background: "none",
@@ -62,7 +97,7 @@ const Button = styled("button")({
   outline: "inherit",
 });
 
-const ContentContainer = styled(Tooltip.Content)({
+const ContentContainer = styled(motion.div)({
   borderRadius: "4px",
   padding: "10px 15px",
   lineHeight: 1,

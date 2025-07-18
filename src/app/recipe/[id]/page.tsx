@@ -1,4 +1,5 @@
 import DetailedRecipe from "@components/DetailedRecipe";
+import AppTooltip from "@components/Tooltip";
 
 async function getRecipe(id: string) {
   const recipeInfoRes = await fetch(
@@ -29,11 +30,16 @@ async function getRecipe(id: string) {
 
 export default async function Page({ params }: { params: { id: string } }) {
   const { id } = await params;
-  const data = await getRecipe(id);
+  // const data = await getRecipe(id);
 
   return (
     <div>
-      <DetailedRecipe></DetailedRecipe>
+      <h1>hihihhih</h1>
+      <AppTooltip type="vegan"></AppTooltip>
+      <AppTooltip type="vegetarian"></AppTooltip>
+      <AppTooltip type="sustainable"></AppTooltip>
+      <AppTooltip type="healthy"></AppTooltip>
+      <AppTooltip type="popular"></AppTooltip>
     </div>
   );
 }
