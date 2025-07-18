@@ -72,7 +72,7 @@ export default function RecipeInfo({ recipeInfo }: { recipeInfo: SpoonacularReci
       <RecipeInfoContentContainer>
         <RecipeInfoContent>
           <AllergenWarning>
-            <Icon icon="TriangleAlert" color="var(--warning)" size={32} />
+            <Icon icon="TriangleAlert" color="var(--warn-500)" size={32} />
             <AllergenContent>
               <AllergenTitle>Possible Allergens</AllergenTitle>
               <AllergenText>
