@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { styled } from "@pigment-css/react";
 import AppTooltip from "@components/Tooltip";
-import Link from "next/link";
 import Icon from "@components/Icon";
 import Button from "@components/Button";
 
@@ -58,7 +57,7 @@ export default function RecipeInfo({ recipeInfo }: { recipeInfo: SpoonacularReci
     <>
       <Image src={recipeInfo.image} alt={recipeInfo.title} width={556} height={370} />
       <SourceCredit>
-        Source: <Link href={recipeInfo.sourceUrl}>{recipeInfo.sourceName}</Link>
+        Source: <a href={recipeInfo.sourceUrl}>{recipeInfo.sourceName}</a>
       </SourceCredit>
       <RecipeTitleSection>
         <RecipeTitle>{recipeInfo.title}</RecipeTitle>
@@ -132,7 +131,30 @@ const SourceCredit = styled("small")({});
 const RecipeInfoContentContainer = styled("div")({});
 const RecipeInfoContent = styled("div")({});
 
-const AllergenWarning = styled("div")({});
+const AllergenWarning = styled("div")({
+  padding: "12px 24px",
+  width: "fit-content",
+  display: "flex",
+  alignItems: "center",
+  position: "relative",
+  gap: "24px",
+  borderLeft: "2px solid var(--warn-600)",
+
+  "&::before": {
+    content: "''",
+    position: "absolute",
+    borderTopRightRadius: "8px",
+    borderBottomRightRadius: "8px",
+    top: 0,
+    left: 0,
+    width: "100%",
+    height: "100%",
+    backgroundColor: "var(--warn-500)",
+    opacity: "30%",
+    zIndex: -1,
+  },
+});
+
 const AllergenContent = styled("div")({});
 const AllergenTitle = styled("h2")({});
 const AllergenText = styled("p")({});
