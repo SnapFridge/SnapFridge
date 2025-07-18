@@ -5,6 +5,7 @@ import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
 import { motion, type Variants, AnimatePresence } from "motion/react";
 import { useState } from "react";
+import { type IconType } from "@components/Icon";
 
 type Props = {
   type: "vegan" | "vegetarian" | "sustainable" | "healthy" | "popular";
@@ -13,7 +14,7 @@ type Props = {
 export default function AppTooltip({ type }: Props) {
   const [isOpen, setOpen] = useState(false);
 
-  let iconName: any;
+  let iconName: IconType;
   let color: string;
 
   switch (type) {
