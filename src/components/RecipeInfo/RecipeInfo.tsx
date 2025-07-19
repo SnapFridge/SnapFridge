@@ -78,7 +78,7 @@ export type SpoonacularRecipe = {
   cuisines: string[];
   dishTypes: string[];
   diets: string[];
-  occasions: any[];
+  occasions: string[];
 
   analyzedInstructions: {
     name: string;
@@ -103,8 +103,6 @@ export type SpoonacularRecipe = {
 };
 
 export default function RecipeInfo({ recipeInfo }: { recipeInfo: SpoonacularRecipe }) {
-  console.log(recipeInfo);
-
   return (
     <div>
       <Summary dangerouslySetInnerHTML={{ __html: recipeInfo.summary }} />
