@@ -6,6 +6,7 @@ import { css, styled } from "@pigment-css/react";
 import { PageMargin } from "@components/Global";
 import RecipeActions from "@components/RecipeActions";
 import Icon from "@components/Icon";
+import RecipeInfoList from "@components/RecipeInfoList";
 
 // Revalidate the cache every hour
 const CACHE_ONE_HOUR = 3600;
@@ -93,6 +94,8 @@ export default async function Page({ params }: { params: { id: string } }) {
           <RecipeInfo recipeInfo={recipeInfo} />
           <RecipeActions />
         </Wrapper>
+
+        <RecipeInfoList ingredients={recipeInfo.extendedIngredients} />
 
         <>
           <p>testing: </p>
