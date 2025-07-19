@@ -1,8 +1,4 @@
-import Image from "next/image";
 import { styled } from "@pigment-css/react";
-import AppTooltip from "@components/Tooltip";
-import Icon from "@components/Icon";
-import Button from "@components/Button";
 
 export type SpoonacularRecipe = {
   id: number;
