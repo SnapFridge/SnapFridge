@@ -19,7 +19,9 @@ export default function RecipeInfoList({
           {ingredients.map((ingredient) => {
             if (metric) {
               return (
-                <ListItem key={ingredient.name}>
+                <ListItem
+                  key={`${ingredient.name}${ingredient.measures.metric.unitShort}`}
+                >
                   {Math.trunc(ingredient.measures.metric.amount)}{" "}
                   {ingredient.measures.metric.unitShort} {ingredient.name}
                 </ListItem>
@@ -27,7 +29,7 @@ export default function RecipeInfoList({
             }
 
             return (
-              <ListItem key={ingredient.name}>
+              <ListItem key={`${ingredient.name}${ingredient.measures.us.unitShort}`}>
                 {Math.trunc(ingredient.measures.us.amount)}{" "}
                 {ingredient.measures.us.unitShort} {ingredient.name}
               </ListItem>
