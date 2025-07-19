@@ -89,6 +89,8 @@ const Variants: Variants = {
 };
 
 const Button = styled("button")({
+  height: "fit-content",
+  width: "fit-content",
   background: "none",
   color: "inherit",
   border: "none",

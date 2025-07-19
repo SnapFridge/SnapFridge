@@ -2,53 +2,109 @@ import { styled } from "@pigment-css/react";
 
 export type SpoonacularRecipe = {
   id: number;
-  title: string;
   image: string;
-  servings: string;
+  imageType: string;
+  title: string;
   readyInMinutes: number;
-  cookingMinutes: number;
-  preparationMinutes: number;
-  sourceName: string;
+  servings: number;
   sourceUrl: string;
-  cheap: boolean;
-  creditsText: string;
-  dairyFree: boolean;
-  glutenFree: boolean;
-  ketogenic: boolean;
-  sustainable: boolean;
-  vegan: boolean;
   vegetarian: boolean;
+  vegan: boolean;
+  glutenFree: boolean;
+  dairyFree: boolean;
   veryHealthy: boolean;
+  cheap: boolean;
   veryPopular: boolean;
-  dishTypes: string[];
+  sustainable: boolean;
+  lowFodmap: boolean;
+  weightWatcherSmartPoints: number;
+  gaps: string;
+  preparationMinutes: number | null;
+  cookingMinutes: number | null;
+  aggregateLikes: number;
+  healthScore: number;
+  creditsText: string;
+  license: string;
+  sourceName: string;
+  pricePerServing: number;
+
   extendedIngredients: {
-    aisle: string;
-    amount: number;
-    consistency: string;
     id: number;
+    aisle: string;
     image: string;
-    measures: {
-      metric: {
-        amount: number;
-        unitLong: string;
-        unitShort: string;
-      };
-      us: {
-        amount: number;
-        unitLong: string;
-        unitShort: string;
-      };
-    };
-    meta: string[];
+    consistency: string;
     name: string;
+    nameClean: string;
     original: string;
     originalName: string;
+    amount: number;
     unit: string;
+    meta: string[];
+    measures: {
+      us: {
+        amount: number;
+        unitShort: string;
+        unitLong: string;
+      };
+      metric: {
+        amount: number;
+        unitShort: string;
+        unitLong: string;
+      };
+    };
   }[];
+
+  nutrition: {
+    nutrients: {
+      name: string;
+      amount: number;
+      unit: string;
+      percentOfDailyNeeds: number;
+    }[];
+
+    caloricBreakdown: {
+      percentProtein: number;
+      percentFat: number;
+      percentCarbs: number;
+    };
+
+    weightPerServing: {
+      amount: number;
+      unit: string;
+    };
+  };
+
   summary: string;
+  cuisines: string[];
+  dishTypes: string[];
+  diets: string[];
+  occasions: any[];
+
+  analyzedInstructions: {
+    name: string;
+    steps: {
+      number: number;
+      step: string;
+      ingredients: {
+        id: number;
+        name: string;
+        localizedName: string;
+        image: string;
+      }[];
+      length?: {
+        number: number;
+        unit: string;
+      };
+    }[];
+  }[];
+
+  spoonacularScore: number;
+  spoonacularSourceUrl: string;
 };
 
 export default function RecipeInfo({ recipeInfo }: { recipeInfo: SpoonacularRecipe }) {
+  console.log(recipeInfo);
+
   return (
     <div>
       <Summary dangerouslySetInnerHTML={{ __html: recipeInfo.summary }} />

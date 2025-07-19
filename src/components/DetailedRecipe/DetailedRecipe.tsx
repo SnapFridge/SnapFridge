@@ -1,59 +1,61 @@
 import { styled } from "@pigment-css/react";
-import { type Ingredient } from "@components/Global";
+import { type SpoonacularRecipe } from "@components/RecipeInfo/RecipeInfo";
 
-export type DetailedRecipe = {
-  id: string;
+type RecipeInstruction = {
   name: string;
-  cooking: number;
-  prep: number;
-  srcName: string;
-  srcURL: string;
-  likes: number;
-  ingredients: Ingredient[];
-  instructions: {
-    name: string;
-    steps: string[];
-  }[];
-  nutrients: {
-    name: string;
-    amount: number;
-    unit: string;
-    percentOfDailyNeeds: number;
+  steps: {
+    number: number;
+    step: string;
+    ingredients: {
+      id: number;
+      name: string;
+      localizedName: string;
+      image: string;
+    }[];
+    length?: {
+      number: number;
+      unit: string;
+    };
   }[];
 };
 
-function RecipeItem({ recipe }: { recipe: Recipe }) {
+export default function RecipeStepsList({ recipes }: { recipes: SpoonacularRecipe }) {
   return (
-    <Step>
-      <RecipeTitle>{recipe.name}</RecipeTitle>
-      <StepsList>
-        {recipe.instructions.map((instruction) => (
-          <>
-            <h2>{instruction.name}</h2>
-            <ul></ul>
-          </>
-        ))}
-      </StepsList>
-    </Step>
+    <RecipeList>
+      {recipes.analyzedInstructions.map((recipe: RecipeInstruction) => {
+        return (
+          <RecipeItem
+            recipe={recipe}
+            recipeTitle={recipes.title}
+            key={recipe.name || recipes.title}
+          />
+        );
+      })}
+    </RecipeList>
   );
 }
-const RecipeTitle = styled("h1")({});
+const RecipeList = styled("ul")({});
+
+function RecipeItem({
+  recipe,
+  recipeTitle,
+}: {
+  recipe: RecipeInstruction;
+  recipeTitle: SpoonacularRecipe["title"];
+}) {
+  return (
+    <StepContainer>
+      <StepTitle>{recipe.name || recipeTitle}</StepTitle>
+      <StepsList>
+        {recipe.steps.map((step) => {
+          return <Step key={step.number}>{step.step}</Step>;
+        })}
+      </StepsList>
+    </StepContainer>
+  );
+}
+const StepContainer = styled("li")({});
+const StepTitle = styled("h1")({});
 
 const StepsList = styled("ol")({});
 const Step = styled("li")({});
-
-export default function RecipeSteps({
-  analyzedInstructions,
-}: {
-  analyzedInstructions: Recipe[];
-}) {
-  return (
-    <RecipesList>
-      {analyzedInstructions.map((recipe) => {
-        return <RecipeItem key={recipe.id} recipe={recipe} />;
-      })}
-    </RecipesList>
-  );
-}
-
-const RecipesList = styled("ul")({});

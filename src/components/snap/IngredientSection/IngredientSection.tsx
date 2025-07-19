@@ -39,7 +39,6 @@ function IngredientSection() {
       ignorePantry: `${ignorePantry}`,
     }).toString();
     const json = await getRecipesJSON(query);
-    console.log(json);
     dispatch({
       type: "addRecipes",
       recipes: JSON.parse(json) as Recipe[],

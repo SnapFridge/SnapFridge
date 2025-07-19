@@ -7,6 +7,7 @@ import { PageMargin } from "@components/Global";
 import RecipeActions from "@components/RecipeActions";
 import Icon from "@components/Icon";
 import RecipeInfoList from "@components/RecipeInfoList";
+import RecipeStepsList from "@components/DetailedRecipe";
 
 // Revalidate the cache every hour
 const CACHE_ONE_HOUR = 3600;
@@ -25,29 +26,13 @@ async function getRecipe(id: string) {
   );
   const recipeInfo = (await recipeInfoRes.json()) as SpoonacularRecipe;
 
-  const analyzedInstructionsRes = await fetch(
-    `https://api.spoonacular.com/recipes/${id}/analyzedInstructions`,
-    {
-      headers: {
-        "x-api-key": process.env["SPOONACULAR_KEY"]!,
-      },
-      next: {
-        revalidate: CACHE_ONE_HOUR,
-      },
-    }
-  );
-  const analyzedInstructions = await analyzedInstructionsRes.json();
-
-  return {
-    recipeInfo,
-    analyzedInstructions,
-  };
+  return recipeInfo;
 }
 
 export default async function Page({ params }: { params: { id: string } }) {
   // We need this await, Next.js expects us to await our parameters
   const { id } = await params;
-  const { recipeInfo } = await getRecipe(id);
+  const recipeInfo = await getRecipe(id);
 
   return (
     <>
@@ -61,7 +46,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           quality={90}
         />
         <SourceCredit>
-          Source: <Link href={recipeInfo.sourceUrl}>{recipeInfo.sourceName}</Link>
+          Source: <Link href={recipeInfo.sourceUrl}>{recipeInfo.creditsText}</Link>
         </SourceCredit>
       </figure>
       <PageMargin>
@@ -96,6 +81,8 @@ export default async function Page({ params }: { params: { id: string } }) {
         </Wrapper>
 
         <RecipeInfoList ingredients={recipeInfo.extendedIngredients} />
+
+        <RecipeStepsList recipes={recipeInfo} />
 
         <>
           <p>testing: </p>
@@ -135,6 +122,7 @@ const Link = styled("a")({
 
 const TitleSection = styled("div")({
   display: "flex",
+  alignItems: "center",
   gap: "24px",
 });
 
