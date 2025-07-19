@@ -20,12 +20,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   const themeClass = theme === "dark" ? "dark" : "";
 
   return (
-    <html
-      lang="en"
-      className={`${poppins.className} ${themeClass}`}
-      data-color-theme={theme}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={`${poppins.className} ${themeClass}`}>
       <body>
         <NavBar />
         <main>{children}</main>

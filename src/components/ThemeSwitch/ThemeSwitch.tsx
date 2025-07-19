@@ -42,7 +42,7 @@ function ThemeSwitch({ ...delegated }) {
     >
       <Icon
         icon={theme === "light" ? "Sun" : "Moon"}
-        description={`Turn on ${theme === "dark" ? "light" : "dark"} mode`}
+        description={`Turn off ${theme} mode`}
       />
     </Button>
   );

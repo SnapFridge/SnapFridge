@@ -1,993 +1,3439 @@
-5 spice powder
-acorn squash
-adobo sauce
-agave nectar
-ahi tuna
-alfredo pasta sauce
-almond extract
-almond flour
-almond milk
-almonds
-amaretto
-ancho chiles
-anchovies
-andouille sausage
-angel food cake mix
-angel hair pasta
-angostura bitters
-apple
-apple butter spread
-apple cider
-apple juice
-apple pie spice
-apricot preserves
-apricots
-arborio rice
-arrowroot powder
-artichoke heart quarters
-artichokes
-arugula
-asafoetida
-asafoetida powder
-asiago cheese
-asian pear
-asparagus spears
-avocado
-avocado oil
-baby bell peppers
-baby bok choy
-baby carrots
-baby corn
-baby spinach leaves
-baby-back ribs
-bacon
-bacon fat
-baguette
-baking bar
-baking powder
-baking soda
-balsamic glaze
-balsamic vinegar
-bamboo shoots
-banana
-basmati rice
-bay leaves
-bbq sauce
-beans
-beef
-beef brisket
-beef broth
-beef chuck roast
-beef stock
-beef tenderloin
-beer
-beets
-bell pepper
-berries
-biscuit mix
-biscuits
-bittersweet chocolate
-black bean sauce
-black beans
-black olives
-black pepper
-black sesame seeds
-blackberries
-blanched almonds
-blood orange
-blue cheese
-blueberries
-bok choy
-boneless skinless chicken breast
-bourbon
-brandy
-bread
-bread flour
-breakfast links
-brie
-broccoli
-broccoli florets
-brown rice
-brown rice flour
-brown sugar
-brownie mix
-brussel sprouts
-bulgur
-butter
-butterhead lettuce
-buttermilk
-butternut squash
-butterscotch chips
-cabbage
-caesar dressing
-cajun seasoning
-cake flour
-candy canes
-candy coating
-candy melts
-canned black beans
-canned diced tomatoes
-canned garbanzo beans
-canned green chiles
-canned kidney beans
-canned mushrooms
-canned pinto beans
-canned red kidney beans
-canned tomatoes
-canned tuna
-canned white beans
-canned white cannellini beans
-cannellini beans
-cantaloupe
-capers
-caramel sauce
-caramels
-caraway seed
-cardamom
-cardamom pods
-carp
-carrots
-cat fish filets
-cauliflower
-cauliflower florets
-cauliflower rice
-celery
-celery ribs
-celery root
-celery salt
-celery seed
-cereal
-champagne
-chana dal
-cheddar
-cheese
-cheese curds
-cheese dip
-cheese soup
-cheese tortellini
-cherry
-cherry pie filling
-cherry tomatoes
-chestnuts
-chia seeds
-chicken base
-chicken bouillon
-chicken bouillon granules
-chicken breasts
-chicken broth
-chicken drumsticks
-chicken legs
-chicken pieces
-chicken sausage
-chicken stock
-chicken tenders
-chicken thighs
-chicken wings
-chickpea
-chile garlic sauce
-chili paste
-chili peppers
-chili powder
-chili sauce
-chipotle chiles in adobo
-chipotle chilies
-chipotle peppers in adobo
-chive & onion cream cheese spread
-chocolate
-chocolate chip cookies
-chocolate chunks
-chocolate ice cream
-chocolate milk
-chocolate sandwich cookies
-chocolate syrup
-chocolate wafer cookies
-chorizo sausage
-cider vinegar
-cilantro
-cinnamon roll
-cinnamon stick
-cinnamon sugar
-cinnamon swirl bread
-clam juice
-clams
-clarified butter
-clove
-coarse salt
-coarsely ground pepper
-cocoa nibs
-cocoa powder
-coconut
-coconut aminos
-coconut butter
-coconut cream
-coconut extract
-coconut flour
-coconut milk
-coconut oil
-coconut water
-cod
-coffee
-cognac
-cola
-colby jack
-collard greens
-condensed cream of celery soup
-condensed cream of mushroom soup
-confectioner's swerve
-cooked bacon
-cooked brown rice
-cooked chicken breast
-cooked ham
-cooked long grain rice
-cooked pasta
-cooked polenta
-cooked quinoa
-cooked wild rice
-cookies
-coriander
-corn
-corn bread mix
-corn chips
-corn flakes cereal
-corn flour
-corn kernels
-corn oil
-corn tortillas
-cornbread
-corned beef
-cornish hens
-cornmeal
-cornstarch
-cotija cheese
-cottage cheese
-country bread
-courgettes
-couscous
-cow pea
-crabmeat
-cracked pepper
-cranberries
-cranberry juice
-cream
-cream cheese
-cream cheese block
-cream of chicken soup
-cream of tartar
-creamed corn
-creamy peanut butter
-creme fraiche
-cremini mushrooms
-creole seasoning
-crisp rice cereal
-croutons
-crystallized ginger
-cucumber
-cumin seeds
-cup cake
-currants
-curry leaves
-dairy free milk
-dark brown sugar
-dark chocolate
-dark chocolate candy bars
-dark chocolate chips
-dark sesame oil
-dates
-deep dish pie crust
-deli ham
-deli turkey
-dessert oats
-dessert wine
-diced ham
-diet pop
-dijon mustard
-dill
-dill pickles
-hot dog
-double cream
-dried apricots
-dried basil
-dried cherries
-dried chorizo
-dried cranberries
-dried dill
-dried onion
-dried porcini mushrooms
-dried rubbed sage
-dried thyme
-dried tomatoes
-dry bread crumbs
-dry milk
-dry mustard
-dry red wine
-dry roasted peanuts
-duck fat
-dutch process cocoa powder
-edamame
-egg
-egg substitute
-egg vermicelli
-egg whites
-egg yolk
-eggnog
-eggplant
-elbow macaroni
-enchilada sauce
-english cucumber
-english muffin
-erythritol
-escarole
-espresso
-evaporated milk
-extra firm tofu
-extra virgin olive oil
-farfalle
-farro
-fat free mayo
-fat-free less-sodium chicken broth
-fennel
-fennel seeds
-fenugreek leaf
-fenugreek seeds
-feta cheese
-fettuccine
-fire roasted tomatoes
-fish
-fish sauce
-fish stock
-flank steak
-flax seeds
-fleur de sel
-flour
-flour tortillas
-fontina cheese
-food dye
-frank's redhot sauce
-free range eggs
-french bread
-fresh basil
-fresh bean sprouts
-fresh chives
-fresh corn
-fresh corn kernels
-fresh figs
-fresh fruit
-fresh herbs
-fresh mint
-fresh mozzarella
-fresh rosemary
-fresh thyme leaves
-fried onions
-frosting
-froyo bars
-frozen corn
-frozen spinach
-fudge
-fudge topping
-fun size almond joy bar
-garam masala
-garbanzo bean flour
-garlic
-garlic paste
-garlic powder
-garlic salt
-gelatin
-gf chocolate cake mix
-gin
-ginger
-ginger ale
-ginger paste
-ginger-garlic paste
-gingersnap cookies
-gnocchi
-goat cheese
-golden raisins
-gorgonzola
-gouda cheese
-graham cracker crumbs
-graham cracker pie crust
-graham crackers
-grain blend
-grand marnier
-granny smith apples
-granola
-granulated garlic
-grape tomatoes
-grapefruit
-grapeseed oil
-gravy
-great northern beans
-greek yogurt
-green beans
-green bell pepper
-green chili pepper
-green food coloring
-green grapes
-green olives
-green onions
-greens
-grill cheese
-grill seasoning
-ground allspice
-ground ancho chili
-ground beef
-ground chicken
-ground chipotle chile pepper
-ground cinnamon
-ground cloves
-ground coriander seeds
-ground cumin
-ground flaxseed
-ground ginger
-ground lamb
-ground mace
-ground nutmeg
-ground pork
-ground pork sausage
-ground veal
-gruyere
-guacamole
-half n half
-halibut fillet
-ham
-hamburger buns
-hard cooked eggs
-harissa
-hash brown potatoes
-hazelnuts
-healthy request cream of celery soup
-hemp seeds
-herbes de provence
-herbs
-hershey's kisses brand milk chocolates
-hoisin sauce
-honey mustard
-horseradish
-hot sauce
-hummus
-ice
-ice cream
-instant chocolate pudding mix
-instant coffee powder
-instant espresso powder
-instant lemon pudding mix
-instant yeast
-irish cream
-italian bread
-italian cheese blend
-italian sausages
-italian seasoning
-jaggery
-jalapeno
-jasmine rice
-jelly
-jicama
-jimmies
-juice
-jumbo shell pasta
-kaffir lime leaves
-kahlua
-kalamata olives
-kale
-ketchup
-kitchen bouquet
-kiwis
-kosher salt
-ladyfingers
-lamb
-lasagna noodles
-lb cake
-lean ground beef
-lean ground turkey
-lean pork tenderloin
-leeks
-leg of lamb
-lemon
-lemon curd
-lemon extract
-lemon juice
-lemon peel
-lemon pepper
-lemon wedges
-lemongrass
-lettuce
-lettuce leaves
-light butter
-light coconut milk
-light corn syrup
-light cream cheese
-light mayonnaise
-light olive oil
-light soy sauce
-lime
-lime juice
-lime wedges
-lime zest
-linguine
-liquid smoke
-liquid stevia
-liquor
-live lobster
-long-grain rice
-low fat buttermilk
-low fat milk
-low fat plain yogurt
-low fat ricotta cheese
-low fat sour cream
-low sodium chicken broth
-low sodium soy sauce
-low-sodium chicken stock
-lower sodium beef broth
-lump crab
-m&m candies
-macadamia nuts
-macaroni and cheese mix
-madras curry powder
-malt drink mix
-mandarin orange sections
-mandarin oranges
-mango
-maple syrup
-maraschino cherries
-margarine
-marinara sauce
-marjoram
-marsala wine
-marshmallow fluff
-marshmallows
-masa harina
-mascarpone
-mat beans
-matcha tea
-mayonnaise
-meat
-meatballs
-medjool dates
-mexican cream
-meyer lemon juice
-milk
-milk chocolate chips
-mint chutney
-minute rice
-miracle whip
-mirin
-miso
-molasses
-monterey jack cheese
-mushroom
-mussels
-mustard
-mustard seeds
-napa cabbage
-navel oranges
-nectarine
-new potatoes
-non-fat greek yogurt
-nonfat cool whip
-nonfat milk
-nori
-nut butter
-nut meal
-nutella
-nutritional yeast
-oat flour
-oats
-oil
-oil packed sun dried tomatoes
-okra
-old bay seasoning
-olive oil
-olives
-onion
-onion powder
-onion soup mix
-orange
-orange bell pepper
-orange juice
-orange juice concentrate
-orange liqueur
-orange marmalade
-orange oil
-orange zest
-oregano
-oreo cookies
-orzo
-oyster sauce
-oysters
-palm sugar
-pancetta
-paneer
-panko
-papaya
-paprika
-parmigiano reggiano
-parsley
-parsley flakes
-parsnip
-part-skim mozzarella cheese
-pasta
-pasta salad mix
-pasta sauce
-pastry flour
-peach
-peanut butter
-peanut butter chips
-peanut butter cups
-peanut oil
-peanuts
-pear liqueur
-pearl barley
-pearl onions
-peas
-pecan
-pecan pieces
-pecorino
-penne
-peperoncino
-pepper jack cheese
-peppercorns
-peppermint baking chips
-peppermint extract
-pepperoni
-peppers
-pesto
-pickle relish
-pickles
-pico de gallo
-pie crust
-pimento stuffed olives
-pimientos
-pine nuts
-pineapple
-pineapple chunks
-pineapple in juice
-pineapple juice
-pink himalayan salt
-pinto beans
-pistachios
-pita
-pizza crust
-pizza mix
-plain greek yogurt
-plain nonfat yogurt
-plain yogurt
-plantain
-plum
-plum tomatoes
-poblano peppers
-polenta
-polish sausage
-pomegranate juice
-pomegranate molasses
-pomegranate seeds
-popcorn
-poppy seeds
-pork
-Pork & Beans
-pork belly
-pork butt
-pork chops
-pork links
-pork loin chops
-pork loin roast
-pork roast
-pork shoulder
-pork tenderloin
-port
-portabella mushrooms
-pot roast
-potato chips
-potato starch
-potatoes
-poultry seasoning
-powdered sugar
-pretzel sandwiches
-processed american cheese
-prosciutto
-provolone cheese
-prunes
-puff pastry
-pumpkin
-pumpkin pie filling
-pumpkin pie spice
-pumpkin puree
-pumpkin seeds
-queso fresco
-quick cooking oats
-quinoa
-quinoa flour
-radicchio
-radishes
-raisins
-rajma masala
-ramen noodles
-ranch dressing
-ranch dressing mix
-raspberries
-raspberry jam
-raw cashews
-raw shrimp
-ready-to-serve Asian fried rice
-real bacon recipe pieces
-red apples
-red bell peppers
-red cabbage
-red chilli
-red delicious apples
-red food coloring
-red grapefruit juice
-red grapes
-red kidney beans
-red lentils
-red onion
-red pepper flakes
-red pepper powder
-red potatoes
-red velvet cookie
-red wine
-red wine vinegar
-reduced fat shredded cheddar cheese
-refried beans
-refrigerated crescent rolls
-refrigerated pizza dough
-refrigerated sugar cookie dough
-rhubarb
-rib tips
-rice
-rice flour
-rice krispies cereal
-rice milk
-rice noodles
-rice paper
-rice syrup
-rice vinegar
-rice wine
-ricotta salata
-ritz crackers
-roast beef
-roasted chicken
-roasted nuts
-roasted peanuts
-roasted red peppers
-roma tomatoes
-romaine lettuce
-root vegetables
-rosemary
-rotini pasta
-rotisserie chicken
-round steak
-rub
-rum extract
-runny honey
-russet potatoes
-rutabaga
-rye bread
-rye meal
-saffron threads
-sage
-sage leaves
-salad dressing
-salami
-salmon fillet
-salsa
-salsa verde
-salt
-salt and pepper
-salted butter
-saltine crackers
-sandwich bun
-sauerkraut
-sausage
-sausage links
-scotch bonnet chili
-sea salt
-sea scallops
-seasoned bread crumbs
-seasoned rice vinegar
-seasoned salt
-seasoning
-seasoning blend
-seeds
-self-rising flour
-semi sweet chocolate chips
-serrano chile
-sesame oil
-sesame seed hamburger buns
-sesame seeds
-shallot
-sharp cheddar cheese
-sheeps milk cheese
-shells
-sherry
-sherry vinegar
-shiitake mushroom caps
-short grain rice
-short pasta
-short ribs
-shortbread cookies
-shortcrust pastry
-shortening
-shredded cheddar cheese
-shredded cheese
-shredded chicken
-shredded coconut
-shredded mexican cheese blend
-shredded mozzarella
-silken tofu
-sirloin steak
-skim milk ricotta
-skim vanilla greek yogurt
-skin-on bone-in chicken leg quarters
-skinless boneless chicken breast halves
-skinless boneless chicken thighs
-skinned black gram
-slaw dressing
-slaw mix
-slivered almonds
-smoked paprika
-smoked salmon
-smoked sausage
-smooth peanut butter
-snapper fillets
-snow peas
-soda water
-sour cream
-sourdough bowl
-sourdough bread
-soy milk
-soy protein powder
-soy sauce
-spaghetti
-spaghetti squash
-sparkling wine
-spelt flour
-spicy brown mustard
-spinach
-sprite
-sprouts
-squash
-sriracha sauce
-steaks
-steel cut oats
-stevia
-stew meat
-stew vegetables
-stock
-store-bought phyllo
-stout
-strawberries
-strawberry jam
-strawberry jello
-stuffing
-stuffing mix
-sub rolls
-sugar
-sugar snap peas
-sugar syrup
-sukrin sweetener
-summer savory
-summer squash
-sunflower oil
-sunflower seeds
-sweet chilli sauce
-sweet onion
-sweet paprika
-sweet pickle juice
-sweet pickle relish
-sweet potato
-sweet tea
-sweetened coconut
-sweetened condensed milk
-sweetened shredded coconut
-swiss chard
-swiss cheese
-taco seasoning mix
-taco shells
-tahini
-tamari
-tapioca flour
-tarragon
-tart apple
-tea bags
-tequila
-teriyaki sauce
-thai basil
-thai chiles
-thai red curry paste
-thick-cut bacon
-tilapia fillets
-toast
-toffee bits
-tofu
-tomatillos
-tomato juice
-tomato paste
-tomato puree
-tomato sauce
-tomato soup
-tomatoes
-top blade steak
-top round steak
-Top Sirloin
-tortilla
-tortilla chips
-triple sec
-truffle oil
-tuna
-turbinado sugar
-turkey
-turkey breast
-turkey kielbasa
-turmeric
-turnips
-unbleached flour
-unsalted butter
-unsmoked back bacon
-unsweetened applesauce
-unsweetened coconut milk
-unsweetened shredded coconut
-vanilla bean
-vanilla bean paste
-vanilla essence
-vanilla extract
-vanilla frosting
-vanilla instant pudding mix
-vanilla protein powder
-vanilla wafers
-vanilla yogurt
-vegan cheese
-vegan chocolate chips
-vegan margarine
-vegetable broth
-vegetable oil
-vegetarian bacon
-vermouth
-vinaigrette
-vinegar
-vodka
-walnuts
-water
-water chestnuts
-water-packed tuna
-watercress
-watermelon chunks
-wheat bran
-wheat germ
-whipped cream
-whipped topping
-whipping cream
-whiskey
-white balsamic vinegar
-white bread
-white cake mix
-white cheddar
-white chocolate
-white chocolate chips
-white onion
-white pepper
-white whole wheat flour
-white wine
-white wine vinegar
-whole allspice berries
-whole chicken
-whole coriander seeds
-whole cranberry sauce
-whole kernel corn
-whole star anise
-whole wheat bread
-whole wheat flour
-whole wheat tortillas
-whole-grain mustard
-wine
-wine vinegar
-winter squash
-won ton wraps
-worcestershire sauce
-wraps
-xanthan gum
-yeast
-yellow bell pepper
-yellow cake mix
-yellow onion
-yogurt
-yukon gold potato
+1 percent chocolate milk;quart
+1 percent milk;quart
+2 percent milk;quart
+20 percent quark;
+40 percent quark;
+80 percent lean ground beef;
+85 percent lean ground beef;
+90 percent lean ground beef;
+93 percent lean ground turkey;pound
+95 percent lean ground beef;
+absinthe;shot
+acai juice;
+acai powder;
+ackee;
+acorn squash;squash,piece
+active dry yeast;sachet,envelope,package,satchet,packet
+adobo sauce;
+adobo seasoning;dash
+adzuki beans;
+agar;package,piece,sheet
+agave;
+aged balsamic vinegar;
+agnolotti;
+ahi tuna steak;strip,steak,piece,fillet,inch
+ahi tuna;strip,steak,piece,fillet,inch
+aioli;
+aji amarillo chili paste;
+aji amarillo;piece
+ajwain;
+albacore tuna packed in oil;can
+alcohol;bottle,shot
+ale;can,gallon,can or bottle,bottle
+aleppo pepper;piece
+alfalfa sprouts;handful
+alfredo sauce;jar
+all bran cereal;
+all purpose flour;
+allergy friendly chocolate chips;
+allspice berries;piece
+allspice;piece,dash
+allulose;
+almond bark;square,bar,package,bag
+almond butter;
+almond extract;drop,dash
+almond flour;
+almond joy bar;king size,piece,miniature,bag,bite size,fun size,bar snack size
+almond meal;
+almond milk;
+almond oil;
+almond paste;
+almonds;handful,piece,almond
+aloe vera juice;
+alum;sachet,envelope,packet
+aluminum free baking powder;sachet,envelope,packet
+amaranth flour;
+amaranth;
+amaretti cookie crumbs;
+amaretti cookies;piece
+amaretto liqueur;shot
+amaro;
+amchar masala;
+amchoor;
+american cheese;piece,slice
+amla;
+anaheim pepper;piece
+ancho chili pepper;piece
+ancho chili powder;piece
+anchovies in extra virgin olive oil;can,anchovy,piece,tin,anchovie,box
+anchovies in olive oil;can,anchovy,piece,tin,anchovie,box
+anchovies;can,piece,filet,tin,fillet
+anchovy fillets;can,piece,filet,tin,fillet
+anchovy paste;box
+andes mints;
+andouille sausage;package,piece
+anellini pasta;
+angel food cake mix;package,piece,box
+angel food cake;piece,slice,tube cake
+angel hair pasta;package,bag,box,nest
+angostura bitters;dash,dashe
+anise extract;
+anise;piece
+anisette;
+anjou pear;piece
+annatto seeds;
+annatto;
+any color food color;drop
+aperol;shot
+apple butter;
+apple cider vinegar;
+apple cider;drink box,bottle NFS
+apple jelly;packet
+apple juice;drink box,bottle NFS
+apple pie filling;can
+apple pie spice;
+apple;piece,slice,extra small,cup slice
+applesauce;
+applewood smoked bacon;slice raw,package,strip,rasher,piece,slice
+apricot jam;packet
+apricot nectar;
+apricot pie filling;
+apricot preserves;packet
+apricot;apricot,piece
+arbol chile;pepper,piece
+arborrio rice;
+areca nut;
+arrowroot;
+artichoke bottoms;
+artichoke hearts;can
+artichoke;can,piece,tin,artichoke,box,jar
+artificial vanilla;drop,dash
+arugula;handful,piece,leave,bag,sprig,bunch
+asafoetida;
+ash gourd;
+asiago cheese;
+asian dressing;bottle
+asian vegetables;
+asparagus;spear,piece,stalk,spear tip,bag,bunch
+au jus;
+avocado cubes;piece
+avocado halves;piece
+avocado leaves;piece
+avocado oil;
+avocado slices;piece
+avocado;avocado,piece
+baby artichoke;piece
+baby arugula;handful,piece,leave,bag,sprig,bunch
+baby back ribs;rack,piece,slab
+baby beets;piece,bunch
+baby bok choy;piece
+baby carrots;piece,bunch
+baby corn;can,package,piece,bag
+baby eggplant;piece
+baby leaf lettuce;
+baby leeks;piece
+baby lima beans;
+baby shrimp;piece
+baby spinach;package,handful,leave,bag,bunch
+baby zucchini;piece,slice,stick
+bacon bits;
+bacon drippings;
+bacon ends and pieces;
+bacon;slice raw,package,strip,rasher,piece,slice
+bael fruit;
+bagel chips;
+bagel;mini bagel,piece,medium bagel,small bagel,large bagel
+baguette;piece,slice,loaf,baguette
+baharat;
+baked beans;can,piece,tin
+baked tortilla chips;piece,bag
+bakers white chocolate;square,bar,cup chip,package
+baking mix;
+baking potato;piece,Potato medium,potato large,Potato small
+baking powder;sachet,envelope,packet
+baking soda;
+balsamic glaze;
+balsamic vinaigrette;bottle
+balsamic vinegar;
+bamboo shoots;can
+banana blossoms;
+banana bread mix;package,box
+banana bread;piece,slice,loaf,individual loaf
+banana chips;
+banana extract;
+banana leaves;piece
+banana liqueur;shot
+banana pepper rings;
+banana pepper;piece
+banana pudding mix;package,portion
+banana shallot;clove,piece,tbsp chopped
+banana;piece,slice,extra small,extra large,cup mashed
+barbecue sauce;glug,bottle
+barbecue seasoning;
+barley flakes;
+barley flour;
+barley;
+barnyard millet;
+bartlett pear;piece
+basil oil;spoonful
+basil pesto;can,tin,jar,dollop
+basil;cup leave,handful,piece,leave,sprig,bunch
+basmati rice;
+bay leaves;piece,leave
+bay scallops;piece
+bean curd sheets;package,piece,sheet
+bean sprouts;package
+bee pollen;
+beef base;piece,cube
+beef bone;piece
+beef bouillon cube;piece,cube
+beef bouillon granules;piece,cube
+beef bouillon powder;cube,packet
+beef bouillon;cube
+beef brisket;pound,steak,piece,brisket
+beef broth;cube
+beef chuck roast;piece,roast
+beef consomme;cube
+beef cubes;package
+beef flavored ramen;package
+beef franks;package,piece
+beef gravy;
+beef hearts;piece
+beef jerky;piece
+beef kidney;
+beef liver;liver,piece,slice
+beef patties;piece
+beef ravioli;can
+beef round roast;pound,piece
+beef shank;pound,piece
+beef short ribs;
+beef shoulder roast;steak,piece
+beef sirloin tip roast;roast
+beef soup bone;piece
+beef stew meat;package
+beef stock powder;cube,packet
+beef stock;
+beef strip loin;pound,steak,piece,stalk,bunch
+beef tenderloin;piece
+beef;
+beefsteak tomato;piece
+beer;can,gallon,can or bottle,bottle
+beet greens;leave
+beet;can,piece,slice,tin,bunch,beet
+belacan;package,bag
+belgian endive;head,piece,leave
+bell pepper;piece,ring
+benedictine;shot
+bengal gram;
+berbere;
+berries;package
+betel leaves;
+bilimbi fruit;
+biltong;
+biscotti;package,piece,box
+biscuit mix;
+biscuits;container,package,can,tube,piece,tin,biscuit
+bison back ribs;
+bison ribeye;pound,piece
+bison roast;pound
+bison short ribs;
+bison sirloin tip roast;
+bison sirloin;pound,piece
+bison steak;steak,piece
+bison strip loin;pound,piece
+bison tenderloin;pound,piece
+bison;piece
+bitter gourd;balsam pear
+bitters;dash,dashe
+bittersweet chocolate chips;package,bag
+bittersweet chocolate;square,bar,package,piece,bag
+black bass;fillet
+black bean sauce;
+black beans;can,tin
+black cardamoms;pod,piece
+black cherries;
+black currants;
+black drum;fillet
+black forest ham;slice
+black grapes;grape
+black lentils;
+black licorice;
+black mustard seeds;cup leave,handful,piece,leave,sprig,bunch
+black nightshade;
+black olives;can,handful,olive,piece,tin,jar
+black pepper;dash
+black peppercorns;piece
+black plum;piece,fruit
+black quinoa;
+black rice;
+black sesame seeds;
+black tea bag;piece
+black tea;
+black treacle;
+black vinegar;
+black walnuts;
+blackberries;container,piece,fruit
+blackberry jam;packet
+blackberry juice;
+blackening spice;
+blackeyed peas;
+blanched almond flour;
+blanched almonds;
+blanched slivered almonds;
+block style cream cheese;piece,block
+blood orange juice;piece,fruit yield
+blood orange zest;
+blood orange;piece,slice,fruit
+blue cheese crumbles;tub,package
+blue cheese dressing;
+blue cheese;tub,package
+blue food color;drop
+blue spirulina;scoop
+blueberries;berrie,handful,piece
+blueberry bagel;mini bagel,piece,medium bagel,small bagel,large bagel
+blueberry jam;
+blueberry jelly;
+blueberry juice;
+blueberry pie filling;
+bluefish fillets;piece,fillet
+bluefish;piece,fillet
+boar;pound
+bocconcini;tub,ball,piece
+boiled ham;piece,slice
+boiling potato;piece,potato medium,potato small,potato large
+bok choy leaves;piece
+bok choy;head,piece,stalk,leave,bunch
+bologna;slice
+bombay duck;
+bone broth;quart,can,carton,tin,box
+bone in beef short ribs;
+bone in bison short ribs;
+bone in chicken breast halves;piece
+bone in chicken breast;piece
+bone in chicken thighs;package,piece,thigh with skin
+bone in pork chops;pound,piece
+bone in pork loin;pound,chop
+bone in pork rib roast;pound
+bone in pork roast;pound,chop
+bone in skin on chicken breast halves;piece
+bone in skin on chicken breast;piece
+bone in skin on chicken thighs;package,piece,thigh with skin
+bone in skin on turkey breast;
+bone in skinless chicken thighs;package,piece,thigh with skin
+bone in skinless turkey breast;piece
+bone in turkey breast;piece
+boneless beef short ribs;pound
+boneless chicken breast halves;piece
+boneless chicken breast;unit,piece,breast
+boneless chicken thighs;package,piece,thigh with skin
+boneless chicken wings;
+boneless chuck steak;steak,piece
+boneless pork loin;pound,piece,roast
+boneless pork rib roast;pound,chop
+boneless pork roast;pound,piece,roast
+boneless pork shoulder;piece
+boneless skin on chicken breast halves;piece
+boneless skin on chicken breast;unit,piece,breast
+boneless skin on chicken thighs;package,piece,thigh with skin
+boneless skin on turkey breast;unit,piece,breast
+boneless skinless chicken breast halves;piece
+boneless skinless chicken breast;unit,piece,breast
+boneless skinless chicken thighs;package,piece,thigh with skin
+boneless skinless turkey breast;
+boneless turkey breast;piece
+bonito flakes;
+boquerones;can,piece,filet,tin,fillet
+borlotti beans;can
+bosc pear;piece
+boston butt;steak,piece,raw pr g
+bottarga;
+bottle gourd;
+bottled garlic;
+bottled ginger;
+bouillon cube;piece,cube
+bouillon granules;piece,cube
+bouillon powder;cube,packet
+bouillon;cube
+boule;
+bouquet garni;sachet,piece
+bourbon vanilla extract;drop,dash
+bourbon;bottle,shot
+boursin cheese;
+boysenberries;package
+braeburn apple;piece,slice,extra small,cup slice
+braggs liquid aminos;
+bramley apple;piece,slice,extra small,cup slice
+bran flakes;
+bran;
+brandy;bottle,shot
+bratwurst bun;piece
+bratwurst;package,piece,link cooked
+brazil nuts;piece
+bread bowls;
+bread cubes;
+bread dough;ball,piece,recipe,loaf
+bread flour;spoonful,cup unsifted
+bread machine yeast;
+bread;piece,slice,loaf
+breadcrumbs;package,handful
+breadfruit;fruit
+breadstick dough;
+breakfast sausage;tray,package,piece,box
+brewed coffee;
+brewers yeast;
+brie;package,round,piece,slice
+brine;
+brioche bun;piece
+brioche;slice,roll,bun,loaf
+broccoli carrot cauliflower mix;can,package,bag,box,pack
+broccoli coleslaw mix;stalk,bag
+broccoli florets;piece
+broccoli rabe;quart,piece,stalk,bunch,cup chopped
+broccoli slaw;stalk,bag
+broccoli sprouts;handful
+broccoli;floret,cup chopped,head,spear,floweret,piece,stalk,bunch,crown
+broccolini;stalk,bunch
+broth;quart,can,carton,tin,box
+brown gravy;can
+brown lentils;can
+brown mustard seeds;cup leave,handful,piece,leave,sprig,bunch
+brown rice flour;
+brown rice pasta;square,package,piece,bag,box,sheet,nest
+brown rice syrup;
+brown rice;
+brown sugar;cup unpacked,tsp brownulated,tsp packed,tsp unpacked,cup packed
+brownie mix;package,pouch,box
+browning sauce;dash
+brussels sprouts;sprout,piece,bag
+brut cava;glass
+brut prosecco;glass
+bucatini;package,box
+buckwheat flour;
+buckwheat;
+buffalo mozzarella;ball,slice
+buffalo sauce;
+bulgur;
+burdock root;root
+burrata;
+burrito size tortilla;package,piece
+butter beans;can
+butter crackers;cracker,package,piece,Triscuit Bit,box
+butter flavored cooking spray;spray
+butter flavored shortening;
+butter lettuce leaves;piece
+butter lettuce;head,piece,leave
+butter;pat,knob,stick
+buttercup squash;piece
+butterfinger candy bar;bar king size,bag,bar bite size,cup BB',king size,piece,miniature,bite size,fun size
+butterflied trout;piece,fillet
+buttermilk biscuits;container,package,can,tube,piece,tin,biscuit
+buttermilk powder;
+buttermilk;
+butternut squash;piece
+butterscotch chips;piece
+butterscotch pudding mix;package,portion,box
+butterscotch pudding;package,box
+butterscotch;cup chip
+buttery round crackers;cracker,package,piece,Triscuit Bit,box
+cabbage;bag,small head,head,quart,piece,leave,medium head,jar,large head
+cabernet sauvignon;glass,piece,bottle
+cacao powder;
+cachaca;shot
+caerphilly;slice
+caesar salad dressing;
+cajun seasoning;dash
+cajun stewed tomatoes;can,piece,tin
+cake flour;spoonful,cup unsifted
+cake mix;package,piece,box
+calumet baking powder;sachet,envelope,packet
+calvados;bottle,shot
+camembert;round,piece,wedge
+campari;shot
+canadian bacon;package,slice
+candied almonds;piece
+candied cherries;piece
+candied citron;
+candied fruit;
+candied ginger;piece,slice
+candied nuts;
+candied orange peel;
+candied pecans;
+candied walnuts;
+candlenuts;
+candy cane;package,piece,box
+candy coated chocolate pieces;
+candy corn;piece,bag
+candy melts;bag
+canned adzuki beans;can,tin
+canned albacore tuna;can,piece,tin
+canned anchovies;can,anchovy,piece,tin,anchovie,box
+canned asparagus;can,spear,piece
+canned baby limas beans;can,tin
+canned beans;can,tin
+canned beef broth;cube
+canned beets;can,piece,cup slice
+canned black beans;can,tin
+canned blackeyed peas;can
+canned borlotti beans;can,tin
+canned boysenberries;
+canned butter beans;can,tin
+canned cannellini beans;can,tin
+canned chicken breast;can,piece
+canned chicken;can,piece,can yield
+canned chickpeas;can
+canned chipotle chile;can,piece
+canned chipotle chiles in adobo;can,piece
+canned coconut milk;can,piece,tin
+canned corn;cup drained,can drained
+canned corona beans;can,tin
+canned cranberry beans;can,tin
+canned diced tomatoes;can,piece
+canned fava beans;can,tin
+canned fish;can,piece,tin,jar
+canned gigante beans;can,tin
+canned great northern beans;can,tin
+canned green chiles;can
+canned herring;can,piece,tin,fillet,jar
+canned jackfruit;can
+canned kidney beans;can,tin
+canned lentils;can
+canned lima beans;can,tin
+canned lychees;
+canned mackerel;can,piece,tin,jar
+canned mandarin oranges;can,piece
+canned mushrooms;can,cap,slice
+canned navy beans;can,tin
+canned peas and carrots;
+canned peas;can
+canned pigeon peas;can,tin
+canned pineapple;can,spear,ring,slice
+canned pinto beans;can,tin
+canned pumpkin;can,tin
+canned red kidney beans;can,tin
+canned salmon;can,pouch,tin
+canned sardines;can,piece,tin,sardine
+canned smoked salmon;can,piece
+canned soybeans;can
+canned sprats;can,tin
+canned tomato sauce;can,tin,jar
+canned tomatoes;can,tin
+canned tuna;can,piece,tin
+canned water chestnuts;can,piece,tin,cup slice,waterchestnut
+canned white beans;can,tin
+canned white kidney beans;can,tin
+canned whole tomatoes;can,piece
+canned zucchini;
+cannellini beans;can
+cannoli shells;piece
+canola oil;quart,gallon
+cantaloupe balls;piece
+cantaloupe;piece,wedge,melon
+capellini;package,bag,box,nest
+caper berries;piece
+capers;piece
+capicola;
+captain crunch;
+caramel candy;package,piece,bag
+caramel popcorn;
+caramel sauce;can,tin
+caramel;package,piece,bag
+caramelized onions;
+caraway seeds;
+carbiquick;
+cardamom pods;pod,piece
+cardamom powder;clove,piece,dash
+cardamom;clove,piece,dash
+carob chips;bar,bag
+carob powder;
+carp;fillet
+carrot juice;
+carrot leaves;
+carrot quickbread mix;package,box
+carrot;strip medium,cup chopped,cup grated,piece,slice,bunch,strip large
+cashew butter;
+cashew fruit;
+cashew halves;handful,piece
+cashew milk;
+cashews;handful,piece
+cassava flour;
+cassava;piece,root
+catalina dressing;bottle
+catfish fillets;piece,fillet
+catfish;piece,fillet
+cauliflower florets;piece
+cauliflower rice;
+cauliflower;head large,small head,floret,cup chopped,head,floweret,piece,medium head,large head,head medium,head small
+cava;glass
+cavatappi;package,bag,box
+cavatelli;
+caviar substitute;
+caviar;
+cayenne pepper;dash
+cedar plank;
+celeriac;piece
+celery flakes;
+celery leaves;
+celery rib;piece
+celery salt;dash
+celery seed;
+celery;rib,cup chopped,head,strip,piece,stalk,stick,bunch,inch
+cellophane noodles;package,bag,box,bundle
+cereal;
+chaat masala;
+chablis;
+chai spice;
+chai tea bag;piece
+chai;
+challah roll;
+challah;slice,loaf
+chambord;shot
+champagne vinegar;
+champagne;glass,bottle
+chana dal;
+chanterelle mushrooms;piece
+chardonnay;
+charoli seeds;
+chartreuse;
+chayote;chayote
+cheddar cheese soup;can
+cheddar cheese;slice
+cheerios;
+cheese curds;package,bag
+cheese dip;
+cheese pumpkin;piece
+cheese ravioli;can,package,piece,bag,jar
+cheese tortellini;container,package,bag,box,packet
+cheese;slice
+cheesecake mix;
+cheez whiz;
+cherries;cherry,handful,piece
+cherry flavored gelatin;package,portion,box
+cherry jam;packet
+cherry juice;
+cherry pie filling;can
+cherry preserves;packet
+cherry tomato;container,package,handful,piece,half pint
+chervil;sprig,bunch
+cheshire cheese;slice
+chestnut flour;
+chestnut mushrooms;piece,piece whole,cup whole,cup sliced
+chestnuts;piece
+chex cereal;
+chex mix;package
+chia egg;piece
+chia seeds;
+chianti;glass,piece,bottle
+chicken base;piece,cube,packet
+chicken bones;
+chicken bouillon cube;piece,cube,packet
+chicken bouillon granules;
+chicken bouillon powder;
+chicken bouillon;
+chicken bratwurst;piece
+chicken breast halves;piece
+chicken breast meat;unit,piece,breast
+chicken breast;unit,piece,breast
+chicken broth;quart,can,tin
+chicken cutlet;piece
+chicken drumettes;piece
+chicken drumsticks;piece
+chicken fat;
+chicken feet;pound,piece
+chicken giblets;unit,giblet
+chicken gravy;
+chicken hearts;unit,piece,heart
+chicken leg quarters;package,piece,thigh with skin
+chicken leg;piece,back with skin,leg,thigh with skin
+chicken liver;liver,piece
+chicken pieces;chicken,unit,piece
+chicken sausage;piece,link
+chicken schmaltz;
+chicken seasoning;dash
+chicken stock powder;
+chicken stock;can,tin
+chicken tenderloins;piece
+chicken tenders;piece
+chicken thigh fillets;package,piece,thigh with skin
+chicken thighs;package,piece,thigh with skin
+chicken wings;piece,wing
+chicken;chicken,unit,piece
+chickpea elbow macaroni;
+chickpea flour;
+chickpea leaves;
+chickpea pasta;
+chickpea penne;
+chickpea rotini;
+chickpea spaghetti;
+chickpeas;
+chilean seabass;filet,fillet
+chili beans;can,tin
+chili garlic sauce;
+chili oil;spoonful
+chili paste;
+chili pepper;pepper,piece
+chili powder;piece
+chili sauce;packet
+chili seasoning mix;dash
+chili with beans;can,tin
+chili without beans;
+chinese cabbage;head,quart,piece,leave,bunch
+chinese egg noodles;
+chinese five spice;
+chinese rice wine;
+chipolata;piece
+chipotle chile puree;
+chipotle chiles;piece
+chipotle paste;
+chipotle pepper flakes;
+chive and onion cream cheese spread;package
+chives;handful,tbsp chopped,piece,stalk,sprig,bunch,tsp chopped
+chocolate cake mix;package,piece,box
+chocolate chip cookies;package,cookie,piece,box
+chocolate chips;package,handful,bag
+chocolate chunks;
+chocolate cookies;wafer,piece
+chocolate covered caramel candy;piece,bag
+chocolate covered coffee beans;package,piece,box
+chocolate covered espresso beans;package,piece,box
+chocolate covered raisins;piece
+chocolate covered sunflower seeds;
+chocolate crumb crust;
+chocolate cupcake mix;package,piece,box
+chocolate curls;
+chocolate digestive biscuits;cracker
+chocolate eggs;
+chocolate extract;
+chocolate flakes;
+chocolate frosting;container,tub,tbsp creamy,can
+chocolate glaze;recipe yield
+chocolate graham cracker crumbs;
+chocolate hazelnut spread;
+chocolate ice cream;scoop,individual
+chocolate malt powder;
+chocolate milk powder;portion
+chocolate milk;quart
+chocolate mint;handful,piece,leave,sprig,bunch
+chocolate protein powder;scoop
+chocolate sandwich cookies;package,cookie,piece,box
+chocolate shavings;
+chocolate soy pudding;piece
+chocolate sprinkles;
+chocolate syrup;
+chocolate wafer cookies;package,piece,box
+chocolate wafer crumbs;wafer,piece
+chocolate;square,bar,piece
+chokeberries;
+chopped dried pears;half,halve
+chorizo crumbles;package,bag
+chorizo sausages;package,piece,link
+chorizo;package,piece,link
+chow mein noodles;box
+choy sum;bunch
+chuck steak;steak
+ciabatta roll;piece
+ciabatta sandwich roll;piece
+ciabatta;piece,slice,loaf
+cilantro;handful,piece,sprig,bunch
+cinnamon bagels;mini bagel,piece,medium bagel,small bagel,large bagel
+cinnamon roll;container,tube,package,roll
+cinnamon schnapps;shot
+cinnamon stick;piece,stick,inch,dash
+cinnamon sugar butter;
+cinnamon sugar;spoonful,serving packet,dash
+cinnamon;piece,stick,inch,dash
+cipollini onions;piece
+citric acid;
+citron;piece
+clabber girl baking powder;sachet,envelope,packet
+clam juice;can
+clams;pound,piece
+clarified butter;
+clear glaze;
+clear honey;jar,packet
+clementine juice;
+clementine;piece,fruit
+clotted cream;
+clove;piece
+cluster bean;
+coarse grain mustard;
+coarse kosher salt;dash
+coarse salt;dash
+coarse sea salt;dash
+coarse sugar;
+coca cola;can,tin
+cockles;
+cocktail sausages;package,piece,link
+cocktail turkey sausages;package,piece,link
+cocoa krispies cereal;
+cocoa nibs;
+cocoa pebbles cereal;
+cocoa powder;
+cocoa puffs cereal;
+coconut aminos;
+coconut butter;
+coconut cream;can
+coconut creamer;
+coconut extract;
+coconut flakes;
+coconut flour;
+coconut meat;
+coconut milk beverage;
+coconut milk powder;
+coconut milk;can
+coconut oil;
+coconut pecan frosting;package
+coconut rum;shot
+coconut sugar;
+coconut vinegar;
+coconut water;coconut yield
+coconut wrap;piece
+coconut;piece
+cod fillets;steak,piece,fillet
+cod;steak,piece,fillet
+coffee beans;piece,bean
+coffee extract;
+coffee liqueur;
+coffee;
+cognac;bottle,shot
+cointreau;shot
+cola;can,tin
+colby cheese;slice
+colby jack;slice
+coleslaw dressing;
+coleslaw mix;package,bag
+collagen powder;
+collard greens;head,piece,leave,bunch
+colored nonpareils;
+colored sprinkles;
+comte;slice
+concentrated crushed tomatoes;can,tin
+concord grapes;
+condensed cream of celery soup;can
+condensed cream of chicken soup;can
+condensed cream of mushroom soup;can
+condensed french onion soup;
+condensed tomato soup;can
+conversation hearts;
+cooked amaranth;
+cooked anellini pasta;
+cooked angel hair pasta;
+cooked arborrio rice;
+cooked bacon;package,strip,piece,slice
+cooked basmati rice;
+cooked beef patties;patty,piece
+cooked black lentils;
+cooked black rice;
+cooked brown lentils;
+cooked brown rice;
+cooked bucatini;
+cooked buckwheat;
+cooked bulgur;
+cooked cannelloni;piece
+cooked capellini;
+cooked cavatappi;
+cooked cellophane noodles;
+cooked cheese tortellini;container,package,bag,box,packet
+cooked chicken breast;unit,piece,breast
+cooked chicken;unit,piece
+cooked chow mein noodles;
+cooked corkscrew pasta;
+cooked couscous;
+cooked crabmeat;can
+cooked ditalini;
+cooked egg noodles;
+cooked elbow macaroni;
+cooked farfalle tonde;
+cooked farfalle;
+cooked farro;
+cooked fettuccine;
+cooked fusilli;
+cooked gemelli;
+cooked gluten free farfalle;
+cooked gluten free fusili;
+cooked gluten free pasta;
+cooked gluten free spaghetti;
+cooked glutinous rice;
+cooked grain blend;
+cooked green lentils;
+cooked grits;
+cooked ham;oz boneles,slice
+cooked hash browns;
+cooked instant brown rice;
+cooked instant grits;
+cooked instant white rice;
+cooked israeli couscous;
+cooked jasmine rice;
+cooked jumbo pasta shells;package,box
+cooked kamut;
+cooked lasagne noodles;piece
+cooked lentils;
+cooked linguine;
+cooked long grain brown rice;
+cooked long grain rice;
+cooked long grain white rice;
+cooked long pasta;
+cooked macaroni;
+cooked manicotti;piece
+cooked medium grain rice;
+cooked mostaccioli;
+cooked mung beans;
+cooked orecchiette;
+cooked orzo;
+cooked pappardelle;
+cooked pasta shells;
+cooked pasta;
+cooked pastina;
+cooked pearl barley;
+cooked penne;
+cooked pork;
+cooked quick cooking grits;
+cooked quick cooking oats;packet
+cooked quinoa;
+cooked ramen noodles;
+cooked red lentils;
+cooked rice noodles;
+cooked rice vermicelli;
+cooked rice;
+cooked rigatoni;
+cooked risotto rice;
+cooked rolled oats;packet
+cooked rotini;
+cooked short grain brown rice;
+cooked short grain rice;
+cooked short pasta;
+cooked soba noodles;
+cooked spaghetti;
+cooked spaghettini;
+cooked spelt;
+cooked spinach tortellini;package,box
+cooked split peas;
+cooked steel cut oats;
+cooked sticky rice;
+cooked sushi rice;
+cooked tagliatelle;
+cooked tortellini;container,package,bag,box,packet
+cooked udon noodles;
+cooked wheatberries;
+cooked white rice;
+cooked whole wheat angel hair pasta;
+cooked whole wheat farfalle;
+cooked whole wheat pasta shells;
+cooked whole wheat pasta;
+cooked whole wheat spaghetti;
+cooked wide egg noodles;
+cooked wild rice;
+cooked yellow split peas;
+cooked ziti;square,package,piece,bag,box,sheet,nest
+cookie butter;
+cookie crumbs;
+cookie mix;package,pouch,bag,box,pouche,packet
+cookies;package,cookie,piece,bag,box
+cooking oil;quart,gallon
+cooking spray;spray
+coriander;
+corkscrew pasta;package,bag,box
+corn cereal;
+corn chex;
+corn chips;package,bag
+corn flake crumbs;
+corn flakes;
+corn flour;
+corn husks;
+corn kernels;can,can yield
+corn muffin mix;package,pouch,box
+corn oil;
+corn on the cob;piece,cob,ear
+corn starch;
+corn syrup;
+corn tortilla chips;handful,piece,bag
+corn tortilla;enchilada,package,piece,tortilla
+corn;can,ear large,ear small,ear,cup cut,ear medium,baby ear
+cornbread mix;package,pouch,box
+cornbread;piece,muffin
+corned beef brisket;piece
+corned beef;can,pound,piece,brisket,tin
+cornish hens;piece,bird
+cornmeal mix;
+cornmeal;spoonful
+corona beans;
+cotija cheese;package,handful,wedge,block
+cottage cheese;container,tub
+country ham;thin slice,piece,slice
+country style beef ribs;piece
+country style pork ribs;
+country style ribs;rack,piece,slab
+couscous;
+couverture;
+cowpea green beans;
+crab boil seasoning;
+crab;quart,can,tin,stick,leg
+crabmeat;quart,can,tin,stick
+cracked wheat;
+cracker crumbs;
+crackers;cracker,package,piece,Triscuit Bit,box
+craisins;handful
+cranberries;bag
+cranberry beans;can
+cranberry juice cocktail;
+cranberry juice concentrate;can,piece
+cranberry juice;
+crawfish tails;
+crawfish;
+cream cheese frosting;container,tub,tbsp creamy,can,tbsp whipped
+cream cheese;package
+cream of celery soup;can
+cream of chicken soup;can
+cream of coconut;can,tin
+cream of mushroom soup;can
+cream of potato soup;can
+cream of tartar;
+cream of wheat;
+cream sherry;glass,piece,bottle
+cream soda;can or bottle
+cream;quart
+creamed coconut;
+creamed corn;can
+creamy peanut butter;
+creme de cacao;shot
+creme de menthe baking pieces;bag
+creme de menthe;shot
+creme fraiche;
+creole mustard;
+creole seasoning;
+crepes;piece
+crescent roll dough;can,tube,package,piece,tin
+cress seed;
+crimini mushrooms;piece,piece whole,cup whole,cup sliced
+crisco;
+crispbread;crispbread,cracker,wafer
+crispy chow mein noodles;cup dry
+crocodile meat;
+croissant;mini,piece,croissant
+crostini;piece
+croutons;
+crunchy peanut butter;jar
+crushed ice cubes;
+crushed pineapple;can
+crushed shortbread cookies;package,cookie,piece,bag,box
+crushed tomatoes;can,tin
+crusty bread;slice,loaf,baguette
+crusty roll;piece,roll
+cubanelle pepper;piece
+cube steak;steak,piece
+cucumber;piece,slice,stick
+culantro;handful,piece,sprig,bunch
+cumin seeds;
+cumin;
+cupcakes;package,piece,cake,box,dozen
+curacao;
+curly endive;head,piece
+curly leaf lettuce leaves;piece
+curly leaf lettuce;head,cup shredded,piece,leave,leaf inner,leaf outer
+curly parsley;handful,piece,leave,sprig,bunch,cup chopped
+currants;
+curry leaves;piece
+curry paste;
+curry powder;jar
+cushaw squash;piece
+custard apple;
+custard powder;package,portion
+custard;
+cuttlefish;
+daikon radish;piece,radish
+daikon sprouts;
+dandelion greens;
+dark beer;can,gallon,can or bottle,bottle
+dark brown sugar;cup unpacked,tsp brownulated,tsp packed,tsp unpacked,cup packed
+dark chocolate bar;square,bar,piece
+dark chocolate chips;package,bag
+dark chocolate couverture;
+dark chocolate;square,bar,piece
+dark corn syrup;
+dark molasses;
+dark muscovado sugar;cup unpacked,tsp brownulated,tsp packed,tsp unpacked,cup packed
+dark rum;bottle,shot
+dark sesame oil;
+dashi;
+dates;date,piece
+decaf coffee;
+decorating gel;
+deep dish pie crust;piece,pie crust
+defatted peanut flour;
+defatted soy flour;
+dehydrated garlic;dash
+deli turkey;package,piece,slice
+delicata squash;piece
+demerara sugar;
+demi glace;
+desiccated coconut;
+dessert shells;package,piece,shell,box
+dessert wine;glass
+devils food cake mix;package,piece,box
+diced green chiles;can
+diced ham;
+diced tomatoes with green chilies;can,tin
+diced venison;package
+diet coke;can,tin
+diet cola;can,tin
+diet pop;can,tin
+diet root beer;can,tin
+digestive biscuits;cracker
+dijon mustard;
+dill pickle slices;piece,jar
+dill pickles;spear,piece,slice,jar
+dill seed;
+dill;handful,sprig,bunch,cup sprig
+distilled white vinegar;
+ditalini;package,bag,box
+double cream;quart
+double gloucester;slice
+douchi;
+dr pepper;can
+dragon fruit;piece
+drambuie;
+dried adzuki beans;
+dried apples;ring
+dried apricots;half,piece
+dried arbol chile;pepper,piece
+dried baby lima beans;
+dried barberries;
+dried basil;piece
+dried bay leaves;piece,leave
+dried beans;
+dried black beans;can
+dried black lentils;
+dried blackeyed peas;
+dried blueberries;
+dried borlotti beans;
+dried brown lentils;can
+dried butter beans;
+dried cannellini beans;
+dried cheese tortellini;
+dried cherries;handful
+dried chickpeas;
+dried chili pepper;piece
+dried chipotles;piece
+dried chives;
+dried cilantro;
+dried coconut;
+dried corona beans;
+dried cranberries;handful
+dried cranberry beans;
+dried currants;
+dried dill;
+dried egg whites;
+dried epazote;
+dried fava beans;
+dried fenugreek leaves;
+dried figs;fig,piece
+dried fruit;
+dried gigante beans;
+dried great northern beans;
+dried green lentils;can
+dried green peas;pound
+dried herbs;
+dried hibiscus;
+dried kidney beans;
+dried lentils;can
+dried lima beans;
+dried mango;
+dried marjoram;handful,sprig,bunch
+dried mint;
+dried mung beans;
+dried navy beans;
+dried onion flakes;
+dried onion;
+dried parsley;
+dried peaches;half
+dried pears;half,halve
+dried pigeon peas;
+dried pineapple;piece
+dried pinto beans;
+dried porcini mushrooms;piece,mushroom
+dried red kidney beans;
+dried red lentils;can
+dried rosemary;piece,sprig,bunch
+dried sage;handful,piece,leave,sprig,bunch
+dried shiitake mushrooms;piece,mushroom
+dried shrimp;bag
+dried soybeans;
+dried spinach tortellini;package,bag,box
+dried strawberries;
+dried sweetened cranberries;handful
+dried tarragon;stalk,sprig,bunch
+dried thyme;
+dried tortellini;package,bag,box
+dried white beans;
+dried white kidney beans;
+dry cider;quart
+dry couscous;
+dry israeli couscous;
+dry onion soup mix;envelope,package,box,packet
+dry ranch dressing mix;envelope,package,packet
+dry red wine;glass,piece,bottle
+dry riesling;
+dry roasted peanuts;piece,peanut
+dry roasted salted sunflower seeds;
+dry seasoning rub;
+dry sherry;glass,piece,bottle
+dry vermouth;
+dry white wine;glass,piece,bottle
+dry yeast;sachet,envelope,package,satchet,packet
+duck breast;piece
+duck eggs;egg,piece,dozen
+duck fat;
+duck leg;unit,piece,leg
+duck liver;unit,liver
+duck;unit,piece,duck
+dulce de leche;can
+dulse;
+dumpling wrappers;square,package,piece,sheet,wrapper,packet
+dungeness crab;piece,crab
+durian;fruit
+durum flour;
+dutch processed cocoa powder;
+earl grey;
+edam cheese;package
+edamame in the pod;
+edamame;
+edible flowers;piece,flower
+edible gold;
+eel;fillet
+egg noodles;package,bag,block,box,sheet,nest
+egg replacer;
+egg roll wrappers;square,package,piece,sheet,wrapper,packet
+egg substitute;
+egg whites;piece
+egg yolk;piece
+egg;jumbo,piece,extra large,dozen
+eggbeaters;
+eggnog;quart
+eggplant;piece,slice,eggplant
+elbow macaroni;package,box
+elderberries;
+elderflower liqueur;
+elderflower;
+elk roast;
+elk sausage;
+elk steak;
+elk tenderloin;
+elk;pound
+emmantaler cheese;piece,slice
+empanada dough;package,shell,portion,recipe,box,disc
+enchilada sauce;
+enchilado cheese;
+endive;head,piece,bunch
+ener g egg replacer;
+english cucumber;piece,cucumber,cup slice
+english muffin;piece,muffin
+english mustard;
+enoki mushrooms;cup whole,cup sliced
+entrecote steak;steak,piece
+epazote;
+erythritol;
+escargot;piece
+escarole;head,piece,bunch
+espresso;shot
+european seabass;piece,fillet
+evaporated cane juice;
+evaporated milk;can
+evaporated skim milk;can
+everything bagel seasoning;
+everything bagel;piece
+expeller pressed canola oil;quart,gallon
+extra dry prosecco;glass
+extra firm tofu;package,piece,slice,block
+extra sharp cheddar cheese;slice
+extra virgin olive oil;spoonful
+ez sweetz;drop
+falernum syrup;
+falsa;
+farfalle tonde;
+farfalle;package,bag,box
+farm raised catfish fillets;piece,fillet
+farmer cheese;
+farro;
+fat free buttermilk;
+fat free cheddar cheese;slice
+fat free chicken broth;
+fat free cottage cheese;container,tub
+fat free cream cheese;piece,block
+fat free feta cheese;
+fat free greek yogurt;container,tub
+fat free half and half;
+fat free less sodium beef broth;can,carton,tin,box
+fat free mayonnaise;
+fat free milk;quart
+fat free parmesan cheese;
+fat free ricotta cheese;
+fat free vanilla greek yogurt;container
+fat free vanilla yogurt;container
+fat free whipped topping;container,tub,carton
+fat free yogurt;container
+fat of choice;quart,gallon,spoonful
+fatback;pound
+fava beans;
+feijoa;
+fennel bulb;head,piece,stalk,bulb,sprig,bunch
+fennel pollen;
+fennel seeds;
+fennel;head,piece,stalk,bulb,sprig,bunch
+fenugreek seeds;
+fernet branca;shot
+feta cheese;package,handful,wedge,block
+fettuccine;package,bag,box
+fiddleheads;
+fig jam;jar
+figs;piece
+file powder;dash
+filet mignon;
+filo pastry;ball,package,piece,sheet dough,recipe,box,sheet
+fine cornmeal;spoonful
+fine salt;dash
+fine sea salt;dash
+finely crushed pretzels;piece,twist
+finely grated lime zest;strip,piece,slice,inch
+finger chili;piece
+finger millet;
+fingerling potato;piece,Potato medium,Potato large,Potato small
+fiori di sicilia;
+fire roasted tomatoes;can
+firm tofu;package,piece,slice,block
+fish fillets;
+fish sauce;
+fish seasoning;dash
+fish stock;
+fish;
+flacourtia;
+flank steak;steak,piece
+flat iron steak;steak,piece
+flat leaf parsley;handful,piece,leave,sprig,bunch,cup chopped
+flatbread;piece
+flavored butter;pat,knob,stick
+flavored sugar;spoonful,serving packet,dash
+flavoring syrup;
+flax egg;piece
+flax oil;
+flaxseed;
+fleur de sel;dash
+flounder fillets;steak,piece,fillet
+flounder;steak,piece,fillet
+flour tortilla;package,piece,tortilla,tortilla medium
+focaccia;piece,slice,loaf
+foie gras;unit,liver,piece
+fontina cheese;package,slice
+food color;drop
+framboise lambic;
+framboise liqueur;shot
+frangelico;shot
+freekeh;
+freeze dried strawberries;
+fregula;
+french bread;piece,slice,loaf,baguette
+french dressing;
+french fries;package,strip
+french lentils;
+french mustard;
+fresh anchovies;can,piece,filet,tin,fillet
+fresh basil;cup leave,handful,piece,leave,sprig,bunch
+fresh bay leaves;piece,leave
+fresh cayenne pepper;
+fresh chives;handful,tbsp chopped,piece,stalk,sprig,bunch,tsp chopped
+fresh cilantro;handful,piece,sprig,bunch
+fresh corn kernels;
+fresh corn;piece,cob,ear
+fresh dill;handful,sprig,bunch,cup sprig
+fresh epazote;
+fresh fenugreek leaves;
+fresh figs;piece
+fresh flat leaf parsley;handful,piece,leave,sprig,bunch,cup chopped
+fresh fruit;piece
+fresh ginger;piece,slice,inch,cup slice
+fresh green beans;can,handful,piece,tin,bunch,bean
+fresh herbs;handful,piece,leave,sprig,bunch,cup chopped
+fresh herring;piece,fillet
+fresh lasagne sheets;piece,slice,sheet
+fresh lavender;handful,inch
+fresh marjoram;handful,sprig,bunch
+fresh mint;handful,piece,leave,sprig,bunch
+fresh mozzarella;container,ball,package,slice
+fresh mushrooms;package,piece,slice,cup piece
+fresh nutmeg;piece,dash
+fresh oregano;
+fresh parsley;handful,piece,leave,sprig,bunch,cup chopped
+fresh pasta;sheet
+fresh peas;can,package,tin,bag,box
+fresh rosemary;sprig,bunch
+fresh sage;handful,piece,leave,sprig,bunch
+fresh sardines;piece
+fresh tarragon;stalk,sprig,bunch
+fresh thyme;piece,stalk,sprig,bunch
+fresh tuna;strip,steak,piece,fillet,inch
+fresh yeast;cake
+fresine;
+fresno pepper;piece
+fried onions;container,can,package
+frog legs;
+froot loops cereal;
+frosted flakes;
+frosting;container,tube,package
+frozen artichoke hearts;package,box
+frozen baby lima beans;package,box
+frozen biscuits;container,package,can,tube,piece,tin,biscuit
+frozen cheesecake;piece,slice
+frozen corn;ear,cup kernel
+frozen low fat waffles;round waffle,piece
+frozen pizza;piece
+frozen spinach;package,box
+frozen waffles;waffle,piece
+frozen yogurt;
+fruit cocktail;
+fruit juice;drink box,bottle NFS
+fruit pectin;package,box
+fruit slices;
+fruit;piece
+fruity pebbles cereal;
+fudge ice cream topping;
+fudge;piece
+fuji apple;piece,slice,extra small,cup slice
+full bodied red wine;glass,piece,bottle
+funfetti cake mix;package,piece,box
+fusilli;package,bag,box
+fuyu persimmon;piece
+gala apple;piece,slice,extra small,cup slice
+galangal;piece
+galliano;shot
+gammon steak;package,piece
+gammon;roast
+garam masala;
+garden cress;sprig
+garlic herb spreadable cheese;container
+garlic oil;spoonful
+garlic paste;
+garlic powder;dash
+garlic salt;dash
+garlic scapes;piece,scape,bolt,bunch
+garlic;clove,head,piece
+gelatin;envelope,package,box,sheet,packet
+gelling sugar;
+gem squash;piece
+gemelli;package,bag,box
+genever;shot
+german sweet chocolate;bar,piece
+ghee;
+gherkins;spear,slice
+gigante beans;
+gin;bottle,shot
+ginger ale;can or bottle
+ginger beer;can or bottle
+ginger garlic paste;
+ginger juice;
+ginger paste;
+ginger powder;piece,slice,inch
+ginger;piece,slice,inch,cup slice
+gingerbread spice;
+gingersnap cookies;cookie,piece
+gingersnap crumbs;cookie,piece
+ginseng root;
+globe eggplant;piece,slice,eggplant
+glucose syrup;
+gluten free all purpose flour;
+gluten free angel food cake mix;container,package,box
+gluten free bagel;piece
+gluten free baking mix;box
+gluten free bread flour;
+gluten free bread;piece,slice,loaf
+gluten free breadcrumbs;
+gluten free brownie mix;box
+gluten free cheerios;
+gluten free chocolate cake mix;package,box
+gluten free chocolate cookies;container,package,piece,box
+gluten free chocolate sandwich cookies;piece
+gluten free corn flakes;
+gluten free cornbread mix;package,bag,box
+gluten free crackers;piece,box
+gluten free croissant;piece
+gluten free elbow macaroni;
+gluten free farfalle;package,bag,box
+gluten free flour mix;
+gluten free flour;
+gluten free french bread;piece
+gluten free frozen pie crust;package,piece
+gluten free funfetti cake mix;box
+gluten free fusili;package,bag,box
+gluten free gingersnap cookies;container,package,piece,box
+gluten free graham cracker squares;piece
+gluten free graham crackers;piece,box
+gluten free granola;
+gluten free hamburger bun;piece
+gluten free hot dog bun;piece
+gluten free ladyfingers;container,package,piece,box
+gluten free lasagne noodles;package,piece,bag,box,sheet
+gluten free macaroni;
+gluten free muffin mix;package,box
+gluten free pancake mix;
+gluten free panko;
+gluten free pasta;square,package,piece,bag,box,sheet,nest
+gluten free pie crust;package,piece
+gluten free pie dough;container,tub,ball,package,quantity,prepared,recipe
+gluten free pizza dough mix;package,bag,box
+gluten free pizza dough;container,tub,ball,can,package,quantity,recipe
+gluten free pretzels;
+gluten free refrigerated pie crusts;package,piece
+gluten free shortbread cookies;piece
+gluten free spaghetti;package,bag,box
+gluten free stuffing mix;
+gluten free sugar cookie mix;box
+gluten free tortilla;piece
+gluten free vanilla cake mix;package,bag,box
+gluten free vanilla sandwich cookies;piece
+gluten free white cake mix;package,bag,box
+gluten free white sandwich bread;slice thin,handful,piece,slice,loaf
+gluten free wrap;piece
+gluten free yellow cake mix;package,box
+glutinous rice;
+gnocchi;
+goat cheese;slice
+goat milk;quart
+gochugaru;piece
+gochujang;
+goji berries;
+golden beet;can,piece,slice,tin,bunch,beet
+golden berries;
+golden brown sugar;cup unpacked,tsp brownulated,tsp packed,tsp unpacked,cup packed
+golden cherries;
+golden delicious apple;piece
+golden kiwi;
+golden oreos;package,cookie,piece,box
+golden raisins;handful
+golden syrup;
+goldfish crackers;
+gomashio;
+goose fat;
+goose liver;unit,liver,piece
+goose;piece
+gooseberries;
+gorgonzola;
+gouda;package,slice
+graham cracker crumbs;piece
+graham cracker pie crust;piece,crust
+graham cracker squares;piece
+graham crackers;square,package,piece,box,sheet
+graham flour;
+grain blend;
+grana padano;package
+grand marnier;shot
+granny smith apple;piece,slice,extra small,cup slice
+granola;handful
+granulated garlic;
+granulated lemon sugar;spoonful,serving packet,dash
+granulated onion;
+granulated sugar;spoonful,serving packet,dash
+grape jam;packet
+grape jelly;packet
+grape juice;
+grape leaves;piece,leave
+grape nuts cereal;
+grape seed flour;
+grape seed oil;
+grape tomato;container,package,handful,piece,half pint
+grapefruit juice;
+grapefruit zest;strip,piece
+grapefruit;cup section,piece,fruit
+grapes;handful,piece,bag,bunch,grape
+grappa;shot
+grated parmesan cheese;
+gravlax;piece,slice
+gravy;
+great northern beans;
+greek olives;can,handful,olive,piece,tin,jar
+greek seasoning;
+greek yogurt;container,tub
+green apple;piece,slice,extra small,cup slice
+green beans;can,handful,piece,tin,bunch,bean
+green cabbage;bag,small head,head,quart,piece,leave,medium head,jar,large head
+green cardamoms;pod,piece
+green chili pepper;can,piece,tin
+green curry paste;
+green enchilada sauce;
+green food color;drop
+green grapes;handful,piece,bag,bunch,grape
+green hot sauce;drop,jar,dash,dashe
+green mango;piece,cup piece
+green olives;can,handful,olive,piece,tin,jar
+green onions;tbsp chopped,rib,piece,stalk,sprig,bunch
+green papaya;piece,fruit,cup mashed
+green peas;can,package,tin,bag,box
+green pepper;strip,piece,ring
+green peppercorns;
+green pesto;can,tin,jar,dollop
+green plantain;piece
+green prawns;piece
+green tea bag;piece
+green tea;
+green tomato;piece,slice,wedge,slice or wedge
+greens;package,handful,bag,bunch
+grenadine;
+grill seasoning;
+grilled chicken;
+grilling cheese;
+grissini;
+grits;
+ground all white meat turkey;patty,pound
+ground allspice;piece,dash
+ground beef;
+ground bison;patty,piece
+ground black pepper;dash
+ground cayenne pepper;dash
+ground chicken;oz crumbled,piece
+ground chipotle chile pepper;piece
+ground chorizo;package
+ground chuck;
+ground cinnamon;piece,stick,inch,dash
+ground clove;piece,dash
+ground coffee;
+ground coriander;
+ground cumin;
+ground elk;patty
+ground espresso;
+ground fennel;
+ground fenugreek;
+ground flaxseed;
+ground lamb;
+ground mace;dash
+ground pork sausage;package,piece,roll
+ground pork;
+ground round;
+ground sage;handful,piece,leave,sprig,bunch
+ground savory;
+ground sirloin;
+ground thyme;
+ground turkey;patty,pound
+ground veal;
+ground venison;patty
+ground white pepper;
+grouper fillets;piece,fillet
+grouper;piece,fillet
+grouse;piece
+gruyere;package,slice
+guacamole;
+guajillo pepper;piece
+guanciale;slice
+guar gum;
+guava juice;
+guava nectar;
+guava shells;
+guava;piece,fruit
+guinea fowl;unit,piece,guinea
+guinness;
+gum drops;spice stick,gumdrop,gummy dinosaur,gummy worm,jelly ring,gummy fish,cup gumdrop,gummy bear,spice drop
+gummy worms;piece
+habanero chili;piece
+haddock fillets;piece,fillet
+haddock;piece,fillet
+hake;
+half and half;container
+halibut fillets;steak,piece,fillet,cube
+halibut steaks;steak,piece,fillet,cube
+halibut;steak,piece,fillet,cube
+halloumi;
+halloween sprinkles;
+ham bone;piece
+ham hock;piece
+ham slices;piece,slice
+ham steak;piece,slice
+ham;thin slice,piece,slice
+hamburger bun;package,piece,roll
+hamburger helper;package,box
+hard boiled egg;piece
+hare;piece
+haricots verts;can,handful,piece,tin,bunch,bean
+harissa;packet
+hash browns;package,bag
+hass avocado;avocado,piece
+havarti;slice
+hawaiian bread;
+hawaiian rock cod;piece,fillet
+hawaiian roll;piece,roll
+hazelnut flour;
+hazelnut liqueur;shot
+hazelnut meal;
+hazelnut milk;
+hazelnut oil;
+hazelnuts;handful,piece,nut
+hearts of palm;
+heath bar;
+heavy cream;quart
+heirloom tomato;cherry,large whole,medium whole,wedge,Italian tomato,plum tomato,piece,slice,small whole
+hemp milk;
+hemp oil;
+hemp protein powder;
+hemp seeds;
+herbes de provence;
+herbs;cup leave,handful,piece,leave,sprig,bunch
+herring fillets;piece
+herring;piece,fillet
+hersheys cocoa;
+hersheys kisses brand milk chocolates;piece
+hersheys kisses;piece
+hibiscus;
+high gluten flour;
+hoisin sauce;
+hokkien noodles;
+hollandaise sauce mix;envelope,package,packet
+hollandaise sauce;envelope,package,packet
+homemade granola;
+hominy;
+honey dijon mustard;
+honey mustard;
+honey;jar,packet
+honeydew melon;honeydew ball,piece,wedge,melon
+horseradish root;
+horseradish sauce;
+horseradish;
+hot cherry pepper;piece
+hot chocolate;
+hot cocoa mix;envelope,package
+hot dog bun;package,piece,roll
+hot dogs;piece,sandwich
+hot fudge sauce;
+hot giardiniera;
+hot sauce;drop,jar,dash,dashe
+hp sauce;
+hubbard squash;
+huckleberries;
+hummus;
+hungarian paprika;
+hungarian sweet paprika;
+ice cream cone;piece,cone
+ice cream sandwiches;package,piece,box
+ice cream;scoop,individual
+ice cubes;piece,cube
+ice;piece,cube
+iceberg lettuce;package,small head,head,cup shredded,piece,leave,medium head,large head
+iceburg lettuce leaves;piece
+iced tea;
+icing;container,tube,package
+imitation crab;stick
+imitation lobster;
+in shell walnuts;
+instant brown rice;
+instant cheesecake pudding mix;package,box
+instant chocolate pudding mix;package,portion,box
+instant coffee;packet
+instant espresso;packet
+instant grits;
+instant lemon pudding mix;container,package,portion,box
+instant oatmeal;packet
+instant pistachio pudding mix;package,portion
+instant potatoes flakes;
+instant vanilla pudding mix;package,portion,box
+instant white rice;
+instant yeast;sachet,envelope,package,satchet,packet
+ipa;can,gallon,can or bottle,bottle
+irish cream;shot
+irish moss;
+israeli couscous;
+italian bread;piece,slice,loaf
+italian cheese;
+italian dressing;bottle
+italian salad dressing mix;envelope,package,pack
+italian sausage;piece,link
+italian seasoned breadcrumbs;package,handful
+italian seasoning;can,sprig
+italian toast crackers;piece
+italian tomato;piece
+italian turkey sausage;
+jackfruit;
+jaegermeister;shot
+jaggery;
+jalapeno jelly;
+jalapeno pepper;pepper,piece,jar
+jam;packet
+jamon iberico;
+jamon serrano;package,slice
+jamon;package,slice
+japanese eggplant;piece
+japanese persimmon;piece,fruit
+jarlsberg cheese;
+jarrahdale squash;piece
+jarred sour cherries;
+jasmine rice;
+jelly beans;
+jelly;packet
+jerk seasoning;piece
+jerusalem artichoke;piece,cup slice
+jicama;piece,slice,cup slice
+jobs tears;
+juice;drink box,bottle NFS
+jujubes;
+jumbo marshmallows;piece,bag
+jumbo pasta shells;package,piece,bag,box
+jumbo shrimp;piece
+juniper berries;piece
+kabocha squash;piece
+kaffir lime leaves;piece
+kahlua;
+kalamata olives;can,handful,olive,piece,tin,jar
+kale;head,handful,piece,leave,rib,sprig,bunch
+kamut;
+katsu sauce;
+katuk;
+kecap manis;
+kefir;
+kelp flakes;
+kelp noodles;
+kelp;package,piece,sheet
+ketchup;packet
+khesari dal;
+khoa;
+kidney beans;can,tin
+kidney;
+kielbasa;sausage
+kimchi;jar
+king trumpet mushrooms;
+kirsch;bottle,shot
+kit kat;bar
+kiwi;piece,fruit
+knackwurst;package,piece,link
+kohlrabi;piece,slice
+kombu;package,piece,sheet
+korean bbq marinade;
+kosher dill sandwich slices;piece,jar
+kosher salt;dash
+kraft singles;slice
+kumquat;piece
+lacinato kale;piece,leave,bunch
+ladyfingers;package,piece,ladyfinger,box,anisette sponge,breakfast treat
+lager;can,gallon,can or bottle,bottle
+lamb bones;
+lamb chop;piece
+lamb cutlets;pound,piece
+lamb liver;piece
+lamb loin chop;piece,chop
+lamb loin;
+lamb rib chops;pound,piece
+lamb shanks;pound,piece
+lamb shoulder;chop
+lamb stew meat;pound
+lamb stock powder;
+lamb stock;
+lamb;
+lambsquarters;
+lancashire;slice
+langostino tails;
+langoustines;
+langsat;
+lasagne noodles;package,piece,bag,box,sheet
+lavash bread;piece
+lavender honey;jar,packet
+lavender syrup;
+lean bacon;
+lean bone in pork chop;pound,piece
+lean chuck steak;steak
+lean corned beef;
+lean filet mignon;pound,piece
+lean ground beef;
+lean ground lamb;
+lean lamb loin chop;piece,chop
+lean pork loin chops;pound,piece,chop
+lean pork tenderloin;piece,roast
+lean rack of lamb;
+lean strip steak;pound,piece
+lebanese cucumber;piece,cucumber,cup slice
+leek;piece,slice,leek
+leftover turkey;slice,bird
+leg of lamb;pound,piece
+leg of wild boar;piece
+legumes;can
+lemon balm;handful,piece,leave,sprig,bunch
+lemon basil;cup leave,handful,piece,leave,sprig,bunch
+lemon cake mix;package,piece,box
+lemon curd;
+lemon essence;
+lemon extract;
+lemon flavored gelatin;package,portion,box
+lemon grass;piece,stalk,stick,inch
+lemon jello;package,portion,box
+lemon juice;drop,piece,wedge yield,lemon yield
+lemon lime pop;can
+lemon oil;drop
+lemon peel;strip,piece
+lemon pepper;dash
+lemon pie filling;
+lemon sole;steak,piece,fillet
+lemon sorbet;scoop
+lemon sugar;spoonful,serving packet,dash
+lemon thyme;piece,stalk,sprig,bunch
+lemon wedge;piece
+lemon zest;strip,piece
+lemon;wedge or slice,piece,slice,fruit,wedge
+lemonade concentrate;can
+lemonade mix;
+lemonade;
+lentils;can
+lettuce leaf;piece
+lettuce;package,small head,head,cup shredded,piece,leave,medium head,large head
+licor g,shot
+licorice extract;
+licorice twists;
+light asian dressing;bottle
+light beer;can,gallon,can or bottle,bottle
+light brown sugar;cup unpacked,tsp brownulated,tsp packed,tsp unpacked,cup packed
+light buttery spread;
+light chocolate ice cream;unit,scoop
+light coconut milk;can
+light cream;
+light ice cream;scoop
+light mayonnaise;
+light muscovado sugar;cup unpacked,tsp brownulated,tsp packed,tsp unpacked,cup packed
+light olive oil;spoonful
+light rum;shot
+light salad dressing;
+light sour cream;container,tub
+light soy sauce;
+light tuna;can,piece,tin,jar
+light vanilla ice cream;scoop
+lightly sweetened whipped cream;
+lillet blanc;
+lima beans;can
+lime curd;
+lime flavored gelatin;package,portion,box
+lime jello;package,portion,box
+lime juice;piece,lime yield,dash
+lime leaves;piece
+lime peel;strip,piece,slice,inch
+lime slice;piece
+lime wedge;piece
+lime zest;strip,piece,slice,inch
+lime;fruit,wedge,strip,piece,slice,inch
+limeade concentrate;
+limeade;
+limoncello;shot
+limonia;
+lingonberries;
+lingonberry jam;
+linguine;package,bag,box
+lions mane mushrooms;
+liquid egg whites;
+liquid honey;jar,packet
+liquid pectin;
+liquid smoke;
+liquid stevia;drop,piece,dropper
+liquid sucralose;packet
+liquor;bottle,shot
+littleneck clams;pound,piece
+liver cheese;
+liver;liver,piece,slice
+liverwurst;slice
+lo mein noodles;
+lobster meat;
+lobster mushrooms;
+lobster tails;piece
+lobster;piece,lobster
+lollo rosso;head,cup shredded,leave,leaf inner,leaf outer
+long grain brown rice;
+long grain rice;
+long grain white rice;
+long hot pepper;pepper,piece
+long pasta;package,bag,box
+long pepper;
+long sweet pepper;piece
+longan;
+loquat;piece
+lotus root;piece,slice,root
+lotus seed;
+low carb bread;piece,slice
+low carb tortilla;
+low fat buttermilk;quart
+low fat cheese;slice
+low fat chocolate milk;quart
+low fat cottage cheese;container,tub
+low fat graham crackers;square,package,piece,box,sheet
+low fat greek yogurt;container,package
+low fat half and half;
+low fat plain yogurt;container
+low fat ricotta cheese;
+low fat shredded cheddar;
+low fat shredded mexican cheese blend;cup shredded
+low fat shredded mozzarella;
+low fat sweetened condensed milk;can,tin
+low fat vanilla greek yogurt;container
+low fat vanilla yogurt;container
+low fat yogurt;container
+low moisture part skim mozzarella cheese;slice
+low sodium baking powder;sachet,envelope,packet
+low sodium beef broth;can,carton,tin,box
+low sodium broth;can
+low sodium chicken broth;can
+low sodium chicken stock;can
+low sodium vegetable broth;container
+low sugar ketchup;
+lower sodium shoyu;
+lower sodium soy sauce;
+lucky charms cereal;
+lucuma powder;
+lump crabmeat;quart,can,tin,stick
+lychee;piece
+m&ms;
+maca;
+macadamia nuts;handful
+macaroni and cheese;package,box
+macaroni;package,bag,box
+mache;handful
+mackerel fillets;piece,fillet
+mackerel;piece,fillet
+madeira;glass,piece,bottle
+mahi mahi fillets;piece,filet,fillet
+mahi mahi;piece,filet,fillet
+malt vinegar;
+malted barley flour;
+malted milk balls;package,piece,box
+malted milk powder;
+manchego cheese;slice
+mandarin orange sections;can,piece
+mandarin oranges;can,piece
+mango chutney;packet
+mango extract;
+mango nectar;can
+mango pulp;can,tin
+mango puree;
+mango sorbet;scoop
+mango;piece,cup piece
+mangold;leave
+mangosteen;piece
+manicotti;package,piece,bag,box
+manila clams;pound,piece
+manzanilla olives;can,handful,olive,piece,tin,jar
+maple extract;
+maple flavoring;drop
+maple sugar;piece
+maple syrup;milliliter
+maraschino cherries;cherry,piece,cherrie,jar
+maraschino cherry syrup;
+maraschino liqueur;
+margarine;pat,stick
+margarita mix;quart
+marie biscuits;
+marinara sauce;can,tin,jar
+marinated artichoke hearts;can,piece,jar
+marinated artichokes;can,piece,jar
+marinated mushrooms;
+marjoram;handful,sprig,bunch
+marmalade;packet
+marmite;
+marrow bones;piece
+marsala;glass
+marshmallow bunnies;bunnie,package,piece,box,bunny,chick
+marshmallow chicks;bunnie,package,piece,box,bunny,chick
+marshmallow cream;jar
+marshmallow peeps;bunnie,package,piece,box,bunny,chick
+marshmallows;piece,miniature,bag,regular
+marzipan;package
+masa harina;
+mascarpone;container,tub
+mashed banana;piece
+mashed papaya;
+matcha;
+matzo meal;matzo,box
+matzo;piece
+maui onion;piece,slice,onion
+mayonnaise;packet
+mcintosh apple;piece,slice,extra small,cup slice
+mct oil;
+meat;unit,piece,breast
+meatballs;package,piece,bag
+meatloaf mix;
+medium grain rice;
+medjool dates;date,piece
+merlot;glass,bottle
+mesclun;package,handful,bag,bunch
+mexican cheese;cup shredded
+mexican crema;
+mexicorn;can
+meyer lemon juice;drop,piece,wedge yield,lemon yield
+meyer lemon;
+mezcal;shot
+mezzelune;
+microwave popcorn;mini bag,piece,bag
+midori melon liqueur;shot
+mild cheddar cheese;slice
+milk chocolate chips;package,handful,bag
+milk chocolate;square,bar,piece
+milk substitute;
+milk;quart
+milky way;bar king size,bar fun size,king size,piece,miniature,fun size
+millet flour;
+millet;
+mincemeat;package
+mineral water;
+mini bagel;piece
+mini chocolate chips;package,handful,bag
+mini filo shells;package,piece,shell,box
+mini m&ms;
+mini marshmallows;piece,bag
+mini peppers;piece
+mini rice cakes;piece
+mini semisweet chocolate chips;
+miniature peanut butter cups;piece
+mint chutney;
+mint jelly;
+mint;handful,piece,leave,sprig,bunch
+minute tapioca;box
+miracle whip;
+mirepoix;
+mirin;
+miso;
+mitsuba;
+mixed baby greens;package,handful,bag,bunch
+mixed berries;package
+mixed fresh fruit;piece
+mixed fruit;piece
+mixed greens;package,handful,bag,bunch
+mixed mushrooms;container,package,piece,piece whole
+mixed seafood;
+mixed spice;dash
+mixed vegetables;can,package,bag,box,pack
+mizuna;handful,bunch
+modeling chocolate;
+molasses;
+monk fruit extract;
+monkfish cheeks;
+monkfish fillets;fillet
+monkfish;fillet
+monterey jack cheese;package,slice
+montreal steak seasoning;
+moong dal;
+morel mushrooms;piece
+moringa leaves;
+moringa powder;
+mortadella;piece,slice
+moscato;
+mostaccioli;package,bag,box
+moth bean;
+mounds bar;king size,piece,miniature,bag,bite size,fun size,bar snack size
+mozzarella;container,ball,package,slice
+muenster;package,slice
+muesli;
+mulberries;container,piece,fruit
+multigrain bread;piece,slice,loaf
+mung bean sprouts;package
+mung beans;
+munster;package,slice
+muscadine grapes;grape
+muscovado sugar;cup unpacked,tsp brownulated,tsp packed,tsp unpacked,cup packed
+muscovy duck;unit,piece,duck
+mushrooms;package,piece,slice,cup piece
+muskmelon;
+mussels;piece
+mustard greens;handful
+mustard oil;
+mustard powder;
+mustard seeds;cup leave,handful,piece,leave,sprig,bunch
+mustard;
+naan;piece,slice
+nabulsi;
+nacho cheese doritos;
+nacho cheese;
+napa cabbage leaves;piece
+napa cabbage;head,piece,leave
+navel orange;cup section,piece,fruit
+navy beans;
+nectarine;piece,cup slice
+neem fruit;
+neem leaves;
+neufchatel;package
+new potato;piece
+niger seed;
+nilla wafers;cookie,piece
+no calorie sweetener packet;packet
+no calorie sweetener;packet
+no salt added diced tomatoes;can,tin
+nondairy butter;
+nondairy creamer;container
+nonfat dry milk powder;
+nonfat plain yogurt;container
+nonfat sour cream;container,tub
+nonpareils;
+nopales;package
+nori;package,piece,sheet
+nougat;piece
+nut butter;
+nutmeg;piece,dash
+nutri grain cereal;
+nutritional yeast flakes;
+nutritional yeast;
+nuts;handful
+nutter butter cookies;piece
+oat bran;
+oat flakes;
+oat flour;
+oat milk;
+oatmeal;packet
+oats;
+oaxaca cheese;
+octopus;
+off dry riesling;
+oil cured black olives;can,handful,olive,piece,tin,jar
+oil packed sun dried tomatoes;piece
+oil packed tuna;can,piece,tin,jar
+okara;
+okra;pod,piece
+old bay seasoning;dash
+olive oil spray;spray
+olive oil;spoonful
+olive tapenade;
+olives;can,handful,olive,piece,tin,jar
+onion dip;container,tub,package
+onion powder;
+onion roll;piece
+onion salt;dash
+onion;tbsp chopped,ring,piece,slice
+orange bitters;dash,dashe
+orange extract;splash
+orange flavored gelatin;package,portion,box
+orange flower water;splash
+orange food color;drop
+orange jello;package,portion,box
+orange juice concentrate;can
+orange juice;piece,fruit yield
+orange liqueur;shot
+orange marmalade;package
+orange peel;strip,piece,slice
+orange pepper;piece,ring
+orange roughy;piece
+orange slices;piece
+orange tomato;tomato
+orange zest;strip,piece,slice
+orange;piece,slice,fruit
+orecchiette;package,bag,box
+oregano;can,sprig
+oreo cookies;package,cookie,piece,box
+orgeat syrup;
+orzo;package,bag,box
+osso buco;pound,piece
+ouzo;bottle,shot
+ovaltine;
+oven ready lasagne noodles;package,piece,box,sheet
+oxtail;
+oyster crackers;handful,piece
+oyster mushrooms;cup sliced
+oyster sauce;
+oysters;piece
+palm oil;
+palm sugar;
+palmyra;
+pancake mix;pancake
+pancetta;slice
+paneer;
+panela;
+pangasius;
+panko;
+papaya;piece,fruit,cup mashed
+pappardelle;package,bag,box
+paprika;dash
+paratha;piece
+parmesan;package
+parmigiano reggiano;package
+parsley;handful,piece,leave,sprig,bunch,cup chopped
+parsnip;piece,cup slice
+part skim mozzarella cheese;slice
+partially defatted soy flour;
+partridge;piece
+pasilla pepper;pepper,piece
+passata;can,tube
+passion fruit juice;
+passion fruit;piece
+pasta dough;batch,recipe,sheet
+pasta ribbons;
+pasta salad mix;
+pasta sauce;can,tin,jar,bottle
+pasta shells;package,bag,box
+pasta;square,package,piece,bag,box,sheet,nest
+pastina;package,bag,box
+pastrami;package,slice
+pastry cream;
+pastry dough;ball,package,piece,sheet dough,recipe,box,sheet
+pastry flour;
+pattypan squash;piece,cup slice
+pawpaw;
+pea protein powder;scoop
+pea shoots;
+peach nectar;
+peach preserves;
+peach schnapps;shot
+peach sorbet;scoop
+peach;can,piece,cup slice,extra large
+peanut butter candy;package,piece
+peanut butter chips;
+peanut butter cookie mix;package,pouch,box
+peanut butter cups;piece,miniature
+peanut butter;
+peanut flour;
+peanut oil;quart,gallon
+peanut sauce;
+peanuts;handful
+pear juice;drink box,bottle NFS
+pear liqueur;
+pear nectar;
+pear;piece
+pearl barley;
+pearl millet;
+pearl onion;piece
+pearl sugar;
+peas and carrots;package
+peas;can,package,tin,bag,box
+pecan pieces;
+pecans;can,half,package,halve,piece,tin
+pecorino romano;package
+pecorino;package
+pectin;package,box
+penne;package,bag,box
+peperoncini;piece
+pepper and onion mix;
+pepper;dash
+peppercorns;piece
+pepperjack cheese;package,slice
+peppermint candy;piece,bag
+peppermint crunch;
+peppermint extract;drop,dash
+peppermint patties;package,piece,bag
+pepperoni slices;package,piece,slice,slice round
+pepperoni;package,piece,slice,slice round
+peppers;strip,piece,ring
+pepsi;can,tin
+perch;piece,fillet
+pernod;shot
+persian cucumber;piece
+persimmon;piece
+pesto;can,tin,jar,dollop
+petite peas;can,package,tin,bag,box
+petite tomatoes;can,tin
+pheasant;unit,piece,pheasant
+physalis;
+picante sauce;
+pickle juice;
+pickle relish;
+pickled beets;can,slice,beet,cup slice
+pickled daikon;
+pickled ginger;
+pickled green beans;
+pickled jalapenos;pepper,can,piece
+pickled mustard greens;
+pickles;spear,piece,slice,jar
+pickling spices;dash
+pico de gallo;
+pico piquin seasoning;
+pie crust;pastry,package,piece,pie crust,recipe,box
+pie dough rounds;pastry,package,piece,pie crust,recipe,box
+pigeon breasts;unit,breast
+pigeon peas;
+pigeon;squab,unit
+pike;
+pils;can,gallon,can or bottle,bottle
+pimento cheese;container,tub,jar
+pimento stuffed green olives;can,handful,olive,piece,tin,jar
+pimenton de la vera;piece
+pimiento;pimiento,can,slice,jar
+pimms;shot
+pine nuts;nut
+pineapple chunks;can
+pineapple in juice;can,spear,ring,slice
+pineapple jam;packet
+pineapple juice;
+pineapple preserves;packet
+pineapple rings;can,piece
+pineapple tidbits;can
+pineapple with juice;can,spear,ring,slice
+pineapple;piece,slice,fruit
+pink banana squash;piece
+pink himalayan salt;dash
+pink lady apple;piece,slice,extra small,cup slice
+pinot grigio;glass,bottle
+pinot noir;
+pinto beans;
+piquillo pepper;can,piece,jar
+pisco;shot
+pistachio nuts;kernel
+pistachio oil;
+pita chips;package,piece,bag
+pita;pita,piece
+pizza dough mix;package,bag,box
+pizza dough;ball,can,tube,package,piece,recipe,tin
+pizza sauce;can,tin,jar
+pizza seasoning;can,sprig
+plaice;
+plain doritos;handful,piece,bag
+plain greek yogurt;container,tub
+plain yogurt;container
+plantain;piece
+plum preserves;packet
+plum sauce;
+plum tomato;piece
+plum vinegar;
+plum;piece,fruit
+pluot;
+poached egg;piece
+poblano pepper;strip,piece,ring
+pointed cabbage;head
+pointed gourd;
+pointed pepper;
+polenta;spoonful
+pomegranate juice;
+pomegranate molasses;
+pomegranate seeds;piece,pomegranate,cup aril
+pomegranate syrup;
+pomegranate;piece
+pomelo;piece
+pomfret;
+ponzu sauce;
+popcorn kernels;package
+popcorn;mini bag,snack size bag,bag,snack bag
+poppy seeds;
+poppyseed roll;piece,roll
+porgy;piece,fillet
+pork and beans;can,piece,tin
+pork belly slices;piece
+pork belly;pound,piece,slice
+pork bone;piece
+pork broth;quart,can,tin
+pork chops;piece
+pork cutlets;pound,piece,chop
+pork escalopes;
+pork fat;
+pork kidney;kidney
+pork knuckle;piece
+pork liver;
+pork loin chops;pound,piece,chop
+pork loin;pound,piece,roast
+pork rib roast;pound
+pork ribs;rack,piece
+pork rinds;handful,bag
+pork roast;pound,piece,roast
+pork sausage;piece,link,roll
+pork seasoning;
+pork shank;roast
+pork shoulder;pound,piece
+pork sirloin tip roast;piece
+pork spare ribs;rack,piece
+pork steaks;
+pork stock;
+pork tenderloin;piece,roast
+pork;package,piece,bag
+port wine;glass
+porter;
+porterhouse steak;pound,piece
+portobello mushroom caps;package,piece,piece whole,cup diced
+portobello mushrooms;package,piece,piece whole,cup diced
+pot roast;pound,piece
+potato bread;slice,loaf
+potato chips;quart,handful,piece,bag,bunch
+potato leaves;
+potato roll;piece
+potato salad;
+potato starch;
+potato;piece,Potato medium,Potato large,Potato small
+potstickers;package,piece,box
+poultry seasoning;dash
+pound cake;piece,slice,sheet
+poussin;
+powdered milk;
+powdered peanut butter with chocolate;
+powdered peanut butter;
+powdered sugar substitute;
+powdered sugar;tbsp unsifted,cup sifted,box,cup unsifted
+prepared pizza crust;piece
+prepared polenta;tube,slice,roll
+prepared whole wheat pizza crust;piece
+preserved lemon;
+preserves;packet
+pretzel nuggets;
+pretzel rods;
+pretzel roll;
+pretzel sticks;piece,bag
+pretzel twists;piece,bag
+pretzels;piece,twist
+prime rib;pound
+prosciutto;strip,piece,slice
+prosecco;glass
+protein powder;scoop
+provolone cheese slices;package,piece,slice
+provolone;package,piece,slice
+prunes;piece,prune
+psyllium husk powder;
+psyllium husks;
+psyllium seed powder;
+pudding mix;package,portion,box
+puff pastry dough;package,piece,shell,box,sheet
+puff pastry sheets;package,piece,shell,box,sheet
+puff pastry shells;package,piece,shell,box
+puffed rice cereal;
+puffed rice;
+pulled pork;
+pumpernickel;slice
+pumpkin blossoms;piece,flower
+pumpkin leaves;
+pumpkin pie mix;can,tin
+pumpkin pie spice;
+pumpkin seed oil;
+pumpkin seeds;
+pumpkin spice pudding mix;package,box
+pumpkin;piece
+punt e mes;shot
+purple plum;piece,fruit
+purple potato;piece
+quail eggs;egg,piece,dozen
+quail;unit,piece,quail
+quark;
+quesadilla cheese;
+queso fresco;cup crumbled
+quick cooking barley;
+quick cooking grits;
+quick cooking oats;
+quick cooking tapioca;
+quince;piece
+quinoa flakes;
+quinoa flour;
+quinoa pasta;square,package,piece,bag,box,sheet,nest
+quinoa;
+quorn crumbles;
+rabbit meat;pound
+rack of lamb;pound,piece
+radicchio;head,largehead,leave,small head,large head,smallhead
+radish leaves;
+radish sprouts;
+radish;piece,slice,bunch,cup slice
+rainbow trout fillets;
+rainbow trout;fillet
+raisin bran;box
+raisin bread;slice
+raisins;miniature boxe,small boxe,handful,piece,small box,miniature box
+raita;container
+rambutan;piece
+ramen noodles;package,sheet,packet,pack
+ramps;piece,bunch
+ramson;piece,bunch
+ranch dressing;package,bottle
+ras el hanout;can,sprig
+raspberries;container,package,piece,raspberrie
+raspberry extract;splash
+raspberry flavored gelatin;package,portion,box
+raspberry jam;packet
+raspberry jelly;jar
+raspberry liqueur;shot
+raspberry preserves;packet
+raspberry sauce;
+raspberry vinaigrette;
+raspberry vinegar;
+ravioli;can,package,piece,bag,jar
+raw cashews;handful,piece
+raw honey;jar,packet
+raw pumpkin seeds;
+raw shrimp;piece
+raw sugar;
+ready to serve asian fried rice;
+real bacon pieces;package
+red apple;piece,slice,extra small,cup slice
+red bean paste;
+red beet;can,piece,slice,tin,bunch,beet
+red belgian endive;head,piece,leave
+red cabbage;head,piece,leave,medium head,small head,large head
+red chili pepper;pepper,piece
+red cinnamon candy;piece,box
+red currant jelly;packet
+red currants;
+red curry paste;
+red delicious apple;piece,slice,extra small,cup slice
+red enchilada sauce;
+red flesh navel orange;
+red food color;drop
+red glaze;
+red grapefruit;cup section,piece,fruit
+red grapes;handful,piece,bag,bunch,grape
+red jalapeno;piece
+red kidney beans;can,tin
+red kuri squash;piece
+red leaf lettuce leaves;piece
+red leaf lettuce;head,cup shredded,leave,leaf inner,leaf outer
+red leicester;slice
+red lentils;can
+red miso;
+red mullet;piece,fillet
+red onion;piece,slice
+red pearl onion;piece
+red pepper flakes;pinche,piece,dash
+red pepper;piece,ring
+red pesto;can,tin,jar
+red plum;piece,fruit
+red potato;piece
+red skinned sweet potato;piece
+red snapper fillets;steak,piece,fillet
+red snapper;steak,piece,fillet
+red tea bag;piece
+red velvet cake mix;package,piece,box
+red wine vinegar;
+red wine;glass,piece,bottle
+redfish;fillet
+reduced fat and reduced sodium cream of celery soup;can
+reduced fat and reduced sodium cream of chicken soup;can
+reduced fat and reduced sodium cream of mushroom soup;can
+reduced fat chocolate milk;quart
+reduced fat coleslaw dressing;
+reduced fat cream cheese;container,package,block
+reduced fat cream of celery soup;can
+reduced fat cream of chicken soup;can
+reduced fat cream of mushroom soup;
+reduced fat creme fraiche;
+reduced fat crescent rolls;can,tube,roll
+reduced fat evaporated milk;can
+reduced fat feta cheese;
+reduced fat mozzarella;slice
+reduced fat parmesan cheese;
+reduced fat peanut butter;glug
+reduced fat string cheese;piece
+reduced fat swiss cheese;piece,slice
+reduced sodium cream of chicken soup;can
+reduced sodium cream of mushroom soup;can
+reduced sodium tomato soup;can
+reeses pieces;package,piece
+refried beans;can,tin
+refrigerated cheese tortellini;container,package,bag,box,packet
+refrigerated crescent rolls;can,tube,package,piece,tin
+refrigerated dough sheet;tube,package,piece,roll,sheet
+refrigerated pie crust;pastry,package,piece,pie crust,recipe,box
+refrigerated pie dough;pastry,package,piece,pie crust,recipe,box
+refrigerated spinach tortellini;package,box
+refrigerated tortellini;container,package,bag,box,packet
+reindeer;pound
+rhubarb;piece,stalk,stick
+rib tips;
+ribbon fish;
+ribeye steak;steak,piece
+ribs;piece,rib,slab
+rice bran oil;
+rice bran;
+rice cakes;piece,cake
+rice chex;
+rice flour;
+rice krispies cereal;
+rice milk;
+rice noodles;package,bag,box
+rice protein powder;scoop
+rice vermicelli;package,bag,box
+rice vinegar;
+rice wine;
+rice;
+ricotta cheese;container,tub,carton,half carton
+ricotta salata cheese;container,tub,carton,half carton
+ridge gourd;
+riesling;
+rigatoni;package,bag,box
+ripe olives;can,handful,olive,piece,tin,jar
+risotto rice;
+roast beef;slice
+roasted cashews;
+roasted chicken;unit,piece
+roasted garlic;clove,head,piece
+roasted peanuts;piece
+roasted pumpkin seeds;
+roasted red peppers;can,piece,jar
+roasted salted sunflower seeds;
+roasted unsalted pumpkin seeds;
+roasting chicken;chicken,piece
+rock salt;dash
+rock shrimp;piece
+rockfish;piece,fillet
+rolled oats;
+roma tomato;piece
+romaine hearts;piece,bag
+romaine;head,piece,leave
+romanesco;
+romano cheese;package
+rooibos;
+root beer;can,can or bottle,tin
+root vegetable;piece,cup slice
+roquefort cheese;package
+rose apple;
+rose water;splash
+rosehips;
+roselle fruit;
+rosemary;piece,sprig,bunch
+rotini;package,bag,box
+rotisserie chicken;piece
+round steak;pound,piece
+round tip steak;pound,piece
+royal porgy;piece,fillet
+rubbed sage;handful,piece,leave,sprig,bunch
+rum extract;
+rum;bottle,shot
+rump roast;pound,piece
+runner beans;handful,piece
+runny honey;jar,packet
+russet potato;piece,Potato medium,potato large,Potato small
+rutabaga;piece
+rye beer;can,gallon,can or bottle,bottle
+rye berries;
+rye bread;slice
+rye flour;
+rye meal;
+sablefish;piece,fillet
+safflower oil;quart,gallon
+safflower seeds;
+saffron;strand,piece,thread
+sage;handful,piece,leave,sprig,bunch
+sago;
+sake;
+salad dressing;bottle
+salad oil;quart,gallon
+salami;package,piece,slice
+salmon caviar;can
+salmon fillets;steak,can,piece,slice,tin,fillet
+salmon roe;can
+salmon steak;steak,can,piece,slice,tin,fillet
+salmon;steak,can,piece,slice,tin,fillet
+salsa verde;
+salsa;
+salt and pepper;dash
+salt cod;piece,fillet
+salt packed anchovies;can,piece
+salt pork;piece
+salt;dash
+salted butter;pat,knob,stick
+salted peanuts;piece
+salted pork fat;
+salted roasted cashews;
+saltine crackers;cracker,piece,crackers square,cracker square
+sambuca;
+samphire;
+sandwich bun;piece,roll
+sandwich cookies;package,cookie,piece,box
+sandwich thin;
+sapote;piece
+sardines in tomato sauce;can
+sardines;can,piece,tin,sardine
+saucisses;patty,package,piece,link
+sauerkraut;can,bag,jar
+sausage links;tray,package,piece,box
+sausage patties;tray,package,piece,box
+sausage;piece
+sauvignon blanc;glass,bottle
+savoy cabbage leaves;piece
+savoy cabbage;head,piece,leave,medium head,small head,large head
+sazon completa;packet
+scallops;piece
+schisandra berries;
+schmaltz;
+scoops tortilla chips;piece,bag
+scotch bonnet chili;piece
+scotch whiskey;
+scrapple;oz cooked
+sea bream;piece,fillet
+sea cucumber;
+sea salt;dash
+sea vegetable;package,piece,sheet
+seabass fillets;piece,fillet
+seabass;piece,fillet
+seafood seasoning;dash
+seafood stock;
+seasoned breadcrumbs;package,handful
+seasoned flour;
+seasoned rice vinegar;
+seasoned salt;dash
+seasoned soybean paste;
+seasoning mix;
+seasoning;
+seaweed;package,piece,sheet
+seedless cucumber;piece,cucumber,cup slice
+seedless grapes;handful,piece,bag,bunch,grape
+seedless green grapes;handful,piece,bag,bunch,grape
+seedless red grapes;handful,piece,bag,bunch,grape
+seedless watermelon;piece,slice,wedge,melon
+seeds;
+seitan cutlets;package,piece
+seitan steaks;package,piece
+seitan;package,piece
+self rising flour;spoonful,cup unsifted
+semisweet chocolate chips;square,bar,package,piece,bag
+semisweet chocolate;square,bar,package,piece,bag
+semolina flour;
+semolina;
+serrano pepper;pepper,piece
+sesame oil;
+sesame seed burger bun;package,piece,roll
+sesame seeds;
+shallot;clove,piece,tbsp chopped
+shaoxing wine;
+shark;
+sharp cheddar cheese;slice
+sheep cheese;package,handful,wedge,block
+sheet gelatin;piece,sheet
+shell topping;
+shelled edamame;
+sherbet;bar,scoop
+sherry vinegar;
+sherry;glass,piece,bottle
+shichimi togarashi;piece
+shiitake mushrooms;container,package,piece,piece whole
+shirataki pasta;
+shirataki rice;
+shiraz;
+shiso leaves;piece
+short grain brown rice;
+short grain rice;
+short pasta;package,bag,box
+shortbread cookies;package,cookie,piece,bag,box
+shortcrust pastry;ball,package,piece,sheet dough,recipe,box,sheet
+shortening;
+shoulder joint of pork;piece
+shoyu;
+shredded cheddar cheese;
+shredded cheese;container,ball,package,slice
+shredded chicken;
+shredded mexican cheese blend;cup shredded
+shredded mozzarella;package,bag
+shredded wheat cereal;biscuit oblong,biscuits round,biscuit
+shrimp stock;
+shrimp;piece
+shucked oysters;piece
+silken tofu;slice
+silver tequila;shot
+simple syrup;
+single cream;
+sirloin steak;pound,piece
+sirloin tip steak;steak,piece
+skate wings;
+skate;
+skim milk mozzarella;
+skim milk quark;
+skinless chicken drumsticks;piece
+skinless chicken leg;piece,leg
+skinless chicken pieces;chicken,unit,piece
+skinless rotisserie chicken;piece,breast
+skirt steak;steak,piece
+slab bacon;strip,slice
+sliced almonds;
+sliced chicken breast;slice
+sliced roast beef;piece
+sliced swiss cheese;piece,slice
+sliced turkey;piece,slice
+slider buns;piece
+slivered almonds;
+smoked haddock;
+smoked ham hock;piece
+smoked ham;slice
+smoked paprika;
+smoked salmon;can,package,piece,slice
+smoked sausage;piece
+smoked trout;piece,fillet
+snake gourd;
+snapper fillets;steak,piece,fillet
+snapper;steak,piece,fillet
+snickers bar;bar,king size,piece,miniature,fun size
+snow peas;pea pod
+soba noodles;package,bag,box
+sobrasada;
+soft cheese;package
+soft pretzels;piece
+sola sweetener;
+sole;steak,piece,fillet
+solid white tuna packed in water;can,piece,tin
+soppressata;piece,slice
+sorbet;scoop
+sorghum flour;
+sorghum;
+sorrel;handful,bunch
+sour cream;container,tub,carton
+sourdough bread;piece,slice,loave,loaf
+sourdough starter;
+soured milk;quart
+southern comfort;shot
+soy butter;
+soy buttery spread;stick
+soy cheese;slice
+soy creamer;container
+soy flour;
+soy lecithin granules;
+soy nuts;
+soy protein powder;scoop
+soy pudding;piece
+soy sauce;
+soy yogurt;container
+soybean oil;quart,gallon,spoonful
+soybeans;
+soymilk;
+spaghetti sauce mix;packet
+spaghetti squash;piece
+spaghetti;package,bag,box
+spaghettini;package,bag,box
+spam;can,piece,slice,tin
+spanish chorizo;package,piece,link
+spanish rice;box
+spare ribs;rack,piece
+sparkling water;can or bottle
+sparkling wine;glass,bottle
+speck;strip,piece,slice
+spelt flour;
+spelt;
+spice cake mix;package,piece,pouch,box,pouche
+spice drops;spice stick,gumdrop,gummy dinosaur,gummy worm,jelly ring,gummy fish,cup gumdrop,gummy bear,spice drop
+spice paste;
+spiced rum;shot
+spices;
+spicy brown mustard;
+spinach fettuccine;package,bag,box
+spinach tortellini;package,box
+spinach wrap;piece
+spinach;package,handful,leave,bag,bunch
+spiny gourd;
+spirulina;
+splenda brown sugar blend;
+splenda;packet
+split peas;pound
+split pigeon peas;
+sponge cake;piece,slice,sheet
+sprats;
+spring mix;package,handful,bag,bunch
+spring onions;tbsp chopped,rib,piece,stalk,sprig,bunch
+spring roll wrappers;square,package,piece,sheet,wrapper,packet
+sprinkles;
+sprouted grain bread;slice
+sprouts;handful
+squash blossoms;piece,flower
+squash;piece
+squid ink pasta;
+squid tubes;piece
+squid;
+sriracha;drop,jar,dash,dashe
+star anise;piece
+star apple;
+starburst candies;piece
+starch;
+starchy potato;piece,Potato medium,potato large,Potato small
+starfruit;piece
+steak sauce;Tbsp
+steak seasoning;
+steak;steak,piece
+steel cut oats;
+stevia;pkt,packet
+stewed tomatoes;can,piece,tin
+stick margarine;
+sticky rice;
+stilton;
+stinging nettle;
+stock powder;cube,packet
+stock;quart,can,carton,tin,box
+stone ground mustard;
+stout;
+straw mushrooms;piece
+strawberries;container,package,handful,extra large,piece
+strawberry cake mix;piece,box
+strawberry flavored gelatin;package,portion,box
+strawberry ice cream;scoop,individual
+strawberry jam;packet
+strawberry jello;package,portion,box
+strawberry jelly;
+strawberry pie filling;
+strawberry preserves;packet
+strawberry puree;
+strawberry sauce;
+strawberry yogurt;container
+string cheese;piece
+strip steak;pound,steak,piece
+striped bass;piece,fillet
+strong coffee;
+stuffing mix;package
+stuffing;
+sub bun;piece
+sucanat;
+sucralose;packet
+suet;
+sugar alcohol;
+sugar apple;piece,fruit
+sugar cookie dough;tube,package,roll,bag
+sugar cookie mix;package,pouch,box,puche
+sugar cubes;piece
+sugar free apricot jam;jar
+sugar free apricot preserves;jar
+sugar free blackberry jam;jar
+sugar free blueberry jam;jar
+sugar free blueberry jelly;jar
+sugar free caramel sauce;
+sugar free cheesecake pudding mix;package,box
+sugar free cherry jam;jar
+sugar free cherry preserves;jar
+sugar free chocolate chips;bag
+sugar free chocolate pudding mix;
+sugar free chocolate syrup;
+sugar free grape jam;jar
+sugar free grape jelly;jar
+sugar free jam;jar
+sugar free jelly;jar
+sugar free marshmallows;piece
+sugar free mini marshmallows;piece
+sugar free pancake syrup;
+sugar free preserves;jar
+sugar free raspberry gelatin;package,box
+sugar free raspberry jam;jar
+sugar free raspberry jelly;jar
+sugar free raspberry preserves;jar
+sugar free strawberry jam;jar
+sugar free strawberry jelly;jar
+sugar free strawberry preserves;jar
+sugar free syrup;
+sugar free vanilla pudding mix;
+sugar free white chocolate pudding mix;package,box
+sugar in the raw;
+sugar pumpkin;piece
+sugar snap peas;pea pod
+sugar substitute;packet
+sugar;spoonful,serving packet,dash
+sukrin;
+sumac;
+summer savory;
+summer squash;piece,slice
+sun dried tomatoes;piece,jar
+sundried tomato paste;
+sundried tomato pesto;can,tin,jar
+sundried tomato wrap;
+sunflower kernels;
+sunflower oil;
+sunflower seed butter;
+sunflower seeds;
+sunflower shoots;
+superfine sugar;spoonful,serving packet,dash
+sushi rice;
+suze;shot
+sweet butter;pat,knob,stick
+sweet cherries;cherry,handful,piece
+sweet chili sauce;
+sweet corn on the cob;piece,cob,ear
+sweet corn;can,ear large,ear small,ear,cup cut,ear medium,baby ear
+sweet dumpling squash;piece
+sweet gherkins;chip,spear Gherkin,Gherkin,piece,small Gherkin,large Gherkin,midget Gherkin
+sweet italian sausage;piece,link
+sweet onion;piece,slice,onion
+sweet paprika;
+sweet pepper;piece,ring
+sweet pickle relish;packet
+sweet pickles;chip,spear Gherkin,Gherkin,piece,small Gherkin,large Gherkin,midget Gherkin
+sweet potato leaves;piece,leave
+sweet potato puree;
+sweet potato vermicelli;
+sweet potato;piece,sweetpotato
+sweet rice flour;
+sweet yellow onion;piece,slice,onion
+sweetened coconut flakes;
+sweetened coconut;
+sweetened condensed milk;can,tin
+sweetened condensed skim milk;can,tin
+sweetened shredded coconut;package
+sweetened whipped cream;
+swerve confectioners;
+swerve;
+swiss chard;head,handful,piece,stalk,leave,bunch,stem
+swiss cheese;piece,slice
+sword beans;
+swordfish steaks;steak,piece,fillet
+swordfish;steak,piece,fillet
+t bone steak;pound,piece
+tabasco sauce;drop,dash,dashe
+table salt;dash
+table syrup;milliliter
+taco salad shells;piece
+taco seasoning mix;sachet,envelope,package,packet
+taco shells;piece,shell,miniature,taco
+tagatose;
+tagliatelle;package,box
+tahini;
+tahitian vanilla bean;piece
+taleggio cheese;
+tamari;
+tamarillo;
+tamarind juice;
+tamarind leaves;
+tamarind paste;fruit
+tamarind pulp;
+tamarind;pod,piece,fruit
+tangelo juice;
+tangelo;can,piece
+tangerine juice;
+tangerine;can,piece
+tapioca starch;
+tapioca syrup;
+tapioca;
+taro leaves;piece,leave
+taro root;piece
+tarragon vinegar;
+tarragon;stalk,sprig,bunch
+tart apple;piece,slice,extra small,cup slice
+tart cherries;cherry,handful,piece
+tart shells;package,piece,shell,box
+tartar sauce;
+tartlet shells;package,piece,shell,box
+tater tots;piece,bag
+tea bag;piece
+tea;
+teff flour;
+teff;
+tempeh;package
+tempura batter mix;
+tenderloin steak;piece
+tengra;
+tennessee honey;
+tequila;shot
+teriyaki sauce;
+texas toast;package,piece,slice,box
+textured vegetable protein;
+thai basil;cup leave,handful,piece,leave,sprig,bunch
+thai chili;pepper,piece
+thai fish sauce;
+thai red curry paste;
+thick cut bacon;strip,piece,slice
+thin baguette;piece,slice,loaf,baguette
+thousand island dressing;
+thyme;piece,stalk,sprig,bunch
+tia maria;
+tiger nuts;
+tiger shrimp;piece
+tilapia fillets;package,piece,fillet,raw pr g
+tilapia;package,piece,fillet,raw pr g
+tinda;
+toast;slice thin,piece,slice
+toffee bar candy;
+toffee pieces;piece
+toffee;piece
+tofu;package,piece,slice,block
+tomatillos;piece
+tomato and basil sauce;
+tomato concentrate;can,tin
+tomato juice;
+tomato paste;can,tin
+tomato pesto;can,tin,jar
+tomato puree;can,tube
+tomato sauce;can,tin,jar
+tomato slices;piece
+tomato soup;can
+tomato;cherry,large whole,medium whole,wedge,Italian tomato,plum tomato,piece,slice,small whole
+tomatoes in juice;
+tonic water;can or bottle,bottle
+tonka beans;
+top blade steak;steak,piece
+top sirloin steak;pound,piece
+tortellini;container,package,bag,box,packet
+tortilla chips;handful,piece,bag
+tortilla strips;
+tortilla;package,piece,tortilla,tortilla medium
+tostada shell;piece
+tostadas;piece
+tri color tortilla chipps;
+tri tip roast;roast
+tri tip steak;piece
+tricolor pasta;
+trimmed watercress;bag,sprig,bunch
+triple sec;shot
+triticale;
+trout fillets;piece,fillet
+truffle mushrooms;piece
+truffle oil;spoonful
+tubetti;
+tubettini;
+tuna in olive oil;can,piece,tin,jar
+tuna packed in water;can,piece,tin
+tuna;can,piece,tin
+turbinado sugar;
+turbot;fillet
+turkey bacon;package,piece,slice
+turkey berries;
+turkey bratwurst;
+turkey breast cutlets;piece
+turkey breast;piece
+turkey broth;quart,can,tin
+turkey burgers;piece
+turkey drumsticks;unit,piece,leg
+turkey fat;
+turkey giblets;giblet,piece
+turkey gizzards;raw gizzard
+turkey gravy;
+turkey hearts;piece
+turkey kielbasa;package,piece
+turkey leg;unit,piece,leg
+turkey liver;raw liver,piece
+turkey meat;slice,bird
+turkey meatballs;package,piece,bag
+turkey necks;pound
+turkey pastrami;package,slice
+turkey pepperoni;package,piece,slice
+turkey sausage;package,piece,link,roll
+turkey stock;
+turkey tenderloin;piece
+turkey thigh;
+turkey wings;unit,piece,wing
+turkish bay leaves;piece,leave
+turmeric paste;
+turmeric;dash
+turnip greens;
+turnip;piece,slice
+twix;bar,package,piece,miniature,bag,fun size
+tzatziki;container
+udon noodles;package,pack
+unbaked pie crust;pastry,package,piece,pie crust,recipe,box
+unbleached all purpose flour;
+unbleached flour;
+unsalted butter;pat,stick
+unsalted peanut butter;jar
+unsalted peanuts;peanut
+unsalted pistachios;kernel
+unsalted sweet butter;pat,stick
+unseasoned rice vinegar;
+unsulfured molasses;
+unsweetened baking chocolate;square
+unsweetened cocoa powder;
+unsweetened coconut flakes;
+unsweetened coconut milk;can,piece,tin
+unsweetened coconut;
+unsweetened dutch processed cocoa powder;
+unsweetened shredded coconut;
+unsweetened soymilk;
+urad dal;
+vanilla bean;piece
+vanilla cake mix;package,piece,box
+vanilla extract;drop,dash
+vanilla frosting;container,tube,package
+vanilla frozen yogurt;scoop
+vanilla ice cream;scoop,individual
+vanilla paste;
+vanilla powder;
+vanilla protein powder;scoop
+vanilla sandwich cookies;package,cookie,piece,box
+vanilla sugar;spoonful,serving packet,dash
+vanilla wafer cookies;cookie,piece
+vanilla yogurt;container
+vanilla;drop,dash
+veal bone;
+veal chops;piece,chop
+veal cutlet;pound,piece
+veal liver;pound,piece,slice
+veal loin chops;piece,chop
+veal shank;pound,piece
+veal stock;
+veal;
+vegan buttery spread;stick
+vegan buttery stick;
+vegan cheddar cheese;slice
+vegan cheese;slice
+vegan cream cheese;
+vegan mayonnaise;
+vegan mozzarella;ball,slice
+vegan protein powder;scoop
+vegan sour cream;
+vegeta;
+vegetable bouillon cube;piece,cube
+vegetable broth;quart,can,carton,tin,box
+vegetable juice;can
+vegetable oil cooking spray;spray
+vegetable oil;quart,gallon,spoonful
+vegetable shortening;
+vegetable stock;quart,can,carton,tin,box
+vegetable tortellini;container,package,bag,box,packet
+vegetable;can,package,bag,box,pack
+vegetarian baked beans;can,tin
+vegetarian chicken deli slices;
+vegetarian parmesan;package
+veggie bacon;strip,piece,slice
+veggie burger;patty,pattie,piece
+veggie crumbles;package,bag,box
+veggie deli slices;slice
+veggie dogs;package,piece,link,box
+veggie meatballs;package,piece,box
+veggie nuggets;piece
+veggie sausage patties;
+veggie sausage;piece
+velveeta cheese;
+venison chops;
+venison loin;steak,piece
+venison ribs;rack,piece
+venison shoulder;piece,roast
+venison steak;piece
+venison;pound,package,piece
+verjus;
+vermouth;shot
+vidalia onion;piece,slice,onion
+vienna sausage;can,sausage
+vinaigrette;bottle
+vine ripened tomatoes;cherry,large whole,medium whole,wedge,Italian tomato,plum tomato,piece,slice,small whole
+vinegar;
+virgin olive oil;spoonful
+vital wheat gluten;
+vodka;shot
+waffle cone;piece,cone
+wakame;
+walla walla;piece,slice,onion
+walnut halves;cup shelled,half,halve,handful,piece
+walnut oil;
+walnut pieces;cup shelled,half,halve,handful,piece
+walnuts;cup shelled,half,halve,handful,piece
+wasabi paste;
+wasabi peas;
+wasabi powder;
+wasabi;root
+water chestnuts;can,piece,tin,cup slice,waterchestnut
+water spinach;shoot,bunch
+water;drop,piece,liter
+watercress;bag,sprig,bunch
+watermelon radish;piece,bunch
+watermelon;piece,slice,wedge,melon
+wax beans;can,tin
+wax chilies;
+waxy potato;piece,potato medium,potato small,potato large
+weisswurst;piece,link
+wensleydale;slice
+wheat beer;can,gallon,can or bottle,bottle
+wheat bran;
+wheat chex cereal;
+wheat flakes;
+wheat flatbreads;piece
+wheat flour;
+wheat germ;
+wheat thins;package,piece,box
+wheatberries;
+whey protein powder;scoop
+whipped butter;
+whipped cream stabilizer;envelope,bag,packet
+whipped cream;
+whipped topping;container,tub,package
+whipping cream;quart
+whiskey;
+white asparagus;
+white balsamic vinegar;
+white beans;can,tin
+white bread;slice thin,handful,piece,slice,loaf
+white button mushrooms;package,piece,slice,cup piece
+white cake mix;package,piece,box
+white cheddar cheese;slice
+white cheese dip;container,tub,package
+white chocolate chips;package,bag
+white chocolate;square,bar,cup chip,package
+white corn tortilla;enchilada,package,piece,tortilla
+white corn;ear,cup cut
+white cornmeal;
+white fish fillets;package,piece,fillet,raw pr g
+white grape juice;
+white grapefruit;
+white kidney beans;
+white miso;
+white onion;tbsp chopped,ring,piece,slice
+white pepper;
+white peppercorns;piece,peppercorn
+white potato;piece
+white rice;
+white sandwich bread;slice thin,handful,piece,slice,loaf
+white shoepeg corn;ear,cup cut
+white sweet potato;piece,sweetpotato
+white whole wheat flour;
+white wine vinegar;
+white wine;glass,piece,bottle
+white zinfandel;glass,bottle
+whitebait;quart
+whitefish fillets;package,piece,fillet,raw pr g
+whitefish;package,piece,fillet,raw pr g
+whiting fillets;piece,fillet
+whiting;piece,fillet
+whole chicken;chicken,unit,piece
+whole clove;piece
+whole coconut;piece
+whole coriander seeds;
+whole cranberry sauce;can,slice,jar
+whole duck;unit,piece,duck
+whole garlic cloves;clove,head,piece
+whole goose;piece
+whole grain dijon mustard;
+whole grain mustard;
+whole grain spelt flour;
+whole grain tortilla;package,piece
+whole grain wrap;package,piece
+whole kernel corn;cup drained,can drained
+whole milk;quart
+whole rabbit;pound,piece
+whole tomato;cherry,large whole,medium whole,wedge,Italian tomato,plum tomato,piece,slice,small whole
+whole turkey;piece,slice,bird
+whole wheat angel hair pasta;
+whole wheat bread;piece,slice,loaf
+whole wheat breadcrumbs;package,handful
+whole wheat chex;
+whole wheat couscous;
+whole wheat crackers;cracker,package,piece,Triscuit Bit,box
+whole wheat elbow macaroni;package,box
+whole wheat english muffins;piece,muffin
+whole wheat farfalle;package,bag,box
+whole wheat flour;
+whole wheat fusilli;
+whole wheat hamburger bun;piece,roll
+whole wheat hot dog bun;piece
+whole wheat lasagne noodles;package,piece,bag,box,sheet
+whole wheat pasta shells;package,bag,box
+whole wheat pasta;package,bag,box
+whole wheat pastry flour;
+whole wheat penne;
+whole wheat pita;pita,piece
+whole wheat pizza dough;ball,piece,recipe
+whole wheat pretzels;piece,twist
+whole wheat ravioli;can,package,piece,bag,jar
+whole wheat rolls;piece,roll
+whole wheat spaghetti;package,bag,box
+whole wheat tortilla;package,piece
+whole wheat wrap;package,piece
+wide egg noodles;package,bag,block,box,sheet,nest
+wild blueberries;berrie,handful,piece
+wild boar chops;piece
+wild boar shank;piece
+wild boar shoulder;piece
+wild boar stew meat;piece
+wild boar tenderloins;
+wild fish;
+wild leek;piece,bunch
+wild rice;
+wine vinegar;
+wine;glass,bottle
+winged bean;
+winter squash;
+wondra flour;
+wonton wrappers;square,package,piece,sheet,wrapper,packet
+worcestershire sauce;dash
+wrap;package,piece,tortilla,tortilla medium
+writing icing;
+xanthan gum;
+xylitol;
+yacon syrup;
+yam;piece
+yardlong beans;pod,cup slice
+yeast dinner rolls;piece,roll
+yeast water;
+yeast;sachet,envelope,package,satchet,packet
+yellow cake mix;package,piece,box
+yellow cherry tomato;container,package,piece,half pint
+yellow cornmeal;spoonful
+yellow curry paste;
+yellow food color;drop
+yellow miso;
+yellow mustard seeds;cup leave,handful,piece,leave,sprig,bunch
+yellow mustard;
+yellow onion;tbsp chopped,ring,piece,slice
+yellow passion fruit;
+yellow pepper;pepper,strip,piece
+yellow plantain;piece
+yellow spice drops;spice stick,gumdrop,gummy dinosaur,gummy worm,jelly ring,gummy fish,cup gumdrop,gummy bear,spice drop
+yellow split peas;pound
+yellow squash;piece,slice
+yellow tomato;tomato
+yellow wax beans;can,tin
+yellowfin tuna;steak,piece,filet,fillet
+yellowtail snapper;steak,piece,fillet
+yogurt;container
+yukon gold potato;piece
+yuzu juice;
+yuzu;piece
+zaatar;
+zinfandel;
+ziti;square,package,piece,bag,box,sheet,nest
+zucchini noodles;
+zucchini;piece,slice,stick

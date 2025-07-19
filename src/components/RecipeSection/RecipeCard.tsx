@@ -8,7 +8,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
   return recipe === undefined ? (
-    <Card style={{ border: 0 }}>
+    <Card as="li" style={{ border: 0 }}>
       <SkeletonTheme
         baseColor="var(--skeleton-base)"
         highlightColor="var(--skeleton-highlight)"
@@ -28,37 +28,40 @@ function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
       </SkeletonTheme>
     </Card>
   ) : (
-    <Card as="a" href={`/recipe/${recipe.id}`}>
-      <h3 className={RecipeTitle}>{recipe.title}</h3>
-      <Image
-        src={recipe.image}
-        alt={recipe.title}
-        width={312}
-        height={231}
-        className={FoodImg}
-      />
-      <Ingredients>
-        {recipe.usedIngredientCount > 0 && (
-          <>
-            <h4 className={IngredientTitle}>Ingredients</h4>
-            <p>{ingredients2Str(recipe.usedIngredients)}</p>
-          </>
-        )}
-      </Ingredients>
-      <MissedIngredients>
-        {recipe.missedIngredientCount > 0 && (
-          <>
-            <h4 className={IngredientTitle}>Missing Ingredients</h4>
-            <p>{ingredients2Str(recipe.missedIngredients)}</p>
-          </>
-        )}
-      </MissedIngredients>
-    </Card>
+    <li>
+      <Card href={`/recipe/${recipe.id}`}>
+        <h3 className={RecipeTitle}>{recipe.title}</h3>
+        <Image
+          src={recipe.image}
+          alt={recipe.title}
+          width={312}
+          height={231}
+          className={FoodImg}
+        />
+        <Ingredients>
+          {recipe.usedIngredientCount > 0 && (
+            <>
+              <h4 className={IngredientTitle}>Ingredients</h4>
+              <p>{ingredients2Str(recipe.usedIngredients)}</p>
+            </>
+          )}
+        </Ingredients>
+        <MissedIngredients>
+          {recipe.missedIngredientCount > 0 && (
+            <>
+              <h4 className={IngredientTitle}>Missing Ingredients</h4>
+              <p>{ingredients2Str(recipe.missedIngredients)}</p>
+            </>
+          )}
+        </MissedIngredients>
+      </Card>
+    </li>
   );
 }
 
-const Card = styled("li")({
-  all: "inherit",
+const Card = styled("a")({
+  color: "inherit",
+  textDecoration: "inherit",
   border: "1px solid var(--accent-950)",
   borderRadius: "12px",
   padding: "24px",
