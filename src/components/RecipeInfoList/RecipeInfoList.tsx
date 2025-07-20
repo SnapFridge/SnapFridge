@@ -12,40 +12,25 @@ export default function RecipeInfoList({
   const [metric, setMetric] = useState(false);
 
   return (
-    <>
-      <Container>
-        <Title>Ingredients</Title>
-        <List>
-          {ingredients.map((ingredient) => {
-            if (metric) {
-              return (
-                <ListItem
-                  key={`${ingredient.name}${ingredient.measures.metric.unitShort}`}
-                >
-                  {Math.trunc(ingredient.measures.metric.amount)}{" "}
-                  {ingredient.measures.metric.unitShort} {ingredient.name}
-                </ListItem>
-              );
-            }
+    <Container>
+      <Title>Ingredients</Title>
+      <List>
+        {ingredients.map((ingredient) => {
+          const amount = metric
+            ? ingredient.measures.metric.amount
+            : ingredient.measures.us.amount;
+          const unit = metric
+            ? ingredient.measures.metric.unitShort
+            : ingredient.measures.us.unitShort;
 
-            return (
-              <ListItem key={`${ingredient.name}${ingredient.measures.us.unitShort}`}>
-                {Math.trunc(ingredient.measures.us.amount)}{" "}
-                {ingredient.measures.us.unitShort} {ingredient.name}
-              </ListItem>
-            );
-          })}
-        </List>
-      </Container>
-
-      <button
-        onClick={() => {
-          setMetric(!metric);
-        }}
-      >
-        change metric
-      </button>
-    </>
+          return (
+            <ListItem key={ingredient.name}>
+              {Math.trunc(amount)} {unit} {ingredient.name}
+            </ListItem>
+          );
+        })}
+      </List>
+    </Container>
   );
 }
 
