@@ -8,23 +8,48 @@ import RecipeActions from "@components/RecipeActions";
 import Icon from "@components/Icon";
 import RecipeInfoList from "@components/RecipeInfoList";
 import RecipeStepsList from "@components/DetailedRecipe";
+import { notFound } from "next/navigation";
 
 // Revalidate the cache every hour
 const CACHE_ONE_HOUR = 3600;
 
 async function getRecipe(id: string) {
-  const recipeInfoRes = await fetch(
-    `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true`,
-    {
-      headers: {
-        "x-api-key": process.env["SPOONACULAR_KEY"]!,
-      },
-      next: {
-        revalidate: CACHE_ONE_HOUR,
-      },
+  let recipeInfo;
+
+  try {
+    const recipeInfoRes = await fetch(
+      `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true`,
+      {
+        headers: {
+          "x-api-key": process.env["SPOONACULAR_KEY"]!,
+        },
+        next: {
+          revalidate: CACHE_ONE_HOUR,
+        },
+      }
+    );
+
+    if (!recipeInfoRes.ok) {
+      if (recipeInfoRes.status === 404) {
+        console.warn(`Recipe ${id} not found`);
+        return null;
+      }
+
+      const errorDetails = await recipeInfoRes.text();
+      throw new Error(
+        `Failed to fetch recipe ${id}: ${recipeInfoRes.status} ${recipeInfoRes.statusText} - ${errorDetails}`
+      );
     }
-  );
-  const recipeInfo = (await recipeInfoRes.json()) as SpoonacularRecipe;
+
+    recipeInfo = (await recipeInfoRes.json()) as SpoonacularRecipe;
+
+    if (!recipeInfo || Object.keys(recipeInfo).length === 0) {
+      console.warn(`Spoonacular returned empty/invalid recipe for ID ${id}.`);
+      return null;
+    }
+  } catch (e) {
+    throw e;
+  }
 
   return recipeInfo;
 }
@@ -32,7 +57,15 @@ async function getRecipe(id: string) {
 export default async function Page({ params }: { params: { id: string } }) {
   // We need this await, Next.js expects us to await our parameters
   const { id } = await params;
-  const recipeInfo = await getRecipe(id);
+  let recipeInfo: SpoonacularRecipe | null = null;
+
+  try {
+    recipeInfo = await getRecipe(id);
+  } catch (e) {
+    throw e;
+  }
+
+  if (!recipeInfo) notFound();
 
   return (
     <>
