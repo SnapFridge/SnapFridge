@@ -54,17 +54,18 @@ async function getRecipe(id: string) {
   return recipeInfo;
 }
 
-export default async function Page({ params }: { params: { id: string } }) {
-  // We need this await, Next.js expects us to await our parameters
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
-  let recipeInfo: SpoonacularRecipe | null = null;
+  let recipeInfo: SpoonacularRecipe | null = null; // Initialize to null
 
   try {
     recipeInfo = await getRecipe(id);
   } catch (e) {
+    // Send to error.tsx
     throw e;
   }
 
+  // Send to not-found.tsx
   if (!recipeInfo) notFound();
 
   return (
