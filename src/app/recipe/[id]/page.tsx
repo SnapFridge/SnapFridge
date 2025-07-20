@@ -15,42 +15,36 @@ const CACHE_ONE_HOUR = 3600;
 
 async function getRecipe(id: string) {
   let recipeInfo;
-
-  try {
-    const recipeInfoRes = await fetch(
-      `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true`,
-      {
-        headers: {
-          "x-api-key": process.env["SPOONACULAR_KEY"]!,
-        },
-        next: {
-          revalidate: CACHE_ONE_HOUR,
-        },
-      }
-    );
-
-    if (!recipeInfoRes.ok) {
-      if (recipeInfoRes.status === 404) {
-        console.warn(`Recipe ${id} not found`);
-        return null;
-      }
-
-      const errorDetails = await recipeInfoRes.text();
-      throw new Error(
-        `Failed to fetch recipe ${id}: ${recipeInfoRes.status} ${recipeInfoRes.statusText} - ${errorDetails}`
-      );
+  const recipeInfoRes = await fetch(
+    `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true`,
+    {
+      headers: {
+        "x-api-key": process.env["SPOONACULAR_KEY"]!,
+      },
+      next: {
+        revalidate: CACHE_ONE_HOUR,
+      },
     }
+  );
 
-    recipeInfo = (await recipeInfoRes.json()) as SpoonacularRecipe;
-
-    if (!recipeInfo || Object.keys(recipeInfo).length === 0) {
-      console.warn(`Spoonacular returned empty/invalid recipe for ID ${id}.`);
+  if (!recipeInfoRes.ok) {
+    if (recipeInfoRes.status === 404) {
+      console.warn(`Recipe ${id} not found`);
       return null;
     }
-  } catch (e) {
-    throw e;
+
+    const errorDetails = await recipeInfoRes.text();
+    throw new Error(
+      `Failed to fetch recipe ${id}: ${recipeInfoRes.status} ${recipeInfoRes.statusText} - ${errorDetails}`
+    );
   }
 
+  recipeInfo = (await recipeInfoRes.json()) as SpoonacularRecipe;
+
+  if (!recipeInfo || Object.keys(recipeInfo).length === 0) {
+    console.warn(`Spoonacular returned empty/invalid recipe for ID ${id}.`);
+    return null;
+  }
   return recipeInfo;
 }
 

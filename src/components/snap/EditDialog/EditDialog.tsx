@@ -1,10 +1,10 @@
 import AppDialog from "@components/Dialog";
 import IngredientForm from "../IngredientForm";
-import { Suspense } from "react";
+import { Suspense, type PropsWithChildren } from "react";
 import FormSkeleton from "../FormSkeleton";
 import type { Ingredient } from "@components/Global";
 
-interface Props extends React.PropsWithChildren {
+interface Props extends PropsWithChildren {
   ingredient: Ingredient;
   open: boolean;
   onOpenChange: (open: boolean) => void;

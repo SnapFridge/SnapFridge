@@ -9,7 +9,7 @@ export default function RecipeInfoList({
 }: {
   ingredients: SpoonacularRecipe["extendedIngredients"];
 }) {
-  const [metric, isMetric] = useState(false);
+  const [metric, setMetric] = useState(false);
 
   return (
     <>
@@ -40,7 +40,7 @@ export default function RecipeInfoList({
 
       <button
         onClick={() => {
-          isMetric(!metric);
+          setMetric(!metric);
         }}
       >
         change metric
@@ -54,7 +54,7 @@ const Container = styled("div")({
   borderLeft: "2px solid var(--accent-500)",
   padding: "12px",
   position: "relative",
-  width: "400px",
+  maxWidth: "400px",
 
   "&::before": {
     content: "''",

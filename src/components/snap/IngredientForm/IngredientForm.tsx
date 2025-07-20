@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, type PropsWithChildren } from "react";
 import useSWR from "swr";
 import SuggestedInput from "@components/SuggestedInput";
 import Input from "@components/Input";
@@ -7,25 +7,25 @@ import Button from "@components/Button";
 import { useInputState } from "../InputProvider";
 import { css } from "@pigment-css/react";
 
-interface Props extends React.PropsWithChildren {
+interface Props extends PropsWithChildren {
   defaultIngredient?: string;
   defaultAmount?: number;
   defaultUnit?: string;
+  variant: "add" | "edit";
   onSubmitSuccess: () => void;
 }
 
-interface AddProps extends Props {
-  variant: "addIngredient";
+async function fetcher(url: string) {
+  const r = await fetch(url);
+  const text = await r.text();
+  const map = new Map<string, string[]>();
+  for (const entry of text.split("\n")) {
+    console.log(entry);
+    const [ingredient, unitsStr] = entry.split(";");
+    map.set(ingredient!, unitsStr!.split(","));
+  }
+  return map;
 }
-
-interface EditProps extends Props {
-  variant: "editIngredient";
-}
-
-const textFetcher = (url: string) =>
-  fetch(url)
-    .then((r) => r.text())
-    .then((text) => text.split("\n"));
 
 function IngredientForm({
   defaultIngredient,
@@ -33,23 +33,20 @@ function IngredientForm({
   defaultUnit,
   variant,
   onSubmitSuccess,
-}: AddProps | EditProps) {
+}: Props) {
   const { dispatch } = useInputState();
-
   const [ingredient, setIngredient] = useState(defaultIngredient ?? "");
   const [amount, setAmount] = useState(defaultAmount ?? 1);
   const [unit, setUnit] = useState(defaultUnit ?? "");
-
-  const { data: allIngredients } = useSWR("/ingredients.txt", textFetcher, {
+  const { data: ingredient_units } = useSWR("/ingredient-unit.csv", fetcher, {
     suspense: true,
   });
-  const { data: allUnits } = useSWR("/units.txt", textFetcher, { suspense: true });
 
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
-        if (variant === "addIngredient") {
+        if (variant === "add") {
           dispatch({
             type: "addIngredient",
             ingredient: {
@@ -81,7 +78,7 @@ function IngredientForm({
         autoFocus
         value={ingredient}
         label="Enter Ingredient Name:"
-        suggestions={allIngredients}
+        suggestions={[...ingredient_units.keys()]}
         onChange={(newVal: string) => {
           setIngredient(newVal);
         }}
@@ -106,15 +103,15 @@ function IngredientForm({
       <SuggestedInput
         value={unit}
         label="Enter Unit (leave blank for unitless):"
-        suggestions={allUnits}
+        suggestions={ingredient_units.get(ingredient) ?? []}
         onChange={(newVal: string) => {
           setUnit(newVal);
         }}
-        disabled={variant === "editIngredient"}
+        disabled={variant === "edit"}
         className={LimitedWidth}
       />
       <Button type="submit" variant="secondary">
-        {variant === "addIngredient" ? "New Ingredient" : "Edit Ingredient"}
+        {variant === "add" ? "New Ingredient" : "Edit Ingredient"}
       </Button>
     </form>
   );
