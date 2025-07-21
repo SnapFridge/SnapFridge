@@ -5,6 +5,17 @@ import { useState } from "react";
 import { type SpoonacularRecipe } from "@components/RecipeInfo/RecipeInfo";
 import { ON_MOBILE } from "@components/Global";
 
+function roundNumber(num: number) {
+  // rounding function to handle stuff like 0.25 cups and weird measurements
+  // like 178.958 ml
+
+  if (num < 1) {
+    return parseFloat(num.toFixed(2));
+  }
+
+  return Math.round(num);
+}
+
 export default function RecipeInfoList({
   ingredients,
 }: {
@@ -26,7 +37,7 @@ export default function RecipeInfoList({
 
           return (
             <ListItem key={ingredient.name}>
-              {Math.trunc(amount)} {unit} {ingredient.name}
+              {roundNumber(amount)} {unit} {ingredient.name}
             </ListItem>
           );
         })}
