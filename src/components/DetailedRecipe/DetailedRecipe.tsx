@@ -1,5 +1,6 @@
 import { styled } from "@pigment-css/react";
 import { type SpoonacularRecipe } from "@components/RecipeInfo/RecipeInfo";
+import { ON_MOBILE } from "@components/Global";
 
 type RecipeInstruction = {
   name: string;
@@ -55,7 +56,19 @@ function RecipeItem({
   );
 }
 const StepContainer = styled("li")({});
-const StepTitle = styled("h1")({});
 
-const StepsList = styled("ol")({});
+const StepTitle = styled("h1")({
+  [ON_MOBILE]: {
+    textAlign: "center",
+  },
+});
+
+const StepsList = styled("ol")({
+  marginLeft: "24px",
+
+  [ON_MOBILE]: {
+    marginTop: "12px",
+  },
+});
+
 const Step = styled("li")({});

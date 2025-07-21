@@ -107,15 +107,6 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         </ListContainer>
 
         <RecipeStepsList recipes={recipeInfo} />
-
-        <>
-          <p>testing: </p>
-          <AppTooltip type="vegan"></AppTooltip>
-          <AppTooltip type="vegetarian"></AppTooltip>
-          <AppTooltip type="sustainable"></AppTooltip>
-          <AppTooltip type="healthy"></AppTooltip>
-          <AppTooltip type="popular"></AppTooltip>
-        </>
       </PageMargin>
     </>
   );
@@ -134,6 +125,12 @@ const SourceCredit = styled("small")({
   width: "fit-content",
   marginRight: "36px",
   fontSize: `${14 / 16}rem`,
+
+  [ON_MOBILE]: {
+    width: "100%",
+    margin: 0,
+    textAlign: "center",
+  },
 });
 
 const Link = styled("a")({
@@ -154,6 +151,12 @@ const Title = styled("h1")({
   fontSize: `${30 / 16}rem`,
   marginTop: "5px",
   marginBottom: "12px",
+
+  [ON_MOBILE]: {
+    marginTop: "12px",
+    width: "100%",
+    textAlign: "center",
+  },
 });
 
 const Wrapper = styled("div")({
@@ -183,6 +186,11 @@ const AllergenWarning = styled("section")({
     backgroundColor: "var(--warn-500)",
     opacity: "30%",
     zIndex: -1,
+  },
+
+  [ON_MOBILE]: {
+    marginLeft: "auto",
+    marginRight: "auto",
   },
 });
 
