@@ -112,14 +112,18 @@ export default function RecipeInfo({ recipeInfo }: { recipeInfo: SpoonacularReci
           <CookingInfoTitle>Total Time:</CookingInfoTitle>
           <CookingInfoText>{recipeInfo.readyInMinutes} minutes</CookingInfoText>
         </CookingInfo>
-        <CookingInfo>
-          <CookingInfoTitle>Cooking:</CookingInfoTitle>
-          <CookingInfoText>{recipeInfo.cookingMinutes} minutes</CookingInfoText>
-        </CookingInfo>
-        <CookingInfo>
-          <CookingInfoTitle>Preparation:</CookingInfoTitle>
-          <CookingInfoText>{recipeInfo.preparationMinutes} minutes</CookingInfoText>
-        </CookingInfo>
+        {recipeInfo.cookingMinutes && (
+          <CookingInfo>
+            <CookingInfoTitle>Cooking:</CookingInfoTitle>
+            <CookingInfoText>{recipeInfo.cookingMinutes} minutes</CookingInfoText>
+          </CookingInfo>
+        )}
+        {recipeInfo.preparationMinutes && (
+          <CookingInfo>
+            <CookingInfoTitle>Preparation:</CookingInfoTitle>
+            <CookingInfoText>{recipeInfo.preparationMinutes} minutes</CookingInfoText>
+          </CookingInfo>
+        )}
         <CookingInfo>
           <CookingInfoTitle>Ingredients:</CookingInfoTitle>
           <CookingInfoText>{recipeInfo.extendedIngredients.length}</CookingInfoText>
