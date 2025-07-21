@@ -9,6 +9,7 @@ import Icon from "@components/Icon";
 import RecipeInfoList from "@components/RecipeInfoList";
 import RecipeStepsList from "@components/DetailedRecipe";
 import { notFound } from "next/navigation";
+import MobileRecipeActions from "@components/RecipeActions/MobileRecipeActions";
 
 // Revalidate the cache every hour
 const CACHE_ONE_HOUR = 3600;
@@ -67,6 +68,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           Source: <Link href={recipeInfo.sourceUrl}>{recipeInfo.creditsText}</Link>
         </SourceCredit>
       </figure>
+      <MobileRecipeActions />
       <PageMargin>
         <TitleSection>
           <Title>{recipeInfo.title}</Title>
@@ -76,7 +78,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           {recipeInfo.veryHealthy && <AppTooltip type="healthy" />}
           {recipeInfo.veryPopular && <AppTooltip type="popular" />}
         </TitleSection>
-        {/* <MobileRecipeActions></MobileRecipeActions> */}
+
         <AllergenWarning>
           <Icon
             icon="TriangleAlert"

@@ -133,7 +133,17 @@ export default function RecipeInfo({ recipeInfo }: { recipeInfo: SpoonacularReci
   );
 }
 
-const Summary = styled("p")({});
+const Summary = styled("p")({
+  // Have the a tags use our own styling
+  "& > a": {
+    color: "var(--text-900)",
+    fontWeight: "bold",
+
+    "&:hover": {
+      textDecoration: "none",
+    },
+  },
+});
 
 const CookingInfoContainer = styled("div")({});
 const CookingInfo = styled("div")({});

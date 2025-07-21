@@ -29,17 +29,27 @@ const RecipeActionsContainer = styled("div")({
   },
 });
 
-const RecipeAction = styled(Button)({
+export const RecipeAction = styled(Button)({
   display: "flex",
   flexDirection: "column",
 });
-const RecipeActionText = styled("p")({});
 
-const UnitButton = styled(Button)({
+export const RecipeActionText = styled("p")({
+  fontSize: `${16 / 16}rem`,
+  fontWeight: 700,
+});
+
+export const UnitButton = styled(Button)({
   borderRadius: `${36 / 16}rem`,
   padding: "12px 26px",
   background: "var(--text-900)",
   color: "var(--text-50)",
+  fontSize: `${16 / 16}rem`,
+  fontWeight: 700,
+
+  "&:hover": {
+    background: "var(--text-700)",
+  },
 });
 
 export default RecipeActions;
