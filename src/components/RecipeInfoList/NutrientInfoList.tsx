@@ -1,32 +1,25 @@
-"use client";
-
 import { styled } from "@pigment-css/react";
-import { useState } from "react";
 import { type SpoonacularRecipe } from "@components/RecipeInfo/RecipeInfo";
 import { ON_MOBILE } from "@components/Global";
 
-export default function RecipeInfoList({
-  ingredients,
+export default function NutrientInfoList({
+  nutrients,
 }: {
-  ingredients: SpoonacularRecipe["extendedIngredients"];
+  nutrients: SpoonacularRecipe["nutrition"]["nutrients"];
 }) {
-  const [metric, setMetric] = useState(false);
-
   return (
     <Container>
-      <Title>Ingredients</Title>
+      <Title>Nutrients</Title>
       <List>
-        {ingredients.map((ingredient) => {
-          const amount = metric
-            ? ingredient.measures.metric.amount
-            : ingredient.measures.us.amount;
-          const unit = metric
-            ? ingredient.measures.metric.unitShort
-            : ingredient.measures.us.unitShort;
-
+        {nutrients.map((nutrient) => {
           return (
-            <ListItem key={ingredient.name}>
-              {Math.trunc(amount)} {unit} {ingredient.name}
+            <ListItem key={nutrient.name}>
+              <span>
+                {nutrient.name} {"  "}
+                {Math.trunc(nutrient.amount)}
+                {nutrient.unit}
+              </span>
+              <span>{nutrient.percentOfDailyNeeds}%</span>
             </ListItem>
           );
         })}
@@ -68,6 +61,7 @@ const Container = styled("div")({
 
 const Title = styled("h1")({
   fontSize: `${24 / 16}rem`,
+  position: "sticky",
 });
 
 const List = styled("ul")({
@@ -77,4 +71,8 @@ const List = styled("ul")({
 
 const ListItem = styled("li")({
   fontSize: `${16 / 16}rem`,
+  display: "flex",
+  justifyContent: "space-between",
+  flex: 1,
+  minHeight: 0,
 });

@@ -3,13 +3,14 @@ import RecipeInfo from "@components/RecipeInfo";
 import { type SpoonacularRecipe } from "@components/RecipeInfo/RecipeInfo";
 import Image from "next/image";
 import { css, styled } from "@pigment-css/react";
-import { PageMargin } from "@components/Global";
+import { ON_MOBILE, PageMargin } from "@components/Global";
 import RecipeActions from "@components/RecipeActions";
 import Icon from "@components/Icon";
 import RecipeInfoList from "@components/RecipeInfoList";
 import RecipeStepsList from "@components/DetailedRecipe";
 import { notFound } from "next/navigation";
 import MobileRecipeActions from "@components/RecipeActions/MobileRecipeActions";
+import NutrientInfoList from "@components/RecipeInfoList/NutrientInfoList";
 
 // Revalidate the cache every hour
 const CACHE_ONE_HOUR = 3600;
@@ -100,7 +101,10 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           <RecipeActions />
         </Wrapper>
 
-        <RecipeInfoList ingredients={recipeInfo.extendedIngredients} />
+        <ListContainer>
+          <RecipeInfoList ingredients={recipeInfo.extendedIngredients} />
+          <NutrientInfoList nutrients={recipeInfo.nutrition.nutrients} />
+        </ListContainer>
 
         <RecipeStepsList recipes={recipeInfo} />
 
@@ -188,4 +192,17 @@ const AllergenTitle = styled("h2")({
 });
 const AllergenText = styled("p")({
   fontSize: `${16 / 16}rem`,
+});
+
+const ListContainer = styled("div")({
+  display: "flex",
+  justifyContent: "space-around",
+  marginBottom: "24px",
+  gap: "12px",
+
+  [ON_MOBILE]: {
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "24px",
+  },
 });
