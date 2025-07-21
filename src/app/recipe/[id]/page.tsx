@@ -149,6 +149,7 @@ const TitleSection = styled("div")({
 const Title = styled("h1")({
   fontSize: `${30 / 16}rem`,
   marginTop: "5px",
+  marginBottom: "12px",
 });
 
 const Wrapper = styled("div")({
@@ -164,6 +165,7 @@ const AllergenWarning = styled("section")({
   position: "relative",
   gap: "24px",
   borderLeft: "2px solid var(--warn-600)",
+  marginBottom: "12px",
 
   "&::before": {
     content: "''",
@@ -181,5 +183,9 @@ const AllergenWarning = styled("section")({
 });
 
 const AllergenContent = styled("div")({});
-const AllergenTitle = styled("h2")({});
-const AllergenText = styled("p")({});
+const AllergenTitle = styled("h2")({
+  fontSize: `${20 / 16}rem`,
+});
+const AllergenText = styled("p")({
+  fontSize: `${16 / 16}rem`,
+});

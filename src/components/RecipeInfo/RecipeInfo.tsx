@@ -145,7 +145,24 @@ const Summary = styled("p")({
   },
 });
 
-const CookingInfoContainer = styled("div")({});
+const CookingInfoContainer = styled("div")({
+  display: "flex",
+  flexWrap: "wrap",
+  maxWidth: "600px",
+  padding: "30px 40px",
+  background: "var(--accent-200)",
+  gap: "46px",
+  justifyContent: "center",
+  alignItems: "center",
+  borderRadius: "8px",
+  marginTop: "40px",
+  marginBottom: "50px",
+});
 const CookingInfo = styled("div")({});
-const CookingInfoTitle = styled("h2")({});
-const CookingInfoText = styled("p")({});
+const CookingInfoTitle = styled("label")({
+  fontSize: `${16 / 16}rem`,
+});
+const CookingInfoText = styled("h3")({
+  fontSize: `${20 / 16}rem`,
+  fontWeight: 700,
+});
