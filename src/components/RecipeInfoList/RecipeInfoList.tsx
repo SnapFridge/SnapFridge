@@ -4,17 +4,7 @@ import { styled } from "@pigment-css/react";
 import { type SpoonacularRecipe } from "@components/RecipeInfo/RecipeInfo";
 import { ON_MOBILE } from "@components/Global";
 import { useUnit } from "@components/UnitProvider";
-
-function roundNumber(num: number) {
-  // rounding function to handle stuff like 0.25 cups and weird measurements
-  // like 178.958 ml
-
-  if (num < 1) {
-    return parseFloat(num.toFixed(2));
-  }
-
-  return Math.round(num);
-}
+import { roundNumber } from "@components/Global";
 
 export default function RecipeInfoList({
   ingredients,

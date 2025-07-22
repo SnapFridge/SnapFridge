@@ -34,6 +34,18 @@ export function scaleClamped(
   return `clamp(${round(sizeAtMin)}${unit}, ${round(slope * (rem ? 1600 : 100))}vw + ${yIntercept}${unit}, ${round(sizeAtMax)}${unit})`;
 }
 
+// rounding logic for recipe ingredient/nutrient list
+export function roundNumber(num: number) {
+  // rounding function to handle stuff like 0.25 cups and weird measurements
+  // like 178.958 ml
+
+  if (num < 1) {
+    return parseFloat(num.toFixed(2));
+  }
+
+  return Math.round(num);
+}
+
 export type Ingredient = {
   name: string;
   amount: number;
