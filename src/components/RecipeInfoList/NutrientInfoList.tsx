@@ -66,7 +66,7 @@ const Title = styled("h1")({
 
 const List = styled("ul")({
   marginLeft: "12px",
-  overflow: "scroll",
+  overflow: "auto",
 });
 
 const ListItem = styled("li")({
