@@ -1,7 +1,6 @@
 "use client";
 
 import { styled } from "@pigment-css/react";
-import { useState } from "react";
 import { type SpoonacularRecipe } from "@components/RecipeInfo/RecipeInfo";
 import { ON_MOBILE } from "@components/Global";
 import { useUnit } from "@components/UnitProvider";

@@ -70,7 +70,9 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           Source: <Link href={recipeInfo.sourceUrl}>{recipeInfo.creditsText}</Link>
         </SourceCredit>
       </figure>
+      {/* We should we able to tab to the controls first */}
       <MobileRecipeActions />
+
       <PageMargin>
         <TitleSection>
           <Title>{recipeInfo.title}</Title>
@@ -98,8 +100,8 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         </AllergenWarning>
 
         <Wrapper>
-          <RecipeInfo recipeInfo={recipeInfo} />
           <RecipeActions />
+          <RecipeInfo recipeInfo={recipeInfo} />
         </Wrapper>
 
         <ListContainer>
@@ -164,6 +166,8 @@ const Title = styled("h1")({
 const Wrapper = styled("div")({
   display: "flex",
   gap: "16px",
+  // Allows us to tab the controls first
+  flexDirection: "row-reverse",
 });
 
 const AllergenWarning = styled("section")({
