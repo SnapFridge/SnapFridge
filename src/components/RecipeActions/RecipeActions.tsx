@@ -1,9 +1,14 @@
+"use client";
+
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import Button from "@components/Button";
 import { ON_MOBILE } from "@components/Global";
+import { useUnit } from "@components/UnitProvider";
 
 function RecipeActions() {
+  const [unit, toggleUnit] = useUnit();
+
   return (
     <RecipeActionsContainer>
       <RecipeAction variant="icon">
@@ -14,7 +19,9 @@ function RecipeActions() {
         <Icon icon="Share2" size={36} />
         <RecipeActionText>Share</RecipeActionText>
       </RecipeAction>
-      <UnitButton variant="primary">Metric</UnitButton>
+      <UnitButton variant="primary" onClick={toggleUnit}>
+        {unit === "metric" ? "Metric" : "Imperial"}
+      </UnitButton>
     </RecipeActionsContainer>
   );
 }
@@ -41,6 +48,7 @@ export const RecipeActionText = styled("p")({
 
 export const UnitButton = styled(Button)({
   borderRadius: `${36 / 16}rem`,
+  maxWidth: "104px",
   padding: "12px 26px",
   background: "var(--text-900)",
   color: "var(--text-50)",

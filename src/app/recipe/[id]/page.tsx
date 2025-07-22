@@ -11,6 +11,7 @@ import RecipeStepsList from "@components/DetailedRecipe";
 import { notFound } from "next/navigation";
 import MobileRecipeActions from "@components/RecipeActions/MobileRecipeActions";
 import NutrientInfoList from "@components/RecipeInfoList/NutrientInfoList";
+import UnitProvider from "@components/UnitProvider";
 
 // Revalidate the cache every hour
 const CACHE_ONE_HOUR = 3600;
@@ -55,7 +56,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
   if (!recipeInfo) notFound();
 
   return (
-    <>
+    <UnitProvider>
       <figure>
         <Image
           className={RecipeImage}
@@ -103,12 +104,13 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
         <ListContainer>
           <RecipeInfoList ingredients={recipeInfo.extendedIngredients} />
+          <Spacer />
           <NutrientInfoList nutrients={recipeInfo.nutrition.nutrients} />
         </ListContainer>
 
         <RecipeStepsList recipes={recipeInfo} />
       </PageMargin>
-    </>
+    </UnitProvider>
   );
 }
 
@@ -204,7 +206,6 @@ const AllergenText = styled("p")({
 
 const ListContainer = styled("div")({
   display: "flex",
-  justifyContent: "space-around",
   marginBottom: "24px",
   gap: "12px",
 
@@ -213,4 +214,9 @@ const ListContainer = styled("div")({
     alignItems: "center",
     gap: "24px",
   },
+});
+
+const Spacer = styled("div")({
+  flex: 1,
+  maxWidth: "200px",
 });

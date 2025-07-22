@@ -4,6 +4,7 @@ import { styled } from "@pigment-css/react";
 import { useState } from "react";
 import { type SpoonacularRecipe } from "@components/RecipeInfo/RecipeInfo";
 import { ON_MOBILE } from "@components/Global";
+import { useUnit } from "@components/UnitProvider";
 
 function roundNumber(num: number) {
   // rounding function to handle stuff like 0.25 cups and weird measurements
@@ -21,23 +22,25 @@ export default function RecipeInfoList({
 }: {
   ingredients: SpoonacularRecipe["extendedIngredients"];
 }) {
-  const [metric, setMetric] = useState(false);
+  const [unit] = useUnit();
 
   return (
     <Container>
       <Title>Ingredients</Title>
       <List>
         {ingredients.map((ingredient) => {
-          const amount = metric
-            ? ingredient.measures.metric.amount
-            : ingredient.measures.us.amount;
-          const unit = metric
-            ? ingredient.measures.metric.unitShort
-            : ingredient.measures.us.unitShort;
+          const amount =
+            unit === "metric"
+              ? ingredient.measures.metric.amount
+              : ingredient.measures.us.amount;
+          const displayedUnit =
+            unit === "metric"
+              ? ingredient.measures.metric.unitShort
+              : ingredient.measures.us.unitShort;
 
           return (
             <ListItem key={ingredient.name}>
-              {roundNumber(amount)} {unit} {ingredient.name}
+              {roundNumber(amount)} {displayedUnit} {ingredient.name}
             </ListItem>
           );
         })}

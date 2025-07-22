@@ -1,16 +1,23 @@
+"use client";
+
 import { ON_MOBILE } from "@components/Global";
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import { RecipeAction, RecipeActionText, UnitButton } from "./RecipeActions";
+import { useUnit } from "@components/UnitProvider";
 
 function MobileRecipeActions() {
+  const [unit, toggleUnit] = useUnit();
+
   return (
     <Wrapper>
       <RecipeAction variant="icon">
         <Icon icon="Heart" color="#FF4848" size={24} />
         <MobileActionText>Save</MobileActionText>
       </RecipeAction>
-      <UnitButton variant="primary">Metric</UnitButton>
+      <UnitButton variant="primary" onClick={toggleUnit}>
+        {unit === "metric" ? "Metric" : "Imperial"}
+      </UnitButton>
       <RecipeAction variant="icon">
         <Icon icon="Share2" size={24} />
         <MobileActionText>Share</MobileActionText>
