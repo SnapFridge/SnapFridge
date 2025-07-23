@@ -6,6 +6,7 @@ import Footer from "@components/Footer";
 import CookieBanner from "@components/CookieBanner";
 import { type PropsWithChildren } from "react";
 import { cookies } from "next/headers";
+import { styled } from "@pigment-css/react";
 
 const poppins = Poppins({
   weight: ["400", "700"],
@@ -20,13 +21,27 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   const themeClass = theme === "dark" ? "dark" : "";
 
   return (
-    <html lang="en" className={`${poppins.className} ${themeClass}`}>
-      <body>
+    <Html lang="en" className={`${poppins.className} ${themeClass}`}>
+      <Body>
         <NavBar />
-        <main>{children}</main>
+        <Main>{children}</Main>
         <Footer />
         <CookieBanner />
-      </body>
-    </html>
+      </Body>
+    </Html>
   );
 }
+
+const Html = styled("html")({
+  height: "100%",
+});
+
+const Body = styled("body")({
+  display: "flex",
+  flexDirection: "column",
+  height: "100%",
+});
+
+const Main = styled("main")({
+  flexGrow: 1,
+});
