@@ -1,6 +1,6 @@
 "use client";
 
-import { createClient } from "@utils/supabase/component";
+import { createClient } from "@utils/supabase/client";
 import OAuthLoginCards from "@components/OAuthLoginCards";
 import { styled } from "@pigment-css/react";
 
