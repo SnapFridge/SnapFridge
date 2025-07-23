@@ -1,4 +1,4 @@
-import { styled, sx } from "@pigment-css/react";
+import { styled } from "@pigment-css/react";
 
 export default function Error() {
   return <Title>Sorry, something went wrong</Title>;
