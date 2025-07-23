@@ -288,8 +288,8 @@ const CSP = `
   script-src 'wasm-unsafe-eval' ${devEnv ? "'unsafe-eval'" : ""};
   script-src-elem 'self' 'unsafe-inline' https://apis.google.com;
   style-src 'self' 'unsafe-inline' ${devEnv ? "'unsafe-eval'" : ""};
-  connect-src 'self' https://identitytoolkit.googleapis.com;
-  frame-src https://snapfridge-94ab2.firebaseapp.com;
+  connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com;
+  frame-src ${process.env["NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN"]!};
   manifest-src 'self';
   object-src 'none';
   frame-ancestors 'none';
