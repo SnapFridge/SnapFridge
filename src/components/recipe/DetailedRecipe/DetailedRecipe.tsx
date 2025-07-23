@@ -1,5 +1,5 @@
 import { styled } from "@pigment-css/react";
-import { type SpoonacularRecipe } from "@components/RecipeInfo/RecipeInfo";
+import { type SpoonacularRecipe } from "@components/recipe/RecipeInfo/RecipeInfo";
 import { ON_MOBILE } from "@components/Global";
 
 type RecipeInstruction = {

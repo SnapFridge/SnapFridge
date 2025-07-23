@@ -1,16 +1,16 @@
 import AppTooltip from "@components/Tooltip";
-import RecipeInfo from "@components/RecipeInfo";
-import { type SpoonacularRecipe } from "@components/RecipeInfo/RecipeInfo";
+import RecipeInfo from "@components/recipe/RecipeInfo";
+import { type SpoonacularRecipe } from "@components/recipe/RecipeInfo/RecipeInfo";
 import Image from "next/image";
 import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE, PageMargin } from "@components/Global";
-import RecipeActions from "@components/RecipeActions";
+import RecipeActions from "@components/recipe/RecipeActions";
 import Icon from "@components/Icon";
-import RecipeInfoList from "@components/RecipeInfoList";
-import RecipeStepsList from "@components/DetailedRecipe";
+import RecipeInfoList from "@components/recipe/RecipeInfoList";
+import RecipeStepsList from "@components/recipe/DetailedRecipe";
 import { notFound } from "next/navigation";
-import MobileRecipeActions from "@components/RecipeActions/MobileRecipeActions";
-import NutrientInfoList from "@components/RecipeInfoList/NutrientInfoList";
+import MobileRecipeActions from "@components/recipe/RecipeActions/MobileRecipeActions";
+import NutrientInfoList from "@components/recipe/RecipeInfoList/NutrientInfoList";
 import UnitProvider from "@components/UnitProvider";
 
 // Revalidate the cache every hour

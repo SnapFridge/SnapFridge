@@ -4,92 +4,51 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   signInAnonymously,
-  signInWithPopup,
-  onAuthStateChanged,
-  linkWithPopup,
+  signInWithRedirect,
+  linkWithRedirect,
+  getRedirectResult,
 } from "firebase/auth";
-import { auth } from "../../utils/firebaseConfig";
+import { auth } from "@utils/firebaseConfig";
+import Button from "@components/Button";
+import { useEffect } from "react";
 
-interface Provider {
-  provider: "google" | "github";
-}
+type Provider = GoogleAuthProvider | GithubAuthProvider | "anonymous";
 
 export default function Page() {
-  // todo: maybe move this into its own component, GoogleSignIn.tsx ?
-  async function GoogleSignIn() {
-    const provider = new GoogleAuthProvider();
-
-    try {
-      const res = await signInWithPopup(auth, provider);
-      console.log(res.user.displayName);
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
-  async function GithubSignIn() {
-    const provider = new GithubAuthProvider();
-
-    try {
-      const res = await signInWithPopup(auth, provider);
-      console.log(res.user.displayName);
-    } catch (e) {
-      console.error(e);
-    }
-  }
-
-  async function AnonSignIn() {
-    try {
+  async function signIn(provider: Provider) {
+    if (provider === "anonymous") {
       await signInAnonymously(auth);
-    } catch (e) {
-      console.error(e);
+    } else {
+      await signInWithRedirect(auth, provider);
     }
   }
 
-  async function ConvertAnonToPermanent(provider: Provider) {
+  async function linkAnonymous(provider: Exclude<Provider, "anonymous">) {
     if (!auth.currentUser) {
       throw new Error("no auth user found");
     }
-
-    let authProvider;
-
-    // todo: handle error of auth credential already in use
-    switch (provider.provider) {
-      case "google":
-        authProvider = new GoogleAuthProvider();
-        try {
-          const res = await linkWithPopup(auth.currentUser, authProvider);
-        } catch (e) {
-          throw e;
-        }
-        break;
-
-      case "github":
-        authProvider = new GithubAuthProvider();
-        try {
-          const res = await linkWithPopup(auth.currentUser, authProvider);
-        } catch (e) {
-          throw e;
-        }
-        break;
-    }
+    await linkWithRedirect(auth.currentUser, provider);
   }
 
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      const uid = user.uid;
-      console.log(uid);
-    } else {
-      console.log("signed out");
+  async function printAuthRes() {
+    const usr = await getRedirectResult(auth);
+    if (usr) {
+      console.log(usr);
     }
-  });
-
+  }
+  useEffect(() => void printAuthRes(), []);
   return (
     <>
-      <h1>login page</h1>
-      <button onClick={GoogleSignIn}>google sign in</button>
-      <button onClick={GithubSignIn}>github sign in</button>
-      <button onClick={AnonSignIn}>sign in anonymously</button>
+      <h1>Login page</h1>
+      <Button variant={"primary"} onClick={() => signIn(new GoogleAuthProvider())}>
+        Google
+      </Button>
+      <Button variant={"primary"} onClick={() => signIn(new GithubAuthProvider())}>
+        Github
+      </Button>
+      <Button variant={"primary"} onClick={() => signIn("anonymous")}>
+        Anonymous
+      </Button>
     </>
   );
 }

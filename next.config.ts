@@ -285,11 +285,13 @@ const devEnv = process.env.NODE_ENV === "development";
 const CSP = `
   default-src 'self';
   img-src 'self' https://img.spoonacular.com blob:;
-  script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' ${devEnv ? "'unsafe-eval'" : ""};
+  script-src 'wasm-unsafe-eval' ${devEnv ? "'unsafe-eval'" : ""};
+  script-src-elem 'self' 'unsafe-inline' https://apis.google.com;
   style-src 'self' 'unsafe-inline' ${devEnv ? "'unsafe-eval'" : ""};
+  connect-src 'self' https://identitytoolkit.googleapis.com;
+  frame-src https://snapfridge-94ab2.firebaseapp.com;
   manifest-src 'self';
   object-src 'none';
-  frame-src 'none';
   frame-ancestors 'none';
   media-src 'none';
   sandbox allow-forms allow-scripts allow-same-origin;
@@ -338,10 +340,9 @@ export default withPigment(
               key: "Cross-Origin-Embedder-Policy",
               value: "require-corp",
             },
-            // Allow popups for OAUTH
             {
               key: "Cross-Origin-Opener-Policy",
-              value: "same-origin-allow-popups",
+              value: "same-origin",
             },
             {
               key: "Content-Security-Policy",
