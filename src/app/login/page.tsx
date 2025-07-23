@@ -4,13 +4,12 @@ import {
   GithubAuthProvider,
   GoogleAuthProvider,
   signInAnonymously,
-  signInWithRedirect,
-  linkWithRedirect,
-  getRedirectResult,
+  onAuthStateChanged,
+  signInWithPopup,
+  linkWithPopup,
 } from "firebase/auth";
 import { auth } from "@utils/firebaseConfig";
 import Button from "@components/Button";
-import { useEffect } from "react";
 
 type Provider = GoogleAuthProvider | GithubAuthProvider | "anonymous";
 
@@ -19,7 +18,7 @@ export default function Page() {
     if (provider === "anonymous") {
       await signInAnonymously(auth);
     } else {
-      await signInWithRedirect(auth, provider);
+      await signInWithPopup(auth, provider);
     }
   }
 
@@ -27,16 +26,13 @@ export default function Page() {
     if (!auth.currentUser) {
       throw new Error("no auth user found");
     }
-    await linkWithRedirect(auth.currentUser, provider);
+    await linkWithPopup(auth.currentUser, provider);
   }
 
-  async function printAuthRes() {
-    const usr = await getRedirectResult(auth);
-    if (usr) {
-      console.log(usr);
-    }
-  }
-  useEffect(() => void printAuthRes(), []);
+  onAuthStateChanged(auth, (usr) => {
+    console.log(usr == null ? "signed out" : usr.displayName);
+  });
+
   return (
     <>
       <h1>Login page</h1>

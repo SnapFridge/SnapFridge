@@ -289,17 +289,26 @@ const CSP = `
   script-src-elem 'self' 'unsafe-inline' https://apis.google.com;
   style-src 'self' 'unsafe-inline' ${devEnv ? "'unsafe-eval'" : ""};
   connect-src 'self' https://identitytoolkit.googleapis.com https://securetoken.googleapis.com;
-  frame-src ${process.env["NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN"]!};
   manifest-src 'self';
   object-src 'none';
   frame-ancestors 'none';
   media-src 'none';
-  sandbox allow-forms allow-scripts allow-same-origin;
   upgrade-insecure-requests;
+  frame-src https://github.com https://snapfridge-94ab2.firebaseapp.com https://accounts.google.com;
+  sandbox allow-forms allow-scripts allow-same-origin allow-popups;
  `.replace(/\s{2,}/g, " ");
 
 export default withPigment(
   {
+    //async rewrites() {
+    //  return [
+    //    {
+    //      source: "/__/auth/:path*",
+    //      destination: `https://${process.env["NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN"]}/__/auth/:path*`,
+    //    },
+    //  ];
+    //},
+
     experimental: {
       inlineCss: true,
       typedRoutes: true,
@@ -336,14 +345,14 @@ export default withPigment(
         {
           source: "/(.*)",
           headers: [
-            {
-              key: "Cross-Origin-Embedder-Policy",
-              value: "require-corp",
-            },
-            {
-              key: "Cross-Origin-Opener-Policy",
-              value: "same-origin",
-            },
+            //{
+            //  key: "Cross-Origin-Embedder-Policy",
+            //  value: "require-corp",
+            //},
+            //{
+            //  key: "Cross-Origin-Opener-Policy",
+            //  value: "same-origin",
+            //},
             {
               key: "Content-Security-Policy",
               value: CSP,
