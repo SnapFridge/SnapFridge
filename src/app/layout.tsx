@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   const themeClass = theme === "dark" ? "dark" : "";
 
   return (
-    <Html
+    <html
       lang="en"
       className={`${poppins.className} ${themeClass}`}
       suppressHydrationWarning
@@ -47,18 +47,14 @@ export default async function RootLayout({ children }: PropsWithChildren) {
         <Footer />
         <CookieBanner />
       </Body>
-    </Html>
+    </html>
   );
 }
-
-const Html = styled("html")({
-  minHeight: "100%",
-});
 
 const Body = styled("body")({
   display: "flex",
   flexDirection: "column",
-  minHeight: "100%",
+  minHeight: "100vh",
 });
 
 const Main = styled("main")({

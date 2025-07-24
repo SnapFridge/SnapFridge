@@ -26,7 +26,7 @@ function ThemeSwitch({ ...delegated }) {
   useEffect(() => {
     const darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
     toggleTheme(darkMode ? "dark" : "light");
-  }, [toggleTheme]);
+  }, []);
 
   return (
     <Button

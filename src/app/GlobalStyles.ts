@@ -25,7 +25,7 @@ globalCss`
 globalCss`
   :root, body {
     width: 100%;
-    minHeight: 100%;
+    min-height: 100%;
     @media (min-width: ${MAX_SUPPORTED_WIDTH}px) {
       width: ${MAX_SUPPORTED_WIDTH}px;
       margin: auto;
