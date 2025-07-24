@@ -9,7 +9,7 @@ function ThemeSwitch({ ...delegated }) {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   function toggleTheme(override?: "light" | "dark") {
-    const nextTheme = (override ?? theme === "light") ? "dark" : "light";
+    const nextTheme = override || theme === "light" ? "dark" : "light";
     setTheme(nextTheme);
 
     Cookie.set("color-theme", nextTheme, {
@@ -24,12 +24,8 @@ function ThemeSwitch({ ...delegated }) {
   }
 
   useEffect(() => {
-    if (!Cookie.get("color-theme")) {
-      const darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      toggleTheme(darkMode ? "dark" : "light");
-    } else {
-      setTheme(document.documentElement.classList.contains("dark") ? "dark" : "light");
-    }
+    const darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    toggleTheme(darkMode ? "dark" : "light");
   }, [toggleTheme]);
 
   return (

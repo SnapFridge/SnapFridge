@@ -14,6 +14,20 @@ const poppins = Poppins({
   display: "fallback",
 });
 
+const ThemeScript = () => {
+  const blockingScript = `
+    (function() {
+      const cookieExists = document.cookie.includes("color-theme=");
+
+      if (!cookieExists) {
+        const theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : undefined;
+        if (theme) document.documentElement.classList.add('dark');
+      }
+    })();
+  `;
+  return <script>{blockingScript}</script>;
+};
+
 export default async function RootLayout({ children }: PropsWithChildren) {
   const savedTheme = (await cookies()).get("color-theme");
   const theme = savedTheme?.value || "light";
@@ -21,8 +35,13 @@ export default async function RootLayout({ children }: PropsWithChildren) {
   const themeClass = theme === "dark" ? "dark" : "";
 
   return (
-    <Html lang="en" className={`${poppins.className} ${themeClass}`}>
+    <Html
+      lang="en"
+      className={`${poppins.className} ${themeClass}`}
+      suppressHydrationWarning
+    >
       <Body>
+        <ThemeScript />
         <NavBar />
         <Main>{children}</Main>
         <Footer />
