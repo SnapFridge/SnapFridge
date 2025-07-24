@@ -33,10 +33,8 @@ const StyledButton = styled("button")<{ variant: Variant | undefined }>({
   // Hidden dependency relied upon by the trickery we use later
   position: "relative",
 
-  "&:hover": {
-    "&:not(:disabled)": {
-      backgroundColor: "var(--background-hover)",
-    },
+  "&:hover:not(:disabled)": {
+    backgroundColor: "var(--background-hover)",
   },
 
   "&:disabled": {

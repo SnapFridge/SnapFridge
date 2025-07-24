@@ -1,12 +1,18 @@
 import { createClient } from "@utils/supabase/server";
-import LoginButtons from "@components/LoginButtons";
+import LoginButtons from "@components/login/LoginButtons";
 import { redirect } from "next/navigation";
 
 export default async function Page() {
   const supabase = await createClient();
 
-  const { data, error } = await supabase.auth.getUser();
-  if (error || !data?.user) {
+  const {
+    //  error,
+    data: { user },
+  } = await supabase.auth.getUser();
+  //if (error) {
+  //  throw error;
+  //}
+  if (user !== null) {
     redirect("/user");
   }
 
