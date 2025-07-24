@@ -3,7 +3,7 @@
 import { styled } from "@pigment-css/react";
 
 export default function Error() {
-  return <Title>Sorry, something went wrong</Title>;
+  return <Title>Oops, something went wrong!</Title>;
 }
 
 const Title = styled("h1")({});
