@@ -33,13 +33,13 @@ export default async function RootLayout({ children }: PropsWithChildren) {
 }
 
 const Html = styled("html")({
-  height: "100%",
+  minHeight: "100%",
 });
 
 const Body = styled("body")({
   display: "flex",
   flexDirection: "column",
-  height: "100%",
+  minHeight: "100%",
 });
 
 const Main = styled("main")({

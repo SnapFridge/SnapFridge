@@ -4,6 +4,7 @@ import Link from "@components/Link";
 import Logo from "@components/Logo";
 import { ON_MOBILE, scaleClamped } from "@components/Global";
 import HamburgerMenu from "./HamburgerMenu";
+import User from "@components/User";
 
 const Links: { href: "/snap" | "/about"; title: string }[] = [
   {
@@ -28,6 +29,7 @@ function NavBar() {
         ))}
       </LeftNav>
       <ThemeSwitch className={MobileGone} />
+      <User />
       <HamburgerMenu links={Links} />
     </Nav>
   );
@@ -37,6 +39,7 @@ const LeftNav = styled("div")({
   display: "flex",
   gap: scaleClamped(30, 45),
   alignItems: "center",
+  marginRight: "auto",
 });
 
 const NavLink = styled(Link)({
@@ -51,11 +54,11 @@ const MobileGone = css({
 
 const Nav = styled("nav")({
   display: "flex",
-  justifyContent: "space-between",
   alignItems: "center",
   padding: "0 var(--page-margin)",
   marginTop: "var(--nav-margin)",
   height: `var(--nav-height)`,
+  gap: "16px",
   zIndex: 2,
   position: "sticky",
   top: 0,

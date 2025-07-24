@@ -282,7 +282,9 @@ const theme = extendTheme({
 });
 
 const devEnv = process.env.NODE_ENV === "development";
-const CSP = `
+const CSP = true
+  ? ""
+  : `
   default-src 'self';
   img-src 'self' https://img.spoonacular.com blob:;
   script-src 'wasm-unsafe-eval' ${devEnv ? "'unsafe-eval'" : ""};

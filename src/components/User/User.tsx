@@ -1,0 +1,26 @@
+"use client";
+
+import { Avatar } from "radix-ui";
+import { useUserImage } from "./hooks.helper";
+import { css } from "@pigment-css/react";
+import Icon from "@components/Icon";
+
+function User() {
+  const userImage = useUserImage();
+
+  return (
+    <Avatar.Root>
+      <Avatar.Image className={UserAvatar} src={userImage} alt="User image" />
+      <Avatar.Fallback className={UserAvatar} asChild>
+        <Icon icon={"CircleUser"} color={"var(--text-950)"} size={28} />
+      </Avatar.Fallback>
+    </Avatar.Root>
+  );
+}
+
+const UserAvatar = css({
+  borderRadius: "50%",
+  height: "28px",
+});
+
+export default User;
