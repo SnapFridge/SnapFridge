@@ -17,6 +17,8 @@ import FoodPointer from "@components/home/FoodPointer";
 import Link from "next/link";
 import recipesExample from "@components/home/RecipesExample";
 import { type Metadata } from "next";
+import { createClient } from "@utils/supabase/server";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "SnapFridge - Reduce Food Waste & Plan Meals from Fridge Photos",
@@ -27,7 +29,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
+export default async function Page() {
+  const supabase = await createClient();
+
+  const { data } = await supabase.auth.getUser();
+  if (data?.user) {
+    redirect("/snap");
+  }
+
   return (
     <>
       <Hero>
