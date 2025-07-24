@@ -34,7 +34,7 @@ function CookieBanner() {
           <Title>Cookie Acknowledgement</Title>
           <p>
             SnapFridge uses cookies only to remember your login and support secure
-            authentication with Firebase. No tracking or analytics cookies are used.
+            authentication with Supabase. No tracking or analytics cookies are used.
           </p>
           <Button onClick={acknowledgeCookies} variant="secondary">
             Acknowledge

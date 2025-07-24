@@ -4,6 +4,8 @@ import OAuthLoginCards from "@components/login/OAuthLoginCards";
 import { styled } from "@pigment-css/react";
 import { createClient } from "@utils/supabase/client";
 
+const snapURL = `${process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://snapfridge.netlify.app"}/snap`;
+
 function LoginButtons() {
   const supabase = createClient();
 
@@ -13,35 +15,33 @@ function LoginButtons() {
         <li>
           <OAuthLoginCards
             variant="google"
-            onClick={() => {
-              supabase.auth.signInWithOAuth({
+            onClick={() =>
+              void supabase.auth.signInWithOAuth({
                 provider: "google",
                 options: {
-                  redirectTo: "https://snapfridge.netlify.app/snap",
+                  redirectTo: snapURL,
                 },
-              });
-            }}
+              })
+            }
           />
         </li>
         <li>
           <OAuthLoginCards
             variant="github"
-            onClick={() => {
-              supabase.auth.signInWithOAuth({
+            onClick={() =>
+              void supabase.auth.signInWithOAuth({
                 provider: "github",
                 options: {
-                  redirectTo: "https://snapfridge.netlify.app/snap",
+                  redirectTo: snapURL,
                 },
-              });
-            }}
+              })
+            }
           />
         </li>
         <li>
           <OAuthLoginCards
             variant="anon"
-            onClick={() => {
-              supabase.auth.signInAnonymously();
-            }}
+            onClick={() => void supabase.auth.signInAnonymously()}
           />
         </li>
       </AuthButtonList>
