@@ -26,7 +26,7 @@ function UnitProvider({ children }: React.PropsWithChildren) {
       unit,
       toggleUnit,
     };
-  }, [unit, setUnit]);
+  }, [unit, toggleUnit]);
 
   return <UnitContext value={value}>{children}</UnitContext>;
 }

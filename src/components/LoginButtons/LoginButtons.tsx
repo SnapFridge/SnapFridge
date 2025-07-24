@@ -12,7 +12,7 @@ function LoginButtons() {
           <OAuthLoginCards
             variant="google"
             onClick={() => {
-              supabase.auth.signInWithOAuth({
+              void supabase.auth.signInWithOAuth({
                 provider: "google",
                 options: {
                   redirectTo: "https://snapfridge.netlify.app/snap",
@@ -25,7 +25,7 @@ function LoginButtons() {
           <OAuthLoginCards
             variant="github"
             onClick={() => {
-              supabase.auth.signInWithOAuth({
+              void supabase.auth.signInWithOAuth({
                 provider: "github",
                 options: {
                   redirectTo: "https://snapfridge.netlify.app/snap",
@@ -38,7 +38,7 @@ function LoginButtons() {
           <OAuthLoginCards
             variant="anon"
             onClick={() => {
-              supabase.auth.signInAnonymously();
+              void supabase.auth.signInAnonymously();
             }}
           />
         </li>

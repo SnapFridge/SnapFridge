@@ -4,8 +4,6 @@ import { Avatar } from "radix-ui";
 import { useUserImage } from "./hooks.helper";
 import { css } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import Button from "@components/Button";
-import { redirect } from "next/navigation";
 import VisuallyHidden from "@components/VisuallyHidden";
 import Link from "@components/Link";
 

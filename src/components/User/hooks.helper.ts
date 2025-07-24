@@ -10,9 +10,9 @@ export function useUserImage() {
       if (error) {
         console.error(error);
       }
-      setImage(data.session?.user.user_metadata["avatar_url"] ?? null);
+      setImage((data.session?.user.user_metadata["avatar_url"] as string) ?? null);
     };
-    fetchUserImage();
+    void fetchUserImage();
   }, []);
 
   return image;
@@ -28,11 +28,11 @@ export function useEmail() {
         console.error(error);
       }
 
-      setEmail(data.session?.user.user_metadata["email"] ?? "?");
+      setEmail((data.session?.user.user_metadata["email"] as string) ?? null);
     };
 
-    fetchEmail();
+    void fetchEmail();
   }, []);
 
-  return email || "?";
+  return email;
 }
