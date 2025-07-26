@@ -5,13 +5,27 @@ import Icon from "@components/Icon";
 import Button from "@components/Button";
 import { ON_MOBILE } from "@components/Global";
 import { useUnit } from "@components/UnitProvider";
+import "@utils/supabase/client";
+import { useEffect, useState } from "react";
 
-function RecipeActions() {
+async function RecipeActions() {
   const [unit, toggleUnit] = useUnit();
+
+  const [savedRecipes, setSavedRecipes] = useState<number[]>([]);
+
+  async function getSavedRecipes() {
+    //const supabase = createClient();
+    //const { data: savedRecipes } = await supabase.from("saved_recipes").select();
+    //console.log(savedRecipes);
+  }
+
+  useEffect(() => {
+    void getSavedRecipes();
+  }, []);
 
   return (
     <RecipeActionsContainer>
-      <RecipeAction variant="icon">
+      <RecipeAction variant="icon" onClick={() => {}}>
         <Icon icon="Heart" color="#FF4848" size={36} />
         <RecipeActionText>Save</RecipeActionText>
       </RecipeAction>

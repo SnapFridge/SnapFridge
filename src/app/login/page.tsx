@@ -6,12 +6,9 @@ export default async function Page() {
   const supabase = await createClient();
 
   const {
-    //  error,
     data: { user },
   } = await supabase.auth.getUser();
-  //if (error) {
-  //  throw error;
-  //}
+
   if (user !== null) {
     redirect("/user");
   }

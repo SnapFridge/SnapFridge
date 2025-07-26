@@ -33,6 +33,7 @@ export default async function Page() {
   const supabase = await createClient();
 
   const { data } = await supabase.auth.getUser();
+
   if (data?.user) {
     redirect("/snap");
   }

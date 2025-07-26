@@ -13,7 +13,7 @@ function User() {
   return (
     <Avatar.Root asChild>
       <Link href="/user">
-        <VisuallyHidden>Login or go to user page</VisuallyHidden>
+        <VisuallyHidden>Go to user page</VisuallyHidden>
         <Avatar.Image className={UserAvatar} src={userImage} alt="User image" />
         <Avatar.Fallback className={UserAvatar} asChild>
           <Icon icon="CircleUser" color="var(--text-950)" size={28} />

@@ -4,13 +4,11 @@ import { createClient } from "@utils/supabase/server";
 export default async function Page() {
   const supabase = await createClient();
   const {
-    //  error,
+    error,
     data: { user },
   } = await supabase.auth.getUser();
-  //if (error) {
-  //  throw error;
-  //}
-  if (user === null) {
+
+  if (error || user === null) {
     redirect("/login");
   }
 
