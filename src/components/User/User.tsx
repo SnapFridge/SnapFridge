@@ -7,11 +7,15 @@ import Icon from "@components/Icon";
 import VisuallyHidden from "@components/VisuallyHidden";
 import Link from "@components/Link";
 
-function User() {
+interface Props extends React.PropsWithChildren {
+  className?: string;
+}
+
+function User({ className }: Props) {
   const userImage = useUserImage();
 
   return (
-    <Avatar.Root asChild>
+    <Avatar.Root className={className} asChild>
       <Link href="/user">
         <VisuallyHidden>Go to user page</VisuallyHidden>
         <Avatar.Image className={UserAvatar} src={userImage} alt="User image" />

@@ -29,7 +29,7 @@ function NavBar() {
         ))}
       </LeftNav>
       <ThemeSwitch className={MobileGone} />
-      <User />
+      <User className={MobileGone} />
       <HamburgerMenu links={Links} />
     </Nav>
   );

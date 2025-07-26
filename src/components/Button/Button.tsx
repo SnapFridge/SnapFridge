@@ -26,7 +26,7 @@ const StyledButton = styled("button")<{ variant: Variant | undefined }>({
   justifyContent: "center",
   textDecoration: "none",
   fontSize: `${16 / 16}rem`,
-  padding: `${10 / 16}rem`,
+  padding: `10px`,
   borderRadius: "8px",
   border: "none",
   color: "var(--text-950)",

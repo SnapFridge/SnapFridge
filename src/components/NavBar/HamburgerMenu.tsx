@@ -1,9 +1,11 @@
 "use client";
+
 import Button from "@components/Button";
 import { ON_MOBILE } from "@components/Global";
 import Icon from "@components/Icon";
 import Link from "@components/Link";
 import ThemeSwitch from "@components/ThemeSwitch";
+import User from "@components/User";
 import { styled } from "@pigment-css/react";
 import { Dialog } from "radix-ui";
 import { useRef } from "react";
@@ -41,6 +43,7 @@ function HamburgerMenu({ links }: Props) {
               </Dialog.Close>
             ))}
           </Content>
+          <CenteredUser />
           <CenteredThemeSwitch />
           <Dialog.Close asChild>
             <CloseButton variant="icon">
@@ -115,6 +118,17 @@ const MenuLink = styled(Link)({
   padding: "auto 0",
   minHeight: `${44 / 16}rem`,
   lineHeight: `${44 / 16}rem`,
+});
+
+const CenteredUser = styled(User)({
+  display: "flex",
+  justifyContent: "center",
+  padding: `10px`,
+  borderRadius: "8px",
+
+  "&:hover": {
+    background: "var(--background-100)",
+  },
 });
 
 const CenteredThemeSwitch = styled(ThemeSwitch)({
