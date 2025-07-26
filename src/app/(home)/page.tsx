@@ -17,8 +17,6 @@ import FoodPointer from "@components/home/FoodPointer";
 import Link from "next/link";
 import recipesExample from "@components/home/RecipesExample";
 import { type Metadata } from "next";
-import { createClient } from "@utils/supabase/server";
-import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "SnapFridge - Reduce Food Waste & Plan Meals from Fridge Photos",

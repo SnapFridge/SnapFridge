@@ -284,7 +284,7 @@ const theme = extendTheme({
 const devEnv = process.env.NODE_ENV === "development";
 const CSP = `
   default-src 'self';
-  img-src 'self' https://img.spoonacular.com blob:;
+  img-src 'self' https://img.spoonacular.com https://avatars.githubusercontent.com https://lh3.googleusercontent.com blob:;
   script-src 'wasm-unsafe-eval' ${devEnv ? "'unsafe-eval'" : ""};
   script-src-elem 'self' 'unsafe-inline';
   style-src 'self' 'unsafe-inline' ${devEnv ? "'unsafe-eval'" : ""};

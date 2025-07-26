@@ -9,10 +9,7 @@ function LogoutButton() {
   return (
     <Button
       variant="secondary"
-      onClick={() => {
-        auth.signOut();
-        redirect("/login");
-      }}
+      onClick={() => void auth.signOut().finally(() => redirect("/login"))}
     >
       Sign out
     </Button>

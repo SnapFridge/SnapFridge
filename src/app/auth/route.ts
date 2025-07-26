@@ -4,10 +4,8 @@ export async function GET(req: Request) {
   const url = new URL(req.url);
   const origin = url.origin.replace("localhost", "127.0.0.1");
   function errorRedirect(error: string) {
-    const params = new URLSearchParams({
-      error,
-    }).toString();
-    return Response.redirect(origin + "/login?" + params);
+    console.error(error);
+    return Response.redirect(origin + "/login");
   }
   const code = url.searchParams.get("code");
   if (!code) {

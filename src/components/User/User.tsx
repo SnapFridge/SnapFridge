@@ -17,8 +17,13 @@ function User({ className }: Props) {
   return (
     <Avatar.Root className={className} asChild>
       <Link href="/dashboard">
-        <VisuallyHidden>Go to user page</VisuallyHidden>
-        <Avatar.Image className={UserAvatar} src={userImage} alt="User image" />
+        <VisuallyHidden>Go to dashboard</VisuallyHidden>
+        <Avatar.Image
+          className={UserAvatar}
+          src={userImage}
+          alt="User image"
+          crossOrigin=""
+        />
         <Avatar.Fallback className={UserAvatar} asChild>
           <Icon icon="CircleUser" color="var(--text-950)" size={28} />
         </Avatar.Fallback>

@@ -1,6 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@utils/supabase/server";
 import LogoutButton from "@components/dashboard/LogoutButton";
+import { PageMargin } from "@components/Global";
 
 export default async function Page() {
   const { auth } = await createClient();
@@ -13,9 +14,9 @@ export default async function Page() {
   }
 
   return (
-    <>
+    <PageMargin>
       <p>Hello {user.id}</p>
       <LogoutButton />
-    </>
+    </PageMargin>
   );
 }
