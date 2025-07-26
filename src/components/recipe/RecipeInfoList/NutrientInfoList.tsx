@@ -1,6 +1,6 @@
 import { styled } from "@pigment-css/react";
 import { type SpoonacularRecipe } from "@components/recipe/RecipeInfo/RecipeInfo";
-import { roundNumber } from "@components/Global";
+import { round } from "@components/Global";
 import { Container, List, Title } from "./RecipeInfoList";
 
 export default function NutrientInfoList({
@@ -17,7 +17,7 @@ export default function NutrientInfoList({
             <ListItem key={nutrient.name}>
               <span>
                 {nutrient.name} {"  "}
-                {roundNumber(nutrient.amount)}
+                {round(nutrient.amount, 2)}
                 {nutrient.unit}
               </span>
               <span>{nutrient.percentOfDailyNeeds}%</span>

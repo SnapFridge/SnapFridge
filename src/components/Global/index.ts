@@ -11,12 +11,14 @@ export const PageMargin = styled("div")({
   margin: "0 var(--page-margin)",
 });
 
-// Sizes are from Figma
+export const devEnv = process.env.NODE_ENV === "development";
 
-function round(num: number, places = 4) {
+export function round(num: number, places = 4) {
   const factor = Math.pow(10, places);
   return Math.round((num + Number.EPSILON) * factor) / factor;
 }
+
+// Sizes are from Figma
 export function scaleClamped(
   sizeAtMin: number,
   sizeAtMax: number,
@@ -32,18 +34,6 @@ export function scaleClamped(
   const yIntercept = round(sizeAtMin - slope * min);
   const unit = rem ? "rem" : "px";
   return `clamp(${round(sizeAtMin)}${unit}, ${round(slope * (rem ? 1600 : 100))}vw + ${yIntercept}${unit}, ${round(sizeAtMax)}${unit})`;
-}
-
-// rounding logic for recipe ingredient/nutrient list
-export function roundNumber(num: number) {
-  // rounding function to handle stuff like 0.25 cups and weird measurements
-  // like 178.958 ml
-
-  if (num < 1) {
-    return parseFloat(num.toFixed(2));
-  }
-
-  return Math.round(num);
 }
 
 export type Ingredient = {

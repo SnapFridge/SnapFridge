@@ -3,7 +3,16 @@ import LoginButtons from "@components/login/LoginButtons";
 import { redirect } from "next/navigation";
 import { PageMargin } from "@components/Global";
 
-export default async function Page() {
+type Props = {
+  searchParams: Promise<{
+    error: string;
+  }>;
+};
+export default async function Page({ searchParams }: Props) {
+  const { error } = await searchParams;
+  if (error) {
+    console.log(error);
+  }
   const supabase = await createClient();
 
   const {
@@ -11,7 +20,7 @@ export default async function Page() {
   } = await supabase.auth.getUser();
 
   if (user !== null) {
-    redirect("/user");
+    redirect("/dashboard");
   }
 
   return (

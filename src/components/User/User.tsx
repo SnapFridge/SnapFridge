@@ -1,7 +1,7 @@
 "use client";
 
 import { Avatar } from "radix-ui";
-import { useUserImage } from "./hooks.helper";
+import { useUserImage } from "../hooks.helper";
 import { css } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import VisuallyHidden from "@components/VisuallyHidden";
@@ -16,7 +16,7 @@ function User({ className }: Props) {
 
   return (
     <Avatar.Root className={className} asChild>
-      <Link href="/user">
+      <Link href="/dashboard">
         <VisuallyHidden>Go to user page</VisuallyHidden>
         <Avatar.Image className={UserAvatar} src={userImage} alt="User image" />
         <Avatar.Fallback className={UserAvatar} asChild>

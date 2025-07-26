@@ -4,7 +4,7 @@ import { styled } from "@pigment-css/react";
 import { type SpoonacularRecipe } from "@components/recipe/RecipeInfo/RecipeInfo";
 import { ON_MOBILE } from "@components/Global";
 import { useUnit } from "@components/UnitProvider";
-import { roundNumber } from "@components/Global";
+import { round } from "@components/Global";
 
 export default function RecipeInfoList({
   ingredients,
@@ -29,7 +29,7 @@ export default function RecipeInfoList({
 
           return (
             <ListItem key={ingredient.name}>
-              {roundNumber(amount)} {displayedUnit} {ingredient.name}
+              {round(amount, 2)} {displayedUnit} {ingredient.name}
             </ListItem>
           );
         })}

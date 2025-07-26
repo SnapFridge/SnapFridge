@@ -1,11 +1,11 @@
 "use client";
 
-import OAuthLoginCards from "@components/login/OAuthLoginCards";
+import OAuthLoginCards from "@components/login/OAuthLoginCard";
 import { styled } from "@pigment-css/react";
 import { createClient } from "@utils/supabase/client";
 
 function LoginButtons() {
-  const supabase = createClient();
+  const { auth } = createClient();
 
   return (
     <Container>
@@ -13,10 +13,10 @@ function LoginButtons() {
         <OAuthLoginCards
           variant="google"
           onClick={() =>
-            void supabase.auth.signInWithOAuth({
+            void auth.signInWithOAuth({
               provider: "google",
               options: {
-                redirectTo: snapURL,
+                redirectTo: window.location.origin + "/auth",
               },
             })
           }
@@ -24,18 +24,15 @@ function LoginButtons() {
         <OAuthLoginCards
           variant="github"
           onClick={() =>
-            void supabase.auth.signInWithOAuth({
+            void auth.signInWithOAuth({
               provider: "github",
               options: {
-                redirectTo: snapURL,
+                redirectTo: window.location.origin + "/auth",
               },
             })
           }
         />
-        <OAuthLoginCards
-          variant="anon"
-          onClick={() => void supabase.auth.signInAnonymously()}
-        />
+        <OAuthLoginCards variant="anon" onClick={() => void auth.signInAnonymously()} />
       </AuthButtonList>
     </Container>
   );
