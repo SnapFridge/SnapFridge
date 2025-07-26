@@ -30,7 +30,7 @@ const A = css({
 const LogoName = styled("span")({
   paddingLeft: "64px",
   fontSize: `${24 / 16}rem`,
-  fontWeight: "bold",
+  fontWeight: 700,
 });
 
 export default Logo;

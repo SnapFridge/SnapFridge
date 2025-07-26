@@ -1,49 +1,36 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "@components/Button";
 import Icon from "@components/Icon";
-import Cookie from "js-cookie";
 
 function ThemeSwitch({ ...delegated }) {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [dark, setDark] = useState<boolean>();
 
-  const toggleTheme = useCallback(
-    (override?: "light" | "dark") => {
-      const nextTheme = override || theme === "light" ? "dark" : "light";
-      setTheme(nextTheme);
+  function toggleTheme(darkOverride?: boolean) {
+    if (darkOverride !== undefined) {
+      setDark(darkOverride);
+    } else {
+      setDark(!dark);
+      document.documentElement.classList.toggle("dark");
+    }
 
-      Cookie.set("color-theme", nextTheme, {
-        expires: 1000,
-      });
-
-      if (nextTheme === "dark") {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    },
-    [theme, setTheme]
-  );
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  }
 
   useEffect(() => {
-    const darkMode = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    toggleTheme(darkMode ? "dark" : "light");
+    toggleTheme(document.documentElement.classList.contains("dark"));
   }, [toggleTheme]);
 
   return (
-    <Button
-      variant="icon"
-      onClick={() => {
-        toggleTheme();
-      }}
-      {...delegated}
-    >
-      <Icon
-        icon={theme === "light" ? "Sun" : "Moon"}
-        description={`Turn off ${theme} mode`}
-      />
-    </Button>
+    dark !== undefined && (
+      <Button variant="icon" onClick={() => toggleTheme()} {...delegated}>
+        <Icon
+          icon={dark ? "Moon" : "Sun"}
+          description={`Turn on ${dark ? "light" : "dark"} mode`}
+        />
+      </Button>
+    )
   );
 }
 

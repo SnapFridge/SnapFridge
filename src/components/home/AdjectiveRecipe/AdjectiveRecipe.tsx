@@ -27,7 +27,7 @@ const Description = styled("p")({
 
 const Adjective = styled("span")({
   color: "hsl(198 100% 65%)",
-  fontWeight: "bold",
+  fontWeight: 700,
 });
 
 export default AdjectiveRecipes;

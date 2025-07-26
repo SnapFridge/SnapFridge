@@ -1,6 +1,7 @@
 import { createClient } from "@utils/supabase/server";
 import LoginButtons from "@components/login/LoginButtons";
 import { redirect } from "next/navigation";
+import { PageMargin } from "@components/Global";
 
 export default async function Page() {
   const supabase = await createClient();
@@ -13,5 +14,9 @@ export default async function Page() {
     redirect("/user");
   }
 
-  return <LoginButtons />;
+  return (
+    <PageMargin>
+      <LoginButtons />
+    </PageMargin>
+  );
 }

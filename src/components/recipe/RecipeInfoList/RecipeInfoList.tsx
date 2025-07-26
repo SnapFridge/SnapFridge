@@ -38,13 +38,11 @@ export default function RecipeInfoList({
   );
 }
 
-// Todo: figure out width
-const Container = styled("div")({
+export const Container = styled("div")({
   borderLeft: "2px solid var(--accent-500)",
   padding: "12px",
   position: "relative",
-  width: "100%",
-  maxWidth: "400px",
+  width: "min(100%, 400px)",
   height: "350px",
   display: "flex",
   flexDirection: "column",
@@ -69,11 +67,12 @@ const Container = styled("div")({
   },
 });
 
-const Title = styled("h1")({
+export const Title = styled("h1")({
   fontSize: `${24 / 16}rem`,
+  position: "sticky",
 });
 
-const List = styled("ul")({
+export const List = styled("ul")({
   marginLeft: "12px",
   overflow: "auto",
 });

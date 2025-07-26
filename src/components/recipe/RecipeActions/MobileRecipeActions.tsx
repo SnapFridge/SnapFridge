@@ -37,7 +37,7 @@ const Wrapper = styled("aside")({
   padding: "0 40px",
   background: "var(--background-50)",
   borderRadius: `${50 / 16}rem`,
-  zIndex: "9999999",
+  zIndex: 1,
 
   gap: "26px",
   justifyContent: "center",

@@ -1,4 +1,4 @@
-import AppTooltip from "@components/Tooltip";
+import Tooltip from "@components/recipe/Tooltip";
 import RecipeInfo from "@components/recipe/RecipeInfo";
 import { type SpoonacularRecipe } from "@components/recipe/RecipeInfo/RecipeInfo";
 import Image from "next/image";
@@ -76,11 +76,11 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
       <PageMargin>
         <TitleSection>
           <Title>{recipeInfo.title}</Title>
-          {recipeInfo.vegan && <AppTooltip type="vegan" />}
-          {recipeInfo.vegetarian && <AppTooltip type="vegetarian" />}
-          {recipeInfo.sustainable && <AppTooltip type="sustainable" />}
-          {recipeInfo.veryHealthy && <AppTooltip type="healthy" />}
-          {recipeInfo.veryPopular && <AppTooltip type="popular" />}
+          {recipeInfo.vegan && <Tooltip type="vegan" />}
+          {recipeInfo.vegetarian && <Tooltip type="vegetarian" />}
+          {recipeInfo.sustainable && <Tooltip type="sustainable" />}
+          {recipeInfo.veryHealthy && <Tooltip type="healthy" />}
+          {recipeInfo.veryPopular && <Tooltip type="popular" />}
         </TitleSection>
 
         <AllergenWarning>

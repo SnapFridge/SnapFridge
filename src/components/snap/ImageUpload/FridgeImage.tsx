@@ -39,7 +39,6 @@ const ImageBtn = styled("button")({
   overflow: "hidden",
   position: "relative",
   flex: 1,
-  minWidth: "125px",
   maxWidth: "300px",
 
   transition: "all .25s",
@@ -61,7 +60,7 @@ const DeleteBtn = styled(Button)({
   transition: "all .25s, visibility 0s .25s",
 
   "&:hover, &:focus": {
-    transform: "translateY(-4px)",
+    transform: "scale(1.05)",
   },
 
   [`${Wrapper}:hover > &, ${ImageBtn}:focus + &, &:focus`]: {

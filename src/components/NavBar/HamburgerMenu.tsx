@@ -78,14 +78,14 @@ const Overlay = styled(Dialog.Overlay)({
 });
 
 const Wrapper = styled(Dialog.Content)({
+  zIndex: 2,
   display: "none",
   gap: "12px",
 
   flexDirection: "column",
   position: "fixed",
   right: 0,
-  top: 0,
-  bottom: 0,
+  height: "100%",
   padding: "20px 24px",
   width: "250px",
   background: "var(--background-0)",

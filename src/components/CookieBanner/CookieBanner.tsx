@@ -23,7 +23,7 @@ function CookieBanner() {
 
   return (
     <AnimatePresence>
-      {visible ? (
+      {visible && (
         <CookieBannerContainer
           variants={ContainerVariants}
           transition={{ type: "spring" }}
@@ -40,7 +40,7 @@ function CookieBanner() {
             Acknowledge
           </Button>
         </CookieBannerContainer>
-      ) : null}
+      )}
     </AnimatePresence>
   );
 }
@@ -63,7 +63,7 @@ const ContainerVariants = {
 const CookieBannerContainer = styled(motion.div)({
   display: "flex",
   flexDirection: "column",
-  zIndex: 1,
+  zIndex: 2,
   width: "400px",
   height: "auto",
   position: "fixed",

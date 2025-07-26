@@ -127,8 +127,7 @@ const Content = styled(Dialog.Content)({
   background: "var(--background-0)",
   borderRadius: "16px",
   padding: "12px",
-  width: "90vw",
-  maxWidth: "600px",
+  width: "min(90vw, 600px)",
   border: "1px solid var(--accent-400)",
 });
 

@@ -151,7 +151,7 @@ const MainContent = styled("div")({
 
 const Title = styled(Toast.Title)({
   gridArea: "title",
-  fontWeight: "bold",
+  fontWeight: 700,
   fontSize: `${18 / 16}rem`,
 });
 

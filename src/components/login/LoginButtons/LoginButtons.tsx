@@ -4,46 +4,38 @@ import OAuthLoginCards from "@components/login/OAuthLoginCards";
 import { styled } from "@pigment-css/react";
 import { createClient } from "@utils/supabase/client";
 
-const snapURL = `${process.env.NODE_ENV === "development" ? "http://localhost:3000" : "https://snapfridge.netlify.app"}/snap`;
-
 function LoginButtons() {
   const supabase = createClient();
 
   return (
     <Container>
       <AuthButtonList>
-        <li>
-          <OAuthLoginCards
-            variant="google"
-            onClick={() =>
-              void supabase.auth.signInWithOAuth({
-                provider: "google",
-                options: {
-                  redirectTo: snapURL,
-                },
-              })
-            }
-          />
-        </li>
-        <li>
-          <OAuthLoginCards
-            variant="github"
-            onClick={() =>
-              void supabase.auth.signInWithOAuth({
-                provider: "github",
-                options: {
-                  redirectTo: snapURL,
-                },
-              })
-            }
-          />
-        </li>
-        <li>
-          <OAuthLoginCards
-            variant="anon"
-            onClick={() => void supabase.auth.signInAnonymously()}
-          />
-        </li>
+        <OAuthLoginCards
+          variant="google"
+          onClick={() =>
+            void supabase.auth.signInWithOAuth({
+              provider: "google",
+              options: {
+                redirectTo: snapURL,
+              },
+            })
+          }
+        />
+        <OAuthLoginCards
+          variant="github"
+          onClick={() =>
+            void supabase.auth.signInWithOAuth({
+              provider: "github",
+              options: {
+                redirectTo: snapURL,
+              },
+            })
+          }
+        />
+        <OAuthLoginCards
+          variant="anon"
+          onClick={() => void supabase.auth.signInAnonymously()}
+        />
       </AuthButtonList>
     </Container>
   );
@@ -59,7 +51,7 @@ const Container = styled("div")({
 
 const AuthButtonList = styled("ul")({
   borderRadius: "12px",
-  width: "fit-content",
+  width: "min(400px, 100%)",
   height: "400px",
   border: "2px solid var(--gray-200)",
 

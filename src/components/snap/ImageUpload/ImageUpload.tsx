@@ -93,7 +93,7 @@ function FileUpload() {
     for (const file of files) {
       body.append("files", file);
     }
-    const res = await fetch("/api/gemini", {
+    const res = await fetch("/gemini", {
       method: "POST",
       body: body,
     });
@@ -164,8 +164,7 @@ function FileUpload() {
   );
 }
 const Fetching: CSSProperties = {
-  width: "100%",
-  maxWidth: "576px",
+  width: "min(100%, 576px)",
 };
 
 const EmptyTitle = styled("h1")({
@@ -183,8 +182,7 @@ const EmptyTitle = styled("h1")({
 });
 
 const Wrapper = styled(motion.form)({
-  width: "100%",
-  maxWidth: "576px",
+  width: "min(100%, 576px)",
 });
 
 const FileUploader = styled("div")({

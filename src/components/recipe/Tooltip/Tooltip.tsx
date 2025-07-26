@@ -92,12 +92,8 @@ const Button = styled("button")({
   height: "fit-content",
   width: "fit-content",
   background: "none",
-  color: "inherit",
-  border: "none",
-  padding: "0",
-  font: "inherit",
-  cursor: "pointer",
-  outline: "inherit",
+  border: 0,
+  padding: 0,
 });
 
 const ContentContainer = styled(motion.div)({

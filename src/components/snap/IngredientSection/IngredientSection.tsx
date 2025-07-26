@@ -118,9 +118,8 @@ const BothContainer = styled("div")({
   gap: "12px",
   borderRadius: "8px",
   minHeight: "220px",
-  maxWidth: "500px",
   height: "fit-content",
-  width: "100%",
+  width: "min(100%, 500px)",
 });
 
 const NoIngredientContainer = styled(BothContainer)({

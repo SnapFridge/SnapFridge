@@ -224,7 +224,7 @@ const FridgeSection = styled("section")({
 
 const FridgeSideTxt = styled("span")({
   fontSize: scaleClamped(20, 40),
-  fontWeight: "bold",
+  fontWeight: 700,
   textAlign: "center",
   [ON_DESKTOP]: {
     padding: "0 25px 0 0",

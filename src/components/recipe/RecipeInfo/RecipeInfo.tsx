@@ -141,7 +141,7 @@ const Summary = styled("p")({
   // Have the a tags use our own styling
   "& > a": {
     color: "var(--text-900)",
-    fontWeight: "bold",
+    fontWeight: 700,
 
     "&:hover": {
       textDecoration: "none",
