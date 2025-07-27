@@ -287,6 +287,7 @@ const CSP = `
   img-src 'self' https://img.spoonacular.com https://avatars.githubusercontent.com https://lh3.googleusercontent.com blob:;
   script-src 'wasm-unsafe-eval' ${devEnv ? "'unsafe-eval'" : ""};
   script-src-elem 'self' 'unsafe-inline';
+  worker-src 'self';
   style-src 'self' 'unsafe-inline' ${devEnv ? "'unsafe-eval'" : ""};
   connect-src 'self' ${process.env["NEXT_PUBLIC_SUPABASE_URL"]};
   object-src 'none';

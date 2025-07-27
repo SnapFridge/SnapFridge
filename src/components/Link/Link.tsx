@@ -7,6 +7,7 @@ function Link({ children, ...delegated }: ComponentProps<typeof NextLink>) {
 }
 
 const StyledLink = styled(NextLink)({
+  textAlign: "center",
   color: "var(--text-950)",
   textDecoration: "none",
   fontSize: `${16 / 16}rem`,
