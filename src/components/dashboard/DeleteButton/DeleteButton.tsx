@@ -1,11 +1,12 @@
-"use client";
-
 import Button from "@components/Button";
 import deleteUser from "./actions";
+import { useState } from "react";
 
 export default function DeleteButton() {
-  function handleDeleteUser() {
-    deleteUser();
+  const [loading, setLoading] = useState(false);
+
+  async function handleDeleteUser() {
+    await deleteUser();
   }
 
   return (

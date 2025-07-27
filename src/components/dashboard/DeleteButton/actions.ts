@@ -1,29 +1,24 @@
 "use server";
 
-import { createAdminClient } from "@utils/supabase/server";
-import { createClient } from "@utils/supabase/client";
+import { createAdminClient, createClient } from "@utils/supabase/server";
 import { redirect } from "next/navigation";
 
 export default async function deleteUser() {
-  /*
   const supabaseAdmin = createAdminClient();
-  const client = createClient();
+  const { auth } = await createClient();
 
-  const { data: currentUser, error: userError } = await supabaseAdmin.auth.getUser();
-  const { data: clientUser, error: clientError } = await client.auth.getUser();
-
-  if (!currentUser || userError || !clientUser || clientError) {
-    console.error(currentUser);
-    console.error(userError);
-
+  const { data: clientUser, error: clientError } = await auth.getUser();
+  if (!clientUser || clientError) {
     console.error(clientUser);
     console.error(clientError);
-    throw new Error("no user");
+
+    throw new Error("no authenticated user");
   }
 
   const { error: deleteError } = await supabaseAdmin.auth.admin.deleteUser(
     clientUser.user.id
   );
+
   if (deleteError) {
     throw new Error("failed to delete user");
   }
@@ -34,12 +29,4 @@ export default async function deleteUser() {
   }
 
   redirect("/login");
-  */
-
-  const supabaseAdmin = createAdminClient();
-
-  const { data: currentUser, error: userError } = await supabaseAdmin.auth.getUser();
-
-  console.log(currentUser);
-  console.log(userError);
 }
