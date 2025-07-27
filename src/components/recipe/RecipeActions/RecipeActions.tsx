@@ -5,10 +5,11 @@ import Icon from "@components/Icon";
 import Button from "@components/Button";
 import { ON_MOBILE } from "@components/Global";
 import { useUnit } from "@components/UnitProvider";
-import "@utils/supabase/client";
+import { useSavedRecipes } from "./hooks.helper";
 
 function RecipeActions() {
   const [unit, toggleUnit] = useUnit();
+  const savedRecipes = useSavedRecipes();
 
   return (
     <RecipeActionsContainer>
