@@ -1,4 +1,5 @@
 import { createServerClient } from "@supabase/ssr";
+import { createClient as supabaseCreateClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 
 export async function createClient() {
@@ -19,6 +20,18 @@ export async function createClient() {
             );
           } catch {}
         },
+      },
+    }
+  );
+}
+
+export function createAdminClient() {
+  return supabaseCreateClient(
+    process.env["NEXT_PUBLIC_SUPABASE_URL"]!,
+    process.env["SUPABASE_SECRET_KEY"]!,
+    {
+      auth: {
+        persistSession: false,
       },
     }
   );
