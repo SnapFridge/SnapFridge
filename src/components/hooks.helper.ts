@@ -1,21 +1,24 @@
 import { createClient } from "@utils/supabase/client";
 import { useEffect, useState } from "react";
 
-export function useUserImage() {
-  const [image, setImage] = useState<string | undefined>(undefined);
+export function useAvatar() {
+  const [src, setSrc] = useState<string | undefined>(undefined);
 
   useEffect(() => {
     const fetchUserImage = async () => {
-      const { data, error } = await createClient().auth.getSession();
-      if (error) {
-        console.error(error);
+      const {
+        data: { session },
+        error,
+      } = await createClient().auth.getSession();
+      if (error || session === null) {
+        return;
       }
-      setImage((data.session?.user.user_metadata["avatar_url"] as string) ?? null);
+      setSrc(session.user.user_metadata["avatar_url"]);
     };
     void fetchUserImage();
   }, []);
 
-  return image;
+  return src;
 }
 
 export function useEmail() {

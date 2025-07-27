@@ -1,31 +1,27 @@
 "use client";
 
 import { Avatar } from "radix-ui";
-import { useUserImage } from "../hooks.helper";
+import { useAvatar } from "../hooks.helper";
 import { css } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import VisuallyHidden from "@components/VisuallyHidden";
 import Link from "@components/Link";
 
-interface Props extends React.PropsWithChildren {
-  className?: string;
-}
-
-function User({ className }: Props) {
-  const userImage = useUserImage();
+function AvatarLink({ ...delegated }) {
+  const avatarSrc = useAvatar();
 
   return (
-    <Avatar.Root className={className} asChild>
+    <Avatar.Root {...delegated} asChild>
       <Link href="/dashboard">
         <VisuallyHidden>Go to dashboard</VisuallyHidden>
         <Avatar.Image
           className={UserAvatar}
-          src={userImage}
+          src={avatarSrc}
           alt="User image"
           crossOrigin=""
         />
         <Avatar.Fallback className={UserAvatar} asChild>
-          <Icon icon="CircleUser" color="var(--text-950)" size={28} />
+          <Icon icon="CircleUser" color="var(--text-950)" size={24} />
         </Avatar.Fallback>
       </Link>
     </Avatar.Root>
@@ -34,7 +30,8 @@ function User({ className }: Props) {
 
 const UserAvatar = css({
   borderRadius: "50%",
-  height: "28px",
+  width: "24px",
+  height: "24px",
 });
 
-export default User;
+export default AvatarLink;

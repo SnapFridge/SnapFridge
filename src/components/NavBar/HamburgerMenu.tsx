@@ -5,7 +5,7 @@ import { ON_MOBILE } from "@components/Global";
 import Icon from "@components/Icon";
 import Link from "@components/Link";
 import ThemeSwitch from "@components/ThemeSwitch";
-import User from "@components/User";
+import User from "./Avatar";
 import { styled } from "@pigment-css/react";
 import { Dialog } from "radix-ui";
 import { useRef } from "react";
