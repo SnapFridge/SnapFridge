@@ -2,7 +2,7 @@
 
 import { styled } from "@pigment-css/react";
 import { useRef, useState } from "react";
-import { type Ingredient } from "@components/Global";
+import { type Ingredient } from "@utils";
 import Icon from "@components/Icon";
 import { useInputState } from "../InputProvider";
 import EditDialog from "../EditDialog";

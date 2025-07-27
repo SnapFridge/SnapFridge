@@ -9,7 +9,7 @@ import {
 } from "react";
 import { enableMapSet } from "immer";
 import { useImmerReducer } from "use-immer";
-import { type Ingredient, type Recipe } from "@components/Global";
+import { type Ingredient, type Recipe } from "@utils";
 
 enableMapSet();
 

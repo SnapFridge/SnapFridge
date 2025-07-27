@@ -10,7 +10,7 @@ import IngredientDialog from "../IngredientDialog";
 import Input from "@components/Input";
 import { motion } from "motion/react";
 import getRecipesJSON from "./actions";
-import { type Recipe } from "@components/Global";
+import { type Recipe } from "@utils";
 
 function IngredientSection() {
   const { state, dispatch } = useInputState();

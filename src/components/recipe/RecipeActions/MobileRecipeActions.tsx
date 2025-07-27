@@ -1,6 +1,6 @@
 "use client";
 
-import { ON_MOBILE } from "@components/Global";
+import { ON_MOBILE } from "@utils";
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import { RecipeAction, RecipeActionText, UnitButton } from "./RecipeActions";

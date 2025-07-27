@@ -1,6 +1,6 @@
 import { styled } from "@pigment-css/react";
 import { type SpoonacularRecipe } from "@components/recipe/RecipeInfo/RecipeInfo";
-import { round } from "@components/Global";
+import { round } from "@utils";
 import { Container, List, Title } from "./RecipeInfoList";
 
 export default function NutrientInfoList({

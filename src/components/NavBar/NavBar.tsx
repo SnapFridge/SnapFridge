@@ -2,7 +2,7 @@ import { css, styled } from "@pigment-css/react";
 import ThemeSwitch from "@components/ThemeSwitch";
 import Link from "@components/Link";
 import Logo from "@components/Logo";
-import { ON_MOBILE, scaleClamped } from "@components/Global";
+import { ON_MOBILE, scaleClamped } from "@utils";
 import HamburgerMenu from "./HamburgerMenu";
 import User from "@components/Avatar";
 

@@ -11,6 +11,10 @@ function sitemap() {
       priority: 1,
     },
     {
+      url: "login",
+      priority: 0.75,
+    },
+    {
       url: "about",
       priority: 0.75,
     },

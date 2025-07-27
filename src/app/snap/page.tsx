@@ -1,5 +1,5 @@
 import InputSection from "@components/snap/InputSection";
-import { PageMargin } from "@components/Global";
+import { PageMargin } from "@utils";
 import { InputProvider } from "@components/snap/InputProvider";
 import RecipeSection from "@components/RecipeSection";
 import { type Metadata } from "next";

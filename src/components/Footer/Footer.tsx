@@ -1,6 +1,6 @@
 import { styled, css } from "@pigment-css/react";
 import Link from "@components/Link";
-import { ON_MOBILE, scaleClamped } from "@components/Global";
+import { ON_MOBILE, scaleClamped } from "@utils";
 import Icon from "@components/Icon";
 
 function Footer() {

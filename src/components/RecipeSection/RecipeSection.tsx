@@ -1,7 +1,7 @@
 "use client";
 import RecipeCard from "./RecipeCard";
 import { styled } from "@pigment-css/react";
-import { scaleClamped, type Recipe } from "@components/Global";
+import { scaleClamped, type Recipe } from "@utils";
 import Icon from "@components/Icon";
 import Pagination from "./Pagination";
 import { useState } from "react";

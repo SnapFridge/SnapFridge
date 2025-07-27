@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { css, styled } from "@pigment-css/react";
-import { ON_MOBILE, type Recipe } from "@components/Global";
+import { ON_MOBILE, type Recipe } from "@utils";
 import React from "react";
 import ingredients2Str from "./functions.helper";
 import "react-loading-skeleton/dist/skeleton.css";

@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@utils/supabase/server";
 import LogoutButton from "@components/dashboard/LogoutButton";
-import { PageMargin } from "@components/Global";
+import { PageMargin } from "@utils";
 import DeleteButton from "@components/dashboard/DeleteButton";
 
 export default async function Page() {

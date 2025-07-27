@@ -1,4 +1,4 @@
-import { PageMargin } from "@components/Global";
+import { PageMargin } from "@utils";
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {

@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@components/Button";
-import { ON_MOBILE } from "@components/Global";
+import { ON_MOBILE } from "@utils";
 import Icon from "@components/Icon";
 import Link from "@components/Link";
 import ThemeSwitch from "@components/ThemeSwitch";

@@ -1,4 +1,4 @@
-import { ON_MOBILE, scaleClamped } from "@components/Global";
+import { ON_MOBILE, scaleClamped } from "@utils";
 import { styled } from "@pigment-css/react";
 import { type PropsWithChildren } from "react";
 

@@ -1,5 +1,5 @@
 import Button from "@components/Button";
-import { scaleClamped } from "@components/Global";
+import { scaleClamped } from "@utils";
 import { styled } from "@pigment-css/react";
 
 type Props = {

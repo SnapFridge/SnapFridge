@@ -1,8 +1,7 @@
 import { styled, css } from "@pigment-css/react";
 import AboutUsCards from "@components/about/AboutUsCards";
-import { PageMargin } from "@components/Global";
+import { PageMargin, scaleClamped } from "@utils";
 import Icon from "@components/Icon";
-import { scaleClamped } from "@components/Global";
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {

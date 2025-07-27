@@ -6,6 +6,7 @@
     "paths": {
       "@components/*": ["./src/components/*"],
       "@app/*": ["./src/app/*"],
+      "@utils": ["./src/utils"],
       "@utils/*": ["./src/utils/*"]
     },
     "plugins": [

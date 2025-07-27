@@ -5,7 +5,7 @@ import { AnimatePresence } from "motion/react";
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
 import Button from "@components/Button";
-import { ON_MOBILE } from "@components/Global";
+import { ON_MOBILE } from "@utils";
 
 function CookieBanner() {
   const [visible, setVisibility] = useState(true);

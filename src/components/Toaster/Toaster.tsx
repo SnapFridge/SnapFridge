@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import AppToast from "./Toast";
 import { Toast } from "radix-ui";
 import { styled } from "@pigment-css/react";
-import { ON_MOBILE } from "@components/Global";
+import { ON_MOBILE } from "@utils";
 import { ToastContext } from "@components/ToastProvider";
 import { AnimatePresence, motion } from "motion/react";
 

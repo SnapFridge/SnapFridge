@@ -327,6 +327,10 @@ export default withPigment(
         "use-immer",
       ],
     },
+    images: {
+      remotePatterns: [new URL("https://img.spoonacular.com/recipes/**")],
+    },
+    distDir: "build",
     poweredByHeader: false,
     productionBrowserSourceMaps: true,
 
@@ -335,6 +339,22 @@ export default withPigment(
         {
           source: "/(.*)",
           headers: [
+            {
+              key: "Referrer-Policy",
+              value: "strict-origin",
+            },
+            {
+              key: "Permissions-Policy",
+              value: "geolocation=(), camera=(), microphone=()",
+            },
+            {
+              key: "X-Content-Type-Options",
+              value: "nosniff",
+            },
+            {
+              key: "Cross-Origin-Resource-Policy",
+              value: "same-origin",
+            },
             {
               key: "Cross-Origin-Embedder-Policy",
               value: "require-corp",
@@ -356,11 +376,6 @@ export default withPigment(
       config.experiments.topLevelAwait = config.experiments.layers = true;
       return config;
     },
-
-    images: {
-      remotePatterns: [new URL("https://img.spoonacular.com/recipes/**")],
-    },
-    distDir: "build",
   },
   {
     theme,

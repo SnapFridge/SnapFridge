@@ -3,7 +3,7 @@
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import Button from "@components/Button";
-import { ON_MOBILE } from "@components/Global";
+import { ON_MOBILE } from "@utils";
 import { useUnit } from "@components/UnitProvider";
 import { useSavedRecipes } from "./hooks.helper";
 

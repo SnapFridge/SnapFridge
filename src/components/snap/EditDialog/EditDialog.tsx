@@ -2,7 +2,7 @@ import AppDialog from "@components/Dialog";
 import IngredientForm from "../IngredientForm";
 import { Suspense, type PropsWithChildren } from "react";
 import FormSkeleton from "../FormSkeleton";
-import type { Ingredient } from "@components/Global";
+import type { Ingredient } from "@utils";
 
 interface Props extends PropsWithChildren {
   ingredient: Ingredient;

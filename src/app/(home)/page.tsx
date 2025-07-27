@@ -12,7 +12,7 @@ import {
   ON_DESKTOP,
   PageMargin,
   MOBILE_BREAKPOINT,
-} from "@components/Global";
+} from "@utils";
 import FoodPointer from "@components/home/FoodPointer";
 import Link from "next/link";
 import recipesExample from "@components/home/RecipesExample";

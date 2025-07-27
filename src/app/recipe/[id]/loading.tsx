@@ -1,8 +1,7 @@
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { styled, css } from "@pigment-css/react";
-import { PageMargin } from "@components/Global";
-import { ON_MOBILE } from "@components/Global";
+import { PageMargin, ON_MOBILE } from "@utils";
 
 export default function Page() {
   return (

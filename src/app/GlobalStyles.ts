@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
 
-import { MAX_SUPPORTED_WIDTH, scaleClamped } from "@components/Global";
+import { MAX_SUPPORTED_WIDTH, scaleClamped } from "@utils";
 import { globalCss } from "@pigment-css/react";
 
 // CSS variables

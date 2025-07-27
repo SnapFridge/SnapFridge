@@ -5,7 +5,7 @@
 
 import { type Dispatch } from "react";
 import { type Action } from "../InputProvider";
-import { type Ingredient } from "@components/Global";
+import { type Ingredient } from "@utils";
 
 function getIngredientWriter(dispatch: Dispatch<Action>) {
   let inObj = false;

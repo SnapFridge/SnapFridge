@@ -4,7 +4,7 @@ import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import { useEffect, useRef, useState, type CSSProperties, type FormEvent } from "react";
 import FridgeImage from "./FridgeImage";
-import { scaleClamped } from "@components/Global";
+import { scaleClamped } from "@utils";
 import { BarLoader } from "react-spinners";
 import Button from "@components/Button";
 import { AnimatePresence, type Variants, motion } from "motion/react";

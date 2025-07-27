@@ -3,7 +3,7 @@ import RecipeInfo from "@components/recipe/RecipeInfo";
 import { type SpoonacularRecipe } from "@components/recipe/RecipeInfo/RecipeInfo";
 import Image from "next/image";
 import { css, styled } from "@pigment-css/react";
-import { ON_MOBILE, PageMargin } from "@components/Global";
+import { ON_MOBILE, PageMargin } from "@utils";
 import RecipeActions from "@components/recipe/RecipeActions";
 import Icon from "@components/Icon";
 import RecipeInfoList from "@components/recipe/RecipeInfoList";
