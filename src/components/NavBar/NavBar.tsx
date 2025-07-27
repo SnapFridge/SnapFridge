@@ -4,7 +4,7 @@ import Link from "@components/Link";
 import Logo from "@components/Logo";
 import { ON_MOBILE, scaleClamped } from "@components/Global";
 import HamburgerMenu from "./HamburgerMenu";
-import User from "./Avatar";
+import User from "@components/Avatar";
 
 const Links: { href: "/snap" | "/about"; title: string }[] = [
   {
