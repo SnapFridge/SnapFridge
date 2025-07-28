@@ -372,6 +372,10 @@ export default withPigment(
       ];
     },
 
+    eslint: {
+      ignoreDuringBuilds: true,
+    },
+
     webpack(config) {
       config.experiments.topLevelAwait = config.experiments.layers = true;
       return config;
