@@ -1,14 +1,14 @@
 "use client";
 
 import { Avatar } from "radix-ui";
-import { useAvatar } from "./hooks.helper";
+import useUser from "@components/User";
 import { css } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import VisuallyHidden from "@components/VisuallyHidden";
 import Link from "@components/Link";
 
 function AvatarLink({ ...delegated }) {
-  const avatarSrc = useAvatar();
+  const user = useUser();
 
   return (
     <Avatar.Root {...delegated} asChild>
@@ -16,7 +16,7 @@ function AvatarLink({ ...delegated }) {
         <VisuallyHidden>Go to dashboard</VisuallyHidden>
         <Avatar.Image
           className={UserAvatar}
-          src={avatarSrc}
+          src={user?.user_metadata["avatar_url"]}
           alt="User image"
           crossOrigin=""
         />

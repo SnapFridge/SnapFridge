@@ -283,16 +283,16 @@ const theme = extendTheme({
 
 const devEnv = process.env.NODE_ENV === "development";
 const CSP = `
-  default-src 'self';
+  default-src 'none';
   img-src 'self' https://img.spoonacular.com https://avatars.githubusercontent.com https://lh3.googleusercontent.com blob:;
   script-src 'wasm-unsafe-eval' ${devEnv ? "'unsafe-eval'" : ""};
   script-src-elem 'self' 'unsafe-inline';
-  worker-src 'self';
+  script-src-attr 'none';
   style-src 'self' 'unsafe-inline' ${devEnv ? "'unsafe-eval'" : ""};
   connect-src 'self' ${process.env["NEXT_PUBLIC_SUPABASE_URL"]};
-  object-src 'none';
-  frame-ancestors 'none';
-  media-src 'none';
+  worker-src 'self';
+  font-src 'self';
+  manifest-src 'self';
   upgrade-insecure-requests;
   sandbox allow-forms allow-scripts allow-same-origin;
  `.replace(/\s{2,}/g, " ");
@@ -300,7 +300,6 @@ const CSP = `
 export default withPigment(
   {
     experimental: {
-      inlineCss: true,
       typedRoutes: true,
       useLightningcss: true,
       reactCompiler: true,
