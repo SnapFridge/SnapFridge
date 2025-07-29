@@ -2,7 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 export async function updateSession(req: NextRequest) {
-  let res = NextResponse.next({
+  const res = NextResponse.next({
     request: req,
   });
   const reqCookies = req.cookies.getAll();

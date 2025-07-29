@@ -34,7 +34,7 @@ export default function DeleteButton() {
       {/* apparently you can't use :hover with regular js objects so moved style to a vanilla CSS file */}
       {/* empty style object to override Button's default styling and to prevent errors */}
       <Button
-        onClick={() => handleDeleteUser()}
+        onClick={() => void handleDeleteUser()}
         disabled={loading}
         variant="primary"
         className="delete-button"
