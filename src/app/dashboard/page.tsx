@@ -1,3 +1,5 @@
+"use client";
+
 import LogoutButton from "@components/dashboard/LogoutButton";
 import { PageMargin } from "@utils";
 import DeleteButton from "@components/dashboard/DeleteButton";
@@ -6,13 +8,12 @@ import Counter from "@components/home/Counter";
 import useUser from "@components/User";
 
 export default function Page() {
-  // Page guarded by middleware, user is always defined
-  const { user_metadata, email } = useUser()!;
+  const u = useUser();
 
   return (
     <PageMargin>
       <Greeting>
-        Hello, <Name>{user_metadata["name"] || email}</Name>
+        Hello, <Name>{u && (u.user_metadata["name"] || u.email)}</Name>
       </Greeting>
       <h2>
         You currently have <SavedRecipeCounter endValue={727} /> saved recipes!

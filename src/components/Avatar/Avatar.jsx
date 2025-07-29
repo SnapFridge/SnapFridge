@@ -8,7 +8,7 @@ import VisuallyHidden from "@components/VisuallyHidden";
 import Link from "@components/Link";
 
 function AvatarLink({ ...delegated }) {
-  const user = useUser();
+  const u = useUser();
 
   return (
     <Avatar.Root {...delegated} asChild>
@@ -16,7 +16,7 @@ function AvatarLink({ ...delegated }) {
         <VisuallyHidden>Go to dashboard</VisuallyHidden>
         <Avatar.Image
           className={UserAvatar}
-          src={user?.user_metadata["avatar_url"]}
+          src={u?.user_metadata["avatar_url"]}
           alt="User image"
           crossOrigin=""
         />
