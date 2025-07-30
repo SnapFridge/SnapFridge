@@ -1,6 +1,4 @@
-import { updateSession } from "@utils/supabase/middleware";
-
-export default updateSession;
+export { default } from "@utils/supabase/middleware";
 
 export const config = {
   matcher: ["/dashboard", "/login"],

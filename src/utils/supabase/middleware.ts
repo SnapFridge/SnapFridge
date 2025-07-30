@@ -1,7 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
-export async function updateSession(request: NextRequest) {
+async function updateSession(request: NextRequest) {
   const res = NextResponse.next({
     request,
   });
@@ -23,8 +23,9 @@ export async function updateSession(request: NextRequest) {
     }
   );
 
-  const { data } = await supabase.auth.getClaims();
-  const user = data?.claims;
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   const url = request.nextUrl;
   if (!user && url.pathname.startsWith("/dashboard")) {
     url.pathname = "/login";
@@ -40,3 +41,4 @@ export async function updateSession(request: NextRequest) {
   }
   return res;
 }
+export default updateSession;

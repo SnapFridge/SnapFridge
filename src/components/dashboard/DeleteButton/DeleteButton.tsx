@@ -4,12 +4,9 @@ import Button from "@components/Button";
 import { useState } from "react";
 import { motion, type Variants, AnimatePresence } from "motion/react";
 import { styled } from "@pigment-css/react";
+import deleteUser from "./actions";
 
-interface Props {
-  deleteUser: () => Promise<void>;
-}
-
-export default function DeleteButton({ deleteUser }: Props) {
+export default function DeleteButton() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 

@@ -7,7 +7,7 @@ import { type Metadata } from "next";
 import { createClient } from "@utils/supabase/server";
 import { redirect } from "next/navigation";
 
-import deleteUser from "./actions";
+import deleteUser from "../../components/dashboard/DeleteButton/actions";
 
 export const metadata: Metadata = {
   title: "Dashboard - SnapFridge",
