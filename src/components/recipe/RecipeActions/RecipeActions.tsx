@@ -8,33 +8,36 @@ import { useUnit } from "@components/UnitProvider";
 import { useSavedRecipes } from "./hooks.helper";
 import useUser from "@components/User";
 import { useRouter } from "next/navigation";
-import { createClient } from "@utils/supabase/client";
 
 interface Props {
   recipeId: number;
+  recipeName: string;
+  updateSavedRecipes: (
+    recipeId: number,
+    recipeName: string
+  ) => Promise<{ id: number; name: string }[] | undefined>;
 }
 
-function RecipeActions({ recipeId }: Props) {
+function RecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props) {
   const router = useRouter();
 
   const [unit, toggleUnit] = useUnit();
   const user = useUser();
-  const savedRecipes = useSavedRecipes();
+  const [savedRecipes, setSavedRecipes] = useSavedRecipes();
 
-  const recipeIndex = savedRecipes.findIndex((value) => value === recipeId);
+  const recipeExists = !!savedRecipes.find((value) => value.id === recipeId);
 
-  function handleHeartClick() {
+  const updateSavedAction = updateSavedRecipes.bind(null, recipeId, recipeName);
+
+  async function handleHeartClick() {
     if (!user) return router.push("/login");
-
-    const supabase = createClient();
-
-    const nextRecipes = recipeIndex
-      ? savedRecipes.filter((value) => value !== recipeId)
-      : [...savedRecipes, recipeId];
-    supabase
-      .from("saved_recipes")
-      .update({ recipes: nextRecipes })
-      .eq("user_id", user.id);
+    try {
+      const nextRecipes = (await updateSavedAction()) ?? [];
+      console.log(nextRecipes);
+      setSavedRecipes(nextRecipes);
+    } catch {
+      // Maybe put a toast here later
+    }
   }
 
   return (
@@ -42,11 +45,11 @@ function RecipeActions({ recipeId }: Props) {
       <RecipeAction variant="icon" onClick={handleHeartClick}>
         <Icon
           icon="Heart"
-          fill={recipeIndex ? "#FF4848" : undefined}
+          fill={recipeExists ? "#FF4848" : undefined}
           color="#FF4848"
           size={36}
         />
-        <RecipeActionText>Save</RecipeActionText>
+        <RecipeActionText>{recipeExists ? "Saved" : "Save"}</RecipeActionText>
       </RecipeAction>
       <RecipeAction variant="icon">
         <Icon icon="Share2" size={36} />

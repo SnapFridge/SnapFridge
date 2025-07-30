@@ -12,6 +12,7 @@ import { notFound } from "next/navigation";
 import MobileRecipeActions from "@components/recipe/RecipeActions/MobileRecipeActions";
 import NutrientInfoList from "@components/recipe/RecipeInfoList/NutrientInfoList";
 import UnitProvider from "@components/UnitProvider";
+import { updateSavedRecipes } from "./actions";
 
 // Revalidate the cache every hour
 const CACHE_ONE_HOUR = 3600;
@@ -100,7 +101,11 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         </AllergenWarning>
 
         <Wrapper>
-          <RecipeActions recipeId={recipeInfo.id} />
+          <RecipeActions
+            recipeId={recipeInfo.id}
+            recipeName={recipeInfo.title}
+            updateSavedRecipes={updateSavedRecipes}
+          />
           <RecipeInfo recipeInfo={recipeInfo} />
         </Wrapper>
 
