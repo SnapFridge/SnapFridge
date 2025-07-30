@@ -6,9 +6,9 @@ import { revalidatePath } from "next/cache";
 
 export default async function deleteUser() {
   const supabaseAdmin = createAdminClient();
-  const { auth } = await createClient();
+  const supabase = await createClient();
 
-  const { data: clientUser, error: clientError } = await auth.getUser();
+  const { data: clientUser, error: clientError } = await supabase.auth.getUser();
   if (!clientUser || clientError) {
     console.error(clientUser);
     console.error(clientError);

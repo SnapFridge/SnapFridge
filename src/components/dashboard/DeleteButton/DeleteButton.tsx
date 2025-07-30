@@ -1,12 +1,15 @@
 "use client";
 
 import Button from "@components/Button";
-import deleteUser from "./actions";
 import { useState } from "react";
 import { motion, type Variants, AnimatePresence } from "motion/react";
-import "./Button.css";
+import { styled } from "@pigment-css/react";
 
-export default function DeleteButton() {
+interface Props {
+  deleteUser: () => Promise<void>;
+}
+
+export default function DeleteButton({ deleteUser }: Props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -31,17 +34,13 @@ export default function DeleteButton() {
 
   return (
     <>
-      {/* apparently you can't use :hover with regular js objects so moved style to a vanilla CSS file */}
-      {/* empty style object to override Button's default styling and to prevent errors */}
-      <Button
+      <StyledButton
         onClick={() => void handleDeleteUser()}
         disabled={loading}
         variant="primary"
-        className="delete-button"
-        style={{}}
       >
         {loading ? "Deleting Account..." : "Delete Account"}
-      </Button>
+      </StyledButton>
       <AnimatePresence>
         {error && (
           <motion.p
@@ -78,14 +77,8 @@ const ErrorMessage = {
   fontWeight: "bold",
 };
 
-/*
-const ButtonCSS = {
-  backgroundColor: "transparent",
+const StyledButton = styled(Button)({
+  background: "transparent",
   color: "var(--error-400)",
   border: "2px solid var(--error-400)",
-
-  "&:hover:not(:disabled)": {
-    backgroundColor: "var(--error-100)",
-  },
-};
-*/
+});

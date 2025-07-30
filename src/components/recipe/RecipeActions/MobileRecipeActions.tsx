@@ -3,8 +3,8 @@
 import { ON_MOBILE } from "@utils";
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import { RecipeAction, RecipeActionText, UnitButton } from "./RecipeActions";
 import { useUnit } from "@components/UnitProvider";
+import Button from "@components/Button";
 
 function MobileRecipeActions() {
   const [unit, toggleUnit] = useUnit();
@@ -45,6 +45,30 @@ const Wrapper = styled("aside")({
 
   [ON_MOBILE]: {
     display: "flex",
+  },
+});
+
+const RecipeAction = styled(Button)({
+  display: "flex",
+  flexDirection: "column",
+});
+
+const RecipeActionText = styled("p")({
+  fontSize: `${16 / 16}rem`,
+  fontWeight: 700,
+});
+
+const UnitButton = styled(Button)({
+  borderRadius: `${36 / 16}rem`,
+  maxWidth: "104px",
+  padding: "12px 26px",
+  background: "var(--text-900)",
+  color: "var(--text-50)",
+  fontSize: `${16 / 16}rem`,
+  fontWeight: 700,
+
+  "&:hover": {
+    background: "var(--text-700)",
   },
 });
 

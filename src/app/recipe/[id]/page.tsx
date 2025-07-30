@@ -100,7 +100,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         </AllergenWarning>
 
         <Wrapper>
-          <RecipeActions />
+          <RecipeActions recipeId={recipeInfo.id} />
           <RecipeInfo recipeInfo={recipeInfo} />
         </Wrapper>
 

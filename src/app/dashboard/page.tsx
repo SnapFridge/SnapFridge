@@ -3,25 +3,34 @@ import { PageMargin } from "@utils";
 import DeleteButton from "@components/dashboard/DeleteButton";
 import { styled } from "@pigment-css/react";
 import Counter from "@components/home/Counter";
-import useUser from "@components/User";
 import { type Metadata } from "next";
+import { createClient } from "@utils/supabase/server";
+import { redirect } from "next/navigation";
+
+import deleteUser from "@components/dashboard/DeleteButton/actions";
 
 export const metadata: Metadata = {
   title: "Dashboard - SnapFridge",
 };
 
-export default function Page() {
-  const u = useUser();
+export default async function Page() {
+  const supabase = await createClient();
+
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+  if (error || !user) return redirect("/login");
 
   return (
     <PageMargin>
       <Greeting>
-        Hello, <Name>{u && (u.user_metadata["name"] || u.email)}</Name>
+        Hello, <Name>{user && (user.user_metadata["name"] || user.email)}</Name>
       </Greeting>
       <h2>
         You currently have <SavedRecipeCounter endValue={727} /> saved recipes!
       </h2>
-      <DeleteButton />
+      <DeleteButton deleteUser={deleteUser} />
       <LogoutButton />
     </PageMargin>
   );
