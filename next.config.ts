@@ -332,7 +332,6 @@ export default withPigment(
     distDir: "build",
     poweredByHeader: false,
     productionBrowserSourceMaps: true,
-
     async headers() {
       return [
         {

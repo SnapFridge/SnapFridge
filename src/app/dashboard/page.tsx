@@ -1,11 +1,14 @@
-"use client";
-
 import LogoutButton from "@components/dashboard/LogoutButton";
 import { PageMargin } from "@utils";
 import DeleteButton from "@components/dashboard/DeleteButton";
 import { styled } from "@pigment-css/react";
 import Counter from "@components/home/Counter";
 import useUser from "@components/User";
+import { type Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dashboard - SnapFridge",
+};
 
 export default function Page() {
   const u = useUser();
