@@ -7,18 +7,18 @@ import { useInputState } from "../InputProvider";
 import Button from "@components/Button";
 import { useState, type FormEvent } from "react";
 import IngredientDialog from "../IngredientDialog";
-import Input from "@components/Input";
 import { motion } from "motion/react";
 import getRecipesJSON from "./actions";
 import { type Recipe } from "@utils";
 import Switch from "@components/Switch";
+import ToggleGroup from "@components/ToggleGroup";
 
 function IngredientSection() {
   const { state, dispatch } = useInputState();
   const { ingredients, recipes } = state;
 
   const [ignorePantry, setIgnorePantry] = useState(true);
-  const [ranking, setRanking] = useState(2);
+  const [ranking, setRanking] = useState("2");
 
   async function fetchSpoonacular(e: FormEvent) {
     e.preventDefault();
@@ -66,42 +66,28 @@ function IngredientSection() {
           ))}
         </IngredientContainer>
       )}
-      <form onSubmit={(e) => void fetchSpoonacular(e)}>
+      <SpoonacularForm onSubmit={(e) => void fetchSpoonacular(e)}>
         <Switch
           labelText="Ignore Typical Pantry Items (water, flour, etc)"
           checked={ignorePantry}
           onCheckedChange={setIgnorePantry}
           disabled={recipes === "pending"}
         />
-
-        <Input
-          type="radio"
-          label="Maximize used ingredients"
-          name="ranking"
-          value={1}
-          checked={ranking === 1}
-          onChange={() => setRanking(1)}
+        <ToggleGroup
+          onValueChange={setRanking}
+          value={ranking}
           disabled={recipes === "pending"}
         />
-        <Input
-          type="radio"
-          label="Minimize missing ingredients"
-          name="ranking"
-          value={2}
-          checked={ranking === 2}
-          onChange={() => setRanking(2)}
-          disabled={recipes === "pending"}
-        />
-
         <div>
-          <Button variant="secondary" type="submit">
-            Get recipe from spoonacular
-          </Button>
+          <SpoonacularButton variant="primary" type="submit">
+            Find Recipes
+          </SpoonacularButton>
         </div>
-      </form>
+      </SpoonacularForm>
     </>
   );
 }
+
 const IngredientTitle = styled("h1")({
   color: "var(--gray-500)",
 
@@ -136,6 +122,26 @@ const IngredientContainer = styled(BothContainer)({
   opacity: 1,
   maxHeight: "50vh",
   overflow: "auto",
+});
+
+const SpoonacularForm = styled("form")({
+  marginTop: "12px",
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+
+  "&> *": {
+    marginBottom: "24px",
+  },
+});
+
+const SpoonacularButton = styled(Button)({
+  backgroundColor: "var(--primary-700)",
+  width: "200px",
+
+  "&:hover": {
+    backgroundColor: "var(--primary-600)",
+  },
 });
 
 export default IngredientSection;

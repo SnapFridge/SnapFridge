@@ -44,6 +44,10 @@ const SwitchRoot = styled(RadixSwitch.Root)({
   '&[data-state="checked"]': {
     backgroundColor: "var(--secondary-500)",
   },
+
+  "&[data-disabled]": {
+    backgroundColor: "var(--secondary-200)",
+  },
 });
 
 const SwitchThumb = styled(RadixSwitch.Thumb)({
@@ -59,5 +63,9 @@ const SwitchThumb = styled(RadixSwitch.Thumb)({
 
   '&[data-state="checked"]': {
     transform: "translateX(19px)",
+  },
+
+  "[data-disabled]": {
+    backgroundColor: "var(--gray-500)",
   },
 });
