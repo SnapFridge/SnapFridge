@@ -4,16 +4,52 @@ import { ON_MOBILE } from "@utils";
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import { useUnit } from "@components/UnitProvider";
-import Button from "@components/Button";
+import { RecipeAction, RecipeActionText, UnitButton } from "./RecipeActions";
+import { useRouter } from "next/navigation";
+import useUser from "@components/User";
+import { useSavedRecipes } from "./hooks.helper";
 
-function MobileRecipeActions() {
+interface Props {
+  recipeId: number;
+  recipeName: string;
+  updateSavedRecipes: (
+    recipeId: number,
+    recipeName: string
+  ) => Promise<{ id: number; name: string }[] | undefined>;
+}
+
+function MobileRecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props) {
+  const router = useRouter();
+
   const [unit, toggleUnit] = useUnit();
+
+  const user = useUser();
+  const [savedRecipes, setSavedRecipes] = useSavedRecipes();
+
+  const recipeExists = !!savedRecipes.find((value) => value.id === recipeId);
+
+  const updateSavedAction = updateSavedRecipes.bind(null, recipeId, recipeName);
+
+  async function handleHeartClick() {
+    if (!user) return router.push("/login");
+    try {
+      const nextRecipes = (await updateSavedAction()) ?? [];
+      setSavedRecipes(nextRecipes);
+    } catch {
+      // Maybe put a toast here later
+    }
+  }
 
   return (
     <Wrapper>
-      <RecipeAction variant="icon">
-        <Icon icon="Heart" color="#FF4848" size={24} />
-        <MobileActionText>Save</MobileActionText>
+      <RecipeAction variant="icon" onClick={void handleHeartClick}>
+        <Icon
+          icon="Heart"
+          fill={recipeExists ? "#FF4848" : undefined}
+          color="#FF4848"
+          size={24}
+        />
+        <MobileActionText>{recipeExists ? "Saved" : "Save"}</MobileActionText>
       </RecipeAction>
       <UnitButton variant="primary" onClick={toggleUnit}>
         {unit === "metric" ? "Metric" : "Imperial"}
@@ -45,30 +81,6 @@ const Wrapper = styled("aside")({
 
   [ON_MOBILE]: {
     display: "flex",
-  },
-});
-
-const RecipeAction = styled(Button)({
-  display: "flex",
-  flexDirection: "column",
-});
-
-const RecipeActionText = styled("p")({
-  fontSize: `${16 / 16}rem`,
-  fontWeight: 700,
-});
-
-const UnitButton = styled(Button)({
-  borderRadius: `${36 / 16}rem`,
-  maxWidth: "104px",
-  padding: "12px 26px",
-  background: "var(--text-900)",
-  color: "var(--text-50)",
-  fontSize: `${16 / 16}rem`,
-  fontWeight: 700,
-
-  "&:hover": {
-    background: "var(--text-700)",
   },
 });
 

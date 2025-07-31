@@ -33,7 +33,6 @@ function RecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props) {
     if (!user) return router.push("/login");
     try {
       const nextRecipes = (await updateSavedAction()) ?? [];
-      console.log(nextRecipes);
       setSavedRecipes(nextRecipes);
     } catch {
       // Maybe put a toast here later
@@ -42,7 +41,7 @@ function RecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props) {
 
   return (
     <RecipeActionsContainer>
-      <RecipeAction variant="icon" onClick={handleHeartClick}>
+      <RecipeAction variant="icon" onClick={void handleHeartClick}>
         <Icon
           icon="Heart"
           fill={recipeExists ? "#FF4848" : undefined}
@@ -72,17 +71,17 @@ const RecipeActionsContainer = styled("div")({
   },
 });
 
-const RecipeAction = styled(Button)({
+export const RecipeAction = styled(Button)({
   display: "flex",
   flexDirection: "column",
 });
 
-const RecipeActionText = styled("p")({
+export const RecipeActionText = styled("p")({
   fontSize: `${16 / 16}rem`,
   fontWeight: 700,
 });
 
-const UnitButton = styled(Button)({
+export const UnitButton = styled(Button)({
   borderRadius: `${36 / 16}rem`,
   maxWidth: "104px",
   padding: "12px 26px",
