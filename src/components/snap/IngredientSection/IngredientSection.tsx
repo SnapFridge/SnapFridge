@@ -11,6 +11,7 @@ import Input from "@components/Input";
 import { motion } from "motion/react";
 import getRecipesJSON from "./actions";
 import { type Recipe } from "@utils";
+import Switch from "@components/Switch";
 
 function IngredientSection() {
   const { state, dispatch } = useInputState();
@@ -66,13 +67,13 @@ function IngredientSection() {
         </IngredientContainer>
       )}
       <form onSubmit={(e) => void fetchSpoonacular(e)}>
-        <Input
-          type="checkbox"
-          label="Ignore typical pantry Items (water, salt, flour, etc)"
-          onChange={setIgnorePantry}
+        <Switch
+          labelText="Ignore Typical Pantry Items (water, flour, etc)"
           checked={ignorePantry}
+          onCheckedChange={setIgnorePantry}
           disabled={recipes === "pending"}
         />
+
         <Input
           type="radio"
           label="Maximize used ingredients"
@@ -91,6 +92,7 @@ function IngredientSection() {
           onChange={() => setRanking(2)}
           disabled={recipes === "pending"}
         />
+
         <div>
           <Button variant="secondary" type="submit">
             Get recipe from spoonacular
