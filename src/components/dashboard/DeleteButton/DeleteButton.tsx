@@ -16,13 +16,16 @@ export default function DeleteButton() {
 
     try {
       await deleteUser();
-    } catch (err: any) {
+    } catch (err) {
+      let message = "Unknown Error";
+      if (err instanceof Error) {
+        message = err.message;
+      }
+
       // dashboard and the server action might both try to redirect the user
       // causing a conflict, so ignore next redirect error
-
-      // rylex i know you want to delete this, but it shows the redirect error guaranteed without it
-      if (err.message !== "NEXT_REDIRECT") {
-        setError(err.message);
+      if (message !== "NEXT_REDIRECT") {
+        setError(message);
       }
     } finally {
       setLoading(false);

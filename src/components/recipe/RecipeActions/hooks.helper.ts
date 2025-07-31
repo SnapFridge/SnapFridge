@@ -19,7 +19,7 @@ export function useSavedRecipes(): [
       // Don't need to preform equality checks as supabase should only return the row the user has access to
       const { data } = await supabase.from("saved_recipes").select();
 
-      const recipes: { id: number; name: string }[] = data ? data[0]?.recipes : [];
+      const recipes = (data?.[0]?.recipes ?? []) as { id: number; name: string }[];
 
       setSavedRecipes(recipes);
     }

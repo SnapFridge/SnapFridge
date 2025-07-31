@@ -15,7 +15,10 @@ export async function updateSavedRecipes(recipeId: unknown, recipeName: string) 
   // Why don't we use an eq? Because our database will only show us the right one!
   const { data, error } = await supabase.from("saved_recipes").select();
   if (error) throw new Error(`Supabase select error! ${error.code}: ${error.message}`);
-  const saved_recipes: { id: number; name: string }[] = data[0]?.recipes ?? [];
+  const saved_recipes: { id: number; name: string }[] = (data[0]?.recipes ?? []) as {
+    id: number;
+    name: string;
+  }[];
 
   const recipeIndex = saved_recipes.findIndex((value) => value.id === recipeId);
 

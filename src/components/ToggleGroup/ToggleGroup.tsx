@@ -6,13 +6,11 @@ import { styled } from "@pigment-css/react";
 type FullRadixToggleGroupRootProps = React.ComponentPropsWithoutRef<
   typeof RadixToggleGroup.Root
 >;
-type RadixToggleGroupSingleProps = Extract<
-  FullRadixToggleGroupRootProps,
-  { type: "single" }
->;
-interface Props extends Omit<RadixToggleGroupSingleProps, "type" | "defaultValue"> {}
+type RadixToggleGroupProps = Extract<FullRadixToggleGroupRootProps, { type: "single" }>;
 
-export default function ToggleGroup({ ...delegated }: Props) {
+export default function ToggleGroup({
+  ...delegated
+}: Omit<RadixToggleGroupProps, "type" | "defaultValue">) {
   return (
     <ToggleGroupRoot type="single" defaultValue="2" {...delegated}>
       <ToggleGroupItem value="1" aria-label="Maximize">
