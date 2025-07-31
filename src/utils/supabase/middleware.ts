@@ -33,11 +33,7 @@ async function updateSession(request: NextRequest) {
   }
   if (user && url.pathname.startsWith("/login")) {
     url.pathname = "/dashboard";
-    const res = NextResponse.redirect(url);
-    for (const { name, value } of request.cookies.getAll()) {
-      res.cookies.set(name, value);
-    }
-    return res;
+    return Response.redirect(url);
   }
   return res;
 }

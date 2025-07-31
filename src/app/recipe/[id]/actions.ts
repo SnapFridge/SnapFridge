@@ -1,19 +1,16 @@
 "use server";
 
-import { createClient } from "@utils/supabase/server";
+import useUser from "@components/User";
+import { createClient } from "@utils/supabase/client";
 import { redirect } from "next/navigation";
 
 export async function updateSavedRecipes(recipeId: unknown, recipeName: string) {
   // Are the typechecks necessary? Maybe not, but I'm too used to the saying to never trust the client!
   if (typeof recipeId !== "number") return;
   if (typeof recipeName !== "string") return;
-  const supabase = await createClient();
-
-  const {
-    data: { user },
-    error: userError,
-  } = await supabase.auth.getUser();
-  if (userError || !user) return redirect("/login");
+  const supabase = createClient();
+  const user = useUser();
+  if (!user) return redirect("/login");
 
   // Why don't we use an eq? Because our database will only show us the right one!
   const { data, error } = await supabase.from("saved_recipes").select();

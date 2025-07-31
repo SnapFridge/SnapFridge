@@ -8,6 +8,7 @@ import { useUnit } from "@components/UnitProvider";
 import { useSavedRecipes } from "./hooks.helper";
 import useUser from "@components/User";
 import { useRouter } from "next/navigation";
+import { createClient } from "@utils/supabase/client";
 
 interface Props {
   recipeId: number;
@@ -30,6 +31,8 @@ function RecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props) {
   const updateSavedAction = updateSavedRecipes.bind(null, recipeId, recipeName);
 
   async function handleHeartClick() {
+    const supabase = createClient();
+    await supabase.from("saved_recipe").select();
     if (!user) return router.push("/login");
     try {
       const nextRecipes = (await updateSavedAction()) ?? [];
