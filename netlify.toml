@@ -1,2 +1,17 @@
+[build]
+publish = "build"
+
+# Public files that are also available in netlify functions
 [functions]
-  included_files = ["server/**"]
+  included_files = ["public/functions/**"]
+
+# Headers for static assets, a.k.a everything but HTML files
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Referrer-Policy = "strict-origin"
+    Permissions-Policy = "geolocation=(), camera=(), microphone=()"
+    X-Content-Type-Options = "nosniff"
+    Cross-Origin-Resource-Policy = "same-origin"
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Embedder-Policy = "require-corp"

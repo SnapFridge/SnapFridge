@@ -293,6 +293,8 @@ const CSP = `
   worker-src 'self';
   font-src 'self';
   manifest-src 'self';
+  frame-ancestors 'none';
+  base-uri 'none';
   upgrade-insecure-requests;
   sandbox allow-forms allow-scripts allow-same-origin;
  `.replace(/\s{2,}/g, " ");
@@ -313,40 +315,29 @@ export default withPigment(
     poweredByHeader: false,
     productionBrowserSourceMaps: true,
     allowedDevOrigins: ["/_next/*"],
+
+    // For Netlify, these headers only applies to SSR'ed assets, a.k.a just the HTML files
     async headers() {
+      const headerMap = {
+        "Referrer-Policy": "strict-origin",
+        "Permissions-Policy": "geolocation=(), camera=(), microphone=()",
+        "X-Content-Type-Options": "nosniff",
+        "Cross-Origin-Resource-Policy": "same-origin",
+        "Cross-Origin-Opener-Policy": "same-origin",
+        "Cross-Origin-Embedder-Policy": "require-corp",
+        "Content-Security-Policy": CSP,
+      };
+      const headers: { key: string; value: string }[] = [];
+      for (const [key, value] of Object.entries(headerMap)) {
+        headers.push({
+          key,
+          value,
+        });
+      }
       return [
         {
           source: "/(.*)",
-          headers: [
-            {
-              key: "Referrer-Policy",
-              value: "strict-origin",
-            },
-            {
-              key: "Permissions-Policy",
-              value: "geolocation=(), camera=(), microphone=()",
-            },
-            {
-              key: "X-Content-Type-Options",
-              value: "nosniff",
-            },
-            {
-              key: "Cross-Origin-Resource-Policy",
-              value: "same-origin",
-            },
-            {
-              key: "Cross-Origin-Embedder-Policy",
-              value: "require-corp",
-            },
-            {
-              key: "Cross-Origin-Opener-Policy",
-              value: "same-origin",
-            },
-            {
-              key: "Content-Security-Policy",
-              value: CSP,
-            },
-          ],
+          headers,
         },
       ];
     },

@@ -233,13 +233,13 @@ const TopStatistics = styled("div")({
     width: "100%",
   },
 
-  "&> h2": {
+  "& > h2": {
     width: "100%",
     textAlign: "center",
     fontSize: scaleClamped(29, 52),
   },
 
-  "&> small": {
+  "& > small": {
     display: "block",
     width: "100%",
     textAlign: "center",
@@ -257,18 +257,18 @@ const BottomStatistics = styled("div")({
   alignItems: "center",
   rowGap: scaleClamped(15, 25),
 
-  "&> img": {
+  "& > img": {
     borderRadius: "6px",
   },
 
-  "&> h2": {
+  "& > h2": {
     fontSize: scaleClamped(29, 52),
     fontWeight: "500",
     textAlign: "center",
     whiteSpace: "pre-wrap",
   },
 
-  "&> h2 > strong": {
+  "& > h2 > strong": {
     fontSize: scaleClamped(33, 56),
     display: "block",
   },
@@ -287,7 +287,7 @@ const CallToActionSection = styled("section")({
   marginTop: "96px",
   alignItems: "center",
 
-  "&> h2": {
+  "& > h2": {
     fontSize: scaleClamped(29, 52),
     textAlign: "center",
   },

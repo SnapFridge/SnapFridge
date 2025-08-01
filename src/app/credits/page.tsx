@@ -65,12 +65,12 @@ const Title = css({
 const CreditList = styled("ul")({
   alignItems: "center",
 
-  "&> li": {
+  "& > li": {
     marginTop: "32px",
     justifyItems: "center",
   },
 
-  "&> li > img": {
+  "& > li > img": {
     width: "50%",
     height: "auto",
   },

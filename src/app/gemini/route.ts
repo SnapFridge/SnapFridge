@@ -5,7 +5,6 @@ import {
   type GenerateContentResponse,
 } from "@google/genai";
 import { randomBytes } from "node:crypto";
-import { devEnv } from "@utils";
 
 const ai = new GoogleGenAI({ apiKey: process.env["GEMINI_KEY"]! });
 
@@ -16,7 +15,7 @@ async function ensureContext(contents: { fileData: FileData }[]) {
     file = await ai.files.get({ name });
   } catch {
     file = await ai.files.upload({
-      file: devEnv ? "server/" : "" + name + ".csv",
+      file: "public/functions/" + name + ".csv",
       config: {
         mimeType: "text/csv",
         name,

@@ -130,7 +130,7 @@ const SpoonacularForm = styled("form")({
   flexDirection: "column",
   alignItems: "center",
 
-  "&> *": {
+  "& > *": {
     marginBottom: "24px",
   },
 });

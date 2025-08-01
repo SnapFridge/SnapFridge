@@ -12,14 +12,9 @@ jobs:
           node-version-file: "package.json"
       - name: Install dependencies
         run: npm ci
-      - name: Install Netlify
-        run: npm install netlify-cli -g
-      - name: Build project
-        run: npm run build
       - name: Deploy to Netlify
-        # Site could also be: 074b63c4-9b6b-4d9e-aea6-6757dd0fc84d
         run: |
-          netlify deploy --prod --no-build \
+          npx ntl deploy --prod \
             --dir build \
             --site snapfridge \
             --auth ${{ secrets.NETLIFY_API_TOKEN }}

@@ -38,7 +38,7 @@ function IngredientForm({
   const [ingredient, setIngredient] = useState(defaultIngredient ?? "");
   const [amount, setAmount] = useState(defaultAmount ?? 1);
   const [unit, setUnit] = useState(defaultUnit ?? "");
-  const { data: ingredient_units } = useSWR("/ingredient-unit.csv", fetcher, {
+  const { data: ingredient_units } = useSWR("/functions/ingredient-unit.csv", fetcher, {
     suspense: true,
   });
 

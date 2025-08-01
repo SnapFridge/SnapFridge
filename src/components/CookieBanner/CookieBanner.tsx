@@ -74,7 +74,7 @@ const CookieBannerContainer = styled(motion.div)({
   padding: "24px",
   textAlign: "center",
 
-  "&> *": {
+  "& > *": {
     marginTop: "12px",
   },
 
