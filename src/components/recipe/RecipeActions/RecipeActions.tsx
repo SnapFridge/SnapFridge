@@ -14,13 +14,15 @@ import { use } from "react";
 interface Props {
   recipeId: number;
   recipeName: string;
+  imageType: string;
   updateSavedRecipes: (
     recipeId: number,
-    recipeName: string
-  ) => Promise<{ id: number; name: string }[] | undefined>;
+    recipeName: string,
+    imageType: string
+  ) => Promise<{ id: number; name: string; imageType: string }[] | undefined>;
 }
 
-function RecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props) {
+function RecipeActions({ recipeId, recipeName, imageType, updateSavedRecipes }: Props) {
   const router = useRouter();
   const { addError, addSuccess } = useToast();
 
@@ -30,7 +32,12 @@ function RecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props) {
 
   const recipeExists = !!savedRecipes.find((value) => value.id === recipeId);
 
-  const updateSavedAction = updateSavedRecipes.bind(null, recipeId, recipeName);
+  const updateSavedAction = updateSavedRecipes.bind(
+    null,
+    recipeId,
+    recipeName,
+    imageType
+  );
 
   async function handleHeartClick() {
     if (!user) return router.push("/login");

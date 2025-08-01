@@ -3,6 +3,7 @@ import { PageMargin } from "@utils";
 import { InputProvider } from "@components/snap/InputProvider";
 import RecipeSection from "@components/RecipeSection";
 import { type Metadata } from "next";
+import ScrollArea from "@components/ScrollArea";
 
 export const metadata: Metadata = {
   title: "Snap - SnapFridge",
@@ -16,6 +17,7 @@ export default function Page() {
         <InputSection />
         <RecipeSection />
       </InputProvider>
+      <ScrollArea />
     </PageMargin>
   );
 }

@@ -6,6 +6,7 @@ import { useSavedRecipes } from "./hooks.helper";
 type SavedRecipes = {
   id: number;
   name: string;
+  imageType: string;
 }[];
 
 export const RecipeActionsContext = createContext<

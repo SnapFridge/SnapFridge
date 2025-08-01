@@ -14,13 +14,20 @@ import { RecipeActionsContext } from "./RecipeActionsProvider";
 interface Props {
   recipeId: number;
   recipeName: string;
+  imageType: string;
   updateSavedRecipes: (
     recipeId: number,
-    recipeName: string
-  ) => Promise<{ id: number; name: string }[] | undefined>;
+    recipeName: string,
+    imageType: string
+  ) => Promise<{ id: number; name: string; imageType: string }[] | undefined>;
 }
 
-function MobileRecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props) {
+function MobileRecipeActions({
+  recipeId,
+  recipeName,
+  imageType,
+  updateSavedRecipes,
+}: Props) {
   const router = useRouter();
   const { addSuccess, addError } = useToast();
 
@@ -31,7 +38,12 @@ function MobileRecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props
 
   const recipeExists = !!savedRecipes.find((value) => value.id === recipeId);
 
-  const updateSavedAction = updateSavedRecipes.bind(null, recipeId, recipeName);
+  const updateSavedAction = updateSavedRecipes.bind(
+    null,
+    recipeId,
+    recipeName,
+    imageType
+  );
 
   async function handleHeartClick() {
     if (!user) return router.push("/login");

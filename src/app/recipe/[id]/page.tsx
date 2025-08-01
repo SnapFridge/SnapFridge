@@ -77,6 +77,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         <MobileRecipeActions
           recipeId={recipeInfo.id}
           recipeName={recipeInfo.title}
+          imageType={recipeInfo.imageType}
           updateSavedRecipes={updateSavedRecipes}
         />
 
@@ -110,6 +111,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
             <RecipeActions
               recipeId={recipeInfo.id}
               recipeName={recipeInfo.title}
+              imageType={recipeInfo.imageType}
               updateSavedRecipes={updateSavedRecipes}
             />
             <RecipeInfo recipeInfo={recipeInfo} />
