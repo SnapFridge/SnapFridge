@@ -6,6 +6,8 @@ import Footer from "@components/Footer";
 import CookieBanner from "@components/CookieBanner";
 import { type PropsWithChildren } from "react";
 import { styled } from "@pigment-css/react";
+import ToastProvider from "@components/ToastProvider";
+import Toaster from "@components/Toaster";
 
 const poppins = Poppins({
   weight: ["400", "700"],
@@ -31,7 +33,10 @@ export default function RootLayout({ children }: PropsWithChildren) {
       <Body>
         <ThemeScript />
         <NavBar />
-        <Main>{children}</Main>
+        <ToastProvider>
+          <Main>{children}</Main>
+          <Toaster />
+        </ToastProvider>
         <Footer />
         <CookieBanner />
       </Body>

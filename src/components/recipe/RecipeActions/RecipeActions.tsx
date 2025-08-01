@@ -8,6 +8,7 @@ import { useUnit } from "@components/UnitProvider";
 import { useSavedRecipes } from "./hooks.helper";
 import useUser from "@components/User";
 import { useRouter } from "next/navigation";
+import useToast from "@components/ToastProvider/UseToast";
 
 interface Props {
   recipeId: number;
@@ -20,6 +21,7 @@ interface Props {
 
 function RecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props) {
   const router = useRouter();
+  const { addError, addSuccess } = useToast();
 
   const [unit, toggleUnit] = useUnit();
   const user = useUser();
@@ -34,14 +36,25 @@ function RecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props) {
     try {
       const nextRecipes = (await updateSavedAction()) ?? [];
       setSavedRecipes(nextRecipes);
-    } catch {
+    } catch (error) {
       // Maybe put a toast here later
+      addError("Error saving data", `${error}`);
+    }
+  }
+
+  async function handleSaveClick() {
+    const url = window.location.toString();
+    try {
+      await navigator.clipboard.writeText(url);
+      addSuccess("Copied to clipboard");
+    } catch {
+      addError("Unable to copy to clipboard!");
     }
   }
 
   return (
     <RecipeActionsContainer>
-      <RecipeAction variant="icon" onClick={void handleHeartClick}>
+      <RecipeAction variant="icon" onClick={handleHeartClick}>
         <Icon
           icon="Heart"
           fill={recipeExists ? "#FF4848" : undefined}
@@ -50,7 +63,7 @@ function RecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props) {
         />
         <RecipeActionText>{recipeExists ? "Saved" : "Save"}</RecipeActionText>
       </RecipeAction>
-      <RecipeAction variant="icon">
+      <RecipeAction variant="icon" onClick={handleSaveClick}>
         <Icon icon="Share2" size={36} />
         <RecipeActionText>Share</RecipeActionText>
       </RecipeAction>

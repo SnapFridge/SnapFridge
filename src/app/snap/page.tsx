@@ -3,8 +3,6 @@ import { PageMargin } from "@utils";
 import { InputProvider } from "@components/snap/InputProvider";
 import RecipeSection from "@components/RecipeSection";
 import { type Metadata } from "next";
-import ToastProvider from "@components/ToastProvider";
-import Toaster from "@components/Toaster";
 
 export const metadata: Metadata = {
   title: "Snap - SnapFridge",
@@ -15,10 +13,7 @@ export default function Page() {
   return (
     <PageMargin>
       <InputProvider>
-        <ToastProvider>
-          <Toaster />
-          <InputSection />
-        </ToastProvider>
+        <InputSection />
         <RecipeSection />
       </InputProvider>
     </PageMargin>

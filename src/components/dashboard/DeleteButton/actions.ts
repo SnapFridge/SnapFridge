@@ -4,7 +4,7 @@ import { createClient, createAdminClient } from "@utils/supabase/server";
 import { redirect } from "next/navigation";
 
 async function deleteUser() {
-  const { auth: adminAuth } = await createAdminClient();
+  const { auth: adminAuth } = createAdminClient();
   const { auth } = await createClient();
 
   const {

@@ -72,7 +72,11 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         </SourceCredit>
       </figure>
       {/* We should we able to tab to the controls first */}
-      <MobileRecipeActions />
+      <MobileRecipeActions
+        recipeId={recipeInfo.id}
+        recipeName={recipeInfo.title}
+        updateSavedRecipes={updateSavedRecipes}
+      />
 
       <PageMargin>
         <TitleSection>

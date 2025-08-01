@@ -61,7 +61,7 @@ function AppToast({
         <Icon icon={iconName} />
         <MainContent>
           <Title>{title}</Title>
-          <Description>{children}</Description>
+          {children && <Description>{children}</Description>}
           <Toast.Close
             onClick={() => {
               setOpen(false);

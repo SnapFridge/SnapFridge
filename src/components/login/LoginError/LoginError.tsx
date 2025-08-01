@@ -13,6 +13,8 @@ function LoginError() {
     console.log(error);
     history.replaceState(null, "", location.origin + "/login");
   }, [params]);
+
+  return;
 }
 
 export default LoginError;

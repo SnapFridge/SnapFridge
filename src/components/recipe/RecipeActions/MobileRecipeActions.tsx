@@ -8,6 +8,7 @@ import { RecipeAction, RecipeActionText, UnitButton } from "./RecipeActions";
 import { useRouter } from "next/navigation";
 import useUser from "@components/User";
 import { useSavedRecipes } from "./hooks.helper";
+import useToast from "@components/ToastProvider/UseToast";
 
 interface Props {
   recipeId: number;
@@ -20,6 +21,7 @@ interface Props {
 
 function MobileRecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props) {
   const router = useRouter();
+  const { addSuccess, addError } = useToast();
 
   const [unit, toggleUnit] = useUnit();
 
@@ -40,9 +42,19 @@ function MobileRecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props
     }
   }
 
+  async function handleSaveClick() {
+    const url = window.location.toString();
+    try {
+      await navigator.clipboard.writeText(url);
+      addSuccess("Copied to clipboard");
+    } catch {
+      addError("Unable to copy to clipboard!");
+    }
+  }
+
   return (
     <Wrapper>
-      <RecipeAction variant="icon" onClick={void handleHeartClick}>
+      <RecipeAction variant="icon" onClick={handleHeartClick}>
         <Icon
           icon="Heart"
           fill={recipeExists ? "#FF4848" : undefined}
@@ -54,7 +66,7 @@ function MobileRecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props
       <UnitButton variant="primary" onClick={toggleUnit}>
         {unit === "metric" ? "Metric" : "Imperial"}
       </UnitButton>
-      <RecipeAction variant="icon">
+      <RecipeAction variant="icon" onClick={handleSaveClick}>
         <Icon icon="Share2" size={24} />
         <MobileActionText>Share</MobileActionText>
       </RecipeAction>
