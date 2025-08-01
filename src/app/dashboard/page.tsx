@@ -5,6 +5,7 @@ import { styled } from "@pigment-css/react";
 import Counter from "@components/home/Counter";
 import { type Metadata } from "next";
 import Greeting from "@components/dashboard/Greeting";
+import ClearRecipe from "@components/dashboard/ClearRecipeButton";
 
 export const metadata: Metadata = {
   title: "Dashboard - SnapFridge",
@@ -18,6 +19,7 @@ export default function Page() {
         You currently have <SavedRecipeCounter endValue={727} /> saved recipes!
       </h2>
       <DeleteButton />
+      <ClearRecipe />
       <LogoutButton />
     </PageMargin>
   );
