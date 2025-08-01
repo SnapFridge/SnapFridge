@@ -16,7 +16,7 @@ async function ensureContext(contents: { fileData: FileData }[]) {
     file = await ai.files.get({ name });
   } catch {
     file = await ai.files.upload({
-      file: devEnv ? "public/" : "" + name + ".csv",
+      file: devEnv ? "server/" : "" + name + ".csv",
       config: {
         mimeType: "text/csv",
         name,
