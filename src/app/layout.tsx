@@ -8,6 +8,7 @@ import { type PropsWithChildren } from "react";
 import { styled } from "@pigment-css/react";
 import ToastProvider from "@components/ToastProvider";
 import Toaster from "@components/Toaster";
+import { UserProvider } from "@components/UserProvider";
 
 const poppins = Poppins({
   weight: ["400", "700"],
@@ -32,7 +33,9 @@ export default function RootLayout({ children }: PropsWithChildren) {
     <html lang="en" className={`${poppins.className}`} suppressHydrationWarning>
       <Body>
         <ThemeScript />
-        <NavBar />
+        <UserProvider>
+          <NavBar />
+        </UserProvider>
         <ToastProvider>
           <Main>{children}</Main>
           <Toaster />

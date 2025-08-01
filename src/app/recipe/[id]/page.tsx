@@ -11,7 +11,7 @@ import RecipeStepsList from "@components/recipe/DetailedRecipe";
 import { notFound } from "next/navigation";
 import MobileRecipeActions from "@components/recipe/RecipeActions/MobileRecipeActions";
 import NutrientInfoList from "@components/recipe/RecipeInfoList/NutrientInfoList";
-import UnitProvider from "@components/UnitProvider";
+import { UnitProvider } from "@components/UnitProvider";
 import { updateSavedRecipes } from "./actions";
 import RecipeActionsProvider from "@components/recipe/RecipeActions/RecipeActionsProvider";
 

@@ -37,4 +37,5 @@ async function updateSession(request: NextRequest) {
   }
   return res;
 }
+
 export default updateSession;

@@ -1,7 +1,7 @@
 "use client";
 
 import { Avatar } from "radix-ui";
-import useUser from "@components/User";
+import { useUser } from "@components/UserProvider";
 import { css } from "@pigment-css/react";
 import Icon from "@components/Icon";
 import VisuallyHidden from "@components/VisuallyHidden";

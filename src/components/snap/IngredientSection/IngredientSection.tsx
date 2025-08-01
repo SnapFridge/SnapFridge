@@ -51,7 +51,7 @@ function IngredientSection() {
       {ingredients.size < 1 ? (
         <NoIngredientContainer>
           <IngredientDialog />
-          <Icon icon="Archive" size={36} color="var(--gray-500)" />
+          <Icon icon="Archive" size={36} color="var(--gray-600)" />
           <IngredientTitle>Your ingredients will appear here</IngredientTitle>
         </NoIngredientContainer>
       ) : (
@@ -89,7 +89,7 @@ function IngredientSection() {
 }
 
 const IngredientTitle = styled("h1")({
-  color: "var(--gray-500)",
+  color: "var(--gray-600)",
 
   fontSize: `${18 / 16}rem`,
   fontWeight: "400",
@@ -136,11 +136,12 @@ const SpoonacularForm = styled("form")({
 });
 
 const SpoonacularButton = styled(Button)({
-  backgroundColor: "var(--primary-700)",
+  background: "var(--primary-700)",
+  color: "var(--text-50)",
   width: "200px",
 
   "&:hover": {
-    backgroundColor: "var(--primary-600)",
+    background: "var(--primary-600)",
   },
 });
 

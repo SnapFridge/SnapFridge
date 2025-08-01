@@ -5,7 +5,7 @@ import Icon from "@components/Icon";
 import Button from "@components/Button";
 import { ON_MOBILE } from "@utils";
 import { useUnit } from "@components/UnitProvider";
-import useUser from "@components/User";
+import { useUser } from "@components/UserProvider";
 import { useRouter } from "next/navigation";
 import useToast from "@components/ToastProvider/UseToast";
 import { RecipeActionsContext } from "./RecipeActionsProvider";

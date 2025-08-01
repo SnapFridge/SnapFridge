@@ -6,6 +6,7 @@ import Counter from "@components/home/Counter";
 import { type Metadata } from "next";
 import Greeting from "@components/dashboard/Greeting";
 import ClearRecipe from "@components/dashboard/ClearRecipeButton";
+import { UserProvider } from "@components/UserProvider";
 
 export const metadata: Metadata = {
   title: "Dashboard - SnapFridge",
@@ -13,15 +14,17 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <PageMargin>
-      <Greeting />
-      <h2>
-        You currently have <SavedRecipeCounter endValue={727} /> saved recipes!
-      </h2>
-      <DeleteButton />
-      <ClearRecipe />
-      <LogoutButton />
-    </PageMargin>
+    <UserProvider>
+      <PageMargin>
+        <Greeting />
+        <h2>
+          You currently have <SavedRecipeCounter endValue={727} /> saved recipes!
+        </h2>
+        <DeleteButton />
+        <ClearRecipe />
+        <LogoutButton />
+      </PageMargin>
+    </UserProvider>
   );
 }
 

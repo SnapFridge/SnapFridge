@@ -14,7 +14,7 @@ function LoginError() {
     history.replaceState(null, "", location.origin + "/login");
   }, [params]);
 
-  return;
+  return <></>;
 }
 
 export default LoginError;

@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, useContext, useMemo, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useMemo,
+  useState,
+  type PropsWithChildren,
+} from "react";
 
 type Unit = "metric" | "imperial";
 
@@ -12,7 +18,7 @@ const UnitContext = createContext<
   | undefined
 >(undefined);
 
-function UnitProvider({ children }: React.PropsWithChildren) {
+export function UnitProvider({ children }: PropsWithChildren) {
   const [unit, setUnit] = useState<Unit>("imperial");
 
   const toggleUnit = useMemo(() => {
@@ -35,5 +41,3 @@ export function useUnit(): [Unit, () => void] {
   const { unit, toggleUnit } = useContext(UnitContext)!;
   return [unit, toggleUnit];
 }
-
-export default UnitProvider;

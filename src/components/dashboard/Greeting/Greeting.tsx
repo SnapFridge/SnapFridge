@@ -1,6 +1,6 @@
 "use client";
 
-import useUser from "@components/User";
+import { useUser } from "@components/UserProvider";
 import { styled } from "@pigment-css/react";
 
 function Greeting() {

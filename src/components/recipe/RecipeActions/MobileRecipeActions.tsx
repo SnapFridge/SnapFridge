@@ -6,7 +6,7 @@ import Icon from "@components/Icon";
 import { useUnit } from "@components/UnitProvider";
 import { RecipeAction, RecipeActionText, UnitButton } from "./RecipeActions";
 import { useRouter } from "next/navigation";
-import useUser from "@components/User";
+import { useUser } from "@components/UserProvider";
 import useToast from "@components/ToastProvider/UseToast";
 import { use } from "react";
 import { RecipeActionsContext } from "./RecipeActionsProvider";

@@ -1,4 +1,4 @@
-import useUser from "@components/User";
+import { useUser } from "@components/UserProvider";
 import { createClient } from "@utils/supabase/client";
 import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
 
