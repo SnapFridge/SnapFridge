@@ -13,6 +13,7 @@ import MobileRecipeActions from "@components/recipe/RecipeActions/MobileRecipeAc
 import NutrientInfoList from "@components/recipe/RecipeInfoList/NutrientInfoList";
 import UnitProvider from "@components/UnitProvider";
 import { updateSavedRecipes } from "./actions";
+import RecipeActionsProvider from "@components/recipe/RecipeActions/RecipeActionsProvider";
 
 // Revalidate the cache every hour
 const CACHE_ONE_HOUR = 3600;
@@ -72,55 +73,57 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         </SourceCredit>
       </figure>
       {/* We should we able to tab to the controls first */}
-      <MobileRecipeActions
-        recipeId={recipeInfo.id}
-        recipeName={recipeInfo.title}
-        updateSavedRecipes={updateSavedRecipes}
-      />
+      <RecipeActionsProvider>
+        <MobileRecipeActions
+          recipeId={recipeInfo.id}
+          recipeName={recipeInfo.title}
+          updateSavedRecipes={updateSavedRecipes}
+        />
 
-      <PageMargin>
-        <TitleSection>
-          <Title>{recipeInfo.title}</Title>
-          {recipeInfo.vegan && <Tooltip type="vegan" />}
-          {recipeInfo.vegetarian && <Tooltip type="vegetarian" />}
-          {recipeInfo.sustainable && <Tooltip type="sustainable" />}
-          {recipeInfo.veryHealthy && <Tooltip type="healthy" />}
-          {recipeInfo.veryPopular && <Tooltip type="popular" />}
-        </TitleSection>
+        <PageMargin>
+          <TitleSection>
+            <Title>{recipeInfo.title}</Title>
+            {recipeInfo.vegan && <Tooltip type="vegan" />}
+            {recipeInfo.vegetarian && <Tooltip type="vegetarian" />}
+            {recipeInfo.sustainable && <Tooltip type="sustainable" />}
+            {recipeInfo.veryHealthy && <Tooltip type="healthy" />}
+            {recipeInfo.veryPopular && <Tooltip type="popular" />}
+          </TitleSection>
 
-        <AllergenWarning>
-          <Icon
-            icon="TriangleAlert"
-            color="var(--warn-500)"
-            size={32}
-            description="Warning"
-          />
-          <AllergenContent>
-            <AllergenTitle>Possible Allergens</AllergenTitle>
-            <AllergenText>
-              {!recipeInfo.dairyFree && "Dairy,"}
-              {!recipeInfo.glutenFree && "Gluten,"}
-            </AllergenText>
-          </AllergenContent>
-        </AllergenWarning>
+          <AllergenWarning>
+            <Icon
+              icon="TriangleAlert"
+              color="var(--warn-500)"
+              size={32}
+              description="Warning"
+            />
+            <AllergenContent>
+              <AllergenTitle>Possible Allergens</AllergenTitle>
+              <AllergenText>
+                {!recipeInfo.dairyFree && "Dairy,"}
+                {!recipeInfo.glutenFree && "Gluten,"}
+              </AllergenText>
+            </AllergenContent>
+          </AllergenWarning>
 
-        <Wrapper>
-          <RecipeActions
-            recipeId={recipeInfo.id}
-            recipeName={recipeInfo.title}
-            updateSavedRecipes={updateSavedRecipes}
-          />
-          <RecipeInfo recipeInfo={recipeInfo} />
-        </Wrapper>
+          <Wrapper>
+            <RecipeActions
+              recipeId={recipeInfo.id}
+              recipeName={recipeInfo.title}
+              updateSavedRecipes={updateSavedRecipes}
+            />
+            <RecipeInfo recipeInfo={recipeInfo} />
+          </Wrapper>
 
-        <ListContainer>
-          <RecipeInfoList ingredients={recipeInfo.extendedIngredients} />
-          <Spacer />
-          <NutrientInfoList nutrients={recipeInfo.nutrition.nutrients} />
-        </ListContainer>
+          <ListContainer>
+            <RecipeInfoList ingredients={recipeInfo.extendedIngredients} />
+            <Spacer />
+            <NutrientInfoList nutrients={recipeInfo.nutrition.nutrients} />
+          </ListContainer>
 
-        <RecipeStepsList recipes={recipeInfo} />
-      </PageMargin>
+          <RecipeStepsList recipes={recipeInfo} />
+        </PageMargin>
+      </RecipeActionsProvider>
     </UnitProvider>
   );
 }

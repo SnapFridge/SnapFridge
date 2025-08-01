@@ -5,10 +5,11 @@ import Icon from "@components/Icon";
 import Button from "@components/Button";
 import { ON_MOBILE } from "@utils";
 import { useUnit } from "@components/UnitProvider";
-import { useSavedRecipes } from "./hooks.helper";
 import useUser from "@components/User";
 import { useRouter } from "next/navigation";
 import useToast from "@components/ToastProvider/UseToast";
+import { RecipeActionsContext } from "./RecipeActionsProvider";
+import { use } from "react";
 
 interface Props {
   recipeId: number;
@@ -25,7 +26,7 @@ function RecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props) {
 
   const [unit, toggleUnit] = useUnit();
   const user = useUser();
-  const [savedRecipes, setSavedRecipes] = useSavedRecipes();
+  const [savedRecipes, setSavedRecipes] = use(RecipeActionsContext)!;
 
   const recipeExists = !!savedRecipes.find((value) => value.id === recipeId);
 

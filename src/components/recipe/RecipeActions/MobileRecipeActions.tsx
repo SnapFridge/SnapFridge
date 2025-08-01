@@ -7,8 +7,9 @@ import { useUnit } from "@components/UnitProvider";
 import { RecipeAction, RecipeActionText, UnitButton } from "./RecipeActions";
 import { useRouter } from "next/navigation";
 import useUser from "@components/User";
-import { useSavedRecipes } from "./hooks.helper";
 import useToast from "@components/ToastProvider/UseToast";
+import { use } from "react";
+import { RecipeActionsContext } from "./RecipeActionsProvider";
 
 interface Props {
   recipeId: number;
@@ -26,7 +27,7 @@ function MobileRecipeActions({ recipeId, recipeName, updateSavedRecipes }: Props
   const [unit, toggleUnit] = useUnit();
 
   const user = useUser();
-  const [savedRecipes, setSavedRecipes] = useSavedRecipes();
+  const [savedRecipes, setSavedRecipes] = use(RecipeActionsContext)!;
 
   const recipeExists = !!savedRecipes.find((value) => value.id === recipeId);
 
