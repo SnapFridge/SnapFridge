@@ -21,10 +21,6 @@ export async function updateSavedRecipes(
     redirect("/login");
   }
 
-  console.log("actions.ts");
-  console.log(user);
-  console.log(userError);
-
   // Why don't we use an eq? Because our database will only show us the right one!
   const { data, error } = await supabase.from("saved_recipes").select();
   if (error) throw new Error(`Supabase select error! ${error.code}: ${error.message}`);

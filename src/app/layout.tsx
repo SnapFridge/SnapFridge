@@ -35,11 +35,11 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <ThemeScript />
         <UserProvider>
           <NavBar />
+          <ToastProvider>
+            <Main>{children}</Main>
+            <Toaster />
+          </ToastProvider>
         </UserProvider>
-        <ToastProvider>
-          <Main>{children}</Main>
-          <Toaster />
-        </ToastProvider>
         <Footer />
         <CookieBanner />
       </Body>
