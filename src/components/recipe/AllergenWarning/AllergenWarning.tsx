@@ -10,14 +10,13 @@ interface Props {
 function prettyPrintArray(ingredients: string[]) {
   let prettyPrint = "";
 
-  for (let i = 0; i++; i < ingredients.length) {
+  for (let i = 0; i < ingredients.length; i++) {
     const ingredient = ingredients[i];
     prettyPrint += ingredient;
     if (i + 1 < ingredients.length) {
       prettyPrint += ", ";
     }
   }
-
   // Capitalize the first letter of the string
   return prettyPrint[0]!.toUpperCase() + prettyPrint.slice(1);
 }
