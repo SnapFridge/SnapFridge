@@ -20,7 +20,6 @@ async function fetcher(url: string) {
   const text = await r.text();
   const map = new Map<string, string[]>();
   for (const entry of text.split("\n")) {
-    console.log(entry);
     const [ingredient, unitsStr] = entry.split(";");
     map.set(ingredient!, unitsStr!.split(","));
   }

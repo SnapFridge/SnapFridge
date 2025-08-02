@@ -10,7 +10,7 @@ function LoginError() {
     if (!error) {
       return;
     }
-    console.log(error);
+    console.error(error);
     history.replaceState(null, "", location.origin + "/login");
   }, [params]);
 

@@ -1,29 +1,34 @@
 import { ScrollArea as RadixScrollArea } from "radix-ui";
 import { styled } from "@pigment-css/react";
 import SavedItem from "./SavedItem";
+import { createClient } from "@utils/supabase/server";
 
-const example = [
-  { recipeID: 1, recipeName: "1" },
-  { recipeID: 1, recipeName: "1" },
-  { recipeID: 1, recipeName: "1" },
-  { recipeID: 1, recipeName: "1" },
-  { recipeID: 1, recipeName: "1" },
-  { recipeID: 1, recipeName: "1" },
-  { recipeID: 1, recipeName: "1" },
-  { recipeID: 1, recipeName: "1" },
-  { recipeID: 1, recipeName: "1" },
-  { recipeID: 1, recipeName: "1" },
-  { recipeID: 1, recipeName: "1" },
-  { recipeID: 1, recipeName: "1" },
-];
+export default async function ScrollArea() {
+  const supabase = await createClient();
+  const { data, error } = await supabase.from("saved_recipes").select();
 
-export default function ScrollArea() {
+  if (error) {
+    console.error("Error fetching saved recipes:", error);
+    return <h1>failed to fetch...</h1>;
+  }
+
+  const recipes = (data?.[0]?.recipes ?? []) as {
+    id: number;
+    name: string;
+    imageType: string;
+  }[];
+
   return (
     <ScrollAreaRoot>
       <ScrollAreaViewport>
         <Container>
-          {example.map((tag, index) => (
-            <SavedItem recipeID={tag.recipeID} recipeName={tag.recipeName} key={index} />
+          {recipes.map((recipe) => (
+            <SavedItem
+              recipeID={recipe.id}
+              recipeName={recipe.name}
+              imageType={recipe.imageType}
+              key={recipe.name}
+            />
           ))}
         </Container>
       </ScrollAreaViewport>
