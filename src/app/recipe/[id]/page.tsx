@@ -5,7 +5,6 @@ import Image from "next/image";
 import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE, PageMargin } from "@utils";
 import RecipeActions from "@components/recipe/RecipeActions";
-import Icon from "@components/Icon";
 import RecipeInfoList from "@components/recipe/RecipeInfoList";
 import RecipeStepsList from "@components/recipe/DetailedRecipe";
 import { notFound } from "next/navigation";
@@ -14,6 +13,7 @@ import NutrientInfoList from "@components/recipe/RecipeInfoList/NutrientInfoList
 import { UnitProvider } from "@components/UnitProvider";
 import { updateSavedRecipes } from "./actions";
 import RecipeActionsProvider from "@components/recipe/RecipeActions/RecipeActionsProvider";
+import AllergenWarning from "@components/recipe/AllergenWarning";
 
 // Revalidate the cache every hour
 const CACHE_ONE_HOUR = 3600;
@@ -91,21 +91,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
             {recipeInfo.veryPopular && <Tooltip type="popular" />}
           </TitleSection>
 
-          <AllergenWarning>
-            <Icon
-              icon="TriangleAlert"
-              color="var(--warn-500)"
-              size={32}
-              description="Warning"
-            />
-            <AllergenContent>
-              <AllergenTitle>Possible Allergens</AllergenTitle>
-              <AllergenText>
-                {!recipeInfo.dairyFree && "Dairy,"}
-                {!recipeInfo.glutenFree && "Gluten,"}
-              </AllergenText>
-            </AllergenContent>
-          </AllergenWarning>
+          <AllergenWarning recipeInfo={recipeInfo} />
 
           <Wrapper>
             <RecipeActions
@@ -182,44 +168,6 @@ const Wrapper = styled("div")({
   gap: "16px",
   // Allows us to tab the controls first
   flexDirection: "row-reverse",
-});
-
-const AllergenWarning = styled("section")({
-  padding: "12px 24px",
-  width: "fit-content",
-  display: "flex",
-  alignItems: "center",
-  position: "relative",
-  gap: "24px",
-  borderLeft: "2px solid var(--warn-600)",
-  marginBottom: "12px",
-
-  "&::before": {
-    content: "''",
-    position: "absolute",
-    borderTopRightRadius: "8px",
-    borderBottomRightRadius: "8px",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    backgroundColor: "var(--warn-500)",
-    opacity: "30%",
-    zIndex: -1,
-  },
-
-  [ON_MOBILE]: {
-    marginLeft: "auto",
-    marginRight: "auto",
-  },
-});
-
-const AllergenContent = styled("div")({});
-const AllergenTitle = styled("h2")({
-  fontSize: `${20 / 16}rem`,
-});
-const AllergenText = styled("p")({
-  fontSize: `${16 / 16}rem`,
 });
 
 const ListContainer = styled("div")({

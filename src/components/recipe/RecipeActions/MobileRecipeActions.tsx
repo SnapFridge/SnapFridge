@@ -70,7 +70,7 @@ function MobileRecipeActions({
       <RecipeAction variant="icon" onClick={handleHeartClick}>
         <Icon
           icon="Heart"
-          fill={recipeExists ? "#FF4848" : undefined}
+          fill={recipeExists ? "#FF4848" : "none"}
           color="#FF4848"
           size={24}
         />
