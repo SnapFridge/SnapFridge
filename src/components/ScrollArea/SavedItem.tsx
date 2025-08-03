@@ -2,7 +2,6 @@
 
 import { styled, css } from "@pigment-css/react";
 import Image from "next/image";
-import Link from "next/link";
 import { motion, type Variants } from "motion/react";
 
 type Props = {
@@ -25,12 +24,10 @@ const width = parseInt(IMG_SIZE.split("x")[0] ?? "0");
 const height = parseInt(IMG_SIZE.split("x")[1] ?? "0");
 
 const MotionImage = motion.create(Image);
-const MotionLink = motion.create(Link);
 
 export default function SavedItem({ recipeID, recipeName, imageType }: Props) {
-  // change href to switch based on environment
   return (
-    <Container whileHover="hover" href={`http://127.0.0.1:3000/recipe/${recipeID}`}>
+    <Container whileHover="hover" href={`/recipe/${recipeID}`}>
       <MotionImage
         src={`https://img.spoonacular.com/recipes/${recipeID}-${IMG_SIZE}.${imageType}`}
         alt="hi"
@@ -78,7 +75,7 @@ const ImgCSS = css({
   borderRadius: "inherit",
 });
 
-const Container = styled(MotionLink)({
+const Container = styled(motion.a)({
   width: `${width / 2}px`,
   height: `${height}px`,
   position: "relative",
