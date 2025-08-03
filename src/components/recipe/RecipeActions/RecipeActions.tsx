@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import useToast from "@components/ToastProvider/UseToast";
 import { useEffect, useState } from "react";
 import createClient from "@utils/supabase/client";
+import { useSavedRecipes } from "./hooks.helper";
 
 type Props = {
   recipeId: number;
@@ -30,26 +31,7 @@ function RecipeActions({ recipeId, recipeName, imageType }: Props) {
   const supabase = createClient();
 
   // work on this l8r
-  const [savedRecipes, setSavedRecipes] = useState<SavedRecipe[]>([]);
-
-  useEffect(() => {
-    async function getSavedRecipes() {
-      if (!user) {
-        return;
-      }
-
-      // Safe to preform as Supabase will not allow multiple rows with the same key (user_id)
-      await supabase.from("saved_recipes").insert({ user_id: user.id, recipes: [] });
-
-      // Don't need to preform equality checks as supabase should only return the row the user has access to
-      const { data } = await supabase.from("saved_recipes").select();
-
-      const recipes = (data?.[0]?.recipes ?? []) as SavedRecipe[];
-
-      setSavedRecipes(recipes);
-    }
-    void getSavedRecipes();
-  }, [supabase, user]);
+  const [savedRecipes, setSavedRecipes] = useSavedRecipes(supabase);
 
   const recipeSaved = savedRecipes.findIndex(({ id }) => id === recipeId) > -1;
 
@@ -57,6 +39,7 @@ function RecipeActions({ recipeId, recipeName, imageType }: Props) {
     // Why don't we use an eq? Because our database will only show us the right one!
     const { data, error } = await supabase.from("saved_recipes").select();
     if (error) throw new Error(`Supabase select error! ${error.code}: ${error.message}`);
+
     const savedRecipes = (data[0]?.recipes ?? []) as SavedRecipe[];
     const recipeIndex = savedRecipes.findIndex(({ id }) => id === recipeId);
     const nextRecipes =
