@@ -1,5 +1,6 @@
 import { useUser } from "@components/UserProvider";
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { Database } from "@utils/supabase/database";
 import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
 
 export type SavedRecipe = {
@@ -9,7 +10,7 @@ export type SavedRecipe = {
 };
 
 export function useSavedRecipes(
-  supabase: SupabaseClient
+  supabase: SupabaseClient<Database>
 ): [SavedRecipe[], Dispatch<SetStateAction<SavedRecipe[]>>] {
   const [savedRecipes, setSavedRecipes] = useState<SavedRecipe[]>([]);
   const user = useUser();
