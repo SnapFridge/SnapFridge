@@ -35,7 +35,13 @@ export default async function ScrollArea() {
     );
   }
 
-  if (!data?.[0]?.recipes) {
+  const recipes = (data?.[0]?.recipes ?? []) as {
+    id: number;
+    name: string;
+    imageType: string;
+  }[];
+
+  if (recipes.length === 0) {
     return (
       <NoRecipesContainer>
         <NoRecipesContent>
@@ -45,12 +51,6 @@ export default async function ScrollArea() {
       </NoRecipesContainer>
     );
   }
-
-  const recipes = (data?.[0]?.recipes ?? []) as {
-    id: number;
-    name: string;
-    imageType: string;
-  }[];
 
   return (
     <ScrollAreaRoot>
