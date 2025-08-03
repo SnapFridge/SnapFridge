@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import useToast from "@components/ToastProvider/UseToast";
 import { RecipeActionsContext } from "./RecipeActionsProvider";
 import { use } from "react";
+import createClient from "@utils/supabase/client";
 
 interface Props {
   recipeId: number;
@@ -75,7 +76,7 @@ function RecipeActions({ recipeId, recipeName, imageType, updateSavedRecipes }: 
         <Icon icon="Share2" size={36} />
         <RecipeActionText>Share</RecipeActionText>
       </RecipeAction>
-      <UnitButton variant="primary" onClick={toggleUnit}>
+      <UnitButton variant="primary" onClick={createClient}>
         {unit === "metric" ? "Metric" : "Imperial"}
       </UnitButton>
     </RecipeActionsContainer>

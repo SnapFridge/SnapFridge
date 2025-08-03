@@ -1,5 +1,5 @@
 export { default } from "@utils/supabase/middleware";
 
 export const config = {
-  matcher: ["/dashboard", "/login"],
+  matcher: ["/dashboard", "/login", "/recipe/:path*"],
 };

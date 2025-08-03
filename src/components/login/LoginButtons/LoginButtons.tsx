@@ -2,7 +2,7 @@
 
 import OAuthLoginCards from "@components/login/OAuthLoginCard";
 import { styled } from "@pigment-css/react";
-import { createClient } from "@utils/supabase/client";
+import createClient from "@utils/supabase/client";
 
 function LoginButtons() {
   const { auth } = createClient();

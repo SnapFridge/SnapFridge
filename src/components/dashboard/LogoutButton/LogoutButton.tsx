@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@components/Button";
-import { createClient } from "@utils/supabase/client";
+import createClient from "@utils/supabase/client";
 import { redirect } from "next/navigation";
 
 function LogoutButton() {
