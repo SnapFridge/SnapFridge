@@ -74,7 +74,9 @@ function IngredientSection() {
           disabled={recipes === "pending"}
         />
         <ToggleGroup
-          onValueChange={setRanking}
+          onValueChange={(value) => {
+            if (value) setRanking(value);
+          }}
           value={ranking}
           disabled={recipes === "pending"}
         />

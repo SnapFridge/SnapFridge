@@ -27,7 +27,6 @@ const height = parseInt(IMG_SIZE.split("x")[1] ?? "0");
 const MotionImage = motion.create(Image);
 const MotionLink = motion.create(Link);
 
-// src={`https://img.spoonacular.com/recipes/${recipeID}-${IMG_SIZE}.${IMG_TYPE}`}
 export default function SavedItem({ recipeID, recipeName, imageType }: Props) {
   // change href to switch based on environment
   return (
@@ -59,6 +58,7 @@ const NameVariants: Variants = {
 const ImgVariants: Variants = {
   hover: {
     scale: 1.1,
+    opacity: 0.4,
     transition: {
       duration: 0.2,
       delay: 0,
@@ -76,11 +76,6 @@ const ImgCSS = css({
   width: "100%",
   height: "100%",
   borderRadius: "inherit",
-  transition: "transform 0.3s ease-in-out",
-
-  "&:hover": {
-    transform: "scale(1.2)",
-  },
 });
 
 const Container = styled(MotionLink)({
@@ -98,9 +93,9 @@ const RecipeName = styled(motion.p)({
   width: "100%",
   height: "100%",
   padding: "8px",
-  backgroundColor: "rgba(0,0,0,0.6)",
   borderRadius: "inherit",
   fontWeight: "bold",
+  fontSize: `${24 / 16}rem`,
   color: "var(--text-950)",
 
   display: "flex",

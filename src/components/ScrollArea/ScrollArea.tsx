@@ -2,14 +2,48 @@ import { ScrollArea as RadixScrollArea } from "radix-ui";
 import { styled } from "@pigment-css/react";
 import SavedItem from "./SavedItem";
 import { createClient } from "@utils/supabase/server";
+import Icon from "@components/Icon";
 
 export default async function ScrollArea() {
   const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    return (
+      <LoginContainer>
+        <LoginContent>
+          <Icon icon="User" size={36} color="var(--gray-500)" />
+          <p>You must login to see saved recipes!</p>
+        </LoginContent>
+      </LoginContainer>
+    );
+  }
+
   const { data, error } = await supabase.from("saved_recipes").select();
 
   if (error) {
     console.error("Error fetching saved recipes:", error);
-    return <h1>failed to fetch...</h1>;
+    return (
+      <ErrorContainer>
+        <ErrorContent>
+          <Icon icon="TriangleAlert" size={36} color="var(--error-300)" />
+          <p>Error: Failed to fetch saved recipes. Please try again.</p>
+        </ErrorContent>
+      </ErrorContainer>
+    );
+  }
+
+  if (!data?.[0]?.recipes) {
+    return (
+      <NoRecipesContainer>
+        <NoRecipesContent>
+          <Icon icon="Ghost" size={36} color="var(--gray-500)" />
+          <p>You currently have no saved recipes.</p>
+        </NoRecipesContent>
+      </NoRecipesContainer>
+    );
   }
 
   const recipes = (data?.[0]?.recipes ?? []) as {
@@ -44,6 +78,48 @@ export default async function ScrollArea() {
   );
 }
 
+const LoginContainer = styled("div")({
+  display: "flex",
+  justifyContent: "center",
+  margin: "0 0 36px",
+});
+const LoginContent = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  textAlign: "center",
+  maxWidth: "600px",
+  color: "var(--gray-500)",
+});
+
+const ErrorContainer = styled("div")({
+  display: "flex",
+  justifyContent: "center",
+  margin: "0 0 36px",
+});
+const ErrorContent = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  textAlign: "center",
+  maxWidth: "600px",
+  color: "var(--error-300)",
+});
+
+const NoRecipesContainer = styled("div")({
+  display: "flex",
+  justifyContent: "center",
+  margin: "0 0 36px",
+});
+const NoRecipesContent = styled("div")({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  textAlign: "center",
+  maxWidth: "600px",
+  color: "var(--gray-500)",
+});
+
 const Container = styled("div")({
   display: "flex",
   gap: "12px",
@@ -57,7 +133,7 @@ const ScrollAreaRoot = styled(RadixScrollArea.Root)`
   border-radius: 4px;
   overflow: hidden;
   box-shadow: 0 2px 10px var(--gray-400);
-  background-color: white;
+  background-color: var(--accent-50);
 
   --scrollbar-size: 10px;
 `;
