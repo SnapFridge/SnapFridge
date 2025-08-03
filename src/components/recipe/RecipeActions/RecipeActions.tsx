@@ -8,50 +8,91 @@ import { useUnit } from "@components/UnitProvider";
 import { useUser } from "@components/UserProvider";
 import { useRouter } from "next/navigation";
 import useToast from "@components/ToastProvider/UseToast";
-import { RecipeActionsContext } from "./RecipeActionsProvider";
-import { use } from "react";
+import { useEffect, useState } from "react";
 import createClient from "@utils/supabase/client";
 
-interface Props {
+type Props = {
   recipeId: number;
   recipeName: string;
   imageType: string;
-  updateSavedRecipes: (
-    recipeId: number,
-    recipeName: string,
-    imageType: string
-  ) => Promise<{ id: number; name: string; imageType: string }[] | undefined>;
-}
+};
+type SavedRecipe = {
+  id: number;
+  name: string;
+  imageType: string;
+};
 
-function RecipeActions({ recipeId, recipeName, imageType, updateSavedRecipes }: Props) {
+function RecipeActions({ recipeId, recipeName, imageType }: Props) {
   const router = useRouter();
   const { addError, addSuccess } = useToast();
-
   const [unit, toggleUnit] = useUnit();
   const user = useUser();
-  const [savedRecipes, setSavedRecipes] = use(RecipeActionsContext)!;
+  const supabase = createClient();
 
-  const recipeExists = !!savedRecipes.find((value) => value.id === recipeId);
+  // work on this l8r
+  const [savedRecipes, setSavedRecipes] = useState<SavedRecipe[]>([]);
 
-  const updateSavedAction = updateSavedRecipes.bind(
-    null,
-    recipeId,
-    recipeName,
-    imageType
-  );
+  useEffect(() => {
+    async function getSavedRecipes() {
+      if (!user) {
+        return;
+      }
 
-  async function handleHeartClick() {
-    if (!user) return router.push("/login");
+      // Safe to preform as Supabase will not allow multiple rows with the same key (user_id)
+      await supabase.from("saved_recipes").insert({ user_id: user.id, recipes: [] });
+
+      // Don't need to preform equality checks as supabase should only return the row the user has access to
+      const { data } = await supabase.from("saved_recipes").select();
+
+      const recipes = (data?.[0]?.recipes ?? []) as SavedRecipe[];
+
+      setSavedRecipes(recipes);
+    }
+    void getSavedRecipes();
+  }, [supabase, user]);
+
+  const recipeSaved = savedRecipes.findIndex(({ id }) => id === recipeId) > -1;
+
+  async function updateSavedRecipes() {
+    // Why don't we use an eq? Because our database will only show us the right one!
+    const { data, error } = await supabase.from("saved_recipes").select();
+    if (error) throw new Error(`Supabase select error! ${error.code}: ${error.message}`);
+    const savedRecipes = (data[0]?.recipes ?? []) as SavedRecipe[];
+    const recipeIndex = savedRecipes.findIndex(({ id }) => id === recipeId);
+    const nextRecipes =
+      recipeIndex > -1
+        ? savedRecipes.filter((value) => value.id !== recipeId)
+        : [
+            ...savedRecipes,
+            {
+              name: recipeName,
+              id: recipeId,
+              imageType: imageType,
+            },
+          ];
+    const { error: updateError } = await supabase
+      .from("saved_recipes")
+      .update({ recipes: nextRecipes })
+      .eq("user_id", user!.id);
+    if (updateError)
+      throw new Error(
+        `Supabase update error! ${updateError.code}: ${updateError.message}`
+      );
+    return nextRecipes;
+  }
+
+  async function handleSaveClick() {
     try {
-      const nextRecipes = (await updateSavedAction()) ?? [];
-      setSavedRecipes(nextRecipes);
+      if (!user) {
+        router.push("/login");
+      }
+      setSavedRecipes(await updateSavedRecipes());
     } catch (error) {
-      // Maybe put a toast here later
       addError("Error saving data", `${error}`);
     }
   }
 
-  async function handleSaveClick() {
+  async function handleShareClick() {
     const url = window.location.toString();
     try {
       await navigator.clipboard.writeText(url);
@@ -62,48 +103,70 @@ function RecipeActions({ recipeId, recipeName, imageType, updateSavedRecipes }: 
   }
 
   return (
-    <RecipeActionsContainer>
-      <RecipeAction variant="icon" onClick={handleHeartClick}>
+    <Container>
+      <ColFlexButton variant="icon" onClick={handleSaveClick}>
         <Icon
           icon="Heart"
-          fill={recipeExists ? "#FF4848" : "none"}
+          fill={recipeSaved ? "#FF4848" : "none"}
           color="#FF4848"
           size={36}
         />
-        <RecipeActionText>{recipeExists ? "Saved" : "Save"}</RecipeActionText>
-      </RecipeAction>
-      <RecipeAction variant="icon" onClick={handleSaveClick}>
+        <RecipeActionText>{recipeSaved ? "Saved" : "Save"}</RecipeActionText>
+      </ColFlexButton>
+      <ShareButton variant="icon" onClick={handleShareClick}>
         <Icon icon="Share2" size={36} />
         <RecipeActionText>Share</RecipeActionText>
-      </RecipeAction>
-      <UnitButton variant="primary" onClick={createClient}>
+      </ShareButton>
+      <UnitButton variant="primary" onClick={toggleUnit}>
         {unit === "metric" ? "Metric" : "Imperial"}
       </UnitButton>
-    </RecipeActionsContainer>
+    </Container>
   );
 }
 
-const RecipeActionsContainer = styled("div")({
+const Container = styled("div")({
   display: "flex",
   flexDirection: "column",
-  justifyItems: "center",
+  justifyContent: "center",
+  alignItems: "center",
 
   [ON_MOBILE]: {
-    display: "none",
+    zIndex: 1,
+    flexDirection: "row",
+    position: "fixed",
+    right: 0,
+    left: 0,
+    margin: "auto",
+    bottom: "16px",
+    maxWidth: "320px",
+    borderRadius: `${50 / 16}rem`,
+    gap: "26px",
+    background: "var(--background-50)",
   },
 });
 
-export const RecipeAction = styled(Button)({
-  display: "flex",
+const ColFlexButton = styled(Button)({
   flexDirection: "column",
 });
 
-export const RecipeActionText = styled("p")({
-  fontSize: `${16 / 16}rem`,
-  fontWeight: 700,
+const ShareButton = styled(Button)({
+  flexDirection: "column",
+  [ON_MOBILE]: {
+    order: 1,
+  },
 });
 
-export const UnitButton = styled(Button)({
+const RecipeActionText = styled("p")({
+  fontSize: `${16 / 16}rem`,
+  fontWeight: 700,
+
+  [ON_MOBILE]: {
+    fontSize: `${14 / 16}rem`,
+  },
+});
+
+const UnitButton = styled(Button)({
+  height: "fit-content",
   borderRadius: `${36 / 16}rem`,
   maxWidth: "104px",
   padding: "12px 26px",

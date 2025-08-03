@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
+// Cuz of this bug https://github.com/supabase/supabase-js/issues/1288
+
 export type Json =
   | string
   | number

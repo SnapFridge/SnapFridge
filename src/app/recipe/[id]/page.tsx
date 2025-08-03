@@ -8,11 +8,8 @@ import RecipeActions from "@components/recipe/RecipeActions";
 import RecipeInfoList from "@components/recipe/RecipeInfoList";
 import RecipeStepsList from "@components/recipe/DetailedRecipe";
 import { notFound } from "next/navigation";
-import MobileRecipeActions from "@components/recipe/RecipeActions/MobileRecipeActions";
 import NutrientInfoList from "@components/recipe/RecipeInfoList/NutrientInfoList";
 import { UnitProvider } from "@components/UnitProvider";
-import { updateSavedRecipes } from "./actions";
-import RecipeActionsProvider from "@components/recipe/RecipeActions/RecipeActionsProvider";
 import AllergenWarning from "@components/recipe/AllergenWarning";
 
 // Revalidate the cache every hour
@@ -73,45 +70,35 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
         </SourceCredit>
       </figure>
       {/* We should we able to tab to the controls first */}
-      <RecipeActionsProvider>
-        <MobileRecipeActions
-          recipeId={recipeInfo.id}
-          recipeName={recipeInfo.title}
-          imageType={recipeInfo.imageType}
-          updateSavedRecipes={updateSavedRecipes}
-        />
+      <PageMargin>
+        <TitleSection>
+          <Title>{recipeInfo.title}</Title>
+          {recipeInfo.vegan && <Tooltip type="vegan" />}
+          {recipeInfo.vegetarian && <Tooltip type="vegetarian" />}
+          {recipeInfo.sustainable && <Tooltip type="sustainable" />}
+          {recipeInfo.veryHealthy && <Tooltip type="healthy" />}
+          {recipeInfo.veryPopular && <Tooltip type="popular" />}
+        </TitleSection>
 
-        <PageMargin>
-          <TitleSection>
-            <Title>{recipeInfo.title}</Title>
-            {recipeInfo.vegan && <Tooltip type="vegan" />}
-            {recipeInfo.vegetarian && <Tooltip type="vegetarian" />}
-            {recipeInfo.sustainable && <Tooltip type="sustainable" />}
-            {recipeInfo.veryHealthy && <Tooltip type="healthy" />}
-            {recipeInfo.veryPopular && <Tooltip type="popular" />}
-          </TitleSection>
+        <AllergenWarning recipeInfo={recipeInfo} />
 
-          <AllergenWarning recipeInfo={recipeInfo} />
+        <Wrapper>
+          <RecipeActions
+            recipeId={recipeInfo.id}
+            recipeName={recipeInfo.title}
+            imageType={recipeInfo.imageType}
+          />
+          <RecipeInfo recipeInfo={recipeInfo} />
+        </Wrapper>
 
-          <Wrapper>
-            <RecipeActions
-              recipeId={recipeInfo.id}
-              recipeName={recipeInfo.title}
-              imageType={recipeInfo.imageType}
-              updateSavedRecipes={updateSavedRecipes}
-            />
-            <RecipeInfo recipeInfo={recipeInfo} />
-          </Wrapper>
+        <ListContainer>
+          <RecipeInfoList ingredients={recipeInfo.extendedIngredients} />
+          <Spacer />
+          <NutrientInfoList nutrients={recipeInfo.nutrition.nutrients} />
+        </ListContainer>
 
-          <ListContainer>
-            <RecipeInfoList ingredients={recipeInfo.extendedIngredients} />
-            <Spacer />
-            <NutrientInfoList nutrients={recipeInfo.nutrition.nutrients} />
-          </ListContainer>
-
-          <RecipeStepsList recipes={recipeInfo} />
-        </PageMargin>
-      </RecipeActionsProvider>
+        <RecipeStepsList recipes={recipeInfo} />
+      </PageMargin>
     </UnitProvider>
   );
 }
