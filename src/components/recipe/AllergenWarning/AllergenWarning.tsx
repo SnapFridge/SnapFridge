@@ -7,13 +7,12 @@ interface Props {
   recipeInfo: SpoonacularRecipe;
 }
 
-function prettyPrintArray(ingredients: string[]) {
+function prettyPrintArray(arr: string[]) {
   let prettyPrint = "";
 
-  for (let i = 0; i < ingredients.length; i++) {
-    const ingredient = ingredients[i];
-    prettyPrint += ingredient;
-    if (i + 1 < ingredients.length) {
+  for (let i = 0; i < arr.length; i++) {
+    prettyPrint += arr[i];
+    if (i + 1 < arr.length) {
       prettyPrint += ", ";
     }
   }
