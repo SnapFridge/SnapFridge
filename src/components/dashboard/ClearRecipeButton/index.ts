@@ -1,1 +1,1 @@
-export { default } from "./ClearRecipe";
+export { default } from "./ClearRecipeButton";
