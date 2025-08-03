@@ -21,7 +21,7 @@ function Counter({
   const count = useMotionValue(startValue);
   const rounded = useTransform(() => Math.round(count.get()));
 
-  const ref = useRef(null); // needed for useInView
+  const ref = useRef(null);
   const isInView = useInView(ref);
 
   useEffect(() => {
@@ -32,8 +32,6 @@ function Counter({
     }
   }, [isInView, count, delay, duration, endValue]);
 
-  // apparently using <pre> is better but I don't know how to get rid of the default font family
-  // todo: figure out how to get rid of the default behavior of pre
   return (
     <MotionSpan ref={ref} {...delegated}>
       {rounded}

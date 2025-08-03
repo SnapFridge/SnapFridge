@@ -98,7 +98,6 @@ const BackgroundVariants: Variants = {
   },
 };
 
-// Set the content to be centered based on a div that takes up the entire screen
 const ContentContainer = styled("div")({
   display: "flex",
   justifyContent: "center",

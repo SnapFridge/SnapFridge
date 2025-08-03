@@ -51,7 +51,6 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
   const { id } = await params;
   const recipeInfo = await getRecipe(id);
 
-  // Send to not-found.tsx
   if (!recipeInfo) notFound();
 
   return (

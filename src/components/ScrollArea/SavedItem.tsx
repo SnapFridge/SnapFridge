@@ -64,10 +64,6 @@ const ImgVariants: Variants = {
   },
 };
 
-// ?? for some reason getting this error despite clarifying both dimensions
-// Image with src "https://img.spoonacular.com/recipes/1-480x360.jpg" has either width or height modified, but not the other.
-// If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the
-// aspect ratio.
 const ImgCSS = css({
   objectFit: "cover",
   width: "100%",

@@ -8,7 +8,6 @@ import { useUnit } from "@components/UnitProvider";
 import { useUser } from "@components/UserProvider";
 import { useRouter } from "next/navigation";
 import useToast from "@components/ToastProvider/UseToast";
-import { useEffect, useState } from "react";
 import createClient from "@utils/supabase/client";
 import { useSavedRecipes } from "./hooks.helper";
 

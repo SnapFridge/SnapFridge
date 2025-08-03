@@ -23,7 +23,6 @@ function RecipeSection({
   function getPendingCards() {
     const cards = [];
     for (let i = 0; i < countPerPage; i++) {
-      // Yes index key is fine here
       cards.push(<RecipeCard key={i} recipe={undefined} />);
     }
     return cards;
