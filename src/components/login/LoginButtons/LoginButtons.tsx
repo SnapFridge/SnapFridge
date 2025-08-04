@@ -11,7 +11,7 @@ function LoginButtons() {
     <Container>
       <AuthButtonList>
         <OAuthLoginCards
-          variant="google"
+          variant="Google"
           onClick={() =>
             void auth.signInWithOAuth({
               provider: "google",
@@ -22,7 +22,7 @@ function LoginButtons() {
           }
         />
         <OAuthLoginCards
-          variant="github"
+          variant="Github"
           onClick={() =>
             void auth.signInWithOAuth({
               provider: "github",
@@ -32,7 +32,6 @@ function LoginButtons() {
             })
           }
         />
-        <OAuthLoginCards variant="anon" onClick={() => void auth.signInAnonymously()} />
       </AuthButtonList>
     </Container>
   );
