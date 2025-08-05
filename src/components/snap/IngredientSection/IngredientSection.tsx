@@ -9,7 +9,7 @@ import { useState, type FormEvent } from "react";
 import IngredientDialog from "../IngredientDialog";
 import { motion } from "motion/react";
 import getRecipesJSON from "./actions";
-import { type Recipe } from "@utils";
+import { scaleClamped, type Recipe } from "@utils";
 import Switch from "@components/Switch";
 import ToggleGroup from "./ToggleGroup";
 
@@ -55,15 +55,13 @@ function IngredientSection() {
           <IngredientTitle>Your ingredients will appear here</IngredientTitle>
         </NoIngredientContainer>
       ) : (
-        <IngredientContainer
-          as={motion.ul}
-          layout
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-        >
+        <IngredientContainer>
           <IngredientDialog />
-          {Array.from(ingredients).map(([k, v]) => (
-            <IngredientBox key={k} ingredient={v} />
-          ))}
+          <IngredientList layout>
+            {Array.from(ingredients).map(([k, v]) => (
+              <IngredientBox key={k} ingredient={v} />
+            ))}
+          </IngredientList>
         </IngredientContainer>
       )}
       <SpoonacularForm onSubmit={(e) => void fetchSpoonacular(e)}>
@@ -90,7 +88,6 @@ function IngredientSection() {
 
 const IngredientTitle = styled("h1")({
   color: "var(--gray-600)",
-
   fontSize: `${18 / 16}rem`,
   fontWeight: "400",
   textAlign: "center",
@@ -99,7 +96,7 @@ const IngredientTitle = styled("h1")({
 
 const BothContainer = styled("div")({
   position: "relative",
-  margin: "36px 0 24px 0",
+  margin: "24px 0",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -107,19 +104,25 @@ const BothContainer = styled("div")({
   borderRadius: "8px",
   minHeight: "220px",
   height: "fit-content",
-  width: "min(100%, 500px)",
+  width: "100%",
 });
 
 const NoIngredientContainer = styled(BothContainer)({
   flexDirection: "column",
-  border: "1px solid var(--gray-500)",
+  border: "1px solid var(--gray-600)",
 });
 
 const IngredientContainer = styled(BothContainer)({
-  flexDirection: "row",
-  flexWrap: "wrap",
   border: "1px solid var(--accent-400)",
-  opacity: 1,
+});
+
+const IngredientList = styled(motion.ul)({
+  display: "flex",
+  flexWrap: "wrap",
+  width: "100%",
+  padding: "44px 20px 20px",
+  rowGap: "13px",
+  justifyContent: "space-around",
   maxHeight: "50vh",
   overflow: "auto",
 });
@@ -139,7 +142,7 @@ const SpoonacularButton = styled(Button)({
   color: "var(--text-50)",
   width: "200px",
 
-  "&:hover": {
+  "&:hover:not(:disabled)": {
     background: "var(--primary-600)",
   },
 });

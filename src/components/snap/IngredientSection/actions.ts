@@ -1,4 +1,5 @@
 "use server";
+
 async function getRecipesJSON(query: string): Promise<string> {
   const res = await fetch(
     "https://api.spoonacular.com/recipes/findByIngredients?" + query,

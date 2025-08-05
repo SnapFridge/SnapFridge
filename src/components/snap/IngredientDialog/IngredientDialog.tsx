@@ -35,6 +35,8 @@ function IngredientDialog() {
 }
 
 const AddTrigger = styled(Button)({
+  width: "44px",
+  height: "44px",
   position: "absolute",
   top: 0,
   right: 0,

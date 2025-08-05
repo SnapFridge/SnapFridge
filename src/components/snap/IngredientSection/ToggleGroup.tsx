@@ -33,7 +33,7 @@ const ToggleGroupRoot = styled(RadixToggleGroup.Root)({
   [ON_MOBILE]: {
     flexDirection: "column",
     boxShadow: "var(--shadow)",
-    border: "1px solid var(--text-950)",
+    border: "1px solid var(--text-400)",
   },
 });
 
@@ -48,12 +48,15 @@ const ToggleGroupItem = styled(RadixToggleGroup.Item)({
 
   [ON_DESKTOP]: {
     boxShadow: "var(--shadow)",
+    border: "1px solid var(--text-400)",
     "&:first-child": {
+      borderRight: 0,
       borderTopLeftRadius: "150px",
       borderBottomLeftRadius: "150px",
     },
 
     "&:last-child": {
+      borderLeft: 0,
       borderTopRightRadius: "150px",
       borderBottomRightRadius: "150px",
     },
@@ -66,11 +69,11 @@ const ToggleGroupItem = styled(RadixToggleGroup.Item)({
 
   '&[data-state="off"]': {
     backgroundColor: "transparent",
-    color: "var(--gray-500)",
+    color: "var(--gray-600)",
   },
 
   '&[data-state="on"][data-disabled]': {
     backgroundColor: "var(--background-100)",
-    color: "var(--gray-500)",
+    color: "var(--gray-600)",
   },
 });

@@ -1,14 +1,13 @@
 "use client";
 
-import { styled } from "@pigment-css/react";
+import { css, styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import { useEffect, useRef, useState, type CSSProperties, type FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import FridgeImage from "./FridgeImage";
 import { scaleClamped } from "@utils";
 import { BarLoader } from "react-spinners";
 import Button from "@components/Button";
-import { AnimatePresence, type Variants, motion } from "motion/react";
-import heic2URL from "./HeicDCode";
+import { motion } from "motion/react";
 import { useInputState } from "../InputProvider";
 import useToast from "@components/ToastProvider/UseToast";
 import VisuallyHidden from "@components/VisuallyHidden";
@@ -19,31 +18,10 @@ function FileUpload() {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
   const { state, dispatch } = useInputState();
   const { files } = state;
-  const worker = useRef<Worker>(null);
   const { addWarn, addError } = useToast();
   const [pending, setPending] = useState(false);
 
-  async function getWorker() {
-    if (!worker.current) {
-      worker.current = new Worker(new URL("HeicDCode.worker.ts", import.meta.url), {
-        type: "module",
-      });
-      await new Promise<void>((resolve) => {
-        worker.current!.addEventListener("message", () => resolve(), {
-          once: true,
-        });
-      });
-    }
-    return worker.current;
-  }
-
-  useEffect(() => {
-    return () => {
-      worker.current?.terminate();
-    };
-  }, []);
-
-  async function handleFiles(files: FileList) {
+  function handleFiles(files: FileList) {
     const newImages: string[] = [];
     const validFiles: File[] = [];
     for (const file of files) {
@@ -53,13 +31,6 @@ function FileUpload() {
         case "image/webp": {
           // Used as src and key since it's unique
           const url = URL.createObjectURL(file);
-          newImages.push(url);
-          break;
-        }
-        case "image/heic":
-        case "image/heif": {
-          const heicData = new Uint8Array(await file.arrayBuffer());
-          const url = await heic2URL(await getWorker(), heicData);
           newImages.push(url);
           break;
         }
@@ -108,13 +79,10 @@ function FileUpload() {
   }
   return (
     <>
-      <AnimatePresence>
-        <EmptyTitle className={imgURLs.length > 0 ? "notEmpty" : undefined}>
-          Upload images below to get started!
-        </EmptyTitle>
-      </AnimatePresence>
-
-      <Wrapper layout onSubmit={(e) => void fetchGemini(e)}>
+      <EmptyTitle className={`${Appear} ${imgURLs.length > 0 ? "appear" : ""}`}>
+        Upload images below to get started!
+      </EmptyTitle>
+      <Form layout onSubmit={(e) => void fetchGemini(e)}>
         <FileUploader>
           <HiddenUpload
             label={<VisuallyHidden>Upload image(s)</VisuallyHidden>}
@@ -122,15 +90,13 @@ function FileUpload() {
             onChange={handleFiles}
             type="file"
             multiple
-            accept=".png,.jpg,.webp,.heic,.heif"
+            accept=".png,.jpg,.webp"
             name="fileInput"
           />
           {imgURLs.length < 1 ? (
             <NoImageContainer>
               <Icon icon="ImageUp" size={36} />
-              <SupportedFormats>
-                Supported formats: png, jpg, webp, heic, heif
-              </SupportedFormats>
+              <SupportedFormats>Supported formats: png, jpg, webp</SupportedFormats>
             </NoImageContainer>
           ) : (
             <ImageContainer as="ul">
@@ -140,65 +106,57 @@ function FileUpload() {
             </ImageContainer>
           )}
         </FileUploader>
-
-        <AnimatePresence>
-          {imgURLs.length > 0 && (
-            <ScanButton
-              type="submit"
-              key="scan-button"
-              layout
-              variant="primary"
-              as={motion.button}
-              variants={ScanButtonVariants}
-              initial="initial"
-              animate="animate"
-              exit="exit"
-            >
-              Scan
-            </ScanButton>
-          )}
-        </AnimatePresence>
-      </Wrapper>
-      <BarLoader color="var(--text-950)" cssOverride={Fetching} loading={pending} />
+        <ScanButton
+          className={`${Appear} ${imgURLs.length > 0 ? "" : "appear"}`}
+          disabled={pending}
+          type="submit"
+        >
+          Scan
+        </ScanButton>
+      </Form>
+      <BarLoader width="100%" color="var(--text-950)" loading={pending} />
     </>
   );
 }
-const Fetching: CSSProperties = {
-  width: "min(100%, 576px)",
-};
 
-const EmptyTitle = styled("h1")({
-  textAlign: "center",
-  width: "100%",
-  margin: "0 0 24px",
-  fontSize: scaleClamped(22, 30),
-
+const Appear = css({
   transition: "opacity .25s, visibility 0s",
-  "&.notEmpty": {
+  "&.appear": {
     transition: "opacity .25s, visibility 0s .25s",
     opacity: 0,
     visibility: "hidden",
   },
 });
 
-const Wrapper = styled(motion.form)({
-  width: "min(100%, 576px)",
+const EmptyTitle = styled("h1")({
+  textAlign: "center",
+  width: "100%",
+  margin: "0 0 20px",
+  fontSize: scaleClamped(20, 30),
+});
+
+const Form = styled(motion.form)({
+  width: "100%",
+  "& > *": {
+    width: "100%",
+  },
 });
 
 const FileUploader = styled("div")({
   position: "relative",
-  width: "100%",
+  "& > *": {
+    width: "100%",
+  },
 });
 
 const HiddenUpload = styled(Input)({
   position: "absolute",
-  width: "100%",
   height: "100%",
   opacity: 0,
 });
 
 const BaseContainer = styled("div")({
-  width: "100%",
+  minHeight: "202px",
   display: "flex",
   border: "4px dashed var(--accent-300)",
   borderRadius: "16px",
@@ -214,7 +172,6 @@ const BaseContainer = styled("div")({
 });
 
 const NoImageContainer = styled(BaseContainer)({
-  minHeight: "220px",
   gap: "12px",
   flexDirection: "column",
   justifyContent: "center",
@@ -223,7 +180,7 @@ const NoImageContainer = styled(BaseContainer)({
 
 const ImageContainer = styled(BaseContainer)({
   height: "fit-content",
-  gap: scaleClamped(7, 20, false, 320, 673),
+  gap: scaleClamped(5, 20, false, 320, 673),
   flexWrap: "wrap",
   justifyContent: "space-evenly",
   padding: "20px",
@@ -234,42 +191,22 @@ const ImageContainer = styled(BaseContainer)({
 
 const SupportedFormats = styled("div")({
   textAlign: "center",
-  width: "100%",
   padding: "0 24px",
   color: "var(--gray-600)",
 });
 
 const ScanButton = styled(Button)({
-  width: "100%",
-  height: `${40 / 16}rem`,
+  color: "var(--text-50)",
+  height: `${35 / 16}rem`,
   fontSize: `${20 / 16}rem`,
   borderRadius: "16px",
   borderTopRightRadius: 0,
   borderTopLeftRadius: 0,
-});
 
-const ScanButtonVariants: Variants = {
-  initial: {
-    opacity: 0,
-    y: -50,
+  transition: "background .25s",
+  "&:hover:not(:disabled)": {
+    background: "var(--gray-700)",
   },
-  animate: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-    },
-  },
-  exit: {
-    opacity: 0,
-    y: -40,
-    transition: {
-      duration: 0.3,
-      default: {
-        ease: "easeOut",
-      },
-    },
-  },
-};
+});
 
 export default FileUpload;

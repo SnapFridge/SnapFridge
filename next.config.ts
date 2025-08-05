@@ -318,7 +318,6 @@ export default withPigment(
         "@supabase/ssr",
         "@supabase/supabase-js",
         "downshift",
-        "heic-d-code",
         "immer",
         "lucide-react",
         "motion",
