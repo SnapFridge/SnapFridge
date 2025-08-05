@@ -125,6 +125,7 @@ const IngredientList = styled(motion.ul)({
   justifyContent: "space-around",
   maxHeight: "50vh",
   overflow: "auto",
+  scrollbarWidth: "none",
 });
 
 const SpoonacularForm = styled("form")({

@@ -44,7 +44,7 @@ function AboutUsCards() {
 
 const CardContainer = styled("ul")({
   display: "flex",
-  justifyContent: "space-evenly",
+  justifyContent: "space-around",
   listStyleType: "none",
   gap: "24px",
   contentVisibility: "auto",

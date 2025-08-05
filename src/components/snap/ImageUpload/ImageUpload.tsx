@@ -182,7 +182,7 @@ const ImageContainer = styled(BaseContainer)({
   height: "fit-content",
   gap: scaleClamped(5, 20, false, 320, 673),
   flexWrap: "wrap",
-  justifyContent: "space-evenly",
+  justifyContent: "space-around",
   padding: "20px",
   borderBottom: "none",
   borderBottomRightRadius: 0,
