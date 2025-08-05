@@ -2,7 +2,7 @@ import { styled } from "@pigment-css/react";
 import {
   useId,
   type ChangeEvent,
-  type ComponentProps,
+  type ComponentPropsWithoutRef,
   type HTMLInputTypeAttribute,
   type ReactNode,
 } from "react";
@@ -19,7 +19,7 @@ type Props<T extends keyof Input2ValueMap> = {
   label: ReactNode;
   onChange: (newValue: Input2ValueMap[T]) => void | Promise<void>;
   type: T;
-} & Omit<ComponentProps<"input">, "onChange" | "type">;
+} & Omit<ComponentPropsWithoutRef<"input">, "onChange" | "type">;
 
 function Input<T extends keyof Input2ValueMap>({
   label,

@@ -4,11 +4,11 @@ import { Dialog } from "radix-ui";
 import Icon from "@components/Icon";
 import Button from "@components/Button";
 import { styled } from "@pigment-css/react";
-import { useState, type ComponentProps, type ReactNode } from "react";
+import { useState, type ComponentPropsWithoutRef, type ReactNode } from "react";
 import { type Variants, AnimatePresence } from "motion/react";
 import { motion } from "motion/react";
 
-interface Props extends ComponentProps<typeof Dialog.Root> {
+interface Props extends ComponentPropsWithoutRef<typeof Dialog.Root> {
   title: ReactNode;
   description?: ReactNode;
   trigger: ReactNode;

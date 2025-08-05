@@ -6,8 +6,7 @@ import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Login - SnapFridge",
-  description:
-    "Login to SnapFridge to save your recipes. Login with Google, Github, or anonymously.",
+  description: "Login to SnapFridge to save your recipes. Login with Google or Github.",
 };
 
 export default function Page() {

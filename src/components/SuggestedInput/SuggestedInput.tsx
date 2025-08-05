@@ -1,9 +1,9 @@
 import { styled } from "@pigment-css/react";
-import { useState, type ComponentProps, type ReactNode } from "react";
+import { useState, type ComponentPropsWithoutRef, type ReactNode } from "react";
 import { useCombobox } from "downshift";
 import { Label, InputElement } from "@components/Input";
 
-interface Props extends Omit<ComponentProps<"input">, "onChange"> {
+interface Props extends Omit<ComponentPropsWithoutRef<"input">, "onChange"> {
   label: ReactNode;
   value: string;
   suggestions: string[];

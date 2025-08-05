@@ -1,6 +1,6 @@
 import VisuallyHidden from "@components/VisuallyHidden";
 import * as Icons from "lucide-react";
-import { type ComponentProps, type ReactNode } from "react";
+import { type ComponentPropsWithoutRef, type ReactNode } from "react";
 
 type LucideIconName = {
   [K in keyof typeof Icons]: (typeof Icons)[K] extends Icons.LucideIcon ? K : never;
@@ -8,7 +8,7 @@ type LucideIconName = {
 
 export type IconType = LucideIconName | "Github" | "Logo" | "Google";
 
-interface Props extends ComponentProps<"svg"> {
+interface Props extends ComponentPropsWithoutRef<"svg"> {
   icon: IconType;
   color?: string;
   size?: number;

@@ -48,7 +48,7 @@ const Container = styled("div")({
 const AuthButtonList = styled("ul")({
   borderRadius: "12px",
   width: "min(400px, 100%)",
-  height: "400px",
+  height: "300px",
   border: "2px solid var(--gray-200)",
 
   padding: "24px 36px",

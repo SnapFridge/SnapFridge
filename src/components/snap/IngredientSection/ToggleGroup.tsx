@@ -2,6 +2,7 @@
 
 import { ToggleGroup as RadixToggleGroup } from "radix-ui";
 import { styled } from "@pigment-css/react";
+import { ON_DESKTOP, ON_MOBILE } from "@utils";
 
 type FullRadixToggleGroupRootProps = React.ComponentPropsWithoutRef<
   typeof RadixToggleGroup.Root
@@ -14,7 +15,7 @@ export default function ToggleGroup({
   return (
     <ToggleGroupRoot type="single" defaultValue="2" {...delegated}>
       <ToggleGroupItem value="1" aria-label="Maximize">
-        Maximize Used Ingredients
+        Maximize Used Ingredients (wipe that fridge!)
       </ToggleGroupItem>
       <ToggleGroupItem value="2" aria-label="Minimize">
         Minimize Missing Ingredients
@@ -24,30 +25,38 @@ export default function ToggleGroup({
 }
 
 const ToggleGroupRoot = styled(RadixToggleGroup.Root)({
-  width: "400px",
-  height: "80px",
-  display: "inline-flex",
-  borderRadius: "150px",
-  boxShadow: "0 2px 10px var(--gray-300)",
+  width: "100%",
+  maxWidth: "400px",
+  height: "fit-content",
+  display: "flex",
+
+  [ON_MOBILE]: {
+    flexDirection: "column",
+    boxShadow: "var(--shadow)",
+    border: "1px solid var(--text-950)",
+  },
 });
 
 const ToggleGroupItem = styled(RadixToggleGroup.Item)({
-  width: "200px",
-  borderRadius: "150px",
+  padding: "5px",
+  flex: "1 1 0",
   display: "flex",
   fontSize: `${16 / 16}rem`,
   alignItems: "center",
   justifyContent: "center",
   userSelect: "none",
 
-  "&:first-child": {
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 0,
-  },
+  [ON_DESKTOP]: {
+    boxShadow: "var(--shadow)",
+    "&:first-child": {
+      borderTopLeftRadius: "150px",
+      borderBottomLeftRadius: "150px",
+    },
 
-  "&:last-child": {
-    borderTopLeftRadius: 0,
-    borderBottomLeftRadius: 0,
+    "&:last-child": {
+      borderTopRightRadius: "150px",
+      borderBottomRightRadius: "150px",
+    },
   },
 
   '&[data-state="on"]': {

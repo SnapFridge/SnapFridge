@@ -1,17 +1,18 @@
 import { Switch as RadixSwitch } from "radix-ui";
 import { styled } from "@pigment-css/react";
-import { useId } from "react";
+import { useId, type ComponentPropsWithoutRef } from "react";
+import { scaleClamped } from "@utils";
 
-interface Props extends React.ComponentPropsWithoutRef<typeof RadixSwitch.Root> {
-  labelText?: string;
+interface Props extends ComponentPropsWithoutRef<typeof RadixSwitch.Root> {
+  label: string;
 }
 
-export default function Switch({ labelText, ...delegated }: Props) {
+export default function Switch({ label, ...delegated }: Props) {
   const id = useId();
 
   return (
     <Container>
-      {labelText && <Label htmlFor={id}>{labelText}</Label>}
+      <label htmlFor={id}>{label}</label>
       <SwitchRoot id={id} {...delegated}>
         <SwitchThumb />
       </SwitchRoot>
@@ -24,12 +25,9 @@ const Container = styled("div")({
   alignItems: "center",
 });
 
-const Label = styled("label")({
-  paddingRight: 15,
-});
-
 const SwitchRoot = styled(RadixSwitch.Root)({
-  width: "42px",
+  marginLeft: scaleClamped(5, 18),
+  minWidth: "42px",
   height: "25px",
   backgroundColor: "var(--secondary-300)",
   borderRadius: "9999px",
@@ -54,18 +52,17 @@ const SwitchThumb = styled(RadixSwitch.Thumb)({
   display: "block",
   width: "20px",
   height: "20px",
-  backgroundColor: "white",
-  borderRadius: "9999px",
+  background: "white",
+  borderRadius: "50%",
   boxShadow: "0 2px 2px var(--gray-300)",
-  transition: "transform 100ms",
+  transition: "transform .1s",
   transform: "translateX(2px)",
-  willChange: "transform",
 
   '&[data-state="checked"]': {
     transform: "translateX(19px)",
   },
 
-  "[data-disabled]": {
+  "&[data-disabled]": {
     backgroundColor: "var(--gray-500)",
   },
 });

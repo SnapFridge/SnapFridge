@@ -11,7 +11,7 @@ import { motion } from "motion/react";
 import getRecipesJSON from "./actions";
 import { type Recipe } from "@utils";
 import Switch from "@components/Switch";
-import ToggleGroup from "@components/ToggleGroup";
+import ToggleGroup from "./ToggleGroup";
 
 function IngredientSection() {
   const { state, dispatch } = useInputState();
@@ -68,7 +68,7 @@ function IngredientSection() {
       )}
       <SpoonacularForm onSubmit={(e) => void fetchSpoonacular(e)}>
         <Switch
-          labelText="Ignore Typical Pantry Items (water, flour, etc)"
+          label="Ignore Typical Pantry Items (water, flour, etc)"
           checked={ignorePantry}
           onCheckedChange={setIgnorePantry}
           disabled={recipes === "pending"}
@@ -80,11 +80,9 @@ function IngredientSection() {
           value={ranking}
           disabled={recipes === "pending"}
         />
-        <div>
-          <SpoonacularButton variant="primary" type="submit">
-            Find Recipes
-          </SpoonacularButton>
-        </div>
+        <SpoonacularButton variant="primary" type="submit">
+          Find Recipes
+        </SpoonacularButton>
       </SpoonacularForm>
     </>
   );
@@ -101,7 +99,7 @@ const IngredientTitle = styled("h1")({
 
 const BothContainer = styled("div")({
   position: "relative",
-  margin: "36px 0 12px 0",
+  margin: "36px 0 24px 0",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -127,7 +125,6 @@ const IngredientContainer = styled(BothContainer)({
 });
 
 const SpoonacularForm = styled("form")({
-  marginTop: "12px",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",

@@ -1,12 +1,12 @@
 "use client";
 
 import { styled } from "@pigment-css/react";
-import { type ComponentProps, useState, useEffect } from "react";
+import { type ComponentPropsWithoutRef, useState, useEffect } from "react";
 
 export default function VisuallyHidden({
   children,
   ...delegated
-}: ComponentProps<"span">) {
+}: ComponentPropsWithoutRef<"span">) {
   const [forceShow, setForceShow] = useState(false);
 
   useEffect(() => {

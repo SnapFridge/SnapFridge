@@ -3,12 +3,12 @@
 import { styled } from "@pigment-css/react";
 import Button from "@components/Button";
 import Icon from "@components/Icon";
-import { type ComponentProps } from "react";
+import { type ComponentPropsWithoutRef } from "react";
 
 type CustomProps = {
   variant: "Google" | "Github";
 };
-type Props = ComponentProps<"button"> & CustomProps;
+type Props = ComponentPropsWithoutRef<"button"> & CustomProps;
 
 export default function OAuthLoginCards({ variant, ...delegated }: Props) {
   return (
