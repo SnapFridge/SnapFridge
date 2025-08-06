@@ -9,7 +9,7 @@ import { useUser } from "@components/UserProvider";
 import { useRouter } from "next/navigation";
 import useToast from "@components/ToastProvider/UseToast";
 import createClient from "@utils/supabase/client";
-import useSavedRecipes from "./hooks.helper";
+import { useEffect, useState } from "react";
 
 type Props = {
   recipeId: number;
@@ -29,7 +29,23 @@ function RecipeActions({ recipeId, recipeName, imageType }: Props) {
   const [unit, toggleUnit] = useUnit();
   const user = useUser();
   const supabase = createClient();
-  const [savedRecipes, setSavedRecipes] = useSavedRecipes(supabase, user);
+  const [savedRecipes, setSavedRecipes] = useState<SavedRecipe[]>([]);
+
+  useEffect(() => {
+    async function getSavedRecipes() {
+      if (!user) {
+        return;
+      }
+      // Safe to preform as Supabase will not allow multiple rows with the same key (user_id)
+      await supabase.from("saved_recipes").insert({ user_id: user.id, recipes: [] });
+
+      // Don't need to preform equality checks as supabase sho!uld only return the row the user has access to
+      const { data } = await supabase.from("saved_recipes").select();
+      setSavedRecipes((data?.[0]?.recipes ?? []) as SavedRecipe[]);
+    }
+    void getSavedRecipes();
+  }, [user, supabase]);
+
   const recipeSaved = savedRecipes.findIndex(({ id }) => id === recipeId) > -1;
 
   async function updateSavedRecipes() {
@@ -65,6 +81,7 @@ function RecipeActions({ recipeId, recipeName, imageType }: Props) {
     try {
       if (!user) {
         router.push("/login");
+        return;
       }
       setSavedRecipes(await updateSavedRecipes());
     } catch (error) {
