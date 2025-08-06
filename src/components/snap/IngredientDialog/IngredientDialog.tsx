@@ -24,7 +24,6 @@ function IngredientDialog() {
     >
       <Suspense fallback={<FormSkeleton />}>
         <IngredientForm
-          variant="add"
           onSubmitSuccess={() => {
             setOpen(false);
           }}

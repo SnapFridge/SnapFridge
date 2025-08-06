@@ -1,5 +1,5 @@
 import { styled } from "@pigment-css/react";
-import { useState, type ComponentPropsWithoutRef, type ReactNode } from "react";
+import { useRef, useState, type ComponentPropsWithoutRef, type ReactNode } from "react";
 import { useCombobox } from "downshift";
 import { Label, InputElement } from "@components/Input";
 
@@ -15,6 +15,7 @@ function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: P
     const query = q.trim().toLowerCase();
     return suggestions.filter((s) => s.startsWith(query));
   }
+  const ref = useRef<HTMLInputElement>(null);
 
   const [items, setItems] = useState(suggestions);
   const {
@@ -28,14 +29,18 @@ function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: P
   } = useCombobox({
     onInputValueChange({ inputValue }) {
       setItems(filterSuggestions(inputValue));
+      ref.current!.setCustomValidity(
+        suggestions.includes(inputValue) ? "" : "Invalid entry"
+      );
       onChange(inputValue);
     },
     items,
   });
+
   return (
     <Wrapper style={{ maxWidth: "100%" }}>
       <Label {...getLabelProps()}>{label}</Label>
-      <InputElement {...getInputProps({ value, type: "text" })} {...delegated} />
+      <InputElement {...getInputProps({ value, ref, type: "text" })} {...delegated} />
       <Menu
         {...getMenuProps()}
         style={

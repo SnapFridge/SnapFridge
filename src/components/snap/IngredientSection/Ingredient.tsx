@@ -1,39 +1,26 @@
 "use client";
 
 import { styled } from "@pigment-css/react";
-import { useRef, useState } from "react";
-import { type Ingredient } from "@utils";
+import { useRef } from "react";
 import Icon from "@components/Icon";
 import { useInputState } from "../InputProvider";
-import EditDialog from "../EditDialog";
 import Button from "@components/Button";
 
 type Props = {
-  ingredient: Ingredient;
+  ingredient: string;
 };
 
 function IngredientBox({ ingredient }: Props) {
   const { dispatch } = useInputState();
-  const [isDialogOpen, setDialogOpen] = useState(false);
   const deleteBtn = useRef<HTMLButtonElement>(null);
-  const editBtn = useRef<HTMLButtonElement>(null);
   return (
     <Wrapper>
-      <EditDialog
-        ingredient={ingredient}
-        open={isDialogOpen}
-        onOpenChange={setDialogOpen}
-      />
       <IngredientBtn
         onClick={() => {
           deleteBtn.current!.focus();
-          editBtn.current!.tabIndex = 0;
         }}
       >
-        <IngredientName>{ingredient.name}</IngredientName>
-        <p>
-          {ingredient.amount} {ingredient.unit}
-        </p>
+        <span>{ingredient}</span>
       </IngredientBtn>
       <ActionContainer>
         <ActionButton
@@ -46,23 +33,7 @@ function IngredientBox({ ingredient }: Props) {
           <Icon
             icon="Trash2"
             color="var(--warn-500)"
-            description={`Delete ${ingredient.name}`}
-          />
-        </ActionButton>
-        <ActionButton
-          ref={editBtn}
-          tabIndex={-1}
-          onClick={() => {
-            setDialogOpen(true);
-          }}
-          onBlur={() => {
-            editBtn.current!.tabIndex = -1;
-          }}
-        >
-          <Icon
-            icon="PencilLine"
-            color="var(--gray-950)"
-            description={`Edit ${ingredient.name}`}
+            description={`Delete ${ingredient}`}
           />
         </ActionButton>
       </ActionContainer>
@@ -86,6 +57,7 @@ const IngredientBtn = styled("button")({
   height: "100%",
   color: "var(--text-950)",
   width: "fit-content",
+  maxWidth: "220px",
   border: "2px solid var(--accent-400)",
   boxShadow: "var(--shadow)",
 
@@ -93,13 +65,12 @@ const IngredientBtn = styled("button")({
   [`${Wrapper}:hover > &, &:focus`]: {
     transform: "translateY(-6px)",
   },
-});
 
-const IngredientName = styled("p")({
-  maxWidth: "150px",
-  overflow: "hidden",
-  textOverflow: "ellipsis",
-  whiteSpace: "nowrap",
+  "& > span": {
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    overflow: "hidden",
+  },
 });
 
 const ActionButton = styled(Button)({

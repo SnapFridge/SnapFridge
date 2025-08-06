@@ -9,10 +9,9 @@ import { randomBytes } from "node:crypto";
 const ai = new GoogleGenAI({ apiKey: process.env["GEMINI_KEY"]! });
 
 async function ensureContext(contents: { fileData: FileData }[]) {
-  const name = "ingredient-unit";
+  const name = "ingredients";
   let file;
   try {
-    await ai.files.delete({ name });
     file = await ai.files.get({ name });
   } catch {
     file = await ai.files.upload({
@@ -39,7 +38,6 @@ type Generator = AsyncGenerator<
 >;
 
 function generator2Stream(gen: Generator) {
-  let inStr = false;
   return new ReadableStream({
     async pull(controller) {
       const { value, done } = await gen.next();
@@ -47,88 +45,29 @@ function generator2Stream(gen: Generator) {
         controller.close();
         return;
       }
-      let processed = "";
-      for (const c of value.text!) {
-        switch (c) {
-          // Ignore space, except when we're in a string
-          case " ":
-            if (inStr) {
-              break;
-            }
-          case "\n":
-          // Ignore arrays, it should only appear at the start and end
-          case "[":
-          case "]":
-            continue;
-          case '"':
-            inStr = !inStr;
-        }
-        processed += c;
-      }
-      controller.enqueue(processed);
+      controller.enqueue(value.text!);
     },
   });
 }
 
 const systemInstruction = `
-### ROLE
-You are a highly precise AI Ingredient Analyst. Your sole purpose is to identify and quantify the raw ingredients available in an image, ignoring all other details. Your entire knowledge base of permissible ingredients and units is contained within the "ingredient-unit" csv file.
+### **ROLE**
+You are an AI Ingredient Identifier. Your sole purpose is to identify all raw food ingredients in an image based on a master list.
 
-### OBJECTIVE
-Analyze the provided image to produce a clean, formatted list of all identifiable ingredients. You will aggregate all instances of a single ingredient into one entry and provide a total estimated quantity for it, strictly adhering to the vocabulary and rules defined in the provided ingredient-unit.csv file.
+### **OBJECTIVE**
+Analyze the provided image and return a simple JSON array containing the names of all identifiable ingredients.
 
-### CORE DIRECTIVES (NON-NEGOTIABLE)
-
-1. The "ingredient-unit" csv File is Your ONLY Source of Truth.
-This is your most important directive. You are physically incapable of identifying an ingredient or using a unit that is not explicitly defined in this file.
-
-* File Format: The file follows the format "ingredientName;listOfUnitsSeparatedByCommas".
-* Identification: An ingredient can ONLY be listed if its name exists *exactly* as written in the "ingredientName" column.
-* Unit Selection: For an identified ingredient, you MUST choose a unit from its corresponding "listOfUnitsSeparatedByCommas". No other units are permitted for that ingredient.
-* Unitless Ingredients (The "Empty Unit" Rule):
-* ** If the list of units for an ingredient contains an empty string (e.g., a leading comma ",unit", a trailing comma "unit,", or a double comma "unit,,unit"), you are permitted to provide the quantity without any unit.
-* ** If the unit turns out to be a part or the same as the ingredient name (eg. "duck liver" with unit "liver", "egg" with unit "egg"), you MUST omit the unit.
-
-    **Example 1 (Standard): For a row "1 percent milk;quart,g,oz,cup", if you identify "1 percent milk", you must use one of those specific units.
-    * Example 2 (Unitless Permitted): For a row "egg;,count,g", the empty string before the first comma indicates that the unit is optional. Use either the given units, or no unit at all depending on what's in the fridge.
-
-2. INGREDIENTS ONLY. NO CONTAINERS. EVER.
-Your output must only name the food or drink ingredient itself. You are forbidden from using the name, color, or type of a container in your output.
-* DO: Identify "Milk", "Orange Juice", "Olives", "Mustard".
-* DO NOT: Output "Milk Carton", "Jar of Olives", or "Yellow Sauce Bottle".
-
-3. AGGREGATE ALL INSTANCES.
-Group all occurrences of the same core ingredient (as defined in the CSV) into a single line item.
-* If you see three separate bottles of the same water, you must provide a single entry for "water" with the total combined volume (e.g., water: 1.5 L), assuming "water" and "L" are in the CSV.
-
-4. OMIT IF UNCERTAIN OR UNDEFINED.
-If you are not highly confident about the specific ingredient, OR if the ingredient you identify is not present in the ingredient-unit.csv file, you MUST omit the item entirely from your report. It is better to have a shorter, 100% compliant list than a longer one with guesses or unlisted items.
-* Forbidden outputs include: "Unknown Beverage", "White Carton Drink", "Possible Leftovers", or any ingredient not in the file.
-
-5. ESTIMATE REMAINING QUANTITY. BE CONCRETE.
-* Your estimate must be for the remaining amount of the ingredient, not the total capacity of the container.
-* Every item must have a concrete numerical estimate (e.g., "250", "3", "5"). You are forbidden from using vague estimations or ranges.
-
-6. NO LOCATIONS.
-Do not describe, mention, or allude to the location of any item. Your report must not contain words like "shelf", "door", "top", or "back".
+### **CORE DIRECTIVES**
+1.  **Use the Master List:** You can only identify an ingredient if its name exists in the provided "ingredients" csv file. Omit any ingredients not on this list.
+2.  **Ingredients Only:** Do not identify containers, brands, or non-food items.
+3.  **Omit if Uncertain:** If you are not highly confident in an ingredient's identity, do not include it.
+4.  **No Duplicates:** List each unique ingredient name only once, even if it appears multiple times in the image.
 `;
 
 const responseSchema = {
   type: Type.ARRAY,
   items: {
-    type: Type.OBJECT,
-    properties: {
-      name: {
-        type: Type.STRING,
-      },
-      amount: {
-        type: Type.INTEGER,
-      },
-      unit: {
-        type: Type.STRING,
-      },
-    },
-    required: ["name", "amount", "unit"],
+    type: Type.STRING,
   },
 };
 

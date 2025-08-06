@@ -9,7 +9,7 @@ import { useState, type FormEvent } from "react";
 import IngredientDialog from "../IngredientDialog";
 import { motion } from "motion/react";
 import getRecipesJSON from "./actions";
-import { scaleClamped, type Recipe } from "@utils";
+import { type Recipe } from "@utils";
 import Switch from "@components/Switch";
 import ToggleGroup from "./ToggleGroup";
 
@@ -22,16 +22,17 @@ function IngredientSection() {
 
   async function fetchSpoonacular(e: FormEvent) {
     e.preventDefault();
-    if (ingredients.size === 0) {
+    if (ingredients.length < 1) {
       return;
     }
+
     dispatch({
       type: "setPendingSpoonacular",
     });
 
     let ingredientsStr = "";
-    for (const [, ingredient] of ingredients) {
-      ingredientsStr += ingredient.name;
+    for (const ingredient of ingredients) {
+      ingredientsStr += ingredient;
       ingredientsStr += ",";
     }
     const query = new URLSearchParams({
@@ -40,6 +41,7 @@ function IngredientSection() {
       ignorePantry: `${ignorePantry}`,
     }).toString();
     const json = await getRecipesJSON(query);
+    console.log(query, json);
     dispatch({
       type: "addRecipes",
       recipes: JSON.parse(json) as Recipe[],
@@ -48,7 +50,7 @@ function IngredientSection() {
 
   return (
     <>
-      {ingredients.size < 1 ? (
+      {ingredients.length < 1 ? (
         <NoIngredientContainer>
           <IngredientDialog />
           <Icon icon="Archive" size={36} color="var(--gray-600)" />
@@ -58,8 +60,8 @@ function IngredientSection() {
         <IngredientContainer>
           <IngredientDialog />
           <IngredientList layout>
-            {Array.from(ingredients).map(([k, v]) => (
-              <IngredientBox key={k} ingredient={v} />
+            {Array.from(ingredients).map((i) => (
+              <IngredientBox key={i} ingredient={i} />
             ))}
           </IngredientList>
         </IngredientContainer>
@@ -122,6 +124,7 @@ const IngredientList = styled(motion.ul)({
   width: "100%",
   padding: "44px 20px 20px",
   rowGap: "13px",
+  columnGap: "6px",
   justifyContent: "space-around",
   maxHeight: "50vh",
   overflow: "auto",

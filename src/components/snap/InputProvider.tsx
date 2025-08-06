@@ -9,58 +9,36 @@ import {
 } from "react";
 import { enableMapSet } from "immer";
 import { useImmerReducer } from "use-immer";
-import { type Ingredient, type Recipe } from "@utils";
+import { type Recipe } from "@utils";
 
 enableMapSet();
 
 export interface State {
-  ingredients: Map<string, Ingredient>;
+  ingredients: string[];
   files: File[];
   recipes: "pending" | Recipe[];
 }
 
 export type Action =
-  | { type: "addIngredient"; ingredient: Ingredient }
-  | { type: "addIngredients"; ingredients: Ingredient[] }
-  | { type: "removeIngredient"; ingredient: Ingredient }
-  | { type: "editIngredient"; old: Ingredient; new: Ingredient }
+  | { type: "addIngredient"; ingredient: string }
+  | { type: "removeIngredient"; ingredient: string }
   | { type: "addFiles"; files: File[] }
   | { type: "removeFile"; index: number }
   | { type: "addRecipes"; recipes: Recipe[] }
   | { type: "setPendingSpoonacular" };
 
 function reducer(draft: State, action: Action) {
-  function addIngredient({ name, amount, unit }: Ingredient) {
-    const key = `${name}-${unit}`;
-    if (draft.ingredients.has(key)) {
-      draft.ingredients.get(key)!.amount += amount;
-    } else {
-      draft.ingredients.set(key, { name, amount, unit });
-    }
-  }
-  function removeIngredient({ name, unit }: Ingredient) {
-    const key = `${name}-${unit}`;
-    draft.ingredients.delete(key);
+  function removeIngredient(ingredient: string) {
+    draft.ingredients.splice(draft.ingredients.indexOf(ingredient), 1);
   }
 
   switch (action.type) {
     case "addIngredient": {
-      addIngredient(action.ingredient);
-      break;
-    }
-    case "addIngredients": {
-      for (const ingredient of action.ingredients) {
-        addIngredient(ingredient);
-      }
+      draft.ingredients.push(action.ingredient);
       break;
     }
     case "removeIngredient": {
       removeIngredient(action.ingredient);
-      break;
-    }
-    case "editIngredient": {
-      removeIngredient(action.old);
-      addIngredient(action.new);
       break;
     }
     case "addFiles": {
@@ -94,10 +72,9 @@ const InputContext = createContext<InputContext | undefined>(undefined);
 
 export function InputProvider({ children }: PropsWithChildren) {
   const [state, dispatch] = useImmerReducer(reducer, {
-    ingredients: new Map<string, Ingredient>(),
+    ingredients: [],
     files: [],
     recipes: [],
-    pendingSpoonacular: false,
   });
 
   const value = useMemo(() => {

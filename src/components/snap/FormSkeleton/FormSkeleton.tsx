@@ -10,32 +10,13 @@ function FormSkeleton() {
         highlightColor="var(--skeleton-highlight)"
       >
         <Container>
-          <IngredientName>
+          <Name>
             <Skeleton />
-          </IngredientName>
+          </Name>
           <Input>
             <Skeleton height={`${38 / 16}rem`} />
           </Input>
         </Container>
-
-        <Container>
-          <Amount>
-            <Skeleton />
-          </Amount>
-          <Input>
-            <Skeleton height={`${38 / 16}rem`} />
-          </Input>
-        </Container>
-
-        <Container>
-          <Unit>
-            <Skeleton />
-          </Unit>
-          <Input>
-            <Skeleton height={`${38 / 16}rem`} />
-          </Input>
-        </Container>
-
         <Button>
           <Skeleton height={44} />
         </Button>
@@ -49,20 +30,9 @@ const Container = styled("div")({
   fontSize: `${16 / 16}rem`,
 });
 
-// Label Names
-const IngredientName = styled("label")({
+const Name = styled("label")({
   display: "inline-block",
   width: "min(100%, 200px)",
-});
-
-const Amount = styled("label")({
-  display: "inline-block",
-  width: "min(100%, 120px)",
-});
-
-const Unit = styled("label")({
-  display: "inline-block",
-  width: "min(100%, 280px)",
 });
 
 const Input = styled("div")({

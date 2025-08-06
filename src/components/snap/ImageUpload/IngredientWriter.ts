@@ -1,58 +1,33 @@
-// We are assuming:
-// - No object nesting
-// - Strings only occur inside the ingredient object
-// - Whitespace only occurs inside strings
-
 import { type Dispatch } from "react";
 import { type Action } from "../InputProvider";
-import { type Ingredient } from "@utils";
 
 function getIngredientWriter(dispatch: Dispatch<Action>) {
-  let inObj = false;
-  let objPart = "";
-  let objStart = 0;
-  let objEnd = 0;
+  let inStr = false;
+  let strPart = "";
   return new WritableStream<string>({
     write(chunk) {
-      let processed = objPart;
+      let str = strPart;
       for (const c of chunk) {
         switch (c) {
-          case "{":
-            inObj = true;
-
-            // Mark current start
-            objStart = processed.length;
+          case '"':
+            inStr = !inStr;
+            if (!inStr) {
+              dispatch({
+                type: "addIngredient",
+                ingredient: str,
+              });
+              str = "";
+            }
             break;
-          case "}":
-            inObj = false;
-
-            // If current doesn't end, it should be previous end
-            objEnd = processed.length + 1;
-            break;
+          default:
+            if (inStr) {
+              str += c;
+            }
         }
-        processed += c;
       }
-      // If we end before the current object end, store the object part for the next chunk
-      if (inObj) {
-        objPart = processed.slice(objStart);
-
-        // If we didn't even get another object
-        if (objEnd < 1) {
-          return;
-        }
-        processed = processed.slice(0, objEnd);
-      } else {
-        objPart = "";
+      if (inStr) {
+        strPart = str;
       }
-
-      // In the rare case where we end right at the comma
-      if (processed.at(-1) === ",") {
-        processed = processed.slice(0, -1);
-      }
-      dispatch({
-        type: "addIngredients",
-        ingredients: JSON.parse(`[${processed}]`) as Ingredient[],
-      });
     },
   });
 }
