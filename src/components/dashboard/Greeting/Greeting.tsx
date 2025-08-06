@@ -4,15 +4,14 @@ import { useUser } from "@components/UserProvider";
 import { styled } from "@pigment-css/react";
 
 function getGreeting() {
-  const date = new Date();
-  // 0-23
-  const timeOfDay = date.getHours();
-  if (timeOfDay < 6 || timeOfDay > 18) {
-    return "evening";
-  } else if (timeOfDay < 12) {
+  const timeOfDay = new Date().getHours();
+  if (timeOfDay < 12) {
     return "morning";
+  } else if (timeOfDay < 18) {
+    return "afternoon";
+  } else {
+    return "evening";
   }
-  return "afternoon";
 }
 
 function Greeting() {

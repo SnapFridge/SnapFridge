@@ -75,6 +75,7 @@ export const Title = styled("h1")({
 export const List = styled("ul")({
   marginLeft: "12px",
   overflow: "auto",
+  scrollbarWidth: "none",
 });
 
 const ListItem = styled("li")({

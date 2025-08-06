@@ -1,5 +1,4 @@
-import { useUser } from "@components/UserProvider";
-import type { SupabaseClient } from "@supabase/supabase-js";
+import type { SupabaseClient, User } from "@supabase/supabase-js";
 import type { Database } from "@utils/supabase/database";
 import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
 
@@ -9,19 +8,21 @@ export type SavedRecipe = {
   imageType: string;
 };
 
-export function useSavedRecipes(
-  supabase: SupabaseClient<Database>
+function useSavedRecipes(
+  supabase: SupabaseClient<Database>,
+  user: User | undefined
 ): [SavedRecipe[], Dispatch<SetStateAction<SavedRecipe[]>>] {
   const [savedRecipes, setSavedRecipes] = useState<SavedRecipe[]>([]);
-  const user = useUser();
 
   useEffect(() => {
+    if (!user) {
+      return;
+    }
     async function getSavedRecipes() {
-      if (!user) return;
       // Safe to preform as Supabase will not allow multiple rows with the same key (user_id)
-      await supabase.from("saved_recipes").insert({ user_id: user.id, recipes: [] });
+      await supabase.from("saved_recipes").insert({ user_id: user!.id, recipes: [] });
 
-      // Don't need to preform equality checks as supabase should only return the row the user has access to
+      // Don't need to preform equality checks as supabase sho!uld only return the row the user has access to
       const { data } = await supabase.from("saved_recipes").select();
 
       const recipes = (data?.[0]?.recipes ?? []) as SavedRecipe[];
@@ -33,3 +34,5 @@ export function useSavedRecipes(
 
   return [savedRecipes, setSavedRecipes];
 }
+
+export default useSavedRecipes;

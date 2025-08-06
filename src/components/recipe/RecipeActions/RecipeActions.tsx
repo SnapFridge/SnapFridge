@@ -9,13 +9,14 @@ import { useUser } from "@components/UserProvider";
 import { useRouter } from "next/navigation";
 import useToast from "@components/ToastProvider/UseToast";
 import createClient from "@utils/supabase/client";
-import { useSavedRecipes } from "./hooks.helper";
+import useSavedRecipes from "./hooks.helper";
 
 type Props = {
   recipeId: number;
   recipeName: string;
   imageType: string;
 };
+
 type SavedRecipe = {
   id: number;
   name: string;
@@ -28,10 +29,7 @@ function RecipeActions({ recipeId, recipeName, imageType }: Props) {
   const [unit, toggleUnit] = useUnit();
   const user = useUser();
   const supabase = createClient();
-
-  // work on this l8r
-  const [savedRecipes, setSavedRecipes] = useSavedRecipes(supabase);
-
+  const [savedRecipes, setSavedRecipes] = useSavedRecipes(supabase, user);
   const recipeSaved = savedRecipes.findIndex(({ id }) => id === recipeId) > -1;
 
   async function updateSavedRecipes() {
@@ -63,7 +61,7 @@ function RecipeActions({ recipeId, recipeName, imageType }: Props) {
     return nextRecipes;
   }
 
-  async function handleSaveClick() {
+  async function handleSave() {
     try {
       if (!user) {
         router.push("/login");
@@ -74,8 +72,8 @@ function RecipeActions({ recipeId, recipeName, imageType }: Props) {
     }
   }
 
-  async function handleShareClick() {
-    const url = window.location.toString();
+  async function handleShare() {
+    const url = location.toString();
     try {
       await navigator.clipboard.writeText(url);
       addSuccess("Copied to clipboard");
@@ -86,7 +84,7 @@ function RecipeActions({ recipeId, recipeName, imageType }: Props) {
 
   return (
     <Container>
-      <ColFlexButton variant="icon" onClick={handleSaveClick}>
+      <ColFlexButton variant="icon" onClick={handleSave}>
         <Icon
           icon="Heart"
           fill={recipeSaved ? "#FF4848" : "none"}
@@ -95,7 +93,7 @@ function RecipeActions({ recipeId, recipeName, imageType }: Props) {
         />
         <RecipeActionText>{recipeSaved ? "Saved" : "Save"}</RecipeActionText>
       </ColFlexButton>
-      <ShareButton variant="icon" onClick={handleShareClick}>
+      <ShareButton variant="icon" onClick={handleShare}>
         <Icon icon="Share2" size={36} />
         <RecipeActionText>Share</RecipeActionText>
       </ShareButton>
