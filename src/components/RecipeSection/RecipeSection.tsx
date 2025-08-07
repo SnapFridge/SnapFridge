@@ -50,7 +50,7 @@ function RecipeSection({
       ) : recipes.length < 1 ? (
         <EmptySectionContainer>
           <EmptySectionContent>
-            <Icon icon="ChefHat" size={50} color="var(--gray-500)" />
+            <Icon icon="ChefHat" size={50} color="var(--gray-600)" />
             <p>
               Looks like your recipes is empty! Start by adding some ingredients or
               uploading an image!
@@ -88,7 +88,7 @@ const EmptySectionContent = styled("div")({
   alignItems: "center",
   textAlign: "center",
   maxWidth: "600px",
-  color: "var(--gray-500)",
+  color: "var(--gray-600)",
 });
 
 const EmptySectionContainer = styled("div")({

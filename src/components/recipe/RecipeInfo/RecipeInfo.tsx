@@ -102,36 +102,36 @@ export type SpoonacularRecipe = {
   spoonacularSourceUrl: string;
 };
 
-export default function RecipeInfo({ recipeInfo }: { recipeInfo: SpoonacularRecipe }) {
+export function RecipeInfo({ recipeInfo }: { recipeInfo: SpoonacularRecipe }) {
   return (
     <div>
       <Summary dangerouslySetInnerHTML={{ __html: recipeInfo.summary }} />
 
       <CookingInfoContainer>
-        <CookingInfo>
+        <div>
           <CookingInfoTitle>Total Time:</CookingInfoTitle>
           <CookingInfoText>{recipeInfo.readyInMinutes} minutes</CookingInfoText>
-        </CookingInfo>
+        </div>
         {recipeInfo.cookingMinutes && (
-          <CookingInfo>
+          <div>
             <CookingInfoTitle>Cooking:</CookingInfoTitle>
             <CookingInfoText>{recipeInfo.cookingMinutes} minutes</CookingInfoText>
-          </CookingInfo>
+          </div>
         )}
         {recipeInfo.preparationMinutes && (
-          <CookingInfo>
+          <div>
             <CookingInfoTitle>Preparation:</CookingInfoTitle>
             <CookingInfoText>{recipeInfo.preparationMinutes} minutes</CookingInfoText>
-          </CookingInfo>
+          </div>
         )}
-        <CookingInfo>
+        <div>
           <CookingInfoTitle>Ingredients:</CookingInfoTitle>
           <CookingInfoText>{recipeInfo.extendedIngredients.length}</CookingInfoText>
-        </CookingInfo>
-        <CookingInfo>
+        </div>
+        <div>
           <CookingInfoTitle>Servings:</CookingInfoTitle>
           <CookingInfoText>{recipeInfo.servings}</CookingInfoText>
-        </CookingInfo>
+        </div>
       </CookingInfoContainer>
     </div>
   );
@@ -162,10 +162,11 @@ const CookingInfoContainer = styled("div")({
   marginTop: "40px",
   marginBottom: "50px",
 });
-const CookingInfo = styled("div")({});
+
 const CookingInfoTitle = styled("label")({
   fontSize: `${16 / 16}rem`,
 });
+
 const CookingInfoText = styled("h3")({
   fontSize: `${20 / 16}rem`,
   fontWeight: 700,

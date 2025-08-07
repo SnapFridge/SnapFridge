@@ -1,6 +1,5 @@
 import Tooltip from "@components/recipe/Tooltip";
-import RecipeInfo from "@components/recipe/RecipeInfo";
-import { type SpoonacularRecipe } from "@components/recipe/RecipeInfo/RecipeInfo";
+import { RecipeInfo, type SpoonacularRecipe } from "@components/recipe/RecipeInfo";
 import Image from "next/image";
 import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE, PageMargin } from "@utils";
@@ -83,8 +82,8 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
 
         <Wrapper>
           <RecipeActions
-            recipeId={recipeInfo.id}
-            recipeName={recipeInfo.title}
+            id={recipeInfo.id}
+            name={recipeInfo.title}
             imageType={recipeInfo.imageType}
           />
           <RecipeInfo recipeInfo={recipeInfo} />

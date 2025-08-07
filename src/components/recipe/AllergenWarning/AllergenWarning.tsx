@@ -1,5 +1,5 @@
 import { styled } from "@pigment-css/react";
-import type { SpoonacularRecipe } from "../RecipeInfo/RecipeInfo";
+import { type SpoonacularRecipe } from "../RecipeInfo";
 import Icon from "@components/Icon";
 import { ON_MOBILE } from "@utils";
 

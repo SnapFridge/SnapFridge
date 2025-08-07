@@ -1,1 +1,1 @@
-export { default } from "./RecipeInfo";
+export { RecipeInfo, type SpoonacularRecipe } from "./RecipeInfo";

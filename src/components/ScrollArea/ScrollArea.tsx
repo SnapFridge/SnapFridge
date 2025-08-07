@@ -6,7 +6,7 @@ import SavedItem from "./SavedItem";
 import createClient from "@utils/supabase/client";
 import Icon from "@components/Icon";
 import { useUser } from "@components/UserProvider";
-import type { SavedRecipe } from "@utils";
+import { type SavedRecipe } from "@utils";
 import { useEffect, useState } from "react";
 
 export default function ScrollArea() {
@@ -68,7 +68,7 @@ export default function ScrollArea() {
 const NoRecipesContainer = styled("div")({
   display: "flex",
   justifyContent: "center",
-  margin: "0 0 36px",
+  margin: "0 0 24px",
 });
 const NoRecipesContent = styled("div")({
   display: "flex",
