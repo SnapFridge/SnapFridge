@@ -30,19 +30,18 @@ function ClearRecipeButton() {
 
       setError(errMessage);
     }
-
     setLoading(false);
   }
 
   return (
     <div>
-      <Button
+      <StyledButton
         onClick={() => void clearRecipesFromDatabase()}
         variant="primary"
         disabled={loading}
       >
         {loading ? "Clearing Saved Recipes..." : "Clear Saved Recipes"}
-      </Button>
+      </StyledButton>
       <AnimatePresence>
         {error && (
           <ErrorMessageElement
@@ -58,6 +57,10 @@ function ClearRecipeButton() {
     </div>
   );
 }
+
+const StyledButton = styled(Button)({
+  width: "100%",
+});
 
 const ErrorMessageVariants: Variants = {
   initial: {

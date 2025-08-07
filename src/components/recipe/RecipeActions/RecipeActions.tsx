@@ -25,8 +25,6 @@ function RecipeActions({ id, name, imageType }: SavedRecipe) {
       if (!user) {
         return;
       }
-      // Safe to preform as Supabase will not allow multiple rows with the same key (user_id)
-      await supabase.from("saved_recipes").insert({ user_id: user.id, recipes: [] });
 
       // Don't need to preform equality checks as supabase sho!uld only return the row the user has access to
       const { data } = await supabase.from("saved_recipes").select();

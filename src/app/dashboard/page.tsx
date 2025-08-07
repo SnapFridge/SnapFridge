@@ -1,14 +1,11 @@
-import LogoutButton from "@components/dashboard/LogoutButton";
-import { ON_MOBILE, PageMargin } from "@utils";
-import DeleteButton from "@components/dashboard/DeleteButton";
+import { PageMargin } from "@utils";
 import { type Metadata } from "next";
 import Greeting from "@components/dashboard/Greeting";
-import ClearRecipe from "@components/dashboard/ClearRecipeButton";
-import { UserProvider } from "@components/UserProvider";
 import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import ScrollArea from "@components/ScrollArea";
+import ScrollArea from "@components/dashboard/ScrollArea";
 import { scaleClamped } from "@utils";
+import AccountButtons from "@components/dashboard/AccountButtons";
 
 export const metadata: Metadata = {
   title: "Dashboard - SnapFridge",
@@ -17,19 +14,13 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <PageMargin>
-      <UserProvider>
-        <Greeting />
-        <SavedRecipesHeader>
-          <SavedRecipesTitle>Saved Recipes</SavedRecipesTitle>
-          <Icon icon="Save" size={50} />
-        </SavedRecipesHeader>
-        <ScrollArea />
-        <ActionContainer>
-          <LogoutButton />
-          <ClearRecipe />
-          <DeleteButton />
-        </ActionContainer>
-      </UserProvider>
+      <Greeting />
+      <SavedRecipesHeader>
+        <SavedRecipesTitle>Saved Recipes</SavedRecipesTitle>
+        <Icon icon="Save" size={50} />
+      </SavedRecipesHeader>
+      <ScrollArea />
+      <AccountButtons />
     </PageMargin>
   );
 }
@@ -42,14 +33,4 @@ const SavedRecipesHeader = styled("div")({
 
 const SavedRecipesTitle = styled("h1")({
   fontSize: scaleClamped(24, 36),
-});
-
-const ActionContainer = styled("div")({
-  marginTop: "24px",
-  display: "flex",
-  gap: "15px",
-
-  [ON_MOBILE]: {
-    flexDirection: "column",
-  },
 });

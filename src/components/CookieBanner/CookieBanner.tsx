@@ -25,7 +25,6 @@ function CookieBanner() {
     <AnimatePresence>
       {visible && (
         <Container
-          role="region"
           variants={ContainerVariants}
           transition={{ type: "spring" }}
           initial="starting"
