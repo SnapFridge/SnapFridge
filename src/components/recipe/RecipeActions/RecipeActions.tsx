@@ -10,20 +10,9 @@ import { useRouter } from "next/navigation";
 import useToast from "@components/ToastProvider/UseToast";
 import createClient from "@utils/supabase/client";
 import { useEffect, useState } from "react";
+import { type SavedRecipe } from "@utils";
 
-type Props = {
-  recipeId: number;
-  recipeName: string;
-  imageType: string;
-};
-
-type SavedRecipe = {
-  id: number;
-  name: string;
-  imageType: string;
-};
-
-function RecipeActions({ recipeId, recipeName, imageType }: Props) {
+function RecipeActions({ id, name, imageType }: SavedRecipe) {
   const router = useRouter();
   const { addError, addSuccess } = useToast();
   const [unit, toggleUnit] = useUnit();
@@ -46,7 +35,7 @@ function RecipeActions({ recipeId, recipeName, imageType }: Props) {
     void getSavedRecipes();
   }, [user, supabase]);
 
-  const recipeSaved = savedRecipes.findIndex(({ id }) => id === recipeId) > -1;
+  const recipeSaved = savedRecipes.findIndex(({ id }) => id === id) > -1;
 
   async function updateSavedRecipes() {
     // Why don't we use an eq? Because our database will only show us the right one!
@@ -54,16 +43,16 @@ function RecipeActions({ recipeId, recipeName, imageType }: Props) {
     if (error) throw new Error(`Supabase select error! ${error.code}: ${error.message}`);
 
     const savedRecipes = (data[0]?.recipes ?? []) as SavedRecipe[];
-    const recipeIndex = savedRecipes.findIndex(({ id }) => id === recipeId);
+    const recipeIndex = savedRecipes.findIndex((v) => v.id === id);
     const nextRecipes =
       recipeIndex > -1
-        ? savedRecipes.filter((value) => value.id !== recipeId)
+        ? savedRecipes.filter((v) => v.id !== id)
         : [
             ...savedRecipes,
             {
-              name: recipeName,
-              id: recipeId,
-              imageType: imageType,
+              name,
+              id,
+              imageType,
             },
           ];
     const { error: updateError } = await supabase

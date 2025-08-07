@@ -1,51 +1,43 @@
+"use client";
+
 import { ScrollArea as RadixScrollArea } from "radix-ui";
 import { styled } from "@pigment-css/react";
 import SavedItem from "./SavedItem";
-import { createClient } from "@utils/supabase/server";
+import createClient from "@utils/supabase/client";
 import Icon from "@components/Icon";
+import { useUser } from "@components/UserProvider";
+import type { SavedRecipe } from "@utils";
+import { useEffect, useState } from "react";
 
-export default async function ScrollArea() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+export default function ScrollArea() {
+  const user = useUser();
+  const [savedRecipes, setSavedRecipes] = useState<SavedRecipe[]>();
 
-  if (!user) {
-    return (
-      <LoginContainer>
-        <LoginContent>
-          <Icon icon="User" size={36} color="var(--gray-500)" />
-          <p>You must login to see saved recipes!</p>
-        </LoginContent>
-      </LoginContainer>
-    );
+  useEffect(() => {
+    async function getSavedRecipes() {
+      if (!user) {
+        return;
+      }
+      const supabase = createClient();
+      // Safe to preform as Supabase will not allow multiple rows with the same key (user_id)
+      await supabase.from("saved_recipes").insert({ user_id: user.id, recipes: [] });
+
+      // Don't need to preform equality checks as supabase sho!uld only return the row the user has access to
+      const { data } = await supabase.from("saved_recipes").select();
+      setSavedRecipes((data?.[0]?.recipes ?? []) as SavedRecipe[]);
+    }
+    void getSavedRecipes();
+  }, [user]);
+
+  if (savedRecipes === undefined) {
+    return;
   }
 
-  const { data, error } = await supabase.from("saved_recipes").select();
-
-  if (error) {
-    console.error("Error fetching saved recipes:", error);
-    return (
-      <ErrorContainer>
-        <ErrorContent>
-          <Icon icon="TriangleAlert" size={36} color="var(--error-300)" />
-          <p>Error: Failed to fetch saved recipes. Please try again.</p>
-        </ErrorContent>
-      </ErrorContainer>
-    );
-  }
-
-  const recipes = (data?.[0]?.recipes ?? []) as {
-    id: number;
-    name: string;
-    imageType: string;
-  }[];
-
-  if (recipes.length === 0) {
+  if (savedRecipes.length < 1) {
     return (
       <NoRecipesContainer>
         <NoRecipesContent>
-          <Icon icon="Ghost" size={36} color="var(--gray-500)" />
+          <Icon icon="Ghost" size={36} color="var(--gray-600)" />
           <p>You currently have no saved recipes.</p>
         </NoRecipesContent>
       </NoRecipesContainer>
@@ -56,13 +48,8 @@ export default async function ScrollArea() {
     <ScrollAreaRoot>
       <ScrollAreaViewport>
         <Container>
-          {recipes.map((recipe) => (
-            <SavedItem
-              recipeID={recipe.id}
-              recipeName={recipe.name}
-              imageType={recipe.imageType}
-              key={recipe.name}
-            />
+          {savedRecipes.map(({ id, name, imageType }) => (
+            <SavedItem id={id} name={name} imageType={imageType} key={id} />
           ))}
         </Container>
       </ScrollAreaViewport>
@@ -78,34 +65,6 @@ export default async function ScrollArea() {
   );
 }
 
-const LoginContainer = styled("div")({
-  display: "flex",
-  justifyContent: "center",
-  margin: "0 0 36px",
-});
-const LoginContent = styled("div")({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  textAlign: "center",
-  maxWidth: "600px",
-  color: "var(--gray-500)",
-});
-
-const ErrorContainer = styled("div")({
-  display: "flex",
-  justifyContent: "center",
-  margin: "0 0 36px",
-});
-const ErrorContent = styled("div")({
-  display: "flex",
-  flexDirection: "column",
-  alignItems: "center",
-  textAlign: "center",
-  maxWidth: "600px",
-  color: "var(--error-300)",
-});
-
 const NoRecipesContainer = styled("div")({
   display: "flex",
   justifyContent: "center",
@@ -117,7 +76,7 @@ const NoRecipesContent = styled("div")({
   alignItems: "center",
   textAlign: "center",
   maxWidth: "600px",
-  color: "var(--gray-500)",
+  color: "var(--gray-600)",
 });
 
 const Container = styled("div")({
@@ -132,7 +91,7 @@ const ScrollAreaRoot = styled(RadixScrollArea.Root)`
   height: fit-content;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 2px 10px var(--gray-400);
+  box-shadow: var(--shadow);
   background-color: var(--accent-50);
 
   --scrollbar-size: 10px;

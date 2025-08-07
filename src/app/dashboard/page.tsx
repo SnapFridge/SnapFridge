@@ -1,5 +1,5 @@
 import LogoutButton from "@components/dashboard/LogoutButton";
-import { PageMargin } from "@utils";
+import { ON_MOBILE, PageMargin } from "@utils";
 import DeleteButton from "@components/dashboard/DeleteButton";
 import { type Metadata } from "next";
 import Greeting from "@components/dashboard/Greeting";
@@ -23,9 +23,7 @@ export default function Page() {
           <SavedRecipesTitle>Saved Recipes</SavedRecipesTitle>
           <Icon icon="Save" size={50} />
         </SavedRecipesHeader>
-        <SavedRecipesContainer>
-          <ScrollArea />
-        </SavedRecipesContainer>
+        <ScrollArea />
         <ActionContainer>
           <LogoutButton />
           <ClearRecipe />
@@ -46,13 +44,12 @@ const SavedRecipesTitle = styled("h1")({
   fontSize: scaleClamped(24, 36),
 });
 
-const SavedRecipesContainer = styled("div")({
-  display: "flex",
-  justifyContent: "center",
-});
-
 const ActionContainer = styled("div")({
   marginTop: "24px",
   display: "flex",
   gap: "15px",
+
+  [ON_MOBILE]: {
+    flexDirection: "column",
+  },
 });

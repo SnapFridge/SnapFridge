@@ -68,6 +68,12 @@ export type Recipe = {
   likes?: number;
 };
 
+export type SavedRecipe = {
+  id: number;
+  name: string;
+  imageType: string;
+};
+
 // Rounding logic for recipe ingredient/nutrient list
 export function roundNumber(num: number) {
   // rounding function to handle stuff like 0.25 cups and weird measurements

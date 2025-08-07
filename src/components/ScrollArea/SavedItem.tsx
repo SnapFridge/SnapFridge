@@ -3,12 +3,7 @@
 import { styled, css } from "@pigment-css/react";
 import Image from "next/image";
 import { motion, type Variants } from "motion/react";
-
-type Props = {
-  recipeID: number;
-  recipeName: string;
-  imageType: string;
-};
+import type { SavedRecipe } from "@utils";
 
 // https://spoonacular.com/food-api/docs#Show-Images
 const IMG_SIZE:
@@ -25,11 +20,11 @@ const height = parseInt(IMG_SIZE.split("x")[1] ?? "0");
 
 const MotionImage = motion.create(Image);
 
-export default function SavedItem({ recipeID, recipeName, imageType }: Props) {
+export default function SavedItem({ id, name, imageType }: SavedRecipe) {
   return (
-    <Container whileHover="hover" href={`/recipe/${recipeID}`}>
+    <Container whileHover="hover" href={`/recipe/${id}`}>
       <MotionImage
-        src={`https://img.spoonacular.com/recipes/${recipeID}-${IMG_SIZE}.${imageType}`}
+        src={`https://img.spoonacular.com/recipes/${id}-${IMG_SIZE}.${imageType}`}
         alt="hi"
         className={ImgCSS}
         width={width}
@@ -37,7 +32,7 @@ export default function SavedItem({ recipeID, recipeName, imageType }: Props) {
         variants={ImgVariants}
       />
       <RecipeName variants={NameVariants} initial="initial" whileHover="hover">
-        {recipeName}
+        {name}
       </RecipeName>
     </Container>
   );

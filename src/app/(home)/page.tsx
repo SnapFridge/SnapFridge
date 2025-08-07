@@ -21,7 +21,7 @@ import { type Metadata } from "next";
 export const metadata: Metadata = {
   title: "SnapFridge - Reduce Food Waste & Plan Meals from Fridge Photos",
   description:
-    "SnapFridge helps you prepare meals and reduce food waste and prepare meals just from some photos of your fridge. Join the fight against food waste today!",
+    "SnapFridge helps you reduce food waste and prepare meals just from some photos of your fridge. Join the fight against food waste today!",
   other: {
     "google-site-verification": "eYERfWRX6kjvyvIaqgESxRtku7LR-9xDCg0Xge3aaQU",
   },

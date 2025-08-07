@@ -308,6 +308,7 @@ export default withPigment(
       webpackBuildWorker: true,
       webpackMemoryOptimizations: true,
       optimizeRouterScrolling: true,
+      forceSwcTransforms: true,
 
       // NEVER add: react, pigment
       optimizePackageImports: [
