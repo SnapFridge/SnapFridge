@@ -15,7 +15,7 @@ export default function ToggleGroup({
   return (
     <ToggleGroupRoot type="single" defaultValue="2" {...delegated}>
       <ToggleGroupItem value="1" aria-label="Maximize">
-        Maximize Used Ingredients (wipe that fridge!)
+        Maximize Used Ingredients
       </ToggleGroupItem>
       <ToggleGroupItem value="2" aria-label="Minimize">
         Minimize Missing Ingredients
