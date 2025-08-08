@@ -302,6 +302,7 @@ const CSP = `
 export default withPigment(
   {
     experimental: {
+      inlineCss: true,
       typedRoutes: true,
       useLightningcss: true,
       reactCompiler: true,

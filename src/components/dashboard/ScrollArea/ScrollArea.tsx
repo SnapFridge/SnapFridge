@@ -1,27 +1,16 @@
-"use client";
-
-import { ScrollArea as RadixScrollArea } from "radix-ui";
+import { ScrollArea } from "radix-ui";
 import { styled } from "@pigment-css/react";
 import SavedItem from "./SavedItem";
-import createClient from "@utils/supabase/client";
+import { createClient } from "@utils/supabase/server";
 import Icon from "@components/Icon";
 import { type SavedRecipe } from "@utils";
-import { useEffect, useState } from "react";
 
-// User should exist already
-function ScrollArea() {
-  const supabase = createClient();
-  const [savedRecipes, setSavedRecipes] = useState<SavedRecipe[]>();
+async function AppScrollArea() {
+  const supabase = await createClient();
+  const { data } = await supabase.from("saved_recipes").select();
+  const savedRecipes = data![0]!.recipes as SavedRecipe[];
 
-  useEffect(() => {
-    async function getSavedRecipes() {
-      const { data } = await supabase.from("saved_recipes").select();
-      setSavedRecipes((data?.[0]?.recipes ?? []) as SavedRecipe[]);
-    }
-    void getSavedRecipes();
-  }, [supabase]);
-
-  if (savedRecipes === undefined) {
+  if (!savedRecipes) {
     return;
   }
 
@@ -77,7 +66,7 @@ const Container = styled("div")({
   padding: "20px 15px",
 });
 
-const ScrollAreaRoot = styled(RadixScrollArea.Root)({
+const ScrollAreaRoot = styled(ScrollArea.Root)({
   width: "max(100%, 200px)",
   height: "fit-content",
   borderRadius: "5px",
@@ -87,13 +76,13 @@ const ScrollAreaRoot = styled(RadixScrollArea.Root)({
   ["--scrollbar-size" as string]: "10px",
 });
 
-const ScrollAreaViewport = styled(RadixScrollArea.Viewport)({
+const ScrollAreaViewport = styled(ScrollArea.Viewport)({
   width: "100%",
   height: "100%",
   borderRadius: "inherit",
 });
 
-const ScrollAreaScrollBar = styled(RadixScrollArea.ScrollAreaScrollbar)({
+const ScrollAreaScrollBar = styled(ScrollArea.ScrollAreaScrollbar)({
   display: "flex",
   userSelect: "none",
   touchAction: "none",
@@ -115,7 +104,7 @@ const ScrollAreaScrollBar = styled(RadixScrollArea.ScrollAreaScrollbar)({
   },
 });
 
-const ScrollAreaThumb = styled(RadixScrollArea.Thumb)({
+const ScrollAreaThumb = styled(ScrollArea.Thumb)({
   flex: 1,
   background: "var(--gray-500)",
   borderRadius: "var(--scrollbar-size)",
@@ -134,8 +123,8 @@ const ScrollAreaThumb = styled(RadixScrollArea.Thumb)({
   },
 });
 
-const ScrollAreaCorner = styled(RadixScrollArea.Corner)({
+const ScrollAreaCorner = styled(ScrollArea.Corner)({
   background: "black",
 });
 
-export default ScrollArea;
+export default AppScrollArea;

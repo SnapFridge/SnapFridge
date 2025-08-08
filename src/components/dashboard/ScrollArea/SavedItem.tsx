@@ -1,5 +1,3 @@
-"use client";
-
 import { styled, css } from "@pigment-css/react";
 import Image from "next/image";
 import { type SavedRecipe } from "@utils";
