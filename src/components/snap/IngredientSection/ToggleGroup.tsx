@@ -1,17 +1,16 @@
 "use client";
 
-import { ToggleGroup as RadixToggleGroup } from "radix-ui";
+import { ToggleGroup } from "radix-ui";
 import { styled } from "@pigment-css/react";
 import { ON_DESKTOP, ON_MOBILE } from "@utils";
+import { type ComponentPropsWithoutRef } from "react";
 
-type FullRadixToggleGroupRootProps = React.ComponentPropsWithoutRef<
-  typeof RadixToggleGroup.Root
->;
-type RadixToggleGroupProps = Extract<FullRadixToggleGroupRootProps, { type: "single" }>;
+type FullToggleGroupRootProps = ComponentPropsWithoutRef<typeof ToggleGroup.Root>;
+type ToggleGroupProps = Extract<FullToggleGroupRootProps, { type: "single" }>;
 
-export default function ToggleGroup({
+function AppToggleGroup({
   ...delegated
-}: Omit<RadixToggleGroupProps, "type" | "defaultValue">) {
+}: Omit<ToggleGroupProps, "type" | "defaultValue">) {
   return (
     <ToggleGroupRoot type="single" defaultValue="2" {...delegated}>
       <ToggleGroupItem value="1" aria-label="Maximize">
@@ -24,7 +23,7 @@ export default function ToggleGroup({
   );
 }
 
-const ToggleGroupRoot = styled(RadixToggleGroup.Root)({
+const ToggleGroupRoot = styled(ToggleGroup.Root)({
   width: "100%",
   maxWidth: "400px",
   height: "fit-content",
@@ -37,7 +36,7 @@ const ToggleGroupRoot = styled(RadixToggleGroup.Root)({
   },
 });
 
-const ToggleGroupItem = styled(RadixToggleGroup.Item)({
+const ToggleGroupItem = styled(ToggleGroup.Item)({
   padding: "5px",
   flex: "1 1 0",
   display: "flex",
@@ -77,3 +76,5 @@ const ToggleGroupItem = styled(RadixToggleGroup.Item)({
     color: "var(--gray-600)",
   },
 });
+
+export default AppToggleGroup;
