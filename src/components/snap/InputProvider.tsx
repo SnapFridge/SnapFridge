@@ -32,7 +32,7 @@ function reducer(draft: State, action: Action) {
     store.setItem("ingredients", JSON.stringify(draft.ingredients));
   }
   function storeRecipes() {
-    store.setItem("ingredients", JSON.stringify(draft.recipes));
+    store.setItem("recipes", JSON.stringify(draft.recipes));
   }
   switch (action.type) {
     case "addIngredient": {

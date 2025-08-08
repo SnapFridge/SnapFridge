@@ -2,7 +2,7 @@ import Tooltip from "@components/recipe/Tooltip";
 import { RecipeInfo, type SpoonacularRecipe } from "@components/recipe/RecipeInfo";
 import Image from "next/image";
 import { css, styled } from "@pigment-css/react";
-import { ON_MOBILE, PageMargin } from "@utils";
+import { ON_MOBILE, PageMargin, type SavedRecipe } from "@utils";
 import RecipeActions from "@components/recipe/RecipeActions";
 import RecipeInfoList from "@components/recipe/RecipeInfoList";
 import RecipeStepsList from "@components/recipe/DetailedRecipe";
@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 import NutrientInfoList from "@components/recipe/RecipeInfoList/NutrientInfoList";
 import { UnitProvider } from "@components/UnitProvider";
 import AllergenWarning from "@components/recipe/AllergenWarning";
+import { createClient } from "@utils/supabase/server";
 
 // Revalidate the cache every hour
 const CACHE_ONE_HOUR = 3600;
@@ -46,9 +47,22 @@ async function getRecipe(id: string) {
   return recipeInfo;
 }
 
+async function getSavedRecipes(): Promise<SavedRecipe[]> {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) {
+    return [];
+  }
+  const { data } = await supabase.from("saved_recipes").select();
+  return data![0]!.recipes as SavedRecipe[];
+}
+
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const recipeInfo = await getRecipe(id);
+  const initialSavedRecipes = await getSavedRecipes();
 
   if (!recipeInfo) notFound();
 
@@ -85,6 +99,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
             id={recipeInfo.id}
             name={recipeInfo.title}
             imageType={recipeInfo.imageType}
+            initialSavedRecipes={initialSavedRecipes}
           />
           <RecipeInfo recipeInfo={recipeInfo} />
         </Wrapper>

@@ -9,68 +9,53 @@ import { useUser } from "@components/UserProvider";
 import { useRouter } from "next/navigation";
 import useToast from "@components/ToastProvider/UseToast";
 import createClient from "@utils/supabase/client";
-import { useEffect, useState } from "react";
 import { type SavedRecipe } from "@utils";
+import { useState } from "react";
 
-function RecipeActions({ id, name, imageType }: SavedRecipe) {
+type Props = {
+  initialSavedRecipes: SavedRecipe[];
+};
+
+function RecipeActions({
+  id,
+  name,
+  imageType,
+  initialSavedRecipes,
+}: SavedRecipe & Props) {
   const router = useRouter();
   const { addError, addSuccess } = useToast();
   const [unit, toggleUnit] = useUnit();
   const user = useUser();
   const supabase = createClient();
-  const [savedRecipes, setSavedRecipes] = useState<SavedRecipe[]>([]);
+  const [saved, setSaved] = useState(
+    initialSavedRecipes.findIndex((v) => v.id === id) > -1
+  );
 
-  useEffect(() => {
-    async function getSavedRecipes() {
-      if (!user) {
-        return;
-      }
-
-      // Don't need to preform equality checks as supabase sho!uld only return the row the user has access to
-      const { data } = await supabase.from("saved_recipes").select();
-      setSavedRecipes((data?.[0]?.recipes ?? []) as SavedRecipe[]);
-    }
-    void getSavedRecipes();
-  }, [user, supabase]);
-
-  const recipeSaved = savedRecipes.findIndex(({ id }) => id === id) > -1;
-
-  async function updateSavedRecipes() {
-    // Why don't we use an eq? Because our database will only show us the right one!
-    const { data, error } = await supabase.from("saved_recipes").select();
-    if (error) throw new Error(`Supabase select error! ${error.code}: ${error.message}`);
-
-    const savedRecipes = (data[0]?.recipes ?? []) as SavedRecipe[];
-    const recipeIndex = savedRecipes.findIndex((v) => v.id === id);
-    const nextRecipes =
-      recipeIndex > -1
-        ? savedRecipes.filter((v) => v.id !== id)
-        : [
-            ...savedRecipes,
-            {
-              name,
-              id,
-              imageType,
-            },
-          ];
-    const { error: updateError } = await supabase
-      .from("saved_recipes")
-      .update({ recipes: nextRecipes })
-      .eq("user_id", user!.id);
-    if (updateError)
-      throw new Error(
-        `Supabase update error! ${updateError.code}: ${updateError.message}`
-      );
-    return nextRecipes;
-  }
-
-  async function handleSave() {
+  async function toggleSave() {
     try {
       if (!user) {
         router.push("/login");
         return;
       }
-      setSavedRecipes(await updateSavedRecipes());
+      const nextRecipes = initialSavedRecipes;
+      if (saved) {
+        nextRecipes.splice(
+          nextRecipes.findIndex((v) => v.id === id),
+          1
+        );
+        setSaved(false);
+      } else {
+        nextRecipes.push({ id, name, imageType });
+        setSaved(true);
+      }
+      const { error } = await supabase
+        .from("saved_recipes")
+        .update({ recipes: nextRecipes })
+        .eq("user_id", user.id);
+
+      if (error) {
+        throw error;
+      }
     } catch (error) {
       addError("Error saving data", `${error}`);
     }
@@ -88,14 +73,9 @@ function RecipeActions({ id, name, imageType }: SavedRecipe) {
 
   return (
     <Container>
-      <ColFlexButton variant="icon" onClick={handleSave}>
-        <Icon
-          icon="Heart"
-          fill={recipeSaved ? "#FF4848" : "none"}
-          color="#FF4848"
-          size={36}
-        />
-        <RecipeActionText>{recipeSaved ? "Saved" : "Save"}</RecipeActionText>
+      <ColFlexButton variant="icon" onClick={() => void toggleSave()}>
+        <Icon icon="Heart" fill={saved ? "#FF4848" : "none"} color="#FF4848" size={36} />
+        <RecipeActionText>{saved ? "Saved" : "Save"}</RecipeActionText>
       </ColFlexButton>
       <ShareButton variant="icon" onClick={handleShare}>
         <Icon icon="Share2" size={36} />
