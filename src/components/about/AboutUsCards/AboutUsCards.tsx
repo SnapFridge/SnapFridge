@@ -12,9 +12,7 @@ function AboutUsCards() {
           <Link href="https://github.com/msqr1/Vosklet">Vosklet</Link> and{" "}
           <Link href="https://github.com/msqr1/importizer">importizer</Link>. I enjoy
           diving deep into research and contributing to libraries like Kaldi, Emscripten,
-          Glaze, or any other tools I use in my work. There's one thing I'll admit:
-          sometimes I get a little too into optimization. I prefer backend dev over
-          frontend!
+          Glaze, or any other tools I use in my work. I prefer backend over frontend!
         </p>
       </Card>
       <Card>
@@ -30,12 +28,11 @@ function AboutUsCards() {
         <h1>Andrew "Xandrew" Kim</h1>
         <p>
           I am the last Andrew from SnapFridge. Rylex called me Xandrew because he likes
-          the XAND operation (it doesn't actually exists). I am your typical frontend dev:
-          I love Josh W. Comeau, signing up for his new blog post notification. I know
-          React, Next.js, Astro, Svelte and many others. I built many website with these
-          like <Link href="https://minesweeping.netlify.app/">Minesweeping</Link> I've
-          done some Rust before, but since it's backend, I ditched. Did I mention I made
-          games on Roblox?
+          the XAND operation (it doesn't actually exists). I love Josh W. Comeau, signing
+          up for his new blog post notification. I know React, Next.js, Astro, Svelte and
+          many others. I built many website with these like{" "}
+          <Link href="https://minesweeping.netlify.app/">Minesweeping</Link> I do frontend
+          stuff most of the time but I also do a bit of backend
         </p>
       </Card>
     </CardContainer>

@@ -13,11 +13,10 @@ export default function Page() {
   return (
     <Main>
       <Icon icon="Logo" size={300} className={Logo} />
-      <Picture />
-      <HeaderTxt>
+      <Header>
         "Ever stared into your fridge, clueless about what to cook? We've all been there.
         That's why we built SnapFridge - to turn fridge-gazing into meal-making!"
-      </HeaderTxt>
+      </Header>
       <AboutUsCards />
     </Main>
   );
@@ -38,15 +37,7 @@ const Logo = css({
   margin: "0 auto 20px",
 });
 
-const Picture = styled("div")({
-  backgroundColor: "var(--text-500)",
-  width: "100%",
-  height: "300px",
-  borderRadius: "12px",
-  margin: "auto",
-});
-
-const HeaderTxt = styled("h2")({
+const Header = styled("h2")({
   fontSize: scaleClamped(20, 36),
   textAlign: "center",
 });

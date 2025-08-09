@@ -3,8 +3,9 @@
 import { useEffect } from "react";
 import Button from "@components/Button";
 import { styled } from "@pigment-css/react";
+import { PageMargin } from "@utils";
 
-export default function Error({
+export default function Page({
   error,
   reset,
 }: {
@@ -17,30 +18,12 @@ export default function Error({
   }, [error]);
 
   return (
-    <Container>
-      <Title>Something went wrong!</Title>
-      <HomeButton
-        onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => reset()
-        }
-      >
-        Try again
-      </HomeButton>
-    </Container>
+    <PageMargin>
+      <h1>Something went wrong!</h1>
+      <HomeButton onClick={reset}>Try Again</HomeButton>
+    </PageMargin>
   );
 }
-
-const Container = styled("div")({
-  width: "100%",
-  height: "100vh",
-  display: "flex",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-});
-
-const Title = styled("h1")({});
 
 const HomeButton = styled(Button)({
   marginTop: "12px",

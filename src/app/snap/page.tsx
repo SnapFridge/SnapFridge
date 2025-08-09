@@ -1,8 +1,10 @@
-import InputSection from "@components/snap/InputSection";
 import { PageMargin } from "@utils";
-import { InputProvider } from "@components/snap/InputProvider";
-import RecipeSection from "@components/RecipeSection";
 import { type Metadata } from "next";
+import { styled } from "@pigment-css/react";
+import { InputProvider } from "@components/snap/InputProvider";
+import ImageUpload from "@components/snap/ImageUpload";
+import IngredientSection from "@components/snap/IngredientSection";
+import RecipeSection from "@components/RecipeSection";
 
 export const metadata: Metadata = {
   title: "Snap - SnapFridge",
@@ -13,9 +15,17 @@ export default function Page() {
   return (
     <PageMargin>
       <InputProvider>
-        <InputSection />
+        <InputSection>
+          <ImageUpload />
+          <IngredientSection />
+        </InputSection>
         <RecipeSection />
       </InputProvider>
     </PageMargin>
   );
 }
+
+const InputSection = styled("section")({
+  margin: "auto",
+  width: "min(100%, 576px)",
+});

@@ -14,7 +14,7 @@ import VisuallyHidden from "@components/VisuallyHidden";
 import Input from "@components/Input";
 import getIngredientWriter from "./IngredientWriter";
 
-function FileUpload() {
+function ImageUpload() {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
   const { state, dispatch } = useInputState();
   const { files } = state;
@@ -80,7 +80,7 @@ function FileUpload() {
   return (
     <>
       <EmptyTitle className={`${Appear} ${imgURLs.length > 0 ? "appear" : ""}`}>
-        Upload images below to get started!
+        Upload fridge images to get started!
       </EmptyTitle>
       <Form layout onSubmit={(e) => void fetchGemini(e)}>
         <FileUploader>
@@ -209,4 +209,4 @@ const ScanButton = styled(Button)({
   },
 });
 
-export default FileUpload;
+export default ImageUpload;

@@ -21,9 +21,12 @@ globalCss`
   }
 `;
 
-// Horizontally unscrollable + background + textColor
+// Horizontally unscrollable
 globalCss`
-  :root, body {
+  body {
+    display: flex;
+    flex-direction: column;
+    font-weight: 410;
     width: 100%;
     min-height: 100%;
     @media (min-width: ${MAX_SUPPORTED_WIDTH}px) {

@@ -6,7 +6,7 @@ import { ON_MOBILE } from "@utils";
 import { useUnit } from "@components/UnitProvider";
 import { roundNumber } from "@utils";
 
-export default function RecipeInfoList({
+function RecipeInfoList({
   ingredients,
 }: {
   ingredients: SpoonacularRecipe["extendedIngredients"];
@@ -81,3 +81,5 @@ export const List = styled("ul")({
 const ListItem = styled("li")({
   fontSize: `${16 / 16}rem`,
 });
+
+export default RecipeInfoList;

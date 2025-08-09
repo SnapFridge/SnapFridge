@@ -263,7 +263,7 @@ const BottomStatistics = styled("div")({
 
   "& > h2": {
     fontSize: scaleClamped(29, 52),
-    fontWeight: "500",
+    fontWeight: 500,
     textAlign: "center",
     whiteSpace: "pre-wrap",
   },

@@ -27,20 +27,16 @@ async function getRecipe(id: string) {
       },
     }
   );
-
   if (!recipeInfoRes.ok) {
     if (recipeInfoRes.status === 404) {
       return null;
     }
-
     const errorDetails = await recipeInfoRes.text();
     throw new Error(
       `Failed to fetch recipe ${id}: ${recipeInfoRes.status} ${recipeInfoRes.statusText} - ${errorDetails}`
     );
   }
-
   const recipeInfo = (await recipeInfoRes.json()) as SpoonacularRecipe;
-
   if (!recipeInfo || Object.keys(recipeInfo).length === 0) {
     return null;
   }
@@ -62,9 +58,8 @@ async function getSavedRecipes(): Promise<SavedRecipe[]> {
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const recipeInfo = await getRecipe(id);
-  const initialSavedRecipes = await getSavedRecipes();
-
   if (!recipeInfo) notFound();
+  const initialSavedRecipes = await getSavedRecipes();
 
   return (
     <UnitProvider>
@@ -81,7 +76,6 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           Source: <Link href={recipeInfo.sourceUrl}>{recipeInfo.creditsText}</Link>
         </SourceCredit>
       </figure>
-      {/* We should we able to tab to the controls first */}
       <PageMargin>
         <TitleSection>
           <Title>{recipeInfo.title}</Title>
@@ -91,9 +85,7 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           {recipeInfo.veryHealthy && <Tooltip type="healthy" />}
           {recipeInfo.veryPopular && <Tooltip type="popular" />}
         </TitleSection>
-
         <AllergenWarning recipeInfo={recipeInfo} />
-
         <Wrapper>
           <RecipeActions
             id={recipeInfo.id}
@@ -103,13 +95,11 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           />
           <RecipeInfo recipeInfo={recipeInfo} />
         </Wrapper>
-
         <ListContainer>
           <RecipeInfoList ingredients={recipeInfo.extendedIngredients} />
           <Spacer />
           <NutrientInfoList nutrients={recipeInfo.nutrition.nutrients} />
         </ListContainer>
-
         <RecipeStepsList recipes={recipeInfo} />
       </PageMargin>
     </UnitProvider>

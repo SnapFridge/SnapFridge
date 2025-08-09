@@ -74,7 +74,7 @@ const ErrorMessageVariants: Variants = {
 
 const ErrorMessage = {
   color: "var(--error-700)",
-  fontWeight: "bold",
+  fontWeight: 700,
 };
 
 const StyledButton = styled(Button)({

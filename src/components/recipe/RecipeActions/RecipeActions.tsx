@@ -6,11 +6,11 @@ import Button from "@components/Button";
 import { ON_MOBILE } from "@utils";
 import { useUnit } from "@components/UnitProvider";
 import { useUser } from "@components/UserProvider";
-import { useRouter } from "next/navigation";
 import useToast from "@components/ToastProvider/UseToast";
 import createClient from "@utils/supabase/client";
 import { type SavedRecipe } from "@utils";
 import { useState } from "react";
+import Link from "next/link";
 
 type Props = {
   initialSavedRecipes: SavedRecipe[];
@@ -22,7 +22,6 @@ function RecipeActions({
   imageType,
   initialSavedRecipes,
 }: SavedRecipe & Props) {
-  const router = useRouter();
   const { addError, addSuccess } = useToast();
   const [unit, toggleUnit] = useUnit();
   const user = useUser();
@@ -33,10 +32,6 @@ function RecipeActions({
 
   async function toggleSave() {
     try {
-      if (!user) {
-        router.push("/login");
-        return;
-      }
       const nextRecipes = initialSavedRecipes;
       if (saved) {
         nextRecipes.splice(
@@ -51,7 +46,7 @@ function RecipeActions({
       const { error } = await supabase
         .from("saved_recipes")
         .update({ recipes: nextRecipes })
-        .eq("user_id", user.id);
+        .eq("user_id", user!.id);
 
       if (error) {
         throw error;
@@ -70,19 +65,30 @@ function RecipeActions({
       addError("Unable to copy to clipboard!");
     }
   }
-
   return (
     <Container>
-      <ColFlexButton variant="icon" onClick={() => void toggleSave()}>
-        <Icon icon="Heart" fill={saved ? "#FF4848" : "none"} color="#FF4848" size={36} />
-        <RecipeActionText>{saved ? "Saved" : "Save"}</RecipeActionText>
-      </ColFlexButton>
+      {user ? (
+        <Button variant="icon" onClick={() => void toggleSave()}>
+          <Icon
+            icon="Heart"
+            fill={saved ? "#FF4848" : "none"}
+            color="#FF4848"
+            size={36}
+          />
+          <RecipeActionText>Save{saved && "d"}</RecipeActionText>
+        </Button>
+      ) : (
+        <Button variant="icon" as={Link} href="/login">
+          <Icon icon="Heart" color="#FF4848" size={36} />
+          <RecipeActionText>Save</RecipeActionText>
+        </Button>
+      )}
       <ShareButton variant="icon" onClick={handleShare}>
         <Icon icon="Share2" size={36} />
         <RecipeActionText>Share</RecipeActionText>
       </ShareButton>
       <UnitButton variant="primary" onClick={toggleUnit}>
-        {unit === "metric" ? "Metric" : "Imperial"}
+        {unit}
       </UnitButton>
     </Container>
   );
@@ -109,10 +115,6 @@ const Container = styled("div")({
   },
 });
 
-const ColFlexButton = styled(Button)({
-  flexDirection: "column",
-});
-
 const ShareButton = styled(Button)({
   flexDirection: "column",
   [ON_MOBILE]: {
@@ -121,6 +123,7 @@ const ShareButton = styled(Button)({
 });
 
 const RecipeActionText = styled("p")({
+  display: "block",
   fontSize: `${16 / 16}rem`,
   fontWeight: 700,
 
@@ -130,6 +133,7 @@ const RecipeActionText = styled("p")({
 });
 
 const UnitButton = styled(Button)({
+  textTransform: "capitalize",
   height: "fit-content",
   borderRadius: `${36 / 16}rem`,
   maxWidth: "104px",

@@ -1,13 +1,13 @@
-import { Switch as RadixSwitch } from "radix-ui";
+import { Switch } from "radix-ui";
 import { styled } from "@pigment-css/react";
 import { useId, type ComponentPropsWithoutRef } from "react";
 import { scaleClamped } from "@utils";
 
-interface Props extends ComponentPropsWithoutRef<typeof RadixSwitch.Root> {
+interface Props extends ComponentPropsWithoutRef<typeof Switch.Root> {
   label: string;
 }
 
-export default function Switch({ label, ...delegated }: Props) {
+function AppSwitch({ label, ...delegated }: Props) {
   const id = useId();
 
   return (
@@ -25,7 +25,7 @@ const Container = styled("div")({
   alignItems: "center",
 });
 
-const SwitchRoot = styled(RadixSwitch.Root)({
+const SwitchRoot = styled(Switch.Root)({
   marginLeft: scaleClamped(5, 18),
   minWidth: "42px",
   height: "25px",
@@ -48,7 +48,7 @@ const SwitchRoot = styled(RadixSwitch.Root)({
   },
 });
 
-const SwitchThumb = styled(RadixSwitch.Thumb)({
+const SwitchThumb = styled(Switch.Thumb)({
   display: "block",
   width: "20px",
   height: "20px",
@@ -66,3 +66,5 @@ const SwitchThumb = styled(RadixSwitch.Thumb)({
     backgroundColor: "var(--gray-500)",
   },
 });
+
+export default AppSwitch;

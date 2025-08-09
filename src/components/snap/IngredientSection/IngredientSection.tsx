@@ -60,7 +60,7 @@ function IngredientSection() {
           </>
         ) : (
           <IngredientList layout>
-            {Array.from(ingredients).map((i) => (
+            {ingredients.map((i) => (
               <IngredientBox key={i} ingredient={i} />
             ))}
           </IngredientList>
@@ -88,10 +88,9 @@ function IngredientSection() {
   );
 }
 
-const IngredientTitle = styled("h1")({
+const IngredientTitle = styled("p")({
   color: "var(--gray-600)",
   fontSize: `${18 / 16}rem`,
-  fontWeight: "400",
   textAlign: "center",
   padding: "0 24px",
 });

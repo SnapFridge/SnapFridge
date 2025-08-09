@@ -12,7 +12,7 @@ function AvatarLink({ ...delegated }) {
 
   return (
     <Avatar.Root {...delegated} asChild>
-      <Link href="/dashboard">
+      <Link href={u ? "/dashboard" : "/login"}>
         <VisuallyHidden>Go to dashboard</VisuallyHidden>
         <Avatar.Image
           className={UserAvatar}

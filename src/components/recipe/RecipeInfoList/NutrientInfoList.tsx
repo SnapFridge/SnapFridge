@@ -3,7 +3,7 @@ import { type SpoonacularRecipe } from "@components/recipe/RecipeInfo/RecipeInfo
 import { roundNumber } from "@utils";
 import { Container, List, Title } from "./RecipeInfoList";
 
-export default function NutrientInfoList({
+function NutrientInfoList({
   nutrients,
 }: {
   nutrients: SpoonacularRecipe["nutrition"]["nutrients"];
@@ -36,3 +36,5 @@ const ListItem = styled("li")({
   flex: 1,
   minHeight: 0,
 });
+
+export default NutrientInfoList;

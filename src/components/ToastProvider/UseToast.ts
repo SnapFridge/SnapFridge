@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ToastContext } from "./ToastProvider";
 
-export default function useToast() {
+function useToast() {
   const { addToast, removeToast } = useContext(ToastContext)!;
 
   function addWarn(title: string, description?: string) {
@@ -22,3 +22,5 @@ export default function useToast() {
 
   return { addWarn, addError, addSuccess, addInfo, removeToast };
 }
+
+export default useToast;

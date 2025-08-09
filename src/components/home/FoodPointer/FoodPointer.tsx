@@ -2,7 +2,7 @@ import { ON_MOBILE, scaleClamped } from "@utils";
 import { styled } from "@pigment-css/react";
 import { type PropsWithChildren } from "react";
 
-export default function FoodPointer({ children, ...delegated }: PropsWithChildren) {
+function FoodPointer({ children, ...delegated }: PropsWithChildren) {
   return (
     <Pointer {...delegated}>
       <FitContent>
@@ -41,3 +41,5 @@ const Pointer = styled("div")({
     borderWidth: "1px 1px 0 0",
   },
 });
+
+export default FoodPointer;

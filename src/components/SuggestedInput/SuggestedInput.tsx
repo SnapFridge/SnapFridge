@@ -64,7 +64,7 @@ function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: P
                   highlightedIndex === index
                     ? "var(--background-100)"
                     : "var(--background-0)",
-                fontWeight: selectedItem === item ? "bold" : "normal",
+                fontWeight: selectedItem === item ? 700 : "normal",
               },
             })}
           >

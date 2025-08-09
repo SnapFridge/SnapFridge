@@ -36,7 +36,7 @@ const Name = styled("span")({
   background: "text linear-gradient(to right, var(--text-800), var(--text-400)) ",
   color: "transparent",
   fontSize: `${36 / 16}rem`,
-  fontWeight: "bold",
+  fontWeight: 700,
 });
 
 export default Greeting;

@@ -2,7 +2,6 @@ import Image from "next/image";
 import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE, type Recipe } from "@utils";
 import React from "react";
-import ingredients2Str from "./functions.helper";
 import "react-loading-skeleton/dist/skeleton.css";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
@@ -42,7 +41,9 @@ function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
           {recipe.usedIngredientCount > 0 && (
             <>
               <h4 className={IngredientTitle}>Ingredients</h4>
-              <p>{ingredients2Str(recipe.usedIngredients)}</p>
+              <Capitalized>
+                {recipe.usedIngredients.map((i) => i.name).join(", ")}
+              </Capitalized>
             </>
           )}
         </Ingredients>
@@ -50,7 +51,9 @@ function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
           {recipe.missedIngredientCount > 0 && (
             <>
               <h4 className={IngredientTitle}>Missing Ingredients</h4>
-              <p>{ingredients2Str(recipe.missedIngredients)}</p>
+              <Capitalized>
+                {recipe.missedIngredients.map((i) => i.name).join(", ")}
+              </Capitalized>
             </>
           )}
         </MissedIngredients>
@@ -132,6 +135,10 @@ const MissedIngredients = styled("div")({
 const IngredientTitle = css({
   width: "100%",
   fontSize: "var(--1-25rem)",
+});
+
+const Capitalized = styled("p")({
+  textTransform: "capitalize",
 });
 
 const IngredientNames = css({

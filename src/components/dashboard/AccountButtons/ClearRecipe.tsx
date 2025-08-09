@@ -78,7 +78,7 @@ const ErrorMessageVariants: Variants = {
 
 const ErrorMessageElement = styled(motion.p)({
   color: "var(--error-700)",
-  fontWeight: "bold",
+  fontWeight: 700,
 });
 
 export default ClearRecipeButton;

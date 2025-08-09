@@ -59,7 +59,7 @@ const RecipeName = styled("p")({
   height: "100%",
   padding: "8px",
   borderRadius: "inherit",
-  fontWeight: "bold",
+  fontWeight: 700,
   fontSize: `${24 / 16}rem`,
   color: "var(--text-950)",
   display: "flex",
