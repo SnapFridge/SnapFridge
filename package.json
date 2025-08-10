@@ -35,6 +35,7 @@
     "use-immer": "^0.11.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^15.4.6",
     "@next/eslint-plugin-next": "^15.4.6",
     "@pigment-css/nextjs-plugin": "^0.0.30",
     "@types/node": "24.2.1",

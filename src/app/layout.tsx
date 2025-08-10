@@ -9,8 +9,29 @@ import Toaster from "@components/Toaster";
 import { UserProvider } from "@components/UserProvider";
 import { styled } from "@pigment-css/react";
 import "@pigment-css/react/styles.css";
+import { type Metadata } from "next";
 import { Rubik } from "next/font/google";
 import { type PropsWithChildren } from "react";
+
+const title = {
+  template: "%s - SnapFridge",
+  default: "SnapFridge",
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://snapfridge.netlify.app"),
+  title,
+  openGraph: {
+    title,
+    type: "website",
+    images: {
+      width: 1200,
+      height: 630,
+      url: "/og-image.png",
+      alt: "Preview image for SnapFridge",
+    },
+  },
+};
 
 const globalFont = Rubik({
   subsets: ["latin"],

@@ -18,7 +18,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "SnapFridge - Reduce Food Waste & Plan Meals from Fridge Photos",
+  title: "Home",
   description:
     "SnapFridge helps you reduce food waste and prepare meals just from some photos of your fridge. Join the fight against food waste today!",
   other: {

@@ -9,11 +9,9 @@ import { UnitProvider } from "@components/UnitProvider";
 import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE, PageMargin, type SavedRecipe } from "@utils";
 import { createClient } from "@utils/supabase/server";
+import { type Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-
-// Revalidate the cache every hour
-const CACHE_ONE_HOUR = 3600;
 
 async function getRecipe(id: string) {
   const recipeInfoRes = await fetch(
@@ -23,7 +21,7 @@ async function getRecipe(id: string) {
         "x-api-key": process.env["SPOONACULAR_KEY"]!,
       },
       next: {
-        revalidate: CACHE_ONE_HOUR,
+        revalidate: 3600,
       },
     }
   );
@@ -55,7 +53,19 @@ async function getSavedRecipes(): Promise<SavedRecipe[]> {
   return data![0]!.recipes as SavedRecipe[];
 }
 
-export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+type Props = {
+  params: Promise<{ id: string }>;
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = await params;
+  return {
+    title: `Recipe ${id}`,
+    description: `View, share, or save recipe ${id} on SnapFridge`,
+  };
+}
+
+export default async function Page({ params }: Props) {
   const { id } = await params;
   const recipeInfo = await getRecipe(id);
   if (!recipeInfo) notFound();

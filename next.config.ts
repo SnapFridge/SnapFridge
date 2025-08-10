@@ -1,3 +1,4 @@
+import withBundleAnalyzer from "@next/bundle-analyzer";
 import { extendTheme, withPigment } from "@pigment-css/nextjs-plugin";
 
 const theme = extendTheme({
@@ -300,7 +301,9 @@ const CSP = `
  `.replace(/\s{2,}/g, " ");
 
 export default withPigment(
-  {
+  withBundleAnalyzer({
+    enabled: process.env.ANALYZE === "true",
+  })({
     experimental: {
       inlineCss: true,
       typedRoutes: true,
@@ -374,7 +377,7 @@ export default withPigment(
       config.experiments.topLevelAwait = config.experiments.layers = true;
       return config;
     },
-  },
+  }),
   {
     theme,
   }
