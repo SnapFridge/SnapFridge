@@ -1,13 +1,13 @@
 "use client";
 
+import { ToastContext } from "@components/ToastProvider";
+import { styled } from "@pigment-css/react";
+import { ON_MOBILE } from "@utils";
+import { AnimatePresence, motion } from "motion/react";
+import { Toast } from "radix-ui";
 import { useContext, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import AppToast from "./Toast";
-import { Toast } from "radix-ui";
-import { styled } from "@pigment-css/react";
-import { ON_MOBILE } from "@utils";
-import { ToastContext } from "@components/ToastProvider";
-import { AnimatePresence, motion } from "motion/react";
 
 function Toaster() {
   const [isClient, setIsClient] = useState(false);

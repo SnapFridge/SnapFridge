@@ -1,9 +1,8 @@
-import Image from "next/image";
 import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE, type Recipe } from "@utils";
-import React from "react";
-import "react-loading-skeleton/dist/skeleton.css";
+import Image from "next/image";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
   return recipe === undefined ? (

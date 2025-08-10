@@ -1,9 +1,9 @@
-import { ScrollArea } from "radix-ui";
-import { styled } from "@pigment-css/react";
-import SavedItem from "./SavedItem";
-import { createClient } from "@utils/supabase/server";
 import Icon from "@components/Icon";
+import { styled } from "@pigment-css/react";
 import { type SavedRecipe } from "@utils";
+import { createClient } from "@utils/supabase/server";
+import { ScrollArea } from "radix-ui";
+import SavedItem from "./SavedItem";
 
 async function AppScrollArea() {
   const supabase = await createClient();

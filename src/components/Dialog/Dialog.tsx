@@ -1,12 +1,11 @@
 "use client";
 
-import { Dialog } from "radix-ui";
-import Icon from "@components/Icon";
 import Button from "@components/Button";
+import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
+import { AnimatePresence, motion, type Variants } from "motion/react";
+import { Dialog } from "radix-ui";
 import { useState, type ComponentPropsWithoutRef, type ReactNode } from "react";
-import { type Variants, AnimatePresence } from "motion/react";
-import { motion } from "motion/react";
 
 interface Props extends ComponentPropsWithoutRef<typeof Dialog.Root> {
   title: ReactNode;

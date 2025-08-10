@@ -1,7 +1,7 @@
-import { styled, css } from "@pigment-css/react";
-import Link from "@components/Link";
-import { ON_MOBILE, scaleClamped } from "@utils";
 import Icon from "@components/Icon";
+import Link from "@components/Link";
+import { css, styled } from "@pigment-css/react";
+import { ON_MOBILE, scaleClamped } from "@utils";
 
 function Footer() {
   return (

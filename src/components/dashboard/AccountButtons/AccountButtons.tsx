@@ -1,8 +1,8 @@
 import { styled } from "@pigment-css/react";
+import { ON_MOBILE } from "@utils";
 import ClearRecipe from "./ClearRecipe";
 import DeleteAccount from "./DeleteAccount";
 import LogoutButton from "./Logout";
-import { ON_MOBILE } from "@utils";
 
 function ActionButtons() {
   return (

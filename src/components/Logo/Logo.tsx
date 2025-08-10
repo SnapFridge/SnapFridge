@@ -1,7 +1,7 @@
-import { styled, css } from "@pigment-css/react";
-import Link from "@components/Link";
 import Icon from "@components/Icon";
+import Link from "@components/Link";
 import VisuallyHidden from "@components/VisuallyHidden";
+import { css, styled } from "@pigment-css/react";
 
 function Logo() {
   return (

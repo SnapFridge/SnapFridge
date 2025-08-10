@@ -1,11 +1,10 @@
 "use client";
 
-import { Tooltip } from "radix-ui";
-import Icon from "@components/Icon";
+import Icon, { type IconType } from "@components/Icon";
 import { styled } from "@pigment-css/react";
-import { motion, type Variants, AnimatePresence } from "motion/react";
+import { AnimatePresence, motion, type Variants } from "motion/react";
+import { Tooltip } from "radix-ui";
 import { useState } from "react";
-import { type IconType } from "@components/Icon";
 
 type Props = {
   type: "vegan" | "vegetarian" | "sustainable" | "healthy" | "popular";

@@ -1,12 +1,12 @@
 "use client";
 
+import User from "@components/Avatar";
 import Button from "@components/Button";
-import { ON_MOBILE } from "@utils";
 import Icon from "@components/Icon";
 import Link from "@components/Link";
 import ThemeSwitch from "@components/ThemeSwitch";
-import User from "@components/Avatar";
 import { styled } from "@pigment-css/react";
+import { ON_MOBILE } from "@utils";
 import { Dialog } from "radix-ui";
 import { useRef } from "react";
 

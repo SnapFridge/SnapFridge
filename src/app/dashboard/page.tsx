@@ -1,11 +1,10 @@
-import { PageMargin } from "@utils";
-import { type Metadata } from "next";
-import Greeting from "@components/dashboard/Greeting";
-import { styled } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import ScrollArea from "@components/dashboard/ScrollArea";
-import { scaleClamped } from "@utils";
 import AccountButtons from "@components/dashboard/AccountButtons";
+import Greeting from "@components/dashboard/Greeting";
+import ScrollArea from "@components/dashboard/ScrollArea";
+import { styled } from "@pigment-css/react";
+import { PageMargin, scaleClamped } from "@utils";
+import { type Metadata } from "next";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {

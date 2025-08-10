@@ -1,6 +1,6 @@
-import { styled, css } from "@pigment-css/react";
-import Image from "next/image";
+import { css, styled } from "@pigment-css/react";
 import { type SavedRecipe } from "@utils";
+import Image from "next/image";
 
 // https://spoonacular.com/food-api/docs#Show-Images
 const IMG_SIZE:

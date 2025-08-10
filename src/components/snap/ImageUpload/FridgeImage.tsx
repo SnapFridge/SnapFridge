@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
+import Button from "@components/Button";
 import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
-import Button from "@components/Button";
+import Image from "next/image";
 import { useRef } from "react";
 
 type Props = {

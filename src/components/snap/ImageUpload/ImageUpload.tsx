@@ -1,17 +1,17 @@
 "use client";
 
-import { css, styled } from "@pigment-css/react";
-import Icon from "@components/Icon";
-import { useState, type FormEvent } from "react";
-import FridgeImage from "./FridgeImage";
-import { scaleClamped } from "@utils";
-import { BarLoader } from "react-spinners";
 import Button from "@components/Button";
-import { motion } from "motion/react";
-import { useInputState } from "../InputProvider";
+import Icon from "@components/Icon";
+import Input from "@components/Input";
 import useToast from "@components/ToastProvider/UseToast";
 import VisuallyHidden from "@components/VisuallyHidden";
-import Input from "@components/Input";
+import { css, styled } from "@pigment-css/react";
+import { scaleClamped } from "@utils";
+import { motion } from "motion/react";
+import { useState, type FormEvent } from "react";
+import { BarLoader } from "react-spinners";
+import { useInputState } from "../InputProvider";
+import FridgeImage from "./FridgeImage";
 import getIngredientWriter from "./IngredientWriter";
 
 function ImageUpload() {

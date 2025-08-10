@@ -1,9 +1,9 @@
 "use client";
 
 import Button from "@components/Button";
-import { useState } from "react";
-import { motion, type Variants, AnimatePresence } from "motion/react";
 import { styled } from "@pigment-css/react";
+import { AnimatePresence, motion, type Variants } from "motion/react";
+import { useState } from "react";
 import deleteUser from "./actions";
 
 export default function DeleteButton() {

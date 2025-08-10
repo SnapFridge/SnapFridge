@@ -1,8 +1,8 @@
 "use client";
 
 import { styled } from "@pigment-css/react";
-import useTypewriter from "./typewritter.helper";
 import { ON_MOBILE } from "@utils";
+import useTypewriter from "./typewritter.helper";
 
 const ADJECTIVES = ["Delicious", "Excellent", "Wonderful", "Amazing", "Incredible"];
 

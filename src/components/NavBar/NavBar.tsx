@@ -1,10 +1,10 @@
-import { css, styled } from "@pigment-css/react";
-import ThemeSwitch from "@components/ThemeSwitch";
+import User from "@components/Avatar";
 import Link from "@components/Link";
 import Logo from "@components/Logo";
+import ThemeSwitch from "@components/ThemeSwitch";
+import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE, scaleClamped } from "@utils";
 import HamburgerMenu from "./HamburgerMenu";
-import User from "@components/Avatar";
 
 const Links: { href: "/snap" | "/about"; title: string }[] = [
   {

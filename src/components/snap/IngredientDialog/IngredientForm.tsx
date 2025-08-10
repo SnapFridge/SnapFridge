@@ -1,10 +1,10 @@
 "use client";
+import Button from "@components/Button";
+import SuggestedInput from "@components/SuggestedInput";
+import { css } from "@pigment-css/react";
 import { useState, type PropsWithChildren } from "react";
 import useSWR from "swr";
-import SuggestedInput from "@components/SuggestedInput";
-import Button from "@components/Button";
 import { useInputState } from "../InputProvider";
-import { css } from "@pigment-css/react";
 
 interface Props extends PropsWithChildren {
   onSubmitSuccess: () => void;

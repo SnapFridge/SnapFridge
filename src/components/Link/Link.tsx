@@ -1,6 +1,6 @@
-import { type ComponentPropsWithoutRef } from "react";
-import NextLink from "next/link";
 import { styled } from "@pigment-css/react";
+import NextLink from "next/link";
+import { type ComponentPropsWithoutRef } from "react";
 
 function Link({ children, ...delegated }: ComponentPropsWithoutRef<typeof NextLink>) {
   return <StyledLink {...delegated}>{children}</StyledLink>;

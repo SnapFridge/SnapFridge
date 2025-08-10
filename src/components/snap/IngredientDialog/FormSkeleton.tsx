@@ -1,6 +1,6 @@
+import { styled } from "@pigment-css/react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
-import { styled } from "@pigment-css/react";
 
 function FormSkeleton() {
   return (

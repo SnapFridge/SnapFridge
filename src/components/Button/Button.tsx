@@ -1,5 +1,5 @@
-import { type ComponentPropsWithoutRef, type ElementType } from "react";
 import { styled } from "@pigment-css/react";
+import { type ComponentPropsWithoutRef, type ElementType } from "react";
 
 type Variant = "primary" | "secondary" | "icon";
 type ButtonProps<C extends ElementType> = {

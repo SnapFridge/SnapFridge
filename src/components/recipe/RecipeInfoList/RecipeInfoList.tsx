@@ -1,10 +1,9 @@
 "use client";
 
-import { styled } from "@pigment-css/react";
 import { type SpoonacularRecipe } from "@components/recipe/RecipeInfo/RecipeInfo";
-import { ON_MOBILE } from "@utils";
 import { useUnit } from "@components/UnitProvider";
-import { roundNumber } from "@utils";
+import { styled } from "@pigment-css/react";
+import { ON_MOBILE, roundNumber } from "@utils";
 
 function RecipeInfoList({
   ingredients,

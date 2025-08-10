@@ -1,7 +1,7 @@
+import { InputElement, Label } from "@components/Input";
 import { styled } from "@pigment-css/react";
-import { useRef, useState, type ComponentPropsWithoutRef, type ReactNode } from "react";
 import { useCombobox } from "downshift";
-import { Label, InputElement } from "@components/Input";
+import { useRef, useState, type ComponentPropsWithoutRef, type ReactNode } from "react";
 
 interface Props extends Omit<ComponentPropsWithoutRef<"input">, "onChange"> {
   label: ReactNode;

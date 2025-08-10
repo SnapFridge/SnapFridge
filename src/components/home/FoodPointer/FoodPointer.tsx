@@ -1,5 +1,5 @@
-import { ON_MOBILE, scaleClamped } from "@utils";
 import { styled } from "@pigment-css/react";
+import { ON_MOBILE, scaleClamped } from "@utils";
 import { type PropsWithChildren } from "react";
 
 function FoodPointer({ children, ...delegated }: PropsWithChildren) {

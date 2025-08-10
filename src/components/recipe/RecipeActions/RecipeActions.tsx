@@ -1,16 +1,15 @@
 "use client";
 
-import { styled } from "@pigment-css/react";
-import Icon from "@components/Icon";
 import Button from "@components/Button";
-import { ON_MOBILE } from "@utils";
+import Icon from "@components/Icon";
+import useToast from "@components/ToastProvider/UseToast";
 import { useUnit } from "@components/UnitProvider";
 import { useUser } from "@components/UserProvider";
-import useToast from "@components/ToastProvider/UseToast";
+import { css, styled } from "@pigment-css/react";
+import { ON_MOBILE, type SavedRecipe } from "@utils";
 import createClient from "@utils/supabase/client";
-import { type SavedRecipe } from "@utils";
-import { useState } from "react";
 import Link from "next/link";
+import { useState } from "react";
 
 type Props = {
   initialSavedRecipes: SavedRecipe[];
@@ -68,7 +67,11 @@ function RecipeActions({
   return (
     <Container>
       {user ? (
-        <Button variant="icon" onClick={() => void toggleSave()}>
+        <Button
+          variant="icon"
+          className={SaveButtonCSS}
+          onClick={() => void toggleSave()}
+        >
           <Icon
             icon="Heart"
             fill={saved ? "#FF4848" : "none"}
@@ -78,7 +81,7 @@ function RecipeActions({
           <RecipeActionText>Save{saved && "d"}</RecipeActionText>
         </Button>
       ) : (
-        <Button variant="icon" as={Link} href="/login">
+        <Button variant="icon" className={SaveButtonCSS} as={Link} href="/login">
           <Icon icon="Heart" color="#FF4848" size={36} />
           <RecipeActionText>Save</RecipeActionText>
         </Button>
@@ -113,6 +116,10 @@ const Container = styled("div")({
     gap: "26px",
     background: "var(--background-50)",
   },
+});
+
+const SaveButtonCSS = css({
+  flexDirection: "column",
 });
 
 const ShareButton = styled(Button)({

@@ -1,6 +1,6 @@
 "use server";
 
-import { createClient, createAdminClient } from "@utils/supabase/server";
+import { createAdminClient, createClient } from "@utils/supabase/server";
 import { redirect } from "next/navigation";
 
 async function deleteUser() {

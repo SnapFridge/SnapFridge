@@ -1,8 +1,8 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
 import Button from "@components/Button";
 import Icon from "@components/Icon";
+import { useCallback, useEffect, useState } from "react";
 
 function ThemeSwitch({ ...delegated }) {
   const [dark, setDark] = useState<boolean>();

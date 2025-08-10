@@ -1,16 +1,16 @@
 "use client";
 
-import { styled } from "@pigment-css/react";
-import Icon from "@components/Icon";
-import IngredientBox from "./Ingredient";
-import { useInputState } from "../InputProvider";
 import Button from "@components/Button";
+import Icon from "@components/Icon";
+import Switch from "@components/Switch";
+import { styled } from "@pigment-css/react";
+import { type Recipe } from "@utils";
+import { motion } from "motion/react";
 import { useState, type FormEvent } from "react";
 import IngredientDialog from "../IngredientDialog";
-import { motion } from "motion/react";
+import { useInputState } from "../InputProvider";
 import getRecipesJSON from "./actions";
-import { type Recipe } from "@utils";
-import Switch from "@components/Switch";
+import IngredientBox from "./Ingredient";
 import ToggleGroup from "./ToggleGroup";
 
 function IngredientSection() {

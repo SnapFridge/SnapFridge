@@ -1,10 +1,10 @@
 "use client";
 
+import Button from "@components/Button";
+import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
 import { useRef } from "react";
-import Icon from "@components/Icon";
 import { useInputState } from "../InputProvider";
-import Button from "@components/Button";
 
 type Props = {
   ingredient: string;

@@ -1,11 +1,11 @@
 "use client";
 
-import { Avatar } from "radix-ui";
-import { useUser } from "@components/UserProvider";
-import { css } from "@pigment-css/react";
 import Icon from "@components/Icon";
-import VisuallyHidden from "@components/VisuallyHidden";
 import Link from "@components/Link";
+import { useUser } from "@components/UserProvider";
+import VisuallyHidden from "@components/VisuallyHidden";
+import { css } from "@pigment-css/react";
+import { Avatar } from "radix-ui";
 
 function AvatarLink({ ...delegated }) {
   const u = useUser();

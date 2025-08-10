@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
 import Button from "@components/Button";
 import { styled } from "@pigment-css/react";
 import { PageMargin } from "@utils";
+import { useEffect } from "react";
 
 export default function Page({
   error,

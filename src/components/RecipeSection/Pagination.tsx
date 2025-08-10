@@ -1,6 +1,6 @@
 import Button from "@components/Button";
-import { scaleClamped } from "@utils";
 import { styled } from "@pigment-css/react";
+import { scaleClamped } from "@utils";
 
 type Props = {
   page: number;

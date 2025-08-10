@@ -1,6 +1,6 @@
 "use client";
 
-import { useMotionValue, useTransform, useInView, animate } from "motion/react";
+import { animate, useInView, useMotionValue, useTransform } from "motion/react";
 import { span as MotionSpan } from "motion/react-client";
 import { useEffect, useRef } from "react";
 

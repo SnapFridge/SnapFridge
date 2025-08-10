@@ -1,7 +1,7 @@
-import { styled } from "@pigment-css/react";
-import { type SpoonacularRecipe } from "../RecipeInfo";
 import Icon from "@components/Icon";
+import { styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@utils";
+import { type SpoonacularRecipe } from "../RecipeInfo";
 
 interface Props {
   recipeInfo: SpoonacularRecipe;

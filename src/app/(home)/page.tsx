@@ -1,22 +1,21 @@
-import React from "react";
-import { styled, css } from "@pigment-css/react";
 import Button from "@components/Button";
-import AdjectiveRecipes from "@components/home/AdjectiveRecipe";
-import { InputProvider } from "@components/snap/InputProvider";
 import RecipeSection from "@components/RecipeSection";
+import AdjectiveRecipes from "@components/home/AdjectiveRecipe";
 import Counter from "@components/home/Counter";
-import Image from "next/image";
-import {
-  scaleClamped,
-  ON_MOBILE,
-  ON_DESKTOP,
-  PageMargin,
-  MOBILE_BREAKPOINT,
-} from "@utils";
 import FoodPointer from "@components/home/FoodPointer";
-import Link from "next/link";
 import recipesExample from "@components/home/RecipesExample";
+import { InputProvider } from "@components/snap/InputProvider";
+import { css, styled } from "@pigment-css/react";
+import {
+  MOBILE_BREAKPOINT,
+  ON_DESKTOP,
+  ON_MOBILE,
+  PageMargin,
+  scaleClamped,
+} from "@utils";
 import { type Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "SnapFridge - Reduce Food Waste & Plan Meals from Fridge Photos",
@@ -64,6 +63,7 @@ export default function Page() {
               src="/FridgeL.avif"
               alt="Fridge"
               className={FridgeImg}
+              fetchPriority="high"
               priority
               sizes={`50vw, (max-width: ${MOBILE_BREAKPOINT}px) 60vw`}
             />

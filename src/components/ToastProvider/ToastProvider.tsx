@@ -1,7 +1,7 @@
 "use client";
 
-import { createContext, useState, type PropsWithChildren } from "react";
 import { Toast } from "radix-ui";
+import { createContext, useState, type PropsWithChildren } from "react";
 
 export const ToastContext = createContext<
   | {

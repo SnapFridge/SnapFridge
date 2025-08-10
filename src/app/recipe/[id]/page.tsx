@@ -1,16 +1,16 @@
-import Tooltip from "@components/recipe/Tooltip";
+import AllergenWarning from "@components/recipe/AllergenWarning";
+import RecipeStepsList from "@components/recipe/DetailedRecipe";
+import RecipeActions from "@components/recipe/RecipeActions";
 import { RecipeInfo, type SpoonacularRecipe } from "@components/recipe/RecipeInfo";
-import Image from "next/image";
+import RecipeInfoList from "@components/recipe/RecipeInfoList";
+import NutrientInfoList from "@components/recipe/RecipeInfoList/NutrientInfoList";
+import Tooltip from "@components/recipe/Tooltip";
+import { UnitProvider } from "@components/UnitProvider";
 import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE, PageMargin, type SavedRecipe } from "@utils";
-import RecipeActions from "@components/recipe/RecipeActions";
-import RecipeInfoList from "@components/recipe/RecipeInfoList";
-import RecipeStepsList from "@components/recipe/DetailedRecipe";
-import { notFound } from "next/navigation";
-import NutrientInfoList from "@components/recipe/RecipeInfoList/NutrientInfoList";
-import { UnitProvider } from "@components/UnitProvider";
-import AllergenWarning from "@components/recipe/AllergenWarning";
 import { createClient } from "@utils/supabase/server";
+import Image from "next/image";
+import { notFound } from "next/navigation";
 
 // Revalidate the cache every hour
 const CACHE_ONE_HOUR = 3600;
@@ -71,6 +71,8 @@ export default async function Page({ params }: { params: Promise<{ id: string }>
           width={556}
           height={370}
           quality={90}
+          priority
+          fetchPriority="high"
         />
         <SourceCredit>
           Source: <Link href={recipeInfo.sourceUrl}>{recipeInfo.creditsText}</Link>

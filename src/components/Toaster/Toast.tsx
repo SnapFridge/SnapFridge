@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, type PropsWithChildren, type ReactNode } from "react";
-import { Toast } from "radix-ui";
-import { styled } from "@pigment-css/react";
-import Icon, { type IconType } from "@components/Icon";
 import Button from "@components/Button";
-import { type Variants, motion } from "motion/react";
+import Icon, { type IconType } from "@components/Icon";
+import { styled } from "@pigment-css/react";
+import { motion, type Variants } from "motion/react";
+import { Toast } from "radix-ui";
+import { useState, type PropsWithChildren, type ReactNode } from "react";
 
 type Props = {
   id: string;

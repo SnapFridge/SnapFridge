@@ -1,5 +1,5 @@
-import { styled } from "@pigment-css/react";
 import Link from "@components/Link";
+import { styled } from "@pigment-css/react";
 
 function AboutUsCards() {
   return (

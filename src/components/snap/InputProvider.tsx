@@ -8,8 +8,8 @@ import {
   type PropsWithChildren,
 } from "react";
 
-import { useImmerReducer } from "use-immer";
 import { type Recipe } from "@utils";
+import { useImmerReducer } from "use-immer";
 
 export type State = {
   ingredients: string[];

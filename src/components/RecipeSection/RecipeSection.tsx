@@ -1,11 +1,11 @@
 "use client";
-import RecipeCard from "./RecipeCard";
+import Icon from "@components/Icon";
+import { useInputState } from "@components/snap/InputProvider";
 import { styled } from "@pigment-css/react";
 import { scaleClamped, type Recipe } from "@utils";
-import Icon from "@components/Icon";
-import Pagination from "./Pagination";
 import { useState } from "react";
-import { useInputState } from "@components/snap/InputProvider";
+import Pagination from "./Pagination";
+import RecipeCard from "./RecipeCard";
 
 interface Props {
   headerTxt?: string;

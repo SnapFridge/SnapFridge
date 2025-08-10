@@ -1,11 +1,11 @@
 "use client";
 
-import createClient from "@utils/supabase/client";
-import { styled } from "@pigment-css/react";
-import { useState } from "react";
 import Button from "@components/Button";
 import { useUser } from "@components/UserProvider";
-import { motion, type Variants, AnimatePresence } from "motion/react";
+import { styled } from "@pigment-css/react";
+import createClient from "@utils/supabase/client";
+import { AnimatePresence, motion, type Variants } from "motion/react";
+import { useState } from "react";
 
 function ClearRecipeButton() {
   const supabase = createClient();

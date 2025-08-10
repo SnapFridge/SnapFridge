@@ -1,14 +1,16 @@
-import "@pigment-css/react/styles.css";
+// organize-imports-ignore
+
 import "./GlobalStyles";
-import { Rubik } from "next/font/google";
-import NavBar from "@components/NavBar";
-import Footer from "@components/Footer";
 import CookieBanner from "@components/CookieBanner";
-import { type PropsWithChildren } from "react";
-import { styled } from "@pigment-css/react";
+import Footer from "@components/Footer";
+import NavBar from "@components/NavBar";
 import ToastProvider from "@components/ToastProvider";
 import Toaster from "@components/Toaster";
 import { UserProvider } from "@components/UserProvider";
+import { styled } from "@pigment-css/react";
+import "@pigment-css/react/styles.css";
+import { Rubik } from "next/font/google";
+import { type PropsWithChildren } from "react";
 
 const globalFont = Rubik({
   subsets: ["latin"],

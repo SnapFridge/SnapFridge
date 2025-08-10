@@ -1,11 +1,10 @@
 "use client";
 
-import { styled } from "@pigment-css/react";
-import { AnimatePresence } from "motion/react";
-import { motion } from "motion/react";
-import { useState, useEffect } from "react";
 import Button from "@components/Button";
+import { styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@utils";
+import { AnimatePresence, motion } from "motion/react";
+import { useEffect, useState } from "react";
 
 function CookieBanner() {
   const [visible, setVisibility] = useState(true);

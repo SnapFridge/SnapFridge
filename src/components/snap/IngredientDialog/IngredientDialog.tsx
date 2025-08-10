@@ -5,8 +5,8 @@ import AppDialog from "@components/Dialog";
 import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
 import { Suspense, useState } from "react";
-import IngredientForm from "./IngredientForm";
 import FormSkeleton from "./FormSkeleton";
+import IngredientForm from "./IngredientForm";
 
 function IngredientDialog() {
   const [isOpen, setOpen] = useState(false);
