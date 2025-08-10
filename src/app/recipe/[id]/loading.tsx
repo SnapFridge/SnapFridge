@@ -10,7 +10,7 @@ export default function Page() {
       highlightColor="var(--skeleton-highlight)"
     >
       <figure>
-        <Skeleton height={"min(362px, 50vh)"} />
+        <Skeleton height="min(362px, 50vh)" />
         <SourceCredit>
           <Skeleton />
         </SourceCredit>
@@ -18,9 +18,9 @@ export default function Page() {
       <PageMargin>
         <TitleSection>
           <Title>
-            <Skeleton width={"100%"} />
+            <Skeleton width="100%" />
             <BottomTitleSectionContainer>
-              <Skeleton width={"clamp(120px, 50vw, 320px)"} />
+              <Skeleton width="clamp(120px, 50vw, 320px)" />
               <AppTooltipContainer>
                 <Skeleton width={36} height={36} />
                 <Skeleton width={36} height={36} />

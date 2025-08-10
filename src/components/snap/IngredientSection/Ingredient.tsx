@@ -43,7 +43,6 @@ const Wrapper = styled("li")({
   height: "38px",
   width: "fit-content",
   position: "relative",
-  isolation: "isolate",
 });
 
 const IngredientBtn = styled("button")({
@@ -59,9 +58,9 @@ const IngredientBtn = styled("button")({
   border: "2px solid var(--accent-400)",
   boxShadow: "var(--shadow)",
 
-  transition: "transform .22s",
+  transition: "transform .25s",
   [`${Wrapper}:hover > &, &:focus`]: {
-    transform: "translateY(-6px)",
+    transform: "scale(1.04)",
   },
 
   "& > span": {
@@ -72,7 +71,7 @@ const IngredientBtn = styled("button")({
 });
 
 const ActionButton = styled(Button)({
-  background: "transparent",
+  background: "none",
   padding: "4px",
   border: 0,
 
@@ -86,7 +85,7 @@ const ActionButton = styled(Button)({
 const ActionContainer = styled("div")({
   position: "absolute",
   zIndex: 1,
-  top: "calc(-100% - 4px)",
+  top: "-100%",
   left: 0,
   right: 0,
   margin: "auto",
@@ -97,10 +96,10 @@ const ActionContainer = styled("div")({
   boxShadow: "var(--shadow)",
   opacity: 0,
   visibility: "hidden",
-  transition: "opacity .22s, visibility 0s .22s",
+  transition: "opacity .25s, visibility 0s .25s",
 
   [`${Wrapper}:hover > &, ${IngredientBtn}:focus + &, &:focus-within`]: {
-    transition: "opacity .22s, visibility 0s",
+    transition: "opacity .25s, visibility 0s",
     opacity: 1,
     visibility: "unset",
   },

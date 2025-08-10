@@ -115,7 +115,7 @@ const Content = styled("div")({
 const MenuLink = styled(Link)({
   display: "flex",
   alignItems: "center",
-  gap: "4px",
+  gap: "8px",
 
   fontSize: `${18 / 16}rem`,
   padding: "auto 0",

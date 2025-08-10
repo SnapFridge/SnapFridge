@@ -7,11 +7,11 @@ import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useState } from "react";
 
 function CookieBanner() {
-  const [visible, setVisibility] = useState(true);
+  const [visible, setVisibility] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("acknowledgedCookie") !== null) {
-      setVisibility(false);
+    if (localStorage.getItem("acknowledgedCookie") === null) {
+      setVisibility(true);
     }
   }, []);
 

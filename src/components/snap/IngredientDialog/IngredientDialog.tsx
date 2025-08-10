@@ -2,6 +2,7 @@
 
 import Button from "@components/Button";
 import AppDialog from "@components/Dialog";
+import VisuallyHidden from "@components/VisuallyHidden";
 import { styled } from "@pigment-css/react";
 import { Plus } from "lucide-react";
 import { Suspense, useState } from "react";
@@ -19,6 +20,7 @@ function IngredientDialog() {
       trigger={
         <AddTrigger variant="icon">
           <Plus aria-hidden />
+          <VisuallyHidden>Add ingredient</VisuallyHidden>
         </AddTrigger>
       }
     >

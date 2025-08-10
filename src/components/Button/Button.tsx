@@ -73,7 +73,7 @@ const StyledButton = styled("button")<{ variant: Variant | undefined }>({
     {
       props: { variant: "icon" },
       style: {
-        background: "transparent",
+        background: "none",
         ["--background-hover" as string]: "var(--background-100)",
       },
     },
