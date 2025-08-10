@@ -19,7 +19,7 @@ function AboutUsCards() {
         <h1>Andrew "Andru" Kim</h1>
         <p>
           With two Andrews working on SnapFridge, Rylex has a hard time referring to one
-          specifically, so he gave each a nickname. I like mine a lot. I'm a senior from
+          specifically, so he gave each a nickname. I'm a senior from
           Cypress also. I like coding a lot, although I started later compared to the
           other two guys.
         </p>
