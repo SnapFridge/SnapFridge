@@ -2,8 +2,8 @@
 
 import Button from "@components/Button";
 import AppDialog from "@components/Dialog";
-import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
+import { Plus } from "lucide-react";
 import { Suspense, useState } from "react";
 import FormSkeleton from "./FormSkeleton";
 import IngredientForm from "./IngredientForm";
@@ -18,7 +18,7 @@ function IngredientDialog() {
       title="Add Ingredient"
       trigger={
         <AddTrigger variant="icon">
-          <Icon icon="Plus" description="Add ingredient" />
+          <Plus aria-hidden />
         </AddTrigger>
       }
     >

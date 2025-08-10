@@ -1,8 +1,9 @@
 "use client";
 
 import Button from "@components/Button";
-import Icon from "@components/Icon";
+import VisuallyHidden from "@components/VisuallyHidden";
 import { styled } from "@pigment-css/react";
+import { X } from "lucide-react";
 import { AnimatePresence, motion, type Variants } from "motion/react";
 import { Dialog } from "radix-ui";
 import { useState, type ComponentPropsWithoutRef, type ReactNode } from "react";
@@ -56,7 +57,8 @@ function AppDialog({
                     {children}
                     <Dialog.Close asChild autoFocus>
                       <XButton variant="icon">
-                        <Icon icon="X" description="Close dialog" />
+                        <X aria-hidden />
+                        <VisuallyHidden>Close dialog</VisuallyHidden>
                       </XButton>
                     </Dialog.Close>
                   </motion.div>

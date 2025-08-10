@@ -1,7 +1,8 @@
 "use client";
 
 import Button from "@components/Button";
-import Icon from "@components/Icon";
+import VisuallyHidden from "@components/VisuallyHidden";
+import { Moon, Sun } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 
 function ThemeSwitch({ ...delegated }) {
@@ -28,10 +29,17 @@ function ThemeSwitch({ ...delegated }) {
   return (
     dark !== undefined && (
       <Button variant="icon" onClick={() => toggleTheme()} {...delegated}>
-        <Icon
-          icon={dark ? "Moon" : "Sun"}
-          description={`Turn on ${dark ? "light" : "dark"} mode`}
-        />
+        {dark ? (
+          <>
+            <Moon />
+            <VisuallyHidden>Turn on light mode</VisuallyHidden>
+          </>
+        ) : (
+          <>
+            <Sun />
+            <VisuallyHidden>Turn on dark mode</VisuallyHidden>
+          </>
+        )}
       </Button>
     )
   );

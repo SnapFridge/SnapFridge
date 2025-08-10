@@ -1,8 +1,8 @@
 "use client";
-import Icon from "@components/Icon";
 import { useInputState } from "@components/snap/InputProvider";
 import { styled } from "@pigment-css/react";
 import { scaleClamped, type Recipe } from "@utils";
+import { ChefHat, Sparkles } from "lucide-react";
 import { useState } from "react";
 import Pagination from "./Pagination";
 import RecipeCard from "./RecipeCard";
@@ -43,14 +43,14 @@ function RecipeSection({
     <>
       <Header>
         <HeaderTxt>{headerTxt}</HeaderTxt>
-        <Icon aria-hidden icon="Sparkles" size={50}></Icon>
+        <Sparkles size={50} aria-hidden />
       </Header>
       {recipes === "pending" ? (
         <ul>{getPendingCards()}</ul>
       ) : recipes.length < 1 ? (
         <EmptySectionContainer>
           <EmptySectionContent>
-            <Icon icon="ChefHat" size={50} color="var(--gray-600)" />
+            <ChefHat size={50} color="var(--gray-600)" />
             <p>
               Looks like your recipes is empty! Start by adding some ingredients or
               uploading an image!

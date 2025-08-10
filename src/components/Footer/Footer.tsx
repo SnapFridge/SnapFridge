@@ -1,7 +1,9 @@
 import Icon from "@components/Icon";
 import Link from "@components/Link";
+import VisuallyHidden from "@components/VisuallyHidden";
 import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE, scaleClamped } from "@utils";
+import { Mail } from "lucide-react";
 
 function Footer() {
   return (
@@ -28,10 +30,11 @@ function Footer() {
       </div>
       <div className={RightFooterCSS}>
         <Link href="mailto:repulseshipp@gmail.com">
-          <Icon icon="Mail" description="Email us" />
+          <Mail aria-hidden />
+          <VisuallyHidden>Email us</VisuallyHidden>
         </Link>
         <Link href="https://github.com/msqr1/SnapFridge">
-          <Icon icon="Github" description="Our Github" />
+          <Icon icon="Github" description="Our github" />
         </Link>
       </div>
     </AFooter>

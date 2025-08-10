@@ -2,11 +2,12 @@
 
 import User from "@components/Avatar";
 import Button from "@components/Button";
-import Icon from "@components/Icon";
 import Link from "@components/Link";
 import ThemeSwitch from "@components/ThemeSwitch";
+import VisuallyHidden from "@components/VisuallyHidden";
 import { styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@utils";
+import { Menu, X } from "lucide-react";
 import { Dialog } from "radix-ui";
 import { useRef } from "react";
 
@@ -21,7 +22,8 @@ function HamburgerMenu({ links }: Props) {
     <Dialog.Root>
       <Dialog.Trigger asChild>
         <TriggerButton variant="icon">
-          <Icon icon="Menu" description="Open menu" />
+          <Menu aria-hidden />
+          <VisuallyHidden>Open menu</VisuallyHidden>
         </TriggerButton>
       </Dialog.Trigger>
       <Dialog.Portal>
@@ -38,7 +40,7 @@ function HamburgerMenu({ links }: Props) {
               <Dialog.Close key={href} autoFocus={index === 0} asChild>
                 <MenuLink href={href}>
                   <span>{title}</span>
-                  <Icon icon="ChevronRight" />
+                  <Right>{">"}</Right>
                 </MenuLink>
               </Dialog.Close>
             ))}
@@ -47,7 +49,8 @@ function HamburgerMenu({ links }: Props) {
           <CenteredThemeSwitch />
           <Dialog.Close asChild>
             <CloseButton variant="icon">
-              <Icon color="var(--error-500)" icon="X" description="Close menu" />
+              <VisuallyHidden>Close menu</VisuallyHidden>
+              <X color="var(--error-500)" />
             </CloseButton>
           </Dialog.Close>
         </Wrapper>
@@ -139,6 +142,10 @@ const CenteredThemeSwitch = styled(ThemeSwitch)({
 const CloseButton = styled(Button)({
   display: "flex",
   justifyContent: "center",
+});
+
+const Right = styled("span")({
+  fontSize: `${24 / 16}rem`,
 });
 
 export default HamburgerMenu;

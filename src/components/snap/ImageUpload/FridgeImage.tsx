@@ -1,8 +1,9 @@
 "use client";
 
 import Button from "@components/Button";
-import Icon from "@components/Icon";
+import VisuallyHidden from "@components/VisuallyHidden";
 import { styled } from "@pigment-css/react";
+import { Trash2 } from "lucide-react";
 import Image from "next/image";
 import { useRef } from "react";
 
@@ -25,7 +26,8 @@ function FridgeImage({ src, deleteImage }: Props) {
         />
       </ImageBtn>
       <DeleteBtn ref={deleteBtn} tabIndex={-1} onClick={() => deleteImage(src)}>
-        <Icon icon="Trash2" color="var(--warn-500)" />
+        <Trash2 aria-hidden color="var(--warn-500)" />
+        <VisuallyHidden>Delete image</VisuallyHidden>
       </DeleteBtn>
     </Wrapper>
   );

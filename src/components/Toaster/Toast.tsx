@@ -1,8 +1,9 @@
 "use client";
 
 import Button from "@components/Button";
-import Icon, { type IconType } from "@components/Icon";
+import VisuallyHidden from "@components/VisuallyHidden";
 import { styled } from "@pigment-css/react";
+import { Check, CircleAlert, CircleX, Info, X } from "lucide-react";
 import { motion, type Variants } from "motion/react";
 import { Toast } from "radix-ui";
 import { useState, type PropsWithChildren, type ReactNode } from "react";
@@ -22,20 +23,19 @@ function AppToast({
   children,
 }: PropsWithChildren<Props>) {
   const [open, setOpen] = useState(true);
-
-  let iconName: IconType;
+  let Icon;
   switch (variant) {
     case "success":
-      iconName = "Check";
+      Icon = Check;
       break;
     case "warn":
-      iconName = "CircleAlert";
+      Icon = CircleAlert;
       break;
     case "error":
-      iconName = "CircleX";
+      Icon = CircleX;
       break;
     default:
-      iconName = "Info";
+      Icon = Info;
   }
 
   return (
@@ -58,7 +58,7 @@ function AppToast({
         exit="exit"
         transition={{ type: "spring", damping: 20, stiffness: 150 }}
       >
-        <Icon icon={iconName} />
+        <Icon aria-hidden />
         <MainContent>
           <Title>{title}</Title>
           {children && <Description>{children}</Description>}
@@ -69,7 +69,8 @@ function AppToast({
             asChild
           >
             <Close variant="icon">
-              <Icon icon="X" color="var(--text-950)" description="Close" />
+              <X color="var(--text-950)" />
+              <VisuallyHidden>Dismiss</VisuallyHidden>
             </Close>
           </Toast.Close>
         </MainContent>

@@ -1,6 +1,6 @@
-import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@utils";
+import { TriangleAlert } from "lucide-react";
 import { type SpoonacularRecipe } from "../RecipeInfo";
 
 interface Props {
@@ -30,12 +30,7 @@ function AllergenWarning({ recipeInfo }: Props) {
 
   return (
     <Wrapper>
-      <Icon
-        icon="TriangleAlert"
-        color="var(--warn-500)"
-        size={32}
-        description="Warning"
-      />
+      <TriangleAlert color="var(--warn-500)" size={32} aria-hidden />
       <AllergenContent>
         <AllergenTitle>Possible Allergens</AllergenTitle>
         <AllergenText>{prettyPrintArray(allergens)}</AllergenText>

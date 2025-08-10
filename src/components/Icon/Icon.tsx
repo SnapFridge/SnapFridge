@@ -1,13 +1,7 @@
 import VisuallyHidden from "@components/VisuallyHidden";
-import * as Icons from "lucide-react";
 import { type ComponentPropsWithoutRef, type ReactNode } from "react";
 
-type LucideIconName = {
-  [K in keyof typeof Icons]: (typeof Icons)[K] extends Icons.LucideIcon ? K : never;
-}[keyof typeof Icons];
-
-export type IconType = LucideIconName | "Github" | "Logo" | "Google";
-
+export type IconType = "Github" | "Logo" | "Google";
 interface Props extends ComponentPropsWithoutRef<"svg"> {
   icon: IconType;
   color?: string;
@@ -102,12 +96,6 @@ export default function Icon({
         </svg>
       );
       break;
-    }
-    default: {
-      const LucideIcon: Icons.LucideIcon = Icons[icon];
-      IconSVG = (
-        <LucideIcon color={color} size={size} aria-hidden={ariaHidden} {...delegated} />
-      );
     }
   }
   return (

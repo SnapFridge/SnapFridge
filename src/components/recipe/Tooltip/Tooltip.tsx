@@ -1,7 +1,7 @@
 "use client";
 
-import Icon, { type IconType } from "@components/Icon";
 import { styled } from "@pigment-css/react";
+import { Flower, Leaf, Salad, Sprout, Trophy } from "lucide-react";
 import { AnimatePresence, motion, type Variants } from "motion/react";
 import { Tooltip } from "radix-ui";
 import { useState } from "react";
@@ -12,29 +12,28 @@ type Props = {
 
 export default function AppTooltip({ type }: Props) {
   const [isOpen, setOpen] = useState(false);
-
-  let iconName: IconType;
+  let Icon;
   let color: string;
 
   switch (type) {
     case "vegan":
-      iconName = "Leaf";
+      Icon = Leaf;
       color = "#57904B";
       break;
     case "vegetarian":
-      iconName = "Sprout";
+      Icon = Sprout;
       color = "#5EC064";
       break;
     case "sustainable":
-      iconName = "Flower";
+      Icon = Flower;
       color = "#D27FE1";
       break;
     case "healthy":
-      iconName = "Salad";
+      Icon = Salad;
       color = "#79EDB3";
       break;
     case "popular":
-      iconName = "Trophy";
+      Icon = Trophy;
       color = "#ABC40D";
       break;
   }
@@ -44,7 +43,7 @@ export default function AppTooltip({ type }: Props) {
       <Tooltip.Root open={isOpen} onOpenChange={setOpen}>
         <Tooltip.Trigger asChild>
           <Button>
-            <Icon icon={iconName} color={color} size={36} />
+            <Icon aria-hidden color={color} size={36} />
           </Button>
         </Tooltip.Trigger>
         <AnimatePresence>

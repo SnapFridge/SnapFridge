@@ -1,10 +1,10 @@
 "use client";
 
-import Icon from "@components/Icon";
 import Link from "@components/Link";
 import { useUser } from "@components/UserProvider";
 import VisuallyHidden from "@components/VisuallyHidden";
 import { css } from "@pigment-css/react";
+import { CircleUser } from "lucide-react";
 import { Avatar } from "radix-ui";
 
 function AvatarLink({ ...delegated }) {
@@ -21,7 +21,7 @@ function AvatarLink({ ...delegated }) {
           crossOrigin=""
         />
         <Avatar.Fallback className={UserAvatar} asChild>
-          <Icon icon="CircleUser" color="var(--text-950)" size={24} />
+          <CircleUser aria-hidden color="var(--text-950)" />
         </Avatar.Fallback>
       </Link>
     </Avatar.Root>

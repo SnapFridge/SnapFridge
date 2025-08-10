@@ -1,13 +1,13 @@
 "use client";
 
 import Button from "@components/Button";
-import Icon from "@components/Icon";
 import useToast from "@components/ToastProvider/UseToast";
 import { useUnit } from "@components/UnitProvider";
 import { useUser } from "@components/UserProvider";
 import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE, type SavedRecipe } from "@utils";
 import createClient from "@utils/supabase/client";
+import { Heart, Share2 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -72,8 +72,8 @@ function RecipeActions({
           className={SaveButtonCSS}
           onClick={() => void toggleSave()}
         >
-          <Icon
-            icon="Heart"
+          <Heart
+            aria-hidden
             fill={saved ? "#FF4848" : "none"}
             color="#FF4848"
             size={36}
@@ -82,12 +82,12 @@ function RecipeActions({
         </Button>
       ) : (
         <Button variant="icon" className={SaveButtonCSS} as={Link} href="/login">
-          <Icon icon="Heart" color="#FF4848" size={36} />
+          <Heart aria-hidden color="#FF4848" size={36} />
           <RecipeActionText>Save</RecipeActionText>
         </Button>
       )}
       <ShareButton variant="icon" onClick={handleShare}>
-        <Icon icon="Share2" size={36} />
+        <Share2 aria-hidden size={36} />
         <RecipeActionText>Share</RecipeActionText>
       </ShareButton>
       <UnitButton variant="primary" onClick={toggleUnit}>

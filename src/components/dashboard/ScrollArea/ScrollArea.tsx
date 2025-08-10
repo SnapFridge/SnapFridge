@@ -1,7 +1,7 @@
-import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
 import { type SavedRecipe } from "@utils";
 import { createClient } from "@utils/supabase/server";
+import { Ghost } from "lucide-react";
 import { ScrollArea } from "radix-ui";
 import SavedItem from "./SavedItem";
 
@@ -18,7 +18,7 @@ async function AppScrollArea() {
     return (
       <NoRecipesContainer>
         <NoRecipesContent>
-          <Icon icon="Ghost" size={36} color="var(--gray-600)" />
+          <Ghost aria-hidden size={36} color="var(--gray-600)" />
           <p>You currently have no saved recipes.</p>
         </NoRecipesContent>
       </NoRecipesContainer>

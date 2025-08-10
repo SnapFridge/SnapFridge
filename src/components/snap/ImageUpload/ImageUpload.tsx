@@ -1,12 +1,12 @@
 "use client";
 
 import Button from "@components/Button";
-import Icon from "@components/Icon";
 import Input from "@components/Input";
 import useToast from "@components/ToastProvider/UseToast";
 import VisuallyHidden from "@components/VisuallyHidden";
 import { css, styled } from "@pigment-css/react";
 import { scaleClamped } from "@utils";
+import { ImageUp } from "lucide-react";
 import { motion } from "motion/react";
 import { useState, type FormEvent } from "react";
 import { BarLoader } from "react-spinners";
@@ -95,7 +95,7 @@ function ImageUpload() {
           />
           {imgURLs.length < 1 ? (
             <NoImageContainer>
-              <Icon icon="ImageUp" size={36} />
+              <ImageUp aria-hidden size={36} />
               <SupportedFormats>Supported formats: png, jpg, webp</SupportedFormats>
             </NoImageContainer>
           ) : (

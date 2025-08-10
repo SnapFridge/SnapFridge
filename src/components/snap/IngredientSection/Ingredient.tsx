@@ -1,8 +1,9 @@
 "use client";
 
 import Button from "@components/Button";
-import Icon from "@components/Icon";
+import VisuallyHidden from "@components/VisuallyHidden";
 import { styled } from "@pigment-css/react";
+import { Trash2 } from "lucide-react";
 import { useRef } from "react";
 import { useInputState } from "../InputProvider";
 
@@ -30,11 +31,8 @@ function IngredientBox({ ingredient }: Props) {
             dispatch({ type: "removeIngredient", ingredient });
           }}
         >
-          <Icon
-            icon="Trash2"
-            color="var(--warn-500)"
-            description={`Delete ${ingredient}`}
-          />
+          <Trash2 aria-hidden color="var(--warn-500)" />
+          <VisuallyHidden>Delete {ingredient}</VisuallyHidden>
         </ActionButton>
       </ActionContainer>
     </Wrapper>

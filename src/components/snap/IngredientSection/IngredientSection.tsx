@@ -1,10 +1,10 @@
 "use client";
 
 import Button from "@components/Button";
-import Icon from "@components/Icon";
 import Switch from "@components/Switch";
 import { styled } from "@pigment-css/react";
 import { type Recipe } from "@utils";
+import { Archive } from "lucide-react";
 import { motion } from "motion/react";
 import { useState, type FormEvent } from "react";
 import IngredientDialog from "../IngredientDialog";
@@ -55,7 +55,7 @@ function IngredientSection() {
         <IngredientDialog />
         {ingredients.length < 1 ? (
           <>
-            <Icon icon="Archive" size={36} color="var(--gray-600)" />
+            <Archive aria-hidden size={36} color="var(--gray-600)" />
             <IngredientTitle>Your ingredients will appear here</IngredientTitle>
           </>
         ) : (
