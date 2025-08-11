@@ -1,8 +1,8 @@
 import { styled } from "@pigment-css/react";
+import * as ScrollArea from "@radix-ui/react-scroll-area";
 import { type SavedRecipe } from "@utils";
 import { createClient } from "@utils/supabase/server";
 import { Ghost } from "lucide-react";
-import { ScrollArea } from "radix-ui";
 import SavedItem from "./SavedItem";
 
 async function AppScrollArea() {

@@ -73,7 +73,6 @@ const IngredientBtn = styled("button")({
 const ActionButton = styled(Button)({
   background: "none",
   padding: "4px",
-  border: 0,
 
   transition: "transform .25s",
   "&:hover, &:focus": {

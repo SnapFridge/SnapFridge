@@ -1,9 +1,9 @@
 "use client";
 
+import VisuallyHidden from "@components/VisuallyHidden";
 import { styled } from "@pigment-css/react";
+import * as Tooltip from "@radix-ui/react-tooltip";
 import { Flower, Leaf, Salad, Sprout, Trophy } from "lucide-react";
-import { AnimatePresence, motion, type Variants } from "motion/react";
-import { Tooltip } from "radix-ui";
 import { useState } from "react";
 
 type Props = {
@@ -40,61 +40,33 @@ export default function AppTooltip({ type }: Props) {
 
   return (
     <Tooltip.Provider>
-      <Tooltip.Root open={isOpen} onOpenChange={setOpen}>
+      <Tooltip.Root open={isOpen} delayDuration={350} onOpenChange={setOpen}>
         <Tooltip.Trigger asChild>
           <Button>
             <Icon aria-hidden color={color} size={36} />
+            <VisuallyHidden>This recipe is {type}!</VisuallyHidden>
           </Button>
         </Tooltip.Trigger>
-        <AnimatePresence>
-          {isOpen && (
-            <Tooltip.Portal forceMount>
-              <Tooltip.Content sideOffset={5} asChild>
-                <ContentContainer
-                  variants={Variants}
-                  initial="initial"
-                  animate="enter"
-                  exit="exit"
-                >
-                  This recipe is {type}!
-                  <Arrow />
-                </ContentContainer>
-              </Tooltip.Content>
-            </Tooltip.Portal>
-          )}
-        </AnimatePresence>
+        <Tooltip.Portal forceMount>
+          <Tooltip.Content sideOffset={5} asChild>
+            <Content className={isOpen ? "open" : undefined}>
+              This recipe is {type}!
+              <Arrow />
+            </Content>
+          </Tooltip.Content>
+        </Tooltip.Portal>
       </Tooltip.Root>
     </Tooltip.Provider>
   );
 }
 
-const Variants: Variants = {
-  initial: {
-    y: 10,
-    opacity: 0,
-  },
-  enter: {
-    y: 0,
-    opacity: 1,
-  },
-  exit: {
-    opacity: 0,
-    transition: {
-      duration: 0.6,
-      type: "spring",
-    },
-  },
-};
-
 const Button = styled("button")({
   height: "fit-content",
   width: "fit-content",
   background: "none",
-  border: 0,
-  padding: 0,
 });
 
-const ContentContainer = styled(motion.div)({
+const Content = styled("div")({
   borderRadius: "4px",
   padding: "10px 15px",
   lineHeight: 1,
@@ -102,7 +74,16 @@ const ContentContainer = styled(motion.div)({
   backgroundColor: "white",
   boxShadow: "var(--shadow)",
   color: "black",
-  userSelect: "none",
+
+  opacity: 0,
+  visibility: "hidden",
+  transition: "opacity .25s, visibility 0s .25s",
+
+  "&.open": {
+    transition: "opacity .25s, visibility 0s",
+    opacity: 1,
+    visibility: "unset",
+  },
 });
 
 const Arrow = styled(Tooltip.Arrow)({

@@ -6,9 +6,9 @@ import Link from "@components/Link";
 import ThemeSwitch from "@components/ThemeSwitch";
 import VisuallyHidden from "@components/VisuallyHidden";
 import { styled } from "@pigment-css/react";
+import * as Dialog from "@radix-ui/react-dialog";
 import { ON_MOBILE } from "@utils";
 import { Menu, X } from "lucide-react";
-import { Dialog } from "radix-ui";
 import { useRef } from "react";
 
 type Props = {
