@@ -3,12 +3,8 @@
 import { globalCss } from "@pigment-css/react";
 import { MAX_SUPPORTED_WIDTH, scaleClamped } from "@utils";
 
-// CSS variables
 globalCss`
   :root {
-    background: var(--background-0);
-    color: var(--text-950);
-
     --nav-height: ${80 / 16}rem;
     --nav-margin: ${20 / 16}rem;
     --page-margin: ${scaleClamped(25, 120)};
@@ -19,25 +15,21 @@ globalCss`
       --click-target-minimum: 44px;
     }
   }
-`;
 
-// Horizontally unscrollable
-globalCss`
   body {
     display: flex;
     flex-direction: column;
     font-weight: 410;
     width: 100%;
     min-height: 100%;
+    background: var(--background-0);
+    color: var(--text-950);
     @media (min-width: ${MAX_SUPPORTED_WIDTH}px) {
       width: ${MAX_SUPPORTED_WIDTH}px;
       margin: auto;
     }
   }
-`;
 
-// CSS reset
-globalCss`
   /* 1. Use a more-intuitive box-sizing model */
   *, *::before, *::after {
     box-sizing: border-box;

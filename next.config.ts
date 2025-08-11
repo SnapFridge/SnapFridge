@@ -323,7 +323,7 @@ export default withPigment(
         "@radix-ui/react-switch",
         "@radix-ui/react-toast",
         "@radix-ui/react-toggle-group",
-        "@radix-ui/react-tooltip",
+        "react-tooltip",
         "@supabase/ssr",
         "@supabase/supabase-js",
         "downshift",
