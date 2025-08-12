@@ -3,9 +3,9 @@
 import Button from "@components/Button";
 import VisuallyHidden from "@components/VisuallyHidden";
 import { styled } from "@pigment-css/react";
-import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react";
 import { AnimatePresence, motion, type Variants } from "motion/react";
+import { Dialog } from "radix-ui";
 import { useState, type ComponentPropsWithoutRef, type ReactNode } from "react";
 
 interface Props extends ComponentPropsWithoutRef<typeof Dialog.Root> {

@@ -4,8 +4,8 @@ import Link from "@components/Link";
 import { useUser } from "@components/UserProvider";
 import VisuallyHidden from "@components/VisuallyHidden";
 import { css } from "@pigment-css/react";
-import * as Avatar from "@radix-ui/react-avatar";
 import { CircleUser } from "lucide-react";
+import { Avatar } from "radix-ui";
 
 function AvatarLink({ ...delegated }) {
   const u = useUser();

@@ -24,14 +24,12 @@ function AboutUsCards() {
         </p>
       </Card>
       <Card>
-        <h1>Andrew "Xandrew" Kim</h1>
+        <h1>Andrew Kim</h1>
         <p>
-          I am the last Andrew from SnapFridge. Rylex called me Xandrew because he likes
-          the XAND operation (it doesn't actually exists). I love Josh W. Comeau, signing
-          up for his new blog post notification. I know React, Next.js, Astro, Svelte and
+          Hello, my name is Andrew Kim and I'm a senior at Cypress High School. I know React, Next.js, Astro, Svelte and
           many others. I built many website with these like{" "}
-          <Link href="https://minesweeping.netlify.app/">Minesweeping</Link> I do frontend
-          stuff most of the time but I also do a bit of backend
+          <Link href="https://minesweeping.netlify.app/">Minesweeping</Link> (Check it out with friends)! I do frontend
+          stuff most of the time but I also do a bit of backend when I have to.
         </p>
       </Card>
     </CardContainer>

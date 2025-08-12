@@ -1,6 +1,6 @@
 import { styled } from "@pigment-css/react";
-import * as Switch from "@radix-ui/react-switch";
 import { scaleClamped } from "@utils";
+import { Switch } from "radix-ui";
 import { useId, type ComponentPropsWithoutRef } from "react";
 
 interface Props extends ComponentPropsWithoutRef<typeof Switch.Root> {

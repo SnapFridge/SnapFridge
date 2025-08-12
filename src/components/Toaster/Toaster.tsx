@@ -2,9 +2,9 @@
 
 import { ToastContext } from "@components/ToastProvider";
 import { styled } from "@pigment-css/react";
-import * as Toast from "@radix-ui/react-toast";
 import { ON_MOBILE } from "@utils";
 import { AnimatePresence, motion } from "motion/react";
+import { Toast } from "radix-ui";
 import { useContext, useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import AppToast from "./Toast";

@@ -3,9 +3,9 @@
 import Button from "@components/Button";
 import VisuallyHidden from "@components/VisuallyHidden";
 import { styled } from "@pigment-css/react";
-import * as Toast from "@radix-ui/react-toast";
 import { Check, CircleAlert, CircleX, Info, X } from "lucide-react";
 import { motion, type Variants } from "motion/react";
+import { Toast } from "radix-ui";
 import { useState, type PropsWithChildren, type ReactNode } from "react";
 
 type Props = {

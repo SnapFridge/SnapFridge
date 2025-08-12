@@ -1,8 +1,8 @@
 "use client";
 
 import { styled } from "@pigment-css/react";
-import * as ToggleGroup from "@radix-ui/react-toggle-group";
 import { ON_DESKTOP, ON_MOBILE } from "@utils";
+import { ToggleGroup } from "radix-ui";
 import { type ComponentPropsWithoutRef } from "react";
 
 type FullToggleGroupRootProps = ComponentPropsWithoutRef<typeof ToggleGroup.Root>;
