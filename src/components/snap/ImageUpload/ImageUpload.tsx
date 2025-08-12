@@ -196,6 +196,7 @@ const SupportedFormats = styled("div")({
 });
 
 const ScanButton = styled(Button)({
+  background: "var(--background-700)",
   color: "var(--text-50)",
   height: `${35 / 16}rem`,
   fontSize: `${20 / 16}rem`,
