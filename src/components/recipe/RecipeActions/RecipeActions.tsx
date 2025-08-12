@@ -45,7 +45,7 @@ function RecipeActions({
       const { error } = await supabase
         .from("saved_recipes")
         .update({ recipes: nextRecipes })
-        .eq("user_id", user!.id);
+        .eq("id", user!.id);
 
       if (error) {
         throw error;

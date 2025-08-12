@@ -17,9 +17,9 @@ globalCss`
   }
 
   body {
+    font-weight: 410;
     display: flex;
     flex-direction: column;
-    font-weight: 410;
     width: 100%;
     min-height: 100%;
     background: var(--background-0);

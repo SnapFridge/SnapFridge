@@ -1,6 +1,7 @@
 import Button from "@components/Button";
 import { styled } from "@pigment-css/react";
 import { scaleClamped } from "@utils";
+import { ToggleGroup } from "radix-ui";
 
 type Props = {
   page: number;
@@ -14,15 +15,16 @@ function Pagination({ page, pageCount, onChange }: Props) {
     const btns = [];
     for (let i = 0; i < pageCount; i++) {
       btns.push(
-        <PageBtn
-          variant={i === page ? "secondary" : "primary"}
-          key={i}
-          onClick={() => {
-            onChange(i);
-          }}
-        >
-          {i + 1}
-        </PageBtn>
+        <ToggleGroup.Item key={i} value={`${i}`} asChild>
+          <PageBtn
+            variant={i === page ? "secondary" : "primary"}
+            onClick={() => {
+              onChange(i);
+            }}
+          >
+            {i + 1}
+          </PageBtn>
+        </ToggleGroup.Item>
       );
     }
     return btns;
@@ -38,7 +40,7 @@ function Pagination({ page, pageCount, onChange }: Props) {
       >
         {"<"}
       </PageBtn>
-      {getPageBtns()}
+      <ToggleGroupRoot type="single">{getPageBtns()}</ToggleGroupRoot>
       <PageBtn
         variant="primary"
         disabled={page > pageCount - 2}
@@ -65,6 +67,11 @@ const PageBtn = styled(Button)({
   width: "var(--size)",
   height: "var(--size)",
   fontSize: "var(--1rem)",
+});
+
+const ToggleGroupRoot = styled(ToggleGroup.Root)({
+  gap: "3px",
+  display: "flex",
 });
 
 export default Pagination;

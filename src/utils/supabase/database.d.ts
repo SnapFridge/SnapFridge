@@ -20,15 +20,15 @@ export type Database = {
       saved_recipes: {
         Row: {
           recipes: Json[] | null;
-          user_id: string;
+          id: string;
         };
         Insert: {
           recipes?: Json[] | null;
-          user_id?: string;
+          id?: string;
         };
         Update: {
           recipes?: Json[] | null;
-          user_id?: string;
+          id?: string;
         };
         Relationships: [];
       };

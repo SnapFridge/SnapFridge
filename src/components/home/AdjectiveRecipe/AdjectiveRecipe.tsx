@@ -26,7 +26,7 @@ const Description = styled("p")({
 });
 
 const Adjective = styled("span")({
-  color: "hsl(198 100% 65%)",
+  color: "#4dc9ff",
   fontWeight: 700,
 });
 

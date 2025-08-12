@@ -18,10 +18,7 @@ function ClearRecipeButton() {
     setError(null);
 
     try {
-      await supabase
-        .from("saved_recipes")
-        .update({ recipes: [] })
-        .eq("user_id", user!.id);
+      await supabase.from("saved_recipes").update({ recipes: [] }).eq("id", user!.id);
     } catch (err) {
       let errMessage: string = "Unknown Error";
       if (err instanceof Error) {

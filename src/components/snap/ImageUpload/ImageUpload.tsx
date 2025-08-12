@@ -204,7 +204,6 @@ const ScanButton = styled(Button)({
   borderTopRightRadius: 0,
   borderTopLeftRadius: 0,
 
-  transition: "background .25s",
   "&:hover:not(:disabled)": {
     background: "var(--gray-700)",
   },

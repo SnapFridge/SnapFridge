@@ -32,7 +32,7 @@ export async function GET(req: Request) {
   } = await supabase.auth.getUser();
 
   // Add row for saved_recipe, won't update if already present
-  await supabase.from("saved_recipes").insert({ user_id: user!.id, recipes: [] });
+  await supabase.from("saved_recipes").insert({ id: user!.id, recipes: [] });
 
   redirect(origin + "/dashboard");
 }

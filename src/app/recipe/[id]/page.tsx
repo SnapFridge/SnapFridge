@@ -14,7 +14,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 
 async function getRecipe(id: string) {
-  const recipeInfoRes = await fetch(
+  const recipeRes = await fetch(
     `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true`,
     {
       headers: {
@@ -25,20 +25,20 @@ async function getRecipe(id: string) {
       },
     }
   );
-  if (!recipeInfoRes.ok) {
-    if (recipeInfoRes.status === 404) {
+  if (!recipeRes.ok) {
+    if (recipeRes.status === 404) {
       return null;
     }
-    const errorDetails = await recipeInfoRes.text();
+    const errorDetails = await recipeRes.text();
     throw new Error(
-      `Failed to fetch recipe ${id}: ${recipeInfoRes.status} ${recipeInfoRes.statusText} - ${errorDetails}`
+      `Failed to fetch recipe ${id}: ${recipeRes.status} ${recipeRes.statusText} - ${errorDetails}`
     );
   }
-  const recipeInfo = (await recipeInfoRes.json()) as SpoonacularRecipe;
-  if (!recipeInfo || Object.keys(recipeInfo).length === 0) {
+  const recipe = (await recipeRes.json()) as SpoonacularRecipe;
+  if (!recipe || Object.keys(recipe).length === 0) {
     return null;
   }
-  return recipeInfo;
+  return recipe;
 }
 
 async function getSavedRecipes(): Promise<SavedRecipe[]> {
@@ -67,8 +67,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Page({ params }: Props) {
   const { id } = await params;
-  const recipeInfo = await getRecipe(id);
-  if (!recipeInfo) notFound();
+  const recipe = await getRecipe(id);
+  if (!recipe) notFound();
   const initialSavedRecipes = await getSavedRecipes();
 
   return (
@@ -76,8 +76,8 @@ export default async function Page({ params }: Props) {
       <figure>
         <Image
           className={RecipeImage}
-          src={recipeInfo.image}
-          alt={recipeInfo.title}
+          src={recipe.image}
+          alt={recipe.title}
           width={556}
           height={370}
           quality={90}
@@ -85,34 +85,34 @@ export default async function Page({ params }: Props) {
           fetchPriority="high"
         />
         <SourceCredit>
-          Source: <Link href={recipeInfo.sourceUrl}>{recipeInfo.creditsText}</Link>
+          Source: <Link href={recipe.sourceUrl}>{recipe.creditsText}</Link>
         </SourceCredit>
       </figure>
       <PageMargin>
         <TitleSection>
-          <Title>{recipeInfo.title}</Title>
-          {recipeInfo.vegan && <Tooltip type="vegan" />}
-          {recipeInfo.vegetarian && <Tooltip type="vegetarian" />}
-          {recipeInfo.sustainable && <Tooltip type="sustainable" />}
-          {recipeInfo.veryHealthy && <Tooltip type="healthy" />}
-          {recipeInfo.veryPopular && <Tooltip type="popular" />}
+          <Title>{recipe.title}</Title>
+          {recipe.vegan && <Tooltip type="vegan" />}
+          {recipe.vegetarian && <Tooltip type="vegetarian" />}
+          {recipe.sustainable && <Tooltip type="sustainable" />}
+          {recipe.veryHealthy && <Tooltip type="healthy" />}
+          {recipe.veryPopular && <Tooltip type="popular" />}
         </TitleSection>
-        <AllergenWarning recipeInfo={recipeInfo} />
+        <AllergenWarning recipe={recipe} />
         <Wrapper>
           <RecipeActions
-            id={recipeInfo.id}
-            name={recipeInfo.title}
-            imageType={recipeInfo.imageType}
+            id={recipe.id}
+            name={recipe.title}
+            imageType={recipe.imageType}
             initialSavedRecipes={initialSavedRecipes}
           />
-          <RecipeInfo recipeInfo={recipeInfo} />
+          <RecipeInfo recipe={recipe} />
         </Wrapper>
         <ListContainer>
-          <RecipeInfoList ingredients={recipeInfo.extendedIngredients} />
+          <RecipeInfoList ingredients={recipe.extendedIngredients} />
           <Spacer />
-          <NutrientInfoList nutrients={recipeInfo.nutrition.nutrients} />
+          <NutrientInfoList nutrients={recipe.nutrition.nutrients} />
         </ListContainer>
-        <RecipeStepsList recipes={recipeInfo} />
+        <RecipeStepsList recipes={recipe} />
       </PageMargin>
     </UnitProvider>
   );

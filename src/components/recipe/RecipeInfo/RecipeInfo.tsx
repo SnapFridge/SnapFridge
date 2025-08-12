@@ -102,35 +102,34 @@ export type SpoonacularRecipe = {
   spoonacularSourceUrl: string;
 };
 
-export function RecipeInfo({ recipeInfo }: { recipeInfo: SpoonacularRecipe }) {
+export function RecipeInfo({ recipe }: { recipe: SpoonacularRecipe }) {
   return (
     <div>
-      <Summary dangerouslySetInnerHTML={{ __html: recipeInfo.summary }} />
-
+      <Summary dangerouslySetInnerHTML={{ __html: recipe.summary }} />
       <CookingInfoContainer>
         <div>
           <CookingInfoTitle>Total Time:</CookingInfoTitle>
-          <CookingInfoText>{recipeInfo.readyInMinutes} minutes</CookingInfoText>
+          <CookingInfoText>{recipe.readyInMinutes} minutes</CookingInfoText>
         </div>
-        {recipeInfo.cookingMinutes && (
+        {recipe.cookingMinutes && (
           <div>
             <CookingInfoTitle>Cooking:</CookingInfoTitle>
-            <CookingInfoText>{recipeInfo.cookingMinutes} minutes</CookingInfoText>
+            <CookingInfoText>{recipe.cookingMinutes} minutes</CookingInfoText>
           </div>
         )}
-        {recipeInfo.preparationMinutes && (
+        {recipe.preparationMinutes && (
           <div>
             <CookingInfoTitle>Preparation:</CookingInfoTitle>
-            <CookingInfoText>{recipeInfo.preparationMinutes} minutes</CookingInfoText>
+            <CookingInfoText>{recipe.preparationMinutes} minutes</CookingInfoText>
           </div>
         )}
         <div>
           <CookingInfoTitle>Ingredients:</CookingInfoTitle>
-          <CookingInfoText>{recipeInfo.extendedIngredients.length}</CookingInfoText>
+          <CookingInfoText>{recipe.extendedIngredients.length}</CookingInfoText>
         </div>
         <div>
           <CookingInfoTitle>Servings:</CookingInfoTitle>
-          <CookingInfoText>{recipeInfo.servings}</CookingInfoText>
+          <CookingInfoText>{recipe.servings}</CookingInfoText>
         </div>
       </CookingInfoContainer>
     </div>

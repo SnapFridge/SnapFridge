@@ -1,6 +1,6 @@
 "use client";
 
-import { type SpoonacularRecipe } from "@components/recipe/RecipeInfo/RecipeInfo";
+import { type SpoonacularRecipe } from "@components/recipe/RecipeInfo";
 import { useUnit } from "@components/UnitProvider";
 import { styled } from "@pigment-css/react";
 import { ON_MOBILE, roundNumber } from "@utils";
@@ -16,19 +16,11 @@ function RecipeInfoList({
     <Container>
       <Title>Ingredients</Title>
       <List>
-        {ingredients.map((ingredient) => {
-          const amount =
-            unit === "metric"
-              ? ingredient.measures.metric.amount
-              : ingredient.measures.us.amount;
-          const displayedUnit =
-            unit === "metric"
-              ? ingredient.measures.metric.unitShort
-              : ingredient.measures.us.unitShort;
-
+        {ingredients.map(({ name, measures: { metric, us } }) => {
+          const { amount, unitShort } = unit === "metric" ? metric : us;
           return (
-            <ListItem key={ingredient.name}>
-              {roundNumber(amount)} {displayedUnit} {ingredient.name}
+            <ListItem key={name}>
+              {roundNumber(amount)} {unitShort} {name}
             </ListItem>
           );
         })}

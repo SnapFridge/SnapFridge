@@ -35,7 +35,8 @@ export const metadata: Metadata = {
 
 const globalFont = Rubik({
   subsets: ["latin"],
-  display: "fallback",
+  display: "swap",
+  fallback: ["arial"],
 });
 
 function ThemeScript() {

@@ -30,7 +30,6 @@ async function ensureContext(contents: { fileData: FileData }[]) {
   });
 }
 
-// JSON minifier: Remove all whitespace + array syntax so we don't have to worry about it later + save on some networking
 type Generator = AsyncGenerator<
   GenerateContentResponse,
   undefined,
@@ -64,13 +63,6 @@ Analyze the provided image and return a simple JSON array containing the names o
 4.  **No Duplicates:** List each unique ingredient name only once, even if it appears multiple times in the image.
 `;
 
-const responseSchema = {
-  type: Type.ARRAY,
-  items: {
-    type: Type.STRING,
-  },
-};
-
 export async function POST(req: Request) {
   const files = (await req.formData()).getAll("files") as File[];
   const contents: { fileData: FileData }[] = [];
@@ -102,7 +94,12 @@ export async function POST(req: Request) {
     config: {
       systemInstruction,
       responseMimeType: "application/json",
-      responseSchema,
+      responseSchema: {
+        type: Type.ARRAY,
+        items: {
+          type: Type.STRING,
+        },
+      },
       thinkingConfig: {
         thinkingBudget: -1,
       },

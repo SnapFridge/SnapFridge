@@ -4,7 +4,7 @@ import { TriangleAlert } from "lucide-react";
 import { type SpoonacularRecipe } from "../RecipeInfo";
 
 interface Props {
-  recipeInfo: SpoonacularRecipe;
+  recipe: SpoonacularRecipe;
 }
 
 function prettyPrintArray(arr: string[]) {
@@ -20,11 +20,11 @@ function prettyPrintArray(arr: string[]) {
   return prettyPrint[0]!.toUpperCase() + prettyPrint.slice(1);
 }
 
-function AllergenWarning({ recipeInfo }: Props) {
+function AllergenWarning({ recipe }: Props) {
   const allergens = [];
 
-  if (!recipeInfo.glutenFree) allergens.push("gluten");
-  if (!recipeInfo.dairyFree) allergens.push("dairy");
+  if (!recipe.glutenFree) allergens.push("gluten");
+  if (!recipe.dairyFree) allergens.push("dairy");
 
   if (allergens.length <= 0) return undefined;
 
