@@ -302,7 +302,7 @@ const CSP = `
 
 export default withPigment(
   withBundleAnalyzer({
-    enabled: process.env.ANALYZE === "true",
+    enabled: !!process.env.ANALYZE,
   })({
     experimental: {
       inlineCss: true,
