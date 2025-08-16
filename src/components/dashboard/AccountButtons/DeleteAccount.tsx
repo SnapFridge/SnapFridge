@@ -81,7 +81,7 @@ const StyledButton = styled(Button)({
   backgroundColor: "transparent",
   color: "var(--error-400)",
   border: "2px solid var(--error-400)",
-  transition: "background-color 0.3s ease, color 0.3s ease",
+  transition: "background-color .25s ease, color .25s ease",
 
   "&:hover": {
     backgroundColor: "var(--error-100)",

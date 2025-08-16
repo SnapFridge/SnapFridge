@@ -38,7 +38,7 @@ function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: P
   });
 
   return (
-    <Wrapper style={{ maxWidth: "100%" }}>
+    <Wrapper>
       <Label {...getLabelProps()}>{label}</Label>
       <InputElement {...getInputProps({ value, ref, type: "text" })} {...delegated} />
       <Menu
@@ -46,30 +46,27 @@ function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: P
         style={
           isOpen && items.length > 0
             ? {
-                visibility: "visible",
+                visibility: "unset",
               }
             : undefined
         }
       >
         {items.map((item, index) => (
-          <li
+          <Item
             key={item}
             {...getItemProps({
               item,
               style: {
-                color: "var(--text-950)",
-                padding: "6px 8px",
-                contentVisibility: "auto",
-                backgroundColor:
+                background:
                   highlightedIndex === index
                     ? "var(--background-100)"
                     : "var(--background-0)",
-                fontWeight: selectedItem === item ? 700 : "normal",
+                fontWeight: selectedItem === item ? 700 : "unset",
               },
             })}
           >
             {item}
-          </li>
+          </Item>
         ))}
       </Menu>
     </Wrapper>
@@ -77,8 +74,8 @@ function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: P
 }
 
 const Wrapper = styled("div")({
-  width: "fit-content",
   position: "relative",
+  width: "100%",
 });
 
 const Menu = styled("ul")({
@@ -91,6 +88,13 @@ const Menu = styled("ul")({
   overflow: "auto",
   height: "fit-content",
   maxHeight: "35vh",
+  scrollbarWidth: "none",
+});
+
+const Item = styled("li")({
+  color: "var(--text-950)",
+  padding: "6px 8px",
+  contentVisibility: "auto",
 });
 
 export default SuggestedInput;

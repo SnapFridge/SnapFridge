@@ -49,7 +49,7 @@ function IngredientForm({ onSubmitSuccess }: Props) {
         required
         className={LimitedWidth}
       />
-      <Button type="submit" variant="secondary">
+      <Button className={NewButton} type="submit" variant="secondary">
         New Ingredient
       </Button>
     </form>
@@ -59,6 +59,10 @@ function IngredientForm({ onSubmitSuccess }: Props) {
 const LimitedWidth = css({
   maxWidth: "100%",
   margin: "0 0 10px",
+});
+
+const NewButton = css({
+  margin: "10px 0 0",
 });
 
 export default IngredientForm;

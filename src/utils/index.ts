@@ -76,7 +76,7 @@ export type SavedRecipe = {
 
 // Rounding logic for recipe ingredient/nutrient list
 export function roundNumber(num: number) {
-  // rounding function to handle stuff like 0.25 cups and weird measurements
+  // rounding function to handle stuff like .25 cups and weird measurements
   // like 178.958 ml
 
   if (num < 1) {

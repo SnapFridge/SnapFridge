@@ -87,6 +87,7 @@ function hasValueBox(type: HTMLInputTypeAttribute): boolean {
 }
 
 export const InputElement = styled("input")({
+  width: "100%",
   border: "2px solid var(--accent-500)",
   variants: [
     {

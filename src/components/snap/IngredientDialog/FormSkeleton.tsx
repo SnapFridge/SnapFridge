@@ -36,12 +36,13 @@ const Name = styled("label")({
 });
 
 const Input = styled("div")({
-  width: "min(100%, 310px)",
+  width: "100%",
 });
 
 const Button = styled("div")({
   lineHeight: 1,
   width: "min(100%, 150px)",
+  margin: "10px 0 0",
 });
 
 export default FormSkeleton;

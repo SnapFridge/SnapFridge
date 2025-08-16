@@ -138,7 +138,7 @@ const theme = extendTheme({
         base: "#ebebeb",
         highlight: "#f5f5f5",
       },
-      shadow: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
+      shadow: "0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1)",
     },
     dark: {
       text: {
@@ -276,7 +276,7 @@ const theme = extendTheme({
         highlight: "#4d4d4d",
       },
       shadow:
-        "0 10px 15px -3px rgb(100 100 100 / 0.2), 0 4px 6px -4px rgb(100 100 100 / 0.2)",
+        "0 10px 15px -3px rgb(100 100 100 / .2), 0 4px 6px -4px rgb(100 100 100 / .2)",
     },
   },
   getSelector: (theme) => `:root${theme === "dark" ? ".dark" : ""}`,
@@ -314,7 +314,7 @@ export default withPigment(
       optimizeRouterScrolling: true,
       forceSwcTransforms: true,
 
-      // NEVER add: react, pigment
+      // NEVER add: pigment
       optimizePackageImports: [
         "@google/genai",
         "@supabase/ssr",
@@ -370,11 +370,6 @@ export default withPigment(
 
     eslint: {
       ignoreDuringBuilds: true,
-    },
-
-    webpack(config) {
-      config.experiments.topLevelAwait = config.experiments.layers = true;
-      return config;
     },
   }),
   {

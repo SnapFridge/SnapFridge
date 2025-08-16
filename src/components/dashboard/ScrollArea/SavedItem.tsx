@@ -66,10 +66,9 @@ const RecipeName = styled("p")({
   flexDirection: "column",
   justifyContent: "flex-end",
   opacity: 0,
-  transition: "all .25s, visibility 0 .25s",
+  transition: "all .25s",
 
   [`${Container}:hover > &`]: {
-    transition: "all .25s, visibility 0s",
     opacity: 1,
   },
 });

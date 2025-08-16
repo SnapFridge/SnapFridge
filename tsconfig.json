@@ -14,7 +14,7 @@
         "name": "next"
       }
     ],
-    "target": "es2017",
+    "target": "esnext",
     "module": "esnext",
     "verbatimModuleSyntax": true,
     "checkJs": true,
