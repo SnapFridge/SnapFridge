@@ -1,10 +1,7 @@
-"use client";
-
 import Button from "@components/Button";
 import VisuallyHidden from "@components/VisuallyHidden";
 import { styled } from "@pigment-css/react";
 import { Trash2 } from "lucide-react";
-import { useRef } from "react";
 import { useInputState } from "../InputProvider";
 
 type Props = {
@@ -13,19 +10,17 @@ type Props = {
 
 function IngredientBox({ ingredient }: Props) {
   const { dispatch } = useInputState();
-  const deleteBtn = useRef<HTMLButtonElement>(null);
   return (
     <Wrapper>
       <IngredientBtn
-        onClick={() => {
-          deleteBtn.current!.focus();
-        }}
+        onClick={(e) =>
+          (e.currentTarget.nextSibling!.firstChild! as HTMLButtonElement).focus()
+        }
       >
         <span>{ingredient}</span>
       </IngredientBtn>
       <ActionContainer>
         <ActionButton
-          ref={deleteBtn}
           tabIndex={-1}
           onClick={() => {
             dispatch({ type: "removeIngredient", ingredient });

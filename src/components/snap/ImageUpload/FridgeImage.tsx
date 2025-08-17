@@ -1,11 +1,9 @@
-"use client";
-
 import Button from "@components/Button";
 import VisuallyHidden from "@components/VisuallyHidden";
 import { styled } from "@pigment-css/react";
+import { scaleClamped } from "@utils";
 import { Trash2 } from "lucide-react";
 import Image from "next/image";
-import { useRef } from "react";
 
 type Props = {
   src: string;
@@ -13,10 +11,12 @@ type Props = {
 };
 
 function FridgeImage({ src, deleteImage }: Props) {
-  const deleteBtn = useRef<HTMLButtonElement>(null);
   return (
     <Wrapper>
-      <ImageBtn onClick={() => deleteBtn.current!.focus()} type="button">
+      <ImageBtn
+        onClick={(e) => (e.currentTarget.nextSibling! as HTMLButtonElement).focus()}
+        type="button"
+      >
         <Image
           width={150}
           height={150}
@@ -25,7 +25,7 @@ function FridgeImage({ src, deleteImage }: Props) {
           alt="User uploaded image"
         />
       </ImageBtn>
-      <DeleteBtn ref={deleteBtn} tabIndex={-1} onClick={() => deleteImage(src)}>
+      <DeleteBtn tabIndex={-1} onClick={() => deleteImage(src)}>
         <Trash2 aria-hidden color="var(--warn-500)" />
         <VisuallyHidden>Delete image</VisuallyHidden>
       </DeleteBtn>
@@ -34,15 +34,16 @@ function FridgeImage({ src, deleteImage }: Props) {
 }
 const Wrapper = styled("li")({
   position: "relative",
+  ["--size" as string]: scaleClamped(113, 150, false, 320, 406),
+  maxWidth: "var(--size)",
+  maxHeight: "var(--size)",
+  overflow: "clip",
+  borderRadius: "8px",
 });
 
 const ImageBtn = styled("button")({
-  borderRadius: "8px",
-  overflow: "hidden",
-  position: "relative",
-  flex: 1,
-  maxWidth: "300px",
-
+  width: "100%",
+  height: "100%",
   transition: "all .25s",
   [`${Wrapper}:hover > &, &:focus`]: {
     boxShadow: "var(--shadow)",

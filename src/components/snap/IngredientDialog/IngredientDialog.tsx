@@ -78,8 +78,8 @@ const Content = styled(Dialog.Content)({
 const XButton = styled(Button)({
   position: "absolute",
   borderRadius: "50%",
-  right: "10px",
-  top: "10px",
+  right: "5px",
+  top: "5px",
 });
 
 const Title = styled(Dialog.Title)({
@@ -89,6 +89,8 @@ const Title = styled(Dialog.Title)({
 
 const Description = styled(Dialog.Description)({
   margin: "0 0 12px",
+  maxWidth: "calc(100% - 44px)",
+  textWrap: "wrap",
 });
 
 export default IngredientDialog;

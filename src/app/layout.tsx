@@ -7,7 +7,6 @@ import NavBar from "@components/NavBar";
 import ToastProvider from "@components/ToastProvider";
 import Toaster from "@components/Toaster";
 import { UserProvider } from "@components/UserProvider";
-import { styled } from "@pigment-css/react";
 import "@pigment-css/react/styles.css";
 import { type Metadata } from "next";
 import { Rubik } from "next/font/google";
@@ -59,7 +58,7 @@ export default function RootLayout({ children }: PropsWithChildren) {
         <UserProvider>
           <NavBar />
           <ToastProvider>
-            <Main>{children}</Main>
+            <main>{children}</main>
             <Toaster />
           </ToastProvider>
         </UserProvider>
@@ -69,7 +68,3 @@ export default function RootLayout({ children }: PropsWithChildren) {
     </html>
   );
 }
-
-const Main = styled("main")({
-  flexGrow: 1,
-});

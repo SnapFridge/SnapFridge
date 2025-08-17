@@ -156,7 +156,6 @@ const HiddenUpload = styled(Input)({
 });
 
 const BaseContainer = styled("div")({
-  minHeight: "202px",
   display: "flex",
   border: "4px dashed var(--accent-300)",
   borderRadius: "16px",
@@ -176,14 +175,16 @@ const NoImageContainer = styled(BaseContainer)({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
+  height: scaleClamped(147, 184, false, 320, 406),
 });
 
 const ImageContainer = styled(BaseContainer)({
   height: "fit-content",
-  gap: scaleClamped(5, 20, false, 320, 673),
+  gap: scaleClamped(6, 18, false, 320, 673),
   flexWrap: "wrap",
   justifyContent: "space-around",
-  padding: "20px",
+  margin: "auto",
+  padding: "15px",
   borderBottom: "none",
   borderBottomRightRadius: 0,
   borderBottomLeftRadius: 0,

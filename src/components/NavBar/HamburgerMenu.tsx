@@ -45,7 +45,9 @@ function HamburgerMenu({ links }: Props) {
               </Dialog.Close>
             ))}
           </Content>
-          <CenteredUser />
+          <Dialog.Close asChild>
+            <CenteredUser />
+          </Dialog.Close>
           <CenteredThemeSwitch />
           <Dialog.Close asChild>
             <CloseButton variant="icon">
