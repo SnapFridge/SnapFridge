@@ -66,7 +66,7 @@ const CreditList = styled("ul")({
   alignItems: "center",
 
   "& > li": {
-    marginTop: "32px",
+    margin: "32px 0 0",
     justifyItems: "center",
   },
 

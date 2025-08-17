@@ -104,7 +104,7 @@ const TitleSection = styled("div")({
 });
 
 const Title = styled("h1")({
-  marginTop: "5px",
+  margin: "5px",
   width: "100%",
 });
 
@@ -155,11 +155,11 @@ const RecipeActionButton = css({
 });
 
 const CookingInfo = styled("div")({
-  marginTop: "24px",
+  margin: "24px 0 0",
 });
 
 const ListContainer = styled("div")({
-  marginTop: "24px",
+  margin: "24px 0 0",
   display: "flex",
   justifyContent: "space-around",
   gap: "36px",
@@ -177,7 +177,7 @@ const IngredientsList = styled("div")({
 });
 
 const StepsContainer = styled("ul")({
-  marginTop: "24px",
+  margin: "24px 0 0",
 });
 
 const StepItem = styled("li")({});

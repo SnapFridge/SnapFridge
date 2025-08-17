@@ -25,13 +25,13 @@ export default function Page({
 }
 
 const HomeButton = styled(Button)({
-  marginTop: "12px",
-  backgroundColor: "transparent",
+  margin: "12px 0 0",
+  background: "transparent",
   border: "1px solid var(--accent-200)",
   padding: "12px 36px",
   borderRadius: "24px",
 
   "&:hover": {
-    backgroundColor: "var(--gray-100)",
+    background: "var(--gray-100)",
   },
 });

@@ -21,7 +21,7 @@ export default function OAuthLoginCards({ variant, ...delegated }: Props) {
 
 const CardButton = styled(Button)({
   width: "100%",
-  backgroundColor: "transparent",
+  background: "transparent",
   border: "2px solid var(--gray-300)",
   fontSize: `${17 / 16}rem`,
   fontWeight: 700,
@@ -29,6 +29,6 @@ const CardButton = styled(Button)({
   boxShadow: "var(--shadow)",
 
   "&:hover:not(:disabled)": {
-    backgroundColor: "var(--background-50)",
+    background: "var(--background-50)",
   },
 });

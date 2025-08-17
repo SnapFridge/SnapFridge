@@ -49,7 +49,7 @@ function RecipeItem({
       <StepTitle>{recipe.name || recipeTitle}</StepTitle>
       <StepsList>
         {recipe.steps.map((step) => {
-          return <Step key={step.number}>{step.step}</Step>;
+          return <li key={step.number}>{step.step}</li>;
         })}
       </StepsList>
     </StepContainer>
@@ -70,5 +70,3 @@ const StepsList = styled("ol")({
     marginTop: "12px",
   },
 });
-
-const Step = styled("li")({});

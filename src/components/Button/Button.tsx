@@ -34,7 +34,7 @@ const StyledButton = styled("button")<{ variant: Variant | undefined }>({
   position: "relative",
 
   "&:hover:not(:disabled)": {
-    backgroundColor: "var(--background-hover)",
+    background: "var(--background-hover)",
   },
 
   "&:disabled": {
@@ -44,14 +44,9 @@ const StyledButton = styled("button")<{ variant: Variant | undefined }>({
   // Apple recommends a minimum 44x44 tapping size
   // Do a little trickery (Thank you Kevin)
   "&:after": {
-    ["--insent-by" as string]:
-      "min(0, calc((100% - var(--click-target-minimum, 100%)) / 2))",
+    inset: "min(0, calc((100% - var(--click-target-minimum, 100%)) / 2))",
     content: "",
     position: "absolute",
-    top: "var(--inset-by)",
-    left: "var(--inset-by)",
-    right: "var(--inset-by)",
-    bottom: "var(--inset-by)",
   },
 
   variants: [

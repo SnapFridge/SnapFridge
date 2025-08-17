@@ -29,8 +29,8 @@ const SwitchRoot = styled(Switch.Root)({
   marginLeft: scaleClamped(5, 18),
   minWidth: "42px",
   height: "25px",
-  backgroundColor: "var(--secondary-300)",
-  borderRadius: "9999px",
+  background: "var(--secondary-300)",
+  borderRadius: "calc(infinity * 1px)",
   position: "relative",
   boxShadow: "0 2px 10px var(--gray-300)",
   WebkitTapHighlightColor: "rgba(0, 0, 0, 0)",
@@ -40,11 +40,11 @@ const SwitchRoot = styled(Switch.Root)({
   },
 
   '&[data-state="checked"]': {
-    backgroundColor: "var(--secondary-500)",
+    background: "var(--secondary-500)",
   },
 
   "&[data-disabled]": {
-    backgroundColor: "var(--secondary-200)",
+    background: "var(--secondary-200)",
   },
 });
 
@@ -63,7 +63,7 @@ const SwitchThumb = styled(Switch.Thumb)({
   },
 
   "&[data-disabled]": {
-    backgroundColor: "var(--gray-500)",
+    background: "var(--gray-500)",
   },
 });
 

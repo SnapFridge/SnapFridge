@@ -68,13 +68,13 @@ const Container = styled(motion.section)({
   position: "fixed",
   bottom: "24px",
   right: "24px",
-  backgroundColor: "var(--accent-100)",
+  background: "var(--accent-100)",
   borderRadius: "12px",
   padding: "24px",
   textAlign: "center",
 
   "& > *": {
-    marginTop: "12px",
+    margin: "12px 0 0",
   },
 
   [ON_MOBILE]: {

@@ -15,7 +15,7 @@ function ActionButtons() {
 }
 
 const Container = styled("div")({
-  marginTop: "24px",
+  margin: "24px 0 0",
   display: "flex",
   gap: "15px",
 

@@ -42,7 +42,7 @@ export const Container = styled("div")({
     content: "''",
     borderTopRightRadius: "8px",
     borderBottomRightRadius: "8px",
-    backgroundColor: "var(--accent-500)",
+    background: "var(--accent-500)",
     opacity: "30%",
     position: "absolute",
     top: 0,

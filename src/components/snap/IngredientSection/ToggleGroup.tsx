@@ -62,17 +62,17 @@ const ToggleGroupItem = styled(ToggleGroup.Item)({
   },
 
   '&[data-state="on"]': {
-    backgroundColor: "var(--background-200)",
+    background: "var(--background-200)",
     color: "var(--text-950)",
   },
 
   '&[data-state="off"]': {
-    backgroundColor: "transparent",
+    background: "transparent",
     color: "var(--gray-600)",
   },
 
   '&[data-state="on"][data-disabled]': {
-    backgroundColor: "var(--background-100)",
+    background: "var(--background-100)",
     color: "var(--gray-600)",
   },
 });

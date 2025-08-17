@@ -78,13 +78,13 @@ const ErrorMessage = {
 };
 
 const StyledButton = styled(Button)({
-  backgroundColor: "transparent",
+  background: "transparent",
   color: "var(--error-400)",
   border: "2px solid var(--error-400)",
   transition: "background-color .25s ease, color .25s ease",
 
   "&:hover": {
-    backgroundColor: "var(--error-100)",
+    background: "var(--error-100)",
     color: "var(--text-950)",
   },
 });

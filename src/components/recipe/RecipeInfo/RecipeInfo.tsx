@@ -158,8 +158,7 @@ const CookingInfoContainer = styled("div")({
   justifyContent: "center",
   alignItems: "center",
   borderRadius: "8px",
-  marginTop: "40px",
-  marginBottom: "50px",
+  margin: "40px 0 50px",
 });
 
 const CookingInfoTitle = styled("label")({

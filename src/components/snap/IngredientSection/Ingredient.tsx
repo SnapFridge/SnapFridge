@@ -43,7 +43,7 @@ const Wrapper = styled("li")({
 const IngredientBtn = styled("button")({
   display: "flex",
   gap: "8px",
-  backgroundColor: "var(--accent-200)",
+  background: "var(--accent-200)",
   padding: "6px 12px",
   borderRadius: "100px",
   height: "100%",

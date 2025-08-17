@@ -155,11 +155,10 @@ const TitleSection = styled("div")({
 
 const Title = styled("h1")({
   fontSize: `${30 / 16}rem`,
-  marginTop: "5px",
-  marginBottom: "12px",
+  margin: "5px 0 12px",
 
   [ON_MOBILE]: {
-    marginTop: "12px",
+    margin: "12px 0 12px",
     width: "100%",
     textAlign: "center",
   },

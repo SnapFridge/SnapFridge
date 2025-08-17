@@ -58,14 +58,13 @@ const Wrapper = styled("section")({
     left: 0,
     width: "100%",
     height: "100%",
-    backgroundColor: "var(--warn-500)",
+    background: "var(--warn-500)",
     opacity: "30%",
     zIndex: -1,
   },
 
   [ON_MOBILE]: {
-    marginLeft: "auto",
-    marginRight: "auto",
+    margin: "0 auto",
   },
 });
 

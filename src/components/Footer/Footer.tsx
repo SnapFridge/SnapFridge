@@ -42,9 +42,9 @@ function Footer() {
 }
 
 const AFooter = styled("footer")({
-  backgroundColor: "var(--accent-200)",
+  background: "var(--accent-200)",
   padding: "32px var(--page-margin)",
-  marginTop: "96px",
+  margin: "96px 0 0",
   display: "flex",
   contentVisibility: "auto",
   [ON_MOBILE]: {
@@ -53,7 +53,7 @@ const AFooter = styled("footer")({
 });
 
 const LinksContainer = styled("ul")({
-  marginTop: "24px",
+  margin: "24px 0 0",
   gap: "12px",
   fontWeight: "600",
 
@@ -79,7 +79,7 @@ const RightFooterCSS = css({
   justifyContent: "flex-end",
 
   [ON_MOBILE]: {
-    marginTop: "20px",
+    margin: "20px 0 0",
     justifyContent: "center",
   },
 });

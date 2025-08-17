@@ -180,7 +180,8 @@ const NoImageContainer = styled(BaseContainer)({
 
 const ImageContainer = styled(BaseContainer)({
   height: "fit-content",
-  gap: scaleClamped(6, 18, false, 320, 673),
+  ["--gap" as string]: scaleClamped(7, 18, false, 320, 673),
+  rowGap: "var(--gap)",
   flexWrap: "wrap",
   justifyContent: "space-around",
   margin: "auto",

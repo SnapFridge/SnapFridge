@@ -89,7 +89,7 @@ const Card = styled("a")({
     display: "block",
 
     "& > :not(:first-child)": {
-      marginTop: "16px",
+      margin: "16px 0 0",
     },
 
     "& > *": {

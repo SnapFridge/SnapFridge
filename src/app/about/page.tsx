@@ -29,7 +29,7 @@ const Main = styled(PageMargin)({
   fontSize: "var(--1rem)",
 
   "& > :not(:first-child)": {
-    marginTop: "32px",
+    margin: "32px 0 0",
   },
 });
 

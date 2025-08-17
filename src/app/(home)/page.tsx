@@ -208,7 +208,7 @@ const FridgeSection = styled("section")({
   marginBottom: "35px",
 
   [ON_MOBILE]: {
-    marginTop: "35px",
+    margin: "35px 0 0",
   },
 });
 
@@ -222,7 +222,7 @@ const FridgeSideTxt = styled("span")({
 });
 
 const StatisticsSection = styled("section")({
-  marginTop: "64px",
+  margin: "64px 0 0",
 });
 
 const TopStatistics = styled("div")({
@@ -253,7 +253,7 @@ const BottomStatistics = styled("div")({
   gridTemplateColumns: "40% 60%",
   gridAutoFlow: "column",
 
-  marginTop: "64px",
+  margin: "64px 0 0",
   alignItems: "center",
   rowGap: scaleClamped(15, 25),
 
@@ -284,7 +284,7 @@ const LandfillImg = css({
 const CallToActionSection = styled("section")({
   display: "flex",
   flexDirection: "column",
-  marginTop: "96px",
+  margin: "96px 0 0",
   alignItems: "center",
 
   "& > h2": {
@@ -294,7 +294,7 @@ const CallToActionSection = styled("section")({
 });
 
 const CoAButtonCSS = css({
-  marginTop: "15px",
+  margin: "15px 0 0",
   width: `${185 / 16}rem`,
   height: `${55 / 16}rem`,
   borderRadius: "8px",
