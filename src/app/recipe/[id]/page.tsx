@@ -1,3 +1,4 @@
+import Link from "@components/Link";
 import AllergenWarning from "@components/recipe/AllergenWarning";
 import RecipeStepsList from "@components/recipe/DetailedRecipe";
 import RecipeActions from "@components/recipe/RecipeActions";
@@ -38,6 +39,7 @@ async function getRecipe(id: string) {
   if (!recipe || Object.keys(recipe).length === 0) {
     return null;
   }
+  recipe.image = recipe.image.replace(/\d{3}x\d{3}/, "636x393");
   return recipe;
 }
 
@@ -70,7 +72,6 @@ export default async function Page({ params }: Props) {
   const recipe = await getRecipe(id);
   if (!recipe) notFound();
   const initialSavedRecipes = await getSavedRecipes();
-
   return (
     <UnitProvider>
       <figure>
@@ -78,14 +79,15 @@ export default async function Page({ params }: Props) {
           className={RecipeImage}
           src={recipe.image}
           alt={recipe.title}
-          width={556}
-          height={370}
-          quality={90}
+          width={636}
+          height={393}
+          quality={100}
           priority
           fetchPriority="high"
         />
         <SourceCredit>
-          Source: <Link href={recipe.sourceUrl}>{recipe.creditsText}</Link>
+          Source:{" "}
+          <Link href={recipe.sourceUrl as unknown as URL}>{recipe.creditsText}</Link>
         </SourceCredit>
       </figure>
       <PageMargin>
@@ -120,30 +122,20 @@ export default async function Page({ params }: Props) {
 
 const RecipeImage = css({
   width: "100vw",
-  height: "min(362px, 50vh)",
-  objectFit: "cover",
-  opacity: "60%",
+  height: "auto",
+  maxHeight: "60vh",
 });
 
 const SourceCredit = styled("small")({
   display: "block",
-  marginLeft: "auto",
   width: "fit-content",
-  marginRight: "36px",
+  margin: "0 36px 0 auto",
   fontSize: `${14 / 16}rem`,
 
   [ON_MOBILE]: {
     width: "100%",
     margin: 0,
     textAlign: "center",
-  },
-});
-
-const Link = styled("a")({
-  color: "var(--text-950)",
-
-  "&:hover": {
-    textDecoration: "none",
   },
 });
 

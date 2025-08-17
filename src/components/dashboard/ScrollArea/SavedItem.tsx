@@ -1,38 +1,26 @@
 import { css, styled } from "@pigment-css/react";
 import { type SavedRecipe } from "@utils";
 import Image from "next/image";
-
-// https://spoonacular.com/food-api/docs#Show-Images
-const IMG_SIZE:
-  | "90x90"
-  | "240x150"
-  | "312x150"
-  | "312x231"
-  | "480x360"
-  | "556x370"
-  | "636x393" = "480x360";
-
-const width = parseInt(IMG_SIZE.split("x")[0] ?? "0");
-const height = parseInt(IMG_SIZE.split("x")[1] ?? "0");
+import Link from "next/link";
 
 export default function SavedItem({ id, name, imageType }: SavedRecipe) {
   return (
     <Container href={`/recipe/${id}`}>
       <Image
-        src={`https://img.spoonacular.com/recipes/${id}-${IMG_SIZE}.${imageType}`}
+        src={`https://img.spoonacular.com/recipes/${id}-636x393.${imageType}`}
         alt="hi"
         className={ImgCSS}
-        width={width}
-        height={height}
+        width={636}
+        height={393}
       />
       <RecipeName>{name}</RecipeName>
     </Container>
   );
 }
 
-const Container = styled("a")({
-  width: `${width / 2}px`,
-  height: `${height}px`,
+const Container = styled(Link)({
+  width: "636px",
+  height: "393px",
   position: "relative",
   borderRadius: "4px",
   overflow: "hidden",

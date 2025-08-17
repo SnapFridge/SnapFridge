@@ -59,7 +59,7 @@ const Wrapper = styled("section")({
     width: "100%",
     height: "100%",
     background: "var(--warn-500)",
-    opacity: "30%",
+    opacity: 0.3,
     zIndex: -1,
   },
 

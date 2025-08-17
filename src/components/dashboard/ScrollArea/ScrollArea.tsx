@@ -116,10 +116,8 @@ const ScrollAreaThumb = styled(ScrollArea.Thumb)({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "100%",
-    height: "100%",
-    minWidth: "44px",
-    minHeight: "44px",
+    width: "max(100%, 44px)",
+    height: "max(100%, 44px)",
   },
 });
 

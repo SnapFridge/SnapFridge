@@ -5,9 +5,8 @@ import Input from "@components/Input";
 import useToast from "@components/ToastProvider/UseToast";
 import VisuallyHidden from "@components/VisuallyHidden";
 import { css, styled } from "@pigment-css/react";
-import { scaleClamped } from "@utils";
+import { ON_MOBILE, scaleClamped } from "@utils";
 import { ImageUp } from "lucide-react";
-import { motion } from "motion/react";
 import { useState, type FormEvent } from "react";
 import { BarLoader } from "react-spinners";
 import { useInputState } from "../InputProvider";
@@ -82,7 +81,7 @@ function ImageUpload() {
       <EmptyTitle className={`${Appear} ${imgURLs.length > 0 ? "appear" : ""}`}>
         Upload fridge images to get started!
       </EmptyTitle>
-      <Form layout onSubmit={(e) => void fetchGemini(e)}>
+      <Form onSubmit={(e) => void fetchGemini(e)}>
         <FileUploader>
           <HiddenUpload
             label={<VisuallyHidden>Upload image(s)</VisuallyHidden>}
@@ -94,16 +93,16 @@ function ImageUpload() {
             name="fileInput"
           />
           {imgURLs.length < 1 ? (
-            <NoImageContainer>
+            <Container className="empty">
               <ImageUp aria-hidden size={36} />
               <SupportedFormats>Supported formats: png, jpg, webp</SupportedFormats>
-            </NoImageContainer>
+            </Container>
           ) : (
-            <ImageContainer as="ul">
+            <Container as="ul" className="notEmpty">
               {imgURLs.map((url) => (
                 <FridgeImage key={url} src={url} deleteImage={deleteImage} />
               ))}
-            </ImageContainer>
+            </Container>
           )}
         </FileUploader>
         <ScanButton
@@ -121,6 +120,7 @@ function ImageUpload() {
 
 const Appear = css({
   transition: "opacity .25s, visibility 0s",
+
   "&.appear": {
     transition: "opacity .25s, visibility 0s .25s",
     opacity: 0,
@@ -135,7 +135,7 @@ const EmptyTitle = styled("h1")({
   fontSize: scaleClamped(20, 30),
 });
 
-const Form = styled(motion.form)({
+const Form = styled("form")({
   width: "100%",
   "& > *": {
     width: "100%",
@@ -155,12 +155,11 @@ const HiddenUpload = styled(Input)({
   opacity: 0,
 });
 
-const BaseContainer = styled("div")({
+const Container = styled("div")({
   display: "flex",
   border: "4px dashed var(--accent-300)",
   borderRadius: "16px",
   background: "color-mix(in srgb, var(--background-50) 65%, transparent)",
-
   [`${HiddenUpload}:focus + &`]: {
     /* Try to get the default outline color */
     outline: ["5px auto -webkit-focus-ring-color", "medium auto currentColor"],
@@ -168,27 +167,29 @@ const BaseContainer = styled("div")({
   [`${HiddenUpload}:hover + &`]: {
     background: "color-mix(in srgb, var(--background-100) 50%, transparent)",
   },
-});
-
-const NoImageContainer = styled(BaseContainer)({
-  gap: "12px",
-  flexDirection: "column",
-  justifyContent: "center",
-  alignItems: "center",
-  height: scaleClamped(147, 184, false, 320, 406),
-});
-
-const ImageContainer = styled(BaseContainer)({
-  height: "fit-content",
-  ["--gap" as string]: scaleClamped(7, 18, false, 320, 673),
+  ["--gap" as string]: scaleClamped(7, 15, false, 320, 667),
   rowGap: "var(--gap)",
-  flexWrap: "wrap",
-  justifyContent: "space-around",
-  margin: "auto",
-  padding: "15px",
-  borderBottom: "none",
-  borderBottomRightRadius: 0,
-  borderBottomLeftRadius: 0,
+
+  "&.empty": {
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    height: scaleClamped(172, 197, false, 577, 667),
+
+    [ON_MOBILE]: {
+      height: scaleClamped(143, 196, false, 320, 442),
+    },
+  },
+  "&.notEmpty": {
+    height: "fit-content",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    margin: "auto",
+    padding: "15px",
+    borderBottom: "none",
+    borderBottomRightRadius: 0,
+    borderBottomLeftRadius: 0,
+  },
 });
 
 const SupportedFormats = styled("div")({
@@ -205,7 +206,6 @@ const ScanButton = styled(Button)({
   borderRadius: "16px",
   borderTopRightRadius: 0,
   borderTopLeftRadius: 0,
-
   "&:hover:not(:disabled)": {
     background: "var(--gray-700)",
   },

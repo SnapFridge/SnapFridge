@@ -43,7 +43,7 @@ export const Container = styled("div")({
     borderTopRightRadius: "8px",
     borderBottomRightRadius: "8px",
     background: "var(--accent-500)",
-    opacity: "30%",
+    opacity: 0.3,
     position: "absolute",
     top: 0,
     left: 0,
@@ -53,8 +53,7 @@ export const Container = styled("div")({
   },
 
   [ON_MOBILE]: {
-    height: "fit-content",
-    maxHeight: "350px",
+    height: "min(fit-content, 350px)",
   },
 });
 

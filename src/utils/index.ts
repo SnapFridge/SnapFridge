@@ -4,8 +4,8 @@ export const MOBILE_BREAKPOINT = 576;
 const MIN_SUPPORTED_WIDTH = 320;
 export const MAX_SUPPORTED_WIDTH = 1920;
 
-export const ON_MOBILE = `@media (max-width: ${MOBILE_BREAKPOINT / 16}rem)`;
-export const ON_DESKTOP = ON_MOBILE.replace("max", "min");
+export const ON_MOBILE = `@media (width < ${MOBILE_BREAKPOINT / 16}rem)`;
+export const ON_DESKTOP = ON_MOBILE.replace("<", ">");
 
 export const PageMargin = styled("div")({
   margin: "0 var(--page-margin)",

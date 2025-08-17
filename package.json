@@ -1,7 +1,6 @@
 {
   "type": "module",
   "scripts": {
-    "preinstall": "next telemetry disable",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

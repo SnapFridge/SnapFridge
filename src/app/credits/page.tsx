@@ -23,7 +23,7 @@ export default function Page() {
           <Image
             width={1704}
             height={1704}
-            className={ImageCSS}
+            className={ImgCSS}
             src="/Landfill.png"
             alt="Landfill worker clearing through a landfill of fruit waste"
             quality={45}
@@ -76,6 +76,6 @@ const CreditList = styled("ul")({
   },
 });
 
-const ImageCSS = css({
+const ImgCSS = css({
   borderRadius: "6px",
 });

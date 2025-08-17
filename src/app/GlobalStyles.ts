@@ -7,7 +7,7 @@ globalCss`
   :root {
     --nav-height: 5rem;  /* 80px / 16 */
     --nav-margin: 1.25rem;  /* 20px / 16 */
-    --page-margin: ${scaleClamped(25, 120)};
+    --page-margin: ${scaleClamped(15, 110)};
     --1rem: ${scaleClamped(14, 22)};
     --1-25rem: ${scaleClamped(17, 27)};
     

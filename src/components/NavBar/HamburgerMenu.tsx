@@ -39,8 +39,7 @@ function HamburgerMenu({ links }: Props) {
             {links.map(({ href, title }, index) => (
               <Dialog.Close key={href} autoFocus={index === 0} asChild>
                 <MenuLink href={href}>
-                  <span>{title}</span>
-                  <Right>{">"}</Right>
+                  {title} {" >"}
                 </MenuLink>
               </Dialog.Close>
             ))}
@@ -73,7 +72,7 @@ const Overlay = styled(Dialog.Overlay)({
   display: "none",
   // Rare exception where we don't want the color to change
   background: "#000000",
-  opacity: "70%",
+  opacity: 0.7,
   position: "fixed",
   inset: 0,
 
@@ -118,7 +117,7 @@ const MenuLink = styled(Link)({
   display: "flex",
   alignItems: "center",
   gap: "8px",
-
+  whiteSpace: "preserve",
   fontSize: `${18 / 16}rem`,
   padding: "auto 0",
   minHeight: `${44 / 16}rem`,
@@ -144,10 +143,6 @@ const CenteredThemeSwitch = styled(ThemeSwitch)({
 const CloseButton = styled(Button)({
   display: "flex",
   justifyContent: "center",
-});
-
-const Right = styled("span")({
-  fontSize: `${24 / 16}rem`,
 });
 
 export default HamburgerMenu;

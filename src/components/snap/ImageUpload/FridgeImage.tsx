@@ -1,6 +1,6 @@
 import Button from "@components/Button";
 import VisuallyHidden from "@components/VisuallyHidden";
-import { styled } from "@pigment-css/react";
+import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@utils";
 import { Trash2 } from "lucide-react";
 import Image from "next/image";
@@ -18,6 +18,7 @@ function FridgeImage({ src, deleteImage }: Props) {
         type="button"
       >
         <Image
+          className={ImgCSS}
           width={150}
           height={150}
           src={src}
@@ -34,17 +35,20 @@ function FridgeImage({ src, deleteImage }: Props) {
 }
 const Wrapper = styled("li")({
   position: "relative",
-  maxWidth: "150px",
-  maxHeight: "150px",
   overflow: "clip",
   borderRadius: "8px",
-  width: "calc(33% - var(--gap))",
+  width: "min(calc(33% - var(--gap)), 163px)",
   [ON_MOBILE]: {
-    width: "calc(50% - var(--gap))",
+    width: "min(calc(50% - var(--gap)), 163px)",
   },
+  aspectRatio: 1,
+  lineHeight: 0,
 });
 
 const ImageBtn = styled("button")({
+  width: "100%",
+  height: "100%",
+
   transition: "all .25s",
   [`${Wrapper}:hover > &, &:focus`]: {
     boxShadow: "var(--shadow)",
@@ -72,6 +76,11 @@ const DeleteBtn = styled(Button)({
     opacity: 1,
     visibility: "unset",
   },
+});
+
+const ImgCSS = css({
+  width: "100%",
+  height: "100%",
 });
 
 export default FridgeImage;

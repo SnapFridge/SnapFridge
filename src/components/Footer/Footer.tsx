@@ -21,7 +21,7 @@ function Footer() {
             <Link href="/credits">Credits</Link>
           </li>
           <li>
-            <Link href="/snap">Try SnapFridge</Link>
+            <Link href="/snap">Snap</Link>
           </li>
           <li>
             <Link href="/about">About Us</Link>

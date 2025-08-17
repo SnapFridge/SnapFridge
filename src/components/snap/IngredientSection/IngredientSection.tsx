@@ -5,7 +5,6 @@ import Switch from "@components/Switch";
 import { styled } from "@pigment-css/react";
 import { type Recipe } from "@utils";
 import { Archive } from "lucide-react";
-import { motion } from "motion/react";
 import { useState, type FormEvent } from "react";
 import IngredientDialog from "../IngredientDialog";
 import { useInputState } from "../InputProvider";
@@ -39,13 +38,12 @@ function IngredientSection() {
     }
     const query = new URLSearchParams({
       ingredients: ingredientsStr,
-      ranking: `${ranking}`,
+      ranking,
       ignorePantry: `${ignorePantry}`,
     }).toString();
-    const json = await getRecipesJSON(query);
     dispatch({
       type: "addRecipes",
-      recipes: JSON.parse(json) as Recipe[],
+      recipes: JSON.parse(await getRecipesJSON(query)) as Recipe[],
     });
   }
 
@@ -59,7 +57,7 @@ function IngredientSection() {
             <IngredientTitle>Your ingredients will appear here</IngredientTitle>
           </>
         ) : (
-          <IngredientList layout>
+          <IngredientList>
             {ingredients.map((i) => (
               <IngredientBox key={i} ingredient={i} />
             ))}
@@ -95,7 +93,7 @@ const IngredientTitle = styled("p")({
   padding: "0 24px",
 });
 
-const IngredientList = styled(motion.ul)({
+const IngredientList = styled("ul")({
   display: "flex",
   flexWrap: "wrap",
   width: "100%",

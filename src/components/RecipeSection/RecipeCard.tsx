@@ -5,35 +5,39 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
-  return recipe === undefined ? (
-    <Card as="li" style={{ border: 0 }}>
-      <SkeletonTheme
-        baseColor="var(--skeleton-base)"
-        highlightColor="var(--skeleton-highlight)"
-      >
-        <Skeleton containerClassName={RecipeTitle} />
-        <FoodImgSkeleton>
-          <Skeleton width="100%" height="100%" />
-        </FoodImgSkeleton>
-        <Ingredients>
-          <Skeleton containerClassName={IngredientTitle} count={0.4} />
-          <Skeleton containerClassName={IngredientNames} count={1.5} />
-        </Ingredients>
-        <MissedIngredients>
-          <Skeleton containerClassName={IngredientTitle} count={0.66} />
-          <Skeleton containerClassName={IngredientNames} count={1.8} />
-        </MissedIngredients>
-      </SkeletonTheme>
-    </Card>
-  ) : (
+  if (!recipe) {
+    return (
+      <Card as="li" style={{ border: 0 }}>
+        <SkeletonTheme
+          baseColor="var(--skeleton-base)"
+          highlightColor="var(--skeleton-highlight)"
+        >
+          <Skeleton containerClassName={RecipeTitle} />
+          <FoodImgSkeleton>
+            <Skeleton width="100%" height="100%" />
+          </FoodImgSkeleton>
+          <Ingredients>
+            <Skeleton containerClassName={IngredientTitle} count={0.4} />
+            <Skeleton containerClassName={IngredientNames} count={1.5} />
+          </Ingredients>
+          <MissedIngredients>
+            <Skeleton containerClassName={IngredientTitle} count={0.66} />
+            <Skeleton containerClassName={IngredientNames} count={1.8} />
+          </MissedIngredients>
+        </SkeletonTheme>
+      </Card>
+    );
+  }
+  return (
     <li>
       <Card href={`/recipe/${recipe.id}`}>
         <h3 className={RecipeTitle}>{recipe.title}</h3>
         <Image
-          src={recipe.image}
+          src={recipe.image.replace(/\d{3}x\d{3}/, "636x393")}
           alt={recipe.title}
-          width={312}
-          height={231}
+          width={636}
+          height={393}
+          quality={100}
           className={FoodImg}
         />
         <Ingredients>
@@ -117,7 +121,7 @@ const FoodImgSkeleton = styled("div")({
   display: "block",
   gridArea: "2 / 1 / 4 / 2",
   width: "100%",
-  aspectRatio: "312 / 231",
+  aspectRatio: 1.618,
 });
 
 const Ingredients = styled("div")({

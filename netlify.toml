@@ -5,7 +5,7 @@ publish = "build"
 [functions]
   included_files = ["public/functions/**"]
 
-# Headers for static assets, a.k.a everything but HTML files
+# Headers for static assets (idk why but images aren't included)
 [[headers]]
   for = "/*"
   [headers.values]
