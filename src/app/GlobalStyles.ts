@@ -27,7 +27,7 @@ globalCss`
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
 
-    @media (min-width: ${MAX_SUPPORTED_WIDTH}px) {
+    @media (width > ${MAX_SUPPORTED_WIDTH}px) {
       width: ${MAX_SUPPORTED_WIDTH}px;
       margin: auto;
     }
@@ -51,7 +51,7 @@ globalCss`
   /* Element Defaults */
   img, picture, video, canvas, svg {
     display: block;
-    max-width: 100%;
+    width < 100%;
   }
 
   input, button, textarea, select {
@@ -63,7 +63,7 @@ globalCss`
     text-wrap: balance;
   }
 
-  ul {
+  ul, ol {
     list-style: none;
   }
 

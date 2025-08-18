@@ -111,7 +111,7 @@ const ScrollAreaThumb = styled(ScrollArea.Thumb)({
   position: "relative",
 
   "&::before": {
-    content: "",
+    content: "''",
     position: "absolute",
     top: "50%",
     left: "50%",

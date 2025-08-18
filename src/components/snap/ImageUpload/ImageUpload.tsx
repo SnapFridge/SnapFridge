@@ -158,7 +158,6 @@ const HiddenUpload = styled(Input)({
 const Container = styled("div")({
   display: "flex",
   border: "4px dashed var(--accent-300)",
-  borderRadius: "16px",
   background: "color-mix(in srgb, var(--background-50) 65%, transparent)",
   [`${HiddenUpload}:focus + &`]: {
     /* Try to get the default outline color */
@@ -168,14 +167,13 @@ const Container = styled("div")({
     background: "color-mix(in srgb, var(--background-100) 50%, transparent)",
   },
   ["--gap" as string]: scaleClamped(7, 15, false, 320, 667),
-  rowGap: "var(--gap)",
-
+  gap: "var(--gap) 0",
   "&.empty": {
+    borderRadius: "16px",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
     height: scaleClamped(172, 197, false, 577, 667),
-
     [ON_MOBILE]: {
       height: scaleClamped(143, 196, false, 320, 442),
     },
@@ -187,8 +185,7 @@ const Container = styled("div")({
     margin: "auto",
     padding: "15px",
     borderBottom: "none",
-    borderBottomRightRadius: 0,
-    borderBottomLeftRadius: 0,
+    borderRadius: "16px 16px 0 0",
   },
 });
 
@@ -203,9 +200,7 @@ const ScanButton = styled(Button)({
   color: "var(--text-50)",
   height: `${35 / 16}rem`,
   fontSize: `${20 / 16}rem`,
-  borderRadius: "16px",
-  borderTopRightRadius: 0,
-  borderTopLeftRadius: 0,
+  borderRadius: "0 0 16px 16px",
   "&:hover:not(:disabled)": {
     background: "var(--gray-700)",
   },

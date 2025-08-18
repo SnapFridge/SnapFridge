@@ -28,7 +28,6 @@ const ToggleGroupRoot = styled(ToggleGroup.Root)({
   maxWidth: "400px",
   height: "fit-content",
   display: "flex",
-
   [ON_MOBILE]: {
     flexDirection: "column",
     boxShadow: "var(--shadow)",
@@ -44,34 +43,27 @@ const ToggleGroupItem = styled(ToggleGroup.Item)({
   alignItems: "center",
   justifyContent: "center",
   userSelect: "none",
-
   [ON_DESKTOP]: {
     boxShadow: "var(--shadow)",
     border: "1px solid var(--text-400)",
     "&:first-child": {
       borderRight: 0,
-      borderTopLeftRadius: "150px",
-      borderBottomLeftRadius: "150px",
+      borderRadius: "150px 0 0 150px",
     },
-
     "&:last-child": {
       borderLeft: 0,
-      borderTopRightRadius: "150px",
-      borderBottomRightRadius: "150px",
+      borderRadius: "0 150px 150px 0",
     },
   },
-
   '&[data-state="on"]': {
     background: "var(--background-200)",
     color: "var(--text-950)",
   },
-
   '&[data-state="off"]': {
     background: "transparent",
     color: "var(--gray-600)",
   },
-
-  '&[data-state="on"][data-disabled]': {
+  "&[data-disabled]": {
     background: "var(--background-100)",
     color: "var(--gray-600)",
   },

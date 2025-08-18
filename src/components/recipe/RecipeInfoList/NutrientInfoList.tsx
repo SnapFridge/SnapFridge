@@ -34,7 +34,6 @@ const ListItem = styled("li")({
   display: "flex",
   justifyContent: "space-between",
   flex: 1,
-  minHeight: 0,
 });
 
 export default NutrientInfoList;

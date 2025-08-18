@@ -102,7 +102,6 @@ const Container = styled("div")({
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
-
   [ON_MOBILE]: {
     zIndex: 1,
     flexDirection: "row",
@@ -133,7 +132,6 @@ const RecipeActionText = styled("p")({
   display: "block",
   fontSize: `${16 / 16}rem`,
   fontWeight: 700,
-
   [ON_MOBILE]: {
     fontSize: `${14 / 16}rem`,
   },
@@ -149,7 +147,6 @@ const UnitButton = styled(Button)({
   color: "var(--text-50)",
   fontSize: `${16 / 16}rem`,
   fontWeight: 700,
-
   "&:hover": {
     background: "var(--text-700)",
   },

@@ -24,7 +24,7 @@ function AboutUsCards() {
         </p>
       </Card>
       <Card>
-        <h1>Andrew Kim</h1>
+        <h1>Andrew "Xandrew" Kim</h1>
         <p>
           Hello, my name is Andrew Kim and I'm a senior at Cypress High School. I know
           React, Next.js, Astro, Svelte and many others. I built many website with these
@@ -38,14 +38,17 @@ function AboutUsCards() {
 }
 
 const CardContainer = styled("ul")({
+  width: "100%",
   display: "flex",
   justifyContent: "space-around",
   listStyleType: "none",
   gap: "24px",
   contentVisibility: "auto",
 
-  "@media (max-width: 768px)": {
+  "@media (width < 1100px)": {
+    margin: "32px auto 0 !important",
     flexDirection: "column",
+    maxWidth: "625px",
   },
 });
 

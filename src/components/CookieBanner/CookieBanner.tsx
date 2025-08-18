@@ -72,11 +72,9 @@ const Container = styled(motion.section)({
   borderRadius: "12px",
   padding: "24px",
   textAlign: "center",
-
   "& > *": {
     margin: "12px 0 0",
   },
-
   [ON_MOBILE]: {
     bottom: "12px",
     right: 0,

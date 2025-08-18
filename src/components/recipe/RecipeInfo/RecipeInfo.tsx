@@ -137,7 +137,6 @@ export function RecipeInfo({ recipe }: { recipe: SpoonacularRecipe }) {
 }
 
 const Summary = styled("p")({
-  // Have the a tags use our own styling
   "& > a": {
     color: "var(--text-900)",
     fontWeight: 700,

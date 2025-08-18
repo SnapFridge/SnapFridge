@@ -3,7 +3,7 @@
 import { type SpoonacularRecipe } from "@components/recipe/RecipeInfo";
 import { useUnit } from "@components/UnitProvider";
 import { styled } from "@pigment-css/react";
-import { ON_MOBILE, roundNumber } from "@utils";
+import { roundNumber } from "@utils";
 
 function RecipeInfoList({
   ingredients,
@@ -34,26 +34,14 @@ export const Container = styled("div")({
   padding: "12px",
   position: "relative",
   width: "min(100%, 400px)",
-  height: "350px",
+  height: "55vh",
   display: "flex",
   flexDirection: "column",
+  borderRadius: "0 8px 8px 0",
+  background: "color-mix(in srgb, var(--accent-500) 30%, transparent)",
 
-  "&::before": {
-    content: "''",
-    borderTopRightRadius: "8px",
-    borderBottomRightRadius: "8px",
-    background: "var(--accent-500)",
-    opacity: 0.3,
-    position: "absolute",
-    top: 0,
-    left: 0,
+  "@media (width < 650px)": {
     width: "100%",
-    height: "100%",
-    zIndex: -1,
-  },
-
-  [ON_MOBILE]: {
-    height: "min(fit-content, 350px)",
   },
 });
 

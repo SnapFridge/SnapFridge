@@ -146,8 +146,7 @@ const MainContent = styled("div")({
     "description close"
   `,
   gridTemplateColumns: "minmax(0, 1fr) auto",
-  columnGap: "16px",
-  rowGap: "4px",
+  gap: "4px 16px",
 });
 
 const Title = styled(Toast.Title)({

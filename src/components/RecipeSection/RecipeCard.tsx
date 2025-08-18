@@ -33,7 +33,7 @@ function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
       <Card href={`/recipe/${recipe.id}`}>
         <h3 className={RecipeTitle}>{recipe.title}</h3>
         <Image
-          src={recipe.image.replace(/\d{3}x\d{3}/, "636x393")}
+          src={recipe.image}
           alt={recipe.title}
           width={636}
           height={393}
@@ -79,14 +79,14 @@ const Card = styled("a")({
   gridTemplateRows: "1fr 2fr 2fr",
   columnGap: "24px",
   alignItems: "center",
-
   transition: "transform .25s",
+
   "&:hover": {
     transform: "scale(1.02)",
   },
 
   "&:last-child": {
-    marginBottom: "max(28px, 1%)",
+    margin: "0 1% max(28px, 1%)",
   },
 
   [ON_MOBILE]: {
@@ -121,7 +121,7 @@ const FoodImgSkeleton = styled("div")({
   display: "block",
   gridArea: "2 / 1 / 4 / 2",
   width: "100%",
-  aspectRatio: 1.618,
+  aspectRatio: 1.351,
 });
 
 const Ingredients = styled("div")({

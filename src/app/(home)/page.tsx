@@ -65,7 +65,7 @@ export default function Page() {
               className={FridgeImg}
               fetchPriority="high"
               priority
-              sizes={`50vw, (max-width: ${MOBILE_BREAKPOINT}px) 60vw`}
+              sizes={`50vw, (width < ${MOBILE_BREAKPOINT}px) 60vw`}
             />
           </FridgeAndPointers>
         </FridgeSection>
@@ -100,7 +100,7 @@ export default function Page() {
                 src="/Landfill.png"
                 alt="Landfill worker clearing through a landfill of fruit waste"
                 quality={45}
-                sizes={`40vw, (max-width: ${MOBILE_BREAKPOINT}px) 80vw`}
+                sizes={`40vw, (width < ${MOBILE_BREAKPOINT}px) 80vw`}
               />
             </BottomStatistics>
           </StatisticsSection>
@@ -205,8 +205,7 @@ const FridgeSection = styled("section")({
   gridTemplateColumns: "40% 60%", // And here
   gridAutoFlow: "column",
   alignItems: "center",
-  marginBottom: "35px",
-
+  margin: "0 0 35px",
   [ON_MOBILE]: {
     margin: "35px 0 0",
   },
@@ -228,17 +227,14 @@ const StatisticsSection = styled("section")({
 const TopStatistics = styled("div")({
   width: "75%",
   margin: "auto",
-
   [ON_MOBILE]: {
     width: "100%",
   },
-
   "& > h2": {
     width: "100%",
     textAlign: "center",
     fontSize: scaleClamped(29, 52),
   },
-
   "& > small": {
     display: "block",
     width: "100%",
@@ -255,19 +251,16 @@ const BottomStatistics = styled("div")({
 
   margin: "64px 0 0",
   alignItems: "center",
-  rowGap: scaleClamped(15, 25),
-
+  gap: `${scaleClamped(15, 25)} 0`,
   "& > img": {
     borderRadius: "6px",
   },
-
   "& > h2": {
     fontSize: scaleClamped(29, 52),
     fontWeight: 500,
     textAlign: "center",
     whiteSpace: "pre-wrap",
   },
-
   "& > h2 > strong": {
     fontSize: scaleClamped(33, 56),
     display: "block",

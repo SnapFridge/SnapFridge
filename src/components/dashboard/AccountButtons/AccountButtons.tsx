@@ -18,7 +18,6 @@ const Container = styled("div")({
   margin: "24px 0 0",
   display: "flex",
   gap: "15px",
-
   [ON_MOBILE]: {
     flexDirection: "column",
   },

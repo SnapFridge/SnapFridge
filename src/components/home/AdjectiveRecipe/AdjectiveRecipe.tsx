@@ -19,7 +19,6 @@ function AdjectiveRecipes() {
 const Description = styled("p")({
   fontSize: "var(--1rem)",
   margin: "8px 0 16px",
-
   [ON_MOBILE]: {
     textAlign: "center",
   },

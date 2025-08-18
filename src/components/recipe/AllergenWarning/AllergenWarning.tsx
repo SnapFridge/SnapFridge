@@ -31,10 +31,10 @@ function AllergenWarning({ recipe }: Props) {
   return (
     <Wrapper>
       <TriangleAlert color="var(--warn-500)" size={32} aria-hidden />
-      <AllergenContent>
+      <div>
         <AllergenTitle>Possible Allergens</AllergenTitle>
         <AllergenText>{prettyPrintArray(allergens)}</AllergenText>
-      </AllergenContent>
+      </div>
     </Wrapper>
   );
 }
@@ -46,32 +46,21 @@ const Wrapper = styled("section")({
   alignItems: "center",
   position: "relative",
   gap: "24px",
+  margin: "0 0 24px",
   borderLeft: "2px solid var(--warn-600)",
-  marginBottom: "12px",
-
-  "&::before": {
-    content: "''",
-    position: "absolute",
-    borderTopRightRadius: "8px",
-    borderBottomRightRadius: "8px",
-    top: 0,
-    left: 0,
-    width: "100%",
-    height: "100%",
-    background: "var(--warn-500)",
-    opacity: 0.3,
-    zIndex: -1,
-  },
-
+  borderRadius: "0 8px 8px 0",
+  background: "color-mix(in srgb, var(--warn-500) 30%, transparent)",
   [ON_MOBILE]: {
-    margin: "0 auto",
+    borderRadius: 0,
+    borderRight: "2px solid var(--warn-600)",
+    margin: "0 auto 24px",
   },
 });
 
-const AllergenContent = styled("div")({});
 const AllergenTitle = styled("h2")({
   fontSize: `${20 / 16}rem`,
 });
+
 const AllergenText = styled("p")({
   fontSize: `${16 / 16}rem`,
 });

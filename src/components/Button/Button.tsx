@@ -28,7 +28,7 @@ const StyledButton = styled("button")<{ variant: Variant | undefined }>({
   fontSize: `${16 / 16}rem`,
   padding: `10px`,
   borderRadius: "8px",
-  border: "none",
+  border: 0,
   color: "var(--text-950)",
   // Hidden dependency relied upon by the trickery we use later
   position: "relative",
@@ -42,7 +42,7 @@ const StyledButton = styled("button")<{ variant: Variant | undefined }>({
   },
 
   // Apple recommends a minimum 44x44 tapping size
-  // Do a little trickery (Thank you Kevin)
+  // Do a little trickery (thanks Kevin)
   "&:after": {
     inset: "min(0, calc((100% - var(--click-target-minimum, 100%)) / 2))",
     content: "",

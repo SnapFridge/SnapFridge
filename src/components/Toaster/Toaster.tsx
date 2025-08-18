@@ -52,7 +52,6 @@ const ToastContainer = styled("div")({
   padding: "0 16px 16px 0",
   width: "400px",
   height: "fit-content",
-
   [ON_MOBILE]: {
     width: "100%",
     paddingLeft: "16px",

@@ -56,10 +56,8 @@ const LinksContainer = styled("ul")({
   margin: "24px 0 0",
   gap: "12px",
   fontWeight: "600",
-
   display: "grid",
   gridTemplateColumns: `repeat(2, ${scaleClamped(150, 190)})`,
-
   [ON_MOBILE]: {
     display: "block",
   },
@@ -75,9 +73,7 @@ const RightFooterCSS = css({
   height: "fit-content",
   display: "flex",
   gap: "12px",
-
   justifyContent: "flex-end",
-
   [ON_MOBILE]: {
     margin: "20px 0 0",
     justifyContent: "center",

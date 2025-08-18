@@ -20,42 +20,22 @@ type RecipeInstruction = {
   }[];
 };
 
-export default function RecipeStepsList({ recipes }: { recipes: SpoonacularRecipe }) {
+function RecipeStepList({ recipes }: { recipes: SpoonacularRecipe }) {
   return (
-    <RecipeList>
-      {recipes.analyzedInstructions.map((recipe: RecipeInstruction) => {
-        return (
-          <RecipeItem
-            recipe={recipe}
-            recipeTitle={recipes.title}
-            key={recipe.name || recipes.title}
-          />
-        );
-      })}
-    </RecipeList>
+    <ul>
+      {recipes.analyzedInstructions.map((recipe: RecipeInstruction, index) => (
+        <li key={index}>
+          <StepTitle>{recipe.name || recipes.title}</StepTitle>
+          <StepList>
+            {recipe.steps.map((step) => (
+              <Step key={step.number}>{step.step}</Step>
+            ))}
+          </StepList>
+        </li>
+      ))}
+    </ul>
   );
 }
-const RecipeList = styled("ul")({});
-
-function RecipeItem({
-  recipe,
-  recipeTitle,
-}: {
-  recipe: RecipeInstruction;
-  recipeTitle: SpoonacularRecipe["title"];
-}) {
-  return (
-    <StepContainer>
-      <StepTitle>{recipe.name || recipeTitle}</StepTitle>
-      <StepsList>
-        {recipe.steps.map((step) => {
-          return <li key={step.number}>{step.step}</li>;
-        })}
-      </StepsList>
-    </StepContainer>
-  );
-}
-const StepContainer = styled("li")({});
 
 const StepTitle = styled("h1")({
   [ON_MOBILE]: {
@@ -63,10 +43,22 @@ const StepTitle = styled("h1")({
   },
 });
 
-const StepsList = styled("ol")({
-  marginLeft: "24px",
-
+const StepList = styled("ol")({
+  margin: "10px 0 0 24px",
+  listStyle: "decimal inside",
   [ON_MOBILE]: {
-    marginTop: "12px",
+    margin: "10px 0 0",
   },
 });
+
+const Step = styled("li")({
+  "&::marker": {
+    fontWeight: 700,
+    fontSize: `${18 / 16}rem`,
+  },
+  "&:not(:first-child)": {
+    margin: "12px 0 0",
+  },
+});
+
+export default RecipeStepList;

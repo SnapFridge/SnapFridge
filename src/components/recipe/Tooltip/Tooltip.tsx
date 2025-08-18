@@ -2,6 +2,7 @@
 
 import VisuallyHidden from "@components/VisuallyHidden";
 import { styled } from "@pigment-css/react";
+import { scaleClamped } from "@utils";
 import { Flower, Leaf, Salad, Sprout, Trophy } from "lucide-react";
 import { useId } from "react";
 import { Tooltip } from "react-tooltip";
@@ -41,7 +42,7 @@ export default function AppTooltip({ type }: Props) {
   return (
     <>
       <Button id={id}>
-        <Icon size={44} color={color} aria-hidden />
+        <Icon size={scaleClamped(30, 40)} color={color} aria-hidden />
         <VisuallyHidden>This recipe is {type}!</VisuallyHidden>
       </Button>
       <Tooltip
@@ -68,4 +69,5 @@ const Button = styled("button")({
   height: "fit-content",
   width: "fit-content",
   background: "none",
+  margin: "0 0 24px",
 });

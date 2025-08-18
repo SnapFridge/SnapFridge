@@ -98,8 +98,7 @@ const IngredientList = styled("ul")({
   flexWrap: "wrap",
   width: "100%",
   padding: "44px 20px 20px",
-  rowGap: "13px",
-  columnGap: "6px",
+  gap: "13px 6px",
   justifyContent: "space-around",
   maxHeight: "50vh",
   overflow: "auto",
@@ -131,7 +130,7 @@ const SpoonacularForm = styled("form")({
   alignItems: "center",
 
   "& > *": {
-    marginBottom: "24px",
+    margin: "0 0 24px",
   },
 });
 

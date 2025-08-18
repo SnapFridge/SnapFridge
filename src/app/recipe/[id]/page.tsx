@@ -8,7 +8,7 @@ import NutrientInfoList from "@components/recipe/RecipeInfoList/NutrientInfoList
 import Tooltip from "@components/recipe/Tooltip";
 import { UnitProvider } from "@components/UnitProvider";
 import { css, styled } from "@pigment-css/react";
-import { ON_MOBILE, PageMargin, type SavedRecipe } from "@utils";
+import { ON_MOBILE, PageMargin, scaleClamped, type SavedRecipe } from "@utils";
 import { createClient } from "@utils/supabase/server";
 import { type Metadata } from "next";
 import Image from "next/image";
@@ -64,6 +64,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `Recipe ${id}`,
     description: `View, share, or save recipe ${id} on SnapFridge`,
+    robots: "noindex, nofollow",
   };
 }
 
@@ -85,10 +86,12 @@ export default async function Page({ params }: Props) {
           priority
           fetchPriority="high"
         />
-        <SourceCredit>
-          Source:{" "}
-          <Link href={recipe.sourceUrl as unknown as URL}>{recipe.creditsText}</Link>
-        </SourceCredit>
+        <PageMargin>
+          <SourceCredit>
+            Source:{" "}
+            <Link href={recipe.sourceUrl as unknown as URL}>{recipe.creditsText}</Link>
+          </SourceCredit>
+        </PageMargin>
       </figure>
       <PageMargin>
         <TitleSection>
@@ -121,7 +124,7 @@ export default async function Page({ params }: Props) {
 }
 
 const RecipeImage = css({
-  width: "100vw",
+  width: "100%",
   height: "auto",
   maxHeight: "60vh",
 });
@@ -131,7 +134,6 @@ const SourceCredit = styled("small")({
   width: "fit-content",
   margin: "0 36px 0 auto",
   fontSize: `${14 / 16}rem`,
-
   [ON_MOBILE]: {
     width: "100%",
     margin: 0,
@@ -146,11 +148,10 @@ const TitleSection = styled("div")({
 });
 
 const Title = styled("h1")({
-  fontSize: `${30 / 16}rem`,
-  margin: "5px 0 12px",
-
+  fontSize: scaleClamped(24, 35),
+  margin: "5px 0 24px",
   [ON_MOBILE]: {
-    margin: "12px 0 12px",
+    margin: "12px 0 24px",
     width: "100%",
     textAlign: "center",
   },
@@ -159,16 +160,17 @@ const Title = styled("h1")({
 const Wrapper = styled("div")({
   display: "flex",
   gap: "16px",
+
   // Allows us to tab the controls first
   flexDirection: "row-reverse",
 });
 
 const ListContainer = styled("div")({
   display: "flex",
-  marginBottom: "24px",
+  margin: "0 0 24px",
   gap: "12px",
 
-  [ON_MOBILE]: {
+  "@media (width < 650px)": {
     flexDirection: "column",
     alignItems: "center",
     gap: "24px",

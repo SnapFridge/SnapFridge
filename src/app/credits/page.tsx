@@ -27,7 +27,7 @@ export default function Page() {
             src="/Landfill.png"
             alt="Landfill worker clearing through a landfill of fruit waste"
             quality={45}
-            sizes={`50vw`}
+            sizes="50vw"
           />
         </li>
         <li>
@@ -42,7 +42,7 @@ export default function Page() {
             width={2417}
             height={2814}
             alt="Fridge filled with food inside"
-            sizes={`50vw`}
+            sizes="50vw"
           />
         </li>
         <li>

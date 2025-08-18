@@ -23,9 +23,6 @@ export default function Page() {
 }
 
 const Main = styled(PageMargin)({
-  width: "85%",
-  alignSelf: "center",
-  justifyItems: "center",
   fontSize: "var(--1rem)",
 
   "& > :not(:first-child)": {

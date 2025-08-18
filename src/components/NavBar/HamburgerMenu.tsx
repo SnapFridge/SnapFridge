@@ -62,7 +62,6 @@ function HamburgerMenu({ links }: Props) {
 
 const TriggerButton = styled(Button)({
   display: "none",
-
   [ON_MOBILE]: {
     display: "block",
   },
@@ -70,12 +69,10 @@ const TriggerButton = styled(Button)({
 
 const Overlay = styled(Dialog.Overlay)({
   display: "none",
-  // Rare exception where we don't want the color to change
   background: "#000000",
   opacity: 0.7,
   position: "fixed",
   inset: 0,
-
   [ON_MOBILE]: {
     display: "block",
   },
@@ -85,7 +82,6 @@ const Wrapper = styled(Dialog.Content)({
   zIndex: 2,
   display: "none",
   gap: "12px",
-
   flexDirection: "column",
   position: "fixed",
   right: 0,
@@ -93,7 +89,6 @@ const Wrapper = styled(Dialog.Content)({
   padding: "20px 24px",
   width: "250px",
   background: "var(--background-0)",
-
   [ON_MOBILE]: {
     display: "flex",
   },
@@ -106,7 +101,6 @@ const Title = styled(Dialog.Title)({
 const Content = styled("div")({
   display: "flex !important",
   gap: "26px",
-
   borderLeft: "2px solid var(--text-800)",
   paddingLeft: "16px",
   flexDirection: "column",
@@ -129,7 +123,6 @@ const CenteredUser = styled(User)({
   justifyContent: "center",
   padding: `10px`,
   borderRadius: "8px",
-
   "&:hover": {
     background: "var(--background-100)",
   },

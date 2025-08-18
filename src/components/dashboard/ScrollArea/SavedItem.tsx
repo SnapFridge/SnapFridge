@@ -7,11 +7,12 @@ export default function SavedItem({ id, name, imageType }: SavedRecipe) {
   return (
     <Container href={`/recipe/${id}`}>
       <Image
-        src={`https://img.spoonacular.com/recipes/${id}-636x393.${imageType}`}
+        src={`https://img.spoonacular.com/recipes/${id}-312x231.${imageType}`}
         alt="hi"
         className={ImgCSS}
-        width={636}
-        height={393}
+        width={312}
+        height={231}
+        quality={100}
       />
       <RecipeName>{name}</RecipeName>
     </Container>
@@ -19,8 +20,8 @@ export default function SavedItem({ id, name, imageType }: SavedRecipe) {
 }
 
 const Container = styled(Link)({
-  width: "636px",
-  height: "393px",
+  width: "312px",
+  height: "231px",
   position: "relative",
   borderRadius: "4px",
   overflow: "hidden",

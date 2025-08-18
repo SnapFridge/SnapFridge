@@ -59,7 +59,7 @@ const Wrapper = styled("div")({
   display: "flex",
   width: "100%",
   justifyContent: "center",
-  marginBottom: "28px",
+  margin: "0 0 28px",
 });
 
 const PageBtn = styled(Button)({

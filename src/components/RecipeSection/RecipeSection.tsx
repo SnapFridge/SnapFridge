@@ -1,4 +1,5 @@
 "use client";
+
 import { useInputState } from "@components/snap/InputProvider";
 import { styled } from "@pigment-css/react";
 import { scaleClamped, type Recipe } from "@utils";
