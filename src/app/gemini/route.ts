@@ -1,21 +1,23 @@
+import { randomBytes } from "node:crypto";
 import {
-  GoogleGenAI,
-  Type,
   type FileData,
   type GenerateContentResponse,
+  GoogleGenAI,
+  Type,
 } from "@google/genai";
-import { randomBytes } from "node:crypto";
 
-const ai = new GoogleGenAI({ apiKey: process.env["GEMINI_KEY"]! });
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_KEY! });
 
 async function ensureContext(contents: { fileData: FileData }[]) {
   const name = "ingredients";
+
+  // biome-ignore lint/suspicious/noImplicitAnyLet: Can't import type File_2
   let file;
   try {
     file = await ai.files.get({ name });
   } catch {
     file = await ai.files.upload({
-      file: "public/functions/" + name + ".csv",
+      file: `public/functions/${name}.csv`,
       config: {
         mimeType: "text/csv",
         name,
@@ -87,7 +89,6 @@ export async function POST(req: Request) {
     });
   }
 
-  /* eslint-disable @typescript-eslint/no-unsafe-assignment */
   const res: Generator = await ai.models.generateContentStream({
     model: "gemini-2.5-flash",
     contents,

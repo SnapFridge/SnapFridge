@@ -105,6 +105,7 @@ export type SpoonacularRecipe = {
 export function RecipeInfo({ recipe }: { recipe: SpoonacularRecipe }) {
   return (
     <div>
+      {/** biome-ignore lint/security/noDangerouslySetInnerHtml: <No other way> */}
       <Summary dangerouslySetInnerHTML={{ __html: recipe.summary }} />
       <CookingInfoContainer>
         <div>

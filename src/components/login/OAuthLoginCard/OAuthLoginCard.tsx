@@ -1,7 +1,7 @@
 import Button from "@components/Button";
 import Icon from "@components/Icon";
 import { styled } from "@pigment-css/react";
-import { type ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 type CustomProps = {
   variant: "Google" | "Github";

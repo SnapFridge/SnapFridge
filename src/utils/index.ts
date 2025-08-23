@@ -14,7 +14,7 @@ export const PageMargin = styled("div")({
 export const devEnv = process.env.NODE_ENV === "development";
 
 export function round(num: number, places = 4) {
-  const factor = Math.pow(10, places);
+  const factor = 10 ** places;
   return Math.round((num + Number.EPSILON) * factor) / factor;
 }
 

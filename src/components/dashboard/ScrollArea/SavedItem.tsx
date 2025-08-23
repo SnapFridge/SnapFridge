@@ -1,5 +1,5 @@
 import { css, styled } from "@pigment-css/react";
-import { type SavedRecipe } from "@utils";
+import type { SavedRecipe } from "@utils";
 import Image from "next/image";
 import Link from "next/link";
 

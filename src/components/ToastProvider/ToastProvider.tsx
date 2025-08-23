@@ -1,11 +1,18 @@
 "use client";
 
 import { Toast } from "radix-ui";
-import { createContext, useState, type PropsWithChildren } from "react";
+import { createContext, type PropsWithChildren, useContext, useState } from "react";
 
-export const ToastContext = createContext<
+interface AppToast {
+  variant: "success" | "error" | "warn" | "info";
+  title: string;
+  description: string | undefined;
+  id: string;
+}
+
+const ToastContext = createContext<
   | {
-      toasts: Toast[];
+      toasts: AppToast[];
       addToast: (
         variant: "success" | "error" | "warn" | "info",
         title: string,
@@ -16,15 +23,8 @@ export const ToastContext = createContext<
   | undefined
 >(undefined);
 
-interface Toast {
-  variant: "success" | "error" | "warn" | "info";
-  title: string;
-  description: string | undefined;
-  id: string;
-}
-
-function ToastProvider({ children }: PropsWithChildren) {
-  const [toasts, setToasts] = useState<Toast[]>([]);
+export function ToastProvider({ children }: PropsWithChildren) {
+  const [toasts, setToasts] = useState<AppToast[]>([]);
 
   function addToast(
     variant: "success" | "error" | "warn" | "info",
@@ -56,4 +56,6 @@ function ToastProvider({ children }: PropsWithChildren) {
   );
 }
 
-export default ToastProvider;
+export function useToast() {
+  return useContext(ToastContext)!;
+}

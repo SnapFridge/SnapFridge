@@ -1,7 +1,7 @@
 import { styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@utils";
 import { TriangleAlert } from "lucide-react";
-import { type SpoonacularRecipe } from "../RecipeInfo";
+import type { SpoonacularRecipe } from "../RecipeInfo";
 
 interface Props {
   recipe: SpoonacularRecipe;

@@ -306,7 +306,6 @@ export default withPigment(
   })({
     experimental: {
       inlineCss: true,
-      typedRoutes: true,
       useLightningcss: true,
       reactCompiler: true,
       webpackBuildWorker: true,
@@ -336,9 +335,11 @@ export default withPigment(
     },
     images: {
       remotePatterns: [new URL("https://img.spoonacular.com/recipes/**")],
+      qualities: [45, 75, 100],
     },
     distDir: "build",
     poweredByHeader: false,
+    typedRoutes: true,
     productionBrowserSourceMaps: true,
     allowedDevOrigins: ["/_next/*"],
 
@@ -366,10 +367,6 @@ export default withPigment(
           headers,
         },
       ];
-    },
-
-    eslint: {
-      ignoreDuringBuilds: true,
     },
   }),
   {

@@ -1,4 +1,4 @@
-import { type SpoonacularRecipe } from "@components/recipe/RecipeInfo/RecipeInfo";
+import type { SpoonacularRecipe } from "@components/recipe/RecipeInfo/RecipeInfo";
 import { styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@utils";
 
@@ -23,8 +23,8 @@ type RecipeInstruction = {
 function RecipeStepList({ recipes }: { recipes: SpoonacularRecipe }) {
   return (
     <ul>
-      {recipes.analyzedInstructions.map((recipe: RecipeInstruction, index) => (
-        <li key={index}>
+      {recipes.analyzedInstructions.map((recipe: RecipeInstruction) => (
+        <li key={recipe.name || recipes.title}>
           <StepTitle>{recipe.name || recipes.title}</StepTitle>
           <StepList>
             {recipe.steps.map((step) => (

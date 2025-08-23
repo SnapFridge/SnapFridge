@@ -1,7 +1,7 @@
 import { styled } from "@pigment-css/react";
 import { scaleClamped } from "@utils";
 import { Switch } from "radix-ui";
-import { useId, type ComponentPropsWithoutRef } from "react";
+import { type ComponentPropsWithoutRef, useId } from "react";
 
 interface Props extends ComponentPropsWithoutRef<typeof Switch.Root> {
   label: string;
@@ -34,15 +34,12 @@ const SwitchRoot = styled(Switch.Root)({
   position: "relative",
   boxShadow: "0 2px 10px var(--gray-300)",
   WebkitTapHighlightColor: "rgba(0, 0, 0, 0)",
-
   "&:focus": {
     boxShadow: "0 0 0 2px var(--secondary-600)",
   },
-
-  '&[data-state="checked"]': {
+  "&[data-state=checked]": {
     background: "var(--secondary-500)",
   },
-
   "&[data-disabled]": {
     background: "var(--secondary-200)",
   },
@@ -57,11 +54,9 @@ const SwitchThumb = styled(Switch.Thumb)({
   boxShadow: "0 2px 2px var(--gray-300)",
   transition: "transform .1s",
   transform: "translateX(2px)",
-
-  '&[data-state="checked"]': {
+  "&[data-state=checked]": {
     transform: "translateX(19px)",
   },
-
   "&[data-disabled]": {
     background: "var(--gray-500)",
   },

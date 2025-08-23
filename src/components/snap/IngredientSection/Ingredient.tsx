@@ -52,12 +52,10 @@ const IngredientBtn = styled("button")({
   maxWidth: "220px",
   border: "2px solid var(--accent-400)",
   boxShadow: "var(--shadow)",
-
   transition: "transform .25s",
   [`${Wrapper}:hover > &, &:focus`]: {
     transform: "scale(1.04)",
   },
-
   "& > span": {
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
@@ -68,7 +66,6 @@ const IngredientBtn = styled("button")({
 const ActionButton = styled(Button)({
   background: "none",
   padding: "4px",
-
   transition: "transform .25s",
   "&:hover, &:focus": {
     transform: "translateY(-5px)",
@@ -91,7 +88,6 @@ const ActionContainer = styled("div")({
   opacity: 0,
   visibility: "hidden",
   transition: "opacity .25s, visibility 0s .25s",
-
   [`${Wrapper}:hover > &, ${IngredientBtn}:focus + &, &:focus-within`]: {
     transition: "opacity .25s, visibility 0s",
     opacity: 1,

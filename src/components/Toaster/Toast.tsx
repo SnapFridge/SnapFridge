@@ -1,28 +1,25 @@
 "use client";
 
 import Button from "@components/Button";
+import { useToast } from "@components/ToastProvider";
 import VisuallyHidden from "@components/VisuallyHidden";
 import { styled } from "@pigment-css/react";
 import { Check, CircleAlert, CircleX, Info, X } from "lucide-react";
 import { motion, type Variants } from "motion/react";
 import { Toast } from "radix-ui";
-import { useState, type PropsWithChildren, type ReactNode } from "react";
+import { type PropsWithChildren, type ReactNode, useState } from "react";
 
 type Props = {
   id: string;
   variant: "success" | "warn" | "error" | "info";
   title: ReactNode;
-  removeToast: (id: string) => void;
 };
 
-function AppToast({
-  id,
-  variant,
-  title,
-  removeToast,
-  children,
-}: PropsWithChildren<Props>) {
+function AppToast({ id, variant, title, children }: PropsWithChildren<Props>) {
   const [open, setOpen] = useState(true);
+  const { removeToast } = useToast();
+
+  // biome-ignore lint/suspicious/noImplicitAnyLet: Can't import icon type
   let Icon;
   switch (variant) {
     case "success":
@@ -37,7 +34,6 @@ function AppToast({
     default:
       Icon = Info;
   }
-
   return (
     <Toast.Root
       open={open}

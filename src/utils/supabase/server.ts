@@ -1,14 +1,14 @@
 import { createServerClient } from "@supabase/ssr";
 import { createClient as supabaseCreateClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
-import { type Database } from "./database";
+import type { Database } from "./database";
 
 export async function createClient() {
   const cookieStore = await cookies();
 
   return createServerClient<Database>(
-    process.env["NEXT_PUBLIC_SUPABASE_URL"]!,
-    process.env["NEXT_PUBLIC_SUPABASE_KEY"]!,
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_KEY!,
     {
       cookieEncoding: "raw",
       cookieOptions: {
@@ -33,8 +33,8 @@ export async function createClient() {
 
 export function createAdminClient() {
   return supabaseCreateClient<Database>(
-    process.env["NEXT_PUBLIC_SUPABASE_URL"]!,
-    process.env["SUPABASE_SECRET_KEY"]!,
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SECRET_KEY!,
     {
       auth: {
         detectSessionInUrl: false,

@@ -1,25 +1,22 @@
 "use client";
 
-import useToast from "@components/ToastProvider/UseToast";
+import { useToast } from "@components/ToastProvider";
 import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
-function LoginError() {
+function LoginError(): undefined {
   const params = useSearchParams();
-  const { addError } = useToast();
+  const { addToast } = useToast();
 
+  // biome-ignore lint/correctness/useExhaustiveDependencies: addToast makes inf loop
   useEffect(() => {
     const error = params.get("error");
     if (!error) {
       return;
     }
-    addError("Login Error", error);
-    history.replaceState(null, "", location.origin + "/login");
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    addToast("error", "Login Error", error);
+    history.replaceState(null, "", `${location.origin}/login`);
   }, [params]);
-
-  return <></>;
 }
 
 export default LoginError;

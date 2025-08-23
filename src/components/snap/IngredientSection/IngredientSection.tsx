@@ -3,9 +3,9 @@
 import Button from "@components/Button";
 import Switch from "@components/Switch";
 import { styled } from "@pigment-css/react";
-import { type Recipe } from "@utils";
+import type { Recipe } from "@utils";
 import { Archive } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { type FormEvent, useState } from "react";
 import IngredientDialog from "../IngredientDialog";
 import { useInputState } from "../InputProvider";
 import getRecipesJSON from "./actions";
@@ -118,7 +118,6 @@ const Container = styled("div")({
   width: "100%",
   flexDirection: "column",
   border: "1px solid var(--gray-600)",
-
   [`&:has(${IngredientList})`]: {
     borderColor: "var(--accent-400)",
   },
@@ -128,7 +127,6 @@ const SpoonacularForm = styled("form")({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
-
   "& > *": {
     margin: "0 0 24px",
   },
@@ -138,7 +136,6 @@ const SpoonacularButton = styled(Button)({
   background: "var(--primary-700)",
   color: "var(--text-50)",
   width: "200px",
-
   "&:hover:not(:disabled)": {
     background: "var(--primary-600)",
   },

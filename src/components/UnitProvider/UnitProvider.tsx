@@ -2,10 +2,10 @@
 
 import {
   createContext,
+  type PropsWithChildren,
   useContext,
   useMemo,
   useState,
-  type PropsWithChildren,
 } from "react";
 
 type Unit = "metric" | "imperial";
@@ -25,7 +25,7 @@ export function UnitProvider({ children }: PropsWithChildren) {
     return () => {
       setUnit((unit) => (unit === "metric" ? "imperial" : "metric"));
     };
-  }, [setUnit]);
+  }, []);
 
   const value = useMemo(() => {
     return {

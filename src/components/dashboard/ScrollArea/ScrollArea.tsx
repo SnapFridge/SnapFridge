@@ -1,5 +1,5 @@
 import { styled } from "@pigment-css/react";
-import { type SavedRecipe } from "@utils";
+import type { SavedRecipe } from "@utils";
 import { createClient } from "@utils/supabase/server";
 import { Ghost } from "lucide-react";
 import { ScrollArea } from "radix-ui";
@@ -94,11 +94,11 @@ const ScrollAreaScrollBar = styled(ScrollArea.ScrollAreaScrollbar)({
     background: "var(--gray-400)",
   },
 
-  '&[data-orientation="vertical"]': {
+  "&[data-orientation=vertical]": {
     width: "var(--scrollbar-size)",
   },
 
-  '&[data-orientation="horizontal"]': {
+  "&[data-orientation=horizontal]": {
     flexDirection: "column",
     height: "var(--scrollbar-size)",
   },

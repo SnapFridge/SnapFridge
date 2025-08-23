@@ -1,7 +1,7 @@
 import Link from "@components/Link";
 import { css, styled } from "@pigment-css/react";
 import { PageMargin } from "@utils";
-import { type Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {

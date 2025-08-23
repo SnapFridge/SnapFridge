@@ -1,5 +1,5 @@
 import { styled } from "@pigment-css/react";
-import { type ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 function VisuallyHidden({ children, ...delegated }: ComponentPropsWithoutRef<"span">) {
   return <Hidden {...delegated}>{children}</Hidden>;

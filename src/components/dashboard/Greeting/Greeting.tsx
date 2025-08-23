@@ -27,7 +27,7 @@ function Greeting() {
 
   return (
     <h1>
-      Good {greeting}, <Name>{user.user_metadata["name"] || user.email}</Name>
+      Good {greeting}, <Name>{user.user_metadata.name || user.email}</Name>
     </h1>
   );
 }

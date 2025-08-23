@@ -4,7 +4,7 @@ import IngredientSection from "@components/snap/IngredientSection";
 import { InputProvider } from "@components/snap/InputProvider";
 import { styled } from "@pigment-css/react";
 import { PageMargin } from "@utils";
-import { type Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Snap - SnapFridge",

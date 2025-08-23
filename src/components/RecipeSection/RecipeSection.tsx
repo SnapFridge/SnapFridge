@@ -2,7 +2,7 @@
 
 import { useInputState } from "@components/snap/InputProvider";
 import { styled } from "@pigment-css/react";
-import { scaleClamped, type Recipe } from "@utils";
+import { type Recipe, scaleClamped } from "@utils";
 import { ChefHat, Sparkles } from "lucide-react";
 import { useState } from "react";
 import Pagination from "./Pagination";

@@ -7,7 +7,7 @@ export async function GET(req: Request) {
     const params = new URLSearchParams({
       error,
     }).toString();
-    redirect(origin + "/login?" + params);
+    redirect(`${origin}/login?${params}`);
   }
 
   // Happens when this endpoint is recalled with error
@@ -34,5 +34,5 @@ export async function GET(req: Request) {
   // Add row for saved_recipe, won't update if already present
   await supabase.from("saved_recipes").insert({ id: user!.id, recipes: [] });
 
-  redirect(origin + "/dashboard");
+  redirect(`${origin}/dashboard`);
 }

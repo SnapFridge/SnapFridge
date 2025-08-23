@@ -1,6 +1,6 @@
 "use client";
 
-import { type SpoonacularRecipe } from "@components/recipe/RecipeInfo";
+import type { SpoonacularRecipe } from "@components/recipe/RecipeInfo";
 import { useUnit } from "@components/UnitProvider";
 import { styled } from "@pigment-css/react";
 import { roundNumber } from "@utils";
