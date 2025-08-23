@@ -2,7 +2,7 @@
 import Button from "@components/Button";
 import SuggestedInput from "@components/SuggestedInput";
 import { css } from "@pigment-css/react";
-import { useState, type PropsWithChildren } from "react";
+import { type PropsWithChildren, useState } from "react";
 import useSWR from "swr";
 import { useInputState } from "../InputProvider";
 

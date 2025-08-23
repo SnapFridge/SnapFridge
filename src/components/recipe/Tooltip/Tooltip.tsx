@@ -3,7 +3,7 @@
 import VisuallyHidden from "@components/VisuallyHidden";
 import { styled } from "@pigment-css/react";
 import { scaleClamped } from "@utils";
-import { Flower, Leaf, Salad, Sprout, Trophy } from "lucide-react";
+import { Flower, Leaf, type LucideIcon, Salad, Sprout, Trophy } from "lucide-react";
 import { useId } from "react";
 import { Tooltip } from "react-tooltip";
 
@@ -11,8 +11,8 @@ type Props = {
   type: "vegan" | "vegetarian" | "sustainable" | "healthy" | "popular";
 };
 
-export default function AppTooltip({ type }: Props) {
-  let Icon;
+function AppTooltip({ type }: Props) {
+  let Icon: LucideIcon;
   let color: string;
   const id = useId();
 
@@ -46,7 +46,7 @@ export default function AppTooltip({ type }: Props) {
         <VisuallyHidden>This recipe is {type}!</VisuallyHidden>
       </Button>
       <Tooltip
-        anchorSelect={"#" + id}
+        anchorSelect={`#${id}`}
         opacity={1}
         variant="light"
         style={{
@@ -71,3 +71,5 @@ const Button = styled("button")({
   background: "none",
   margin: "0 0 24px",
 });
+
+export default AppTooltip;

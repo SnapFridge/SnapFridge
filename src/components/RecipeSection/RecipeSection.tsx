@@ -2,7 +2,7 @@
 
 import { useInputState } from "@components/snap/InputProvider";
 import { styled } from "@pigment-css/react";
-import { scaleClamped, type Recipe } from "@utils";
+import { type Recipe, scaleClamped } from "@utils";
 import { ChefHat, Sparkles } from "lucide-react";
 import { useState } from "react";
 import Pagination from "./Pagination";
@@ -23,7 +23,7 @@ function RecipeSection({
   const recipes = recipes_ || state.recipes;
   function getPendingCards() {
     const cards = [];
-    for (let i = 0; i < countPerPage; i++) {
+    for (let i = 0; i < countPerPage; ++i) {
       cards.push(<RecipeCard key={i} recipe={undefined} />);
     }
     return cards;
@@ -34,7 +34,7 @@ function RecipeSection({
     const cards = [];
     const start = page * countPerPage;
     const end = Math.min(start + countPerPage, recipes.length);
-    for (let i = start; i < end; i++) {
+    for (let i = start; i < end; ++i) {
       const r = recipes[i] as Recipe;
       cards.push(<RecipeCard key={r.id} recipe={r} />);
     }

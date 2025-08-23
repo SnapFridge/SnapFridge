@@ -2,14 +2,15 @@
 
 import Button from "@components/Button";
 import createClient from "@utils/supabase/client";
-import { redirect } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 function LogoutButton() {
   const { auth } = createClient();
+  const router = useRouter();
   return (
     <Button
       variant="secondary"
-      onClick={() => void auth.signOut().then(() => redirect("/login"))}
+      onClick={() => auth.signOut().then(() => router.push("/login"))}
     >
       Sign out
     </Button>

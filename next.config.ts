@@ -295,6 +295,7 @@ const CSP = `
   font-src 'self';
   manifest-src 'self';
   frame-ancestors 'none';
+  form-action 'none';
   base-uri 'none';
   upgrade-insecure-requests;
   sandbox allow-forms allow-scripts allow-same-origin;
@@ -306,7 +307,6 @@ export default withPigment(
   })({
     experimental: {
       inlineCss: true,
-      typedRoutes: true,
       useLightningcss: true,
       reactCompiler: true,
       webpackBuildWorker: true,
@@ -336,9 +336,11 @@ export default withPigment(
     },
     images: {
       remotePatterns: [new URL("https://img.spoonacular.com/recipes/**")],
+      qualities: [45, 75, 100],
     },
     distDir: "build",
     poweredByHeader: false,
+    typedRoutes: true,
     productionBrowserSourceMaps: true,
     allowedDevOrigins: ["/_next/*"],
 
@@ -366,10 +368,6 @@ export default withPigment(
           headers,
         },
       ];
-    },
-
-    eslint: {
-      ignoreDuringBuilds: true,
     },
   }),
   {

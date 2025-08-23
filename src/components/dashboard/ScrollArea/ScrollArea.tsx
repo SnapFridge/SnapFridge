@@ -1,5 +1,5 @@
 import { styled } from "@pigment-css/react";
-import { type SavedRecipe } from "@utils";
+import type { SavedRecipe } from "@utils";
 import { createClient } from "@utils/supabase/server";
 import { Ghost } from "lucide-react";
 import { ScrollArea } from "radix-ui";
@@ -34,9 +34,6 @@ async function AppScrollArea() {
           ))}
         </Container>
       </ScrollAreaViewport>
-      <ScrollAreaScrollBar orientation="vertical">
-        <ScrollAreaThumb />
-      </ScrollAreaScrollBar>
       <ScrollAreaScrollBar orientation="horizontal">
         <ScrollAreaThumb />
       </ScrollAreaScrollBar>
@@ -70,7 +67,6 @@ const ScrollAreaRoot = styled(ScrollArea.Root)({
   width: "max(100%, 200px)",
   height: "fit-content",
   borderRadius: "5px",
-  overflow: "hidden",
   boxShadow: "var(--shadow)",
   background: "var(--accent-100)",
   ["--scrollbar-size" as string]: "10px",
@@ -94,11 +90,11 @@ const ScrollAreaScrollBar = styled(ScrollArea.ScrollAreaScrollbar)({
     background: "var(--gray-400)",
   },
 
-  '&[data-orientation="vertical"]': {
+  "&[data-orientation=vertical]": {
     width: "var(--scrollbar-size)",
   },
 
-  '&[data-orientation="horizontal"]': {
+  "&[data-orientation=horizontal]": {
     flexDirection: "column",
     height: "var(--scrollbar-size)",
   },

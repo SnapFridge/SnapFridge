@@ -8,9 +8,9 @@ import NutrientInfoList from "@components/recipe/RecipeInfoList/NutrientInfoList
 import Tooltip from "@components/recipe/Tooltip";
 import { UnitProvider } from "@components/UnitProvider";
 import { css, styled } from "@pigment-css/react";
-import { ON_MOBILE, PageMargin, scaleClamped, type SavedRecipe } from "@utils";
+import { ON_MOBILE, PageMargin, type SavedRecipe, scaleClamped } from "@utils";
 import { createClient } from "@utils/supabase/server";
-import { type Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 
@@ -19,7 +19,7 @@ async function getRecipe(id: string) {
     `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true`,
     {
       headers: {
-        "x-api-key": process.env["SPOONACULAR_KEY"]!,
+        "x-api-key": process.env.SPOONACULAR_KEY!,
       },
       next: {
         revalidate: 3600,

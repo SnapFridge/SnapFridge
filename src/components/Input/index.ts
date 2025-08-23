@@ -1,1 +1,1 @@
-export { InputElement, Label, default } from "./Input";
+export { default, InputElement, Label } from "./Input";

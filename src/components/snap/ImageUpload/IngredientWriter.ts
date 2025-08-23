@@ -1,5 +1,5 @@
-import { type Dispatch } from "react";
-import { type Action } from "../InputProvider";
+import type { Dispatch } from "react";
+import type { Action } from "../InputProvider";
 
 function getIngredientWriter(dispatch: Dispatch<Action>) {
   let inStr = false;

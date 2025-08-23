@@ -4,8 +4,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "pretty-check": "prettier -c .",
+    "check": "biome check",
+    "fix": "biome check --fix --unsafe",
     "update": "npm-check-updates -u && npm install && npm update",
     "new-component": "new-component --lang ts"
   },
@@ -14,15 +14,15 @@
     "node": ">=20.12.2"
   },
   "dependencies": {
-    "@google/genai": "^1.15.0",
+    "@google/genai": "^1.16.0",
     "@pigment-css/react": "^0.0.30",
-    "@supabase/ssr": "^0.6.1",
-    "@supabase/supabase-js": "^2.55.0",
+    "@supabase/ssr": "^0.7.0",
+    "@supabase/supabase-js": "^2.56.0",
     "downshift": "^9.0.10",
     "immer": "^10.1.1",
-    "lucide-react": "^0.540.0",
+    "lucide-react": "^0.542.0",
     "motion": "^12.23.12",
-    "next": "^15.4.7",
+    "next": "^15.5.2",
     "radix-ui": "^1.4.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
@@ -33,27 +33,18 @@
     "use-immer": "^0.11.0"
   },
   "devDependencies": {
-    "@next/bundle-analyzer": "^15.4.7",
-    "@next/eslint-plugin-next": "^15.4.7",
+    "@biomejs/biome": "^2.2.2",
+    "@next/bundle-analyzer": "^15.5.2",
     "@pigment-css/nextjs-plugin": "^0.0.30",
     "@types/node": "24.3.0",
-    "@types/react": "19.1.10",
-    "@types/react-dom": "^19.1.7",
-    "@typescript-eslint/eslint-plugin": "^8.40.0",
-    "@typescript-eslint/parser": "^8.40.0",
-    "babel-plugin-react-compiler": "^19.1.0-rc.2",
-    "eslint": "^9.33.0",
-    "eslint-config-next": "15.4.7",
-    "eslint-config-prettier": "^10.1.8",
+    "@types/react": "19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "babel-plugin-react-compiler": "^19.1.0-rc.3",
     "lightningcss": "^1.30.1",
-    "netlify-cli": "^23.1.4",
+    "netlify-cli": "^23.4.2",
     "new-component": "^6.0.0",
-    "npm-check-updates": "^18.0.2",
-    "prettier": "^3.6.2",
-    "prettier-plugin-organize-imports": "^4.2.0",
-    "supabase": "^2.34.3"
-  },
-  "overrides": {
+    "npm-check-updates": "^18.0.3",
+    "supabase": "^2.39.2",
     "typescript": "^5.9.2"
   }
 }

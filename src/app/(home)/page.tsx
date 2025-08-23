@@ -1,9 +1,9 @@
 import Button from "@components/Button";
-import RecipeSection from "@components/RecipeSection";
 import AdjectiveRecipes from "@components/home/AdjectiveRecipe";
 import Counter from "@components/home/Counter";
 import FoodPointer from "@components/home/FoodPointer";
 import recipesExample from "@components/home/RecipesExample";
+import RecipeSection from "@components/RecipeSection";
 import { InputProvider } from "@components/snap/InputProvider";
 import { css, styled } from "@pigment-css/react";
 import {
@@ -13,7 +13,7 @@ import {
   PageMargin,
   scaleClamped,
 } from "@utils";
-import { type Metadata } from "next";
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -82,14 +82,14 @@ export default function Page() {
               <h2>
                 That's
                 <strong>
-                  <Counter endValue={60} /> Million
+                  <Counter end={60} /> Million
                 </strong>
                 metric tons
               </h2>
               <h2 className={MobileOrderLast}>
                 Or
                 <strong>
-                  <Counter endValue={133} /> Billion
+                  <Counter end={133} duration={3.25} /> Billion
                 </strong>
                 pounds
               </h2>

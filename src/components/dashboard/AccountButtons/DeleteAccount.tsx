@@ -6,7 +6,7 @@ import { AnimatePresence, motion, type Variants } from "motion/react";
 import { useState } from "react";
 import deleteUser from "./actions";
 
-export default function DeleteButton() {
+function DeleteButton() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -88,3 +88,5 @@ const StyledButton = styled(Button)({
     color: "var(--text-950)",
   },
 });
+
+export default DeleteButton;

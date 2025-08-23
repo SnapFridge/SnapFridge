@@ -4,7 +4,33 @@ import { styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@utils";
 import useTypewriter from "./typewritter.helper";
 
-const ADJECTIVES = ["Delicious", "Excellent", "Wonderful", "Amazing", "Incredible"];
+function shuffle<T>(arr: T[]) {
+  let i = arr.length;
+  while (i > 0) {
+    const j = Math.floor(Math.random() * i--);
+    [arr[i], arr[j]] = [arr[j]!, arr[i]!];
+  }
+  return arr;
+}
+
+const ADJECTIVES = shuffle([
+  "Delicious",
+  "Excellent",
+  "Wonderful",
+  "Amazing",
+  "Incredible",
+  "Fantastic",
+  "Superb",
+  "Marvelous",
+  "Magnificent",
+  "Spectacular",
+  "Fabulous",
+  "Brilliant",
+  "Exceptional",
+  "Remarkable",
+  "Splendid",
+  "Stunning",
+]);
 
 function AdjectiveRecipes() {
   const adjective = useTypewriter(ADJECTIVES);

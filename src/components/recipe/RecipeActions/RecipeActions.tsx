@@ -1,7 +1,7 @@
 "use client";
 
 import Button from "@components/Button";
-import useToast from "@components/ToastProvider/UseToast";
+import { useToast } from "@components/ToastProvider";
 import { useUnit } from "@components/UnitProvider";
 import { useUser } from "@components/UserProvider";
 import { css, styled } from "@pigment-css/react";
@@ -21,7 +21,7 @@ function RecipeActions({
   imageType,
   initialSavedRecipes,
 }: SavedRecipe & Props) {
-  const { addError, addSuccess } = useToast();
+  const { addToast } = useToast();
   const [unit, toggleUnit] = useUnit();
   const user = useUser();
   const supabase = createClient();
@@ -50,8 +50,9 @@ function RecipeActions({
       if (error) {
         throw error;
       }
-    } catch (error) {
-      addError("Error saving data", `${error}`);
+    } catch (err) {
+      const message = (err instanceof Error && err.message) || "Unknown Error";
+      addToast("error", "Error saving data", message);
     }
   }
 
@@ -59,9 +60,9 @@ function RecipeActions({
     const url = location.toString();
     try {
       await navigator.clipboard.writeText(url);
-      addSuccess("Copied to clipboard");
+      addToast("success", "Copied to clipboard");
     } catch {
-      addError("Unable to copy to clipboard!");
+      addToast("error", "Can't copy to clipboard!");
     }
   }
   return (

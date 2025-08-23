@@ -35,8 +35,8 @@ function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
         <Image
           src={recipe.image}
           alt={recipe.title}
-          width={636}
-          height={393}
+          width={312}
+          height={231}
           quality={100}
           className={FoodImg}
         />

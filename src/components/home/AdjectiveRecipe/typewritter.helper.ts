@@ -1,24 +1,23 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function useTypewriter(
-  texts: string[],
-  delayPerChar = 100,
-  deleteDelay = 3000
-) {
+function useTypewriter(texts: string[]) {
   const index = useRef({
     text: 0,
     texts: 0,
   }).current;
-  const [displayTxt, setDisplayTxt] = useState("");
+  const [displayText, setDisplayText] = useState("");
   const [typing, setTyping] = useState(true);
 
-  function changeChar() {
+  // biome-ignore lint/correctness/useExhaustiveDependencies: displayText is required
+  useEffect(() => {
+    const delayPerChar = 100;
+    const deleteDelay = 2750;
     const text = texts[index.texts]!;
     setTimeout(() => {
       if (typing) {
         if (index.text < text.length) {
           const newTxt = text.slice(0, ++index.text);
-          setDisplayTxt(newTxt);
+          setDisplayText(newTxt);
         } else {
           setTimeout(() => {
             setTyping(false);
@@ -27,15 +26,16 @@ export default function useTypewriter(
       } else {
         if (index.text > 0) {
           const newTxt = text.slice(0, --index.text);
-          setDisplayTxt(newTxt);
+          setDisplayText(newTxt);
         } else {
           setTyping(true);
           index.texts = (index.texts + 1) % texts.length;
         }
       }
     }, delayPerChar);
-  }
-  useEffect(changeChar, [displayTxt, typing, delayPerChar, deleteDelay, index, texts]);
+  }, [displayText, typing, index, texts]);
 
-  return displayTxt;
+  return displayText;
 }
+
+export default useTypewriter;

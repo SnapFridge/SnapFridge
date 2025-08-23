@@ -4,13 +4,13 @@ import "./GlobalStyles";
 import CookieBanner from "@components/CookieBanner";
 import Footer from "@components/Footer";
 import NavBar from "@components/NavBar";
-import ToastProvider from "@components/ToastProvider";
 import Toaster from "@components/Toaster";
+import { ToastProvider } from "@components/ToastProvider";
 import { UserProvider } from "@components/UserProvider";
 import "@pigment-css/react/styles.css";
-import { type Metadata } from "next";
+import type { Metadata } from "next";
 import { Rubik } from "next/font/google";
-import { type PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
 
 const title = {
   template: "%s - SnapFridge",

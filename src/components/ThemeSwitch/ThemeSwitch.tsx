@@ -7,7 +7,6 @@ import { useCallback, useEffect, useState } from "react";
 
 function ThemeSwitch({ ...delegated }) {
   const [dark, setDark] = useState<boolean>();
-
   const toggleTheme = useCallback(
     (darkOverride?: boolean) => {
       if (darkOverride !== undefined) {
@@ -21,11 +20,9 @@ function ThemeSwitch({ ...delegated }) {
     },
     [dark]
   );
-
   useEffect(() => {
     toggleTheme(document.documentElement.classList.contains("dark"));
   }, [toggleTheme]);
-
   return (
     dark !== undefined && (
       <Button variant="icon" onClick={() => toggleTheme()} {...delegated}>

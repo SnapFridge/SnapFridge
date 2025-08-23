@@ -1,4 +1,4 @@
-import { type SpoonacularRecipe } from "@components/recipe/RecipeInfo/RecipeInfo";
+import type { SpoonacularRecipe } from "@components/recipe/RecipeInfo/RecipeInfo";
 import { styled } from "@pigment-css/react";
 import { roundNumber } from "@utils";
 import { Container, List, Title } from "./RecipeInfoList";

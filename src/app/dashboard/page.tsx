@@ -4,7 +4,7 @@ import ScrollArea from "@components/dashboard/ScrollArea";
 import { styled } from "@pigment-css/react";
 import { PageMargin, scaleClamped } from "@utils";
 import { Save } from "lucide-react";
-import { type Metadata } from "next";
+import type { Metadata } from "next";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {

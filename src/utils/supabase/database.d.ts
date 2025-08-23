@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-redundant-type-constituents */
-// Cuz of this bug https://github.com/supabase/supabase-js/issues/1288
-
 export type Json =
   | string
   | number
@@ -10,7 +7,7 @@ export type Json =
   | Json[];
 
 export type Database = {
-  // Allows to automatically instanciate createClient with right options
+  // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
     PostgrestVersion: "12.2.12 (cd3cf9e)";
@@ -19,16 +16,16 @@ export type Database = {
     Tables: {
       saved_recipes: {
         Row: {
-          recipes: Json[] | null;
           id: string;
+          recipes: Json[] | null;
         };
         Insert: {
-          recipes?: Json[] | null;
           id?: string;
+          recipes?: Json[] | null;
         };
         Update: {
-          recipes?: Json[] | null;
           id?: string;
+          recipes?: Json[] | null;
         };
         Relationships: [];
       };

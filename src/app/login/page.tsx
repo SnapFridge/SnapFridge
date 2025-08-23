@@ -1,7 +1,7 @@
 import LoginButtons from "@components/login/LoginButtons";
 import LoginError from "@components/login/LoginError";
 import { PageMargin } from "@utils";
-import { type Metadata } from "next";
+import type { Metadata } from "next";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {

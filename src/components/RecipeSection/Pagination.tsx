@@ -13,7 +13,7 @@ type Props = {
 function Pagination({ page, pageCount, onChange }: Props) {
   function getPageBtns() {
     const btns = [];
-    for (let i = 0; i < pageCount; i++) {
+    for (let i = 0; i < pageCount; ++i) {
       btns.push(
         <ToggleGroup.Item key={i} value={`${i}`} asChild>
           <PageBtn

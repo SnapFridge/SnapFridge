@@ -3,7 +3,7 @@
 import { styled } from "@pigment-css/react";
 import { ON_DESKTOP, ON_MOBILE } from "@utils";
 import { ToggleGroup } from "radix-ui";
-import { type ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 
 type FullToggleGroupRootProps = ComponentPropsWithoutRef<typeof ToggleGroup.Root>;
 type ToggleGroupProps = Extract<FullToggleGroupRootProps, { type: "single" }>;
@@ -37,8 +37,8 @@ const ToggleGroupRoot = styled(ToggleGroup.Root)({
 
 const ToggleGroupItem = styled(ToggleGroup.Item)({
   padding: "5px",
-  flex: "1 1 0",
   display: "flex",
+  flex: "1 1 0",
   fontSize: `${16 / 16}rem`,
   alignItems: "center",
   justifyContent: "center",
@@ -55,16 +55,12 @@ const ToggleGroupItem = styled(ToggleGroup.Item)({
       borderRadius: "0 150px 150px 0",
     },
   },
-  '&[data-state="on"]': {
+  "&[data-state=on]": {
     background: "var(--background-200)",
     color: "var(--text-950)",
   },
-  '&[data-state="off"]': {
+  "&[data-state=off], &[data-disabled]": {
     background: "transparent",
-    color: "var(--gray-600)",
-  },
-  "&[data-disabled]": {
-    background: "var(--background-100)",
     color: "var(--gray-600)",
   },
 });

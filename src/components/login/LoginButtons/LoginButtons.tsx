@@ -16,7 +16,7 @@ function LoginButtons() {
             void auth.signInWithOAuth({
               provider: "google",
               options: {
-                redirectTo: location.origin + "/auth",
+                redirectTo: `${location.origin}/auth`,
               },
             })
           }
@@ -27,7 +27,7 @@ function LoginButtons() {
             void auth.signInWithOAuth({
               provider: "github",
               options: {
-                redirectTo: location.origin + "/auth",
+                redirectTo: `${location.origin}/auth`,
               },
             })
           }

@@ -1,7 +1,7 @@
 import { styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@utils";
 import { TriangleAlert } from "lucide-react";
-import { type SpoonacularRecipe } from "../RecipeInfo";
+import type { SpoonacularRecipe } from "../RecipeInfo";
 
 interface Props {
   recipe: SpoonacularRecipe;
@@ -16,7 +16,7 @@ function prettyPrintArray(arr: string[]) {
       prettyPrint += ", ";
     }
   }
-  // Capitalize the first letter of the string
+  // Capitalize first letter
   return prettyPrint[0]!.toUpperCase() + prettyPrint.slice(1);
 }
 

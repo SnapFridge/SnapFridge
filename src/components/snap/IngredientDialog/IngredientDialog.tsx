@@ -60,10 +60,7 @@ const Overlay = styled(Dialog.Overlay)({
 });
 
 const Content = styled(Dialog.Content)({
-  top: 0,
-  right: 0,
-  left: 0,
-  bottom: 0,
+  inset: 0,
   position: "fixed",
   margin: "auto",
   background: "var(--background-0)",

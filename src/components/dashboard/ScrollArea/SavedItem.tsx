@@ -1,9 +1,9 @@
 import { css, styled } from "@pigment-css/react";
-import { type SavedRecipe } from "@utils";
+import type { SavedRecipe } from "@utils";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function SavedItem({ id, name, imageType }: SavedRecipe) {
+function SavedItem({ id, name, imageType }: SavedRecipe) {
   return (
     <Container href={`/recipe/${id}`}>
       <Image
@@ -24,7 +24,7 @@ const Container = styled(Link)({
   height: "231px",
   position: "relative",
   borderRadius: "4px",
-  overflow: "hidden",
+  overflow: "clip",
 });
 
 const ImgCSS = css({
@@ -61,3 +61,5 @@ const RecipeName = styled("p")({
     opacity: 1,
   },
 });
+
+export default SavedItem;

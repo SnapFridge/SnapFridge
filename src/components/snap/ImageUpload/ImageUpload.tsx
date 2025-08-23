@@ -2,12 +2,12 @@
 
 import Button from "@components/Button";
 import Input from "@components/Input";
-import useToast from "@components/ToastProvider/UseToast";
+import { useToast } from "@components/ToastProvider";
 import VisuallyHidden from "@components/VisuallyHidden";
 import { css, styled } from "@pigment-css/react";
 import { ON_MOBILE, scaleClamped } from "@utils";
 import { ImageUp } from "lucide-react";
-import { useState, type FormEvent } from "react";
+import { type FormEvent, useState } from "react";
 import { BarLoader } from "react-spinners";
 import { useInputState } from "../InputProvider";
 import FridgeImage from "./FridgeImage";
@@ -17,7 +17,7 @@ function ImageUpload() {
   const [imgURLs, setImgURLs] = useState<string[]>([]);
   const { state, dispatch } = useInputState();
   const { files } = state;
-  const { addWarn, addError } = useToast();
+  const { addToast } = useToast();
   const [pending, setPending] = useState(false);
 
   function handleFiles(files: FileList) {
@@ -39,9 +39,10 @@ function ImageUpload() {
       validFiles.push(file);
     }
     if (validFiles.length < files.length) {
-      addWarn(
+      addToast(
+        "error",
         "File Upload Error",
-        "Files with unsupported format were uploaded, they've been ignored."
+        "Files with unsupported format uploaded, they've been ignored."
       );
     }
 
@@ -51,7 +52,7 @@ function ImageUpload() {
   }
 
   function deleteImage(imgURL: string) {
-    const index = imgURLs.findIndex((url) => imgURL === url);
+    const index = imgURLs.indexOf(imgURL);
     dispatch({ type: "removeFile", index });
     setImgURLs(imgURLs.filter((_, idx) => idx !== index));
   }
@@ -65,14 +66,14 @@ function ImageUpload() {
     }
     const res = await fetch("/gemini", {
       method: "POST",
-      body: body,
+      body,
     });
     if (res.ok) {
       await res
         .body!.pipeThrough(new TextDecoderStream())
         .pipeTo(getIngredientWriter(dispatch));
     } else {
-      addError("Gemini fetching error", `${res.status} ${res.statusText}`);
+      addToast("error", "Gemini fetching error", `${res.status} ${res.statusText}`);
     }
     setPending(false);
   }
@@ -120,7 +121,6 @@ function ImageUpload() {
 
 const Appear = css({
   transition: "opacity .25s, visibility 0s",
-
   "&.appear": {
     transition: "opacity .25s, visibility 0s .25s",
     opacity: 0,
@@ -196,13 +196,13 @@ const SupportedFormats = styled("div")({
 });
 
 const ScanButton = styled(Button)({
-  background: "var(--background-700)",
+  background: "var(--background-600)",
   color: "var(--text-50)",
   height: `${35 / 16}rem`,
   fontSize: `${20 / 16}rem`,
   borderRadius: "0 0 16px 16px",
   "&:hover:not(:disabled)": {
-    background: "var(--gray-700)",
+    background: "var(--background-700)",
   },
 });
 

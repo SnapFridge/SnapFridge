@@ -1,4 +1,4 @@
-import { type Recipe } from "@utils";
+import type { Recipe } from "@utils";
 
 // JSON.parse is way faster than JS object (1.7x), especially when it's are this big
 const recipesExample = JSON.parse(

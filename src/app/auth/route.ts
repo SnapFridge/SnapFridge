@@ -2,12 +2,12 @@ import { createClient } from "@utils/supabase/server";
 import { redirect } from "next/navigation";
 
 export async function GET(req: Request) {
-  const { origin, searchParams } = new URL(req.url);
+  const { searchParams } = new URL(req.url);
   function errorRedirect(error: string) {
     const params = new URLSearchParams({
       error,
     }).toString();
-    redirect(origin + "/login?" + params);
+    redirect(`/login?${params}`);
   }
 
   // Happens when this endpoint is recalled with error
@@ -34,5 +34,5 @@ export async function GET(req: Request) {
   // Add row for saved_recipe, won't update if already present
   await supabase.from("saved_recipes").insert({ id: user!.id, recipes: [] });
 
-  redirect(origin + "/dashboard");
+  redirect("/dashboard");
 }

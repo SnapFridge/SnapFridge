@@ -1,14 +1,13 @@
 "use client";
 
+import type { Recipe } from "@utils";
 import {
   createContext,
-  useContext,
-  useEffect,
   type Dispatch,
   type PropsWithChildren,
+  useContext,
+  useEffect,
 } from "react";
-
-import { type Recipe } from "@utils";
 import { useImmerReducer } from "use-immer";
 
 export type State = {
@@ -24,7 +23,7 @@ export type Action =
   | { type: "removeFile"; index: number }
   | { type: "addRecipes"; recipes: Recipe[] }
   | { type: "setPendingSpoonacular" }
-  | { type: "_init"; state: Omit<State, "files"> };
+  | { type: "_set"; state?: Omit<State, "files"> };
 
 function reducer(draft: State, action: Action) {
   const store = sessionStorage;
@@ -65,9 +64,15 @@ function reducer(draft: State, action: Action) {
       draft.recipes = "pending";
       break;
     }
-    case "_init": {
-      draft.ingredients = action.state.ingredients;
-      draft.recipes = action.state.recipes;
+    case "_set": {
+      if (action.state) {
+        draft.ingredients = action.state.ingredients;
+        draft.recipes = action.state.recipes;
+        break;
+      }
+      draft.ingredients = draft.recipes = [];
+      store.removeItem("ingredients");
+      store.removeItem("recipes");
       break;
     }
   }
@@ -88,11 +93,10 @@ export function InputProvider({ children }: PropsWithChildren) {
   });
 
   useEffect(() => {
-    const store = sessionStorage;
-    const storedIngredients = store.getItem("ingredients");
-    const storedRecipes = store.getItem("recipes");
+    const storedIngredients = sessionStorage.getItem("ingredients");
+    const storedRecipes = sessionStorage.getItem("recipes");
     dispatch({
-      type: "_init",
+      type: "_set",
       state: {
         ingredients: storedIngredients ? (JSON.parse(storedIngredients) as string[]) : [],
         recipes: storedRecipes ? (JSON.parse(storedRecipes) as Recipe[]) : [],

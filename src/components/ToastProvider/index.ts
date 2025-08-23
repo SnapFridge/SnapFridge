@@ -1,1 +1,1 @@
-export { ToastContext, default } from "./ToastProvider";
+export { ToastProvider, useToast } from "./ToastProvider";

@@ -16,7 +16,7 @@ function AvatarLink({ ...delegated }) {
         <VisuallyHidden>Go to dashboard</VisuallyHidden>
         <Avatar.Image
           className={UserAvatar}
-          src={u?.user_metadata["avatar_url"] as string}
+          src={u?.user_metadata.avatar_url as string}
           alt="User image"
           crossOrigin=""
         />

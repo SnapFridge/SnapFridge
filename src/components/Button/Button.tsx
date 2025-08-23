@@ -1,5 +1,5 @@
 import { styled } from "@pigment-css/react";
-import { type ComponentPropsWithoutRef, type ElementType } from "react";
+import type { ComponentPropsWithoutRef, ElementType } from "react";
 
 type Variant = "primary" | "secondary" | "icon";
 type ButtonProps<C extends ElementType> = {
@@ -38,7 +38,7 @@ const StyledButton = styled("button")<{ variant: Variant | undefined }>({
   },
 
   "&:disabled": {
-    opacity: 0.8,
+    opacity: 0.7,
   },
 
   // Apple recommends a minimum 44x44 tapping size

@@ -1,17 +1,17 @@
 "use client";
 
-import { ToastContext } from "@components/ToastProvider";
+import { useToast } from "@components/ToastProvider";
 import { styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@utils";
 import { AnimatePresence, motion } from "motion/react";
 import { Toast } from "radix-ui";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import AppToast from "./Toast";
 
 function Toaster() {
   const [isClient, setIsClient] = useState(false);
-  const { toasts, removeToast } = useContext(ToastContext)!;
+  const { toasts } = useToast();
 
   const visibleToasts = toasts.slice(0, 5);
 
@@ -25,18 +25,11 @@ function Toaster() {
     <ToastContainer>
       <AnimatePresence mode="popLayout">
         {visibleToasts.map(({ id, title, description, variant }) => (
-          <AppToast
-            key={id}
-            id={id}
-            title={title}
-            variant={variant}
-            removeToast={removeToast}
-          >
+          <AppToast key={id} id={id} title={title} variant={variant}>
             {description}
           </AppToast>
         ))}
       </AnimatePresence>
-
       <Toast.Viewport asChild>
         <Viewport />
       </Toast.Viewport>
@@ -46,6 +39,7 @@ function Toaster() {
 }
 
 const ToastContainer = styled("div")({
+  zIndex: 2,
   position: "fixed",
   right: 0,
   bottom: 0,

@@ -48,7 +48,6 @@ const Wrapper = styled("li")({
 const ImageBtn = styled("button")({
   width: "100%",
   height: "100%",
-
   transition: "all .25s",
   [`${Wrapper}:hover > &, &:focus`]: {
     boxShadow: "var(--shadow)",
@@ -66,11 +65,9 @@ const DeleteBtn = styled(Button)({
   opacity: 0,
   visibility: "hidden",
   transition: "all .25s, visibility 0s .25s",
-
   "&:hover, &:focus": {
     transform: "scale(1.05)",
   },
-
   [`${Wrapper}:hover > &, ${ImageBtn}:focus + &, &:focus`]: {
     transition: "all .25s, visibility 0s",
     opacity: 1,

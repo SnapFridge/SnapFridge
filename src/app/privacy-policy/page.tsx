@@ -1,5 +1,5 @@
 import { PageMargin } from "@utils";
-import { type Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Privacy Policy - SnapFridge",
@@ -207,6 +207,7 @@ export default function Page() {
         <a
           href="https://www.termsfeed.com/blog/cookies/#What_Are_Cookies"
           target="_blank"
+          rel="noopener"
         >
           TermsFeed website
         </a>{" "}
