@@ -117,7 +117,7 @@ export default async function Page({ params }: Props) {
           <Spacer />
           <NutrientInfoList nutrients={recipe.nutrition.nutrients} />
         </ListContainer>
-        <RecipeStepsList recipes={recipe} />
+        <RecipeStepsList recipe={recipe} />
       </PageMargin>
     </UnitProvider>
   );
@@ -126,7 +126,8 @@ export default async function Page({ params }: Props) {
 const RecipeImage = css({
   width: "100%",
   height: "auto",
-  maxHeight: "60vh",
+  maxHeight: "67vh",
+  objectFit: "cover",
 });
 
 const SourceCredit = styled("small")({

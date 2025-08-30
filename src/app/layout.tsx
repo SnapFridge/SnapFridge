@@ -1,5 +1,3 @@
-// organize-imports-ignore
-
 import "./GlobalStyles";
 import CookieBanner from "@components/CookieBanner";
 import Footer from "@components/Footer";

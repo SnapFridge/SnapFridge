@@ -2,33 +2,15 @@ import type { SpoonacularRecipe } from "@components/recipe/RecipeInfo/RecipeInfo
 import { styled } from "@pigment-css/react";
 import { ON_MOBILE } from "@utils";
 
-type RecipeInstruction = {
-  name: string;
-  steps: {
-    number: number;
-    step: string;
-    ingredients: {
-      id: number;
-      name: string;
-      localizedName: string;
-      image: string;
-    }[];
-    length?: {
-      number: number;
-      unit: string;
-    };
-  }[];
-};
-
-function RecipeStepList({ recipes }: { recipes: SpoonacularRecipe }) {
+function RecipeStepList({ recipe }: { recipe: SpoonacularRecipe }) {
   return (
     <ul>
-      {recipes.analyzedInstructions.map((recipe: RecipeInstruction) => (
-        <li key={recipe.name || recipes.title}>
-          <StepTitle>{recipe.name || recipes.title}</StepTitle>
+      {recipe.analyzedInstructions.map(({ name, steps }) => (
+        <li key={name || recipe.title}>
+          <StepTitle>{name || recipe.title}</StepTitle>
           <StepList>
-            {recipe.steps.map((step) => (
-              <Step key={step.number}>{step.step}</Step>
+            {steps.map(({ number, step }) => (
+              <Step key={number}>{step}</Step>
             ))}
           </StepList>
         </li>
