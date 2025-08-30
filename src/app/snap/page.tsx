@@ -7,7 +7,7 @@ import { PageMargin } from "@utils";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Snap - SnapFridge",
+  title: "Snap",
   description: "Start snapping recipes out of your fridge now!",
 };
 

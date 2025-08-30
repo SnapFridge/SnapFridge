@@ -17,7 +17,7 @@
     "@google/genai": "^1.16.0",
     "@pigment-css/react": "^0.0.30",
     "@supabase/ssr": "^0.7.0",
-    "@supabase/supabase-js": "^2.56.0",
+    "@supabase/supabase-js": "^2.56.1",
     "downshift": "^9.0.10",
     "immer": "^10.1.1",
     "lucide-react": "^0.542.0",

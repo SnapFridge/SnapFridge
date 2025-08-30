@@ -2,7 +2,7 @@ import { PageMargin } from "@utils";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - SnapFridge",
+  title: "Privacy Policy",
 };
 
 export default function Page() {

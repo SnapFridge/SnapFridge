@@ -290,7 +290,7 @@ const CSP = `
   script-src-elem 'self' 'unsafe-inline';
   script-src-attr 'none';
   style-src 'self' 'unsafe-inline' ${devEnv ? "'unsafe-eval'" : ""};
-  connect-src 'self' ${process.env["NEXT_PUBLIC_SUPABASE_URL"]};
+  connect-src 'self' ${process.env.NEXT_PUBLIC_SUPABASE_URL};
   worker-src 'self';
   font-src 'self';
   manifest-src 'self';

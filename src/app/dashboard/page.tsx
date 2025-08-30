@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Dashboard - SnapFridge",
+  title: "Dashboard",
 };
 
 export default function Page() {

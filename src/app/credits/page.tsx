@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 
 export const metadata: Metadata = {
-  title: "Credits - SnapFridge",
+  title: "Credits",
 };
 
 export default function Page() {

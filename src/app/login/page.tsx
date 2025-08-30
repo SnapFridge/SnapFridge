@@ -5,7 +5,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 
 export const metadata: Metadata = {
-  title: "Login - SnapFridge",
+  title: "Login",
   description: "Login to SnapFridge to save your recipes. Login with Google or Github.",
 };
 

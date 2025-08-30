@@ -5,7 +5,7 @@ import { PageMargin, scaleClamped } from "@utils";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About - SnapFridge",
+  title: "About",
   description: "Our mission is to reduce foodwaste and help clueless fridge gazers.",
 };
 
