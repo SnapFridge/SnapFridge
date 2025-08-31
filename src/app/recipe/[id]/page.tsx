@@ -1,25 +1,28 @@
-import Link from "@components/Link";
-import AllergenWarning from "@components/recipe/AllergenWarning";
-import RecipeStepsList from "@components/recipe/DetailedRecipe";
-import RecipeActions from "@components/recipe/RecipeActions";
-import { RecipeInfo, type SpoonacularRecipe } from "@components/recipe/RecipeInfo";
-import RecipeInfoList from "@components/recipe/RecipeInfoList";
-import NutrientInfoList from "@components/recipe/RecipeInfoList/NutrientInfoList";
-import Tooltip from "@components/recipe/Tooltip";
-import { UnitProvider } from "@components/UnitProvider";
-import { css, styled } from "@pigment-css/react";
-import { ON_MOBILE, PageMargin, type SavedRecipe, scaleClamped } from "@utils";
-import { createClient } from "@utils/supabase/server";
-import type { Metadata } from "next";
-import Image from "next/image";
-import { notFound } from "next/navigation";
+import Link from '@components/Link';
+import AllergenWarning from '@components/recipe/AllergenWarning';
+import RecipeStepsList from '@components/recipe/DetailedRecipe';
+import RecipeActions from '@components/recipe/RecipeActions';
+import {
+  RecipeInfo,
+  type SpoonacularRecipe,
+} from '@components/recipe/RecipeInfo';
+import RecipeInfoList from '@components/recipe/RecipeInfoList';
+import NutrientInfoList from '@components/recipe/RecipeInfoList/NutrientInfoList';
+import Tooltip from '@components/recipe/Tooltip';
+import { UnitProvider } from '@components/UnitProvider';
+import { css, styled } from '@pigment-css/react';
+import { ON_MOBILE, PageMargin, type SavedRecipe, scaleClamped } from '@utils';
+import { createClient } from '@utils/supabase/server';
+import type { Metadata } from 'next';
+import Image from 'next/image';
+import { notFound } from 'next/navigation';
 
 async function getRecipe(id: string) {
   const recipeRes = await fetch(
     `https://api.spoonacular.com/recipes/${id}/information?includeNutrition=true`,
     {
       headers: {
-        "x-api-key": process.env.SPOONACULAR_KEY!,
+        'x-api-key': process.env.SPOONACULAR_KEY!,
       },
       next: {
         revalidate: 3600,
@@ -39,7 +42,7 @@ async function getRecipe(id: string) {
   if (!recipe || Object.keys(recipe).length === 0) {
     return null;
   }
-  recipe.image = recipe.image.replace(/\d{3}x\d{3}/, "636x393");
+  recipe.image = recipe.image.replace(/\d{3}x\d{3}/, '636x393');
   return recipe;
 }
 
@@ -51,7 +54,7 @@ async function getSavedRecipes(): Promise<SavedRecipe[]> {
   if (!user) {
     return [];
   }
-  const { data } = await supabase.from("saved_recipes").select();
+  const { data } = await supabase.from('saved_recipes').select();
   return data![0]!.recipes as SavedRecipe[];
 }
 
@@ -61,10 +64,14 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params;
+  const recipe = await getRecipe(id);
+
   return {
-    title: `Recipe ${id}`,
-    description: `View, share, or save recipe ${id} on SnapFridge`,
-    robots: "noindex, nofollow",
+    title: `${recipe?.title ?? id}`,
+    description: `View, share, or save ${
+      recipe?.title ?? `recipe ${id}`
+    } on SnapFridge`,
+    robots: 'noindex, nofollow',
   };
 }
 
@@ -88,8 +95,10 @@ export default async function Page({ params }: Props) {
         />
         <PageMargin>
           <SourceCredit>
-            Source:{" "}
-            <Link href={recipe.sourceUrl as unknown as URL}>{recipe.creditsText}</Link>
+            Source:{' '}
+            <Link href={recipe.sourceUrl as unknown as URL}>
+              {recipe.creditsText}
+            </Link>
           </SourceCredit>
         </PageMargin>
       </figure>
@@ -124,61 +133,61 @@ export default async function Page({ params }: Props) {
 }
 
 const RecipeImage = css({
-  width: "100%",
-  height: "auto",
-  maxHeight: "67vh",
-  objectFit: "cover",
+  width: '100%',
+  height: 'auto',
+  maxHeight: '67vh',
+  objectFit: 'cover',
 });
 
-const SourceCredit = styled("small")({
-  display: "block",
-  width: "fit-content",
-  margin: "0 36px 0 auto",
+const SourceCredit = styled('small')({
+  display: 'block',
+  width: 'fit-content',
+  margin: '0 36px 0 auto',
   fontSize: `${14 / 16}rem`,
   [ON_MOBILE]: {
-    width: "100%",
+    width: '100%',
     margin: 0,
-    textAlign: "center",
+    textAlign: 'center',
   },
 });
 
-const TitleSection = styled("div")({
-  display: "flex",
-  alignItems: "center",
-  gap: "24px",
+const TitleSection = styled('div')({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '24px',
 });
 
-const Title = styled("h1")({
+const Title = styled('h1')({
   fontSize: scaleClamped(24, 35),
-  margin: "5px 0 24px",
+  margin: '5px 0 24px',
   [ON_MOBILE]: {
-    margin: "12px 0 24px",
-    width: "100%",
-    textAlign: "center",
+    margin: '12px 0 24px',
+    width: '100%',
+    textAlign: 'center',
   },
 });
 
-const Wrapper = styled("div")({
-  display: "flex",
-  gap: "16px",
+const Wrapper = styled('div')({
+  display: 'flex',
+  gap: '16px',
 
   // Allows us to tab the controls first
-  flexDirection: "row-reverse",
+  flexDirection: 'row-reverse',
 });
 
-const ListContainer = styled("div")({
-  display: "flex",
-  margin: "0 0 24px",
-  gap: "12px",
+const ListContainer = styled('div')({
+  display: 'flex',
+  margin: '0 0 24px',
+  gap: '12px',
 
-  "@media (width < 650px)": {
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "24px",
+  '@media (width < 650px)': {
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '24px',
   },
 });
 
-const Spacer = styled("div")({
+const Spacer = styled('div')({
   flex: 1,
-  maxWidth: "200px",
+  maxWidth: '200px',
 });
