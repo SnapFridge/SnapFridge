@@ -42,6 +42,7 @@ const Wrapper = styled("li")({
 
 const IngredientBtn = styled("button")({
   display: "flex",
+  alignItems: "center",
   gap: "8px",
   background: "var(--accent-200)",
   padding: "6px 12px",
@@ -56,6 +57,7 @@ const IngredientBtn = styled("button")({
   [`${Wrapper}:hover > &, &:focus`]: {
     transform: "scale(1.04)",
   },
+
   "& > span": {
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",

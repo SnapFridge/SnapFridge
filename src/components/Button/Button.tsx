@@ -30,6 +30,7 @@ const StyledButton = styled("button")<{ variant: Variant | undefined }>({
   borderRadius: "8px",
   border: 0,
   color: "var(--text-950)",
+
   // Hidden dependency relied upon by the trickery we use later
   position: "relative",
 

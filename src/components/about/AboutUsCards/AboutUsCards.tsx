@@ -7,31 +7,34 @@ function AboutUsCards() {
       <Card>
         <h1>Rylex Phan</h1>
         <p>
-          I'm a senior at Cypress High School with a strong passion for Physics, Math, and
-          an incredible addiction to coding. I've built several projects, including{" "}
+          I'm a senior at Cypress High School with a strong passion for Physics,
+          Math, and an incredible addiction to coding. I've built several
+          projects, including{" "}
           <Link href="https://github.com/msqr1/Vosklet">Vosklet</Link> and{" "}
-          <Link href="https://github.com/msqr1/importizer">importizer</Link>. I enjoy
-          diving deep into research and contributing to libraries like Kaldi, Emscripten,
-          Glaze, or any other tools I use in my work. I prefer backend over frontend!
+          <Link href="https://github.com/msqr1/importizer">importizer</Link>. I
+          enjoy diving deep into research and contributing to libraries like
+          Kaldi, Emscripten, Glaze, or any other tools I use in my work. I
+          prefer backend over frontend!
         </p>
       </Card>
       <Card>
         <h1>Andrew Trinh</h1>
         <p>
-          With two Andrews working on SnapFridge, Rylex has a hard time referring to one
-          specifically, so he gave the other Andrew a nickname. I'm a senior from Cypress
-          also. I like coding a lot, although I started later compared to the other two
-          guys.
+          With two Andrews working on SnapFridge, Rylex has a hard time
+          referring to one specifically, so he gave the other Andrew a nickname.
+          I'm a senior from Cypress also. I like coding a lot, although I
+          started later compared to the other two guys.
         </p>
       </Card>
       <Card>
         <h1>Andrew "Xandrew" Kim</h1>
         <p>
-          Hello, my name is Andrew Kim and I'm a senior at Cypress High School. I know
-          React, Next.js, Astro, Svelte and many others. I built many website with these
-          like <Link href="https://minesweeping.netlify.app/">Minesweeping</Link> (Check
-          it out with friends)! I do frontend stuff most of the time but I also do a bit
-          of backend when I have to.
+          Hello, my name is Andrew Kim and I'm a senior at Cypress High School.
+          I know React, Next.js, Astro, Svelte and many others. I built many
+          website with these like{" "}
+          <Link href="https://minesweeping.netlify.app/">Minesweeping</Link>{" "}
+          (check it out with friends)! I do frontend stuff most of the time but
+          I also do a bit of backend when I have to.
         </p>
       </Card>
     </CardContainer>

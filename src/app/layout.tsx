@@ -1,4 +1,4 @@
-import "./GlobalStyles";
+import "./style";
 import CookieBanner from "@components/CookieBanner";
 import Footer from "@components/Footer";
 import NavBar from "@components/NavBar";

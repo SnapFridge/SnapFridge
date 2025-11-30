@@ -138,7 +138,8 @@ const theme = extendTheme({
         base: "#ebebeb",
         highlight: "#f5f5f5",
       },
-      shadow: "0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1)",
+      shadow:
+        "0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1)",
     },
     dark: {
       text: {
@@ -308,10 +309,8 @@ export default withPigment(
     experimental: {
       inlineCss: true,
       useLightningcss: true,
-      reactCompiler: true,
       webpackBuildWorker: true,
       webpackMemoryOptimizations: true,
-      optimizeRouterScrolling: true,
       forceSwcTransforms: true,
 
       // NEVER add: pigment
@@ -334,6 +333,7 @@ export default withPigment(
         "use-immer",
       ],
     },
+    reactCompiler: true,
     images: {
       remotePatterns: [new URL("https://img.spoonacular.com/recipes/**")],
       qualities: [45, 75, 100],

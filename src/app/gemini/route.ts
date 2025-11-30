@@ -6,7 +6,7 @@ import {
   Type,
 } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_KEY! });
+const ai = new GoogleGenAI({});
 
 async function ensureContext(contents: { fileData: FileData }[]) {
   const name = "ingredients";
