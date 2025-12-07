@@ -15,11 +15,11 @@ export default function Page() {
   return (
     <PageMargin>
       <Greeting />
+      <SavedRecipesHeader>
+        <SavedRecipesTitle>Saved Recipes</SavedRecipesTitle>
+        <Save size={50} />
+      </SavedRecipesHeader>
       <Suspense>
-        <SavedRecipesHeader>
-          <SavedRecipesTitle>Saved Recipes</SavedRecipesTitle>
-          <Save size={50} />
-        </SavedRecipesHeader>
         <ScrollArea />
       </Suspense>
       <AccountButtons />

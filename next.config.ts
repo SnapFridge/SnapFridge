@@ -333,6 +333,7 @@ export default withPigment(
         "use-immer",
       ],
     },
+    cacheComponents: true,
     reactCompiler: true,
     images: {
       remotePatterns: [new URL("https://img.spoonacular.com/recipes/**")],

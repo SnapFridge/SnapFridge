@@ -1,9 +1,9 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "next dev --webpack",
-    "build": "next build --webpack",
-    "start": "next start",
+    "dev": "next dev --webpack --experimental-next-config-strip-types",
+    "build": "next build --webpack --experimental-next-config-strip-types",
+    "start": "next start --experimental-next-config-strip-types",
     "check": "biome check",
     "fix": "biome check --fix --unsafe",
     "update": "npm-check-updates -u && npm install && npm update",
