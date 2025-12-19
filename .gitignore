@@ -9,5 +9,6 @@ build
 .vscode
 test*
 certificates
+
 # Local Netlify folder
 .netlify

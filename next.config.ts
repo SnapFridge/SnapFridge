@@ -344,6 +344,7 @@ export default withPigment(
     typedRoutes: true,
     productionBrowserSourceMaps: true,
     allowedDevOrigins: ["/_next/*"],
+    turbopack: {},
 
     // For Netlify, these headers only applies to SSR'ed assets, a.k.a just the HTML files
     async headers() {
