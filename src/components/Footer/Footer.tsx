@@ -10,7 +10,7 @@ function Footer() {
     <AFooter>
       <div>
         <small className={LeftFooterCSS}>
-          <strong>&copy; 2025 SnapFridge</strong>
+          <strong>&copy; 2026 SnapFridge</strong>
           <div>Rylex Phan, Andrew Kim, Andrew Trinh</div>
         </small>
         <LinksContainer>
