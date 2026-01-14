@@ -8,10 +8,7 @@ function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
   if (!recipe) {
     return (
       <Card as="li" style={{ border: 0 }}>
-        <SkeletonTheme
-          baseColor="var(--skeleton-base)"
-          highlightColor="var(--skeleton-highlight)"
-        >
+        <SkeletonTheme baseColor="var(--skeleton-base)" highlightColor="var(--skeleton-highlight)">
           <Skeleton containerClassName={RecipeTitle} />
           <FoodImgSkeleton>
             <Skeleton width="100%" height="100%" />
@@ -44,9 +41,7 @@ function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
           {recipe.usedIngredientCount > 0 && (
             <>
               <h4 className={IngredientTitle}>Ingredients</h4>
-              <Capitalized>
-                {recipe.usedIngredients.map((i) => i.name).join(", ")}
-              </Capitalized>
+              <Capitalized>{recipe.usedIngredients.map((i) => i.name).join(", ")}</Capitalized>
             </>
           )}
         </Ingredients>
@@ -54,9 +49,7 @@ function RecipeCard({ recipe }: { recipe: Recipe | undefined }) {
           {recipe.missedIngredientCount > 0 && (
             <>
               <h4 className={IngredientTitle}>Missing Ingredients</h4>
-              <Capitalized>
-                {recipe.missedIngredients.map((i) => i.name).join(", ")}
-              </Capitalized>
+              <Capitalized>{recipe.missedIngredients.map((i) => i.name).join(", ")}</Capitalized>
             </>
           )}
         </MissedIngredients>

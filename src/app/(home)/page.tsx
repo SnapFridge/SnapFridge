@@ -6,13 +6,7 @@ import recipesExample from "@components/home/RecipesExample";
 import RecipeSection from "@components/RecipeSection";
 import { InputProvider } from "@components/snap/InputProvider";
 import { css, styled } from "@pigment-css/react";
-import {
-  MOBILE_BREAKPOINT,
-  ON_DESKTOP,
-  ON_MOBILE,
-  PageMargin,
-  scaleClamped,
-} from "@utils";
+import { MOBILE_BREAKPOINT, ON_DESKTOP, ON_MOBILE, PageMargin, scaleClamped } from "@utils";
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -47,9 +41,7 @@ export default function Page() {
         <FridgeSection className={MobileFlexCol}>
           <FridgeSideTxt>Your fridge's perfect companion</FridgeSideTxt>
           <FridgeSideTxt>Automatically scans your food</FridgeSideTxt>
-          <FridgeSideTxt className={MobileOrderLast}>
-            Inspire meals and reduce waste
-          </FridgeSideTxt>
+          <FridgeSideTxt className={MobileOrderLast}>Inspire meals and reduce waste</FridgeSideTxt>
           <FridgeAndPointers>
             <Butter>Butter</Butter>
             <Milk>Milk</Milk>
@@ -99,7 +91,7 @@ export default function Page() {
                 className={LandfillImg}
                 src="/Landfill.png"
                 alt="Landfill worker clearing through a landfill of fruit waste"
-                quality={45}
+                quality={50}
                 sizes={`40vw, (width < ${MOBILE_BREAKPOINT}px) 80vw`}
               />
             </BottomStatistics>

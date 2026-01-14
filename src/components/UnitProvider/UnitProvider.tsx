@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  createContext,
-  type PropsWithChildren,
-  useContext,
-  useMemo,
-  useState,
-} from "react";
+import { createContext, type PropsWithChildren, useContext, useMemo, useState } from "react";
 
 type Unit = "metric" | "imperial";
 

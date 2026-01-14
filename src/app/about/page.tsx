@@ -14,8 +14,8 @@ export default function Page() {
     <Main>
       <Icon icon="Logo" size={300} className={Logo} />
       <Header>
-        "Ever stared into your fridge, clueless about what to cook? We've all been there.
-        That's why we built SnapFridge - to turn fridge-gazing into meal-making!"
+        "Ever stared into your fridge, clueless about what to cook? We've all been there. That's why
+        we built SnapFridge - to turn fridge-gazing into meal-making!"
       </Header>
       <AboutUsCards />
     </Main>

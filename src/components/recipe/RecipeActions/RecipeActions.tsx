@@ -15,19 +15,12 @@ type Props = {
   initialSavedRecipes: SavedRecipe[];
 };
 
-function RecipeActions({
-  id,
-  name,
-  imageType,
-  initialSavedRecipes,
-}: SavedRecipe & Props) {
+function RecipeActions({ id, name, imageType, initialSavedRecipes }: SavedRecipe & Props) {
   const { addToast } = useToast();
   const [unit, toggleUnit] = useUnit();
   const user = useUser();
   const supabase = createClient();
-  const [saved, setSaved] = useState(
-    initialSavedRecipes.findIndex((v) => v.id === id) > -1
-  );
+  const [saved, setSaved] = useState(initialSavedRecipes.findIndex((v) => v.id === id) > -1);
 
   async function toggleSave() {
     try {
@@ -68,17 +61,8 @@ function RecipeActions({
   return (
     <Container>
       {user ? (
-        <Button
-          variant="icon"
-          className={SaveButtonCSS}
-          onClick={() => void toggleSave()}
-        >
-          <Heart
-            aria-hidden
-            fill={saved ? "#FF4848" : "none"}
-            color="#FF4848"
-            size={36}
-          />
+        <Button variant="icon" className={SaveButtonCSS} onClick={() => void toggleSave()}>
+          <Heart aria-hidden fill={saved ? "#FF4848" : "none"} color="#FF4848" size={36} />
           <RecipeActionText>Save{saved && "d"}</RecipeActionText>
         </Button>
       ) : (

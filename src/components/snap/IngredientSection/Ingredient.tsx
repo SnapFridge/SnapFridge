@@ -13,9 +13,7 @@ function IngredientBox({ ingredient }: Props) {
   return (
     <Wrapper>
       <IngredientBtn
-        onClick={(e) =>
-          (e.currentTarget.nextSibling!.firstChild! as HTMLButtonElement).focus()
-        }
+        onClick={(e) => (e.currentTarget.nextSibling!.firstChild! as HTMLButtonElement).focus()}
       >
         <span>{ingredient}</span>
       </IngredientBtn>

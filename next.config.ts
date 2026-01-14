@@ -334,10 +334,12 @@ export default withPigment(
       ],
     },
     cacheComponents: true,
+    partialPrefetching: true,
     reactCompiler: true,
+    reactStrictMode: true,
     images: {
       remotePatterns: [new URL("https://img.spoonacular.com/recipes/**")],
-      qualities: [45, 75, 100],
+      qualities: [50, 67, 75, 100],
     },
     distDir: "build",
     poweredByHeader: false,

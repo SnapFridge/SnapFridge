@@ -29,9 +29,7 @@ function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: P
   } = useCombobox({
     onInputValueChange({ inputValue }) {
       setItems(filterSuggestions(inputValue));
-      ref.current!.setCustomValidity(
-        suggestions.includes(inputValue) ? "" : "Invalid entry"
-      );
+      ref.current!.setCustomValidity(suggestions.includes(inputValue) ? "" : "Invalid entry");
       onChange(inputValue);
     },
     items,
@@ -58,9 +56,7 @@ function SuggestedInput({ label, value, suggestions, onChange, ...delegated }: P
               item,
               style: {
                 background:
-                  highlightedIndex === index
-                    ? "var(--background-100)"
-                    : "var(--background-0)",
+                  highlightedIndex === index ? "var(--background-100)" : "var(--background-0)",
                 fontWeight: selectedItem === item ? 700 : "unset",
               },
             })}

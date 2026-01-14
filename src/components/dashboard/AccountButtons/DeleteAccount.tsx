@@ -34,11 +34,7 @@ function DeleteButton() {
 
   return (
     <>
-      <StyledButton
-        onClick={() => void handleDeleteUser()}
-        disabled={loading}
-        variant="primary"
-      >
+      <StyledButton onClick={() => void handleDeleteUser()} disabled={loading} variant="primary">
         {loading ? "Deleting Account..." : "Delete Account"}
       </StyledButton>
       <AnimatePresence>

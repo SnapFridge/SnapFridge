@@ -69,9 +69,7 @@ function ImageUpload() {
       body,
     });
     if (res.ok) {
-      await res
-        .body!.pipeThrough(new TextDecoderStream())
-        .pipeTo(getIngredientWriter(dispatch));
+      await res.body!.pipeThrough(new TextDecoderStream()).pipeTo(getIngredientWriter(dispatch));
     } else {
       addToast("error", "Gemini fetching error", `${res.status} ${res.statusText}`);
     }

@@ -78,11 +78,7 @@ function IngredientSection() {
           value={ranking}
           disabled={recipes === "pending"}
         />
-        <SpoonacularButton
-          disabled={ingredients.length < 1}
-          variant="primary"
-          type="submit"
-        >
+        <SpoonacularButton disabled={ingredients.length < 1} variant="primary" type="submit">
           Find Recipes
         </SpoonacularButton>
       </SpoonacularForm>

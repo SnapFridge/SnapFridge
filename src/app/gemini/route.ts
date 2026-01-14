@@ -1,10 +1,5 @@
 import { randomBytes } from "node:crypto";
-import {
-  type FileData,
-  type GenerateContentResponse,
-  GoogleGenAI,
-  Type,
-} from "@google/genai";
+import { type FileData, type GenerateContentResponse, GoogleGenAI, Type } from "@google/genai";
 
 const ai = new GoogleGenAI({});
 

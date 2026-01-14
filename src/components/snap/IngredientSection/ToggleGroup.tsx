@@ -8,9 +8,7 @@ import type { ComponentPropsWithoutRef } from "react";
 type FullToggleGroupRootProps = ComponentPropsWithoutRef<typeof ToggleGroup.Root>;
 type ToggleGroupProps = Extract<FullToggleGroupRootProps, { type: "single" }>;
 
-function AppToggleGroup({
-  ...delegated
-}: Omit<ToggleGroupProps, "type" | "defaultValue">) {
+function AppToggleGroup({ ...delegated }: Omit<ToggleGroupProps, "type" | "defaultValue">) {
   return (
     <ToggleGroupRoot type="single" defaultValue="2" {...delegated}>
       <ToggleGroupItem value="1" aria-label="Maximize">

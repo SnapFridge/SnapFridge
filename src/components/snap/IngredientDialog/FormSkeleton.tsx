@@ -5,10 +5,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 function FormSkeleton() {
   return (
     <div>
-      <SkeletonTheme
-        baseColor="var(--skeleton-base)"
-        highlightColor="var(--skeleton-highlight)"
-      >
+      <SkeletonTheme baseColor="var(--skeleton-base)" highlightColor="var(--skeleton-highlight)">
         <Container>
           <Name>
             <Skeleton />

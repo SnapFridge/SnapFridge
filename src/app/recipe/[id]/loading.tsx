@@ -6,10 +6,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 export default function Page() {
   const tooltipSize = scaleClamped(30, 40);
   return (
-    <SkeletonTheme
-      baseColor="var(--skeleton-base)"
-      highlightColor="var(--skeleton-highlight)"
-    >
+    <SkeletonTheme baseColor="var(--skeleton-base)" highlightColor="var(--skeleton-highlight)">
       <Skeleton height="min(calc(100vw * 0.618), 60vh)" />
       <PageMargin>
         <TitleSection>

@@ -90,8 +90,7 @@ export default async function Page({ params }: Props) {
         />
         <PageMargin>
           <SourceCredit>
-            Source:{" "}
-            <Link href={recipe.sourceUrl as unknown as URL}>{recipe.creditsText}</Link>
+            Source: <Link href={recipe.sourceUrl as unknown as URL}>{recipe.creditsText}</Link>
           </SourceCredit>
         </PageMargin>
       </figure>

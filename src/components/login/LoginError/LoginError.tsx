@@ -8,7 +8,6 @@ function LoginError(): undefined {
   const params = useSearchParams();
   const { addToast } = useToast();
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: addToast makes inf loop
   useEffect(() => {
     const error = params.get("error");
     if (!error) {

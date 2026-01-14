@@ -8,10 +8,7 @@ function LogoutButton() {
   const { auth } = createClient();
   const router = useRouter();
   return (
-    <Button
-      variant="secondary"
-      onClick={() => auth.signOut().then(() => router.push("/login"))}
-    >
+    <Button variant="secondary" onClick={() => auth.signOut().then(() => router.push("/login"))}>
       Sign out
     </Button>
   );

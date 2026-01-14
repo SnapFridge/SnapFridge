@@ -26,11 +26,7 @@ function ClearRecipeButton() {
 
   return (
     <div>
-      <StyledButton
-        onClick={() => void clearRecipes()}
-        variant="primary"
-        disabled={pending}
-      >
+      <StyledButton onClick={() => void clearRecipes()} variant="primary" disabled={pending}>
         {pending ? "Clearing Saved Recipes..." : "Clear Saved Recipes"}
       </StyledButton>
     </div>

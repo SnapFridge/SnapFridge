@@ -14,11 +14,7 @@ interface Props {
   countPerPage?: number;
 }
 
-function RecipeSection({
-  headerTxt = "Recipes Found",
-  countPerPage = 2,
-  recipes_,
-}: Props) {
+function RecipeSection({ headerTxt = "Recipes Found", countPerPage = 2, recipes_ }: Props) {
   const { state } = useInputState();
   const recipes = recipes_ || state.recipes;
   function getPendingCards() {
@@ -53,8 +49,8 @@ function RecipeSection({
           <EmptySectionContent>
             <ChefHat size={50} color="var(--gray-600)" />
             <p>
-              Looks like your recipes is empty! Start by adding some ingredients or
-              uploading an image!
+              Looks like your recipes is empty! Start by adding some ingredients or uploading an
+              image!
             </p>
           </EmptySectionContent>
         </EmptySectionContainer>

@@ -2,13 +2,7 @@
 
 import type { User } from "@supabase/supabase-js";
 import createClient from "@utils/supabase/client";
-import {
-  createContext,
-  type PropsWithChildren,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, type PropsWithChildren, useContext, useEffect, useState } from "react";
 
 const UserContext = createContext<User | undefined>(undefined);
 
